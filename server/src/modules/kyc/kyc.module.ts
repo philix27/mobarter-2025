@@ -1,13 +1,13 @@
 import { Module } from "@nestjs/common";
 import { CommonModule } from "../common";
-import { AuthService } from "./auth.service";
+import { KycService } from "./kyc.service";
 import { NotificationModule } from "../notification/notification.module";
 import { NotificationService } from "../notification/notification.service";
-import { AuthResolver } from "./auth.resolver";
+import { KycResolver } from "./kyc.resolver";
 
 @Module({
     imports: [CommonModule, NotificationModule],
-    providers: [AuthService, AuthResolver, NotificationService],
+    providers: [KycService, KycResolver, NotificationService],
     exports: [],
 })
-export class AuthModule {}
+export class KycModule {}

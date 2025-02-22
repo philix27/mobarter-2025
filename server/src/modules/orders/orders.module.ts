@@ -1,13 +1,13 @@
 import { Module } from "@nestjs/common";
 import { CommonModule } from "../common";
-import { AuthService } from "./auth.service";
+import { OrderService } from "./orders.service";
 import { NotificationModule } from "../notification/notification.module";
 import { NotificationService } from "../notification/notification.service";
-import { AuthResolver } from "./auth.resolver";
+import { OrdersResolver } from "./orders.resolver";
 
 @Module({
     imports: [CommonModule, NotificationModule],
-    providers: [AuthService, AuthResolver, NotificationService],
+    providers: [OrderService, OrdersResolver, NotificationService],
     exports: [],
 })
-export class AuthModule {}
+export class OrdersModule {}

@@ -8,6 +8,12 @@ import { ScheduleModule } from "@nestjs/schedule";
 import { PubSubModule } from "./pubsub/pubsub.module";
 import { NotificationModule } from "./notification/notification.module";
 import { AuthModule } from "./auth/auth.module";
+import { UserModule } from "./user/user.module";
+import { BankAccountModule } from "./bankAccount/bankAccount.module";
+import { OrdersModule } from "./orders/orders.module";
+import { SwapModule } from "./swap/swap.module";
+import { WalletModule } from "./wallets/wallet.module";
+import { KycModule } from "./kyc/kyc.module";
 
 @Module({
     imports: [
@@ -27,6 +33,12 @@ import { AuthModule } from "./auth/auth.module";
         PubSubModule,
         NotificationModule,
         AuthModule,
+        UserModule,
+        BankAccountModule,
+        OrdersModule,
+        SwapModule,
+        WalletModule,
+        KycModule,
     ],
 })
 export class ApplicationModule {}
