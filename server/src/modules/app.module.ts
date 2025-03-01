@@ -6,6 +6,8 @@ import { PricesModule } from "./prices/prices.module";
 import { CronModule } from "./cron/cron.module";
 import { ScheduleModule } from "@nestjs/schedule";
 import { PubSubModule } from "./pubsub/pubsub.module";
+import { NotificationModule } from "./notification/notification.module";
+import { AuthModule } from "./auth/auth.module";
 
 @Module({
     imports: [
@@ -23,6 +25,8 @@ import { PubSubModule } from "./pubsub/pubsub.module";
         PricesModule,
         CronModule,
         PubSubModule,
+        NotificationModule,
+        AuthModule,
     ],
 })
 export class ApplicationModule {}

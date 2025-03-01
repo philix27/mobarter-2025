@@ -8,14 +8,63 @@ datasource db {
 }
 
 model User {
-  id         Int       @id @default(autoincrement())
-  firstname  String
-  lastname   String
-  middlename String?
-  email      String    @unique
-  password   String
-  created_at DateTime? @default(now())
-  updated_at DateTime? @updatedAt
+  id            Int           @id @default(autoincrement())
+  firstname     String
+  lastname      String
+  middlename    String?
+  email         String        @unique
+  password      String
+  country       Country
+  created_at    DateTime?     @default(now())
+  updated_at    DateTime?     @updatedAt
+  eth_wallets   EthWallet[]
+  bank_accounts BankAccount[]
+}
+
+enum Country {
+  Nigeria
+  Ghana
+  Kenya
+}
+
+model EthWallet {
+  id             Int       @id @default(autoincrement())
+  firstname      String
+  lastname       String
+  middlename     String?
+  email          String    @unique
+  password       String
+  created_at     DateTime? @default(now())
+  updated_at     DateTime? @updatedAt
+  user_id        Int
+  user           User?     @relation(fields: [user_id], references: [id])
+  bvn            String?
+  bvn_verified   Boolean?
+  nin            String?
+  nin_verified   Boolean?
+  home_address   String?
+  phone          String?
+  phone_verified Boolean?
+}
+
+model BankAccount {
+  id           Int       @id @default(autoincrement())
+  account_name String
+  account_no   String
+  bank_name    BankName
+  created_at   DateTime? @default(now())
+  updated_at   DateTime? @updatedAt
+  user_id      Int
+  user         User?     @relation(fields: [user_id], references: [id])
+}
+
+enum BankName {
+  NG_ZENITH
+  NG_GTB
+  NG_UBA
+  NG_FIDELITY
+  NG_OPAY
+  NG_MONIEPOINT
 }
 
 model Market {
