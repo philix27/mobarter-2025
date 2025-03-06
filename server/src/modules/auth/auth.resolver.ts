@@ -9,6 +9,7 @@ import {
     Auth_sendEmailOtp,
     Auth_sendEmailOtpResponse,
     Auth_verifyEmailOtp,
+    Auth_verifyOtpResponse,
 } from "./auth.dto";
 import { UserDto } from "../user/user.dto";
 import { UseGuards } from "@nestjs/common";
@@ -17,6 +18,22 @@ import { GqlAuthGuard } from "./gql.gaurd";
 @Resolver((of: any) => UserDto)
 export class AuthResolver {
     constructor(private readonly service: AuthService) {}
+
+    @Mutation((returns) => Auth_sendEmailOtpResponse)
+    async auth_sendEmailOtp(
+        @Args("input") input: Auth_sendEmailOtp
+    ): Promise<Auth_sendEmailOtpResponse> {
+        const res = await this.service.sendEmailOtp(input);
+        return res!;
+    }
+
+    @Mutation((returns) => Auth_verifyOtpResponse)
+    async auth_verifyEmailOtp(
+        @Args("input") input: Auth_verifyEmailOtp
+    ): Promise<Auth_verifyOtpResponse> {
+        const res = await this.service.verifyEmailOtp(input);
+        return res!;
+    }
 
     @Mutation((returns) => String)
     async auth_createAccount(
@@ -43,22 +60,6 @@ export class AuthResolver {
         // const res = await this.service.logout(input);
         const user = context.req.user; // Extract user data
         return `User ID: ${user.userId}, Username: ${user.username}`;
-    }
-
-    @Mutation((returns) => String)
-    async auth_verifyEmailOtp(@Args("input") input: Auth_verifyEmailOtp) {
-        const res = await this.service.verifyEmailOtp(input);
-
-        return res!;
-    }
-
-    @Mutation((returns) => Auth_sendEmailOtpResponse)
-    async auth_sendEmailOtp(
-        @Args("input") input: Auth_sendEmailOtp
-    ): Promise<Auth_sendEmailOtpResponse> {
-        const res = await this.service.sendEmailOtp(input);
-
-        return res!;
     }
 
     @Mutation((returns) => String)

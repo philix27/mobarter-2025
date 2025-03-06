@@ -9,6 +9,7 @@ import {
     Auth_sendEmailOtp,
     Auth_sendEmailOtpResponse,
     Auth_verifyEmailOtp,
+    Auth_verifyOtpResponse,
 } from "./auth.dto";
 import { UserService } from "../user/user.service";
 import { WalletCryptoService } from "../wallet-crypto/crypto.service";
@@ -52,10 +53,19 @@ export class AuthService {
         }
     }
 
-    public async verifyEmailOtp(params: Auth_verifyEmailOtp) {
-        this.logger.info("Creating platform account ...");
-        this.jwtService.verifyOTP(params.token, params.otp);
-        return { message: "Valid token" };
+    public async verifyEmailOtp(
+        params: Auth_verifyEmailOtp
+    ): Promise<Auth_verifyOtpResponse> {
+        this.logger.info("VerifyEmailOtp: ");
+        const isValid = this.jwtService.verifyOTP(params.token, params.otp);
+
+        if (isValid) {
+            return { message: "Valid otp" };
+        } else {
+            throw new Error("Invalid otp");
+
+            // return { message: "Invalid otp" };
+        }
     }
 
     public async createAccount(params: Auth_CreateAccount) {
