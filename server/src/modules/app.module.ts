@@ -12,8 +12,9 @@ import { UserModule } from "./user/user.module";
 import { BankAccountModule } from "./bankAccount/bankAccount.module";
 import { OrdersModule } from "./orders/orders.module";
 import { SwapModule } from "./swap/swap.module";
-import { WalletModule } from "./wallet-fiat/fiat.module";
 import { KycModule } from "./kyc/kyc.module";
+import { WalletFiatService } from "./wallet-fiat/fiat.service";
+import { WalletCryptoModule } from "./wallet-crypto/crypto.module";
 
 @Module({
     imports: [
@@ -37,7 +38,8 @@ import { KycModule } from "./kyc/kyc.module";
         BankAccountModule,
         OrdersModule,
         SwapModule,
-        WalletModule,
+        WalletFiatService,
+        WalletCryptoModule,
         KycModule,
     ],
 })

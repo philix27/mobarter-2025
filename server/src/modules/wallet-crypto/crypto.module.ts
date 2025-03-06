@@ -1,13 +1,13 @@
 import { Module } from "@nestjs/common";
 import { CommonModule } from "../common";
-import { WalletService } from "./wallet.service";
 import { NotificationModule } from "../notification/notification.module";
 import { NotificationService } from "../notification/notification.service";
-import { WalletResolver } from "./wallet.resolver";
+import { WalletCryptoResolver } from "./crypto.resolver";
+import { WalletCryptoService } from "./crypto.service";
 
 @Module({
     imports: [CommonModule, NotificationModule],
-    providers: [WalletService, WalletResolver, NotificationService],
+    providers: [WalletCryptoService, WalletCryptoResolver, NotificationService],
     exports: [],
 })
-export class WalletModule {}
+export class WalletCryptoModule {}
