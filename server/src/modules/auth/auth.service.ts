@@ -7,6 +7,7 @@ import {
     Auth_Logout,
     Auth_ResetPassword,
     Auth_sendEmailOtp,
+    Auth_sendEmailOtpResponse,
     Auth_verifyEmailOtp,
 } from "./auth.dto";
 import { UserService } from "../user/user.service";
@@ -26,13 +27,16 @@ export class AuthService {
         private readonly jwtService: JwtCryptoService
     ) {}
 
-    public async sendEmailOtp(params: Auth_sendEmailOtp) {
-        this.logger.info("Creating platform account ...");
+    public async sendEmailOtp(
+        params: Auth_sendEmailOtp
+    ): Promise<Auth_sendEmailOtpResponse> {
+        this.logger.info("sendEmailOtp");
 
         const otp = this.jwtService.generateOTP();
+        this.logger.info("sendEmailOtp: " + otp);
 
         try {
-            const token = this.jwtService.generateToken(otp);
+            const token = this.jwtService.generateToken({ otp });
             await this.notification.sendEmailOtp({ email: params.email, otp });
             // todo: return jwt token with otp
             return {
@@ -40,7 +44,11 @@ export class AuthService {
                 token,
             };
         } catch (error) {
-            this.logger.error("Could not send otp to email");
+            this.logger.error("Could not send otp to email: " + error.message);
+            return {
+                message: "Not successful",
+                token: "",
+            };
         }
     }
 

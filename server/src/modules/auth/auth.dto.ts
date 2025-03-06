@@ -1,4 +1,4 @@
-import { Field, InputType, registerEnumType } from "@nestjs/graphql";
+import { Field, InputType, ObjectType, registerEnumType } from "@nestjs/graphql";
 import { $Enums } from "@prisma/client";
 
 registerEnumType($Enums.Country, {
@@ -27,6 +27,14 @@ export class Auth_CreateAccount {
 export class Auth_sendEmailOtp {
     @Field()
     email: string;
+}
+@ObjectType()
+export class Auth_sendEmailOtpResponse {
+    @Field()
+    message: string;
+
+    @Field()
+    token: string;
 }
 
 @InputType()

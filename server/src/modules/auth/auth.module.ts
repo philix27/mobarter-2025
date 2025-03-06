@@ -7,6 +7,7 @@ import { AuthResolver } from "./auth.resolver";
 import { WalletCryptoService } from "../wallet-crypto/crypto.service";
 import { WalletFiatService } from "../wallet-fiat/fiat.service";
 import { JwtCryptoService } from "./jwt.service";
+import { UserService } from "../user/user.service";
 
 @Module({
     imports: [CommonModule, NotificationModule],
@@ -17,6 +18,7 @@ import { JwtCryptoService } from "./jwt.service";
         WalletCryptoService,
         WalletFiatService,
         JwtCryptoService,
+        UserService,
     ],
     exports: [],
 })

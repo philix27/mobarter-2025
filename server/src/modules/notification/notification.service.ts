@@ -6,7 +6,7 @@ export class NotificationService {
     public constructor(private readonly logger: LoggerService) {}
 
     public async sendEmailOtp(params: { email: string; otp: string }) {
-        this.logger.info("Creating platform account ...");
+        this.logger.info("NotificationService: sendEmailOtp ...");
     }
 
     public async sendPhoneOtp(params: { phoneNo: string; otp: string }) {

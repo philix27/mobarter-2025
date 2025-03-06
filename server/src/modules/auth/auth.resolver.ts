@@ -7,6 +7,7 @@ import {
     Auth_Logout,
     Auth_ResetPassword,
     Auth_sendEmailOtp,
+    Auth_sendEmailOtpResponse,
     Auth_verifyEmailOtp,
 } from "./auth.dto";
 import { UserDto } from "../user/user.dto";
@@ -51,8 +52,10 @@ export class AuthResolver {
         return res!;
     }
 
-    @Mutation((returns) => String)
-    async auth_sendEmailOtp(@Args("input") input: Auth_sendEmailOtp) {
+    @Mutation((returns) => Auth_sendEmailOtpResponse)
+    async auth_sendEmailOtp(
+        @Args("input") input: Auth_sendEmailOtp
+    ): Promise<Auth_sendEmailOtpResponse> {
         const res = await this.service.sendEmailOtp(input);
 
         return res!;

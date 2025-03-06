@@ -3,18 +3,19 @@ import { GraphQLModule } from "@nestjs/graphql";
 import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
 import { CommonModule } from "./common";
 import { PricesModule } from "./prices/prices.module";
-import { CronModule } from "./cron/cron.module";
 import { ScheduleModule } from "@nestjs/schedule";
 import { PubSubModule } from "./pubsub/pubsub.module";
 import { NotificationModule } from "./notification/notification.module";
 import { AuthModule } from "./auth/auth.module";
 import { UserModule } from "./user/user.module";
-import { BankAccountModule } from "./bankAccount/bankAccount.module";
-import { OrdersModule } from "./orders/orders.module";
-import { SwapModule } from "./swap/swap.module";
-import { KycModule } from "./kyc/kyc.module";
-import { WalletFiatService } from "./wallet-fiat/fiat.service";
 import { WalletCryptoModule } from "./wallet-crypto/crypto.module";
+import { WalletFiatModule } from "./wallet-fiat/fiat.module";
+import { JwtModule } from "@nestjs/jwt";
+// import { CronModule } from "./cron/cron.module";
+// import { BankAccountModule } from "./bankAccount/bankAccount.module";
+// import { OrdersModule } from "./orders/orders.module";
+// import { SwapModule } from "./swap/swap.module";
+// import { KycModule } from "./kyc/kyc.module";
 
 @Module({
     imports: [
@@ -28,19 +29,24 @@ import { WalletCryptoModule } from "./wallet-crypto/crypto.module";
                 "graphql-ws": true,
             },
         }),
+        JwtModule.register({
+            global: true,
+            secret: process.env.JWT_SECRET || "your_default_secret",
+            signOptions: { expiresIn: "60s" },
+        }),
         CommonModule,
         PricesModule,
-        CronModule,
+        // CronModule,
         PubSubModule,
         NotificationModule,
         AuthModule,
         UserModule,
-        BankAccountModule,
-        OrdersModule,
-        SwapModule,
-        WalletFiatService,
+        // BankAccountModule,
+        // OrdersModule,
+        // SwapModule,
+        // KycModule,
+        WalletFiatModule,
         WalletCryptoModule,
-        KycModule,
     ],
 })
 export class ApplicationModule {}
