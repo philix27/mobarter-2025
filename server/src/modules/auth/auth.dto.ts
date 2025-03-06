@@ -11,7 +11,7 @@ registerEnumType($Enums.Country, {
 });
 
 @InputType()
-export class Auth_CreateAccount {
+export class Auth_CreateAccountInput {
     @Field({ nullable: false })
     email: string;
 
@@ -28,8 +28,14 @@ export class Auth_CreateAccount {
     password: string;
 }
 
+@ObjectType()
+export class Auth_CreateAccountResponse {
+    @Field()
+    message: string;
+}
+
 @InputType()
-export class Auth_sendEmailOtp {
+export class Auth_sendEmailOtpInput {
     @Field()
     email: string;
 }
@@ -43,7 +49,7 @@ export class Auth_sendEmailOtpResponse {
 }
 
 @InputType()
-export class Auth_verifyEmailOtp {
+export class Auth_verifyEmailOtpInput {
     @Field()
     email: string;
 
@@ -61,13 +67,13 @@ export class Auth_verifyOtpResponse {
 }
 
 @InputType()
-export class Auth_ResetPassword {
+export class Auth_ResetPasswordInput {
     @Field()
     email: string;
 }
 
 @InputType()
-export class Auth_Login {
+export class Auth_LoginInput {
     @Field()
     email: string;
 
@@ -76,7 +82,7 @@ export class Auth_Login {
 }
 
 @InputType()
-export class Auth_Logout {
+export class Auth_LogoutInput {
     @Field({ nullable: false })
     email: string;
 }

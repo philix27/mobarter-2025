@@ -2,18 +2,19 @@ import { Args, Context, Mutation, Resolver } from "@nestjs/graphql";
 
 import { AuthService } from "./auth.service";
 import {
-    Auth_CreateAccount,
-    Auth_Login,
-    Auth_Logout,
-    Auth_ResetPassword,
-    Auth_sendEmailOtp,
+    Auth_CreateAccountInput,
+    Auth_CreateAccountResponse,
+    Auth_LoginInput,
+    Auth_LogoutInput,
+    Auth_ResetPasswordInput,
+    Auth_sendEmailOtpInput,
     Auth_sendEmailOtpResponse,
-    Auth_verifyEmailOtp,
+    Auth_verifyEmailOtpInput,
     Auth_verifyOtpResponse,
 } from "./auth.dto";
 import { UserDto } from "../user/user.dto";
 import { UseGuards } from "@nestjs/common";
-import { GqlAuthGuard } from "./gql.gaurd";
+import { GqlAuthGuard } from "./gql.guard";
 
 @Resolver((of: any) => UserDto)
 export class AuthResolver {
@@ -21,7 +22,7 @@ export class AuthResolver {
 
     @Mutation((returns) => Auth_sendEmailOtpResponse)
     async auth_sendEmailOtp(
-        @Args("input") input: Auth_sendEmailOtp
+        @Args("input") input: Auth_sendEmailOtpInput
     ): Promise<Auth_sendEmailOtpResponse> {
         const res = await this.service.sendEmailOtp(input);
         return res!;
@@ -29,23 +30,22 @@ export class AuthResolver {
 
     @Mutation((returns) => Auth_verifyOtpResponse)
     async auth_verifyEmailOtp(
-        @Args("input") input: Auth_verifyEmailOtp
+        @Args("input") input: Auth_verifyEmailOtpInput
     ): Promise<Auth_verifyOtpResponse> {
         const res = await this.service.verifyEmailOtp(input);
         return res!;
     }
 
-    @Mutation((returns) => String)
+    @Mutation((returns) => Auth_CreateAccountResponse)
     async auth_createAccount(
-        @Args("input") input: Auth_CreateAccount
-    ): Promise<String> {
+        @Args("input") input: Auth_CreateAccountInput
+    ): Promise<Auth_CreateAccountResponse> {
         const res = await this.service.createAccount(input);
-
-        return res!;
+        return res;
     }
 
     @Mutation((returns) => String)
-    async auth_login(@Args("input") input: Auth_Login) {
+    async auth_login(@Args("input") input: Auth_LoginInput) {
         const res = await this.service.login(input);
 
         return res!;
@@ -55,7 +55,7 @@ export class AuthResolver {
     @UseGuards(GqlAuthGuard)
     async auth_logout(
         @Context() context: any,
-        @Args("input") input: Auth_Logout
+        @Args("input") input: Auth_LogoutInput
     ) {
         // const res = await this.service.logout(input);
         const user = context.req.user; // Extract user data
@@ -63,7 +63,7 @@ export class AuthResolver {
     }
 
     @Mutation((returns) => String)
-    async auth_resetPassword(@Args("input") input: Auth_ResetPassword) {
+    async auth_resetPassword(@Args("input") input: Auth_ResetPasswordInput) {
         const res = await this.service.resetPassword(input);
 
         return res!;

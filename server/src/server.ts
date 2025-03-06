@@ -7,7 +7,11 @@ import {
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 
 import { ApplicationModule } from "./modules/app.module";
-import { CommonModule, LogInterceptor } from "./modules/common";
+import {
+    CommonModule,
+    GraphQLExceptionFilter,
+    LogInterceptor,
+} from "./modules/common";
 
 /**
  * These are API defaults that can be changed using environment variables,
@@ -71,6 +75,8 @@ async function bootstrap(): Promise<void> {
     const logInterceptor = app.select(CommonModule).get(LogInterceptor);
     app.useGlobalInterceptors(logInterceptor);
     app.enableCors();
+
+    app.useGlobalFilters(new GraphQLExceptionFilter());
     console.log("Listening on port: " + PORT);
     await app.listen(PORT, "0.0.0.0");
     // await app.listen(PORT);

@@ -2,19 +2,21 @@ import { Injectable } from "@nestjs/common";
 import { LoggerService, PrismaService } from "../common";
 import { NotificationService } from "../notification/notification.service";
 import {
-    Auth_CreateAccount,
-    Auth_Login,
-    Auth_Logout,
-    Auth_ResetPassword,
-    Auth_sendEmailOtp,
+    Auth_CreateAccountInput,
+    Auth_CreateAccountResponse,
+    Auth_LoginInput,
+    Auth_LogoutInput,
+    Auth_ResetPasswordInput,
+    Auth_sendEmailOtpInput,
     Auth_sendEmailOtpResponse,
-    Auth_verifyEmailOtp,
+    Auth_verifyEmailOtpInput,
     Auth_verifyOtpResponse,
 } from "./auth.dto";
 import { UserService } from "../user/user.service";
 import { WalletCryptoService } from "../wallet-crypto/crypto.service";
 import { WalletFiatService } from "../wallet-fiat/fiat.service";
 import { JwtCryptoService } from "./jwt.service";
+import { GqlErr } from "../common/errors/gqlErr";
 
 @Injectable()
 export class AuthService {
@@ -29,9 +31,12 @@ export class AuthService {
     ) {}
 
     public async sendEmailOtp(
-        params: Auth_sendEmailOtp
+        params: Auth_sendEmailOtpInput
     ): Promise<Auth_sendEmailOtpResponse> {
         this.logger.info("sendEmailOtp");
+
+        if (!this.isValidEmail(params.email))
+            throw GqlErr("Invalid email address");
 
         const otp = this.jwtService.generateOTP();
         this.logger.info("sendEmailOtp: " + otp);
@@ -47,63 +52,66 @@ export class AuthService {
         } catch (error) {
             this.logger.error("Could not send otp to email: " + error.message);
             return {
-                message: "Not successful",
+                message: error.message,
                 token: "",
             };
         }
     }
 
     public async verifyEmailOtp(
-        params: Auth_verifyEmailOtp
+        params: Auth_verifyEmailOtpInput
     ): Promise<Auth_verifyOtpResponse> {
         this.logger.info("VerifyEmailOtp: ");
         const isValid = this.jwtService.verifyOTP(params.token, params.otp);
 
-        if (isValid) {
-            return { message: "Valid otp" };
-        } else {
-            throw new Error("Invalid otp");
+        if (!isValid) throw GqlErr("Invalid otp");
 
-            // return { message: "Invalid otp" };
-        }
+        return { message: "Valid otp" };
     }
 
-    public async createAccount(params: Auth_CreateAccount) {
-        try {
-            this.logger.info("Create user account");
-            const hashedPassword = await this.jwtService.hashPassword(
-                params.password
-            );
+    public async createAccount(
+        params: Auth_CreateAccountInput
+    ): Promise<Auth_CreateAccountResponse> {
+        // try {
+        this.logger.info("Create user account");
 
-            const user = await this.userService.create({
-                firstname: params.firstname,
-                lastname: params.lastname,
-                email: params.email,
-                country: params.country,
-                password: hashedPassword,
-            });
+        if (!this.isValidEmail(params.email))
+            throw GqlErr("Invalid email address");
 
-            if (!user) throw new Error("Could not create user");
+        if (params.password.length < 8) throw GqlErr("Password too short");
 
-            await this.cryptoWallet.createWalletsForNewUser({
-                userId: user.id,
-            });
+        const hashedPassword = await this.jwtService.hashPassword(
+            params.password
+        );
 
-            await this.fiatWallet.createWalletsForNewUser({ ...user });
+        const user = await this.userService.create({
+            firstname: params.firstname,
+            lastname: params.lastname,
+            email: params.email,
+            country: params.country,
+            password: hashedPassword,
+        });
 
-            await this.notification.sendWelcomeMessage({ email: params.email });
+        if (!user) throw GqlErr("Could not create user");
 
-            return "Sent successfully";
-        } catch (error) {
-            this.logger.error("Could not send otp to email");
-        }
+        await this.cryptoWallet.createWalletsForNewUser({
+            userId: user.id,
+        });
+
+        await this.fiatWallet.createWalletsForNewUser({ ...user });
+
+        await this.notification.sendWelcomeMessage({ email: params.email });
+
+        return {
+            message: "Created successfully",
+        };
     }
 
-    public async resetPassword(params: Auth_ResetPassword) {
-        // todo:
+    public async resetPassword(params: Auth_ResetPasswordInput) {
+        // todoInput:
     }
 
-    public async login(params: Auth_Login) {
+    public async login(params: Auth_LoginInput) {
         try {
             this.logger.info("Fetch user info");
             const user = await this.prisma.user.findFirst({
@@ -114,7 +122,7 @@ export class AuthService {
 
             if (!user) {
                 this.logger.error("Invalid credentials");
-                throw new Error("Invalid credentials");
+                throw GqlErr("Invalid credentials");
             }
 
             const isValid = await this.jwtService.verifyPassword(
@@ -124,7 +132,7 @@ export class AuthService {
 
             if (!isValid) {
                 this.logger.error("user password doesn't match");
-                throw new Error("Invalid credentials");
+                throw GqlErr("Invalid credentials");
             }
 
             return {
@@ -139,8 +147,13 @@ export class AuthService {
         }
     }
 
-    public async logout(params: Auth_Logout) {
+    public async logout(params: Auth_LogoutInput) {
         // todo:
         this.logger.info("Deleting platform");
+    }
+
+    isValidEmail(email: string) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
     }
 }
