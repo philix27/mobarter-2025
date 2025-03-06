@@ -1,4 +1,4 @@
-import { Args, Mutation, Resolver } from "@nestjs/graphql";
+import { Args, Context, Mutation, Resolver } from "@nestjs/graphql";
 
 import { AuthService } from "./auth.service";
 import {
@@ -10,7 +10,8 @@ import {
     Auth_verifyEmailOtp,
 } from "./auth.dto";
 import { UserDto } from "../user/user.dto";
-
+import { UseGuards } from "@nestjs/common";
+import { GqlAuthGuard } from "./gql.gaurd";
 
 @Resolver((of: any) => UserDto)
 export class AuthResolver {
@@ -33,10 +34,14 @@ export class AuthResolver {
     }
 
     @Mutation((returns) => String)
-    async auth_logout(@Args("input") input: Auth_Logout) {
-        const res = await this.service.logout(input);
-
-        return res!;
+    @UseGuards(GqlAuthGuard)
+    async auth_logout(
+        @Context() context: any,
+        @Args("input") input: Auth_Logout
+    ) {
+        // const res = await this.service.logout(input);
+        const user = context.req.user; // Extract user data
+        return `User ID: ${user.userId}, Username: ${user.username}`;
     }
 
     @Mutation((returns) => String)

@@ -36,6 +36,9 @@ export class Auth_verifyEmailOtp {
 
     @Field()
     token: string;
+   
+    @Field()
+    otp: string;
 }
 
 @InputType()

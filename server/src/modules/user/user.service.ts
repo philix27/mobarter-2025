@@ -18,7 +18,7 @@ export class UserService {
         //todo: hashPassword
 
         try {
-            await this.prisma.user.create({
+            const user = await this.prisma.user.create({
                 data: {
                     firstname: params.firstname,
                     lastname: params.lastname,
@@ -28,6 +28,8 @@ export class UserService {
                     country: params.country,
                 },
             });
+            const { password, created_at, updated_at, ...rest } = user;
+            return rest;
         } catch (error: any) {
             this.logger.error(
                 "Could not create platform account: " + error.message
@@ -52,10 +54,12 @@ export class UserService {
     public async updatePassword(params: UserResetPassword) {
         this.logger.info("Updating platform one account");
 
-        
         try {
-            const hashedPassword = this.validateAndHashPassword(params.newPassword, params.confirmNewPassword);
-            
+            const hashedPassword = this.validateAndHashPassword(
+                params.newPassword,
+                params.confirmNewPassword
+            );
+
             const user = await this.prisma.user.findFirst({
                 where: {
                     email: params.email,

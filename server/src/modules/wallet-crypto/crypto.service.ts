@@ -5,8 +5,8 @@ import { LoggerService } from "../common";
 export class WalletCryptoService {
     public constructor(private readonly logger: LoggerService) {}
 
-    public async createWalletsForNewUser(params: { userId: string }) {
-        this.logger.info("Creating platform account ...");
+    public async createWalletsForNewUser(params: { userId: number }) {
+        this.logger.info("Creating crypto wallet accounts ...");
 
         //    todo: Create Fiat wallets
     }

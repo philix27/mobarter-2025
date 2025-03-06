@@ -7,12 +7,13 @@ export class WalletFiatService {
     public constructor(private readonly logger: LoggerService) {}
 
     public async createWalletsForNewUser(params: {
+        id: number;
         firstname: string;
         lastname: string;
         email: string;
         country: $Enums.Country;
     }) {
-        this.logger.info("Creating platform account ...");
+        this.logger.info("Creating fiat wallet accounts ...");
 
         //    todo: Create Fiat wallets
     }

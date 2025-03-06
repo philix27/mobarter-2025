@@ -9,28 +9,36 @@ import {
     Auth_sendEmailOtp,
     Auth_verifyEmailOtp,
 } from "./auth.dto";
-import * as bcryptjs from "bcryptjs";
-import bcrypt = require("bcryptjs/umd/types");
 import { UserService } from "../user/user.service";
+import { WalletCryptoService } from "../wallet-crypto/crypto.service";
+import { WalletFiatService } from "../wallet-fiat/fiat.service";
+import { JwtCryptoService } from "./jwt.service";
 
 @Injectable()
 export class AuthService {
-    saltRounds = 10;
     public constructor(
         private readonly logger: LoggerService,
         private readonly notification: NotificationService,
         private readonly prisma: PrismaService,
-        private readonly userService: UserService
+        private readonly userService: UserService,
+        private readonly cryptoWallet: WalletCryptoService,
+        private readonly fiatWallet: WalletFiatService,
+        private readonly jwtService: JwtCryptoService
     ) {}
 
     public async sendEmailOtp(params: Auth_sendEmailOtp) {
         this.logger.info("Creating platform account ...");
 
-        const otp = this.generateOTP();
+        const otp = this.jwtService.generateOTP();
 
         try {
+            const token = this.jwtService.generateToken(otp);
             await this.notification.sendEmailOtp({ email: params.email, otp });
-            return "Sent successfully";
+            // todo: return jwt token with otp
+            return {
+                message: "Otp sent successfully",
+                token,
+            };
         } catch (error) {
             this.logger.error("Could not send otp to email");
         }
@@ -38,14 +46,18 @@ export class AuthService {
 
     public async verifyEmailOtp(params: Auth_verifyEmailOtp) {
         this.logger.info("Creating platform account ...");
+        this.jwtService.verifyOTP(params.token, params.otp);
+        return { message: "Valid token" };
     }
 
     public async createAccount(params: Auth_CreateAccount) {
         try {
             this.logger.info("Create user account");
-            const hashedPassword = await this.hashPassword(params.password);
+            const hashedPassword = await this.jwtService.hashPassword(
+                params.password
+            );
 
-            await this.userService.create({
+            const user = await this.userService.create({
                 firstname: params.firstname,
                 lastname: params.lastname,
                 email: params.email,
@@ -53,17 +65,25 @@ export class AuthService {
                 password: hashedPassword,
             });
 
-            //    todo: Create Crypto Wallets
+            if (!user) throw new Error("Could not create user");
+
+            await this.cryptoWallet.createWalletsForNewUser({
+                userId: user.id,
+            });
+
+            await this.fiatWallet.createWalletsForNewUser({ ...user });
+
             await this.notification.sendWelcomeMessage({ email: params.email });
 
-            //    todo: Create Account
             return "Sent successfully";
         } catch (error) {
             this.logger.error("Could not send otp to email");
         }
     }
 
-    public async resetPassword(params: Auth_ResetPassword) {}
+    public async resetPassword(params: Auth_ResetPassword) {
+        // todo:
+    }
 
     public async login(params: Auth_Login) {
         try {
@@ -79,7 +99,7 @@ export class AuthService {
                 throw new Error("Invalid credentials");
             }
 
-            const isValid = await this.verifyPassword(
+            const isValid = await this.jwtService.verifyPassword(
                 params.password,
                 user?.password
             );
@@ -102,26 +122,7 @@ export class AuthService {
     }
 
     public async logout(params: Auth_Logout) {
+        // todo:
         this.logger.info("Deleting platform");
-    }
-
-    private generateOTP(length = 6) {
-        const digits = "0123456789";
-        let otp = "";
-        for (let i = 0; i < length; i++) {
-            otp += digits[Math.floor(Math.random() * digits.length)];
-        }
-        return otp;
-    }
-
-    // Function to hash a password
-    private async hashPassword(password: string) {
-        const salt = await bcryptjs.genSalt(this.saltRounds);
-        return await bcrypt.hash(password, salt);
-    }
-
-    // Function to compare a password with a hashed password
-    private async verifyPassword(password: string, hashedPassword: string) {
-        return await bcrypt.compare(password, hashedPassword);
     }
 }
