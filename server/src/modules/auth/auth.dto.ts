@@ -1,9 +1,26 @@
-import { Field, InputType } from "@nestjs/graphql";
+import { Field, InputType, registerEnumType } from "@nestjs/graphql";
+import { $Enums } from "@prisma/client";
+
+registerEnumType($Enums.Country, {
+    name: "country",
+});
 
 @InputType()
 export class Auth_CreateAccount {
     @Field({ nullable: false })
     email: string;
+
+    @Field({ nullable: false })
+    firstname: string;
+
+    @Field({ nullable: false })
+    lastname: string;
+
+    @Field((type) => $Enums.Country)
+    country: $Enums.Country;
+
+    @Field({ nullable: false })
+    password: string;
 }
 
 @InputType()

@@ -12,7 +12,7 @@ import { UserModule } from "./user/user.module";
 import { BankAccountModule } from "./bankAccount/bankAccount.module";
 import { OrdersModule } from "./orders/orders.module";
 import { SwapModule } from "./swap/swap.module";
-import { WalletModule } from "./wallets/wallet.module";
+import { WalletModule } from "./wallet-fiat/fiat.module";
 import { KycModule } from "./kyc/kyc.module";
 
 @Module({

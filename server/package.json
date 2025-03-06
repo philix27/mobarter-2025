@@ -41,6 +41,7 @@
     "apollo-server-fastify": "^3.13.0",
     "apollo-server-plugin-base": "^3.7.2",
     "axios": "^1.8.1",
+    "bcryptjs": "^3.0.2",
     "bullmq": "^5.40.5",
     "class-validator": "^0.14.1",
     "dotenv": "^16.4.7",
