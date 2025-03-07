@@ -4,7 +4,6 @@ import { LoggerService, secrets } from "../common";
 
 @Injectable()
 export class PrivyWalletService {
-    // client: any;
     client: PrivyClient;
 
     public constructor(private readonly logger: LoggerService) {
@@ -29,7 +28,6 @@ export class PrivyWalletService {
         const walletInfo = await this.client.walletApi.create({
             chainType,
         });
-
         this.logger.info("Wallet created: " + JSON.stringify(walletInfo));
         return walletInfo;
     }
@@ -37,7 +35,7 @@ export class PrivyWalletService {
     async signMsg(params: {
         id: string;
         msg: string;
-        method: "personal_sign" | string;
+        method: "personal_sign" | string; 
     }) {
         const res = await this.client.walletApi.rpc({
             walletId: params.id,
