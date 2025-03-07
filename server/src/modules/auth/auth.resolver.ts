@@ -5,8 +5,10 @@ import {
     Auth_CreateAccountInput,
     Auth_CreateAccountResponse,
     Auth_LoginInput,
+    Auth_LoginResponse,
     Auth_LogoutInput,
     Auth_ResetPasswordInput,
+    Auth_ResetPasswordResponse,
     Auth_sendEmailOtpInput,
     Auth_sendEmailOtpResponse,
     Auth_verifyEmailOtpInput,
@@ -44,8 +46,10 @@ export class AuthResolver {
         return res;
     }
 
-    @Mutation((returns) => String)
-    async auth_login(@Args("input") input: Auth_LoginInput) {
+    @Mutation((returns) => Auth_LoginResponse)
+    async auth_login(
+        @Args("input") input: Auth_LoginInput
+    ): Promise<Auth_LoginResponse> {
         const res = await this.service.login(input);
 
         return res!;
@@ -62,8 +66,10 @@ export class AuthResolver {
         return `User ID: ${user.userId}, Username: ${user.username}`;
     }
 
-    @Mutation((returns) => String)
-    async auth_resetPassword(@Args("input") input: Auth_ResetPasswordInput) {
+    @Mutation((returns) => Auth_ResetPasswordResponse)
+    async auth_resetPassword(
+        @Args("input") input: Auth_ResetPasswordInput
+    ): Promise<Auth_ResetPasswordResponse> {
         const res = await this.service.resetPassword(input);
 
         return res!;

@@ -6,8 +6,18 @@ import {
 } from "@nestjs/graphql";
 import { $Enums } from "@prisma/client";
 
+// type ZOtpPurpose = "SignUp" | "Verification"
+export enum OtpPurpose {
+    SignUp,
+    Verification,
+}
+
 registerEnumType($Enums.Country, {
     name: "country",
+});
+
+registerEnumType(OtpPurpose, {
+    name: "OtpPurpose",
 });
 
 @InputType()
@@ -20,6 +30,9 @@ export class Auth_CreateAccountInput {
 
     @Field({ nullable: false })
     lastname: string;
+
+    @Field({ nullable: true })
+    middlename: string;
 
     @Field((type) => $Enums.Country)
     country: $Enums.Country;
@@ -38,6 +51,9 @@ export class Auth_CreateAccountResponse {
 export class Auth_sendEmailOtpInput {
     @Field()
     email: string;
+
+    @Field((type) => OtpPurpose)
+    purpose: OtpPurpose;
 }
 @ObjectType()
 export class Auth_sendEmailOtpResponse {
@@ -70,8 +86,19 @@ export class Auth_verifyOtpResponse {
 export class Auth_ResetPasswordInput {
     @Field()
     email: string;
+   
+    @Field()
+    password: string;
+    
+    @Field()
+    confirmPassword: string;
 }
 
+@ObjectType()
+export class Auth_ResetPasswordResponse {
+    @Field()
+    message: string;
+}
 @InputType()
 export class Auth_LoginInput {
     @Field()
@@ -79,6 +106,26 @@ export class Auth_LoginInput {
 
     @Field()
     password: string;
+}
+@ObjectType()
+export class Auth_LoginResponse {
+    @Field({ nullable: false })
+    email: string;
+
+    @Field({ nullable: false })
+    firstname: string;
+
+    @Field({ nullable: false })
+    lastname: string;
+
+    @Field({ nullable: true })
+    middlename?: string;
+
+    @Field({ nullable: false })
+    token: string;
+
+    @Field((type) => $Enums.Country)
+    country: $Enums.Country;
 }
 
 @InputType()

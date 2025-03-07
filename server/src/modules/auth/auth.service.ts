@@ -5,14 +5,16 @@ import {
     Auth_CreateAccountInput,
     Auth_CreateAccountResponse,
     Auth_LoginInput,
+    Auth_LoginResponse,
     Auth_LogoutInput,
     Auth_ResetPasswordInput,
+    Auth_ResetPasswordResponse,
     Auth_sendEmailOtpInput,
     Auth_sendEmailOtpResponse,
     Auth_verifyEmailOtpInput,
     Auth_verifyOtpResponse,
+    OtpPurpose,
 } from "./auth.dto";
-import { UserService } from "../user/user.service";
 import { WalletCryptoService } from "../wallet-crypto/crypto.service";
 import { WalletFiatService } from "../wallet-fiat/fiat.service";
 import { JwtCryptoService } from "./jwt.service";
@@ -24,7 +26,7 @@ export class AuthService {
         private readonly logger: LoggerService,
         private readonly notification: NotificationService,
         private readonly prisma: PrismaService,
-        private readonly userService: UserService,
+        // private readonly userService: UserService,
         private readonly cryptoWallet: WalletCryptoService,
         private readonly fiatWallet: WalletFiatService,
         private readonly jwtService: JwtCryptoService
@@ -37,6 +39,11 @@ export class AuthService {
 
         if (!this.isValidEmail(params.email))
             throw GqlErr("Invalid email address");
+
+        if (params.purpose === OtpPurpose.SignUp) {
+            if (await this.doesEmailExist(params.email))
+                throw GqlErr("Account already exist");
+        }
 
         const otp = this.jwtService.generateOTP();
         this.logger.info("sendEmailOtp: " + otp);
@@ -78,21 +85,28 @@ export class AuthService {
         if (!this.isValidEmail(params.email))
             throw GqlErr("Invalid email address");
 
-        if (params.password.length < 8) throw GqlErr("Password too short");
+        if (!this.isValidPassword(params.password))
+            throw GqlErr("Invalid password structure");
+
+        if (await this.doesEmailExist(params.email))
+            throw GqlErr("Account already exist");
 
         const hashedPassword = await this.jwtService.hashPassword(
             params.password
         );
 
-        const user = await this.userService.create({
-            firstname: params.firstname,
-            lastname: params.lastname,
-            email: params.email,
-            country: params.country,
-            password: hashedPassword,
+        const user = await this.prisma.user.create({
+            data: {
+                firstname: params.firstname,
+                lastname: params.lastname,
+                middlename: params.middlename,
+                email: params.email,
+                password: hashedPassword,
+                country: params.country,
+            },
         });
 
-        if (!user) throw GqlErr("Could not create user");
+        if (!user) throw GqlErr("User was not found");
 
         await this.cryptoWallet.createWalletsForNewUser({
             userId: user.id,
@@ -107,44 +121,79 @@ export class AuthService {
         };
     }
 
-    public async resetPassword(params: Auth_ResetPasswordInput) {
-        // todoInput:
+    public async resetPassword(
+        params: Auth_ResetPasswordInput
+    ): Promise<Auth_ResetPasswordResponse> {
+        this.logger.info("Reset user password");
+
+        if (params.password !== params.confirmPassword) {
+            throw GqlErr("Passwords doesn't match");
+        }
+
+        if (!this.isValidPassword(params.password))
+            throw GqlErr("Invalid password structure");
+
+        const hashedPassword = await this.jwtService.hashPassword(
+            params.password
+        );
+
+        const user = await this.prisma.user.findFirst({
+            where: {
+                email: params.email,
+            },
+        });
+
+        if (!user) throw GqlErr("Account not found");
+
+        await this.prisma.user.update({
+            where: {
+                id: user.id,
+            },
+            data: {
+                password: hashedPassword,
+            },
+        });
+
+        return {
+            message: "Password Updated",
+        };
     }
 
-    public async login(params: Auth_LoginInput) {
-        try {
-            this.logger.info("Fetch user info");
-            const user = await this.prisma.user.findFirst({
-                where: {
-                    email: params.email,
-                },
-            });
+    public async login(params: Auth_LoginInput): Promise<Auth_LoginResponse> {
+        this.logger.info("Fetch user info");
+        const user = await this.prisma.user.findFirst({
+            where: {
+                email: params.email,
+            },
+        });
 
-            if (!user) {
-                this.logger.error("Invalid credentials");
-                throw GqlErr("Invalid credentials");
-            }
-
-            const isValid = await this.jwtService.verifyPassword(
-                params.password,
-                user?.password
-            );
-
-            if (!isValid) {
-                this.logger.error("user password doesn't match");
-                throw GqlErr("Invalid credentials");
-            }
-
-            return {
-                country: user.country,
-                email: user.email,
-                firstname: user.firstname,
-                lastname: user.lastname,
-                middlename: user.middlename,
-            };
-        } catch (error) {
-            this.logger.error("Login user: " + error.message);
+        if (!user) {
+            this.logger.error("Invalid credentials");
+            throw GqlErr("Invalid credentials");
         }
+
+        const isValid = await this.jwtService.verifyPassword(
+            params.password,
+            user?.password
+        );
+
+        if (!isValid) {
+            this.logger.error("user password doesn't match");
+            throw GqlErr("Invalid credentials");
+        }
+
+        const token = this.jwtService.generateToken({
+            userId: user.id,
+            email: user.email,
+        });
+        return {
+            country: user.country,
+            email: user.email,
+            firstname: user.firstname,
+            lastname: user.lastname,
+            middlename: user.middlename!,
+            token,
+        };
     }
 
     public async logout(params: Auth_LogoutInput) {
@@ -152,8 +201,22 @@ export class AuthService {
         this.logger.info("Deleting platform");
     }
 
-    isValidEmail(email: string) {
+    private isValidEmail(email: string) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
+    }
+    private async doesEmailExist(email: string) {
+        const user = await this.prisma.user.findFirst({
+            where: {
+                email,
+            },
+        });
+
+        return user ? true : false;
+    }
+    private isValidPassword(password: string) {
+        const passwordRegex =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
+        return passwordRegex.test(password);
     }
 }
