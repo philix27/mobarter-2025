@@ -8,9 +8,11 @@ import { WalletCryptoService } from "../wallet-crypto/crypto.service";
 import { WalletFiatService } from "../wallet-fiat/fiat.service";
 import { JwtCryptoService } from "./jwt.service";
 import { UserService } from "../user/user.service";
+import { WalletCryptoModule } from "../wallet-crypto/crypto.module";
+import { PrivyWalletService } from "../wallet-crypto/privy.service";
 
 @Module({
-    imports: [CommonModule, NotificationModule],
+    imports: [CommonModule, NotificationModule, WalletCryptoModule],
     providers: [
         AuthService,
         AuthResolver,
@@ -19,6 +21,7 @@ import { UserService } from "../user/user.service";
         WalletFiatService,
         JwtCryptoService,
         UserService,
+        PrivyWalletService,
     ],
     exports: [],
 })

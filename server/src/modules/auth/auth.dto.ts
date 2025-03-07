@@ -1,24 +1,6 @@
-import {
-    Field,
-    InputType,
-    ObjectType,
-    registerEnumType,
-} from "@nestjs/graphql";
+import { Field, InputType, ObjectType } from "@nestjs/graphql";
 import { $Enums } from "@prisma/client";
-
-// type ZOtpPurpose = "SignUp" | "Verification"
-export enum OtpPurpose {
-    SignUp,
-    Verification,
-}
-
-registerEnumType($Enums.Country, {
-    name: "country",
-});
-
-registerEnumType(OtpPurpose, {
-    name: "OtpPurpose",
-});
+import { OtpPurpose } from "../common/enums";
 
 @InputType()
 export class Auth_CreateAccountInput {
@@ -86,10 +68,10 @@ export class Auth_verifyOtpResponse {
 export class Auth_ResetPasswordInput {
     @Field()
     email: string;
-   
+
     @Field()
     password: string;
-    
+
     @Field()
     confirmPassword: string;
 }

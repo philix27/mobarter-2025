@@ -13,12 +13,10 @@ import {
     Auth_sendEmailOtpResponse,
     Auth_verifyEmailOtpInput,
     Auth_verifyOtpResponse,
-    OtpPurpose,
 } from "./auth.dto";
-import { WalletCryptoService } from "../wallet-crypto/crypto.service";
-import { WalletFiatService } from "../wallet-fiat/fiat.service";
 import { JwtCryptoService } from "./jwt.service";
 import { GqlErr } from "../common/errors/gqlErr";
+import { OtpPurpose } from "../common/enums";
 
 @Injectable()
 export class AuthService {
@@ -27,8 +25,6 @@ export class AuthService {
         private readonly notification: NotificationService,
         private readonly prisma: PrismaService,
         // private readonly userService: UserService,
-        private readonly cryptoWallet: WalletCryptoService,
-        private readonly fiatWallet: WalletFiatService,
         private readonly jwtService: JwtCryptoService
     ) {}
 
@@ -107,12 +103,6 @@ export class AuthService {
         });
 
         if (!user) throw GqlErr("User was not found");
-
-        await this.cryptoWallet.createWalletsForNewUser({
-            userId: user.id,
-        });
-
-        await this.fiatWallet.createWalletsForNewUser({ ...user });
 
         await this.notification.sendWelcomeMessage({ email: params.email });
 
