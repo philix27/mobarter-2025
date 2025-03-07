@@ -8,17 +8,18 @@ datasource db {
 }
 
 model User {
-  id            Int           @id @default(autoincrement())
-  firstname     String
-  lastname      String
-  middlename    String?
-  email         String        @unique
-  password      String
-  country       Country
-  created_at    DateTime?     @default(now())
-  updated_at    DateTime?     @updatedAt
-  eth_wallets   EthWallet[]
-  bank_accounts BankAccount[]
+  id              Int              @id @default(autoincrement())
+  firstname       String
+  lastname        String
+  middlename      String?
+  email           String           @unique
+  password        String
+  country         Country
+  created_at      DateTime?        @default(now())
+  updated_at      DateTime?        @updatedAt
+  kyc_credentials KycCredentials[]
+  crypto_wallets  CryptoWallets[]
+  bank_accounts   BankAccount[]
 }
 
 enum Country {
@@ -27,24 +28,36 @@ enum Country {
   Kenya
 }
 
-model EthWallet {
+model CryptoWallets {
+  id         Int       @id @default(autoincrement())
+  address    String    @unique
+  wallet_id  String
+  chainType  ChainType
+  created_at DateTime? @default(now())
+  updated_at DateTime? @updatedAt
+  user_id    Int
+  user       User?     @relation(fields: [user_id], references: [id])
+}
+
+enum ChainType {
+  Ethereum
+  Solana
+  Cosmos
+}
+
+model KycCredentials {
   id             Int       @id @default(autoincrement())
-  firstname      String
-  lastname       String
-  middlename     String?
-  email          String    @unique
-  password       String
   created_at     DateTime? @default(now())
   updated_at     DateTime? @updatedAt
   user_id        Int
   user           User?     @relation(fields: [user_id], references: [id])
   bvn            String?
-  bvn_verified   Boolean?
+  bvn_verified   Boolean?  @default(false)
   nin            String?
-  nin_verified   Boolean?
+  nin_verified   Boolean?  @default(false)
   home_address   String?
   phone          String?
-  phone_verified Boolean?
+  phone_verified Boolean?  @default(false)
 }
 
 model BankAccount {

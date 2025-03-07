@@ -1,12 +1,9 @@
-import { Field, InputType, ObjectType, registerEnumType } from "@nestjs/graphql";
+import { Field, InputType, ObjectType } from "@nestjs/graphql";
 import { $Enums } from "@prisma/client";
-
-registerEnumType($Enums.Country, {
-    name: "country",
-});
+import { OtpPurpose } from "../common/enums";
 
 @InputType()
-export class Auth_CreateAccount {
+export class Auth_CreateAccountInput {
     @Field({ nullable: false })
     email: string;
 
@@ -16,6 +13,9 @@ export class Auth_CreateAccount {
     @Field({ nullable: false })
     lastname: string;
 
+    @Field({ nullable: true })
+    middlename: string;
+
     @Field((type) => $Enums.Country)
     country: $Enums.Country;
 
@@ -23,10 +23,19 @@ export class Auth_CreateAccount {
     password: string;
 }
 
+@ObjectType()
+export class Auth_CreateAccountResponse {
+    @Field()
+    message: string;
+}
+
 @InputType()
-export class Auth_sendEmailOtp {
+export class Auth_sendEmailOtpInput {
     @Field()
     email: string;
+
+    @Field((type) => OtpPurpose)
+    purpose: OtpPurpose;
 }
 @ObjectType()
 export class Auth_sendEmailOtpResponse {
@@ -38,34 +47,71 @@ export class Auth_sendEmailOtpResponse {
 }
 
 @InputType()
-export class Auth_verifyEmailOtp {
+export class Auth_verifyEmailOtpInput {
     @Field()
     email: string;
 
     @Field()
     token: string;
-   
+
     @Field()
     otp: string;
 }
 
-@InputType()
-export class Auth_ResetPassword {
+@ObjectType()
+export class Auth_verifyOtpResponse {
     @Field()
-    email: string;
+    message: string;
 }
 
 @InputType()
-export class Auth_Login {
+export class Auth_ResetPasswordInput {
+    @Field()
+    email: string;
+
+    @Field()
+    password: string;
+
+    @Field()
+    confirmPassword: string;
+}
+
+@ObjectType()
+export class Auth_ResetPasswordResponse {
+    @Field()
+    message: string;
+}
+@InputType()
+export class Auth_LoginInput {
     @Field()
     email: string;
 
     @Field()
     password: string;
 }
+@ObjectType()
+export class Auth_LoginResponse {
+    @Field({ nullable: false })
+    email: string;
+
+    @Field({ nullable: false })
+    firstname: string;
+
+    @Field({ nullable: false })
+    lastname: string;
+
+    @Field({ nullable: true })
+    middlename?: string;
+
+    @Field({ nullable: false })
+    token: string;
+
+    @Field((type) => $Enums.Country)
+    country: $Enums.Country;
+}
 
 @InputType()
-export class Auth_Logout {
+export class Auth_LogoutInput {
     @Field({ nullable: false })
     email: string;
 }

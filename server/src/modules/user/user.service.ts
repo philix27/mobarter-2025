@@ -6,6 +6,7 @@ import {
     UserGetInfo,
     UserResetPassword,
 } from "./user.dto";
+import { GqlErr } from "../common/errors/gqlErr";
 
 @Injectable()
 export class UserService {
@@ -18,22 +19,23 @@ export class UserService {
         //todo: hashPassword
 
         try {
+            this.logger.info("User Params: " + JSON.stringify(params));
             const user = await this.prisma.user.create({
                 data: {
                     firstname: params.firstname,
                     lastname: params.lastname,
-                    middlename: params.middlename,
+                    // middlename: params.middlename,
                     email: params.email,
                     password: params.password,
                     country: params.country,
                 },
             });
-            const { password, created_at, updated_at, ...rest } = user;
-            return rest;
+
+            // const { password, created_at, updated_at, ...rest } = user;
+            return user;
         } catch (error: any) {
-            this.logger.error(
-                "Could not create platform account: " + error.message
-            );
+            this.logger.error("Could not create user account: " + error);
+            throw GqlErr("Could not create user: " + error.message);
         }
     }
 

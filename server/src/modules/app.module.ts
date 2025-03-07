@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { GraphQLModule } from "@nestjs/graphql";
 import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
-import { CommonModule } from "./common";
+import { CommonModule, secrets } from "./common";
 import { PricesModule } from "./prices/prices.module";
 import { ScheduleModule } from "@nestjs/schedule";
 import { PubSubModule } from "./pubsub/pubsub.module";
@@ -31,7 +31,7 @@ import { JwtModule } from "@nestjs/jwt";
         }),
         JwtModule.register({
             global: true,
-            secret: process.env.JWT_SECRET || "your_default_secret",
+            secret: secrets.JWT_SECRET,
             signOptions: { expiresIn: "60s" },
         }),
         CommonModule,

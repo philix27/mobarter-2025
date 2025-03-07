@@ -1,16 +1,17 @@
 import { Field, ObjectType } from "@nestjs/graphql";
+import { $Enums } from "@prisma/client";
 
 @ObjectType()
 export class WalletCrypto {
     @Field({ nullable: false })
-    accountNumber: string;
+    id: number;
 
     @Field({ nullable: false })
-    accountName: string;
+    address: string;
 
     @Field({ nullable: false })
-    bankName: string;
+    wallet_id: string;
 
-    @Field({ nullable: false })
-    balance: number;
+    @Field((type) => $Enums.ChainType)
+    chainType: $Enums.ChainType;
 }

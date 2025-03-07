@@ -1,1 +1,2 @@
-export { Config } from './config';
+export { Config } from "./config";
+export * from "./secrets";
