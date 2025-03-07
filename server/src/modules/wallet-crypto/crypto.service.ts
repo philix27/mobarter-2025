@@ -14,9 +14,15 @@ export class WalletCryptoService {
     public async createWalletsForNewUser(params: { userId: number }) {
         this.logger.info("Creating crypto wallet accounts ...");
 
-        await this.createEthereumWallet({ userId: params.userId });
+        const ethWallet = await this.createEthereumWallet({
+            userId: params.userId,
+        });
 
-        await this.createSolanaWallet({ userId: params.userId });
+        const solWallet = await this.createSolanaWallet({
+            userId: params.userId,
+        });
+
+        return [ethWallet, solWallet];
     }
 
     private async createEthereumWallet(params: { userId: number }) {
