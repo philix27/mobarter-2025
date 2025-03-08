@@ -10,9 +10,20 @@ import { JwtCryptoService } from "./jwt.service";
 import { UserService } from "../user/user.service";
 import { WalletCryptoModule } from "../wallet-crypto/crypto.module";
 import { PrivyWalletService } from "../wallet-crypto/privy.service";
+import { JwtStrategy } from "./jwt.strategy";
+import { GqlAuthGuard } from "./gql.guard";
+import jwtConfig from "./jwt.config";
+import { JwtModule } from "@nestjs/jwt";
+import { ConfigModule } from "@nestjs/config";
 
 @Module({
-    imports: [CommonModule, NotificationModule, WalletCryptoModule],
+    imports: [
+        CommonModule,
+        NotificationModule,
+        WalletCryptoModule,
+        JwtModule.registerAsync(jwtConfig.asProvider()),
+        ConfigModule.forFeature(jwtConfig)
+    ],
     providers: [
         AuthService,
         AuthResolver,
@@ -22,7 +33,9 @@ import { PrivyWalletService } from "../wallet-crypto/privy.service";
         JwtCryptoService,
         UserService,
         PrivyWalletService,
+        JwtStrategy,
+        GqlAuthGuard,
     ],
-    exports: [],
+    // exports: [JwtStrategy, GqlAuthGuard],
 })
 export class AuthModule {}

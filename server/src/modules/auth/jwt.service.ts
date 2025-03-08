@@ -12,11 +12,12 @@ export class JwtCryptoService {
         return this.jwtService.sign(payload);
     }
     // Verify Token (optional if using JwtStrategy)
-    public verifyToken(token: string): any {
+    public verifyToken(token: string): any | undefined {
         try {
-            return this.jwtService.verify(token);
+            const obj = this.jwtService.verify(token);
+            return obj;
         } catch (error) {
-            return null; // Invalid token
+            return undefined; // Invalid token
         }
     }
 
