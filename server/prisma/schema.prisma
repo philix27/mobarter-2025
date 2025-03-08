@@ -17,7 +17,8 @@ model User {
   country         Country
   created_at      DateTime?        @default(now())
   updated_at      DateTime?        @updatedAt
-  kyc_credentials KycCredentials[]
+  kyc_credentials_id        Int @unique
+  kyc_credentials KycCredentials  @relation(fields: [kyc_credentials_id], references: [id])
   crypto_wallets  CryptoWallets[]
   bank_accounts   BankAccount[]
 }
@@ -46,18 +47,25 @@ enum ChainType {
 }
 
 model KycCredentials {
-  id             Int       @id @default(autoincrement())
-  created_at     DateTime? @default(now())
-  updated_at     DateTime? @updatedAt
-  user_id        Int
-  user           User?     @relation(fields: [user_id], references: [id])
+  id             Int                @id @default(autoincrement())
+  created_at     DateTime?          @default(now())
+  updated_at     DateTime?          @updatedAt
+  user_id    Int @unique
+  user       User?     @relation(fields: [user_id], references: [id])           
   bvn            String?
-  bvn_verified   Boolean?  @default(false)
+  bvn_status     CredentialsStatus? @default(NONE)
   nin            String?
-  nin_verified   Boolean?  @default(false)
+  nin_status     CredentialsStatus? @default(NONE)
   home_address   String?
   phone          String?
-  phone_verified Boolean?  @default(false)
+  phone_verified Boolean?           @default(false)
+}
+
+enum CredentialsStatus {
+  REVIEW
+  VALID
+  FAILED
+  NONE
 }
 
 model BankAccount {

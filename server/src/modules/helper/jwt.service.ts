@@ -1,22 +1,20 @@
 import { Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import * as bcrypt from "bcryptjs";
 
 @Injectable()
-export class JwtCryptoService {
-    saltRounds = 10;
-
+export class JwtAppService {
     public constructor(private readonly jwtService: JwtService) {}
 
     public generateToken(payload: object): string {
         return this.jwtService.sign(payload);
     }
     // Verify Token (optional if using JwtStrategy)
-    public verifyToken(token: string): any {
+    public verifyToken(token: string): any | undefined {
         try {
-            return this.jwtService.verify(token);
+            const obj = this.jwtService.verify(token);
+            return obj;
         } catch (error) {
-            return null; // Invalid token
+            return undefined; // Invalid token
         }
     }
 
@@ -33,22 +31,5 @@ export class JwtCryptoService {
         } catch (error) {
             return false; // Token is invalid or expired
         }
-    }
-
-    public generateOTP(length = 6) {
-        return Array.from({ length }, () =>
-            Math.floor(Math.random() * 10)
-        ).join("");
-    }
-
-    // Function to hash a password
-    public async hashPassword(password: string) {
-        const salt = await bcrypt.genSalt(this.saltRounds);
-        return await bcrypt.hash(password, salt);
-    }
-
-    // Function to compare a password with a hashed password
-    public async verifyPassword(password: string, hashedPassword: string) {
-        return await bcrypt.compare(password, hashedPassword);
     }
 }

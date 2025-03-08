@@ -1,8 +1,6 @@
 import { Context, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { WalletCryptoService } from "./crypto.service";
 import { WalletCrypto } from "./crypto.dto";
-import { UseGuards } from "@nestjs/common";
-import { GqlAuthGuard } from "../auth/gql.guard";
 
 @Resolver((of: any) => WalletCrypto)
 export class WalletCryptoResolver {
@@ -18,12 +16,11 @@ export class WalletCryptoResolver {
     }
 
     @Mutation((returns) => WalletCrypto)
-    @UseGuards(GqlAuthGuard)
     async walletCrypto_create(
         @Context() context: any
     ): Promise<WalletCrypto[]> {
         const user = context.req.user;
-        console.log("Besties", user)
+        console.log("Besties", user);
         const res = await this.service.createWalletsForNewUser({
             userId: user.id,
         });

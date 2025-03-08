@@ -1,59 +1,77 @@
 import { Injectable } from "@nestjs/common";
-import { LoggerService } from "../common";
-import { NotificationService } from "../notification/notification.service";
+import { LoggerService, PrismaService } from "../common";
 import {
-    BankAccount_Create,
-    Auth_Login,
-    Auth_Logout,
-    Auth_ResetPassword,
-    Auth_sendEmailOtp,
-    Auth_verifyEmailOtp,
+    BankAccount_CreateInput,
+    BankAccount_DeleteInput,
+    BankAccount_Response,
+    BankAccount_DeleteResponse,
 } from "./bankAccount.dto";
+import { GqlErr } from "../common/errors/gqlErr";
 
 @Injectable()
 export class BankAccountService {
     public constructor(
         private readonly logger: LoggerService,
-        private readonly notification: NotificationService
+        private readonly prisma: PrismaService
     ) {}
 
-    public async sendEmailOtp(params: Auth_sendEmailOtp) {
-        this.logger.info("Creating platform account ...");
-
-        const otp = this.genOtp();
-
+    public async create(
+        params: { userId: number } & BankAccount_CreateInput
+    ): Promise<BankAccount_Response> {
+        this.logger.info("Creating bank account");
         try {
-            await this.notification.sendEmailOtp({ email: params.email, otp });
-            return "Sent successfully";
+            const res = await this.prisma.bankAccount.create({
+                data: {
+                    account_name: params.accountName,
+                    account_no: params.accountNo,
+                    user_id: params.userId,
+                    bank_name: params.bankName,
+                },
+            });
+            return res;
         } catch (error) {
-            this.logger.error("Could not send otp to email");
+            throw GqlErr("Could not create bank account");
         }
     }
 
-    public async verifyEmailOtp(params: Auth_verifyEmailOtp) {
-        this.logger.info("Creating platform account ...");
+    public async delete(
+        params: { userId: number } & BankAccount_DeleteInput
+    ): Promise<BankAccount_DeleteResponse> {
+        this.logger.info("Deleting bank account ...");
 
-        //    todo: Create Account
-    }
-
-    public async createAccount(params: BankAccount_Create) {
         try {
-            await this.notification.sendWelcomeMessage({ email: params.email });
-            return "Sent successfully";
+            await this.prisma.bankAccount.delete({
+                where: {
+                    id: params.accountId,
+                    user_id: params.userId,
+                },
+            });
+
+            return {
+                message: "Deleted successfully",
+            };
         } catch (error) {
-            this.logger.error("Could not send otp to email");
+            throw GqlErr("Could not delete bank account");
         }
     }
 
-    public async resetPassword(params: Auth_ResetPassword) {}
+    public async getAll(params: {
+        userId: number;
+    }): Promise<BankAccount_Response[]> {
+        this.logger.info("Fetching all user bank account ...");
 
-    public async login(params: Auth_Login) {}
+        try {
+            const res = await this.prisma.bankAccount.findMany({
+                where: {
+                    user_id: params.userId,
+                },
+            });
+            
+            if (res.length > 0) return res;
 
-    public async logout(params: Auth_Logout) {
-        this.logger.info("Deleting platform");
-    }
-
-    private genOtp(): string {
-        return "0";
+            return [];
+        } catch (error) {
+            throw GqlErr("Could not fetch bank account");
+        }
     }
 }

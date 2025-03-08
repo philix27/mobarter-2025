@@ -4,20 +4,27 @@ import { NotificationService } from "../notification/notification.service";
 import {
     Auth_CreateAccount,
     Auth_Login,
-    Auth_Logout,
     Auth_ResetPassword,
     Auth_sendEmailOtp,
     Auth_verifyEmailOtp,
 } from "./kyc.dto";
 
 @Injectable()
-export class KycService {
+export class KycServiceX {
+    public async send1(params: Auth_sendEmailOtp) { }
+    public async send2(params: Auth_sendEmailOtp) { }
+    public async send3(params: Auth_sendEmailOtp) { }
+ }
+@Injectable()
+export class KycService extends KycServiceX {
     public constructor(
         private readonly logger: LoggerService,
         private readonly notification: NotificationService
-    ) {}
+    ) {
+        super();
+    }
 
-    public async sendEmailOtp(params: Auth_sendEmailOtp) {
+    public async sendPhoneOtp(params: Auth_sendEmailOtp) {
         this.logger.info("Creating platform account ...");
 
         const otp = this.genOtp();
@@ -30,13 +37,13 @@ export class KycService {
         }
     }
 
-    public async verifyEmailOtp(params: Auth_verifyEmailOtp) {
+    public async verifyPhoneOtp(params: Auth_verifyEmailOtp) {
         this.logger.info("Creating platform account ...");
 
         //    todo: Create Account
     }
 
-    public async createAccount(params: Auth_CreateAccount) {
+    public async createTransactionPin(params: Auth_CreateAccount) {
         try {
             await this.notification.sendWelcomeMessage({ email: params.email });
             return "Sent successfully";
@@ -45,15 +52,9 @@ export class KycService {
         }
     }
 
-    public async resetPassword(params: Auth_ResetPassword) {}
+    public async addBvn(params: Auth_ResetPassword) {}
 
-    public async login(params: Auth_Login) {}
+    public async addNin(params: Auth_ResetPassword) {}
 
-    public async logout(params: Auth_Logout) {
-        this.logger.info("Deleting platform");
-    }
-
-    private genOtp(): string {
-        return "0";
-    }
+    public async getKycStatus(params: Auth_Login) {}
 }

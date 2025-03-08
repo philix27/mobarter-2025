@@ -11,8 +11,10 @@ import { UserModule } from "./user/user.module";
 import { WalletCryptoModule } from "./wallet-crypto/crypto.module";
 import { WalletFiatModule } from "./wallet-fiat/fiat.module";
 import { JwtModule } from "@nestjs/jwt";
+import { BankAccountModule } from "./bankAccount/bankAccount.module";
+import { PassportModule } from "@nestjs/passport";
+import { HelpersModule } from "./helper/helper.module";
 // import { CronModule } from "./cron/cron.module";
-// import { BankAccountModule } from "./bankAccount/bankAccount.module";
 // import { OrdersModule } from "./orders/orders.module";
 // import { SwapModule } from "./swap/swap.module";
 // import { KycModule } from "./kyc/kyc.module";
@@ -29,19 +31,22 @@ import { JwtModule } from "@nestjs/jwt";
                 "graphql-ws": true,
             },
         }),
+        PassportModule,
+        // JwtModule.registerAsync(jwtConfig.asProvider()),
         JwtModule.register({
             global: true,
             secret: secrets.JWT_SECRET,
-            signOptions: { expiresIn: "60s" },
+            signOptions: { expiresIn: "12h" },
         }),
         CommonModule,
+        HelpersModule,
         PricesModule,
-        // CronModule,
         PubSubModule,
         NotificationModule,
         AuthModule,
         UserModule,
-        // BankAccountModule,
+        BankAccountModule,
+        // CronModule,
         // OrdersModule,
         // SwapModule,
         // KycModule,
