@@ -14,28 +14,30 @@ import { UseGuards } from "@nestjs/common";
 export class BankAccountResolver {
     constructor(private readonly service: BankAccountService) {}
 
+    @UseGuards(GqlAuthGuard)
     @Mutation((returns) => BankAccount_Response)
     async bankAccount_create(
         @Context() context: any,
         @Args("input") input: BankAccount_CreateInput
     ): Promise<BankAccount_Response> {
-        const user = context.req.user;
+        const { userId } = context.req;
         const res = await this.service.create({
-            userId: user.id,
+            userId,
             ...input,
         });
 
         return res!;
     }
 
+    @UseGuards(GqlAuthGuard)
     @Mutation((returns) => BankAccount_DeleteResponse)
     async bankAccount_delete(
         @Context() context: any,
         @Args("input") input: BankAccount_DeleteInput
     ) {
-        const user = context.req.user;
+        const { userId } = context.req;
         const res = await this.service.delete({
-            userId: user.id,
+            userId,
             ...input,
         });
 
@@ -48,7 +50,6 @@ export class BankAccountResolver {
         @Context() context: any
     ): Promise<BankAccount_Response[]> {
         const { userId } = context.req;
-        console.log("In bank resolver: ", userId);
         const res = await this.service.getAll({ userId });
 
         return res;
