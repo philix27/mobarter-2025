@@ -45,7 +45,7 @@ export class BankAccountResolver {
     }
 
     @UseGuards(GqlAuthGuard)
-    @Query((returns) => BankAccount_Response)
+    @Query((returns) => [BankAccount_Response])
     async bankAccount_getAll(
         @Context() context: any
     ): Promise<BankAccount_Response[]> {

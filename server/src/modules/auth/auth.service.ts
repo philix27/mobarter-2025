@@ -14,9 +14,9 @@ import {
     Auth_verifyEmailOtpInput,
     Auth_verifyOtpResponse,
 } from "./auth.dto";
-import { JwtCryptoService } from "./jwt.service";
 import { GqlErr } from "../common/errors/gqlErr";
 import { OtpPurpose } from "../common/enums";
+import { HelperService } from "../helper/helper.service";
 
 @Injectable()
 export class AuthService {
@@ -25,7 +25,7 @@ export class AuthService {
         private readonly notification: NotificationService,
         private readonly prisma: PrismaService,
         // private readonly userService: UserService,
-        private readonly jwtService: JwtCryptoService
+        private readonly jwtService: HelperService
     ) {}
 
     public async sendEmailOtp(

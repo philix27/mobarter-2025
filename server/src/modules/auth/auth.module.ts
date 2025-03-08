@@ -6,7 +6,6 @@ import { NotificationService } from "../notification/notification.service";
 import { AuthResolver } from "./auth.resolver";
 import { WalletCryptoService } from "../wallet-crypto/crypto.service";
 import { WalletFiatService } from "../wallet-fiat/fiat.service";
-import { JwtCryptoService } from "./jwt.service";
 import { UserService } from "../user/user.service";
 import { WalletCryptoModule } from "../wallet-crypto/crypto.module";
 import { PrivyWalletService } from "../wallet-crypto/privy.service";
@@ -15,14 +14,17 @@ import { GqlAuthGuard } from "./gql.guard";
 import jwtConfig from "./jwt.config";
 import { JwtModule } from "@nestjs/jwt";
 import { ConfigModule } from "@nestjs/config";
+import { HelperService } from "../helper/helper.service";
+import { HelpersModule } from "../helper/helper.module";
 
 @Module({
     imports: [
         CommonModule,
         NotificationModule,
         WalletCryptoModule,
+        HelpersModule,
         JwtModule.registerAsync(jwtConfig.asProvider()),
-        ConfigModule.forFeature(jwtConfig)
+        ConfigModule.forFeature(jwtConfig),
     ],
     providers: [
         AuthService,
@@ -30,7 +32,7 @@ import { ConfigModule } from "@nestjs/config";
         NotificationService,
         WalletCryptoService,
         WalletFiatService,
-        JwtCryptoService,
+        HelperService,
         UserService,
         PrivyWalletService,
         JwtStrategy,

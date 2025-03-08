@@ -13,6 +13,7 @@ import { WalletFiatModule } from "./wallet-fiat/fiat.module";
 import { JwtModule } from "@nestjs/jwt";
 import { BankAccountModule } from "./bankAccount/bankAccount.module";
 import { PassportModule } from "@nestjs/passport";
+import { HelpersModule } from "./helper/helper.module";
 // import { CronModule } from "./cron/cron.module";
 // import { OrdersModule } from "./orders/orders.module";
 // import { SwapModule } from "./swap/swap.module";
@@ -38,6 +39,7 @@ import { PassportModule } from "@nestjs/passport";
             signOptions: { expiresIn: "12h" },
         }),
         CommonModule,
+        HelpersModule,
         PricesModule,
         PubSubModule,
         NotificationModule,

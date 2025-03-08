@@ -1,20 +1,16 @@
 import { CanActivate, ExecutionContext, Injectable } from "@nestjs/common";
-// import { AuthGuard } from "@nestjs/passport";
 import { GqlExecutionContext } from "@nestjs/graphql";
-import { JwtCryptoService } from "./jwt.service";
 import { GqlErr } from "../common/errors/gqlErr";
+import { HelperService } from "../helper/helper.service";
 
 @Injectable()
 export class GqlAuthGuard implements CanActivate {
-    // export class GqlAuthGuard extends AuthGuard("jwt") {
-    // private readonly authService: JwtCryptoService;
-    constructor(private readonly jwt: JwtCryptoService) {}
+    constructor(private readonly jwt: HelperService) {}
 
     async getRequest(context: ExecutionContext) {
-        console.log("In getRequest");
 
         const ctx = GqlExecutionContext.create(context);
-        console.log("After init GqlExecutionContext");
+
         const ob = ctx.getContext().req.raw.rawHeaders;
 
         const redefinedOb = ob as string[];
@@ -33,10 +29,6 @@ export class GqlAuthGuard implements CanActivate {
     async canActivate(context: ExecutionContext): Promise<boolean> {
         console.log("h1 authorization: ");
         const ctx = GqlExecutionContext.create(context);
-        // const request = context.switchToHttp().getRequest();
-        // console.log("h2 authorization: ", request);
-        // const { authorization }: any = request.headers;
-        //  console.log("h4 authorization: ", authorization);
 
         const ob = ctx.getContext().req.raw.rawHeaders;
 
@@ -47,8 +39,6 @@ export class GqlAuthGuard implements CanActivate {
             throw GqlErr("Please provide token");
         }
         const authToken = token.replace(/Bearer/gim, "").trim();
-
-        // const resp = await this.jwt.verifyToken(authToken);
 
         const isValid = this.jwt.verifyToken(authToken);
 

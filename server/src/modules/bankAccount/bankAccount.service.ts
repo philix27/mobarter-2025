@@ -66,17 +66,10 @@ export class BankAccountService {
                     user_id: params.userId,
                 },
             });
-            console.log(res);
-            // if (res.length > 0) return res;
+            
+            if (res.length > 0) return res;
 
-            return [
-                {
-                    id: 1,
-                    account_name: "Zenith",
-                    account_no: "0009000",
-                    bank_name: "NG_ZENITH",
-                },
-            ];
+            return [];
         } catch (error) {
             throw GqlErr("Could not fetch bank account");
         }
