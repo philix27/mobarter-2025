@@ -5,7 +5,14 @@ import React from "react";
 
 export default function SignUpPage() {
   return (
-    <AuthWrapper title="Sign Up" btnTitle="Create account" onPress={() => {}}>
+    <AuthWrapper
+      title="Sign Up"
+      btnTitle="Create account"
+      onPress={() => {}}
+      bottomText={"Have an account?"}
+      linkHref="/auth/sign-in"
+      linkText="Login"
+    >
       <ThemedView>
         <InputText
           label={"Email"}
