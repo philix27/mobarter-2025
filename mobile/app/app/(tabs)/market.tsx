@@ -1,3 +1,4 @@
+import IconRound from "@/components/IconRound";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { appColor } from "@/lib/color";
@@ -29,59 +30,34 @@ export default function App() {
     >
       <ThemedView
         style={{
-          marginVertical: 40,
-          marginLeft: 20,
+          marginBottom: 10,
+          marginHorizontal: 20,
+          backgroundColor: appColor().primary,
+          width: "auto",
+          borderRadius: 20,
+          padding: 20,
+          height: 150,
         }}
       >
-        <ThemedText type="title" style={{ color: appColor().primary }}>
-          Good morning, Alexa
-        </ThemedText>
+        <ThemedText type="defaultSemiBold">Balance:</ThemedText>
       </ThemedView>
 
-      <TouchableOpacity
-        style={{
-          backgroundColor: appColor().card,
-          padding: 15,
-          borderRadius: 10,
-          marginHorizontal: 15,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "60%",
-        }}
-        onPress={() => {
-          router.push("/ai");
-        }}
-      >
-        <ThemedText type="subtitle">Chat with Pharmbot</ThemedText>
-      </TouchableOpacity>
-      <View
+      <ThemedView
         style={{
           paddingHorizontal: 8,
-          marginVertical: 10,
+          marginVertical: 20,
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-around",
+          alignItems: "center",
           backgroundColor: appColor().background,
         }}
       >
-        {quickNotes.map((val, i) => (
-          <TouchableOpacity
-            key={i}
-            onPress={() => {
-              // router.push(val.title);
-            }}
-            style={{
-              paddingVertical: 12,
-              paddingHorizontal: 20,
-              backgroundColor: appColor().card,
-              marginBottom: 0.5,
-              width: "100%",
-            }}
-          >
-            <ThemedText type="default" key={i}>
-              {i + 1}. {val.title}
-            </ThemedText>
-          </TouchableOpacity>
-        ))}
-      </View>
+        <IconRound icon="seal" title="Send" />
+        <IconRound icon="seal" title="Receive" />
+        <IconRound icon="cube.transparent" title="Buy" />
+        <IconRound icon="seal" title="Sell" />
+      </ThemedView>
     </SafeAreaView>
   );
 }
