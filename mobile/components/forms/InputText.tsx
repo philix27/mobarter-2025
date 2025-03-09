@@ -1,18 +1,21 @@
 import { View, TextInput, StyleSheet } from "react-native";
 import { ThemedText } from "../ThemedText";
-import Icon from 'react-native-vector-icons/MaterialIcons'; 
+import { IconSymbol } from "../ui/IconSymbol";
+import { ThemedView } from "../ThemedView";
+import { appColor } from "@/lib/color";
 
 export default function InputText(props: {
   label: string;
   value: string;
+  iconName?: string;
   onChangeText: (e: string) => void;
   placeholder: string;
   secureTextEntry: boolean;
 }) {
   return (
-    <View style={styles.container}>
+    <ThemedView style={styles.container}>
       {props.label && (
-        <ThemedText style={styles.label}>{props.label}</ThemedText>
+        <ThemedText style={styles.label} type="default">{props.label}</ThemedText>
       )}
       <TextInput
         style={styles.input}
@@ -21,47 +24,40 @@ export default function InputText(props: {
         placeholder={props.placeholder}
         secureTextEntry={props.secureTextEntry}
       />
-        {iconName && <Icon name={iconName} size={24} color="#666" style={styles.icon} />}
-    </View>
+      {props.iconName && (
+        <IconSymbol size={24} name={"lock"} color="#666" style={styles.icon} />
+      )}
+    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 10,
+    marginTop: 10,
+    width: "100%",
+    // minWidth: "100%",
+    backgroundColor: appColor().background,
+    marginBottom: 6
   },
   label: {
     fontSize: 16,
-    fontWeight: "bold",
     marginBottom: 5,
+    backgroundColor: appColor().background,
   },
   input: {
-    height: 40,
+    // height: 50,
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: appColor().muted,
     borderRadius: 5,
     paddingHorizontal: 10,
-  },
-  button: {
-    backgroundColor: "#007BFF",
-    padding: 10,
-    borderRadius: 5,
-    alignItems: "center",
-    marginTop: 10,
-  },
-  buttonText: {
-    color: "#fff",
+    paddingVertical: 12,
     fontSize: 16,
-    fontWeight: "bold",
+    backgroundColor: appColor().background,
+    width: "100%",
+    minWidth: "90%",
   },
-   input: {
-    flex: 1, // Takes full width except for icon
-    height: 45,
-    fontSize: 16,
-  },
+
   icon: {
     marginLeft: 10,
   },
 });
-
-

@@ -35,7 +35,7 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <RootProviders>
-        <Stack>
+        <Stack screenOptions={{ headerShadowVisible: false }}>
           <Stack.Screen name="(core)" options={{ headerShown: true }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="app/(tabs)" options={{ headerShown: false }} />

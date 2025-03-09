@@ -1,7 +1,6 @@
 import HeaderBar from "@/components/Header";
 import { ThemedText } from "@/components/ThemedText";
 import { appColor } from "@/lib/color";
-import { generateAPIUrl } from "@/lib/utils";
 import { fetch as expoFetch } from "expo/fetch";
 import { View, TextInput, ScrollView, Text, SafeAreaView } from "react-native";
 
