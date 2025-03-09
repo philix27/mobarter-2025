@@ -1,7 +1,8 @@
 import { View, TextInput, StyleSheet } from "react-native";
 import { ThemedText } from "../ThemedText";
+import Icon from 'react-native-vector-icons/MaterialIcons'; 
 
-export function InputField(props: {
+export default function InputText(props: {
   label: string;
   value: string;
   onChangeText: (e: string) => void;
@@ -20,6 +21,7 @@ export function InputField(props: {
         placeholder={props.placeholder}
         secureTextEntry={props.secureTextEntry}
       />
+        {iconName && <Icon name={iconName} size={24} color="#666" style={styles.icon} />}
     </View>
   );
 }
@@ -52,4 +54,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
+   input: {
+    flex: 1, // Takes full width except for icon
+    height: 45,
+    fontSize: 16,
+  },
+  icon: {
+    marginLeft: 10,
+  },
 });
+
+

@@ -5,7 +5,12 @@ import React from "react";
 
 export default function VerifyOtpPage() {
   return (
-    <AuthWrapper>
+    <AuthWrapper
+      title="Verify otp"
+      btnTitle="Verify"
+      subtitle=""
+      onPress={() => {}}
+    >
       <ThemedView>
         <ThemedText>Openest</ThemedText>
       </ThemedView>

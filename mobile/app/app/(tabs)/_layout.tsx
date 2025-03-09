@@ -4,7 +4,6 @@ import { Platform } from "react-native";
 import { HapticTab } from "@/components/HapticTab";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import TabBarBackground from "@/components/ui/TabBarBackground";
-import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { appColor } from "@/lib/color";
 
@@ -31,9 +30,9 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="home"
+        name="market"
         options={{
-          title: "Pharmbot",
+          title: "Market",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="questionmark.app" color={color} />
           ),
