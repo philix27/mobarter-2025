@@ -43,12 +43,12 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="questionmark.app" color={color} />
           ),
-          headerRightContainerStyle: {}
+          headerRightContainerStyle: {},
         }}
       />
 
       <Tabs.Screen
-        name="wallets"
+        name="/app/wallets"
         options={{
           title: "Wallets",
           tabBarIcon: ({ color }) => (
@@ -57,7 +57,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="services"
+        name="/app/services"
         options={{
           title: "Services",
           tabBarIcon: ({ color }) => (
@@ -66,7 +66,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="settings"
+        name="/app/settings"
         options={{
           title: "Settings",
           tabBarIcon: ({ color }) => (
