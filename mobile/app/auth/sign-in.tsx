@@ -12,7 +12,7 @@ export default function SignInPage() {
       btnTitle="Login"
       subtitle="Welcome back"
       onPress={() => {
-        router.push("/app/market");
+        router.push("/app/(tabs)/market");
       }}
       bottomText={"Do not have an account?"}
       linkHref="/auth/sign-up"

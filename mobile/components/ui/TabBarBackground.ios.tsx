@@ -13,8 +13,8 @@ export default function BlurTabBarBackground() {
       // style={StyleSheet.absoluteFill}
       style={{
         backgroundColor: appColor().background,
-        borderTopWidth: 0.5,
-        borderColor: appColor().muted,
+        // borderTopWidth: 0.5,
+        // borderColor: appColor().muted,
       }}
     />
   );

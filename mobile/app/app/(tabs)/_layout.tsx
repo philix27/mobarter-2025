@@ -4,12 +4,9 @@ import { Platform } from "react-native";
 import { HapticTab } from "@/components/HapticTab";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import TabBarBackground from "@/components/ui/TabBarBackground.ios";
-import { useColorScheme } from "@/hooks/useColorScheme";
 import { appColor } from "@/lib/color";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
@@ -22,9 +19,9 @@ export default function TabLayout() {
         headerTitleStyle: {
           color: appColor().muted,
         },
-        headerBackgroundContainerStyle: {
-          backgroundColor: appColor().card,
-        },
+        // headerBackgroundContainerStyle: {
+        //   backgroundColor: appColor().card,
+        // },
         headerShadowVisible: false,
         tabBarStyle: Platform.select({
           ios: {
@@ -43,12 +40,17 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="questionmark.app" color={color} />
           ),
-          headerRightContainerStyle: {},
+          // headerRightContainerStyle: {
+          //   backgroundColor: appColor().background,
+          // },
+          // headerBackgroundContainerStyle: {
+          //   backgroundColor: appColor().background,
+          // },
         }}
       />
 
       <Tabs.Screen
-        name="/app/wallets"
+        name="wallets"
         options={{
           title: "Wallets",
           tabBarIcon: ({ color }) => (
@@ -57,20 +59,11 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="/app/services"
+        name="services"
         options={{
           title: "Services",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="bookmark" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="/app/settings"
-        options={{
-          title: "Settings",
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="brain.head.profile" color={color} />
           ),
         }}
       />

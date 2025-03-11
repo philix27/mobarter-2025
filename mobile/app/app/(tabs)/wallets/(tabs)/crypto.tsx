@@ -8,10 +8,17 @@ export default function QuizScreen() {
       style={{
         height: "100%",
         backgroundColor: appColor().background,
-        paddingBottom: 50,
+        // paddingBottom: 50,
       }}
     >
-      <ScrollView style={{ paddingHorizontal: 0, paddingVertical: 40 }}>
+      <ScrollView
+        style={{
+          paddingHorizontal: 0,
+          paddingVertical: 40,
+          backgroundColor: appColor().background,
+          minHeight: "100%"
+        }}
+      >
         <ThemedText>Quiz</ThemedText>
       </ScrollView>
     </SafeAreaView>

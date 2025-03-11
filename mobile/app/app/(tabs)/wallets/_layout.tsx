@@ -1,7 +1,6 @@
 import { Tabs } from "expo-router";
 import React from "react";
 import { appColor } from "@/lib/color";
-
 import {
   createMaterialTopTabNavigator,
   MaterialTopTabNavigationOptions,
@@ -9,6 +8,7 @@ import {
 } from "@react-navigation/material-top-tabs";
 import { withLayoutContext } from "expo-router";
 import { ParamListBase, TabNavigationState } from "@react-navigation/native";
+import HeaderBar from "@/components/Header";
 
 const { Navigator } = createMaterialTopTabNavigator();
 export const MaterialTopTabs = withLayoutContext<
@@ -30,6 +30,9 @@ export default function TabLayout() {
         tabBarLabelStyle: {
           textTransform: "capitalize",
           color: appColor().muted,
+        },
+        tabBarContentContainerStyle: {
+          backgroundColor: appColor().background,
         },
       }}
     >
