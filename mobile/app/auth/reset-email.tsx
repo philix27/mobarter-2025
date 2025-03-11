@@ -7,28 +7,21 @@ import React from "react";
 export default function ResetPasswordPage() {
   return (
     <AuthWrapper
-      title="Reset Password"
-      btnTitle="Reset password"
-      subtitle="Welcome back"
+      title="Reset your password"
+      subtitle="Verify your email"
+      btnTitle="Send OTP"
       onPress={() => {
-           router.push("/auth/sign-in");
+        router.push("/auth/verify-otp");
       }}
-      bottomText={"Stay updated"}
+      bottomText={""}
     >
       <ThemedView>
         <InputText
-          label={"Password"}
+          label={"Email"}
           value={""}
           onChangeText={function () {}}
-          placeholder={"Enter password"}
+          placeholder={"Enter email"}
           secureTextEntry={false}
-        />
-        <InputText
-          label={"Confirm Password"}
-          value={""}
-          onChangeText={function () {}}
-          placeholder={"Enter password"}
-          secureTextEntry={true}
         />
       </ThemedView>
     </AuthWrapper>

@@ -13,6 +13,12 @@ export default function Page() {
       }}
     >
       <View>
+        <Link href="/app/market">
+          <ThemedText type="subtitle">Market</ThemedText>
+        </Link>
+        <Link href="/app/(tabs)/market">
+          <ThemedText type="subtitle">Market Tab</ThemedText>
+        </Link>
         <Link href="/auth/sign-in">
           <ThemedText type="subtitle">Login</ThemedText>
         </Link>

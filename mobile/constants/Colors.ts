@@ -56,9 +56,10 @@ const lightColors: IColorStruct = {
 
 const darkColors: IColorStruct = {
   text: "#ECEDEE",
-  background: "#3B3F41",
-  foreground: "#e3e6e6;",
-  card: "#151718",
+  background: "#171717",
+  foreground: "#2f2f2f;",
+  // foreground: "#e3e6e6;",
+  card: "#2f2f2f",
   tint: tintColorDark,
   icon: "#9BA1A6",
   tabIconDefault: "#9BA1A6",
@@ -66,7 +67,7 @@ const darkColors: IColorStruct = {
   muted: "#717171",
   mutedForeground: "#292828",
   cardForeground: "",
-  primary: "#18a544",
+  primary: "#ff6719",
   primaryForeground: "",
   secondary: "",
   secondaryForeground: "",

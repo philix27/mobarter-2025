@@ -1,3 +1,4 @@
+import "react-native-reanimated";
 import {
   DarkTheme,
   DefaultTheme,
@@ -9,9 +10,8 @@ import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "react-native-reanimated";
-
-import { useColorScheme } from "@/hooks/useColorScheme";
 import RootProviders from "@/providers/Root";
+import { useColorScheme } from "@/hooks/useColorScheme";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -33,16 +33,17 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <RootProviders>
-        <Stack>
+    <RootProviders>
+      {/* <ThemeProvider value={DarkTheme}> */}
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <Stack screenOptions={{ headerShadowVisible: false }}>
           <Stack.Screen name="(core)" options={{ headerShown: true }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="app/(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>
         <StatusBar style="auto" />
-      </RootProviders>
-    </ThemeProvider>
+      </ThemeProvider>
+    </RootProviders>
   );
 }

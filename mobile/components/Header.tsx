@@ -15,6 +15,12 @@ export default function HeaderBar(props: { title: string }) {
           fontWeight: "600",
           fontSize: 13,
         },
+        contentStyle: {
+          backgroundColor: appColor().background,
+        },
+        // headerBackgroundContainerStyle: {
+        //   backgroundColor: appColor().background,
+        // },
         headerLeft: () => (
           <Ionicons
             name={backIcon}

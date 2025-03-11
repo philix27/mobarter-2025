@@ -3,40 +3,49 @@ import React from "react";
 import { Platform } from "react-native";
 import { HapticTab } from "@/components/HapticTab";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import TabBarBackground from "@/components/ui/TabBarBackground";
-import { Colors } from "@/constants/Colors";
-import { useColorScheme } from "@/hooks/useColorScheme";
+import TabBarBackground from "@/components/ui/TabBarBackground.ios";
 import { appColor } from "@/lib/color";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: appColor().background,
-        headerShown: false,
+        tabBarActiveTintColor: appColor().primary,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
-        headerBackgroundContainerStyle: {
-          backgroundColor: appColor().background,
+        headerBackButtonDisplayMode: "minimal",
+        tabBarActiveBackgroundColor: appColor().background,
+        tabBarInactiveBackgroundColor: appColor().background,
+        headerTitleStyle: {
+          color: appColor().muted,
         },
+        // headerBackgroundContainerStyle: {
+        //   backgroundColor: appColor().card,
+        // },
+        headerShadowVisible: false,
         tabBarStyle: Platform.select({
           ios: {
             // Use a transparent background on iOS to show the blur effect
             position: "absolute",
+            // color: appColor().background,
           },
           default: {},
         }),
       }}
     >
       <Tabs.Screen
-        name="home"
+        name="market"
         options={{
-          title: "Pharmbot",
+          title: "Market",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="questionmark.app" color={color} />
           ),
+          // headerRightContainerStyle: {
+          //   backgroundColor: appColor().background,
+          // },
+          // headerBackgroundContainerStyle: {
+          //   backgroundColor: appColor().background,
+          // },
         }}
       />
 
@@ -55,15 +64,6 @@ export default function TabLayout() {
           title: "Services",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="bookmark" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="settings"
-        options={{
-          title: "Settings",
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="brain.head.profile" color={color} />
           ),
         }}
       />

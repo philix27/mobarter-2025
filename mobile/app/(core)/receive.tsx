@@ -1,15 +1,14 @@
 import HeaderBar from "@/components/Header";
 import { ThemedText } from "@/components/ThemedText";
 import { appColor } from "@/lib/color";
-import { fetch as expoFetch } from "expo/fetch";
-import { View, TextInput, ScrollView, Text, SafeAreaView } from "react-native";
+import { View, SafeAreaView } from "react-native";
 
-export default function App() {
+export default function Diseases() {
   return (
     <SafeAreaView
       style={{ height: "100%", backgroundColor: appColor().background }}
     >
-      <HeaderBar title="Pharmbot AI" />
+      <HeaderBar title="Diseases" />
       <View
         style={{
           height: "95%",
@@ -18,7 +17,7 @@ export default function App() {
           paddingHorizontal: 8,
         }}
       >
-        <ThemedText>AI Guy</ThemedText>
+        <ThemedText>How far</ThemedText>
       </View>
     </SafeAreaView>
   );

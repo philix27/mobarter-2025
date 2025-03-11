@@ -1,8 +1,9 @@
-import { TouchableOpacity } from "react-native";
+import { StyleProp, TouchableOpacity, ViewStyle } from "react-native";
 import { Text, StyleSheet } from "react-native";
 
 export default function InputButton(props: {
   title: string;
+  style?: ViewStyle;
   onPress: VoidFunction;
   variant?: "secondary" | "outline";
 }) {
@@ -10,6 +11,7 @@ export default function InputButton(props: {
     <TouchableOpacity
       style={{
         ...styles.button,
+        ...props.style,
         backgroundColor: props.variant === "secondary" ? "#282828" : "#007d0c",
       }}
       onPress={props.onPress}
