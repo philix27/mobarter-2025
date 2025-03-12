@@ -13,7 +13,7 @@ export default function Balance() {
         width: "auto",
         borderRadius: 20,
         padding: 20,
-        height: 150,
+        height: 120,
       }}
     >
       <ThemedText type="defaultSemiBold">Balance:</ThemedText>
