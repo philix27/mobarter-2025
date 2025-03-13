@@ -9,4 +9,14 @@ export const AppAssets = {
     glo: require("@/assets/logo/glo.png"),
     usdt: require("@/assets/logo/usdt.png"),
   },
+  flags: {
+    Cameroon: require("@/assets/flags/Cameroon.png"),
+    Europe: require("@/assets/flags/Europe.png"),
+    Ghana: require("@/assets/flags/Ghana.png"),
+    Kenya: require("@/assets/flags/Kenya.png"),
+    NGN: require("@/assets/flags/NGN.png"),
+    SouthAfrica: require("@/assets/flags/SouthAfrica.png"),
+    UK: require("@/assets/flags/UK.png"),
+    US: require("@/assets/flags/US.png"),
+  },
 };
