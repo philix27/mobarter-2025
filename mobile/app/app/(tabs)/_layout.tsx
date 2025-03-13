@@ -13,11 +13,15 @@ export default function TabLayout() {
         tabBarActiveTintColor: appColor().primary,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
-        headerBackButtonDisplayMode: "minimal",
+        // headerBackButtonDisplayMode: "minimal",
         tabBarActiveBackgroundColor: appColor().background,
         tabBarInactiveBackgroundColor: appColor().background,
         headerTitleStyle: {
           color: appColor().muted,
+        },
+        headerShown: true,
+        headerBackgroundContainerStyle: {
+          backgroundColor: appColor().background,
         },
         // headerBackgroundContainerStyle: {
         //   backgroundColor: appColor().card,
@@ -38,32 +42,27 @@ export default function TabLayout() {
         options={{
           title: "Market",
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="questionmark.app" color={color} />
+            <IconSymbol size={24} name="questionmark.app" color={color} />
           ),
-          // headerRightContainerStyle: {
-          //   backgroundColor: appColor().background,
-          // },
-          // headerBackgroundContainerStyle: {
-          //   backgroundColor: appColor().background,
-          // },
         }}
       />
 
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="wallets"
+        // name="wallets"
         options={{
           title: "Wallets",
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="questionmark.app" color={color} />
+            <IconSymbol size={24} name="questionmark.app" color={color} />
           ),
         }}
-      />
+      /> */}
       <Tabs.Screen
         name="services"
         options={{
           title: "Services",
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="bookmark" color={color} />
+            <IconSymbol size={24} name="bookmark" color={color} />
           ),
         }}
       />

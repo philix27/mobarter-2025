@@ -8,12 +8,11 @@ export default function Balance() {
     <ThemedView
       style={{
         marginBottom: 10,
-        marginHorizontal: 20,
         backgroundColor: appColor().primary,
         width: "auto",
         borderRadius: 20,
         padding: 20,
-        height: 150,
+        height: 120,
       }}
     >
       <ThemedText type="defaultSemiBold">Balance:</ThemedText>

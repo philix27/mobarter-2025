@@ -4,9 +4,11 @@ import { ThemedView } from "@/components/ThemedView";
 import InputText from "@/components/forms/InputText";
 import ApiHooks from "@/lib/endpoints";
 import { Link } from "expo-router";
-import React, { useState } from "react";
+import React from "react";
 import { z } from "zod";
 import { StyleSheet, Alert } from "react-native";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 // Define the validation schema
 const formSchema = z.object({
@@ -14,41 +16,32 @@ const formSchema = z.object({
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
-export function useAppForm<FormData>(defaultValues: FormData) {
-  const [formData, setFormData] = useState<FormData>(defaultValues!);
-  const [errors, setErrors] = useState<FormData>(defaultValues!);
-
-  const handleChange = (field: keyof typeof formData, value: string) => {
-    setFormData({ ...formData!, [field]: value });
-    setErrors({ ...errors!, [field]: "" }); // Clear error when typing
-  };
-
-  return { formData, setFormData, errors, handleChange, setErrors };
-}
-
 export default function SignInPage() {
-  const { formData, setFormData, errors, handleChange, setErrors } = useAppForm(
-    {
+  const { handleSubmit, setValue, formState, getValues } = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
       email: "",
       password: "",
-    }
-  );
+    },
+  });
 
-  const handleSubmit = () => {
-    const validation = formSchema.safeParse(formData);
-    console.log("On submit");
-    if (!validation.success) {
-      const errorMessages = validation.error.format();
-      setErrors({
-        email: errorMessages.email?._errors[0] || "",
-        password: errorMessages.password?._errors[0] || "",
-      });
-    } else {
-      Alert.alert("Success", "Form submitted successfully!");
-      setFormData({ email: "", password: "" });
-      setErrors({ email: "", password: "" });
-    }
+  const { mutate } = ApiHooks.useAuthLogin();
+
+  const { errors } = formState;
+
+  const onSubmit = (data: any) => {
+    console.log("Submit hit");
+    mutate({
+      variables: {
+        email: getValues("email"),
+        password: getValues("password"),
+      },
+    });
+
+    Alert.alert("Success", "Form submitted successfully!");
+    console.log(data);
   };
+
   return (
     <AuthWrapper
       title="Login"
@@ -56,7 +49,7 @@ export default function SignInPage() {
       subtitle="Welcome back"
       onPress={() => {
         console.log("handleSubmit hit");
-        handleSubmit();
+        handleSubmit(onSubmit);
       }}
       bottomText={"Do not have an account?"}
       linkHref="/auth/sign-up"
@@ -65,20 +58,20 @@ export default function SignInPage() {
       <ThemedView>
         <InputText
           label={"Email"}
-          value={formData.email}
           keyboardType="email-address"
-          onChangeText={(text) => handleChange("email", text)}
+          onChangeText={(text) => setValue("email", text)}
           placeholder={"Enter email"}
-          error={errors!.email === undefined ? undefined : errors!.email}
+          error={errors.email === undefined ? undefined : errors.email.message}
         />
 
         <InputText
           label={"Password"}
-          value={formData.password}
-          onChangeText={(text) => handleChange("password", text)}
+          onChangeText={(text) => setValue("password", text)}
           placeholder={"Enter password"}
           secureTextEntry={true}
-          error={errors!.password === undefined ? undefined : errors!.password}
+          error={
+            errors.password === undefined ? undefined : errors.password.message
+          }
         />
 
         <ThemedView style={{ paddingTop: 5, marginBottom: 10 }}>

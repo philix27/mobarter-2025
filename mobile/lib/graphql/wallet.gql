@@ -1,0 +1,6 @@
+mutation WalletCrypto_create {
+  walletCrypto_create {
+    address
+    wallet_id
+  }
+}

@@ -57,7 +57,7 @@ const lightColors: IColorStruct = {
 const darkColors: IColorStruct = {
   text: "#ECEDEE",
   background: "#171717",
-  foreground: "#2f2f2f;",
+  foreground: "#e3e6e6;",
   // foreground: "#e3e6e6;",
   card: "#2f2f2f",
   tint: tintColorDark,
