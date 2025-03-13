@@ -1,7 +1,11 @@
-import React from 'react'
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import React from "react";
 
-export default function AssetsTab() {
+export default function AssetsFiat() {
   return (
-    <div>AssetsTab</div>
-  )
+    <ThemedView>
+      <ThemedText>Fiat</ThemedText>
+    </ThemedView>
+  );
 }

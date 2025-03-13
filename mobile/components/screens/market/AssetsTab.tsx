@@ -8,7 +8,7 @@ import { TouchableOpacity } from "react-native";
 export default function AssetsTab() {
   const store = AppStores.useView();
   return (
-    <ThemedView style={{ marginHorizontal: 30, width: "100%" }}>
+    <ThemedView>
       <ThemedView
         style={{
           display: "flex",
@@ -47,13 +47,13 @@ function TabIem(params: {
         style={{
           paddingVertical: 5,
           paddingHorizontal: 10,
-          marginRight: 10,
+          marginRight: 8,
         }}
       >
         <ThemedText
           type="default"
           style={{
-            fontSize: 15,
+            fontSize: 16,
             fontWeight: params.isActive ? 600 : 500,
             color: params.isActive ? appColor().primary : appColor().muted,
           }}

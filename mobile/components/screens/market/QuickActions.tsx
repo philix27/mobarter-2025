@@ -17,7 +17,6 @@ export default function QuickActions() {
     <>
       <ThemedView
         style={{
-          paddingHorizontal: 30,
           marginVertical: 10,
           display: "flex",
           flexDirection: "row",
