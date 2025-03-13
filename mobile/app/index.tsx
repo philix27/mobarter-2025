@@ -13,7 +13,7 @@ export default function Page() {
       }}
     >
       <View>
-        <Link href="/app/market">
+        <Link href="/(tabs)/market">
           <ThemedText type="subtitle">Market</ThemedText>
         </Link>
         <Link href="/app/(tabs)/market">
@@ -24,9 +24,6 @@ export default function Page() {
         </Link>
         <Link href="/auth/sign-up">
           <ThemedText type="subtitle">Create account</ThemedText>
-        </Link>
-        <Link href="/app/home">
-          <ThemedText type="subtitle">Home</ThemedText>
         </Link>
       </View>
     </SafeAreaView>

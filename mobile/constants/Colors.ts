@@ -66,7 +66,7 @@ const darkColors: IColorStruct = {
   tabIconSelected: tintColorDark,
   muted: "#717171",
   mutedForeground: "#292828",
-  cardForeground: "",
+  cardForeground: "#ECEDEE",
   primary: "#ff6719",
   primaryForeground: "",
   secondary: "",

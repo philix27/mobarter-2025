@@ -10,7 +10,7 @@ export const AppAssets = {
     usdt: require("@/assets/logo/usdt.png"),
   },
   flags: {
-    Cameroon: require("@/assets/flags/Cameroon.png"),
+    Cameroon: require("@/assets/flags/Cameroon.jpg"),
     Europe: require("@/assets/flags/Europe.png"),
     Ghana: require("@/assets/flags/Ghana.png"),
     Kenya: require("@/assets/flags/Kenya.png"),
