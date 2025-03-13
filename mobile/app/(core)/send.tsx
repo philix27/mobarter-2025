@@ -8,7 +8,7 @@ export default function Diseases() {
     <SafeAreaView
       style={{ height: "100%", backgroundColor: appColor().background }}
     >
-      <HeaderBar title="Diseases" />
+      <HeaderBar title="Send" />
       <View
         style={{
           height: "95%",

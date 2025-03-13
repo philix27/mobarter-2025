@@ -9,7 +9,7 @@ export default function App() {
     <SafeAreaView
       style={{ height: "100%", backgroundColor: appColor().background }}
     >
-      <HeaderBar title="Pharmbot AI" />
+      <HeaderBar title="Sell" />
       <View
         style={{
           height: "95%",

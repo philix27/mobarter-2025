@@ -9,30 +9,21 @@ export default function Layout() {
     <Stack
       screenOptions={{
         headerStyle: {
-          backgroundColor: appColor().background
+          backgroundColor: appColor().background,
         },
-        headerTintColor:appColor().foreground,
+        headerTintColor: appColor().foreground,
         headerTitleStyle: {
           fontWeight: "bold",
         },
         headerShown: true,
       }}
     >
-      <Stack.Screen
-        name="/quiz/[id]"
-        options={{
-          title: "Quiz",
-          headerTitle: "Quiz",
-          headerLeft: () => (
-            <Ionicons
-              name={backIcon}
-              size={25}
-              color="white"
-              onPress={() => router.back()}
-            />
-          ),
-        }}
-      />
+      <Stack.Screen name="buy" />
+      <Stack.Screen name="receive" />
+      <Stack.Screen name="sell" />
+      <Stack.Screen name="send" />
+      <Stack.Screen name="settings" />
+      <Stack.Screen name="swap" />
       {/* Optionally configure static options outside the route.*/}
       {/* <Stack.Screen name="home" options={{}} /> */}
     </Stack>
