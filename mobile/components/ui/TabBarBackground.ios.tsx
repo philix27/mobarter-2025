@@ -8,12 +8,12 @@ export default function BlurTabBarBackground() {
     <BlurView
       // System chrome material automatically adapts to the system's theme
       // and matches the native tab bar appearance on iOS.
-      tint="systemChromeMaterial"
+      // tint="systemChromeMaterial"
       intensity={0}
       // style={StyleSheet.absoluteFill}
       style={{
         backgroundColor: appColor().primary,
-        // borderTopWidth: 0.5,
+        borderTopWidth: 0.5,
         borderColor: appColor().background,
       }}
     />
