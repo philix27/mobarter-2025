@@ -4,8 +4,8 @@ import Balance from "./Balance";
 import QuickActions from "./QuickActions";
 import AssetsTab from "./AssetsTab";
 import { AppStores } from "@/lib/zustand";
-import AssetsCrypto from "./AssetsCrypto";
-import AssetsFiat from "./AssetsFiat";
+import AssetsCrypto from "./Assets/AssetsCrypto";
+import AssetsFiat from "./Assets/AssetsFiat";
 import { ThemedView } from "@/components/ThemedView";
 
 export default function MarketScreen() {

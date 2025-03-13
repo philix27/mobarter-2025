@@ -1,14 +1,8 @@
-import {
-  Image,
-  ImageSourcePropType,
-  ScrollView,
-  StyleSheet,
-} from "react-native";
-import { ThemedText } from "@/components/ThemedText";
+import { ScrollView, StyleSheet } from "react-native";
 import { ThemedView } from "@/components/ThemedView";
 import React from "react";
-import { appColor } from "@/lib/color";
 import { AppAssets } from "@/assets";
+import { AssetsRow } from "./AssetsRow";
 
 export default function AssetsCrypto() {
   return (
@@ -80,64 +74,6 @@ export default function AssetsCrypto() {
         />
       </ThemedView>
     </ScrollView>
-  );
-}
-
-function AssetsRow(params: {
-  imgUrl: ImageSourcePropType | undefined;
-  currency: string;
-  balance: number;
-  dollarBalance: number;
-  performance: string;
-  onPress?: VoidFunction;
-}) {
-  return (
-    <ThemedView
-      style={{
-        paddingVertical: 10,
-        marginBottom: 2,
-        backgroundColor: appColor().accent,
-        // width: "100%",
-        paddingHorizontal: 10,
-      }}
-    >
-      <ThemedView
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          backgroundColor: appColor().accent,
-        }}
-      >
-        <ThemedView
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            backgroundColor: appColor().accent,
-          }}
-        >
-          <ThemedView
-            style={{ backgroundColor: appColor().accent, marginRight: 10 }}
-          >
-            <Image
-              source={params.imgUrl}
-              style={{ height: 40, width: 40, borderRadius: 20 }}
-            />
-          </ThemedView>
-          <ThemedView style={{ backgroundColor: appColor().accent }}>
-            <ThemedText type="defaultSemiBold">{params.currency}</ThemedText>
-            <ThemedText type="default" style={{ fontSize: 13 }}>
-              {params.performance}
-            </ThemedText>
-          </ThemedView>
-        </ThemedView>
-
-        <ThemedView style={{ backgroundColor: appColor().accent }}>
-          <ThemedText>{params.dollarBalance}</ThemedText>
-          <ThemedText>{params.balance}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-    </ThemedView>
   );
 }
 
