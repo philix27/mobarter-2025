@@ -15,7 +15,7 @@ export default function HomeScreen() {
         />
       }
     >
-      <HeaderBar title="Services" />
+      <HeaderBar title="Services" hideBack />
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
       </ThemedView>

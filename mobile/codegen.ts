@@ -2,7 +2,7 @@ import type { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
   schema: "http://localhost:4545/graphql",
-  documents: ["./src/**/*.{ts,tsx}", "./src/**/*.gql"],
+  documents: ["./src/**/*.{ts,tsx}", "./lib/**/*.gql", "./lib/graphql/*.gql"],
   generates: {
     "./lib/__generated__/": {
       // './src/graphql/': {
@@ -20,8 +20,10 @@ const config: CodegenConfig = {
       plugins: [
         "typescript",
         "typescript-operations",
-        "typed-document-node",
+        // "typed-document-node",
+        "typescript-document-nodes",
         "typescript-react-apollo",
+        "typescript-resolvers",
       ],
     },
   },
