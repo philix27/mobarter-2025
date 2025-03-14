@@ -1,5 +1,5 @@
-import { appColor } from "@/lib/color";
 import { SafeAreaView } from "react-native";
+import { appColor } from "@/lib/color";
 import Balance from "./Balance";
 import QuickActions from "./QuickActions";
 import AssetsTab from "./AssetsTab";
@@ -20,6 +20,7 @@ export default function MarketScreen() {
       <ThemedView style={{ paddingHorizontal: 20 }}>
         <Balance />
         <QuickActions />
+
         <AssetsTab />
         {store.activeViewAsset === "Fiat" ? <AssetsFiat /> : <AssetsCrypto />}
       </ThemedView>

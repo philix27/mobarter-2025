@@ -1,4 +1,10 @@
-import React, { forwardRef, ReactNode, useCallback, useMemo } from "react";
+import React, {
+  forwardRef,
+  ReactNode,
+  useCallback,
+  useMemo,
+  useRef,
+} from "react";
 import {
   BottomSheetBackdrop,
   BottomSheetModal,
@@ -53,7 +59,7 @@ const styles = StyleSheet.create({
   sheet: {
     backgroundColor: appColor().card,
     borderRadius: 10,
-    zIndex: 999,
+    // zIndex: 10,
     shadowColor: "#4b4b4b",
     shadowOffset: {
       width: 0,
@@ -65,10 +71,10 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
 });
-export function useAppBottomSheet(
-  bottomSHeetRef: React.RefObject<BottomSheetModal>
-) {
+export function useAppBottomSheet() {
+  // bottomSHeetRef: React.RefObject<BottomSheetModal>
   // const close = bottomSHeetRef.current?.close;
+  const bottomSHeetRef = useRef<BottomSheetModal>(null);
 
   const handleExpand = useCallback(() => {
     bottomSHeetRef.current?.expand();
@@ -90,5 +96,6 @@ export function useAppBottomSheet(
     handleExpand,
     handlePresent,
     handleDismiss,
+    ref: bottomSHeetRef,
   };
 }

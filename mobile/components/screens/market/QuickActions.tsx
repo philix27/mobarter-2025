@@ -1,18 +1,12 @@
 import IconRound from "@/components/IconRound";
-import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { appColor } from "@/lib/color";
-import React, { useRef, useState } from "react";
-import { AppBottomSheet, useBottomSheet } from "../AppBottomSheet";
-import { BottomSheetModal, useBottomSheetModal } from "@gorhom/bottom-sheet";
+import React from "react";
+import { router } from "expo-router";
+import { IconSymbol } from "@/components/ui/IconSymbol.ios";
+import { Feather, Ionicons, MaterialIcons } from "@expo/vector-icons";
 
-type IActiveModal = "SEND" | "RECEIVE" | "BUY" | "SELL" | "NONE";
 export default function QuickActions() {
-  const [activeModal, setActiveModal] = useState<IActiveModal>("NONE");
-
-  const bottomSheetRef = useRef<BottomSheetModal>(null);
-  // const sheet = useBottomSheet(bottomSheetRef);
-
   return (
     <>
       <ThemedView
@@ -26,45 +20,41 @@ export default function QuickActions() {
         }}
       >
         <IconRound
-          icon="seal"
           title="Send"
           onPress={() => {
-            setActiveModal("SEND");
+            router.push("/send");
           }}
-        />
+        >
+          <Feather name="send" size={24} color={"#fff"} />
+        </IconRound>
         <IconRound
-          icon="seal"
           title="Receive"
           onPress={() => {
-            bottomSheetRef.current?.expand();
-            // sheet.expand!();
-            // bottomSheetRef.current?.expand();
-            setActiveModal("RECEIVE");
+            router.push("/receive");
           }}
-        />
+        >
+          <MaterialIcons name="call-received" size={24} color={"#fff"} />
+        </IconRound>
         <IconRound
-          icon="cube.transparent"
-          title="Buy"
+          title="Fx"
           onPress={() => {
-            setActiveModal("BUY");
+            router.push("/buy");
           }}
-        />
+        >
+          <MaterialIcons name="currency-exchange" size={24} color={"#fff"} />
+        </IconRound>
         <IconRound
-          icon="seal"
-          title="Sell"
+          title="Swap"
           onPress={() => {
-            setActiveModal("SELL");
+            router.push("/swap");
           }}
-        />
+        >
+          <Ionicons name="swap-horizontal" size={24} color="#fff" />
+        </IconRound>
       </ThemedView>
-      {/* {activeModal === "RECEIVE" && ( */}
-      <AppBottomSheet ref={bottomSheetRef}>
-        <ThemedView style={{ backgroundColor: "pink" }}>
-          <ThemedText>Receive</ThemedText>
-          <ThemedText>Wallet address</ThemedText>
-        </ThemedView>
-      </AppBottomSheet>
-      {/* )} */}
     </>
   );
+}
+{
+  /* <ReceiveWallet /> */
 }

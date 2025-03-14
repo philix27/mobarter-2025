@@ -7,6 +7,7 @@ export default function Balance() {
   return (
     <ThemedView
       style={{
+        marginTop: 10,
         marginBottom: 10,
         backgroundColor: appColor().primary,
         width: "auto",
