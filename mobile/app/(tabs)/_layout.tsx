@@ -1,11 +1,14 @@
-import { Tabs } from "expo-router";
+import { router, Tabs } from "expo-router";
 import React from "react";
-import { Platform } from "react-native";
-import { HapticTab } from "@/components/HapticTab";
-import { IconSymbol } from "@/components/ui/IconSymbol";
-import TabBarBackground from "@/components/ui/TabBarBackground.ios";
 import { appColor } from "@/lib/color";
 import { AppTabBar } from "@/components/BottomTabBar";
+import {
+  Feather,
+  Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
+import { ThemedView } from "@/components/ThemedView";
 
 export default function TabLayout() {
   return (
@@ -39,8 +42,99 @@ export default function TabLayout() {
       //   }),
       // }}
     >
-      <Tabs.Screen name="market" options={{ title: "Market" }} />
-      <Tabs.Screen name="services" options={{ title: "Services" }} />
+      <Tabs.Screen
+        name="market"
+        options={{
+          title: "Mobarter",
+          headerTintColor: appColor().background,
+          headerTitleStyle: {
+            fontWeight: "600",
+            fontSize: 15,
+            color: appColor().text,
+          },
+          headerStyle: {
+            backgroundColor: appColor().background,
+          },
+          headerLeft: (props: any) => {
+            return (
+              <ThemedView
+                style={{ marginLeft: 20, flexDirection: "row", columnGap: 20 }}
+              >
+                <MaterialCommunityIcons
+                  name="account"
+                  size={20}
+                  color={appColor().text}
+                  onPress={() => {
+                    router.push("/(core)/settings");
+                  }}
+                />
+              </ThemedView>
+            );
+          },
+          headerRight: (props: {
+            tintColor?: string;
+            pressColor?: string;
+            pressOpacity?: number;
+            canGoBack: boolean;
+          }) => {
+            return (
+              <ThemedView
+                style={{ marginRight: 20, flexDirection: "row", columnGap: 20 }}
+              >
+                <MaterialIcons
+                  name="dark-mode"
+                  size={20}
+                  color={appColor().text}
+                  onPress={() => {
+                    router.push("/(core)/settings");
+                  }}
+                />
+                <Ionicons
+                  name="notifications-outline"
+                  size={20}
+                  color={appColor().text}
+                />
+              </ThemedView>
+            );
+          },
+        }}
+      />
+      <Tabs.Screen
+        name="services"
+        options={{
+          title: "Services",
+          headerTintColor: appColor().background,
+          headerTitleStyle: {
+            fontWeight: "600",
+            fontSize: 15,
+            color: appColor().text,
+          },
+          headerStyle: {
+            backgroundColor: appColor().background,
+          },
+          headerRight: (props: {
+            tintColor?: string;
+            pressColor?: string;
+            pressOpacity?: number;
+            canGoBack: boolean;
+          }) => {
+            return (
+              <ThemedView
+                style={{ marginRight: 20, flexDirection: "row", columnGap: 20 }}
+              >
+                <Feather
+                  name="settings"
+                  size={20}
+                  color={appColor().text}
+                  onPress={() => {
+                    router.push("/(core)/settings");
+                  }}
+                />
+              </ThemedView>
+            );
+          },
+        }}
+      />
     </Tabs>
   );
 }
