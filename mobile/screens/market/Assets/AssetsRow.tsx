@@ -2,7 +2,7 @@ import { Image, ImageSourcePropType } from "react-native";
 import { TText } from "@/components/TText";
 import { TView } from "@/components/TView";
 import React from "react";
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 
 export function AssetsRow(params: {
   imgUrl: ImageSourcePropType | undefined;
@@ -12,7 +12,7 @@ export function AssetsRow(params: {
   performance: string;
   onPress?: VoidFunction;
 }) {
-  const bgColor = appColor().accent;
+  const bgColor = appColor.accent;
   return (
     <TView
       style={{

@@ -1,9 +1,10 @@
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { BlurView } from "expo-blur";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function BlurTabBarBackground() {
+    const appColor = useColor();
   return (
     <BlurView
       // System chrome material automatically adapts to the system's theme
@@ -12,9 +13,9 @@ export default function BlurTabBarBackground() {
       intensity={0}
       // style={StyleSheet.absoluteFill}
       style={{
-        backgroundColor: appColor().primary,
+        backgroundColor: appColor.primary,
         borderTopWidth: 0.5,
-        borderColor: appColor().background,
+        borderColor: appColor.background,
       }}
     />
   );

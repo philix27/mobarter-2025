@@ -17,7 +17,7 @@ const apollo = new ApolloClient({
   uri: process.env.SERVER,
   cache: new InMemoryCache(),
 });
-export default function RootProviders(props: { children: ReactNode }) {
+export function RootProviders(props: { children: ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       <ApolloProvider client={apollo}>

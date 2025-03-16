@@ -1,6 +1,6 @@
 import { router, Tabs } from "expo-router";
 import React from "react";
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import { AppTabBar } from "@/components/BottomTabBar";
 import {
   Feather,
@@ -11,32 +11,33 @@ import {
 import { TView } from "@/components/TView";
 
 export default function TabLayout() {
+  const appColor = useColor();
   return (
     <Tabs
       tabBar={(props) => <AppTabBar {...props} />}
       // screenOptions={{
-      //   tabBarActiveTintColor: appColor().primary,
+      //   tabBarActiveTintColor: appColor.primary,
       //   tabBarButton: HapticTab,
       //   tabBarBackground: TabBarBackground,
       //   // headerBackButtonDisplayMode: "minimal",
-      //   tabBarActiveBackgroundColor: appColor().background,
-      //   tabBarInactiveBackgroundColor: appColor().background,
+      //   tabBarActiveBackgroundColor: appColor.background,
+      //   tabBarInactiveBackgroundColor: appColor.background,
       //   headerTitleStyle: {
-      //     color: appColor().muted,
+      //     color: appColor.muted,
       //   },
       //   headerShown: true,
       //   headerBackgroundContainerStyle: {
-      //     backgroundColor: appColor().background,
+      //     backgroundColor: appColor.background,
       //   },
       //   // headerBackgroundContainerStyle: {
-      //   //   backgroundColor: appColor().card,
+      //   //   backgroundColor: appColor.card,
       //   // },
       //   headerShadowVisible: false,
       //   tabBarStyle: Platform.select({
       //     ios: {
       //       // Use a transparent background on iOS to show the blur effect
       //       position: "absolute",
-      //       // color: appColor().background,
+      //       // color: appColor.background,
       //     },
       //     default: {},
       //   }),
@@ -46,14 +47,14 @@ export default function TabLayout() {
         name="market"
         options={{
           title: "Mobarter",
-          headerTintColor: appColor().background,
+          headerTintColor: appColor.background,
           headerTitleStyle: {
             fontWeight: "600",
             fontSize: 15,
-            color: appColor().text,
+            color: appColor.text,
           },
           headerStyle: {
-            backgroundColor: appColor().background,
+            backgroundColor: appColor.background,
           },
           headerLeft: (props: any) => {
             return (
@@ -63,7 +64,7 @@ export default function TabLayout() {
                 <MaterialCommunityIcons
                   name="account"
                   size={20}
-                  color={appColor().text}
+                  color={appColor.text}
                   onPress={() => {
                     router.push("/(core)/settings");
                   }}
@@ -84,7 +85,7 @@ export default function TabLayout() {
                 <MaterialIcons
                   name="dark-mode"
                   size={20}
-                  color={appColor().text}
+                  color={appColor.text}
                   onPress={() => {
                     router.push("/(core)/settings");
                   }}
@@ -92,7 +93,7 @@ export default function TabLayout() {
                 <Ionicons
                   name="notifications-outline"
                   size={20}
-                  color={appColor().text}
+                  color={appColor.text}
                 />
               </TView>
             );
@@ -103,14 +104,14 @@ export default function TabLayout() {
         name="services"
         options={{
           title: "Services",
-          headerTintColor: appColor().background,
+          headerTintColor: appColor.background,
           headerTitleStyle: {
             fontWeight: "600",
             fontSize: 15,
-            color: appColor().text,
+            color: appColor.text,
           },
           headerStyle: {
-            backgroundColor: appColor().background,
+            backgroundColor: appColor.background,
           },
           headerRight: (props: {
             tintColor?: string;
@@ -125,7 +126,7 @@ export default function TabLayout() {
                 <Feather
                   name="settings"
                   size={20}
-                  color={appColor().text}
+                  color={appColor.text}
                   onPress={() => {
                     router.push("/(core)/settings");
                   }}

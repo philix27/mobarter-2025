@@ -1,7 +1,7 @@
 import { View, StyleSheet, LayoutChangeEvent } from "react-native";
 import { PlatformPressable } from "@react-navigation/elements";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import { Feather } from "@expo/vector-icons";
 import Animated, {
   interpolate,
@@ -19,6 +19,7 @@ function TabBarButton(props: {
   label: string;
   routeName: string;
 }) {
+  const appColor = useColor();
   const icons = {
     market: (props: typeof Feather) => (
       <Feather name="home" size={20} {...props} />
@@ -83,7 +84,7 @@ export function AppTabBar({
   descriptors,
   navigation,
 }: BottomTabBarProps) {
-  const colors = appColor();
+  const colors = useColor();
   const [dimensions, setDimensions] = useState({ width: 100, height: 20 });
 
   const buttonWidth = dimensions.width / state.routes.length;
@@ -103,7 +104,16 @@ export function AppTabBar({
     };
   });
   return (
-    <View onLayout={onTabBarLayout} style={styles.tabar}>
+    <View
+      onLayout={onTabBarLayout}
+      style={[
+        styles.tabar,
+        {
+          backgroundColor: colors.background,
+          borderColor: colors.card,
+        },
+      ]}
+    >
       <Animated.View
         style={[
           animatedStyle,
@@ -172,8 +182,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 50,
     flexDirection: "row",
-    backgroundColor: appColor().background,
-    borderColor: appColor().card,
     borderWidth: 1.5,
     display: "flex",
     alignItems: "center",

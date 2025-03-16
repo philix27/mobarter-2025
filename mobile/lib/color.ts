@@ -1,9 +1,13 @@
 import { Colors } from "@/constants/Colors";
-import { useColorScheme } from "react-native";
+import { useContext } from "react";
+import { ThemeContext } from "./providers";
 
-export const appColor = () => {
-  // const colorScheme = useColorScheme();
+export const useColor = () => {
+  // const c = useTheme()
   // const apColor = Colors[colorScheme ?? "light"];
-  const apColor = Colors["dark"];
+  // const colorScheme = Appearance.getColorScheme();
+  const { theme } = useContext(ThemeContext);
+  const themeKey = theme === "dark" ? "dark" : "light";
+  const apColor = Colors[themeKey];
   return apColor;
 };

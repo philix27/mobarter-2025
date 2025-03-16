@@ -1,5 +1,5 @@
 import { SafeAreaView } from "react-native";
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import Balance from "./Balance";
 import QuickActions from "./QuickActions";
 import AssetsTab from "./AssetsTab";
@@ -14,7 +14,7 @@ export default function MarketScreen() {
     <SafeAreaView
       style={{
         height: "100%",
-        backgroundColor: appColor().background,
+        backgroundColor: appColor.background,
       }}
     >
       <TView style={{ paddingHorizontal: 20 }}>

@@ -1,17 +1,15 @@
 import { SafeAreaView, ScrollView } from "react-native";
 import { ReactNode } from "react";
 import { TView } from "./TView";
-import { TText } from "./TText";
-import InputButton from "./forms/Button";
-import { appColor } from "@/lib/color";
-import { Link } from "expo-router";
+import { useColor } from "@/lib/color";
 // import { ScrollView } from "react-native-gesture-handler";
 
 export default function Wrapper(props: { children: ReactNode }) {
+  const appColor = useColor();
   return (
     <SafeAreaView
       style={{
-        backgroundColor: appColor().background,
+        backgroundColor: appColor.background,
         minHeight: "100%",
       }}
     >

@@ -1,4 +1,4 @@
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import {
   ActivityIndicator,
   StyleProp,
@@ -14,13 +14,14 @@ export default function InputButton(props: {
   onPress: VoidFunction;
   variant?: "secondary" | "outline";
 }) {
+  const appColor = useColor();
   return (
     <TouchableOpacity
       style={{
         ...styles.button,
         ...props.style,
         backgroundColor:
-          props.variant === "secondary" ? "#282828" : appColor().primary,
+          props.variant === "secondary" ? "#282828" : appColor.primary,
       }}
       onPress={props.onPress}
     >
@@ -35,7 +36,6 @@ export default function InputButton(props: {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: appColor().primary,
     paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 10,

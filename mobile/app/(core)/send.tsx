@@ -1,12 +1,13 @@
 import HeaderBar from "@/components/Header";
 import { TText } from "@/components/TText";
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import { View, SafeAreaView } from "react-native";
 
 export default function Diseases() {
+  const appColor = useColor();
   return (
     <SafeAreaView
-      style={{ height: "100%", backgroundColor: appColor().background }}
+      style={{ height: "100%", backgroundColor: appColor.background }}
     >
       <HeaderBar title="Send" />
       <View

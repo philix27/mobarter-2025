@@ -2,7 +2,7 @@ import { SafeAreaView, StyleSheet, Text } from "react-native";
 import { TText } from "@/components/TText";
 import { TView } from "@/components/TView";
 import { BottomSheetView } from "@gorhom/bottom-sheet";
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import InputButton from "@/components/forms/Button";
 import {
   AppBottomSheet,
@@ -20,7 +20,7 @@ export default function ServicesScreen() {
     <SafeAreaView
       style={{
         height: "100%",
-        backgroundColor: appColor().background,
+        backgroundColor: appColor.background,
       }}
     >
       <TView style={{ paddingHorizontal: 20 }}>
@@ -81,6 +81,6 @@ const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     alignItems: "center",
-    // backgroundColor: appColor().card,
+    // backgroundColor: appColor.card,
   },
 });

@@ -1,8 +1,7 @@
-import { Image, ImageSourcePropType } from "react-native";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { Image } from "react-native";
 import { TText } from "@/components/TText";
 import { TView } from "@/components/TView";
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import HeaderBar from "@/components/Header";
 import { AppAssets } from "@/assets";
 import Wrapper from "@/components/Wrapper";
@@ -16,6 +15,7 @@ import {
 } from "@expo/vector-icons";
 
 export default function SettingsScreen() {
+  const appColor = useColor();
   return (
     <Wrapper>
       <HeaderBar title="Settings" />
@@ -93,10 +93,11 @@ export default function SettingsScreen() {
 }
 
 function UserLevel() {
+  const appColor = useColor();
   return (
     <TView
       style={{
-        backgroundColor: appColor().primary,
+        backgroundColor: appColor.primary,
         paddingHorizontal: 15,
         paddingVertical: 6,
         borderRadius: 10,
@@ -123,6 +124,7 @@ function SectionTitle(props: { title: string }) {
 }
 
 function Card(props: { children: ReactNode }) {
+  const appColor = useColor();
   return (
     <TView
       style={{
@@ -130,7 +132,7 @@ function Card(props: { children: ReactNode }) {
         borderRadius: 10,
         margin: 10,
         padding: 10,
-        backgroundColor: appColor().card,
+        backgroundColor: appColor.card,
       }}
     >
       {props.children}

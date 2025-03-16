@@ -1,5 +1,3 @@
-import { StyleSheet } from "react-native";
-import { appColor } from "@/lib/color";
 import HeaderBar from "@/components/Header";
 import QRCode from "react-native-qrcode-svg";
 import Wrapper from "@/components/Wrapper";
@@ -36,23 +34,3 @@ export default function SettingsScreen() {
     </Wrapper>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-    backgroundColor: appColor().background,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
-  },
-});

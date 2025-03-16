@@ -1,6 +1,6 @@
 import { TText } from "@/components/TText";
 import { Link } from "expo-router";
-import { SafeAreaView, Text, View } from "react-native";
+import { SafeAreaView, View } from "react-native";
 
 export default function Page() {
   return (
@@ -16,7 +16,7 @@ export default function Page() {
         <Link href="/(tabs)/market">
           <TText type="subtitle">Market</TText>
         </Link>
-        <Link href="/app/(tabs)/market">
+        <Link href={"/app/(tabs)/market" as any}>
           <TText type="subtitle">Market Tab</TText>
         </Link>
         <Link href="/auth/sign-in">

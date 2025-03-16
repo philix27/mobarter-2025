@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { TView } from "./TView";
 import { TText } from "./TText";
 import InputButton from "./forms/Button";
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import { Link } from "expo-router";
 
 export default function AuthWrapper(props: {
@@ -18,10 +18,11 @@ export default function AuthWrapper(props: {
   bottomText: string;
   isLoading?: boolean;
 }) {
+  const appColor = useColor();
   return (
     <SafeAreaView
       style={{
-        backgroundColor: appColor().background,
+        backgroundColor: appColor.background,
         minHeight: "100%",
       }}
     >
@@ -34,7 +35,7 @@ export default function AuthWrapper(props: {
             width: "100%",
             paddingHorizontal: 20,
             minHeight: "100%",
-            backgroundColor: appColor().background,
+            backgroundColor: appColor.background,
           }}
         >
           <TView

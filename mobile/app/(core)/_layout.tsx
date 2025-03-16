@@ -1,17 +1,15 @@
-import { appColor } from "@/lib/color";
-import { Ionicons } from "@expo/vector-icons";
-import { Stack, router } from "expo-router";
-import { Platform } from "react-native";
+import { useColor } from "@/lib/color";
+import { Stack } from "expo-router";
 
 export default function Layout() {
-  const backIcon = Platform.OS === "ios" ? "chevron-back" : "arrow-back-sharp";
+  const appColor = useColor();
   return (
     <Stack
       screenOptions={{
         headerStyle: {
-          backgroundColor: appColor().background,
+          backgroundColor: appColor.background,
         },
-        headerTintColor: appColor().foreground,
+        headerTintColor: appColor.foreground,
         headerTitleStyle: {
           fontWeight: "bold",
         },

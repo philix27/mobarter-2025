@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { TouchableOpacity, View, ViewStyle } from "react-native";
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import { TText } from "./TText";
 
 export default function IconRound(props: {
@@ -9,6 +9,7 @@ export default function IconRound(props: {
   onPress?: VoidFunction;
   style?: ViewStyle;
 }) {
+  const appColor = useColor();
   return (
     <View
       style={[
@@ -26,7 +27,7 @@ export default function IconRound(props: {
             borderRadius: 25,
             height: 50,
             width: 50,
-            backgroundColor: appColor().secondary,
+            backgroundColor: appColor.secondary,
             // padding: 20,
             display: "flex",
             justifyContent: "center",

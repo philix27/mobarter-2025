@@ -1,6 +1,6 @@
 import IconRound from "@/components/IconRound";
 import { TView } from "@/components/TView";
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import React from "react";
 import { router } from "expo-router";
 import { IconSymbol } from "@/components/ui/IconSymbol.ios";
@@ -16,7 +16,7 @@ export default function QuickActions() {
           flexDirection: "row",
           justifyContent: "space-around",
           alignItems: "center",
-          backgroundColor: appColor().background,
+          backgroundColor: appColor.background,
         }}
       >
         <IconRound

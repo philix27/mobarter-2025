@@ -1,6 +1,6 @@
 import { TText } from "@/components/TText";
 import { TView } from "@/components/TView";
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import { AppStores } from "@/lib/zustand";
 import React from "react";
 import { TouchableOpacity } from "react-native";
@@ -55,7 +55,7 @@ function TabIem(params: {
           style={{
             fontSize: 16,
             fontWeight: params.isActive ? 600 : 500,
-            color: params.isActive ? appColor().primary : appColor().muted,
+            color: params.isActive ? appColor.primary : appColor.muted,
           }}
         >
           {params.title}

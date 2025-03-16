@@ -1,6 +1,6 @@
 import { TText } from "@/components/TText";
 import { TView } from "@/components/TView";
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import React from "react";
 
 export default function Balance() {
@@ -9,7 +9,7 @@ export default function Balance() {
       style={{
         marginTop: 10,
         marginBottom: 10,
-        backgroundColor: appColor().primary,
+        backgroundColor: appColor.primary,
         width: "auto",
         borderRadius: 20,
         padding: 20,

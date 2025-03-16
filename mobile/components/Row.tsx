@@ -1,8 +1,7 @@
 import IconRound from "@/components/IconRound";
 import { TText } from "@/components/TText";
 import { TView } from "@/components/TView";
-import { appColor } from "@/lib/color";
-import { router } from "expo-router";
+import { useColor } from "@/lib/color";
 import { TouchableOpacity } from "react-native";
 
 export default function Row(props: {
@@ -12,7 +11,8 @@ export default function Row(props: {
   icon?: JSX.Element;
   onClick?: VoidFunction;
 }) {
-  const bgColor = appColor().accent;
+  const appColor = useColor();
+  const bgColor = appColor.accent;
   return (
     <TouchableOpacity
       style={{
@@ -43,7 +43,7 @@ export default function Row(props: {
 
         <TView style={{ backgroundColor: bgColor }}>
           <TText type="defaultSemiBold">{props.title}</TText>
-          <TText style={{ color: appColor().muted, fontSize: 13 }}>
+          <TText style={{ color: appColor.muted, fontSize: 13 }}>
             {props.desc}
           </TText>
         </TView>

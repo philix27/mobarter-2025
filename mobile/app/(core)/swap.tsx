@@ -1,7 +1,7 @@
 import { SafeAreaView, StyleSheet } from "react-native";
 import { TText } from "@/components/TText";
 import { TView } from "@/components/TView";
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import HeaderBar from "@/components/Header";
 
 export default function SettingsScreen() {
@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
-    backgroundColor: appColor().background,
   },
   stepContainer: {
     gap: 8,

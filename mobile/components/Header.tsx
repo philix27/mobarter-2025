@@ -1,4 +1,4 @@
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import { Ionicons } from "@expo/vector-icons";
 import { router, Stack } from "expo-router";
 import React from "react";
@@ -11,24 +11,25 @@ export default function HeaderBar({
   title: string;
   hideBack?: boolean;
 }) {
+  const appColor = useColor();
   const backIcon = Platform.OS === "ios" ? "chevron-back" : "arrow-back-sharp";
   return (
     <Stack.Screen
       options={{
         title: props.title,
-        headerTintColor: appColor().background,
+        headerTintColor: appColor.background,
         headerTitleStyle: {
           fontWeight: "600",
           fontSize: 14,
-          color: appColor().text,
+          color: appColor.text,
         },
         contentStyle: {
-          backgroundColor: appColor().background,
-          borderColor: appColor().background,
+          backgroundColor: appColor.background,
+          borderColor: appColor.background,
         },
 
         headerStyle: {
-          backgroundColor: appColor().background,
+          backgroundColor: appColor.background,
         },
         headerLeft: hideBack
           ? undefined

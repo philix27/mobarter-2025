@@ -12,7 +12,7 @@ import {
 } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { StyleSheet } from "react-native";
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 
 type Props = {
   title?: string;
@@ -22,6 +22,7 @@ type Props = {
 type Ref = BottomSheetModal;
 
 export const AppBottomSheet = forwardRef<Ref, Props>((props, ref) => {
+  const appColor = useColor();
   const snapPoints = useMemo(() => ["25%", "50%", "75%"], []);
 
   const renderBackDrop = useCallback(
@@ -36,13 +37,13 @@ export const AppBottomSheet = forwardRef<Ref, Props>((props, ref) => {
           index={1}
           enablePanDownToClose={true}
           snapPoints={snapPoints}
-          style={styles.sheet}
+          style={[styles.sheet, { backgroundColor: appColor.card }]}
           backgroundStyle={{
-            backgroundColor: appColor().background,
+            backgroundColor: appColor.background,
           }}
-          handleIndicatorStyle={{ backgroundColor: appColor().cardForeground }}
+          handleIndicatorStyle={{ backgroundColor: appColor.cardForeground }}
           handleStyle={{
-            backgroundColor: appColor().accent,
+            backgroundColor: appColor.accent,
             borderTopLeftRadius: 10,
             borderTopRightRadius: 10,
           }}
@@ -57,7 +58,6 @@ export const AppBottomSheet = forwardRef<Ref, Props>((props, ref) => {
 
 const styles = StyleSheet.create({
   sheet: {
-    backgroundColor: appColor().card,
     borderRadius: 10,
     // zIndex: 10,
     shadowColor: "#4b4b4b",
