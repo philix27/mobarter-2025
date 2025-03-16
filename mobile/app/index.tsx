@@ -1,4 +1,4 @@
-import { ThemedText } from "@/components/ThemedText";
+import { TText } from "@/components/TText";
 import { Link } from "expo-router";
 import { SafeAreaView, Text, View } from "react-native";
 
@@ -14,16 +14,16 @@ export default function Page() {
     >
       <View>
         <Link href="/(tabs)/market">
-          <ThemedText type="subtitle">Market</ThemedText>
+          <TText type="subtitle">Market</TText>
         </Link>
         <Link href="/app/(tabs)/market">
-          <ThemedText type="subtitle">Market Tab</ThemedText>
+          <TText type="subtitle">Market Tab</TText>
         </Link>
         <Link href="/auth/sign-in">
-          <ThemedText type="subtitle">Login</ThemedText>
+          <TText type="subtitle">Login</TText>
         </Link>
         <Link href="/auth/sign-up">
-          <ThemedText type="subtitle">Create account</ThemedText>
+          <TText type="subtitle">Create account</TText>
         </Link>
       </View>
     </SafeAreaView>

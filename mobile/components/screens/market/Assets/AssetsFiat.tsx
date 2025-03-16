@@ -1,5 +1,5 @@
 import { AppAssets } from "@/assets";
-import { ThemedView } from "@/components/ThemedView";
+import { TView } from "@/components/TView";
 import React from "react";
 import { ScrollView } from "react-native";
 import { AssetsRow } from "./AssetsRow";
@@ -7,7 +7,7 @@ import { AssetsRow } from "./AssetsRow";
 export default function AssetsFiat() {
   return (
     <ScrollView>
-      <ThemedView style={{ marginBottom: 50 }}>
+      <TView style={{ marginBottom: 50 }}>
         <AssetsRow
           imgUrl={AppAssets.flags.NGN}
           currency={"Naira"}
@@ -48,7 +48,7 @@ export default function AssetsFiat() {
           performance={"+2.3%"}
           onPress={undefined}
         />
-      </ThemedView>
+      </TView>
     </ScrollView>
   );
 }

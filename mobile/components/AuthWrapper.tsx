@@ -1,7 +1,7 @@
 import { SafeAreaView, ScrollView } from "react-native";
 import { ReactNode } from "react";
-import { ThemedView } from "./ThemedView";
-import { ThemedText } from "./ThemedText";
+import { TView } from "./TView";
+import { TText } from "./TText";
 import InputButton from "./forms/Button";
 import { appColor } from "@/lib/color";
 import { Link } from "expo-router";
@@ -26,7 +26,7 @@ export default function AuthWrapper(props: {
       }}
     >
       <ScrollView>
-        <ThemedView
+        <TView
           style={{
             height: "100%",
             display: "flex",
@@ -37,7 +37,7 @@ export default function AuthWrapper(props: {
             backgroundColor: appColor().background,
           }}
         >
-          <ThemedView
+          <TView
             style={{
               marginTop: 20,
               marginBottom: 10,
@@ -48,13 +48,13 @@ export default function AuthWrapper(props: {
               alignSelf: "center",
             }}
           >
-            <ThemedText type="title">{props.title}</ThemedText>
-          </ThemedView>
+            <TText type="title">{props.title}</TText>
+          </TView>
 
           {props.subtitle && (
-            <ThemedView style={{ marginBottom: 40 }}>
-              <ThemedText type="defaultSemiBold">{props.subtitle}</ThemedText>
-            </ThemedView>
+            <TView style={{ marginBottom: 40 }}>
+              <TText type="defaultSemiBold">{props.subtitle}</TText>
+            </TView>
           )}
           {props.children}
           <InputButton
@@ -64,15 +64,15 @@ export default function AuthWrapper(props: {
             isLoading={props.isLoading}
           />
           {props.bottomComp && props.bottomComp}
-          <ThemedText type="default" style={{ marginBottom: 5 }}>
+          <TText type="default" style={{ marginBottom: 5 }}>
             {props.bottomText}
-          </ThemedText>
+          </TText>
           {props.linkHref && props.linkText && (
             <Link href={props.linkHref as any}>
-              <ThemedText type="link">{props.linkText}</ThemedText>
+              <TText type="link">{props.linkText}</TText>
             </Link>
           )}
-        </ThemedView>
+        </TView>
       </ScrollView>
     </SafeAreaView>
   );

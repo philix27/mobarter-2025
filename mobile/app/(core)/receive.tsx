@@ -3,8 +3,8 @@ import { appColor } from "@/lib/color";
 import HeaderBar from "@/components/Header";
 import QRCode from "react-native-qrcode-svg";
 import Wrapper from "@/components/Wrapper";
-import { ThemedView } from "@/components/ThemedView";
-import { ThemedText } from "@/components/ThemedText";
+import { TView } from "@/components/TView";
+import { TText } from "@/components/TText";
 import InputButton from "@/components/forms/Button";
 
 export default function SettingsScreen() {
@@ -12,7 +12,7 @@ export default function SettingsScreen() {
     <Wrapper>
       <HeaderBar title="Receive" />
 
-      <ThemedView
+      <TView
         style={{
           paddingVertical: 50,
           flexDirection: "column",
@@ -20,19 +20,19 @@ export default function SettingsScreen() {
           rowGap: 20,
         }}
       >
-        <ThemedText type="defaultSemiBold">Wallet Address</ThemedText>
+        <TText type="defaultSemiBold">Wallet Address</TText>
         <QRCode
           value="https://www.mobarter.com/"
           logoBackgroundColor="transparent"
           size={250}
         />
-        <ThemedView style={{ width: "80%" }}>
-          <ThemedText style={{ textAlign: "center" }}>
+        <TView style={{ width: "80%" }}>
+          <TText style={{ textAlign: "center" }}>
             0x462E5F272B8431562811126779da6EcaE51A5B40
-          </ThemedText>
-        </ThemedView>
+          </TText>
+        </TView>
         <InputButton title="Copy" onPress={() => {}} />
-      </ThemedView>
+      </TView>
     </Wrapper>
   );
 }

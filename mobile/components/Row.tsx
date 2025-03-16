@@ -1,6 +1,6 @@
 import IconRound from "@/components/IconRound";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { TText } from "@/components/TText";
+import { TView } from "@/components/TView";
 import { appColor } from "@/lib/color";
 import { router } from "expo-router";
 import { TouchableOpacity } from "react-native";
@@ -24,7 +24,7 @@ export default function Row(props: {
       }}
       onPress={props.onClick}
     >
-      <ThemedView
+      <TView
         style={{
           backgroundColor: bgColor,
           flexDirection: "row",
@@ -41,13 +41,13 @@ export default function Row(props: {
           </IconRound>
         )}
 
-        <ThemedView style={{ backgroundColor: bgColor }}>
-          <ThemedText type="defaultSemiBold">{props.title}</ThemedText>
-          <ThemedText style={{ color: appColor().muted, fontSize: 13 }}>
+        <TView style={{ backgroundColor: bgColor }}>
+          <TText type="defaultSemiBold">{props.title}</TText>
+          <TText style={{ color: appColor().muted, fontSize: 13 }}>
             {props.desc}
-          </ThemedText>
-        </ThemedView>
-      </ThemedView>
+          </TText>
+        </TView>
+      </TView>
     </TouchableOpacity>
   );
 }

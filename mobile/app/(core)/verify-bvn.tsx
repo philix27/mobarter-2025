@@ -1,6 +1,6 @@
 import { Image, SafeAreaView, StyleSheet } from "react-native";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { TText } from "@/components/TText";
+import { TView } from "@/components/TView";
 import { appColor } from "@/lib/color";
 import HeaderBar from "@/components/Header";
 
@@ -8,9 +8,9 @@ export default function MinisafeScreen() {
   return (
     <SafeAreaView>
       <HeaderBar title="Verify BVN" />
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-      </ThemedView>
+      <TView style={styles.titleContainer}>
+        <TText type="title">Welcome!</TText>
+      </TView>
     </SafeAreaView>
   );
 }

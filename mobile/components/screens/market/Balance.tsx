@@ -1,11 +1,11 @@
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { appColor } from '@/lib/color';
-import React from 'react'
+import { TText } from "@/components/TText";
+import { TView } from "@/components/TView";
+import { appColor } from "@/lib/color";
+import React from "react";
 
 export default function Balance() {
   return (
-    <ThemedView
+    <TView
       style={{
         marginTop: 10,
         marginBottom: 10,
@@ -16,7 +16,7 @@ export default function Balance() {
         height: 120,
       }}
     >
-      <ThemedText type="defaultSemiBold">Balance:</ThemedText>
-    </ThemedView>
+      <TText type="defaultSemiBold">Balance:</TText>
+    </TView>
   );
 }

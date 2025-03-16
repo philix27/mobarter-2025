@@ -1,5 +1,5 @@
 import IconRound from "@/components/IconRound";
-import { ThemedView } from "@/components/ThemedView";
+import { TView } from "@/components/TView";
 import { appColor } from "@/lib/color";
 import React from "react";
 import { router } from "expo-router";
@@ -9,7 +9,7 @@ import { Feather, Ionicons, MaterialIcons } from "@expo/vector-icons";
 export default function QuickActions() {
   return (
     <>
-      <ThemedView
+      <TView
         style={{
           marginVertical: 10,
           display: "flex",
@@ -51,7 +51,7 @@ export default function QuickActions() {
         >
           <Ionicons name="swap-horizontal" size={24} color="#fff" />
         </IconRound>
-      </ThemedView>
+      </TView>
     </>
   );
 }

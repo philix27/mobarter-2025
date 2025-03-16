@@ -8,7 +8,7 @@ import {
   MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
-import { ThemedView } from "@/components/ThemedView";
+import { TView } from "@/components/TView";
 
 export default function TabLayout() {
   return (
@@ -57,7 +57,7 @@ export default function TabLayout() {
           },
           headerLeft: (props: any) => {
             return (
-              <ThemedView
+              <TView
                 style={{ marginLeft: 20, flexDirection: "row", columnGap: 20 }}
               >
                 <MaterialCommunityIcons
@@ -68,7 +68,7 @@ export default function TabLayout() {
                     router.push("/(core)/settings");
                   }}
                 />
-              </ThemedView>
+              </TView>
             );
           },
           headerRight: (props: {
@@ -78,7 +78,7 @@ export default function TabLayout() {
             canGoBack: boolean;
           }) => {
             return (
-              <ThemedView
+              <TView
                 style={{ marginRight: 20, flexDirection: "row", columnGap: 20 }}
               >
                 <MaterialIcons
@@ -94,7 +94,7 @@ export default function TabLayout() {
                   size={20}
                   color={appColor().text}
                 />
-              </ThemedView>
+              </TView>
             );
           },
         }}
@@ -119,7 +119,7 @@ export default function TabLayout() {
             canGoBack: boolean;
           }) => {
             return (
-              <ThemedView
+              <TView
                 style={{ marginRight: 20, flexDirection: "row", columnGap: 20 }}
               >
                 <Feather
@@ -130,7 +130,7 @@ export default function TabLayout() {
                     router.push("/(core)/settings");
                   }}
                 />
-              </ThemedView>
+              </TView>
             );
           },
         }}

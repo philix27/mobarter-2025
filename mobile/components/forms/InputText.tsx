@@ -1,7 +1,7 @@
 import { TextInput, StyleSheet, KeyboardTypeOptions } from "react-native";
-import { ThemedText } from "../ThemedText";
+import { TText } from "../TText";
 import { IconSymbol } from "../ui/IconSymbol";
-import { ThemedView } from "../ThemedView";
+import { TView } from "../TView";
 import { appColor } from "@/lib/color";
 
 export default function InputText(props: {
@@ -15,12 +15,12 @@ export default function InputText(props: {
   keyboardType?: KeyboardTypeOptions | undefined;
 }) {
   return (
-    <ThemedView>
-      <ThemedView style={styles.container}>
+    <TView>
+      <TView style={styles.container}>
         {props.label && (
-          <ThemedText style={styles.label} type="default">
+          <TText style={styles.label} type="default">
             {props.label}
-          </ThemedText>
+          </TText>
         )}
         <TextInput
           style={styles.input}
@@ -38,11 +38,9 @@ export default function InputText(props: {
             style={styles.icon}
           />
         )}
-      </ThemedView>
-      {props.error && (
-        <ThemedText style={styles.error}>{props.error}</ThemedText>
-      )}
-    </ThemedView>
+      </TView>
+      {props.error && <TText style={styles.error}>{props.error}</TText>}
+    </TView>
   );
 }
 

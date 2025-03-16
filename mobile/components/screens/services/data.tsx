@@ -13,6 +13,13 @@ export const servicesList: {
   icon: JSX.Element;
 }[] = [
   {
+    title: "Provide Liquidity",
+    desc: "Provide liquidity to Mobarter Swap",
+    route: "/(core)/settings",
+    icon: <Feather name="settings" size={24} color={"#fff"} />,
+    bgColor: "#03c4b1",
+  },
+  {
     title: "Minisafe",
     desc: "Lock your safe",
     route: "/(core)/minisafe",
@@ -38,12 +45,5 @@ export const servicesList: {
     route: "/(core)/purchase-utilities",
     icon: <Feather name="send" size={24} color={"#fff"} />,
     bgColor: "#8c045f",
-  },
-  {
-    title: "Settings",
-    desc: "Profile and KYC credentials",
-    route: "/(core)/settings",
-    icon: <Feather name="settings" size={24} color={"#fff"} />,
-    bgColor: "#03c4b1",
   },
 ];

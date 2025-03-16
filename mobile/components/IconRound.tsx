@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { TouchableOpacity, View, ViewStyle } from "react-native";
 import { appColor } from "@/lib/color";
-import { ThemedText } from "./ThemedText";
+import { TText } from "./TText";
 
 export default function IconRound(props: {
   children: ReactNode;
@@ -37,9 +37,9 @@ export default function IconRound(props: {
         </View>
       </TouchableOpacity>
       {props.title && (
-        <ThemedText style={{ marginTop: 5, fontSize: 12 }} type="default">
+        <TText style={{ marginTop: 5, fontSize: 12 }} type="default">
           {props.title}
-        </ThemedText>
+        </TText>
       )}
     </View>
   );

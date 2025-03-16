@@ -1,5 +1,5 @@
 import HeaderBar from "@/components/Header";
-import { ThemedText } from "@/components/ThemedText";
+import { TText } from "@/components/TText";
 import { appColor } from "@/lib/color";
 import { fetch as expoFetch } from "expo/fetch";
 import { View, TextInput, ScrollView, Text, SafeAreaView } from "react-native";
@@ -18,7 +18,7 @@ export default function App() {
           paddingHorizontal: 8,
         }}
       >
-        <ThemedText>AI Guy</ThemedText>
+        <TText>AI Guy</TText>
       </View>
     </SafeAreaView>
   );

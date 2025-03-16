@@ -1,5 +1,5 @@
 import { SafeAreaView, StyleSheet, Text } from "react-native";
-import { ThemedText } from "@/components/ThemedText";
+import { TText } from "@/components/TText";
 import InputButton from "@/components/forms/Button";
 import { BottomSheetView } from "@gorhom/bottom-sheet";
 import { AppBottomSheet, useAppBottomSheet } from "../AppBottomSheet";
@@ -10,7 +10,7 @@ import AssetsTab from "./AssetsTab";
 import { AppStores } from "@/lib/zustand";
 import AssetsCrypto from "./Assets/AssetsCrypto";
 import AssetsFiat from "./Assets/AssetsFiat";
-import { ThemedView } from "@/components/ThemedView";
+import { TView } from "@/components/TView";
 
 export default function MarketScreen() {
   const store = AppStores.useView();
@@ -22,7 +22,7 @@ export default function MarketScreen() {
         backgroundColor: appColor().background,
       }}
     >
-      <ThemedView style={{ paddingHorizontal: 20 }}>
+      <TView style={{ paddingHorizontal: 20 }}>
         <Balance />
         <QuickActions />
 
@@ -41,17 +41,17 @@ export default function MarketScreen() {
 
         <AssetsTab />
         {store.activeViewAsset === "Fiat" ? <AssetsFiat /> : <AssetsCrypto />}
-      </ThemedView>
+      </TView>
 
       <AppBottomSheet ref={ref}>
         <BottomSheetView>
           <Text>Awesome 🎉</Text>
 
-          <ThemedView>
-            <ThemedText type="defaultSemiBold">Hello</ThemedText>
-            <ThemedText type="default" style={{ fontSize: 13 }}>
+          <TView>
+            <TText type="defaultSemiBold">Hello</TText>
+            <TText type="default" style={{ fontSize: 13 }}>
               Performance
-            </ThemedText>
+            </TText>
             <InputButton
               title={"Open"}
               onPress={() => {
@@ -64,10 +64,9 @@ export default function MarketScreen() {
                 handleDismiss();
               }}
             />
-          </ThemedView>
+          </TView>
         </BottomSheetView>
       </AppBottomSheet>
-      
     </SafeAreaView>
   );
 }

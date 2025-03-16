@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet } from "react-native";
-import { ThemedView } from "@/components/ThemedView";
+import { TView } from "@/components/TView";
 import React from "react";
 import { AppAssets } from "@/assets";
 import { AssetsRow } from "./AssetsRow";
@@ -7,7 +7,7 @@ import { AssetsRow } from "./AssetsRow";
 export default function AssetsCrypto() {
   return (
     <ScrollView>
-      <ThemedView style={{ marginBottom: 50 }}>
+      <TView style={{ marginBottom: 50 }}>
         <AssetsRow
           imgUrl={AppAssets.logo.atom}
           currency={"Ethereum"}
@@ -72,7 +72,7 @@ export default function AssetsCrypto() {
           performance={"+2.3%"}
           onPress={undefined}
         />
-      </ThemedView>
+      </TView>
     </ScrollView>
   );
 }

@@ -1,7 +1,7 @@
 import { SafeAreaView, ScrollView } from "react-native";
 import { ReactNode } from "react";
-import { ThemedView } from "./ThemedView";
-import { ThemedText } from "./ThemedText";
+import { TView } from "./TView";
+import { TText } from "./TText";
 import InputButton from "./forms/Button";
 import { appColor } from "@/lib/color";
 import { Link } from "expo-router";
@@ -16,7 +16,7 @@ export default function Wrapper(props: { children: ReactNode }) {
       }}
     >
       <ScrollView>
-        <ThemedView
+        <TView
           style={{
             height: "100%",
             display: "flex",
@@ -27,7 +27,7 @@ export default function Wrapper(props: { children: ReactNode }) {
           }}
         >
           {props.children}
-        </ThemedView>
+        </TView>
       </ScrollView>
     </SafeAreaView>
   );

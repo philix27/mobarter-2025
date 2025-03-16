@@ -1,5 +1,5 @@
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { TText } from "@/components/TText";
+import { TView } from "@/components/TView";
 import { appColor } from "@/lib/color";
 import { AppStores } from "@/lib/zustand";
 import React from "react";
@@ -8,8 +8,8 @@ import { TouchableOpacity } from "react-native";
 export default function AssetsTab() {
   const store = AppStores.useView();
   return (
-    <ThemedView>
-      <ThemedView
+    <TView>
+      <TView
         style={{
           display: "flex",
           flexDirection: "row",
@@ -31,8 +31,8 @@ export default function AssetsTab() {
             store.update({ activeViewAsset: "Fiat" });
           }}
         />
-      </ThemedView>
-    </ThemedView>
+      </TView>
+    </TView>
   );
 }
 
@@ -43,14 +43,14 @@ function TabIem(params: {
 }) {
   return (
     <TouchableOpacity onPress={params.onPress}>
-      <ThemedView
+      <TView
         style={{
           paddingVertical: 5,
           paddingHorizontal: 10,
           marginRight: 8,
         }}
       >
-        <ThemedText
+        <TText
           type="default"
           style={{
             fontSize: 16,
@@ -59,8 +59,8 @@ function TabIem(params: {
           }}
         >
           {params.title}
-        </ThemedText>
-      </ThemedView>
+        </TText>
+      </TView>
     </TouchableOpacity>
   );
 }

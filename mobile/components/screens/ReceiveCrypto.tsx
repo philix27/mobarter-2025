@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useRef } from "react";
-import { ThemedView } from "../ThemedView";
+import { TView } from "../TView";
 import BottomSheet, { BottomSheetBackdrop } from "@gorhom/bottom-sheet";
-import { ThemedText } from "../ThemedText";
+import { TText } from "../TText";
 import { BottomSheetMethods } from "@gorhom/bottom-sheet/lib/typescript/types";
 
 export default function ReceiveCryptoView() {
@@ -15,18 +15,18 @@ export default function ReceiveCryptoView() {
     []
   );
   return (
-    <ThemedView>
+    <TView>
       <BottomSheet
         enablePanDownToClose={true}
         snapPoints={snapPoints}
         backdropComponent={renderBackDrop}
       >
-        <ThemedView>
-          <ThemedText>QR code</ThemedText>
-          <ThemedText>Wallet</ThemedText>
-        </ThemedView>
+        <TView>
+          <TText>QR code</TText>
+          <TText>Wallet</TText>
+        </TView>
       </BottomSheet>
-    </ThemedView>
+    </TView>
   );
 }
 

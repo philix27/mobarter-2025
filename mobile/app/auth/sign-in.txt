@@ -1,6 +1,6 @@
 import AuthWrapper from "@/components/AuthWrapper";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { TText } from "@/components/TText";
+import { TView } from "@/components/TView";
 import InputText from "@/components/forms/InputText";
 import ApiHooks from "@/lib/endpoints";
 import { Link } from "expo-router";
@@ -55,7 +55,7 @@ export default function SignInPage() {
       linkHref="/auth/sign-up"
       linkText="Sign up"
     >
-      <ThemedView>
+      <TView>
         <InputText
           label={"Email"}
           keyboardType="email-address"
@@ -74,12 +74,12 @@ export default function SignInPage() {
           }
         />
 
-        <ThemedView style={{ paddingTop: 5, marginBottom: 10 }}>
+        <TView style={{ paddingTop: 5, marginBottom: 10 }}>
           <Link href={"/auth/reset-email"}>
-            <ThemedText type="link">Forgot Password</ThemedText>
+            <TText type="link">Forgot Password</TText>
           </Link>
-        </ThemedView>
-      </ThemedView>
+        </TView>
+      </TView>
     </AuthWrapper>
   );
 }

@@ -1,6 +1,6 @@
 import { Image, ImageSourcePropType } from "react-native";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { TText } from "@/components/TText";
+import { TView } from "@/components/TView";
 import React from "react";
 import { appColor } from "@/lib/color";
 
@@ -14,7 +14,7 @@ export function AssetsRow(params: {
 }) {
   const bgColor = appColor().accent;
   return (
-    <ThemedView
+    <TView
       style={{
         paddingVertical: 10,
         marginBottom: 4,
@@ -23,7 +23,7 @@ export function AssetsRow(params: {
         borderRadius: 15,
       }}
     >
-      <ThemedView
+      <TView
         style={{
           display: "flex",
           flexDirection: "row",
@@ -31,14 +31,14 @@ export function AssetsRow(params: {
           backgroundColor: bgColor,
         }}
       >
-        <ThemedView
+        <TView
           style={{
             display: "flex",
             flexDirection: "row",
             backgroundColor: bgColor,
           }}
         >
-          <ThemedView
+          <TView
             style={{
               backgroundColor: bgColor,
               marginRight: 10,
@@ -52,20 +52,20 @@ export function AssetsRow(params: {
               source={params.imgUrl}
               style={{ height: 40, width: 40, borderRadius: 20 }}
             />
-          </ThemedView>
-          <ThemedView style={{ backgroundColor: bgColor }}>
-            <ThemedText type="defaultSemiBold">{params.currency}</ThemedText>
-            <ThemedText type="default" style={{ fontSize: 13 }}>
+          </TView>
+          <TView style={{ backgroundColor: bgColor }}>
+            <TText type="defaultSemiBold">{params.currency}</TText>
+            <TText type="default" style={{ fontSize: 13 }}>
               {params.performance}
-            </ThemedText>
-          </ThemedView>
-        </ThemedView>
+            </TText>
+          </TView>
+        </TView>
 
-        <ThemedView style={{ backgroundColor: bgColor }}>
-          <ThemedText>{params.dollarBalance}</ThemedText>
-          <ThemedText>{params.balance}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-    </ThemedView>
+        <TView style={{ backgroundColor: bgColor }}>
+          <TText>{params.dollarBalance}</TText>
+          <TText>{params.balance}</TText>
+        </TView>
+      </TView>
+    </TView>
   );
 }

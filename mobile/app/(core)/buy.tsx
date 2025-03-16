@@ -1,5 +1,5 @@
 import HeaderBar from "@/components/Header";
-import { ThemedText } from "@/components/ThemedText";
+import { TText } from "@/components/TText";
 import { appColor } from "@/lib/color";
 import { View, SafeAreaView } from "react-native";
 
@@ -17,7 +17,7 @@ export default function Diseases() {
           paddingHorizontal: 8,
         }}
       >
-        <ThemedText>How far</ThemedText>
+        <TText>How far</TText>
       </View>
     </SafeAreaView>
   );

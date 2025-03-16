@@ -12,7 +12,7 @@ export default function ServicesScreen() {
             key={i}
             {...val}
             onClick={() => {
-              router.push(val.route);
+              router.push(val.route as any);
             }}
           />
         );

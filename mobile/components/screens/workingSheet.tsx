@@ -1,6 +1,6 @@
 import { SafeAreaView, StyleSheet, Text } from "react-native";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { TText } from "@/components/TText";
+import { TView } from "@/components/TView";
 import { BottomSheetView } from "@gorhom/bottom-sheet";
 import { appColor } from "@/lib/color";
 import InputButton from "@/components/forms/Button";
@@ -13,8 +13,6 @@ export default function ServicesScreen() {
     ref: btmSheetRef,
   } = useAppBottomSheet();
 
- 
-
   return (
     <SafeAreaView
       style={{
@@ -22,12 +20,12 @@ export default function ServicesScreen() {
         backgroundColor: appColor().background,
       }}
     >
-      <ThemedView style={{ paddingHorizontal: 20 }}>
-        <ThemedView>
-          <ThemedText type="defaultSemiBold">Hello</ThemedText>
-          <ThemedText type="default" style={{ fontSize: 13 }}>
+      <TView style={{ paddingHorizontal: 20 }}>
+        <TView>
+          <TText type="defaultSemiBold">Hello</TText>
+          <TText type="default" style={{ fontSize: 13 }}>
             Performance
-          </ThemedText>
+          </TText>
           <InputButton
             title={"Open"}
             onPress={() => {
@@ -40,18 +38,18 @@ export default function ServicesScreen() {
               handleDismiss();
             }}
           />
-        </ThemedView>
-      </ThemedView>
+        </TView>
+      </TView>
 
       <AppBottomSheet ref={btmSheetRef}>
         <BottomSheetView style={styles.contentContainer}>
           <Text>Awesome 🎉</Text>
 
-          <ThemedView>
-            <ThemedText type="defaultSemiBold">Hello</ThemedText>
-            <ThemedText type="default" style={{ fontSize: 13 }}>
+          <TView>
+            <TText type="defaultSemiBold">Hello</TText>
+            <TText type="default" style={{ fontSize: 13 }}>
               Performance
-            </ThemedText>
+            </TText>
             <InputButton
               title={"Open"}
               onPress={() => {
@@ -64,7 +62,7 @@ export default function ServicesScreen() {
                 handleDismiss();
               }}
             />
-          </ThemedView>
+          </TView>
         </BottomSheetView>
       </AppBottomSheet>
     </SafeAreaView>

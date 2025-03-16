@@ -1,20 +1,25 @@
 import { Image, ImageSourcePropType } from "react-native";
 import { SafeAreaView, StyleSheet } from "react-native";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { TText } from "@/components/TText";
+import { TView } from "@/components/TView";
 import { appColor } from "@/lib/color";
 import HeaderBar from "@/components/Header";
 import { AppAssets } from "@/assets";
 import Wrapper from "@/components/Wrapper";
 import Row from "@/components/Row";
 import { ReactNode } from "react";
-import { Feather, Ionicons, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import {
+  Feather,
+  Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 
 export default function SettingsScreen() {
   return (
     <Wrapper>
       <HeaderBar title="Settings" />
-      <ThemedView
+      <TView
         style={{
           flexDirection: "column",
           alignItems: "center",
@@ -29,9 +34,9 @@ export default function SettingsScreen() {
           source={AppAssets.logo.bitcoin}
           style={{ height: 80, width: 80, borderRadius: 50, marginBottom: 20 }}
         />
-        <ThemedText type="subtitle">John Doe</ThemedText>
+        <TText type="subtitle">John Doe</TText>
         <UserLevel />
-      </ThemedView>
+      </TView>
 
       <SectionTitle title={"Personal"} />
       <Card>
@@ -89,7 +94,7 @@ export default function SettingsScreen() {
 
 function UserLevel() {
   return (
-    <ThemedView
+    <TView
       style={{
         backgroundColor: appColor().primary,
         paddingHorizontal: 15,
@@ -98,28 +103,28 @@ function UserLevel() {
         marginTop: 10,
       }}
     >
-      <ThemedText>Level 3</ThemedText>
-    </ThemedView>
+      <TText>Level 3</TText>
+    </TView>
   );
 }
 
 function SectionTitle(props: { title: string }) {
   return (
-    <ThemedView
+    <TView
       style={{
         width: "100%",
         marginLeft: 10,
         marginTop: 10,
       }}
     >
-      <ThemedText type="defaultSemiBold">{props.title}</ThemedText>
-    </ThemedView>
+      <TText type="defaultSemiBold">{props.title}</TText>
+    </TView>
   );
 }
 
 function Card(props: { children: ReactNode }) {
   return (
-    <ThemedView
+    <TView
       style={{
         width: "100%",
         borderRadius: 10,
@@ -129,6 +134,6 @@ function Card(props: { children: ReactNode }) {
       }}
     >
       {props.children}
-    </ThemedView>
+    </TView>
   );
 }

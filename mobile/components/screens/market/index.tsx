@@ -6,7 +6,7 @@ import AssetsTab from "./AssetsTab";
 import { AppStores } from "@/lib/zustand";
 import AssetsCrypto from "./Assets/AssetsCrypto";
 import AssetsFiat from "./Assets/AssetsFiat";
-import { ThemedView } from "@/components/ThemedView";
+import { TView } from "@/components/TView";
 
 export default function MarketScreen() {
   const store = AppStores.useView();
@@ -17,13 +17,13 @@ export default function MarketScreen() {
         backgroundColor: appColor().background,
       }}
     >
-      <ThemedView style={{ paddingHorizontal: 20 }}>
+      <TView style={{ paddingHorizontal: 20 }}>
         <Balance />
         <QuickActions />
 
         <AssetsTab />
         {store.activeViewAsset === "Fiat" ? <AssetsFiat /> : <AssetsCrypto />}
-      </ThemedView>
+      </TView>
     </SafeAreaView>
   );
 }
