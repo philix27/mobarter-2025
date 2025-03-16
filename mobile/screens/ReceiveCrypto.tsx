@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useRef } from "react";
-import { TView } from "../TView";
+import { TView } from "../components/TView";
 import BottomSheet, { BottomSheetBackdrop } from "@gorhom/bottom-sheet";
-import { TText } from "../TText";
+import { TText } from "../components/TText";
 import { BottomSheetMethods } from "@gorhom/bottom-sheet/lib/typescript/types";
 
 export default function ReceiveCryptoView() {

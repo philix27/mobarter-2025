@@ -1,4 +1,4 @@
-import ServicesScreen from "@/components/screens/services";
+import ServicesScreen from "@/screens/services";
 
 export default function HomeScreen() {
   return (

@@ -4,7 +4,10 @@ import { TView } from "@/components/TView";
 import { BottomSheetView } from "@gorhom/bottom-sheet";
 import { appColor } from "@/lib/color";
 import InputButton from "@/components/forms/Button";
-import { AppBottomSheet, useAppBottomSheet } from "./AppBottomSheet";
+import {
+  AppBottomSheet,
+  useAppBottomSheet,
+} from "../components/AppBottomSheet";
 
 export default function ServicesScreen() {
   const {

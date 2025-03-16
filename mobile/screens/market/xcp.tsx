@@ -2,7 +2,10 @@ import { SafeAreaView, StyleSheet, Text } from "react-native";
 import { TText } from "@/components/TText";
 import InputButton from "@/components/forms/Button";
 import { BottomSheetView } from "@gorhom/bottom-sheet";
-import { AppBottomSheet, useAppBottomSheet } from "../AppBottomSheet";
+import {
+  AppBottomSheet,
+  useAppBottomSheet,
+} from "../../components/AppBottomSheet";
 import { appColor } from "@/lib/color";
 import Balance from "./Balance";
 import QuickActions from "./QuickActions";

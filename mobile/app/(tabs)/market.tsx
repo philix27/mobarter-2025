@@ -1,5 +1,5 @@
 import HeaderBar from "@/components/Header";
-import MarketScreen from "@/components/screens/market";
+import MarketScreen from "@/screens/market";
 
 export default function MarketPage() {
   return (

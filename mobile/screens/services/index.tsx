@@ -1,5 +1,5 @@
 import { servicesList } from "./data";
-import Row from "../../Row";
+import Row from "../../components/Row";
 import Wrapper from "@/components/Wrapper";
 import { router } from "expo-router";
 
