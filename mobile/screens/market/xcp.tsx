@@ -18,6 +18,7 @@ import { TView } from "@/components/TView";
 export default function MarketScreen() {
   const store = AppStores.useView();
   const { handleDismiss, handlePresent, ref } = useAppBottomSheet();
+  const appColor = useColor();
   return (
     <SafeAreaView
       style={{

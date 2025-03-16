@@ -41,6 +41,7 @@ function TabIem(params: {
   isActive: boolean;
   onPress: VoidFunction;
 }) {
+  const appColor = useColor()
   return (
     <TouchableOpacity onPress={params.onPress}>
       <TView

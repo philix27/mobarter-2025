@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Slot } from "expo-router";
 import { ReactNode } from "react";
 import { BatchHttpLink } from "@apollo/client/link/batch-http";
+import { ThemeProvider } from "./ThemeContext";
 
 const httpLink = new BatchHttpLink({
   uri: "http://localhost:4545/graphql",
@@ -21,9 +22,11 @@ export function RootProviders(props: { children: ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       <ApolloProvider client={apollo}>
-        <BottomSheetModalProvider>
-          <Slot />
-        </BottomSheetModalProvider>
+        <ThemeProvider>
+          <BottomSheetModalProvider>
+            <Slot />
+          </BottomSheetModalProvider>
+        </ThemeProvider>
       </ApolloProvider>
     </QueryClientProvider>
   );

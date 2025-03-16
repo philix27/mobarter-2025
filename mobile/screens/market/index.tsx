@@ -10,6 +10,7 @@ import { TView } from "@/components/TView";
 
 export default function MarketScreen() {
   const store = AppStores.useView();
+  const appColor = useColor();
   return (
     <SafeAreaView
       style={{

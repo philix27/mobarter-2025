@@ -3,6 +3,7 @@ import { TView } from "@/components/TView";
 import React from "react";
 import { AppAssets } from "@/assets";
 import { AssetsRow } from "./AssetsRow";
+import { router } from "expo-router";
 
 export default function AssetsCrypto() {
   return (
@@ -10,11 +11,16 @@ export default function AssetsCrypto() {
       <TView style={{ marginBottom: 50 }}>
         <AssetsRow
           imgUrl={AppAssets.logo.atom}
-          currency={"Ethereum"}
+          currency={"ATOM"}
           balance={0.5}
           dollarBalance={5000}
           performance={"+2.3%"}
-          onPress={undefined}
+          onPress={() => {
+            router.push({
+              pathname: `/coin/1` as any,
+              params: { title: "ATOM" },
+            });
+          }}
         />
         <AssetsRow
           imgUrl={AppAssets.logo.bitcoin}
@@ -22,7 +28,12 @@ export default function AssetsCrypto() {
           balance={0.5}
           dollarBalance={5000}
           performance={"+2.3%"}
-          onPress={undefined}
+          onPress={() => {
+            router.push({
+              pathname: `/coin/1` as any,
+              params: { title: "Bitcoin" },
+            });
+          }}
         />
         <AssetsRow
           imgUrl={AppAssets.logo.celo}
@@ -30,7 +41,12 @@ export default function AssetsCrypto() {
           balance={0.5}
           dollarBalance={5000}
           performance={"+2.3%"}
-          onPress={undefined}
+          onPress={() => {
+            router.push({
+              pathname: `/coin/1` as any,
+              params: { title: "Celo" },
+            });
+          }}
         />
         <AssetsRow
           imgUrl={AppAssets.logo.ether}
@@ -38,7 +54,12 @@ export default function AssetsCrypto() {
           balance={0.5}
           dollarBalance={5000}
           performance={"+2.3%"}
-          onPress={undefined}
+          onPress={() => {
+            router.push({
+              pathname: `/coin/1` as any,
+              params: { title: "Ethereum" },
+            });
+          }}
         />
         <AssetsRow
           imgUrl={AppAssets.logo.cusd}
@@ -46,7 +67,12 @@ export default function AssetsCrypto() {
           balance={0.5}
           dollarBalance={5000}
           performance={"+2.3%"}
-          onPress={undefined}
+          onPress={() => {
+            router.push({
+              pathname: `/coin/1` as any,
+              params: { title: "cUSD" },
+            });
+          }}
         />
         <AssetsRow
           imgUrl={AppAssets.logo.glo}
@@ -54,7 +80,12 @@ export default function AssetsCrypto() {
           balance={0.5}
           dollarBalance={5000}
           performance={"+2.3%"}
-          onPress={undefined}
+          onPress={() => {
+            router.push({
+              pathname: `/coin/1` as any,
+              params: { title: "Glo" },
+            });
+          }}
         />
         <AssetsRow
           imgUrl={AppAssets.logo.usdt}
@@ -62,7 +93,12 @@ export default function AssetsCrypto() {
           balance={0.5}
           dollarBalance={5000}
           performance={"+2.3%"}
-          onPress={undefined}
+          onPress={() => {
+            router.push({
+              pathname: `/coin/1` as any,
+              params: { title: "USDT" },
+            });
+          }}
         />
         <AssetsRow
           imgUrl={AppAssets.logo.usdt}
@@ -70,7 +106,12 @@ export default function AssetsCrypto() {
           balance={0.5}
           dollarBalance={5000}
           performance={"+2.3%"}
-          onPress={undefined}
+          onPress={() => {
+            router.push({
+              pathname: `/coin/1` as any,
+              params: { title: "Ethereum" },
+            });
+          }}
         />
       </TView>
     </ScrollView>

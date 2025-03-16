@@ -4,6 +4,7 @@ import { useColor } from "@/lib/color";
 import React from "react";
 
 export default function Balance() {
+    const appColor = useColor();
   return (
     <TView
       style={{

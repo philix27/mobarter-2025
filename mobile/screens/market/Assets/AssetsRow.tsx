@@ -1,4 +1,4 @@
-import { Image, ImageSourcePropType } from "react-native";
+import { Image, ImageSourcePropType, TouchableOpacity } from "react-native";
 import { TText } from "@/components/TText";
 import { TView } from "@/components/TView";
 import React from "react";
@@ -12,9 +12,11 @@ export function AssetsRow(params: {
   performance: string;
   onPress?: VoidFunction;
 }) {
+  const appColor = useColor();
   const bgColor = appColor.accent;
   return (
-    <TView
+    <TouchableOpacity
+      onPress={params.onPress}
       style={{
         paddingVertical: 10,
         marginBottom: 4,
@@ -66,6 +68,6 @@ export function AssetsRow(params: {
           <TText>{params.balance}</TText>
         </TView>
       </TView>
-    </TView>
+    </TouchableOpacity>
   );
 }

@@ -187,7 +187,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     marginHorizontal: 100,
-    paddingVertical: 10,
+    // width: "auto",
+    // paddingVertical: 10,
     borderRadius: 100,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 10 },
@@ -199,6 +200,7 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    paddingVertical: 10,
     // backgroundColor: "teal",
   },
 });

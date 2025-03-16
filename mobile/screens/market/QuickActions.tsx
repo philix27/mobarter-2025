@@ -7,6 +7,7 @@ import { IconSymbol } from "@/components/ui/IconSymbol.ios";
 import { Feather, Ionicons, MaterialIcons } from "@expo/vector-icons";
 
 export default function QuickActions() {
+  const appColor = useColor();
   return (
     <>
       <TView
@@ -46,7 +47,7 @@ export default function QuickActions() {
         <IconRound
           title="Swap"
           onPress={() => {
-            router.push("/swap");
+            router.push("/swap" as any);
           }}
         >
           <Ionicons name="swap-horizontal" size={24} color="#fff" />

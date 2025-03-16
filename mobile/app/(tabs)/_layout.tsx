@@ -1,5 +1,5 @@
 import { router, Tabs } from "expo-router";
-import React from "react";
+import React, { useContext } from "react";
 import { useColor } from "@/lib/color";
 import { AppTabBar } from "@/components/BottomTabBar";
 import {
@@ -9,9 +9,12 @@ import {
   MaterialIcons,
 } from "@expo/vector-icons";
 import { TView } from "@/components/TView";
+import { ThemeContext } from "@/lib/providers";
+import { TouchableOpacity } from "react-native";
 
 export default function TabLayout() {
   const appColor = useColor();
+  const { toggleTheme } = useContext(ThemeContext);
   return (
     <Tabs
       tabBar={(props) => <AppTabBar {...props} />}
@@ -82,14 +85,17 @@ export default function TabLayout() {
               <TView
                 style={{ marginRight: 20, flexDirection: "row", columnGap: 20 }}
               >
-                <MaterialIcons
-                  name="dark-mode"
-                  size={20}
-                  color={appColor.text}
+                <TouchableOpacity
                   onPress={() => {
-                    router.push("/(core)/settings");
+                    toggleTheme();
                   }}
-                />
+                >
+                  <MaterialIcons
+                    name="dark-mode"
+                    size={20}
+                    color={appColor.text}
+                  />
+                </TouchableOpacity>
                 <Ionicons
                   name="notifications-outline"
                   size={20}
