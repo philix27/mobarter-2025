@@ -5,7 +5,6 @@ import { ThemedText } from "./ThemedText";
 import InputButton from "./forms/Button";
 import { appColor } from "@/lib/color";
 import { Link } from "expo-router";
-// import { ScrollView } from "react-native-gesture-handler";
 
 export default function AuthWrapper(props: {
   children: ReactNode;
@@ -17,6 +16,7 @@ export default function AuthWrapper(props: {
   linkText?: string;
   linkHref?: string;
   bottomText: string;
+  isLoading?: boolean;
 }) {
   return (
     <SafeAreaView
@@ -60,14 +60,15 @@ export default function AuthWrapper(props: {
           <InputButton
             title={props.btnTitle}
             onPress={props.onPress}
-            style={{ marginBottom: 20 }}
+            style={{ marginBottom: 20, minWidth: "50%" }}
+            isLoading={props.isLoading}
           />
           {props.bottomComp && props.bottomComp}
           <ThemedText type="default" style={{ marginBottom: 5 }}>
             {props.bottomText}
           </ThemedText>
           {props.linkHref && props.linkText && (
-            <Link href={props.linkHref}>
+            <Link href={props.linkHref as any}>
               <ThemedText type="link">{props.linkText}</ThemedText>
             </Link>
           )}

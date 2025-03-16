@@ -69,7 +69,7 @@ const darkColors: IColorStruct = {
   cardForeground: "#ECEDEE",
   primary: "#ff6719",
   primaryForeground: "",
-  secondary: "",
+  secondary: "#D77E51BC",
   secondaryForeground: "",
   accent: "#222525",
   accentForeground: "",

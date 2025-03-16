@@ -1,9 +1,16 @@
-import { StyleProp, TouchableOpacity, ViewStyle } from "react-native";
+import { appColor } from "@/lib/color";
+import {
+  ActivityIndicator,
+  StyleProp,
+  TouchableOpacity,
+  ViewStyle,
+} from "react-native";
 import { Text, StyleSheet } from "react-native";
 
 export default function InputButton(props: {
   title: string;
   style?: ViewStyle;
+  isLoading?: boolean;
   onPress: VoidFunction;
   variant?: "secondary" | "outline";
 }) {
@@ -12,23 +19,29 @@ export default function InputButton(props: {
       style={{
         ...styles.button,
         ...props.style,
-        backgroundColor: props.variant === "secondary" ? "#282828" : "#007d0c",
+        backgroundColor:
+          props.variant === "secondary" ? "#282828" : appColor().primary,
       }}
       onPress={props.onPress}
     >
-      <Text style={styles.buttonText}>{props.title}</Text>
+      {props.isLoading ? (
+        <ActivityIndicator size="small" color="#fff" />
+      ) : (
+        <Text style={styles.buttonText}>{props.title}</Text>
+      )}
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#007d0c",
-    padding: 10,
-    borderRadius: 5,
+    backgroundColor: appColor().primary,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 10,
     alignItems: "center",
     marginTop: 10,
-    width: "40%",
+    // width: "50%",
   },
   buttonText: {
     color: "#fff",

@@ -19,11 +19,12 @@ export default function HeaderBar({
         headerTintColor: appColor().background,
         headerTitleStyle: {
           fontWeight: "600",
-          fontSize: 13,
-          color: appColor().foreground,
+          fontSize: 14,
+          color: appColor().text,
         },
         contentStyle: {
           backgroundColor: appColor().background,
+          borderColor: appColor().background,
         },
 
         headerStyle: {

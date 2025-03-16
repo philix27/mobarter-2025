@@ -7,6 +7,8 @@ import { Link } from "expo-router";
 import React, { useState } from "react";
 import { z } from "zod";
 import { StyleSheet, Alert } from "react-native";
+import { useMutation } from "@apollo/client";
+import { Auth_Login, Auth_LoginDocument } from "@/lib/__generated__/graphql";
 
 // Define the validation schema
 const formSchema = z.object({
@@ -27,6 +29,8 @@ export function useAppForm<FormData>(defaultValues: FormData) {
 }
 
 export default function SignInPage() {
+  const [login, { loading: isLoading }] = ApiHooks.useAuthLogin();
+  // const [login, { loading: isLoading }] = useMutation(Auth_LoginDocument);
   const { formData, setFormData, errors, handleChange, setErrors } = useAppForm(
     {
       email: "",
@@ -37,6 +41,10 @@ export default function SignInPage() {
   const handleSubmit = () => {
     const validation = formSchema.safeParse(formData);
     console.log("On submit");
+    if (isLoading) {
+      Alert.alert("Loading...", "Request still processing!");
+      return;
+    }
     if (!validation.success) {
       const errorMessages = validation.error.format();
       setErrors({
@@ -44,9 +52,28 @@ export default function SignInPage() {
         password: errorMessages.password?._errors[0] || "",
       });
     } else {
-      Alert.alert("Success", "Form submitted successfully!");
-      setFormData({ email: "", password: "" });
-      setErrors({ email: "", password: "" });
+      console.log("DataBefore of login: ", formData);
+      login({
+        variables: {
+          input: {
+            email: formData.email,
+            password: formData.password,
+          },
+        },
+        onCompleted: (res) => {
+          console.log("Result of login: ", res);
+          Alert.alert("Success", "Form submitted successfully!");
+          setFormData({ email: "", password: "" });
+          setErrors({ email: "", password: "" });
+        },
+        onError: (error, clientOptions) => {
+          console.log("ResultErr of login: ", JSON.stringify(error));
+          // console.log(
+          //   "ResultErr clientOptions: ",
+          //   JSON.stringify(clientOptions)
+          // );
+        },
+      });
     }
   };
   return (
@@ -61,6 +88,7 @@ export default function SignInPage() {
       bottomText={"Do not have an account?"}
       linkHref="/auth/sign-up"
       linkText="Sign up"
+      isLoading={isLoading}
     >
       <ThemedView>
         <InputText

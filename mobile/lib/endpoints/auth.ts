@@ -17,47 +17,27 @@ import {
   Auth_CreateAccountDocument,
 } from "../__generated__/graphql";
 
-export const useAuthLogin = () => {
-  const [mutate, { data, loading, error }] = useMutation<
-    Auth_LoginResponse,
-    Auth_LoginInput
-  >(Auth_LoginDocument);
+type Input<T> = { input: T };
 
-  return { mutate, data, isLoading: loading, error };
-};
+export const useAuthLogin = () =>
+  useMutation<Auth_LoginResponse, Input<Auth_LoginInput>>(Auth_LoginDocument);
 
-export const useAuth_resetPassword = () => {
-  const [mutate, { data, loading, error }] = useMutation<
-    Auth_ResetPasswordResponse,
-    Auth_ResetPasswordInput
-  >(Auth_ResetPasswordDocument);
+export const useAuth_resetPassword = () =>
+  useMutation<Auth_ResetPasswordResponse, Input<Auth_ResetPasswordInput>>(
+    Auth_ResetPasswordDocument
+  );
 
-  return { mutate, data, isLoading: loading, error };
-};
+export const useAuth_sendEmailOtp = () =>
+  useMutation<Auth_SendEmailOtpResponse, Input<Auth_SendEmailOtpInput>>(
+    Auth_SendEmailOtpDocument
+  );
 
-export const useAuth_sendEmailOtp = () => {
-  const [mutate, { data, loading, error }] = useMutation<
-    Auth_SendEmailOtpResponse,
-    Auth_SendEmailOtpInput
-  >(Auth_SendEmailOtpDocument);
+export const useAuth_verifyEmailOtp = () =>
+  useMutation<Auth_VerifyOtpResponse, Input<Auth_VerifyEmailOtpInput>>(
+    Auth_VerifyEmailOtpDocument
+  );
 
-  return { mutate, data, isLoading: loading, error };
-};
-
-export const useAuth_verifyEmailOtp = () => {
-  const [mutate, { data, loading, error }] = useMutation<
-    Auth_VerifyOtpResponse,
-    Auth_VerifyEmailOtpInput
-  >(Auth_VerifyEmailOtpDocument);
-
-  return { mutate, data, isLoading: loading, error };
-};
-
-export const useAuth_CreateAccount = () => {
-  const [mutate, { data, loading, error }] = useMutation<
-    Auth_CreateAccountResponse,
-    Auth_CreateAccountInput
-  >(Auth_CreateAccountDocument);
-
-  return { mutate, data, isLoading: loading, error };
-};
+export const useAuth_CreateAccount = () =>
+  useMutation<Auth_CreateAccountResponse, Input<Auth_CreateAccountInput>>(
+    Auth_CreateAccountDocument
+  );

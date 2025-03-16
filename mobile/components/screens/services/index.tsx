@@ -1,13 +1,21 @@
-import { SafeAreaView, StyleSheet, Text } from "react-native";
 import { servicesList } from "./data";
-import RowService from "./Row";
+import Row from "../../Row";
 import Wrapper from "@/components/Wrapper";
+import { router } from "expo-router";
 
 export default function ServicesScreen() {
   return (
     <Wrapper>
       {servicesList.map((val, i) => {
-        return <RowService key={i} {...val} />;
+        return (
+          <Row
+            key={i}
+            {...val}
+            onClick={() => {
+              router.push(val.route);
+            }}
+          />
+        );
       })}
     </Wrapper>
   );

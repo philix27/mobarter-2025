@@ -26,7 +26,7 @@ export default function IconRound(props: {
             borderRadius: 25,
             height: 50,
             width: 50,
-            backgroundColor: appColor().primary,
+            backgroundColor: appColor().secondary,
             // padding: 20,
             display: "flex",
             justifyContent: "center",
