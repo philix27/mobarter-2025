@@ -62,6 +62,7 @@ async function bootstrap(): Promise<void> {
     const app = await NestFactory.create<NestFastifyApplication>(
         ApplicationModule,
         new FastifyAdapter()
+        // { cors: true }
     );
 
     // @todo Enable Helmet for better API security headers
@@ -74,7 +75,12 @@ async function bootstrap(): Promise<void> {
 
     const logInterceptor = app.select(CommonModule).get(LogInterceptor);
     app.useGlobalInterceptors(logInterceptor);
-    app.enableCors();
+    app.enableCors({
+        origin: "*", // Allow all origins
+        methods: "GET,HEAD,POST", // Allowed methods
+        allowedHeaders: "Content-Type, Authorization", // Allowed headers
+        credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+    });
 
     app.useGlobalFilters(new GraphQLExceptionFilter());
     console.log("Listening on port: " + PORT);
