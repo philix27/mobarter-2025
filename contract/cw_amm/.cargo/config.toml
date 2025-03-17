@@ -1,0 +1,5 @@
+[alias]
+wasm = "build --target wasm32-unknown-unknown --release"
+wasm-debug = "build --target wasm32-unknown-unknown"
+checker = "./target/wasm32-unknown-unknown/release/bdemy.wasm"
+cw-check = "cosmwasm-check ./target/wasm32-unknown-unknown/release/bdemy.wasm"
