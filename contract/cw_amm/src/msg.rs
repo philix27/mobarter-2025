@@ -1,12 +1,12 @@
-use cosmwasm_std::{Addr, Uint128};
+use cosmwasm_std::Uint128;
 use cw20::Cw20ReceiveMsg;
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-pub struct InstantiateMsg<'a> {
-    pub token1: &'a str,
-    pub token2: &'a str,
+pub struct InstantiateMsg {
+    pub token1: String,
+    pub token2: String,
     pub lp_token: String, // LP Token Address
 }
 
