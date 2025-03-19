@@ -21,7 +21,8 @@ export default function Layout() {
       <Stack.Screen name="sell" />
       <Stack.Screen name="send" />
       <Stack.Screen name="settings" />
-      <Stack.Screen name="swap" />
+      <Stack.Screen name="swap/[id]/index.tsx" />
+      <Stack.Screen name="coin/[id]/index.tsx" />
       {/* Optionally configure static options outside the route.*/}
       {/* <Stack.Screen name="home" options={{}} /> */}
     </Stack>

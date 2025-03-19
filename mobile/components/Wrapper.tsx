@@ -21,6 +21,7 @@ export default function Wrapper(props: { children: ReactNode }) {
             alignItems: "center",
             width: "100%",
             paddingHorizontal: 20,
+            paddingVertical: 20,
             minHeight: "100%",
           }}
         >
