@@ -77,7 +77,7 @@ export default function MarketPage() {
         }}
       />
       <MarketScreen />
-      <BottomSheet ref={refRBSheet!} >
+      <BottomSheet ref={refRBSheet!}>
         <WalletQRCode />
       </BottomSheet>
     </>

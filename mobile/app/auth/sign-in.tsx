@@ -3,11 +3,13 @@ import { TText } from "@/components/TText";
 import { TView } from "@/components/TView";
 import InputText from "@/components/forms/InputText";
 import ApiHooks from "@/lib/endpoints";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import React from "react";
 import { z } from "zod";
 import { Alert } from "react-native";
 import { useAppForm } from "@/lib";
+import { AppStores } from "@/lib/zustand";
+import log from "@/lib/log";
 
 const formSchema = z.object({
   email: z.string().email("Invalid email format"),
@@ -15,6 +17,7 @@ const formSchema = z.object({
 });
 
 export default function SignInPage() {
+  const store = AppStores.useUserInfo();
   const [login, { loading: isLoading }] = ApiHooks.useAuthLogin();
   const { formData, setFormData, errors, handleChange, setErrors } = useAppForm(
     {
@@ -46,17 +49,17 @@ export default function SignInPage() {
           },
         },
         onCompleted: (res) => {
-          console.log("Result of login: ", res);
-          Alert.alert("Success", "Form submitted successfully!");
+          store.update({
+            ...res.auth_login,
+          });
           setFormData({ email: "", password: "" });
           setErrors({ email: "", password: "" });
+          log.info("AUTH_LOGIN", res.auth_login.email);
+          router.push("/market");
         },
         onError: (error, clientOptions) => {
           console.log("ResultErr of login: ", JSON.stringify(error));
-          // console.log(
-          //   "ResultErr clientOptions: ",
-          //   JSON.stringify(clientOptions)
-          // );
+          log.error("AUTH_LOGIN", error.message);
         },
       });
     }
@@ -75,7 +78,7 @@ export default function SignInPage() {
       bottomText={"Do not have an account?"}
       linkHref="/auth/sign-up"
       linkText="Sign up"
-      // isLoading={isLoading}
+      isLoading={isLoading}
     >
       <TView>
         <InputText

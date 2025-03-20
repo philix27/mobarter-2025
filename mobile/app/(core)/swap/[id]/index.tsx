@@ -4,7 +4,7 @@ import { TView } from "@/components/TView";
 import { useColor } from "@/lib/color";
 import HeaderBar from "@/components/Header";
 
-export default function SettingsScreen() {
+export default function Page() {
   return (
     <SafeAreaView>
       <HeaderBar title="Swap" showBackBtn/>

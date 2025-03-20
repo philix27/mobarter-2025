@@ -18,9 +18,12 @@ import {
 } from "../__generated__/graphql";
 
 type Input<T> = { input: T };
+type Response<K, T> = { K: T };
 
 export const useAuthLogin = () =>
-  useMutation<Auth_LoginResponse, Input<Auth_LoginInput>>(Auth_LoginDocument);
+  useMutation<{ auth_login: Auth_LoginResponse }, Input<Auth_LoginInput>>(
+    Auth_LoginDocument
+  );
 
 export const useAuth_resetPassword = () =>
   useMutation<Auth_ResetPasswordResponse, Input<Auth_ResetPasswordInput>>(

@@ -11,7 +11,7 @@ export default function InputButton(props: {
   title: string;
   style?: ViewStyle;
   isLoading?: boolean;
-  onPress: VoidFunction;
+  onPress?: VoidFunction;
   variant?: "secondary" | "outline";
 }) {
   const appColor = useColor();
