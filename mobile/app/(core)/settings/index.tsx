@@ -8,7 +8,6 @@ import Wrapper from "@/components/Wrapper";
 import Row from "@/components/Row";
 import { ReactNode } from "react";
 import {
-  Feather,
   Ionicons,
   MaterialCommunityIcons,
   MaterialIcons,
@@ -18,7 +17,7 @@ export default function SettingsScreen() {
   const appColor = useColor();
   return (
     <Wrapper>
-      <HeaderBar title="Settings" />
+      <HeaderBar title="Settings" showBackBtn />
       <TView
         style={{
           flexDirection: "column",

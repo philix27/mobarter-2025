@@ -16,15 +16,12 @@ export default function Layout() {
         headerShown: true,
       }}
     >
-      <Stack.Screen name="buy" />
-      <Stack.Screen name="receive" />
-      <Stack.Screen name="sell" />
-      <Stack.Screen name="send" />
-      <Stack.Screen name="settings" />
+      <Stack.Screen name="p2p-buy" />
+      <Stack.Screen name="p2p-sell" />
+      <Stack.Screen name="direct-exchange" />
+      <Stack.Screen name="settings/index" />
       <Stack.Screen name="swap/[id]/index" />
       <Stack.Screen name="coin/[id]/index" />
-      {/* Optionally configure static options outside the route.*/}
-      {/* <Stack.Screen name="home" options={{}} /> */}
     </Stack>
   );
 }

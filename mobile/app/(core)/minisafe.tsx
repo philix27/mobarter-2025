@@ -6,7 +6,7 @@ import HeaderBar from "@/components/Header";
 export default function MinisafeScreen() {
   return (
     <SafeAreaView>
-      <HeaderBar title="Minisafe" />
+      <HeaderBar title="Minisafe" showBackBtn />
       <TView style={styles.titleContainer}>
         <TText type="title">Welcome!</TText>
       </TView>

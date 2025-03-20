@@ -4,14 +4,14 @@ import { useColor } from "@/lib/color";
 import React from "react";
 
 export default function Balance() {
-    const appColor = useColor();
+  const appColor = useColor();
   return (
     <TView
       style={{
         marginTop: 10,
         marginBottom: 10,
         backgroundColor: appColor.primary,
-        width: "auto",
+        width: "100%",
         borderRadius: 20,
         padding: 20,
         height: 120,

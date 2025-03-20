@@ -1,8 +1,7 @@
-import { ScrollView, StyleSheet } from "react-native";
+import { ScrollView } from "react-native";
 import { TView } from "@/components/TView";
 import React from "react";
 import { AssetsRow } from "./AssetsRow";
-import { router } from "expo-router";
 import { coinsList } from "@/constants";
 
 export default function AssetsCrypto() {
@@ -31,10 +30,3 @@ export default function AssetsCrypto() {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  reactLogo: {
-    height: 50,
-    width: 50,
-  },
-});

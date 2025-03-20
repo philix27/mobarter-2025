@@ -1,4 +1,11 @@
-import { SafeAreaView, ScrollView } from "react-native";
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  TouchableWithoutFeedback,
+} from "react-native";
 import { ReactNode } from "react";
 import { TView } from "./TView";
 import { useColor } from "@/lib/color";
@@ -10,8 +17,13 @@ export default function Wrapper(props: { children: ReactNode }) {
       style={{
         backgroundColor: appColor.background,
         minHeight: "100%",
+        width: "100%",
       }}
     >
+      {/* <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
       <ScrollView
         bounces={false}
         style={{ flex: 1 }}
@@ -32,6 +44,8 @@ export default function Wrapper(props: { children: ReactNode }) {
           {props.children}
         </TView>
       </ScrollView>
+      {/* </TouchableWithoutFeedback> */}
+      {/* </KeyboardAvoidingView> */}
     </SafeAreaView>
   );
 }

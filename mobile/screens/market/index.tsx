@@ -1,5 +1,3 @@
-import { SafeAreaView } from "react-native";
-import { useColor } from "@/lib/color";
 import Balance from "./Balance";
 import QuickActions from "./QuickActions";
 import AssetsTab from "./AssetsTab";
@@ -7,24 +5,19 @@ import { AppStores } from "@/lib/zustand";
 import AssetsCrypto from "./Assets/AssetsCrypto";
 import AssetsFiat from "./Assets/AssetsFiat";
 import { TView } from "@/components/TView";
+import Wrapper from "@/components/Wrapper";
 
 export default function MarketScreen() {
   const store = AppStores.useView();
-  const appColor = useColor();
+  // const appColor = useColor();
   return (
-    <SafeAreaView
-      style={{
-        height: "100%",
-        backgroundColor: appColor.background,
-      }}
-    >
-      <TView style={{ paddingHorizontal: 20 }}>
+    <Wrapper>
+      <TView style={{ width: "100%" }}>
         <Balance />
         <QuickActions />
-
         <AssetsTab />
         {store.activeViewAsset === "Fiat" ? <AssetsFiat /> : <AssetsCrypto />}
       </TView>
-    </SafeAreaView>
+    </Wrapper>
   );
 }

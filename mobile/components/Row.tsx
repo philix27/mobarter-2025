@@ -41,9 +41,18 @@ export default function Row(props: {
           </IconRound>
         )}
 
-        <TView style={{ backgroundColor: bgColor }}>
+        <TView style={{ backgroundColor: bgColor, flexShrink: 1 }}>
           <TText type="defaultSemiBold">{props.title}</TText>
-          <TText style={{ color: appColor.muted, fontSize: 13 }}>
+          <TText
+            style={{
+              color: appColor.muted,
+              fontSize: 13,
+              textOverflow: "ellipsis",
+              wordWrap: "ellipsis",
+              flex: 1,
+              flexWrap: "wrap",
+            }}
+          >
             {props.desc}
           </TText>
         </TView>

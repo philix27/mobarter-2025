@@ -7,7 +7,7 @@ import HeaderBar from "@/components/Header";
 export default function SettingsScreen() {
   return (
     <SafeAreaView>
-      <HeaderBar title="Swap" />
+      <HeaderBar title="Swap" showBackBtn/>
       <TView style={styles.titleContainer}>
         <TText type="title">Welcome!</TText>
       </TView>

@@ -9,7 +9,7 @@ export default function Diseases() {
     <SafeAreaView
       style={{ height: "100%", backgroundColor: appColor.background }}
     >
-      <HeaderBar title="Buy" />
+      <HeaderBar title="P2P Market - Buy" showBackBtn />
       <View
         style={{
           height: "95%",
