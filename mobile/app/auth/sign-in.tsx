@@ -4,33 +4,18 @@ import { TView } from "@/components/TView";
 import InputText from "@/components/forms/InputText";
 import ApiHooks from "@/lib/endpoints";
 import { Link } from "expo-router";
-import React, { useState } from "react";
+import React from "react";
 import { z } from "zod";
-import { StyleSheet, Alert } from "react-native";
-import { useMutation } from "@apollo/client";
-import { Auth_Login, Auth_LoginDocument } from "@/lib/__generated__/graphql";
+import { Alert } from "react-native";
+import { useAppForm } from "@/lib";
 
-// Define the validation schema
 const formSchema = z.object({
   email: z.string().email("Invalid email format"),
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
-export function useAppForm<FormData>(defaultValues: FormData) {
-  const [formData, setFormData] = useState<FormData>(defaultValues!);
-  const [errors, setErrors] = useState<FormData>(defaultValues!);
-
-  const handleChange = (field: keyof typeof formData, value: string) => {
-    setFormData({ ...formData!, [field]: value });
-    setErrors({ ...errors!, [field]: "" }); // Clear error when typing
-  };
-
-  return { formData, setFormData, errors, handleChange, setErrors };
-}
-
 export default function SignInPage() {
   const [login, { loading: isLoading }] = ApiHooks.useAuthLogin();
-  // const [login, { loading: isLoading }] = useMutation(Auth_LoginDocument);
   const { formData, setFormData, errors, handleChange, setErrors } = useAppForm(
     {
       email: "",
@@ -56,7 +41,7 @@ export default function SignInPage() {
       login({
         variables: {
           input: {
-            email: formData.email,
+            email: formData.email.toLowerCase(),
             password: formData.password,
           },
         },
@@ -76,6 +61,7 @@ export default function SignInPage() {
       });
     }
   };
+
   return (
     <AuthWrapper
       title="Login"
@@ -84,18 +70,19 @@ export default function SignInPage() {
       onPress={() => {
         console.log("handleSubmit hit");
         handleSubmit();
+        // callMethod();
       }}
       bottomText={"Do not have an account?"}
       linkHref="/auth/sign-up"
       linkText="Sign up"
-      isLoading={isLoading}
+      // isLoading={isLoading}
     >
       <TView>
         <InputText
           label={"Email"}
           value={formData.email}
           keyboardType="email-address"
-          onChangeText={(text) => handleChange("email", text)}
+          onChangeText={(text) => handleChange("email", text.toLowerCase())}
           placeholder={"Enter email"}
           error={errors!.email === undefined ? undefined : errors!.email}
         />
@@ -118,26 +105,3 @@ export default function SignInPage() {
     </AuthWrapper>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-  },
-  label: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 5,
-  },
-  input: {
-    height: 40,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    marginBottom: 10,
-  },
-  error: {
-    color: "red",
-    marginBottom: 10,
-  },
-});

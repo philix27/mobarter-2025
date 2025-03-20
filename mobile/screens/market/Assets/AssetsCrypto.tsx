@@ -18,10 +18,12 @@ export default function AssetsCrypto() {
             dollarBalance={5000}
             performance={"+2.3%"}
             onPress={() => {
-              router.push({
-                pathname: `/coin/${val.symbol}` as any,
-                params: { title: val.title },
-              });
+              // router.push({
+              //   pathname: `/coin/[id]`,
+              // pathname: `/coin/[id]`,
+              // pathname: `/coin/${val.symbol}`,
+              //   params: { title: val.title },
+              // });
             }}
           />
         ))}

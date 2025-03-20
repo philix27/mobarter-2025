@@ -17,27 +17,27 @@ export default function HeaderBar({
     <Stack.Screen
       options={{
         title: props.title,
-        headerTintColor: appColor.background,
         headerTitleStyle: {
           fontWeight: "600",
-          fontSize: 14,
+          fontSize: 15,
           color: appColor.text,
         },
         contentStyle: {
           backgroundColor: appColor.background,
           borderColor: appColor.background,
         },
-
         headerStyle: {
           backgroundColor: appColor.background,
         },
+        headerShadowVisible: false,
+        headerTintColor: appColor.background,
         headerLeft: hideBack
           ? undefined
           : () => (
               <Ionicons
                 name={backIcon}
                 size={25}
-                color="white"
+                color={appColor.text}
                 onPress={() => router.back()}
               />
             ),

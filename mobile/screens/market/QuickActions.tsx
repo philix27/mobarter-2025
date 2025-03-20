@@ -47,7 +47,7 @@ export default function QuickActions() {
         <IconRound
           title="Swap"
           onPress={() => {
-            router.push("/swap" as any);
+            router.push("/swap/celo");
           }}
         >
           <Ionicons name="swap-horizontal" size={24} color="#fff" />

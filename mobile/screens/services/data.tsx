@@ -13,6 +13,41 @@ export const servicesList: {
   icon: JSX.Element;
 }[] = [
   {
+    title: "Good Dollar",
+    desc: "Provide liquidity to Mobarter Swap",
+    route: "/(core)/settings",
+    icon: <Feather name="settings" size={24} color={"#fff"} />,
+    bgColor: "#03c4b1",
+  },
+  {
+    title: "P2P Market Place",
+    desc: "Provide liquidity to Mobarter Swap",
+    route: "/(core)/settings",
+    icon: <Feather name="settings" size={24} color={"#fff"} />,
+    bgColor: "#03c4b1",
+  },
+  {
+    title: "Locked Savings",
+    desc: "Provide liquidity to Mobarter Swap",
+    route: "/(core)/settings",
+    icon: <Feather name="settings" size={24} color={"#fff"} />,
+    bgColor: "#03c4b1",
+  },
+  {
+    title: "Trade Analysis",
+    desc: "Provide liquidity to Mobarter Swap",
+    route: "/(core)/settings",
+    icon: <Feather name="settings" size={24} color={"#fff"} />,
+    bgColor: "#03c4b1",
+  },
+  {
+    title: "Integrate Mento Swap",
+    desc: "Provide liquidity to Mobarter Swap",
+    route: "/(core)/settings",
+    icon: <Feather name="settings" size={24} color={"#fff"} />,
+    bgColor: "#03c4b1",
+  },
+  {
     title: "Provide Liquidity",
     desc: "Provide liquidity to Mobarter Swap",
     route: "/(core)/settings",

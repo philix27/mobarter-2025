@@ -7,7 +7,7 @@ import { BatchHttpLink } from "@apollo/client/link/batch-http";
 import { ThemeProvider } from "./ThemeContext";
 
 const httpLink = new BatchHttpLink({
-  uri: "http://localhost:4545/graphql",
+  uri: "http://172.20.10.11:4545/graphql",
   // uri: process.env.SERVER,
   batchInterval: 10,
 });
@@ -15,7 +15,8 @@ const httpLink = new BatchHttpLink({
 const queryClient = new QueryClient();
 const apollo = new ApolloClient({
   // link: httpLink,
-  uri: process.env.SERVER,
+  uri: "http://172.20.10.11:4545/graphql",
+  // uri: process.env.SERVER,
   cache: new InMemoryCache(),
 });
 export function RootProviders(props: { children: ReactNode }) {

@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
@@ -31,16 +32,16 @@ export const useSettings = create(
       ...defaultValues,
       update: (data) =>
         set((state) => {
-          return { ...state, ...data }
+          return { ...state, ...data };
         }),
       clear: () =>
         set((state) => {
-          return { ...state, ...defaultValues }
+          return { ...state, ...defaultValues };
         }),
     }),
     {
-      name: 'settings',
-      storage: createJSONStorage(() => localStorage),
-    },
-  ),
-)
+      name: "settings",
+      storage: createJSONStorage(() => AsyncStorage),
+    }
+  )
+);
