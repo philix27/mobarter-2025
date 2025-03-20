@@ -1,11 +1,10 @@
 import { SafeAreaView, ScrollView } from "react-native";
 import { ReactNode } from "react";
-import { ThemedView } from "./ThemedView";
-import { ThemedText } from "./ThemedText";
+import { TView } from "./TView";
+import { TText } from "./TText";
 import InputButton from "./forms/Button";
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import { Link } from "expo-router";
-// import { ScrollView } from "react-native-gesture-handler";
 
 export default function AuthWrapper(props: {
   children: ReactNode;
@@ -17,16 +16,18 @@ export default function AuthWrapper(props: {
   linkText?: string;
   linkHref?: string;
   bottomText: string;
+  isLoading?: boolean;
 }) {
+  const appColor = useColor();
   return (
     <SafeAreaView
       style={{
-        backgroundColor: appColor().background,
+        backgroundColor: appColor.background,
         minHeight: "100%",
       }}
     >
-      <ScrollView>
-        <ThemedView
+      <ScrollView bounces={false}>
+        <TView
           style={{
             height: "100%",
             display: "flex",
@@ -34,10 +35,10 @@ export default function AuthWrapper(props: {
             width: "100%",
             paddingHorizontal: 20,
             minHeight: "100%",
-            backgroundColor: appColor().background,
+            backgroundColor: appColor.background,
           }}
         >
-          <ThemedView
+          <TView
             style={{
               marginTop: 20,
               marginBottom: 10,
@@ -48,30 +49,31 @@ export default function AuthWrapper(props: {
               alignSelf: "center",
             }}
           >
-            <ThemedText type="title">{props.title}</ThemedText>
-          </ThemedView>
+            <TText type="title">{props.title}</TText>
+          </TView>
 
           {props.subtitle && (
-            <ThemedView style={{ marginBottom: 40 }}>
-              <ThemedText type="defaultSemiBold">{props.subtitle}</ThemedText>
-            </ThemedView>
+            <TView style={{ marginBottom: 40 }}>
+              <TText type="defaultSemiBold">{props.subtitle}</TText>
+            </TView>
           )}
           {props.children}
           <InputButton
             title={props.btnTitle}
             onPress={props.onPress}
-            style={{ marginBottom: 20 }}
+            style={{ marginBottom: 20, minWidth: "50%" }}
+            isLoading={props.isLoading}
           />
           {props.bottomComp && props.bottomComp}
-          <ThemedText type="default" style={{ marginBottom: 5 }}>
+          <TText type="default" style={{ marginBottom: 5 }}>
             {props.bottomText}
-          </ThemedText>
+          </TText>
           {props.linkHref && props.linkText && (
-            <Link href={props.linkHref}>
-              <ThemedText type="link">{props.linkText}</ThemedText>
+            <Link href={props.linkHref as any}>
+              <TText type="link">{props.linkText}</TText>
             </Link>
           )}
-        </ThemedView>
+        </TView>
       </ScrollView>
     </SafeAreaView>
   );

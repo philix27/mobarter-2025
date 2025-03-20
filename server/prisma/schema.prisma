@@ -8,19 +8,24 @@ datasource db {
 }
 
 model User {
-  id              Int              @id @default(autoincrement())
-  firstname       String
-  lastname        String
-  middlename      String?
-  email           String           @unique
-  password        String
-  country         Country
-  created_at      DateTime?        @default(now())
-  updated_at      DateTime?        @updatedAt
-  kyc_credentials_id        Int @unique
-  kyc_credentials KycCredentials  @relation(fields: [kyc_credentials_id], references: [id])
-  crypto_wallets  CryptoWallets[]
-  bank_accounts   BankAccount[]
+  id             Int                @id @default(autoincrement())
+  firstname      String
+  lastname       String
+  middlename     String?
+  email          String             @unique
+  password       String
+  country        Country
+  created_at     DateTime?          @default(now())
+  updated_at     DateTime?          @updatedAt
+  bvn            String?
+  bvn_status     CredentialsStatus? @default(NONE)
+  nin            String?
+  nin_status     CredentialsStatus? @default(NONE)
+  home_address   String?
+  phone          String?
+  phone_verified Boolean?           @default(false)
+  crypto_wallets CryptoWallets[]
+  bank_accounts  BankAccount[]
 }
 
 enum Country {
@@ -44,21 +49,6 @@ enum ChainType {
   Ethereum
   Solana
   Cosmos
-}
-
-model KycCredentials {
-  id             Int                @id @default(autoincrement())
-  created_at     DateTime?          @default(now())
-  updated_at     DateTime?          @updatedAt
-  user_id    Int @unique
-  user       User?     @relation(fields: [user_id], references: [id])           
-  bvn            String?
-  bvn_status     CredentialsStatus? @default(NONE)
-  nin            String?
-  nin_status     CredentialsStatus? @default(NONE)
-  home_address   String?
-  phone          String?
-  phone_verified Boolean?           @default(false)
 }
 
 enum CredentialsStatus {

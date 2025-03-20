@@ -1,6 +1,6 @@
 import AuthWrapper from "@/components/AuthWrapper";
 import InputText from "@/components/forms/InputText";
-import { ThemedView } from "@/components/ThemedView";
+import { TView } from "@/components/TView";
 import React from "react";
 
 export default function SignUpPage() {
@@ -13,7 +13,7 @@ export default function SignUpPage() {
       linkHref="/auth/sign-in"
       linkText="Login"
     >
-      <ThemedView>
+      <TView>
         <InputText
           label={"Email"}
           value={""}
@@ -56,7 +56,7 @@ export default function SignUpPage() {
           placeholder={"Enter password"}
           secureTextEntry={true}
         />
-      </ThemedView>
+      </TView>
     </AuthWrapper>
   );
 }

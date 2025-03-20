@@ -1,6 +1,6 @@
 import AuthWrapper from "@/components/AuthWrapper";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { TText } from "@/components/TText";
+import { TView } from "@/components/TView";
 import { router } from "expo-router";
 import React from "react";
 
@@ -15,9 +15,9 @@ export default function VerifyOtpPage() {
       }}
       bottomText={""}
     >
-      <ThemedView>
-        <ThemedText>Openest</ThemedText>
-      </ThemedView>
+      <TView>
+        <TText>Openest</TText>
+      </TView>
     </AuthWrapper>
   );
 }

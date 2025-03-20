@@ -1,6 +1,6 @@
 import AuthWrapper from "@/components/AuthWrapper";
 import InputText from "@/components/forms/InputText";
-import { ThemedView } from "@/components/ThemedView";
+import { TView } from "@/components/TView";
 import { router } from "expo-router";
 import React from "react";
 
@@ -15,7 +15,7 @@ export default function ResetPasswordPage() {
       }}
       bottomText={""}
     >
-      <ThemedView>
+      <TView>
         <InputText
           label={"Email"}
           value={""}
@@ -23,7 +23,7 @@ export default function ResetPasswordPage() {
           placeholder={"Enter email"}
           secureTextEntry={false}
         />
-      </ThemedView>
+      </TView>
     </AuthWrapper>
   );
 }

@@ -1,22 +1,25 @@
-import React from "react";
-import { TouchableOpacity, View } from "react-native";
-import { IconSymbol } from "./ui/IconSymbol";
-import { appColor } from "@/lib/color";
-import { SymbolViewProps } from "expo-symbols";
-import { ThemedText } from "./ThemedText";
+import React, { ReactNode } from "react";
+import { TouchableOpacity, View, ViewStyle } from "react-native";
+import { useColor } from "@/lib/color";
+import { TText } from "./TText";
 
 export default function IconRound(props: {
-  icon: SymbolViewProps["name"];
+  children: ReactNode;
   title?: string;
   onPress?: VoidFunction;
+  style?: ViewStyle;
 }) {
+  const appColor = useColor();
   return (
     <View
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+      style={[
+        {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        },
+        props.style,
+      ]}
     >
       <TouchableOpacity onPress={props.onPress}>
         <View
@@ -24,20 +27,20 @@ export default function IconRound(props: {
             borderRadius: 25,
             height: 50,
             width: 50,
-            backgroundColor: appColor().primary,
-            padding: 20,
+            backgroundColor: appColor.secondary,
+            // padding: 20,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <IconSymbol name={props.icon} color={"#fff"} />
+          {props.children}
         </View>
       </TouchableOpacity>
       {props.title && (
-        <ThemedText style={{ marginTop: 5, fontSize: 12 }} type="default">
+        <TText style={{ marginTop: 5, fontSize: 12 }} type="default">
           {props.title}
-        </ThemedText>
+        </TText>
       )}
     </View>
   );

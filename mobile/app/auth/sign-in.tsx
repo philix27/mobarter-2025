@@ -1,32 +1,24 @@
 import AuthWrapper from "@/components/AuthWrapper";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { TText } from "@/components/TText";
+import { TView } from "@/components/TView";
 import InputText from "@/components/forms/InputText";
 import ApiHooks from "@/lib/endpoints";
-import { Link } from "expo-router";
-import React, { useState } from "react";
+import { Link, router } from "expo-router";
+import React from "react";
 import { z } from "zod";
-import { StyleSheet, Alert } from "react-native";
+import { Alert } from "react-native";
+import { useAppForm } from "@/lib";
+import { AppStores } from "@/lib/zustand";
+import log from "@/lib/log";
 
-// Define the validation schema
 const formSchema = z.object({
   email: z.string().email("Invalid email format"),
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
-export function useAppForm<FormData>(defaultValues: FormData) {
-  const [formData, setFormData] = useState<FormData>(defaultValues!);
-  const [errors, setErrors] = useState<FormData>(defaultValues!);
-
-  const handleChange = (field: keyof typeof formData, value: string) => {
-    setFormData({ ...formData!, [field]: value });
-    setErrors({ ...errors!, [field]: "" }); // Clear error when typing
-  };
-
-  return { formData, setFormData, errors, handleChange, setErrors };
-}
-
 export default function SignInPage() {
+  const store = AppStores.useUserInfo();
+  const [login, { loading: isLoading }] = ApiHooks.useAuthLogin();
   const { formData, setFormData, errors, handleChange, setErrors } = useAppForm(
     {
       email: "",
@@ -37,6 +29,10 @@ export default function SignInPage() {
   const handleSubmit = () => {
     const validation = formSchema.safeParse(formData);
     console.log("On submit");
+    if (isLoading) {
+      Alert.alert("Loading...", "Request still processing!");
+      return;
+    }
     if (!validation.success) {
       const errorMessages = validation.error.format();
       setErrors({
@@ -44,11 +40,31 @@ export default function SignInPage() {
         password: errorMessages.password?._errors[0] || "",
       });
     } else {
-      Alert.alert("Success", "Form submitted successfully!");
-      setFormData({ email: "", password: "" });
-      setErrors({ email: "", password: "" });
+      console.log("DataBefore of login: ", formData);
+      login({
+        variables: {
+          input: {
+            email: formData.email.toLowerCase(),
+            password: formData.password,
+          },
+        },
+        onCompleted: (res) => {
+          store.update({
+            ...res.auth_login,
+          });
+          setFormData({ email: "", password: "" });
+          setErrors({ email: "", password: "" });
+          log.info("AUTH_LOGIN", res.auth_login.email);
+          router.push("/market");
+        },
+        onError: (error, clientOptions) => {
+          console.log("ResultErr of login: ", JSON.stringify(error));
+          log.error("AUTH_LOGIN", error.message);
+        },
+      });
     }
   };
+
   return (
     <AuthWrapper
       title="Login"
@@ -57,17 +73,19 @@ export default function SignInPage() {
       onPress={() => {
         console.log("handleSubmit hit");
         handleSubmit();
+        // callMethod();
       }}
       bottomText={"Do not have an account?"}
       linkHref="/auth/sign-up"
       linkText="Sign up"
+      isLoading={isLoading}
     >
-      <ThemedView>
+      <TView>
         <InputText
           label={"Email"}
           value={formData.email}
           keyboardType="email-address"
-          onChangeText={(text) => handleChange("email", text)}
+          onChangeText={(text) => handleChange("email", text.toLowerCase())}
           placeholder={"Enter email"}
           error={errors!.email === undefined ? undefined : errors!.email}
         />
@@ -81,35 +99,12 @@ export default function SignInPage() {
           error={errors!.password === undefined ? undefined : errors!.password}
         />
 
-        <ThemedView style={{ paddingTop: 5, marginBottom: 10 }}>
+        <TView style={{ paddingTop: 5, marginBottom: 10 }}>
           <Link href={"/auth/reset-email"}>
-            <ThemedText type="link">Forgot Password</ThemedText>
+            <TText type="link">Forgot Password</TText>
           </Link>
-        </ThemedView>
-      </ThemedView>
+        </TView>
+      </TView>
     </AuthWrapper>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-  },
-  label: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 5,
-  },
-  input: {
-    height: 40,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    marginBottom: 10,
-  },
-  error: {
-    color: "red",
-    marginBottom: 10,
-  },
-});

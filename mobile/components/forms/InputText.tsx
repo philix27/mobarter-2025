@@ -1,8 +1,8 @@
 import { TextInput, StyleSheet, KeyboardTypeOptions } from "react-native";
-import { ThemedText } from "../ThemedText";
+import { TText } from "../TText";
 import { IconSymbol } from "../ui/IconSymbol";
-import { ThemedView } from "../ThemedView";
-import { appColor } from "@/lib/color";
+import { TView } from "../TView";
+import { useColor } from "@/lib/color";
 
 export default function InputText(props: {
   label: string;
@@ -14,16 +14,26 @@ export default function InputText(props: {
   secureTextEntry?: boolean | undefined;
   keyboardType?: KeyboardTypeOptions | undefined;
 }) {
+  const appColor = useColor();
   return (
-    <ThemedView>
-      <ThemedView style={styles.container}>
+    <TView>
+      <TView
+        style={[styles.container, { backgroundColor: appColor.background }]}
+      >
         {props.label && (
-          <ThemedText style={styles.label} type="default">
+          <TText style={[styles.label]} type="default">
             {props.label}
-          </ThemedText>
+          </TText>
         )}
         <TextInput
-          style={styles.input}
+          style={[
+            styles.input,
+            {
+              backgroundColor: appColor.background,
+              borderColor: appColor.muted,
+              color: appColor.text
+            },
+          ]}
           keyboardType={props.keyboardType}
           value={props.value}
           onChangeText={props.onChangeText}
@@ -38,11 +48,9 @@ export default function InputText(props: {
             style={styles.icon}
           />
         )}
-      </ThemedView>
-      {props.error && (
-        <ThemedText style={styles.error}>{props.error}</ThemedText>
-      )}
-    </ThemedView>
+      </TView>
+      {props.error && <TText style={styles.error}>{props.error}</TText>}
+    </TView>
   );
 }
 
@@ -57,24 +65,19 @@ const styles = StyleSheet.create({
     marginTop: 10,
     width: "100%",
     // minWidth: "100%",
-    backgroundColor: appColor().background,
     marginBottom: 6,
   },
   label: {
     fontSize: 16,
     marginBottom: 5,
-    backgroundColor: appColor().background,
   },
   input: {
     // height: 50,
     borderWidth: 1,
-    borderColor: appColor().muted,
     borderRadius: 5,
     paddingHorizontal: 10,
     paddingVertical: 12,
     fontSize: 16,
-    backgroundColor: appColor().background,
-    color: appColor().text,
     width: "100%",
     minWidth: "90%",
   },

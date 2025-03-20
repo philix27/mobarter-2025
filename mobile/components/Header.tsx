@@ -1,45 +1,64 @@
-import { appColor } from "@/lib/color";
+import { useColor } from "@/lib/color";
 import { Ionicons } from "@expo/vector-icons";
 import { router, Stack } from "expo-router";
 import React from "react";
 import { Platform } from "react-native";
+import {
+  NativeStackHeaderLeftProps,
+  NativeStackHeaderRightProps,
+} from "@react-navigation/native-stack";
 
 export default function HeaderBar({
   hideBack = false,
+  showBackBtn = false,
+  headerRight,
+  headerLeft,
   ...props
 }: {
   title: string;
   hideBack?: boolean;
+  showBackBtn?: boolean;
+  headerLeft?:
+    | ((props: NativeStackHeaderLeftProps) => React.ReactNode)
+    | undefined;
+  headerRight?:
+    | ((props: NativeStackHeaderRightProps) => React.ReactNode)
+    | undefined;
 }) {
+  const appColor = useColor();
   const backIcon = Platform.OS === "ios" ? "chevron-back" : "arrow-back-sharp";
   return (
     <Stack.Screen
       options={{
         title: props.title,
-        headerTintColor: appColor().background,
         headerTitleStyle: {
           fontWeight: "600",
-          fontSize: 13,
-          color: appColor().foreground,
+          fontSize: 15,
+          color: appColor.text,
         },
         contentStyle: {
-          backgroundColor: appColor().background,
+          backgroundColor: appColor.background,
+          borderColor: appColor.background,
         },
-
         headerStyle: {
-          backgroundColor: appColor().background,
+          backgroundColor: appColor.background,
         },
-        headerLeft: hideBack
-          ? undefined
-          : () => (
+        headerShadowVisible: false,
+        headerTintColor: appColor.background,
+        headerLeft: headerLeft
+          ? headerLeft
+          : showBackBtn
+          ? () => (
               <Ionicons
                 name={backIcon}
                 size={25}
-                color="white"
+                color={appColor.text}
                 onPress={() => router.back()}
               />
-            ),
-        // headerTitle: (props) => <LogoTitle {...props} />,
+            )
+          : undefined,
+
+        headerRight: headerRight,
       }}
     />
   );
