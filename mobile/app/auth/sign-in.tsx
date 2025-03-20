@@ -70,11 +70,7 @@ export default function SignInPage() {
       title="Login"
       btnTitle="Login"
       subtitle="Welcome back"
-      onPress={() => {
-        console.log("handleSubmit hit");
-        handleSubmit();
-        // callMethod();
-      }}
+      onPress={handleSubmit}
       bottomText={"Do not have an account?"}
       linkHref="/auth/sign-up"
       linkText="Sign up"
