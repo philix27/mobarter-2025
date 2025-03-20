@@ -1,4 +1,3 @@
-export * from "./AppBottomSheet";
 export * from "./AuthWrapper";
 export * from "./BottomTabBar";
 export * from "./Collapsible";

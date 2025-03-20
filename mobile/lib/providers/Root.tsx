@@ -1,5 +1,4 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Slot } from "expo-router";
 import { ReactNode } from "react";
@@ -24,9 +23,7 @@ export function RootProviders(props: { children: ReactNode }) {
     <QueryClientProvider client={queryClient}>
       <ApolloProvider client={apollo}>
         <ThemeProvider>
-          <BottomSheetModalProvider>
-            <Slot />
-          </BottomSheetModalProvider>
+          <Slot />
         </ThemeProvider>
       </ApolloProvider>
     </QueryClientProvider>

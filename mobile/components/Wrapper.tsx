@@ -2,7 +2,6 @@ import { SafeAreaView, ScrollView } from "react-native";
 import { ReactNode } from "react";
 import { TView } from "./TView";
 import { useColor } from "@/lib/color";
-// import { ScrollView } from "react-native-gesture-handler";
 
 export default function Wrapper(props: { children: ReactNode }) {
   const appColor = useColor();
@@ -13,7 +12,12 @@ export default function Wrapper(props: { children: ReactNode }) {
         minHeight: "100%",
       }}
     >
-      <ScrollView>
+      <ScrollView
+        bounces={false}
+        style={{ flex: 1 }}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      >
         <TView
           style={{
             height: "100%",

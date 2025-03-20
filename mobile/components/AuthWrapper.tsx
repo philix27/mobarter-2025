@@ -26,7 +26,7 @@ export default function AuthWrapper(props: {
         minHeight: "100%",
       }}
     >
-      <ScrollView>
+      <ScrollView bounces={false}>
         <TView
           style={{
             height: "100%",

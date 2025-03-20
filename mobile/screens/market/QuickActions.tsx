@@ -3,11 +3,11 @@ import { TView } from "@/components/TView";
 import { useColor } from "@/lib/color";
 import React from "react";
 import { router } from "expo-router";
-import { IconSymbol } from "@/components/ui/IconSymbol.ios";
 import { Feather, Ionicons, MaterialIcons } from "@expo/vector-icons";
 
 export default function QuickActions() {
   const appColor = useColor();
+
   return (
     <>
       <TView

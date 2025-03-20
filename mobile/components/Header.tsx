@@ -3,13 +3,27 @@ import { Ionicons } from "@expo/vector-icons";
 import { router, Stack } from "expo-router";
 import React from "react";
 import { Platform } from "react-native";
+import {
+  NativeStackHeaderLeftProps,
+  NativeStackHeaderRightProps,
+} from "@react-navigation/native-stack";
 
 export default function HeaderBar({
   hideBack = false,
+  showBackBtn = false,
+  headerRight,
+  headerLeft,
   ...props
 }: {
   title: string;
   hideBack?: boolean;
+  showBackBtn?: boolean;
+  headerLeft?:
+    | ((props: NativeStackHeaderLeftProps) => React.ReactNode)
+    | undefined;
+  headerRight?:
+    | ((props: NativeStackHeaderRightProps) => React.ReactNode)
+    | undefined;
 }) {
   const appColor = useColor();
   const backIcon = Platform.OS === "ios" ? "chevron-back" : "arrow-back-sharp";
@@ -31,17 +45,20 @@ export default function HeaderBar({
         },
         headerShadowVisible: false,
         headerTintColor: appColor.background,
-        headerLeft: hideBack
-          ? undefined
-          : () => (
+        headerLeft: headerLeft
+          ? headerLeft
+          : showBackBtn
+          ? () => (
               <Ionicons
                 name={backIcon}
                 size={25}
                 color={appColor.text}
                 onPress={() => router.back()}
               />
-            ),
-        // headerTitle: (props) => <LogoTitle {...props} />,
+            )
+          : undefined,
+
+        headerRight: headerRight,
       }}
     />
   );
