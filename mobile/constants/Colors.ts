@@ -39,7 +39,7 @@ const lightColors: IColorStruct = {
   tabIconSelected: tintColorLight,
   card: "#F0F0F0",
   foreground: "",
-  muted: "",
+  muted: "#363738",
   mutedForeground: "",
   cardForeground: "",
   primary: "#ff6719",
@@ -48,9 +48,9 @@ const lightColors: IColorStruct = {
   secondaryForeground: "",
   accent: "#E0E1E2",
   accentForeground: "",
-  destructive: "",
-  destructiveForeground: "",
-  border: "",
+  destructive: "red",
+  destructiveForeground: "white",
+  border: "#363738",
   input: "",
 };
 
@@ -75,7 +75,7 @@ const darkColors: IColorStruct = {
   accentForeground: "",
   destructive: "#d00000",
   destructiveForeground: "#fff",
-  border: "#383c3c",
+  border: "#717171",
   input: "",
 };
 

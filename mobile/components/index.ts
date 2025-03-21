@@ -1,4 +1,4 @@
-export * from "./AuthWrapper";
+export * from "./WrapperAuth";
 export * from "./BottomTabBar";
 export * from "./Collapsible";
 export * from "./ExternalLink";

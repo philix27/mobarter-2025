@@ -1,4 +1,4 @@
-import AuthWrapper from "@/components/AuthWrapper";
+import AuthWrapper from "@/components/WrapperAuth";
 import InputText from "@/components/forms/InputText";
 import { TView } from "@/components/TView";
 import { useAppForm } from "@/lib";
@@ -6,20 +6,29 @@ import { Country } from "@/lib/__generated__/graphql";
 import ApiHooks from "@/lib/endpoints";
 import log from "@/lib/log";
 import { router } from "expo-router";
-import React from "react";
+import React, { useRef, useState } from "react";
 import { z } from "zod";
+import { useColor } from "@/lib/color";
+import DropdownComponent from "@/components/forms/Dropdown";
 
+const data = [
+  { label: Country.Nigeria, value: Country.Nigeria },
+  { label: Country.Ghana, value: Country.Ghana },
+  { label: Country.Kenya, value: Country.Kenya },
+];
 const formSchema = z.object({
   email: z.string().email("Invalid email format"),
   password: z.string().min(6, "Password must be at least 6 characters"),
   confirmPassword: z.string().min(6, "Password must be at least 6 characters"),
-  firstName: z.string(),
-  lastName: z.string(),
+  firstName: z.string().min(1, "Required"),
+  lastName: z.string().min(1, "Required"),
   country: z.string(),
   middleName: z.string().optional(),
 });
 
 export default function SignUpPage() {
+  const theme = useColor();
+  const [selectedValue, setSelectedValue] = useState("java");
   const [createAccount, { loading: isLoading }] =
     ApiHooks.useAuth_CreateAccount();
 
@@ -72,6 +81,7 @@ export default function SignUpPage() {
       });
     }
   };
+
   return (
     <AuthWrapper
       title="Sign Up"
@@ -94,7 +104,7 @@ export default function SignUpPage() {
         <InputText
           label={"First name"}
           value={formData.firstName}
-          onChangeText={(text) => handleChange("firstName", text.toLowerCase())}
+          onChangeText={(text) => handleChange("firstName", text)}
           placeholder={"First name"}
           error={
             errors!.firstName === undefined ? undefined : errors!.firstName
@@ -103,41 +113,44 @@ export default function SignUpPage() {
         <InputText
           label={"Last name"}
           value={formData.lastName}
-          onChangeText={(text) => handleChange("lastName", text.toLowerCase())}
+          onChangeText={(text) => handleChange("lastName", text)}
           placeholder={"Last name"}
           error={errors!.lastName === undefined ? undefined : errors!.lastName}
         />
         <InputText
           label={"Middle name"}
           value={formData.middleName}
-          onChangeText={(text) =>
-            handleChange("middleName", text.toLowerCase())
-          }
+          onChangeText={(text) => handleChange("middleName", text)}
           placeholder={"Middle name"}
           error={
             errors!.middleName === undefined ? undefined : errors!.middleName
           }
         />
+
+        <DropdownComponent
+          label="Country"
+          onChange={(text) => handleChange("country", text)}
+          value={formData.firstName}
+          data={data}
+        />
         <InputText
           label={"Country"}
           value={formData.country}
-          onChangeText={(text) => handleChange("country", text.toLowerCase())}
+          onChangeText={(text) => handleChange("country", text)}
           placeholder={"Last name"}
           error={errors!.country === undefined ? undefined : errors!.country}
         />
         <InputText
           label={"Password"}
           value={formData.password}
-          onChangeText={(text) => handleChange("password", text.toLowerCase())}
+          onChangeText={(text) => handleChange("password", text)}
           placeholder={"Enter password"}
           secureTextEntry={true}
         />
         <InputText
           label={"Confirm Password"}
           value={formData.confirmPassword}
-          onChangeText={(text) =>
-            handleChange("confirmPassword", text.toLowerCase())
-          }
+          onChangeText={(text) => handleChange("confirmPassword", text)}
           placeholder={"Enter password"}
           secureTextEntry={true}
         />

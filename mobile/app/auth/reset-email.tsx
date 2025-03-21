@@ -1,4 +1,4 @@
-import AuthWrapper from "@/components/AuthWrapper";
+import AuthWrapper from "@/components/WrapperAuth";
 import InputText from "@/components/forms/InputText";
 import { TView } from "@/components/TView";
 import { router } from "expo-router";
