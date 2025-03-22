@@ -62,7 +62,7 @@ export default function AuthWrapper(props: {
             </TView>
 
             {props.subtitle && (
-              <TView style={{ marginBottom: 40 }}>
+              <TView style={{ marginBottom: 20 }}>
                 <TText type="defaultSemiBold">{props.subtitle}</TText>
               </TView>
             )}

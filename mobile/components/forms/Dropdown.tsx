@@ -6,6 +6,7 @@ import { useColor } from "@/lib/color";
 import { TView } from "../TView";
 import { TText } from "../TText";
 import Label from "./Label";
+import ErrMsg from "./ErrMsg";
 
 type IProps = {
   label?: string;
@@ -13,14 +14,14 @@ type IProps = {
   placeholder?: string | undefined;
   error?: string | undefined;
   search?: boolean | undefined;
-  onChange: (item: any) => void;
+  onChange: (item: { _index: 0; label: string; value: string }) => void;
   data: {
     label: string;
     value: string;
   }[];
 };
 
-export default function DropdownComponent({
+export default function InputDropdown({
   search,
   data,
   value,
@@ -99,6 +100,7 @@ export default function DropdownComponent({
         )}
         renderItem={renderItem}
       />
+      {props.error && <ErrMsg msg={props.error} />}
     </TView>
   );
 }
@@ -110,13 +112,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 12,
     padding: 12,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 1,
+    // },
+    // shadowOpacity: 0.2,
+    // shadowRadius: 1.41,
 
     elevation: 2,
   },

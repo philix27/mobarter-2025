@@ -2,14 +2,15 @@ import AuthWrapper from "@/components/WrapperAuth";
 import { TText } from "@/components/TText";
 import { TView } from "@/components/TView";
 import InputText from "@/components/forms/InputText";
-import ApiHooks from "@/lib/endpoints";
 import { Link, router } from "expo-router";
 import React from "react";
 import { z } from "zod";
 import { Alert } from "react-native";
-import { useAppForm } from "@/lib";
+import { useAppForm, ApiHooks, log } from "@/lib";
 import { AppStores } from "@/lib/zustand";
-import log from "@/lib/log";
+import { IEvents } from "@/lib/log/events";
+
+const event: IEvents = "AUTH_LOGIN";
 
 const formSchema = z.object({
   email: z.string().email("Invalid email format"),
@@ -28,11 +29,7 @@ export default function SignInPage() {
 
   const handleSubmit = () => {
     const validation = formSchema.safeParse(formData);
-    console.log("On submit");
-    if (isLoading) {
-      Alert.alert("Loading...", "Request still processing!");
-      return;
-    }
+
     if (!validation.success) {
       const errorMessages = validation.error.format();
       setErrors({
@@ -54,12 +51,12 @@ export default function SignInPage() {
           });
           setFormData({ email: "", password: "" });
           setErrors({ email: "", password: "" });
-          log.info("AUTH_LOGIN", res.auth_login.email);
+          log.info(event, res.auth_login.email);
           router.push("/market");
         },
         onError: (error, clientOptions) => {
           console.log("ResultErr of login: ", JSON.stringify(error));
-          log.error("AUTH_LOGIN", error.message);
+          log.error(event, error.message);
         },
       });
     }
@@ -95,7 +92,7 @@ export default function SignInPage() {
           error={errors!.password === undefined ? undefined : errors!.password}
         />
 
-        <TView style={{ paddingTop: 5, marginBottom: 10 }}>
+        <TView style={{ paddingTop: 2, marginBottom: 10 }}>
           <Link href={"/auth/reset-email"}>
             <TText type="link">Forgot Password</TText>
           </Link>

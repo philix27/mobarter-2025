@@ -9,6 +9,7 @@ import {
 import { ReactNode } from "react";
 import { TView } from "./TView";
 import { useColor } from "@/lib/color";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 export default function Wrapper(props: { children: ReactNode }) {
   const appColor = useColor();
@@ -24,11 +25,13 @@ export default function Wrapper(props: { children: ReactNode }) {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
-      <ScrollView
-        bounces={false}
-        style={{ flex: 1 }}
+      <KeyboardAwareScrollView
+        contentContainerStyle={{
+          flexGrow: 1,
+        }}
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
+        // bounces={false}
       >
         <TView
           style={{
@@ -43,7 +46,7 @@ export default function Wrapper(props: { children: ReactNode }) {
         >
           {props.children}
         </TView>
-      </ScrollView>
+      </KeyboardAwareScrollView>
       {/* </TouchableWithoutFeedback> */}
       {/* </KeyboardAvoidingView> */}
     </SafeAreaView>

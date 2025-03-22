@@ -25,7 +25,7 @@ export function RootProviders(props: { children: ReactNode }) {
       <ApolloProvider client={apollo}>
         <ThemeProvider>
           <Slot />
-          <Toast position="bottom" />
+          <Toast position="top" />
         </ThemeProvider>
       </ApolloProvider>
     </QueryClientProvider>
