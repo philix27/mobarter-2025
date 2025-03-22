@@ -1,7 +1,7 @@
 import { TText, TView } from "@/components";
 import React from "react";
 
-export default function ScreenBuy() {
+export default function CreateAd() {
   return (
     <TView>
       <TText>ScreenSell</TText>

@@ -47,6 +47,7 @@ export default function SignUpPage() {
           store.update({
             email: email,
             sendEmailToken: res.auth_sendEmailOtp.token,
+            purpose: "signUp"
           });
           router.push("/auth/verify-otp");
         },

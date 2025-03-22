@@ -10,9 +10,6 @@ export default function SendCryptoModal() {
   return (
     <KeyboardAvoidingView style={{}} behavior="padding" enabled>
       <TView>
-        <TView style={{ marginBottom: 5, marginLeft: 10 }}>
-          <TText type="defaultSemiBold">Choose withdrawal method</TText>
-        </TView>
         <InputText
           label={"Wallet Address"}
           keyboardType="default"

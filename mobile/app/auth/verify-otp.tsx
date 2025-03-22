@@ -36,7 +36,12 @@ export default function VerifyOtpPage() {
       },
       onCompleted: (res) => {
         log.info(event);
-        router.push("/auth/sign-up");
+        if (store.purpose === "signUp") {
+          router.push("/auth/sign-up");
+        }
+        if (store.purpose === "resetPassword") {
+          router.push("/auth/reset-password");
+        }
       },
       onError: (error) => {
         log.error(event, error.message);

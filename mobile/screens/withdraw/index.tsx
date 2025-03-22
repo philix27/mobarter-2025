@@ -9,9 +9,6 @@ export default function WithdrawModal() {
   const theme = useColor();
   return (
     <TView>
-      <TView style={{ marginBottom: 5, marginLeft: 10 }}>
-        <TText type="defaultSemiBold">Choose withdrawal method</TText>
-      </TView>
       <Row
         title={"P2P"}
         desc={"Find a suitable exchange rate at marketplace"}

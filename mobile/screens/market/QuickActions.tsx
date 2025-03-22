@@ -59,13 +59,21 @@ export default function QuickActions() {
         >
           <Ionicons name="swap-horizontal" size={24} color="#fff" />
         </IconRound>
-        <BottomSheet ref={withdrawalSheet!} height={350}>
+        <BottomSheet
+          ref={withdrawalSheet!}
+          height={350}
+          title="Choose withdrawal method"
+        >
           <WithdrawModal />
         </BottomSheet>
-        <BottomSheet ref={sendCryptoSheet!} height={500}>
+        <BottomSheet
+          ref={sendCryptoSheet!}
+          height={500}
+          title="Choose withdrawal method"
+        >
           <SendCryptoModal />
         </BottomSheet>
-        <BottomSheet ref={p2pSheet!} height={300}>
+        <BottomSheet ref={p2pSheet!} title="P2P Market">
           <P2PModal />
         </BottomSheet>
       </TView>

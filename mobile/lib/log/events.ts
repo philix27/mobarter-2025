@@ -3,6 +3,7 @@ type AuthEvents =
   | "AUTH_SEND_EMAIL_OTP"
   | "AUTH_RESET_PASSWORD"
   | "AUTH_VERIFY_OTP"
+  | "AUTH_ACCOUNT_CREATED"
   | "AUTH_SIGNUP";
 type MarketEvents = "HOME_LOGIN" | "HOME_LOGIN";
 type SwapEvents = "SWAP_LOGIN" | "SWAP_LOGIN";
