@@ -14,6 +14,7 @@ import { JwtModule } from "@nestjs/jwt";
 import { BankAccountModule } from "./bankAccount/bankAccount.module";
 import { PassportModule } from "@nestjs/passport";
 import { HelpersModule } from "./helper/helper.module";
+import { AdvertsModule } from "./adverts/adverts.module";
 // import { CronModule } from "./cron/cron.module";
 // import { OrdersModule } from "./orders/orders.module";
 // import { SwapModule } from "./swap/swap.module";
@@ -46,6 +47,7 @@ import { HelpersModule } from "./helper/helper.module";
         AuthModule,
         UserModule,
         BankAccountModule,
+        AdvertsModule,
         // CronModule,
         // OrdersModule,
         // SwapModule,

@@ -24,7 +24,7 @@ export class WalletCryptoResolver {
     @Mutation((returns) => WalletCryptoResponse)
     @UseGuards(GqlAuthGuard)
     async walletCrypto_create(
-        @Context() context: any
+        @Context() context: { req: { userId: string } }
     ): Promise<WalletCryptoResponse[]> {
         const user = context.req;
         const res = await this.service.createWalletsForNewUser({
