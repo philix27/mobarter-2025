@@ -2,7 +2,7 @@ import { Field, ObjectType } from "@nestjs/graphql";
 import { $Enums } from "@prisma/client";
 
 @ObjectType()
-export class WalletCrypto {
+export class WalletCryptoResponse {
     @Field({ nullable: false })
     id: number;
 
