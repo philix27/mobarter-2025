@@ -1,7 +1,7 @@
 import AuthWrapper from "@/components/WrapperAuth";
 import { TView } from "@/components/TView";
 import { router } from "expo-router";
-import React from "react";
+import React, { useState } from "react";
 import InputOtp from "@/components/forms/Otp";
 import { ApiHooks, log } from "@/lib";
 import { AppStores } from "@/lib/zustand";
@@ -12,15 +12,26 @@ const event: IEvents = "AUTH_VERIFY_OTP";
 export default function VerifyOtpPage() {
   const [verifyOtp, verifyOtpFn] = ApiHooks.useAuth_verifyEmailOtp();
   const store = AppStores.useAuth();
+  const [isFilled, setIsFilled] = useState<boolean>();
+  const [otpValue, setOtpValue] = useState<string>("");
 
   const handleSubmit = () => {
-    router.push("/auth/reset-password");
+    if (!isFilled || otpValue!.length !== 6) {
+      Toast.show({
+        type: "error",
+        text1: "Incomplete OTP",
+        text2: "OTP not complete",
+      });
+      return;
+    }
+    console.log(otpValue);
+
     verifyOtp({
       variables: {
         input: {
           email: store.email.toLowerCase(),
           token: store.sendEmailToken,
-          otp: "",
+          otp: otpValue,
         },
       },
       onCompleted: (res) => {
@@ -51,8 +62,12 @@ export default function VerifyOtpPage() {
     >
       <TView style={{ marginBottom: 20 }}>
         <InputOtp
-          onTextChange={(item) => {}}
-          onFilled={(item) => {}}
+          onTextChange={(item) => {
+            setOtpValue(item);
+          }}
+          onFilled={(item) => {
+            setIsFilled(true);
+          }}
           style={{ width: "80%" }}
         />
       </TView>

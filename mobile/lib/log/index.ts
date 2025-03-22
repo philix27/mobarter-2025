@@ -28,3 +28,5 @@ export const log = {
     console.debug(`${timestamp} ${event}`, message, optionalParams);
   },
 };
+
+export * from "./events";

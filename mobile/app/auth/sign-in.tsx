@@ -1,14 +1,11 @@
 import AuthWrapper from "@/components/WrapperAuth";
-import { TText } from "@/components/TText";
-import { TView } from "@/components/TView";
+import { TView, TText } from "@/components";
 import InputText from "@/components/forms/InputText";
 import { Link, router } from "expo-router";
 import React from "react";
 import { z } from "zod";
-import { Alert } from "react-native";
-import { useAppForm, ApiHooks, log } from "@/lib";
+import { useAppForm, ApiHooks, log, IEvents } from "@/lib";
 import { AppStores } from "@/lib/zustand";
-import { IEvents } from "@/lib/log/events";
 
 const event: IEvents = "AUTH_LOGIN";
 
@@ -69,7 +66,7 @@ export default function SignInPage() {
       subtitle="Welcome back"
       onPress={handleSubmit}
       bottomText={"Do not have an account?"}
-      linkHref="/auth/sign-up"
+      linkHref="/auth/sign-email"
       linkText="Sign up"
       isLoading={isLoading}
     >

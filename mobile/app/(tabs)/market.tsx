@@ -1,7 +1,7 @@
 import HeaderBar from "@/components/Header";
 import MarketScreen from "@/screens/market";
 import { router } from "expo-router";
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { useColor } from "@/lib/color";
 import {
   Ionicons,
@@ -14,12 +14,26 @@ import { TouchableOpacity } from "react-native";
 import { BottomSheet } from "@/components/BottomSheet";
 import WalletQRCode from "@/screens/market/WalletQRCode";
 import { RBSheetRef } from "react-native-raw-bottom-sheet";
+import { AppStores } from "@/lib";
+import Toast from "react-native-toast-message";
 
 export default function MarketPage() {
   const appColor = useColor();
   const { toggleTheme } = useContext(ThemeContext);
   const refRBSheet = useRef<RBSheetRef>();
+  const store = AppStores.useUserInfo();
 
+  useEffect(() => {
+    if (store.email.length < 5) {
+      router.push("/");
+      Toast.show({
+        type: "info",
+        text1: "Please login",
+        text2: "No user found",
+      });
+      return;
+    }
+  });
   return (
     <>
       <HeaderBar

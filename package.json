@@ -1,0 +1,30 @@
+{
+  "name": "nest-template",
+  "version": "0.1.0",
+  "description": "NestJS API project template crafted for Docker environments",
+  "author": "Saluki",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "start": "node dist/server.js",
+    "dev": "cd server && node dist/server.js && cd .. && expo start",
+    "d": "cd mobile && expo start",
+    "build": "npm run clean && tsc",
+    "test": "env-cmd -f .env jest --config=jest.json",
+    "lint": "eslint -c .eslintrc.js --ext .ts 'src/**/*.ts'",
+    "#Prisma scripts": "Prisma scripts",
+    "gen": "npx prisma format && npx prisma generate",
+    "push": "npx prisma format && npx prisma db push",
+    "pull": "npx prisma db pull --force",
+    "studio": "npx prisma studio"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  }
+}

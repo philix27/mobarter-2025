@@ -27,30 +27,30 @@ export default function InputText(props: {
         ]}
       >
         {props.label && <Label label={props.label} />}
-        {props.icon}
-        {props.icon || (
+        {/* {props.icon} */}
+        {/* {props.icon || (
           <TView style={{ position: "absolute", top: 40, left: 10, zIndex: 2 }}>
             <Feather name="eye-off" size={20} color={theme.muted} />
           </TView>
-        )}
-       
-          <TextInput
-            style={[
-              styles.input,
-              {
-                backgroundColor: theme.background,
-                borderColor: theme.muted,
-                color: theme.text,
-                paddingLeft: 37.5,
-              },
-            ]}
-            keyboardType={props.keyboardType}
-            value={props.value}
-            onChangeText={props.onChangeText}
-            placeholder={props.placeholder}
-            secureTextEntry={HidePassword}
-            placeholderTextColor={theme.muted}
-          />
+        )} */}
+
+        <TextInput
+          style={[
+            styles.input,
+            {
+              backgroundColor: theme.background,
+              borderColor: theme.muted,
+              color: theme.text,
+              // paddingLeft: 37.5,
+            },
+          ]}
+          keyboardType={props.keyboardType}
+          value={props.value}
+          onChangeText={props.onChangeText}
+          placeholder={props.placeholder}
+          secureTextEntry={HidePassword}
+          placeholderTextColor={theme.muted}
+        />
 
         {props.secureTextEntry && (
           <TView style={{ position: "absolute", right: 10, top: 38 }}>

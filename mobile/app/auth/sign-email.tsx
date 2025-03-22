@@ -1,13 +1,12 @@
 import AuthWrapper from "@/components/WrapperAuth";
 import InputText from "@/components/forms/InputText";
 import { TView } from "@/components/TView";
-import { useAppForm, ApiHooks, log } from "@/lib";
+import { useAppForm, ApiHooks, log, AppStores } from "@/lib";
 import { router } from "expo-router";
 import React from "react";
 import { z } from "zod";
 import Toast from "react-native-toast-message";
 import { OtpPurpose } from "@/lib/__generated__/graphql";
-import { AppStores } from "@/lib/zustand";
 import { IEvents } from "@/lib/log/events";
 
 const event: IEvents = "AUTH_SEND_EMAIL_OTP";
@@ -43,8 +42,12 @@ export default function SignUpPage() {
           },
         },
         onCompleted: (res) => {
-          log.info(event, email);
-          store.update({ email: email, sendEmailToken: res.token });
+          log.info(event, res.auth_sendEmailOtp);
+          // log.info(event, email);
+          store.update({
+            email: email,
+            sendEmailToken: res.auth_sendEmailOtp.token,
+          });
           router.push("/auth/verify-otp");
         },
         onError: (error) => {

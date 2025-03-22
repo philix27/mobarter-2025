@@ -22,7 +22,7 @@ export default function InputOtp({ onFilled, onTextChange, ...props }: IProps) {
     <TView style={[{ marginVertical: 8 }, props.style]}>
       {props.label && <Label label={props.label} />}
       <OtpInput
-        numberOfDigits={5}
+        numberOfDigits={6}
         focusColor={theme.primary}
         autoFocus={false}
         hideStick={true}

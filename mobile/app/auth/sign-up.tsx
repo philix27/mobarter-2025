@@ -70,7 +70,7 @@ export default function SignUpPage() {
         },
         onCompleted: (res) => {
           log.info(event);
-          router.push("/(tabs)/market");
+          router.push("/auth/account-success");
         },
         onError: (error, clientOptions) => {
           console.log("ResultErr of login: ", JSON.stringify(error));
@@ -89,7 +89,7 @@ export default function SignUpPage() {
     <AuthWrapper
       title="Sign Up"
       btnTitle="Create account"
-      subtitle="Enter your credentials"
+      subtitle={`Email: ${store.email}`}
       onPress={handleSubmit}
       bottomText={"Have an account?"}
       linkHref="/auth/sign-in"
