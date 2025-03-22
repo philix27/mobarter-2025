@@ -1,20 +1,28 @@
-import { Image } from "react-native";
+import { Image, Linking } from "react-native";
 import { TText } from "@/components/TText";
 import { TView } from "@/components/TView";
 import { useColor } from "@/lib/color";
 import { AppAssets } from "@/assets";
 import Wrapper from "@/components/Wrapper";
 import Row from "@/components/Row";
-import { ReactNode } from "react";
-import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { ReactNode, useContext } from "react";
+import {
+  FontAwesome,
+  FontAwesome5,
+  Ionicons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import { AppStores } from "@/lib/zustand";
 import { Collapsible } from "@/components";
 import { UserLevel } from "./UserLevel";
 import InputButton from "@/components/forms/Button";
+import { router } from "expo-router";
+import { ThemeContext } from "@/lib/providers";
 
 export default function SettingsScreen() {
   const appColor = useColor();
   const store = AppStores.useUserInfo();
+  const { toggleTheme } = useContext(ThemeContext);
   return (
     <Wrapper>
       <TView
@@ -107,20 +115,37 @@ export default function SettingsScreen() {
           icon={
             <Ionicons name="color-palette-outline" size={24} color="#fff" />
           }
+          onClick={() => {
+            toggleTheme();
+          }}
         />
       </Card>
       <SectionTitle title={"Others"} />
       <Card>
-        <Row title={"Terms of Service"} desc={""} />
         <Row
-          title={"Privacy Policy"}
-          desc={""}
+          title={"Terms of Service"}
+          desc={"Read our terms of service"}
+          icon={<FontAwesome5 name="readme" size={20} color="#fff" />}
+          onClick={() => {
+            Linking.openURL("https://www.mobarter.com/tos");
+          }}
+        />
+        <Row
+          title="Privacy Policy"
+          desc="Read our privacy policy"
           icon={<MaterialIcons name="privacy-tip" size={24} color="#fff" />}
+          onClick={() => {
+            Linking.openURL("https://www.mobarter.com/privacy");
+          }}
         />
         <Row
           title={"Logout"}
           desc={"Close app"}
           icon={<MaterialIcons name="logout" size={24} color="#fff" />}
+          onClick={() => {
+            store.clear();
+            router.push("/");
+          }}
         />
       </Card>
     </Wrapper>

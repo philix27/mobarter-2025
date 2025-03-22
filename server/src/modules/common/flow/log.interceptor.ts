@@ -22,7 +22,8 @@ export class LogInterceptor implements NestInterceptor {
         const startTime = new Date().getTime();
         // const request = context.switchToHttp().getRequest<FastifyRequest>();
 
-        const method_name = context.getArgs()[3].fieldName;
+        // const method_name = context.getArgs()[3].fieldName || "no name";
+        const method_name = "method_name";
 
         return next.handle().pipe(
             map((data) => {

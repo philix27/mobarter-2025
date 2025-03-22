@@ -17,7 +17,7 @@ const getFormattedDateTime = (): string => {
 
 const timestamp = getFormattedDateTime(); // Example: 2025-03-20 14:30:15
 
-const log = {
+export const log = {
   info: (event: IEvents, message?: any, ...optionalParams: any[]) => {
     console.log(`${timestamp} ${event}`, message, optionalParams);
   },
@@ -29,4 +29,4 @@ const log = {
   },
 };
 
-export default log;
+export * from "./events";

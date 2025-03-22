@@ -1,9 +1,7 @@
 import * as auth from "./auth";
 import * as bankAccount from "./bank";
 
-const ApiHooks = {
+export const ApiHooks = {
   ...auth,
   ...bankAccount,
 };
-
-export default ApiHooks;

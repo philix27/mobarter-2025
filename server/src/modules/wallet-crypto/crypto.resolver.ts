@@ -1,28 +1,34 @@
 import { Context, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { WalletCryptoService } from "./crypto.service";
-import { WalletCrypto } from "./crypto.dto";
+import { WalletCryptoResponse } from "./crypto.dto";
+import { UseGuards } from "@nestjs/common";
+import { GqlAuthGuard } from "../auth/gql.guard";
 
-@Resolver((of: any) => WalletCrypto)
+@Resolver((of: any) => WalletCryptoResponse)
 export class WalletCryptoResolver {
     constructor(private readonly service: WalletCryptoService) {}
 
-    @Query((returns) => WalletCrypto)
-    async walletCrypto_getAll(): Promise<WalletCrypto[]> {
+    @Query((returns) => [WalletCryptoResponse])
+    @UseGuards(GqlAuthGuard)
+    async walletCrypto_getAll(
+        @Context() context: any
+    ): Promise<WalletCryptoResponse[]> {
+        const user = context.req;
         const result = await this.service.getWallets({
-            userId: 0,
+            userId: parseInt(user.userId),
         });
 
         return result;
     }
 
-    @Mutation((returns) => WalletCrypto)
+    @Mutation((returns) => WalletCryptoResponse)
+    @UseGuards(GqlAuthGuard)
     async walletCrypto_create(
         @Context() context: any
-    ): Promise<WalletCrypto[]> {
-        const user = context.req.user;
-        console.log("Besties", user);
+    ): Promise<WalletCryptoResponse[]> {
+        const user = context.req;
         const res = await this.service.createWalletsForNewUser({
-            userId: user.id,
+            userId: parseInt(user.userId),
         });
         return res;
     }

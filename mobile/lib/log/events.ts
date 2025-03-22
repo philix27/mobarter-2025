@@ -1,5 +1,6 @@
 type AuthEvents =
   | "AUTH_LOGIN"
+  | "AUTH_SEND_EMAIL_OTP"
   | "AUTH_RESET_PASSWORD"
   | "AUTH_VERIFY_OTP"
   | "AUTH_SIGNUP";

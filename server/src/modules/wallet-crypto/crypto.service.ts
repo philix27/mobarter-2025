@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { LoggerService, PrismaService } from "../common";
 import { PrivyWalletService } from "./privy.service";
 import { $Enums } from "@prisma/client";
+import { GqlErr } from "../common/errors/gqlErr";
 
 @Injectable()
 export class WalletCryptoService {
@@ -13,6 +14,16 @@ export class WalletCryptoService {
 
     public async createWalletsForNewUser(params: { userId: number }) {
         this.logger.info("Creating crypto wallet accounts ...");
+
+        const userWallets = await this.prisma.cryptoWallets.findMany({
+            where: {
+                user_id: params.userId,
+            },
+        });
+        console.log("wallets: ", userWallets);
+        if (userWallets.length > 1) {
+            throw GqlErr("User already has wallets");
+        }
 
         const ethWallet = await this.createEthereumWallet({
             userId: params.userId,
@@ -69,9 +80,10 @@ export class WalletCryptoService {
 
         const wallets = await this.prisma.cryptoWallets.findMany({
             where: {
-                id: params.userId,
+                user_id: params.userId,
             },
         });
+        console.log("wallets: ", wallets);
         return wallets;
     }
 }

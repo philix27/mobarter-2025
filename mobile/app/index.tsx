@@ -12,13 +12,15 @@ export default function Page() {
         justifyContent: "center",
       }}
     >
-      <View>
+      <View style={{ gap: 20 }}>
+        <Link href="/auth/verify-otp">
+          <TText type="subtitle">Verify OTP</TText>
+        </Link>
+
         <Link href="/(tabs)/market">
           <TText type="subtitle">Market</TText>
         </Link>
-        <Link href={"/app/(tabs)/market" as any}>
-          <TText type="subtitle">Market Tab</TText>
-        </Link>
+
         <Link href="/auth/sign-in">
           <TText type="subtitle">Login</TText>
         </Link>

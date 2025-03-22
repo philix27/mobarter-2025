@@ -16,6 +16,7 @@ import { JwtModule } from "@nestjs/jwt";
 import { ConfigModule } from "@nestjs/config";
 import { HelperService } from "../helper/helper.service";
 import { HelpersModule } from "../helper/helper.module";
+import { ItemsController } from "./auth.controller";
 
 @Module({
     imports: [
@@ -38,6 +39,7 @@ import { HelpersModule } from "../helper/helper.module";
         JwtStrategy,
         GqlAuthGuard,
     ],
+    controllers: [ItemsController],
     // exports: [JwtStrategy, GqlAuthGuard],
 })
 export class AuthModule {}

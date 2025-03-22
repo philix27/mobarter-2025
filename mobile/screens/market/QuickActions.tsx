@@ -6,14 +6,15 @@ import { router } from "expo-router";
 import { Feather, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { BottomSheet } from "@/components/BottomSheet";
 import { RBSheetRef } from "react-native-raw-bottom-sheet";
-import SwapScreen from "../swap";
 import WithdrawModal from "../withdraw";
 import SendCryptoModal from "../send";
+import P2PModal from "../p2p/modal";
 
 export default function QuickActions() {
   const appColor = useColor();
   const withdrawalSheet = useRef<RBSheetRef>();
   const sendCryptoSheet = useRef<RBSheetRef>();
+  const p2pSheet = useRef<RBSheetRef>();
   return (
     <>
       <TView
@@ -45,7 +46,7 @@ export default function QuickActions() {
         <IconRound
           title="P2P"
           onPress={() => {
-            router.push("/(core)/p2p-buy");
+            p2pSheet.current?.open();
           }}
         >
           <MaterialIcons name="currency-exchange" size={24} color={"#fff"} />
@@ -63,6 +64,9 @@ export default function QuickActions() {
         </BottomSheet>
         <BottomSheet ref={sendCryptoSheet!} height={500}>
           <SendCryptoModal />
+        </BottomSheet>
+        <BottomSheet ref={p2pSheet!} height={300}>
+          <P2PModal />
         </BottomSheet>
       </TView>
     </>

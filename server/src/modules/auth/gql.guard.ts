@@ -8,7 +8,6 @@ export class GqlAuthGuard implements CanActivate {
     constructor(private readonly jwt: HelperService) {}
 
     async getRequest(context: ExecutionContext) {
-
         const ctx = GqlExecutionContext.create(context);
 
         const ob = ctx.getContext().req.raw.rawHeaders;
@@ -46,7 +45,8 @@ export class GqlAuthGuard implements CanActivate {
 
         const user = this.jwt.verifyToken(authToken);
         if (!user) throw GqlErr("User not found");
-
+        console.log("user:", user);
+        console.log("authToken:", authToken);
         ctx.getContext().req = user;
         return ctx.getContext().req;
     }
