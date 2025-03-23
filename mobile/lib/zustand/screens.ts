@@ -4,6 +4,7 @@ import { createJSONStorage, persist } from "zustand/middleware";
 
 export type IViews = "INBOX" | "BOTS" | "GROUPS" | "MARKET";
 export type IAssets = "Crypto" | "Fiat" | "Services";
+export type IWalletQrCode = "Ethereum" | "Fiat" | "Services";
 export type IBots = "General" | "DeFi" | "WEB3";
 
 export interface ISlice {

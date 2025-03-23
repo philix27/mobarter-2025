@@ -1,4 +1,9 @@
-import { TextInput, StyleSheet, KeyboardTypeOptions } from "react-native";
+import {
+  TextInput,
+  StyleSheet,
+  KeyboardTypeOptions,
+  TouchableOpacity,
+} from "react-native";
 import { TView } from "../TView";
 import { useColor } from "@/lib/color";
 import { useState } from "react";
@@ -10,6 +15,8 @@ export default function InputText(props: {
   label: string;
   value?: string | undefined;
   icon?: JSX.Element;
+  trailingIcon?: JSX.Element;
+  onTrailingIconPress?: VoidFunction;
   error?: string | undefined;
   onChangeText?: ((text: string) => void) | undefined;
   placeholder?: string | undefined;
@@ -18,6 +25,7 @@ export default function InputText(props: {
 }) {
   const theme = useColor();
   const [HidePassword, setHidePassword] = useState(props.secureTextEntry);
+  const [onFocus, setFocus] = useState(false);
   return (
     <TView>
       <TView
@@ -50,6 +58,8 @@ export default function InputText(props: {
           placeholder={props.placeholder}
           secureTextEntry={HidePassword}
           placeholderTextColor={theme.muted}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
         />
 
         {props.secureTextEntry && (
@@ -70,6 +80,20 @@ export default function InputText(props: {
               />
             )}
           </TView>
+        )}
+
+        {props.trailingIcon && !onFocus && (
+          <TouchableOpacity
+            style={{
+              position: "absolute",
+              right: 14,
+              top: 40,
+              backgroundColor: theme.background,
+            }}
+            onPress={props.onTrailingIconPress}
+          >
+            {props.trailingIcon}
+          </TouchableOpacity>
         )}
       </TView>
       {props.error && <ErrMsg msg={props.error} />}

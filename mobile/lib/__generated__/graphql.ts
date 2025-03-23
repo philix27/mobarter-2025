@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { GraphQLResolveInfo } from "graphql";
 import { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-node/core";
-import gql from "graphql-tag";
+import { gql } from "@apollo/client";
 import * as Apollo from "@apollo/client";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -35,6 +35,44 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean };
   Int: { input: number; output: number };
   Float: { input: number; output: number };
+};
+
+export type Advert_AdvertResponse = {
+  __typename?: "Advert_AdvertResponse";
+  currency?: Maybe<Scalars["String"]["output"]>;
+  lowerLimit?: Maybe<Scalars["String"]["output"]>;
+  rate?: Maybe<Scalars["String"]["output"]>;
+  state?: Maybe<Scalars["String"]["output"]>;
+  upperLimit?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type Advert_CreateInput = {
+  currency: Scalars["String"]["input"];
+  lowerLimit: Scalars["String"]["input"];
+  rate: Scalars["String"]["input"];
+  state: Scalars["String"]["input"];
+  upperLimit: Scalars["String"]["input"];
+};
+
+export type Advert_DeleteInput = {
+  id: Scalars["ID"]["input"];
+};
+
+export type Advert_GetAllInput = {
+  filter?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type Advert_GetOneInput = {
+  id: Scalars["ID"]["input"];
+};
+
+export type Advert_UpdateInput = {
+  currency: Scalars["String"]["input"];
+  id: Scalars["ID"]["input"];
+  lowerLimit: Scalars["String"]["input"];
+  rate: Scalars["String"]["input"];
+  state: Scalars["String"]["input"];
+  upperLimit: Scalars["String"]["input"];
 };
 
 export type Auth_CreateAccountInput = {
@@ -158,6 +196,9 @@ export enum CurrencyName {
 
 export type Mutation = {
   __typename?: "Mutation";
+  adverts_create: Advert_AdvertResponse;
+  adverts_delete: Advert_AdvertResponse;
+  adverts_update: Advert_AdvertResponse;
   auth_createAccount: Auth_CreateAccountResponse;
   auth_login: Auth_LoginResponse;
   auth_logout: Scalars["String"]["output"];
@@ -166,7 +207,19 @@ export type Mutation = {
   auth_verifyEmailOtp: Auth_VerifyOtpResponse;
   bankAccount_create: BankAccount_Response;
   bankAccount_delete: BankAccount_DeleteResponse;
-  walletCrypto_create: WalletCrypto;
+  walletCrypto_create: WalletCryptoResponse;
+};
+
+export type MutationAdverts_CreateArgs = {
+  input: Advert_CreateInput;
+};
+
+export type MutationAdverts_DeleteArgs = {
+  input: Advert_DeleteInput;
+};
+
+export type MutationAdverts_UpdateArgs = {
+  input: Advert_UpdateInput;
 };
 
 export type MutationAuth_CreateAccountArgs = {
@@ -223,11 +276,21 @@ export type PostGetOneInput = {
 
 export type Query = {
   __typename?: "Query";
+  adverts_getAll: Array<Advert_AdvertResponse>;
+  adverts_getOne: Advert_AdvertResponse;
   bankAccount_getAll: Array<BankAccount_Response>;
   getMarket: PostDto;
   user_getOne: UserDto;
-  walletCrypto_getAll: WalletCrypto;
+  walletCrypto_getAll: Array<WalletCryptoResponse>;
   walletFiat_getAll: WalletFiat;
+};
+
+export type QueryAdverts_GetAllArgs = {
+  input: Advert_GetAllInput;
+};
+
+export type QueryAdverts_GetOneArgs = {
+  input: Advert_GetOneInput;
 };
 
 export type QueryGetMarketArgs = {
@@ -253,8 +316,8 @@ export type UserGetInfo = {
   userId: Scalars["Float"]["input"];
 };
 
-export type WalletCrypto = {
-  __typename?: "WalletCrypto";
+export type WalletCryptoResponse = {
+  __typename?: "WalletCryptoResponse";
   address: Scalars["String"]["output"];
   chainType: ChainType;
   id: Scalars["Float"]["output"];
@@ -267,6 +330,81 @@ export type WalletFiat = {
   accountNumber: Scalars["String"]["output"];
   balance: Scalars["Float"]["output"];
   bankName: Scalars["String"]["output"];
+};
+
+export type Adverts_UpdateMutationVariables = Exact<{
+  input: Advert_UpdateInput;
+}>;
+
+export type Adverts_UpdateMutation = {
+  __typename?: "Mutation";
+  adverts_update: {
+    __typename?: "Advert_AdvertResponse";
+    rate?: string | null;
+    state?: string | null;
+    currency?: string | null;
+    lowerLimit?: string | null;
+  };
+};
+
+export type Adverts_CreateMutationVariables = Exact<{
+  input: Advert_CreateInput;
+}>;
+
+export type Adverts_CreateMutation = {
+  __typename?: "Mutation";
+  adverts_create: {
+    __typename?: "Advert_AdvertResponse";
+    rate?: string | null;
+    state?: string | null;
+    currency?: string | null;
+    lowerLimit?: string | null;
+  };
+};
+
+export type Adverts_DeleteMutationVariables = Exact<{
+  input: Advert_DeleteInput;
+}>;
+
+export type Adverts_DeleteMutation = {
+  __typename?: "Mutation";
+  adverts_delete: {
+    __typename?: "Advert_AdvertResponse";
+    rate?: string | null;
+    state?: string | null;
+    currency?: string | null;
+    lowerLimit?: string | null;
+  };
+};
+
+export type Adverts_GetAllQueryVariables = Exact<{
+  input: Advert_GetAllInput;
+}>;
+
+export type Adverts_GetAllQuery = {
+  __typename?: "Query";
+  adverts_getAll: Array<{
+    __typename?: "Advert_AdvertResponse";
+    rate?: string | null;
+    state?: string | null;
+    currency?: string | null;
+    lowerLimit?: string | null;
+  }>;
+};
+
+export type Adverts_GetOneQueryVariables = Exact<{
+  input: Advert_GetOneInput;
+}>;
+
+export type Adverts_GetOneQuery = {
+  __typename?: "Query";
+  adverts_getOne: {
+    __typename?: "Advert_AdvertResponse";
+    rate?: string | null;
+    state?: string | null;
+    currency?: string | null;
+    lowerLimit?: string | null;
+  };
 };
 
 export type Auth_LoginMutationVariables = Exact<{
@@ -382,12 +520,82 @@ export type WalletCrypto_CreateMutationVariables = Exact<{
 export type WalletCrypto_CreateMutation = {
   __typename?: "Mutation";
   walletCrypto_create: {
-    __typename?: "WalletCrypto";
+    __typename?: "WalletCryptoResponse";
     address: string;
+    chainType: ChainType;
+    id: number;
     wallet_id: string;
   };
 };
 
+export type WalletCrypto_GetAllQueryVariables = Exact<{ [key: string]: never }>;
+
+export type WalletCrypto_GetAllQuery = {
+  __typename?: "Query";
+  walletCrypto_getAll: Array<{
+    __typename?: "WalletCryptoResponse";
+    address: string;
+    chainType: ChainType;
+    id: number;
+    wallet_id: string;
+  }>;
+};
+
+export const Adverts_Update = gql`
+  mutation Adverts_update($input: Advert_UpdateInput!) {
+    adverts_update(input: $input) {
+      rate
+      state
+      currency
+      lowerLimit
+      rate
+    }
+  }
+`;
+export const Adverts_Create = gql`
+  mutation Adverts_create($input: Advert_CreateInput!) {
+    adverts_create(input: $input) {
+      rate
+      state
+      currency
+      lowerLimit
+      rate
+    }
+  }
+`;
+export const Adverts_Delete = gql`
+  mutation Adverts_delete($input: Advert_DeleteInput!) {
+    adverts_delete(input: $input) {
+      rate
+      state
+      currency
+      lowerLimit
+      rate
+    }
+  }
+`;
+export const Adverts_GetAll = gql`
+  query Adverts_getAll($input: Advert_GetAllInput!) {
+    adverts_getAll(input: $input) {
+      rate
+      state
+      currency
+      lowerLimit
+      rate
+    }
+  }
+`;
+export const Adverts_GetOne = gql`
+  query Adverts_getOne($input: Advert_GetOneInput!) {
+    adverts_getOne(input: $input) {
+      rate
+      state
+      currency
+      lowerLimit
+      rate
+    }
+  }
+`;
 export const Auth_Login = gql`
   mutation Auth_login($input: Auth_LoginInput!) {
     auth_login(input: $input) {
@@ -460,11 +668,357 @@ export const WalletCrypto_Create = gql`
   mutation WalletCrypto_create {
     walletCrypto_create {
       address
+      chainType
+      id
+      wallet_id
+    }
+  }
+`;
+export const WalletCrypto_GetAll = gql`
+  query WalletCrypto_getAll {
+    walletCrypto_getAll {
+      address
+      chainType
+      id
       wallet_id
     }
   }
 `;
 
+export const Adverts_UpdateDocument = gql`
+  mutation Adverts_update($input: Advert_UpdateInput!) {
+    adverts_update(input: $input) {
+      rate
+      state
+      currency
+      lowerLimit
+      rate
+    }
+  }
+`;
+export type Adverts_UpdateMutationFn = Apollo.MutationFunction<
+  Adverts_UpdateMutation,
+  Adverts_UpdateMutationVariables
+>;
+
+/**
+ * __useAdverts_UpdateMutation__
+ *
+ * To run a mutation, you first call `useAdverts_UpdateMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAdverts_UpdateMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [advertsUpdateMutation, { data, loading, error }] = useAdverts_UpdateMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useAdverts_UpdateMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    Adverts_UpdateMutation,
+    Adverts_UpdateMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    Adverts_UpdateMutation,
+    Adverts_UpdateMutationVariables
+  >(Adverts_UpdateDocument, options);
+}
+export type Adverts_UpdateMutationHookResult = ReturnType<
+  typeof useAdverts_UpdateMutation
+>;
+export type Adverts_UpdateMutationResult =
+  Apollo.MutationResult<Adverts_UpdateMutation>;
+export type Adverts_UpdateMutationOptions = Apollo.BaseMutationOptions<
+  Adverts_UpdateMutation,
+  Adverts_UpdateMutationVariables
+>;
+export const Adverts_CreateDocument = gql`
+  mutation Adverts_create($input: Advert_CreateInput!) {
+    adverts_create(input: $input) {
+      rate
+      state
+      currency
+      lowerLimit
+      rate
+    }
+  }
+`;
+export type Adverts_CreateMutationFn = Apollo.MutationFunction<
+  Adverts_CreateMutation,
+  Adverts_CreateMutationVariables
+>;
+
+/**
+ * __useAdverts_CreateMutation__
+ *
+ * To run a mutation, you first call `useAdverts_CreateMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAdverts_CreateMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [advertsCreateMutation, { data, loading, error }] = useAdverts_CreateMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useAdverts_CreateMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    Adverts_CreateMutation,
+    Adverts_CreateMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    Adverts_CreateMutation,
+    Adverts_CreateMutationVariables
+  >(Adverts_CreateDocument, options);
+}
+export type Adverts_CreateMutationHookResult = ReturnType<
+  typeof useAdverts_CreateMutation
+>;
+export type Adverts_CreateMutationResult =
+  Apollo.MutationResult<Adverts_CreateMutation>;
+export type Adverts_CreateMutationOptions = Apollo.BaseMutationOptions<
+  Adverts_CreateMutation,
+  Adverts_CreateMutationVariables
+>;
+export const Adverts_DeleteDocument = gql`
+  mutation Adverts_delete($input: Advert_DeleteInput!) {
+    adverts_delete(input: $input) {
+      rate
+      state
+      currency
+      lowerLimit
+      rate
+    }
+  }
+`;
+export type Adverts_DeleteMutationFn = Apollo.MutationFunction<
+  Adverts_DeleteMutation,
+  Adverts_DeleteMutationVariables
+>;
+
+/**
+ * __useAdverts_DeleteMutation__
+ *
+ * To run a mutation, you first call `useAdverts_DeleteMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAdverts_DeleteMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [advertsDeleteMutation, { data, loading, error }] = useAdverts_DeleteMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useAdverts_DeleteMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    Adverts_DeleteMutation,
+    Adverts_DeleteMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    Adverts_DeleteMutation,
+    Adverts_DeleteMutationVariables
+  >(Adverts_DeleteDocument, options);
+}
+export type Adverts_DeleteMutationHookResult = ReturnType<
+  typeof useAdverts_DeleteMutation
+>;
+export type Adverts_DeleteMutationResult =
+  Apollo.MutationResult<Adverts_DeleteMutation>;
+export type Adverts_DeleteMutationOptions = Apollo.BaseMutationOptions<
+  Adverts_DeleteMutation,
+  Adverts_DeleteMutationVariables
+>;
+export const Adverts_GetAllDocument = gql`
+  query Adverts_getAll($input: Advert_GetAllInput!) {
+    adverts_getAll(input: $input) {
+      rate
+      state
+      currency
+      lowerLimit
+      rate
+    }
+  }
+`;
+
+/**
+ * __useAdverts_GetAllQuery__
+ *
+ * To run a query within a React component, call `useAdverts_GetAllQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAdverts_GetAllQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAdverts_GetAllQuery({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useAdverts_GetAllQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    Adverts_GetAllQuery,
+    Adverts_GetAllQueryVariables
+  > &
+    (
+      | { variables: Adverts_GetAllQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    )
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<Adverts_GetAllQuery, Adverts_GetAllQueryVariables>(
+    Adverts_GetAllDocument,
+    options
+  );
+}
+export function useAdverts_GetAllLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    Adverts_GetAllQuery,
+    Adverts_GetAllQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<Adverts_GetAllQuery, Adverts_GetAllQueryVariables>(
+    Adverts_GetAllDocument,
+    options
+  );
+}
+export function useAdverts_GetAllSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        Adverts_GetAllQuery,
+        Adverts_GetAllQueryVariables
+      >
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    Adverts_GetAllQuery,
+    Adverts_GetAllQueryVariables
+  >(Adverts_GetAllDocument, options);
+}
+export type Adverts_GetAllQueryHookResult = ReturnType<
+  typeof useAdverts_GetAllQuery
+>;
+export type Adverts_GetAllLazyQueryHookResult = ReturnType<
+  typeof useAdverts_GetAllLazyQuery
+>;
+export type Adverts_GetAllSuspenseQueryHookResult = ReturnType<
+  typeof useAdverts_GetAllSuspenseQuery
+>;
+export type Adverts_GetAllQueryResult = Apollo.QueryResult<
+  Adverts_GetAllQuery,
+  Adverts_GetAllQueryVariables
+>;
+export const Adverts_GetOneDocument = gql`
+  query Adverts_getOne($input: Advert_GetOneInput!) {
+    adverts_getOne(input: $input) {
+      rate
+      state
+      currency
+      lowerLimit
+      rate
+    }
+  }
+`;
+
+/**
+ * __useAdverts_GetOneQuery__
+ *
+ * To run a query within a React component, call `useAdverts_GetOneQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAdverts_GetOneQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAdverts_GetOneQuery({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useAdverts_GetOneQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    Adverts_GetOneQuery,
+    Adverts_GetOneQueryVariables
+  > &
+    (
+      | { variables: Adverts_GetOneQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    )
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<Adverts_GetOneQuery, Adverts_GetOneQueryVariables>(
+    Adverts_GetOneDocument,
+    options
+  );
+}
+export function useAdverts_GetOneLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    Adverts_GetOneQuery,
+    Adverts_GetOneQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<Adverts_GetOneQuery, Adverts_GetOneQueryVariables>(
+    Adverts_GetOneDocument,
+    options
+  );
+}
+export function useAdverts_GetOneSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        Adverts_GetOneQuery,
+        Adverts_GetOneQueryVariables
+      >
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    Adverts_GetOneQuery,
+    Adverts_GetOneQueryVariables
+  >(Adverts_GetOneDocument, options);
+}
+export type Adverts_GetOneQueryHookResult = ReturnType<
+  typeof useAdverts_GetOneQuery
+>;
+export type Adverts_GetOneLazyQueryHookResult = ReturnType<
+  typeof useAdverts_GetOneLazyQuery
+>;
+export type Adverts_GetOneSuspenseQueryHookResult = ReturnType<
+  typeof useAdverts_GetOneSuspenseQuery
+>;
+export type Adverts_GetOneQueryResult = Apollo.QueryResult<
+  Adverts_GetOneQuery,
+  Adverts_GetOneQueryVariables
+>;
 export const Auth_LoginDocument = gql`
   mutation Auth_login($input: Auth_LoginInput!) {
     auth_login(input: $input) {
@@ -908,6 +1462,8 @@ export const WalletCrypto_CreateDocument = gql`
   mutation WalletCrypto_create {
     walletCrypto_create {
       address
+      chainType
+      id
       wallet_id
     }
   }
@@ -953,6 +1509,86 @@ export type WalletCrypto_CreateMutationResult =
 export type WalletCrypto_CreateMutationOptions = Apollo.BaseMutationOptions<
   WalletCrypto_CreateMutation,
   WalletCrypto_CreateMutationVariables
+>;
+export const WalletCrypto_GetAllDocument = gql`
+  query WalletCrypto_getAll {
+    walletCrypto_getAll {
+      address
+      chainType
+      id
+      wallet_id
+    }
+  }
+`;
+
+/**
+ * __useWalletCrypto_GetAllQuery__
+ *
+ * To run a query within a React component, call `useWalletCrypto_GetAllQuery` and pass it any options that fit your needs.
+ * When your component renders, `useWalletCrypto_GetAllQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useWalletCrypto_GetAllQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useWalletCrypto_GetAllQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    WalletCrypto_GetAllQuery,
+    WalletCrypto_GetAllQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    WalletCrypto_GetAllQuery,
+    WalletCrypto_GetAllQueryVariables
+  >(WalletCrypto_GetAllDocument, options);
+}
+export function useWalletCrypto_GetAllLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    WalletCrypto_GetAllQuery,
+    WalletCrypto_GetAllQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    WalletCrypto_GetAllQuery,
+    WalletCrypto_GetAllQueryVariables
+  >(WalletCrypto_GetAllDocument, options);
+}
+export function useWalletCrypto_GetAllSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        WalletCrypto_GetAllQuery,
+        WalletCrypto_GetAllQueryVariables
+      >
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    WalletCrypto_GetAllQuery,
+    WalletCrypto_GetAllQueryVariables
+  >(WalletCrypto_GetAllDocument, options);
+}
+export type WalletCrypto_GetAllQueryHookResult = ReturnType<
+  typeof useWalletCrypto_GetAllQuery
+>;
+export type WalletCrypto_GetAllLazyQueryHookResult = ReturnType<
+  typeof useWalletCrypto_GetAllLazyQuery
+>;
+export type WalletCrypto_GetAllSuspenseQueryHookResult = ReturnType<
+  typeof useWalletCrypto_GetAllSuspenseQuery
+>;
+export type WalletCrypto_GetAllQueryResult = Apollo.QueryResult<
+  WalletCrypto_GetAllQuery,
+  WalletCrypto_GetAllQueryVariables
 >;
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -1062,8 +1698,15 @@ export type DirectiveResolverFn<
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  Auth_CreateAccountInput: Auth_CreateAccountInput;
+  Advert_AdvertResponse: ResolverTypeWrapper<Advert_AdvertResponse>;
   String: ResolverTypeWrapper<Scalars["String"]["output"]>;
+  Advert_CreateInput: Advert_CreateInput;
+  Advert_DeleteInput: Advert_DeleteInput;
+  ID: ResolverTypeWrapper<Scalars["ID"]["output"]>;
+  Advert_GetAllInput: Advert_GetAllInput;
+  Advert_GetOneInput: Advert_GetOneInput;
+  Advert_UpdateInput: Advert_UpdateInput;
+  Auth_CreateAccountInput: Auth_CreateAccountInput;
   Auth_CreateAccountResponse: ResolverTypeWrapper<Auth_CreateAccountResponse>;
   Auth_LoginInput: Auth_LoginInput;
   Auth_LoginResponse: ResolverTypeWrapper<Auth_LoginResponse>;
@@ -1086,20 +1729,26 @@ export type ResolversTypes = {
   Mutation: ResolverTypeWrapper<{}>;
   OtpPurpose: OtpPurpose;
   PostDto: ResolverTypeWrapper<PostDto>;
-  ID: ResolverTypeWrapper<Scalars["ID"]["output"]>;
   PostGetOneInput: PostGetOneInput;
   Query: ResolverTypeWrapper<{}>;
   UserDto: ResolverTypeWrapper<UserDto>;
   UserGetInfo: UserGetInfo;
-  WalletCrypto: ResolverTypeWrapper<WalletCrypto>;
+  WalletCryptoResponse: ResolverTypeWrapper<WalletCryptoResponse>;
   WalletFiat: ResolverTypeWrapper<WalletFiat>;
   Boolean: ResolverTypeWrapper<Scalars["Boolean"]["output"]>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  Auth_CreateAccountInput: Auth_CreateAccountInput;
+  Advert_AdvertResponse: Advert_AdvertResponse;
   String: Scalars["String"]["output"];
+  Advert_CreateInput: Advert_CreateInput;
+  Advert_DeleteInput: Advert_DeleteInput;
+  ID: Scalars["ID"]["output"];
+  Advert_GetAllInput: Advert_GetAllInput;
+  Advert_GetOneInput: Advert_GetOneInput;
+  Advert_UpdateInput: Advert_UpdateInput;
+  Auth_CreateAccountInput: Auth_CreateAccountInput;
   Auth_CreateAccountResponse: Auth_CreateAccountResponse;
   Auth_LoginInput: Auth_LoginInput;
   Auth_LoginResponse: Auth_LoginResponse;
@@ -1117,14 +1766,33 @@ export type ResolversParentTypes = {
   BankAccount_Response: BankAccount_Response;
   Mutation: {};
   PostDto: PostDto;
-  ID: Scalars["ID"]["output"];
   PostGetOneInput: PostGetOneInput;
   Query: {};
   UserDto: UserDto;
   UserGetInfo: UserGetInfo;
-  WalletCrypto: WalletCrypto;
+  WalletCryptoResponse: WalletCryptoResponse;
   WalletFiat: WalletFiat;
   Boolean: Scalars["Boolean"]["output"];
+};
+
+export type Advert_AdvertResponseResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes["Advert_AdvertResponse"] = ResolversParentTypes["Advert_AdvertResponse"]
+> = {
+  currency?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
+  lowerLimit?: Resolver<
+    Maybe<ResolversTypes["String"]>,
+    ParentType,
+    ContextType
+  >;
+  rate?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
+  state?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
+  upperLimit?: Resolver<
+    Maybe<ResolversTypes["String"]>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type Auth_CreateAccountResponseResolvers<
@@ -1200,6 +1868,24 @@ export type MutationResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["Mutation"] = ResolversParentTypes["Mutation"]
 > = {
+  adverts_create?: Resolver<
+    ResolversTypes["Advert_AdvertResponse"],
+    ParentType,
+    ContextType,
+    RequireFields<MutationAdverts_CreateArgs, "input">
+  >;
+  adverts_delete?: Resolver<
+    ResolversTypes["Advert_AdvertResponse"],
+    ParentType,
+    ContextType,
+    RequireFields<MutationAdverts_DeleteArgs, "input">
+  >;
+  adverts_update?: Resolver<
+    ResolversTypes["Advert_AdvertResponse"],
+    ParentType,
+    ContextType,
+    RequireFields<MutationAdverts_UpdateArgs, "input">
+  >;
   auth_createAccount?: Resolver<
     ResolversTypes["Auth_CreateAccountResponse"],
     ParentType,
@@ -1249,7 +1935,7 @@ export type MutationResolvers<
     RequireFields<MutationBankAccount_DeleteArgs, "input">
   >;
   walletCrypto_create?: Resolver<
-    ResolversTypes["WalletCrypto"],
+    ResolversTypes["WalletCryptoResponse"],
     ParentType,
     ContextType
   >;
@@ -1272,6 +1958,18 @@ export type QueryResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["Query"] = ResolversParentTypes["Query"]
 > = {
+  adverts_getAll?: Resolver<
+    Array<ResolversTypes["Advert_AdvertResponse"]>,
+    ParentType,
+    ContextType,
+    RequireFields<QueryAdverts_GetAllArgs, "input">
+  >;
+  adverts_getOne?: Resolver<
+    ResolversTypes["Advert_AdvertResponse"],
+    ParentType,
+    ContextType,
+    RequireFields<QueryAdverts_GetOneArgs, "input">
+  >;
   bankAccount_getAll?: Resolver<
     Array<ResolversTypes["BankAccount_Response"]>,
     ParentType,
@@ -1290,7 +1988,7 @@ export type QueryResolvers<
     RequireFields<QueryUser_GetOneArgs, "input">
   >;
   walletCrypto_getAll?: Resolver<
-    ResolversTypes["WalletCrypto"],
+    Array<ResolversTypes["WalletCryptoResponse"]>,
     ParentType,
     ContextType
   >;
@@ -1319,9 +2017,9 @@ export type UserDtoResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type WalletCryptoResolvers<
+export type WalletCryptoResponseResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes["WalletCrypto"] = ResolversParentTypes["WalletCrypto"]
+  ParentType extends ResolversParentTypes["WalletCryptoResponse"] = ResolversParentTypes["WalletCryptoResponse"]
 > = {
   address?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
   chainType?: Resolver<ResolversTypes["ChainType"], ParentType, ContextType>;
@@ -1342,6 +2040,7 @@ export type WalletFiatResolvers<
 };
 
 export type Resolvers<ContextType = any> = {
+  Advert_AdvertResponse?: Advert_AdvertResponseResolvers<ContextType>;
   Auth_CreateAccountResponse?: Auth_CreateAccountResponseResolvers<ContextType>;
   Auth_LoginResponse?: Auth_LoginResponseResolvers<ContextType>;
   Auth_ResetPasswordResponse?: Auth_ResetPasswordResponseResolvers<ContextType>;
@@ -1353,6 +2052,6 @@ export type Resolvers<ContextType = any> = {
   PostDto?: PostDtoResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   UserDto?: UserDtoResolvers<ContextType>;
-  WalletCrypto?: WalletCryptoResolvers<ContextType>;
+  WalletCryptoResponse?: WalletCryptoResponseResolvers<ContextType>;
   WalletFiat?: WalletFiatResolvers<ContextType>;
 };

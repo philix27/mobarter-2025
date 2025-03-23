@@ -12,7 +12,7 @@ import { TView } from "@/components/TView";
 import { ThemeContext } from "@/lib/providers";
 import { TouchableOpacity } from "react-native";
 import { BottomSheet } from "@/components/BottomSheet";
-import WalletQRCode from "@/screens/market/WalletQRCode";
+import WalletQRCode from "@/screens/wallets/WalletQRCode";
 import { RBSheetRef } from "react-native-raw-bottom-sheet";
 import { AppStores } from "@/lib";
 import Toast from "react-native-toast-message";

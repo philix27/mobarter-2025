@@ -68,7 +68,7 @@ export default function QuickActions() {
         </BottomSheet>
         <BottomSheet
           ref={sendCryptoSheet!}
-          height={500}
+          height={800}
           title="Choose withdrawal method"
         >
           <SendCryptoModal />
