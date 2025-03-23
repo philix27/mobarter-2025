@@ -64,8 +64,8 @@ export default function MarketPage() {
                   refRBSheet.current!.open();
                 }}
               >
-                <Ionicons
-                  name="wallet-outline"
+                <MaterialCommunityIcons
+                  name="qrcode-scan"
                   size={20}
                   color={appColor.text}
                 />

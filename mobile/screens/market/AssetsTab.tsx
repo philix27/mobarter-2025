@@ -18,6 +18,13 @@ export default function AssetsTab() {
         }}
       >
         <TabIem
+          title={"Services"}
+          isActive={store.activeViewAsset === "Services"}
+          onPress={() => {
+            store.update({ activeViewAsset: "Services" });
+          }}
+        />
+        <TabIem
           title={"Crypto"}
           isActive={store.activeViewAsset === "Crypto"}
           onPress={() => {

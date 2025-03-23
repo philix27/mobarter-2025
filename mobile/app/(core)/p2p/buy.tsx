@@ -1,7 +1,8 @@
+import { TView } from "@/components";
 import HeaderBar from "@/components/Header";
 import { TText } from "@/components/TText";
 import { useColor } from "@/lib/color";
-import { View, SafeAreaView } from "react-native";
+import { SafeAreaView } from "react-native";
 
 export default function Diseases() {
   const appColor = useColor();
@@ -10,7 +11,7 @@ export default function Diseases() {
       style={{ height: "100%", backgroundColor: appColor.background }}
     >
       <HeaderBar title="P2P Market - Buy" showBackBtn />
-      <View
+      <TView
         style={{
           height: "95%",
           display: "flex",
@@ -19,7 +20,7 @@ export default function Diseases() {
         }}
       >
         <TText>How far</TText>
-      </View>
+      </TView>
     </SafeAreaView>
   );
 }

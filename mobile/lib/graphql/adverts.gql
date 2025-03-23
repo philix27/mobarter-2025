@@ -1,0 +1,49 @@
+mutation Adverts_update($input: Advert_UpdateInput!) {
+  adverts_update(input: $input) {
+    rate
+    state
+    currency
+    lowerLimit
+    rate
+  }
+}
+
+mutation Adverts_create($input: Advert_CreateInput!) {
+  adverts_create(input: $input) {
+    rate
+    state
+    currency
+    lowerLimit
+    rate
+  }
+}
+
+mutation Adverts_delete($input: Advert_DeleteInput!) {
+  adverts_delete(input: $input) {
+    rate
+    state
+    currency
+    lowerLimit
+    rate
+  }
+}
+
+query Adverts_getAll($input: Advert_GetAllInput!) {
+  adverts_getAll(input: $input) {
+    rate
+    state
+    currency
+    lowerLimit
+    rate
+  }
+}
+
+query Adverts_getOne($input: Advert_GetOneInput!) {
+  adverts_getOne(input: $input) {
+    rate
+    state
+    currency
+    lowerLimit
+    rate
+  }
+}

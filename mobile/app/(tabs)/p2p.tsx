@@ -1,11 +1,11 @@
 import HeaderBar from "@/components/Header";
-import ServicesScreen from "@/screens/services";
+import P2PScreen from "@/screens/p2p";
 
 export default function HomeScreen() {
   return (
     <>
-      <HeaderBar title="Services" />
-      <ServicesScreen />
+      <HeaderBar title="P2P" />
+      <P2PScreen />
     </>
   );
 }

@@ -24,7 +24,7 @@ function TabBarButton(props: {
     market: (props: typeof Feather) => (
       <Feather name="home" size={20} {...props} />
     ),
-    services: (props: typeof Feather) => (
+    p2p: (props: typeof Feather) => (
       <Feather name="watch" size={20} {...props} />
     ),
   };

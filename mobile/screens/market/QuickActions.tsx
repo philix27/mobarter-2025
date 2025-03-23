@@ -8,13 +8,13 @@ import { BottomSheet } from "@/components/BottomSheet";
 import { RBSheetRef } from "react-native-raw-bottom-sheet";
 import WithdrawModal from "../withdraw";
 import SendCryptoModal from "../send";
-import P2PModal from "../p2p/modal";
+import WalletModal from "../wallets/modal";
 
 export default function QuickActions() {
   const appColor = useColor();
   const withdrawalSheet = useRef<RBSheetRef>();
   const sendCryptoSheet = useRef<RBSheetRef>();
-  const p2pSheet = useRef<RBSheetRef>();
+  const walletSheet = useRef<RBSheetRef>();
   return (
     <>
       <TView
@@ -44,12 +44,12 @@ export default function QuickActions() {
           <MaterialIcons name="call-received" size={24} color={"#fff"} />
         </IconRound>
         <IconRound
-          title="P2P"
+          title="Wallets"
           onPress={() => {
-            p2pSheet.current?.open();
+            walletSheet.current?.open();
           }}
         >
-          <MaterialIcons name="currency-exchange" size={24} color={"#fff"} />
+          <Ionicons name="wallet-outline" size={24} color={"#fff"} />
         </IconRound>
         <IconRound
           title="Swap"
@@ -73,8 +73,8 @@ export default function QuickActions() {
         >
           <SendCryptoModal />
         </BottomSheet>
-        <BottomSheet ref={p2pSheet!} title="P2P Market">
-          <P2PModal />
+        <BottomSheet ref={walletSheet!} title="Wallets">
+          <WalletModal />
         </BottomSheet>
       </TView>
     </>
