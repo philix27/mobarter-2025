@@ -1,8 +1,22 @@
 import { TText } from "@/components/TText";
-import { Link } from "expo-router";
+import { AppStores } from "@/lib";
+import { Link, router } from "expo-router";
+import { useEffect } from "react";
 import { SafeAreaView, View } from "react-native";
 
 export default function Page() {
+  const store = AppStores.useUserInfo();
+  useEffect(() => {
+    if (!store.email) {
+      setTimeout(() => {
+        router.push("/auth/sign-in");
+      }, 100);
+    } else {
+      setTimeout(() => {
+        router.push("/(tabs)/home");
+      }, 100);
+    }
+  });
   return (
     <SafeAreaView
       style={{
@@ -17,7 +31,7 @@ export default function Page() {
           <TText type="subtitle">Verify OTP</TText>
         </Link>
 
-        <Link href="/(tabs)/market">
+        <Link href="/(tabs)/home">
           <TText type="subtitle">Market</TText>
         </Link>
 

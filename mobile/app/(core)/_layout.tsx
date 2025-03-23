@@ -16,9 +16,8 @@ export default function Layout() {
         headerShown: true,
       }}
     >
-      <Stack.Screen name="p2p-buy" />
-      <Stack.Screen name="p2p-sell" />
       <Stack.Screen name="direct-exchange" />
+      <Stack.Screen name="minisafe" />
       <Stack.Screen name="settings/index" />
       <Stack.Screen name="swap/[id]/index" />
       <Stack.Screen name="coin/[id]/index" />

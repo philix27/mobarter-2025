@@ -5,7 +5,7 @@ import { AppTabBar } from "@/components/BottomTabBar";
 export default function TabLayout() {
   return (
     <Tabs tabBar={(props) => <AppTabBar {...props} />}>
-      <Tabs.Screen name="market" />
+      <Tabs.Screen name="home" />
       <Tabs.Screen name="p2p" />
     </Tabs>
   );

@@ -13,7 +13,7 @@ export default function SignUpPage() {
   const handleSubmit = () => {
     log.info(event);
     store.clear();
-    router.push("/(tabs)/market");
+    router.push("/(tabs)/home");
   };
 
   return (

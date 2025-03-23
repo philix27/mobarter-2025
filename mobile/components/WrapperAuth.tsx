@@ -58,7 +58,13 @@ export default function AuthWrapper(props: {
                 alignSelf: "center",
               }}
             >
-              <TText type="title">{props.title}</TText>
+              <TText
+                type="title"
+                style={{ marginVertical: 20, color: appColor.primary }}
+              >
+                Mobarter
+              </TText>
+              <TText type="subtitle">{props.title}</TText>
             </TView>
 
             {props.subtitle && (

@@ -13,16 +13,23 @@ export default function HeaderBar({
   showBackBtn = false,
   headerRight,
   headerLeft,
+  headerShown,
+  headerTitle,
   ...props
 }: {
   title: string;
   hideBack?: boolean;
   showBackBtn?: boolean;
+  headerShown?: boolean | undefined;
   headerLeft?:
     | ((props: NativeStackHeaderLeftProps) => React.ReactNode)
     | undefined;
   headerRight?:
     | ((props: NativeStackHeaderRightProps) => React.ReactNode)
+    | undefined;
+  headerTitle?:
+    | string
+    | ((props: { children: string; tintColor?: string }) => React.ReactNode)
     | undefined;
 }) {
   const appColor = useColor();
@@ -31,6 +38,7 @@ export default function HeaderBar({
     <Stack.Screen
       options={{
         title: props.title,
+        headerShown: headerShown,
         headerTitleStyle: {
           fontWeight: "600",
           fontSize: 15,
@@ -45,6 +53,7 @@ export default function HeaderBar({
         },
         headerShadowVisible: false,
         headerTintColor: appColor.background,
+        headerTitle: headerTitle,
         headerLeft: headerLeft
           ? headerLeft
           : showBackBtn

@@ -4,7 +4,7 @@ import React from "react";
 export default function ScreenBuy() {
   return (
     <TView>
-      <TText>ScreenSell</TText>
+      <TText>Screen buy</TText>
     </TView>
   );
 }

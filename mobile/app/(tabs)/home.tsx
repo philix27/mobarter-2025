@@ -37,7 +37,7 @@ export default function MarketPage() {
   return (
     <>
       <HeaderBar
-        title="Market"
+        title="Home"
         headerLeft={(props: any) => {
           return (
             <TView

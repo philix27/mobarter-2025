@@ -49,7 +49,7 @@ export default function SignInPage() {
           setFormData({ email: "", password: "" });
           setErrors({ email: "", password: "" });
           log.info(event, res.auth_login.email);
-          router.push("/market");
+          router.push("/home");
         },
         onError: (error, clientOptions) => {
           console.log("ResultErr of login: ", JSON.stringify(error));

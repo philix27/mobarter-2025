@@ -12,6 +12,7 @@ import {
   MutationAuth_SendEmailOtpArgs,
   MutationAuth_VerifyEmailOtpArgs,
   MutationAuth_CreateAccountArgs,
+  MutationAuth_LoginArgs,
 } from "../__generated__/graphql";
 
 type Input<T> = { input: T };
@@ -23,8 +24,9 @@ type Response<V, K extends keyof V> = {
 };
 
 type WrappedResponse<K extends keyof Mutation> = Response<Mutation, K>;
+
 export const useAuthLogin = () =>
-  useMutation<  WrappedResponse<"auth_login">, Auth_LoginInput>(
+  useMutation<WrappedResponse<"auth_login">, MutationAuth_LoginArgs>(
     Auth_LoginDocument
   );
 
