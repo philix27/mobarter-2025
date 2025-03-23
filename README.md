@@ -4,7 +4,6 @@
 ## Overview
 Mobarter is a P2P trading platform enabling users to buy, sell cryptocurrencies, and supports on/off ramping for fiat conversion. It also integrates crypto payments for easier transactions, focusing on security, decentralization, and user-friendliness. Mobarter aims to empower Africans with cross-border payment solutions using blockchain technology.
 
-
 ## Features
 
 - **P2P Exchange:**  
