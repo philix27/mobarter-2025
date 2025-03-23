@@ -81,11 +81,11 @@ export default function MarketPage() {
                   color={appColor.text}
                 />
               </TouchableOpacity>
-              <Ionicons
+              {/* <Ionicons
                 name="notifications-outline"
                 size={20}
                 color={appColor.text}
-              />
+              /> */}
             </TView>
           );
         }}
