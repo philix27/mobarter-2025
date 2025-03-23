@@ -2,7 +2,7 @@ import { View, StyleSheet, LayoutChangeEvent } from "react-native";
 import { PlatformPressable } from "@react-navigation/elements";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { useColor } from "@/lib/color";
-import { Feather } from "@expo/vector-icons";
+import { Feather, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import Animated, {
   interpolate,
   useAnimatedStyle,
@@ -21,11 +21,11 @@ function TabBarButton(props: {
 }) {
   const appColor = useColor();
   const icons = {
-    market: (props: typeof Feather) => (
-      <Feather name="home" size={20} {...props} />
+    home: (props: typeof Feather) => (
+      <FontAwesome name="home" size={24} {...props} />
     ),
-    services: (props: typeof Feather) => (
-      <Feather name="watch" size={20} {...props} />
+    p2p: (props: typeof Feather) => (
+      <MaterialIcons name="currency-exchange" size={20} {...props} />
     ),
   };
   const scale = useSharedValue(0);

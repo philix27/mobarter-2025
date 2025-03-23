@@ -17,6 +17,7 @@ import {
 import { GqlErr } from "../common/errors/gqlErr";
 import { OtpPurpose } from "../common/enums";
 import { HelperService } from "../helper/helper.service";
+import { WalletCryptoService } from "../wallet-crypto/crypto.service";
 
 @Injectable()
 export class AuthService {
@@ -24,7 +25,7 @@ export class AuthService {
         private readonly logger: LoggerService,
         private readonly notification: NotificationService,
         private readonly prisma: PrismaService,
-        // private readonly userService: UserService,
+        private readonly walletCrypto: WalletCryptoService,
         private readonly jwtService: HelperService
     ) {}
 
@@ -172,10 +173,13 @@ export class AuthService {
             throw GqlErr("Invalid credentials");
         }
 
+        await this.walletCrypto.createWalletsForNewUser({ userId: user.id });
+
         const token = this.jwtService.generateToken({
             userId: user.id,
             email: user.email,
         });
+
         return {
             country: user.country,
             email: user.email,

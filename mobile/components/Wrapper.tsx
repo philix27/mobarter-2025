@@ -31,7 +31,7 @@ export default function Wrapper(props: { children: ReactNode }) {
         }}
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
-        // bounces={false}
+        bounces={false}
       >
         <TView
           style={{

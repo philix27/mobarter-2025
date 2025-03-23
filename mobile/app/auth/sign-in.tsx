@@ -6,6 +6,7 @@ import React from "react";
 import { z } from "zod";
 import { useAppForm, ApiHooks, log, IEvents } from "@/lib";
 import { AppStores } from "@/lib/zustand";
+import Toast from "react-native-toast-message";
 
 const event: IEvents = "AUTH_LOGIN";
 
@@ -49,11 +50,16 @@ export default function SignInPage() {
           setFormData({ email: "", password: "" });
           setErrors({ email: "", password: "" });
           log.info(event, res.auth_login.email);
-          router.push("/market");
+          router.push("/home");
         },
         onError: (error, clientOptions) => {
           console.log("ResultErr of login: ", JSON.stringify(error));
           log.error(event, error.message);
+          Toast.show({
+            type: "error",
+            text1: error.message,
+            text2: "Oops, an error occurred!",
+          });
         },
       });
     }

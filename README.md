@@ -2,7 +2,7 @@ Short Description
 Pocket Ramp is a savings dApp that helps users lock their funds over a specified period of time and only have access to funds when it is due for withdrawal.
 
 Project Description
-Pocket Ramp is a savings app which provides a robust support system that relies on the XMTP messaging protocol to manage messages between users and customer care.
+Mobarter is a P2P trading platform enabling users to buy, sell cryptocurrencies, and supports on/off ramping for fiat conversion. It also integrates crypto payments for easier transactions, focusing on security, decentralization, and user-friendliness. Mobarter aims to empower Africans with cross-border payment solutions using blockchain technology.
 
 In order to make the use of the dApp seamless for users, especially non-web3 literates, an account abstraction provided my Web3Auth is been used handle signing into the application.
 

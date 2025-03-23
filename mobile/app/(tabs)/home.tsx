@@ -12,7 +12,7 @@ import { TView } from "@/components/TView";
 import { ThemeContext } from "@/lib/providers";
 import { TouchableOpacity } from "react-native";
 import { BottomSheet } from "@/components/BottomSheet";
-import WalletQRCode from "@/screens/market/WalletQRCode";
+import WalletQRCode from "@/screens/wallets/WalletQRCode";
 import { RBSheetRef } from "react-native-raw-bottom-sheet";
 import { AppStores } from "@/lib";
 import Toast from "react-native-toast-message";
@@ -37,7 +37,7 @@ export default function MarketPage() {
   return (
     <>
       <HeaderBar
-        title="Market"
+        title="Home"
         headerLeft={(props: any) => {
           return (
             <TView
@@ -64,8 +64,8 @@ export default function MarketPage() {
                   refRBSheet.current!.open();
                 }}
               >
-                <Ionicons
-                  name="wallet-outline"
+                <MaterialCommunityIcons
+                  name="qrcode-scan"
                   size={20}
                   color={appColor.text}
                 />

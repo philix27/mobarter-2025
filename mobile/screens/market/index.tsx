@@ -6,6 +6,7 @@ import AssetsCrypto from "./Assets/AssetsCrypto";
 import AssetsFiat from "./Assets/AssetsFiat";
 import { TView } from "@/components/TView";
 import Wrapper from "@/components/Wrapper";
+import ServicesScreen from "../services";
 
 export default function MarketScreen() {
   const store = AppStores.useView();
@@ -16,7 +17,9 @@ export default function MarketScreen() {
         <Balance />
         <QuickActions />
         <AssetsTab />
-        {store.activeViewAsset === "Fiat" ? <AssetsFiat /> : <AssetsCrypto />}
+        {store.activeViewAsset === "Fiat" && <AssetsFiat />}
+        {store.activeViewAsset === "Crypto" && <AssetsCrypto />}
+        {store.activeViewAsset === "Services" && <ServicesScreen />}
       </TView>
     </Wrapper>
   );

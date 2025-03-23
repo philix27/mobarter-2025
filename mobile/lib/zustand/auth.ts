@@ -4,7 +4,8 @@ import { createJSONStorage, persist } from "zustand/middleware";
 import { Auth_CreateAccountInput, Country } from "../__generated__/graphql";
 
 export interface ISlice extends Partial<Auth_CreateAccountInput> {
-  sendEmailToken?: string
+  sendEmailToken?: string;
+  purpose?: "signUp" | "resetPassword";
 }
 
 export const defaultValues: Required<ISlice> = {
@@ -14,7 +15,8 @@ export const defaultValues: Required<ISlice> = {
   lastname: "",
   middlename: "",
   password: "",
-  sendEmailToken: ""
+  sendEmailToken: "",
+  purpose: "signUp",
 };
 
 export interface ISliceUpdate extends Required<ISlice> {

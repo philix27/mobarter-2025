@@ -13,54 +13,6 @@ export const servicesList: {
   icon: JSX.Element;
 }[] = [
   {
-    title: "Good Dollar",
-    desc: "Provide liquidity to Mobarter Swap",
-    route: "/(core)/settings",
-    icon: <Feather name="settings" size={24} color={"#fff"} />,
-    bgColor: "#03c4b1",
-  },
-  {
-    title: "P2P Market Place",
-    desc: "Provide liquidity to Mobarter Swap",
-    route: "/(core)/settings",
-    icon: <Feather name="settings" size={24} color={"#fff"} />,
-    bgColor: "#03c4b1",
-  },
-  {
-    title: "Locked Savings",
-    desc: "Provide liquidity to Mobarter Swap",
-    route: "/(core)/settings",
-    icon: <Feather name="settings" size={24} color={"#fff"} />,
-    bgColor: "#03c4b1",
-  },
-  {
-    title: "Trade Analysis",
-    desc: "Provide liquidity to Mobarter Swap",
-    route: "/(core)/settings",
-    icon: <Feather name="settings" size={24} color={"#fff"} />,
-    bgColor: "#03c4b1",
-  },
-  {
-    title: "Integrate Mento Swap",
-    desc: "Provide liquidity to Mobarter Swap",
-    route: "/(core)/settings",
-    icon: <Feather name="settings" size={24} color={"#fff"} />,
-    bgColor: "#03c4b1",
-  },
-  {
-    title: "Provide Liquidity",
-    desc: "Provide liquidity to Mobarter Swap",
-    route: "/(core)/settings",
-    icon: <Feather name="settings" size={24} color={"#fff"} />,
-    bgColor: "#03c4b1",
-  },
-  {
-    title: "Minisafe",
-    desc: "Lock your safe",
-    route: "/(core)/minisafe",
-    icon: <MaterialCommunityIcons name="safe" size={24} color={"#fff"} />,
-  },
-  {
     title: "Purchase Airtime",
     desc: "Buy airtime with your crypto asset",
     route: "/(core)/purchase-airtime",
@@ -81,4 +33,39 @@ export const servicesList: {
     icon: <Feather name="send" size={24} color={"#fff"} />,
     bgColor: "#8c045f",
   },
+  {
+    title: "Minisafe",
+    desc: "Lock your safe",
+    route: "/(core)/minisafe",
+    icon: <MaterialCommunityIcons name="safe" size={24} color={"#fff"} />,
+  },
+  {
+    title: "Good Dollar",
+    desc: "Provide liquidity to Mobarter Swap",
+    route: "/(core)/settings",
+    icon: <Feather name="settings" size={24} color={"#fff"} />,
+    bgColor: "#03c4b1",
+  },
 ];
+
+// {
+//   title: "Trade Analysis",
+//   desc: "Provide liquidity to Mobarter Swap",
+//   route: "/(core)/settings",
+//   icon: <Feather name="settings" size={24} color={"#fff"} />,
+//   bgColor: "#03c4b1",
+// },
+// {
+//   title: "Integrate Mento Swap",
+//   desc: "Provide liquidity to Mobarter Swap",
+//   route: "/(core)/settings",
+//   icon: <Feather name="settings" size={24} color={"#fff"} />,
+//   bgColor: "#03c4b1",
+// },
+// {
+//   title: "Provide Liquidity",
+//   desc: "Provide liquidity to Mobarter Swap",
+//   route: "/(core)/settings",
+//   icon: <Feather name="settings" size={24} color={"#fff"} />,
+//   bgColor: "#03c4b1",
+// },

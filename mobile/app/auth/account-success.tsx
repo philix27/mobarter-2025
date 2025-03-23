@@ -6,14 +6,14 @@ import React from "react";
 import { IEvents } from "@/lib/log/events";
 import { TText } from "@/components";
 
-const event: IEvents = "AUTH_SIGNUP";
+const event: IEvents = "AUTH_ACCOUNT_CREATED";
 
 export default function SignUpPage() {
   const store = AppStores.useAuth();
   const handleSubmit = () => {
     log.info(event);
     store.clear();
-    router.push("/(tabs)/market");
+    router.push("/(tabs)/home");
   };
 
   return (

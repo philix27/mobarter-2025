@@ -1,11 +1,14 @@
 import React, { forwardRef, ReactNode } from "react";
 import RBSheet, { RBSheetRef } from "react-native-raw-bottom-sheet";
 import { useColor } from "@/lib/color";
+import { TText } from "./TText";
+import { TView } from "./TView";
 
 type IProps = {
   children: ReactNode;
   height?: number;
   maxHeight?: number;
+  title?: string;
   onClose?: VoidFunction;
   ref: React.LegacyRef<RBSheetRef>;
 };
@@ -48,7 +51,7 @@ export const BottomSheet = forwardRef<any, IProps>(
             backgroundColor: color.background,
           },
           wrapper: {
-            backgroundColor: "#0000005d",
+            backgroundColor: "#00000075",
             // backgroundColor: "transparent",
             // height: 500,
           },
@@ -64,6 +67,11 @@ export const BottomSheet = forwardRef<any, IProps>(
           enabled: false,
         }}
       >
+        {props.title && (
+          <TView style={{ marginBottom: 4 }}>
+            <TText type="defaultSemiBold">{props.title}:</TText>
+          </TView>
+        )}
         {props.children}
       </RBSheet>
     );
