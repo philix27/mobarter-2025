@@ -12,6 +12,8 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import { RootProviders } from "@/lib/providers";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Drawer } from "expo-router/drawer";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -42,6 +44,24 @@ export default function RootLayout() {
           <Stack.Screen name="+not-found" />
         </Stack>
         <StatusBar style="auto" />
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <Drawer>
+            <Drawer.Screen
+              name="index" // This is the name of the page and must match the url from root
+              options={{
+                drawerLabel: "Home",
+                title: "overview",
+              }}
+            />
+            <Drawer.Screen
+              name="user/[id]" // This is the name of the page and must match the url from root
+              options={{
+                drawerLabel: "User",
+                title: "overview",
+              }}
+            />
+          </Drawer>
+        </GestureHandlerRootView>
       </ThemeProvider>
     </RootProviders>
   );

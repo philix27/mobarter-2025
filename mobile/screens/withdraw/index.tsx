@@ -1,4 +1,4 @@
-import { TText, TView } from "@/components";
+import { TView } from "@/components";
 import Row from "@/components/Row";
 import { useColor } from "@/lib/color";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
@@ -16,7 +16,7 @@ export default function WithdrawModal() {
           <MaterialIcons name="currency-exchange" size={24} color={"#fff"} />
         }
         onClick={() => {
-          router.push("/(core)/p2p-sell");
+          router.push("/(tabs)/p2p");
         }}
       />
       <Row

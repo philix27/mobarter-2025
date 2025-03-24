@@ -1,33 +1,40 @@
-Short Description
-Pocket Ramp is a savings dApp that helps users lock their funds over a specified period of time and only have access to funds when it is due for withdrawal.
+# Mobarter
 
-Project Description
+### A Decentralized P2P Trading & Payment Platform*
+## Overview
 Mobarter is a P2P trading platform enabling users to buy, sell cryptocurrencies, and supports on/off ramping for fiat conversion. It also integrates crypto payments for easier transactions, focusing on security, decentralization, and user-friendliness. Mobarter aims to empower Africans with cross-border payment solutions using blockchain technology.
 
-In order to make the use of the dApp seamless for users, especially non-web3 literates, an account abstraction provided my Web3Auth is been used handle signing into the application.
+## Features
 
-How it was made
-We provide a perfect user experience of a savings app using:
+- **P2P Exchange:**  
+  Onchain agents can help you carryout onchain actions such as buying a token, creating an NFT and lauching a smart contract.
 
-Web3Auth
-XMTP
-First users sign-in to the app through the use of their preferred auth provider or social media account. This is achieved through the aid of Web3Auth. After which the user can then choose an amount of money they wish to lock and the duration for which the wish to lock their funds. After which funds are locked for the specified period of time before the user can access their funds.
+- **Cryptocurrency Swap:**  
+  Create wallets for various specific use case with ease. Powered by Privy Server Wallets
 
-In order to ensure a decent UX, users can always chat with the support team via the XMTP protocol. This
+- **Locked Savings:**  
+  Tweets can also be created and published
 
-Project Structure
-This is a turbo repo that consist of three main apps.
+- **Settle local bills:**  
+  Tweets can also be created and published
 
-mini: This is a mini app designed to be very lightweight and compatible with MiniPay Telegram Mini App.
-server: The backend server running on Hono.js
-web: This is the marketing web app. For Contact Us, Blogs, About Us, Landing page and others
-Tools & Frameworks used
-Next.js, React, Wagmi, Solidity, Remix, Typescript
-Wagmi, Ethers, Viem, WalletConnect
-Remix
-Languages
-Typescript, Javascript, Solidity
-Links
-Hackathon link
-Github link
-Vercel link
+## Architecture
+
+1. **Frontend Stack:**
+
+   - **React Native:** A mobile app with a friendly interface.
+  
+
+2. **Backend Stack:**
+
+   - **Privy Auth:** Used for issue wallet to users.
+   - **APIs:** Provides Graphql endpoints for frontend communication
+   - **Viem:** Used to manage onchain transactions on the backend
+
+3. **Smart Contract**
+   - An escrow smart contract to manage p2p exchange
+
+
+## How It Works
+
+Mobarter is built with **React Native** for a smooth mobile experience, **Privy Auth** for secure wallet issuance, **GraphQL APIs** for efficient communication, and **Viem** for on-chain transaction management. It leverages blockchain technology to provide a decentralized and user-friendly financial solution for Africa.

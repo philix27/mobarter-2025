@@ -105,6 +105,8 @@ export class AuthService {
 
         if (!user) throw GqlErr("User was not found");
 
+        await this.walletCrypto.createWalletsForNewUser({ userId: user.id });
+
         await this.notification.sendWelcomeMessage({ email: params.email });
 
         return {
@@ -172,8 +174,6 @@ export class AuthService {
             this.logger.error("user password doesn't match");
             throw GqlErr("Invalid credentials");
         }
-
-        await this.walletCrypto.createWalletsForNewUser({ userId: user.id });
 
         const token = this.jwtService.generateToken({
             userId: user.id,
