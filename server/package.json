@@ -44,7 +44,7 @@
     "@safe-global/safe-modules-deployments": "^2.2.6",
     "apollo-server-fastify": "^3.13.0",
     "apollo-server-plugin-base": "^3.7.2",
-    "axios": "^1.8.1",
+    "axios": "^1.8.4",
     "bcryptjs": "^3.0.2",
     "bullmq": "^5.40.5",
     "class-validator": "^0.14.1",
