@@ -2,7 +2,6 @@ import { Module } from "@nestjs/common";
 import { GraphQLModule } from "@nestjs/graphql";
 import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
 import { CommonModule, secrets } from "./common";
-import { PricesModule } from "./prices/prices.module";
 import { ScheduleModule } from "@nestjs/schedule";
 import { PubSubModule } from "./pubsub/pubsub.module";
 import { NotificationModule } from "./notification/notification.module";
@@ -15,6 +14,7 @@ import { BankAccountModule } from "./bankAccount/bankAccount.module";
 import { PassportModule } from "@nestjs/passport";
 import { HelpersModule } from "./helper/helper.module";
 import { AdvertsModule } from "./adverts/adverts.module";
+// import { PricesModule } from "./prices/prices.module";
 // import { CronModule } from "./cron/cron.module";
 // import { OrdersModule } from "./orders/orders.module";
 // import { SwapModule } from "./swap/swap.module";
@@ -41,13 +41,13 @@ import { AdvertsModule } from "./adverts/adverts.module";
         }),
         CommonModule,
         HelpersModule,
-        PricesModule,
         PubSubModule,
         NotificationModule,
         AuthModule,
         UserModule,
         BankAccountModule,
         AdvertsModule,
+        // PricesModule,
         // CronModule,
         // OrdersModule,
         // SwapModule,

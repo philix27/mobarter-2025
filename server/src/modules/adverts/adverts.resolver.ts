@@ -70,6 +70,19 @@ export class AdvertsResolver {
 
         return res!;
     }
+    @Query((returns) => [Advert_AdvertResponse])
+    @UseGuards(VendorGuard)
+    async adverts_getMerchantAdverts(
+        @Context() context: { req: { userId: number } },
+        @Args("input") input: Advert_GetAllInput
+    ): Promise<Advert_AdvertResponse[]> {
+        const res = await this.service.getMerchantAdverts({
+            ...input,
+            userId: context.req.userId,
+        });
+
+        return res!;
+    }
 
     @Query((returns) => Advert_AdvertResponse)
     @UseGuards(VendorGuard)
