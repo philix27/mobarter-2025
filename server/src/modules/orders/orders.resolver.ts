@@ -1,60 +1,134 @@
-import { Args, Mutation, Resolver } from "@nestjs/graphql";
-
+import { Args, Context, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { OrderService } from "./orders.service";
 import {
-    Auth_CreateAccount,
-    Auth_Login,
-    Auth_Logout,
-    Auth_ResetPassword,
-    Auth_sendEmailOtp,
-    Auth_verifyEmailOtp,
+    Order_AdvertResponse,
+    Order_AppealInput,
+    Order_CancelInput,
+    Order_CreateInput,
+    Order_FaitReceivedInput,
+    Order_FaitSentInput,
+    Order_GetAllInput,
+    Order_GetOneInput,
+    Order_MoveCryptoToEscrowInput,
+    Order_ReleaseCryptoFromEscrowInput,
+    OrderDto,
 } from "./orders.dto";
-import { UserDto } from "../user/user.dto";
 
-@Resolver((of: any) => UserDto)
+@Resolver((of: any) => OrderDto)
 export class OrdersResolver {
     constructor(private readonly service: OrderService) {}
 
-    @Mutation((returns) => String)
-    async orders_createAccount(
-        @Args("input") input: Auth_CreateAccount
-    ): Promise<String> {
-        const res = await this.service.createAccount(input);
+    @Mutation((returns) => Order_AdvertResponse)
+    async orders_Create(
+        @Context() context: { req: { userId: number } },
+        @Args("input") input: Order_CreateInput
+    ): Promise<Order_AdvertResponse> {
+        const res = await this.service.create({
+            ...input,
+            userId: context.req.userId,
+        });
 
         return res!;
     }
 
-    @Mutation((returns) => String)
-    async orders_login(@Args("input") input: Auth_Login) {
-        const res = await this.service.login(input);
+    @Query((returns) => [Order_AdvertResponse])
+    async orders_GetAll(
+        @Context() context: { req: { userId: number } },
+        @Args("input") input: Order_GetAllInput
+    ): Promise<Order_AdvertResponse[]> {
+        const res = await this.service.getAll({
+            ...input,
+            userId: context.req.userId,
+        });
+        return res!;
+    }
+
+    @Query((returns) => Order_AdvertResponse)
+    async orders_GetOne(
+        @Context() context: { req: { userId: number } },
+        @Args("input") input: Order_GetOneInput
+    ): Promise<Order_AdvertResponse> {
+        const res = await this.service.getOne({
+            ...input,
+            userId: context.req.userId,
+        });
+        return res!;
+    }
+
+    @Mutation((returns) => Order_AdvertResponse)
+    async orders_MoveCryptoToEscrow(
+        @Context() context: { req: { userId: number } },
+        @Args("input") input: Order_MoveCryptoToEscrowInput
+    ): Promise<Order_AdvertResponse> {
+        const res = await this.service.getOne({
+            ...input,
+            userId: context.req.userId,
+            id: 0,
+        });
+
+        return res!;
+    }
+    @Mutation((returns) => Order_AdvertResponse)
+    async orders_FaitSent(
+        @Context() context: { req: { userId: number } },
+        @Args("input") input: Order_FaitSentInput
+    ): Promise<Order_AdvertResponse> {
+        const res = await this.service.faitSent({
+            ...input,
+            userId: context.req.userId,
+        });
 
         return res!;
     }
 
-    @Mutation((returns) => String)
-    async orders_logout(@Args("input") input: Auth_Logout) {
-        const res = await this.service.logout(input);
+    @Mutation((returns) => Order_AdvertResponse)
+    async orders_FaitReceived(
+        @Context() context: { req: { userId: number } },
+        @Args("input") input: Order_FaitReceivedInput
+    ): Promise<Order_AdvertResponse> {
+        const res = await this.service.faitReceived({
+            ...input,
+            userId: context.req.userId,
+        });
+
+        return res!;
+    }
+    
+    @Mutation((returns) => Order_AdvertResponse)
+    async orders_ReleaseCryptoFromEscrow(
+        @Context() context: { req: { userId: number } },
+        @Args("input") input: Order_ReleaseCryptoFromEscrowInput
+    ): Promise<Order_AdvertResponse> {
+        const res = await this.service.releaseCryptoFromEscrow({
+            ...input,
+            userId: context.req.userId,
+        });
 
         return res!;
     }
 
-    @Mutation((returns) => String)
-    async orders_verifyEmailOtp(@Args("input") input: Auth_verifyEmailOtp) {
-        const res = await this.service.verifyEmailOtp(input);
+    @Mutation((returns) => Order_AdvertResponse)
+    async orders_Appeal(
+        @Context() context: { req: { userId: number } },
+        @Args("input") input: Order_AppealInput
+    ): Promise<Order_AdvertResponse> {
+        const res = await this.service.appeal({
+            ...input,
+            userId: context.req.userId,
+        });
 
         return res!;
     }
 
-    @Mutation((returns) => String)
-    async orders_sendEmailOtp(@Args("input") input: Auth_sendEmailOtp) {
-        const res = await this.service.sendEmailOtp(input);
-
-        return res!;
-    }
-
-    @Mutation((returns) => String)
-    async orders_resetPassword(@Args("input") input: Auth_ResetPassword) {
-        const res = await this.service.resetPassword(input);
+    @Mutation((returns) => Order_AdvertResponse)
+    async orders_Cancel(
+        @Context() context: { req: { userId: number } },
+        @Args("input") input: Order_CancelInput
+    ): Promise<Order_AdvertResponse> {
+        const res = await this.service.cancel({
+            ...input,
+            userId: context.req.userId,
+        });
 
         return res!;
     }

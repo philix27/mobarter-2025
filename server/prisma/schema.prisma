@@ -85,8 +85,7 @@ model BankAccount {
   updated_at   DateTime? @updatedAt
   user_id      Int
   user         User?     @relation(fields: [user_id], references: [id])
-  advert_id    Int
-  advert       Adverts?  @relation(fields: [advert_id], references: [id])
+  advert       Adverts[]
 }
 
 enum TradeType {
@@ -133,7 +132,8 @@ enum AdvertStatus {
 
 model Orders {
   id             Int            @id @default(autoincrement())
-  amount         Int
+  amountFiat     Int
+  amountCrypto   Int
   duration       String
   status         OrderStatus
   userAction     OrderActions
@@ -156,10 +156,10 @@ enum OrderStatus {
 }
 
 enum OrderActions {
-  MoveCrypoToEscrow
+  MoveCryptoToEscrow
   FaitSent
   FaitReceived
-  ClaimCryptoFromEscrow
+  ReleaseCryptoFromEscrow
   Appeal
   Cancel
 }
@@ -186,57 +186,58 @@ enum BankName {
   NG_FIRST
 }
 
-// model Market {
-//   id         Int        @id @default(autoincrement())
-//   name       MarketName @unique
-//   img        String?
-//   created_at DateTime?  @default(now())
-//   updated_at DateTime?  @updatedAt
-//   traders    Traders[]
-// }
+// Review
+model Market {
+  id         Int        @id @default(autoincrement())
+  name       MarketName @unique
+  img        String?
+  created_at DateTime?  @default(now())
+  updated_at DateTime?  @updatedAt
+  traders    Traders[]
+}
 
-// enum MarketName {
-//   BITMAMA
-//   CASHRAMP
-//   FONBANK
-//   ONERAMP
-//   TELEGRAM_WALLET
-// }
+enum MarketName {
+  BITMAMA
+  CASHRAMP
+  FONBANK
+  ONERAMP
+  TELEGRAM_WALLET
+}
 
-// model Traders {
-//   id         Int         @id @default(autoincrement())
-//   name       String
-//   img        String?
-//   created_at DateTime?   @default(now())
-//   updated_at DateTime?   @updatedAt
-//   currencies PriceRate[]
-//   market_id  Int
-//   market     Market?     @relation(fields: [market_id], references: [id])
-// }
+model Traders {
+  id         Int         @id @default(autoincrement())
+  name       String
+  img        String?
+  created_at DateTime?   @default(now())
+  updated_at DateTime?   @updatedAt
+  currencies PriceRate[]
+  market_id  Int
+  market     Market?     @relation(fields: [market_id], references: [id])
+}
 
-// model PriceRate {
-//   id           Int          @id @default(autoincrement())
-//   name         CurrencyName
-//   img          String?
-//   buyRate      Int?
-//   sellRate     Int?
-//   currencyType CurrencyType
-//   trader_id    Int
-//   trader       Traders?     @relation(fields: [trader_id], references: [id])
-//   created_at   DateTime?    @default(now())
-//   updated_at   DateTime?    @updatedAt
-// }
+model PriceRate {
+  id           Int          @id @default(autoincrement())
+  name         CurrencyName
+  img          String?
+  buyRate      Int?
+  sellRate     Int?
+  currencyType CurrencyType
+  trader_id    Int
+  trader       Traders?     @relation(fields: [trader_id], references: [id])
+  created_at   DateTime?    @default(now())
+  updated_at   DateTime?    @updatedAt
+}
 
-// enum CurrencyType {
-//   FIAT
-//   CRYPTO
-// }
+enum CurrencyType {
+  FIAT
+  CRYPTO
+}
 
-// enum CurrencyName {
-//   NGN
-//   BTC
-//   CUSD
-//   USDT
-//   USDTx
-//   ETH
-// }
+enum CurrencyName {
+  NGN
+  BTC
+  CUSD
+  USDT
+  USDTx
+  ETH
+}

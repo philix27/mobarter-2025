@@ -2,13 +2,18 @@ import { Injectable } from "@nestjs/common";
 import { LoggerService } from "../common";
 import { NotificationService } from "../notification/notification.service";
 import {
-    Auth_CreateAccount,
-    Auth_Login,
-    Auth_Logout,
-    Auth_ResetPassword,
-    Auth_sendEmailOtp,
-    Auth_verifyEmailOtp,
+    Order_AppealInput,
+    Order_CancelInput,
+    Order_CreateInput,
+    Order_FaitReceivedInput,
+    Order_FaitSentInput,
+    Order_GetAllInput,
+    Order_GetOneInput,
+    Order_MoveCryptoToEscrowInput,
+    Order_ReleaseCryptoFromEscrowInput,
+
 } from "./orders.dto";
+import { GqlErr } from "../common/errors/gqlErr";
 
 @Injectable()
 export class OrderService {
@@ -17,43 +22,29 @@ export class OrderService {
         private readonly notification: NotificationService
     ) {}
 
-    public async sendEmailOtp(params: Auth_sendEmailOtp) {
+    public async create(params: Order_CreateInput & { userId: number }) {
         this.logger.info("Creating platform account ...");
 
-        const otp = this.genOtp();
-
-        try {
-            await this.notification.sendEmailOtp({ email: params.email, otp });
-            return "Sent successfully";
-        } catch (error) {
-            this.logger.error("Could not send otp to email");
-        }
+        throw GqlErr("Unimplemented!");
     }
 
-    public async verifyEmailOtp(params: Auth_verifyEmailOtp) {
-        this.logger.info("Creating platform account ...");
+    public async getAll(params: Order_GetAllInput & { userId: number }) {}
+    public async getOne(params: Order_GetOneInput & { userId: number }) {}
 
-        //    todo: Create Account
-    }
+    public async moveCryptoToEscrow(
+        params: Order_MoveCryptoToEscrowInput & { userId: number }
+    ) {}
 
-    public async createAccount(params: Auth_CreateAccount) {
-        try {
-            await this.notification.sendWelcomeMessage({ email: params.email });
-            return "Sent successfully";
-        } catch (error) {
-            this.logger.error("Could not send otp to email");
-        }
-    }
+    public async faitSent(params: Order_FaitSentInput & { userId: number }) {}
 
-    public async resetPassword(params: Auth_ResetPassword) {}
+    public async faitReceived(
+        params: Order_FaitReceivedInput & { userId: number }
+    ) {}
 
-    public async login(params: Auth_Login) {}
+    public async releaseCryptoFromEscrow(
+        params: Order_ReleaseCryptoFromEscrowInput & { userId: number }
+    ) {}
 
-    public async logout(params: Auth_Logout) {
-        this.logger.info("Deleting platform");
-    }
-
-    private genOtp(): string {
-        return "0";
-    }
+    public async appeal(params: Order_AppealInput & { userId: number }) {}
+    public async cancel(params: Order_CancelInput & { userId: number }) {}
 }
