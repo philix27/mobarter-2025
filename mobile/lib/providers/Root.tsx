@@ -6,6 +6,7 @@ import { BatchHttpLink } from "@apollo/client/link/batch-http";
 import { ThemeProvider } from "./ThemeContext";
 import Toast from "react-native-toast-message";
 import { AppStores } from "../zustand";
+import RootPrivy from "./privy";
 
 const httpLink = new BatchHttpLink({
   uri: "http://172.20.10.11:4545/graphql",
@@ -31,8 +32,10 @@ export function RootProviders(props: { children: ReactNode }) {
     <QueryClientProvider client={queryClient}>
       <ApolloProvider client={apollo}>
         <ThemeProvider>
-          <Slot />
-          <Toast position="top" />
+          <RootPrivy>
+            <Slot />
+            <Toast position="top" />
+          </RootPrivy>
         </ThemeProvider>
       </ApolloProvider>
     </QueryClientProvider>

@@ -141,7 +141,6 @@ model Orders {
   tradeType      TradeType
   currencyCrypto CurrencyCrypto
   currencyFiat   CurrencyFiat
-  timeOpen       DateTime?
   timeCompleted  DateTime?
   created_at     DateTime?      @default(now())
   updated_at     DateTime?      @updatedAt

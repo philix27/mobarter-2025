@@ -1,3 +1,4 @@
+import { LoadingIndicator } from "@/components/Loading";
 import { TText } from "@/components/TText";
 import { AppStores } from "@/lib";
 import { Link, router } from "expo-router";
@@ -17,6 +18,16 @@ export default function Page() {
       }, 100);
     }
   });
+
+  //  const { isReady } = usePrivy();
+
+  //  if (!isReady) {
+  //    return <LoadingIndicator />;
+  //  }
+
+  // Now it's safe to use other Privy hooks and state
+  // return <YourAuthenticatedContent />;
+
   return (
     <SafeAreaView
       style={{

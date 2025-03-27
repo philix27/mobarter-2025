@@ -43,7 +43,7 @@ export function HeaderTabs(props: {
   return (
     <TView
       style={{
-        width: "100%",
+        width: 200,
         alignItems: "center",
         justifyContent: "center",
         // backgroundColor: "lime",

@@ -4,7 +4,7 @@ import SettingsScreen from "@/screens/settings";
 export default function Page() {
   return (
     <>
-      <HeaderBar title="Settings" showBackBtn />
+      <HeaderBar title="Settings" showBackBtn backTo="Home" />
       <SettingsScreen />
     </>
   );

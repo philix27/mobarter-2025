@@ -6,8 +6,14 @@ import HeaderBar from "@/components/Header";
 export default function Page() {
   return (
     <SafeAreaView>
-      <HeaderBar title="Minisafe" showBackBtn />
-      <TView style={styles.titleContainer}>
+      <HeaderBar title="Advert" showBackBtn />
+      <TView
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          gap: 8,
+        }}
+      >
         <TText type="title">Welcome!</TText>
       </TView>
     </SafeAreaView>

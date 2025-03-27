@@ -4,6 +4,7 @@ import { data } from "./dummyData";
 import { useColor } from "@/lib/color";
 import { TouchableOpacity } from "react-native";
 import { CardRow } from "./CardRow";
+import { router } from "expo-router";
 
 export default function ScreenBuy() {
   const theme = useColor();
@@ -19,6 +20,9 @@ export default function ScreenBuy() {
             borderRadius: 10,
             borderColor: theme.card,
             borderWidth: 3,
+          }}
+          onPress={() => {
+            router.push(`/(core)/advert/${i}`);
           }}
         >
           <TView

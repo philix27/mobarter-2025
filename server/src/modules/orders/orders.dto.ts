@@ -1,4 +1,11 @@
-import { Field, ID, InputType, ObjectType, PartialType } from "@nestjs/graphql";
+import {
+    Field,
+    ID,
+    InputType,
+    Int,
+    ObjectType,
+    PartialType,
+} from "@nestjs/graphql";
 import { $Enums } from "@prisma/client";
 @InputType()
 export class Order_CreateInput {
@@ -9,13 +16,22 @@ export class Order_CreateInput {
     limitLower: number;
 
     @Field({ nullable: false })
-    rate: string;
+    amountCrypto: number;
+
+    @Field({ nullable: false })
+    amountFiat: number;
 
     @Field({ nullable: false })
     duration: string;
 
     @Field({ nullable: false })
-    instructions: string;
+    timeCompleted: string;
+
+    @Field((type) => $Enums.OrderActions)
+    userAction: $Enums.OrderActions;
+
+    @Field((type) => $Enums.OrderActions)
+    merchantAction: $Enums.OrderActions;
 
     @Field((type) => $Enums.TradeType)
     tradeType: $Enums.TradeType;
@@ -26,8 +42,8 @@ export class Order_CreateInput {
     @Field((type) => $Enums.CurrencyCrypto)
     currencyCrypto: $Enums.CurrencyCrypto;
 
-    @Field((type) => $Enums.AdvertStatus)
-    advertStatus: $Enums.AdvertStatus;
+    @Field((type) => $Enums.OrderStatus)
+    status: $Enums.OrderStatus;
 }
 
 @ObjectType()
@@ -60,15 +76,24 @@ export class Order_GetOneInput {
 @InputType()
 export class Order_MoveCryptoToEscrowInput {
     @Field((type) => ID)
+    id: number;
+
+    @Field((type) => Int)
     amountCrypto: number;
 
     @Field((type) => $Enums.CurrencyCrypto)
     currencyCrypto: $Enums.CurrencyCrypto;
+
+    @Field((type) => $Enums.OrderActions)
+    action: $Enums.OrderActions;
 }
 
 @InputType()
 export class Order_FaitSentInput {
     @Field((type) => ID)
+    id: number;
+
+    @Field((type) => Int)
     amountFiat: number;
 
     @Field((type) => $Enums.CurrencyFiat)
@@ -78,10 +103,16 @@ export class Order_FaitSentInput {
 @InputType()
 export class Order_FaitReceivedInput {
     @Field((type) => ID)
+    id: number;
+
+    @Field((type) => Int)
     amountFiat: number;
 
     @Field((type) => $Enums.CurrencyFiat)
     currencyFiat: $Enums.CurrencyFiat;
+
+    // @Field((type) => $Enums)
+    // sender: $Enums.OrderParticipant;
 }
 
 @InputType()

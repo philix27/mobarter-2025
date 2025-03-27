@@ -6,7 +6,14 @@ export enum OtpPurpose {
     Verification,
 }
 
+export enum OrderParticipant {
+  MERCHANT = "MERCHANT",
+  CUSTOMER = "CUSTOMER"
+}
 registerEnumType(OtpPurpose, {
+    name: "OtpPurpose",
+});
+registerEnumType(OrderParticipant, {
     name: "OtpPurpose",
 });
 

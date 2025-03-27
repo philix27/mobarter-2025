@@ -4,6 +4,7 @@ import { router } from "expo-router";
 import React, { useContext, useEffect, useRef } from "react";
 import { useColor } from "@/lib/color";
 import {
+  Feather,
   Ionicons,
   MaterialCommunityIcons,
   MaterialIcons,
@@ -16,12 +17,15 @@ import WalletQRCode from "@/screens/wallets/WalletQRCode";
 import { RBSheetRef } from "react-native-raw-bottom-sheet";
 import { AppStores } from "@/lib";
 import Toast from "react-native-toast-message";
+import { useDrawer } from "@/components/DrawerContent";
+// import HeadDrawer from "@/components/HeadDrawer";
 
 export default function MarketPage() {
   const appColor = useColor();
   const { toggleTheme } = useContext(ThemeContext);
   const refRBSheet = useRef<RBSheetRef>();
   const store = AppStores.useUserInfo();
+  const drawer = useDrawer();
 
   useEffect(() => {
     if (store.email.length < 5) {
@@ -36,22 +40,25 @@ export default function MarketPage() {
   });
   return (
     <>
+      {/* <HeaderBar title="Home" headerShown={false} /> */}
       <HeaderBar
         title="Home"
+        // name="home"
+        // headerShown={false}
         headerLeft={(props: any) => {
           return (
-            <TView
+            <TouchableOpacity
               style={{ marginLeft: 20, flexDirection: "row", columnGap: 20 }}
             >
-              <MaterialCommunityIcons
-                name="account"
-                size={20}
+              <Feather
+                name="menu"
+                size={24}
                 color={appColor.text}
                 onPress={() => {
-                  router.push("/(core)/settings");
+                  drawer.open();
                 }}
               />
-            </TView>
+            </TouchableOpacity>
           );
         }}
         headerRight={(props) => {

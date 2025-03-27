@@ -7,9 +7,9 @@ import {
   NativeStackHeaderLeftProps,
   NativeStackHeaderRightProps,
 } from "@react-navigation/native-stack";
+import Drawer from "expo-router/drawer";
 
-type IRoutes = "Home";
-export default function HeaderBar({
+export default function HeadDrawer({
   hideBack = false,
   showBackBtn = false,
   headerRight,
@@ -19,10 +19,10 @@ export default function HeaderBar({
   ...props
 }: {
   title: string;
+  name: string;
   hideBack?: boolean;
   showBackBtn?: boolean;
   headerShown?: boolean | undefined;
-  backTo?: IRoutes | undefined;
   headerLeft?:
     | ((props: NativeStackHeaderLeftProps) => React.ReactNode)
     | undefined;
@@ -35,44 +35,56 @@ export default function HeaderBar({
     | undefined;
 }) {
   const appColor = useColor();
-  const backIcon = Platform.OS === "ios" ? "chevron-back" : "arrow-back-sharp";
   return (
-    <Stack.Screen
+    <Drawer.Screen
+      name={props.name}
       options={{
+        drawerLabel: props.title,
         title: props.title,
-        headerShown: headerShown,
+
+        // drawerIcon: ({ size }) => (
+        //   <Ionicons name="home" size={size} color={appColor.text} />
+        // ),
+        headerShown: false,
         headerTitleStyle: {
           fontWeight: "600",
           fontSize: 15,
           color: appColor.text,
         },
-        contentStyle: {
+        drawerStyle: {
           backgroundColor: appColor.background,
           borderColor: appColor.background,
         },
+        drawerContentStyle: {
+          backgroundColor: appColor.background,
+          borderColor: appColor.background,
+        },
+        drawerLabelStyle: { color: appColor.text },
+        drawerActiveBackgroundColor: appColor.card,
+
+        // contentStyle: {
+        //   backgroundColor: appColor.background,
+        //   borderColor: appColor.background,
+        // },
         headerStyle: {
           backgroundColor: appColor.background,
         },
         headerShadowVisible: false,
         headerTintColor: appColor.background,
         headerTitle: headerTitle,
-        headerLeft: headerLeft
-          ? headerLeft
-          : showBackBtn
-          ? () => (
-              <Ionicons
-                name={backIcon}
-                size={25}
-                color={appColor.text}
-                onPress={() => {
-                  if (props.backTo === "Home") router.replace("/(tabs)/home");
-                  if (!props.backTo) router.back();
-                }}
-              />
-            )
-          : undefined,
-
-        headerRight: headerRight,
+        // headerLeft: headerLeft
+        //   ? headerLeft
+        //   : showBackBtn
+        //   ? () => (
+        //       <Ionicons
+        //         name={backIcon}
+        //         size={25}
+        //         color={appColor.text}
+        //         onPress={() => router.back()}
+        //       />
+        //     )
+        //   : undefined,
+        // headerRight: headerRight,
       }}
     />
   );

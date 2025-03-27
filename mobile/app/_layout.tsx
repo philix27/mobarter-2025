@@ -1,25 +1,33 @@
+//! Privy Auth
+//! Import required polyfills first
+// import "fast-text-encoding";
+// import "react-native-get-random-values";
+// import "@ethersproject/shims";
+// Then import the expo router
+import "expo-router/entry";
 import "react-native-reanimated";
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
-import "react-native-reanimated";
 import { RootProviders } from "@/lib/providers";
-import { useColorScheme } from "@/hooks/useColorScheme";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Dimensions } from "react-native";
+import React from "react";
 import { Drawer } from "expo-router/drawer";
+import CustomDrawerContent from "@/components/DrawerContent";
+import { useColor } from "@/lib/color";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+// Set the animation options. This is optional.
+SplashScreen.setOptions({
+  duration: 1000,
+  fade: true,
+});
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  const appColor = useColor();
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
@@ -33,36 +41,32 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
-
   return (
-    <RootProviders>
-      {/* <ThemeProvider value={DarkTheme}> */}
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Stack screenOptions={{ headerShadowVisible: false }}>
-          <Stack.Screen name="(core)" options={{ headerShown: true }} />
-          <Stack.Screen name="(tabs)" options={{ headerShown: true }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
+    <Drawer
+      screenOptions={{
+        headerShown: false,
+        drawerLabelStyle: {
+          // marginLeft: -20,
+          color: appColor.text,
+        },
+        drawerActiveBackgroundColor: appColor.background,
+        drawerStyle: {
+          width: Dimensions.get("window").width / 1.5,
+          backgroundColor: appColor.background,
+        },
+      }}
+      drawerContent={CustomDrawerContent}
+    >
+      <RootProviders>
+        <Drawer.Screen
+          name="(tabs)"
+          options={{
+            drawerLabel: "Home",
+            title: "Home",
+          }}
+        />
         <StatusBar style="auto" />
-        <GestureHandlerRootView style={{ flex: 1 }}>
-          <Drawer>
-            <Drawer.Screen
-              name="index" // This is the name of the page and must match the url from root
-              options={{
-                drawerLabel: "Home",
-                title: "overview",
-              }}
-            />
-            <Drawer.Screen
-              name="user/[id]" // This is the name of the page and must match the url from root
-              options={{
-                drawerLabel: "User",
-                title: "overview",
-              }}
-            />
-          </Drawer>
-        </GestureHandlerRootView>
-      </ThemeProvider>
-    </RootProviders>
+      </RootProviders>
+    </Drawer>
   );
 }

@@ -2,14 +2,17 @@ import { HeaderTabs } from "@/components/BHeaderTab";
 import HeaderBar from "@/components/Header";
 import { AppStores } from "@/lib";
 import P2PScreen from "@/screens/p2p";
-import React, { useContext, useEffect, useRef } from "react";
+import React from "react";
 import { useColor } from "@/lib/color";
 import { Feather } from "@expo/vector-icons";
 import { TView } from "@/components/TView";
+import { useDrawer } from "@/components/DrawerContent";
+import { TouchableOpacity } from "react-native";
 
 export default function HomeScreen() {
   const store = AppStores.useP2P();
   const theme = useColor();
+  const drawer = useDrawer();
   return (
     <>
       <HeaderBar
@@ -37,6 +40,22 @@ export default function HomeScreen() {
             {...props}
           />
         )}
+        headerLeft={(props: any) => {
+          return (
+            <TouchableOpacity
+              style={{ marginLeft: 20, flexDirection: "row", columnGap: 20 }}
+            >
+              <Feather
+                name="menu"
+                size={24}
+                color={theme.text}
+                onPress={() => {
+                  drawer.open();
+                }}
+              />
+            </TouchableOpacity>
+          );
+        }}
         headerRight={(props) => {
           return (
             <TView
