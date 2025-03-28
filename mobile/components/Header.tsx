@@ -65,8 +65,9 @@ export default function HeaderBar({
                 size={25}
                 color={appColor.text}
                 onPress={() => {
-                  if (props.backTo === "Home") router.replace("/(tabs)/home");
-                  if (!props.backTo) router.back();
+                  // if (props.backTo === "Home") router.push("/(tabs)/home");
+                  // if (!props.backTo) router.back();
+                  router.back();
                 }}
               />
             )

@@ -1,14 +1,19 @@
 import Wrapper from "@/components/Wrapper";
 import { AppStores } from "@/lib";
 import React from "react";
-import ScreenBuy from "./ScreenBuy";
-import ScreenSell from "./ScreenSell";
+
+import { Screen } from "./Screen";
+import { dummyAdsData } from "./dummyData";
 
 export default function P2PScreen() {
-  const store = AppStores.useP2P();
+  const store = AppStores.useAdvert();
   return (
     <Wrapper>
-      {store.activeTab === "BUY" ? <ScreenBuy /> : <ScreenSell />}
+      {store.tradeType === "BUY" ? (
+        <Screen type={"BUY"} data={dummyAdsData} />
+      ) : (
+        <Screen type={"SELL"} data={dummyAdsData} />
+      )}
     </Wrapper>
   );
 }

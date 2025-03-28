@@ -3,6 +3,7 @@ import {
   StyleSheet,
   KeyboardTypeOptions,
   TouchableOpacity,
+  ViewStyle,
 } from "react-native";
 import { TView } from "../TView";
 import { useColor } from "@/lib/color";
@@ -12,7 +13,8 @@ import Label from "./Label";
 import ErrMsg from "./ErrMsg";
 
 export default function InputText(props: {
-  label: string;
+  label?: string;
+  style?: ViewStyle;
   value?: string | undefined;
   icon?: JSX.Element;
   trailingIcon?: JSX.Element;
@@ -27,27 +29,26 @@ export default function InputText(props: {
   const [HidePassword, setHidePassword] = useState(props.secureTextEntry);
   const [onFocus, setFocus] = useState(false);
   return (
-    <TView>
+    <>
       <TView
         style={[
           styles.container,
-          { backgroundColor: theme.background, position: "relative" },
+          {
+            backgroundColor: theme.background,
+            position: "relative",
+            // marginTop: 10,
+          },
+          props.style,
         ]}
       >
         {props.label && <Label label={props.label} />}
-        {/* {props.icon} */}
-        {/* {props.icon || (
-          <TView style={{ position: "absolute", top: 40, left: 10, zIndex: 2 }}>
-            <Feather name="eye-off" size={20} color={theme.muted} />
-          </TView>
-        )} */}
 
         <TextInput
           style={[
             styles.input,
             {
-              backgroundColor: theme.background,
-              borderColor: theme.muted,
+              backgroundColor: theme.card,
+              borderColor: onFocus ? theme.muted : theme.background,
               color: theme.text,
               // paddingLeft: 37.5,
             },
@@ -97,13 +98,13 @@ export default function InputText(props: {
         )}
       </TView>
       {props.error && <ErrMsg msg={props.error} />}
-    </TView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
+    // marginTop: 10,
     width: "100%",
     // minWidth: "100%",
     marginBottom: 6,

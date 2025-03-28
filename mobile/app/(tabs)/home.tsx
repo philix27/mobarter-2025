@@ -5,7 +5,6 @@ import React, { useContext, useEffect, useRef } from "react";
 import { useColor } from "@/lib/color";
 import {
   Feather,
-  Ionicons,
   MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
@@ -18,7 +17,6 @@ import { RBSheetRef } from "react-native-raw-bottom-sheet";
 import { AppStores } from "@/lib";
 import Toast from "react-native-toast-message";
 import { useDrawer } from "@/components/DrawerContent";
-// import HeadDrawer from "@/components/HeadDrawer";
 
 export default function MarketPage() {
   const appColor = useColor();
@@ -40,11 +38,8 @@ export default function MarketPage() {
   });
   return (
     <>
-      {/* <HeaderBar title="Home" headerShown={false} /> */}
       <HeaderBar
         title="Home"
-        // name="home"
-        // headerShown={false}
         headerLeft={(props: any) => {
           return (
             <TouchableOpacity

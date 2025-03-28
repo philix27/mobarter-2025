@@ -1,4 +1,4 @@
-import { StyleSheet, LayoutChangeEvent } from "react-native";
+import { StyleSheet, LayoutChangeEvent, ViewStyle } from "react-native";
 import { PlatformPressable } from "@react-navigation/elements";
 import { useColor } from "@/lib/color";
 import Animated, {
@@ -12,6 +12,7 @@ import { TView } from "./TView";
 
 export function HeaderTabs(props: {
   tintColor?: string;
+  style?: ViewStyle;
   children: string;
   data: {
     title: string;
@@ -42,12 +43,15 @@ export function HeaderTabs(props: {
 
   return (
     <TView
-      style={{
-        width: 200,
-        alignItems: "center",
-        justifyContent: "center",
-        // backgroundColor: "lime",
-      }}
+      style={[
+        {
+          width: 200,
+          alignItems: "center",
+          justifyContent: "center",
+          // backgroundColor: "lime",
+        },
+        props.style
+      ]}
     >
       <TView
         onLayout={onTabBarLayout}

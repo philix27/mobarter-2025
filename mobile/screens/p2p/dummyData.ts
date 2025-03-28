@@ -1,4 +1,4 @@
-export const data: {
+export const dummyAdsData: {
   name: string;
   paymentMethod: string;
   status: string;

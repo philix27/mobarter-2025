@@ -3,13 +3,21 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 export type IViews = "BUY" | "SELL";
+export type IDisputes = "Cancel" | "Appeal" | "";
+export type ISteps =
+  | "1EnterAmount"
+  | "2ConfirmOrderDetails"
+  | "3ConfirmPayment"
+  | "4RateMerchant";
 
 export interface ISlice {
-  activeTab?: IViews;
+  tradeType?: IViews;
+  steps?: ISteps | IDisputes;
 }
 
 export const defaultValues: Required<ISlice> = {
-  activeTab: "BUY",
+  tradeType: "BUY",
+  steps: "1EnterAmount",
 };
 
 export interface ISliceUpdate extends Required<ISlice> {
@@ -17,7 +25,7 @@ export interface ISliceUpdate extends Required<ISlice> {
   clear: () => void;
 }
 
-export const useP2P= create(
+export const useAdvert = create(
   persist<ISliceUpdate>(
     (set) => ({
       ...defaultValues,
@@ -31,7 +39,7 @@ export const useP2P= create(
         }),
     }),
     {
-      name: "screens",
+      name: "advert",
       storage: createJSONStorage(() => AsyncStorage),
     }
   )

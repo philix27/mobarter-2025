@@ -1,16 +1,31 @@
 import { TText, TView } from "@/components";
 import React from "react";
-import { data } from "./dummyData";
 import { useColor } from "@/lib/color";
 import { TouchableOpacity } from "react-native";
 import { CardRow } from "./CardRow";
 import { router } from "expo-router";
+import { AppStores } from "@/lib";
 
-export default function ScreenBuy() {
+type IProps = {
+  type: "BUY" | "SELL";
+  data: {
+    name: string;
+    paymentMethod: string;
+    status: string;
+    duration: string;
+    instruction: string;
+    available: number;
+    rate: number;
+    limitLower: number;
+    limitUpper: number;
+  }[];
+};
+export function Screen(props: IProps) {
   const theme = useColor();
+  const store = AppStores.useAdvert();
   return (
     <TView style={{ width: "100%" }}>
-      {data.map((val, i) => (
+      {props.data.map((val, i) => (
         <TouchableOpacity
           key={i}
           style={{
@@ -22,6 +37,7 @@ export default function ScreenBuy() {
             borderWidth: 3,
           }}
           onPress={() => {
+            store.update({ tradeType: props.type });
             router.push(`/(core)/advert/${i}`);
           }}
         >

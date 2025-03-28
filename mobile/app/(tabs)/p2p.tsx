@@ -10,7 +10,7 @@ import { useDrawer } from "@/components/DrawerContent";
 import { TouchableOpacity } from "react-native";
 
 export default function HomeScreen() {
-  const store = AppStores.useP2P();
+  const store = AppStores.useAdvert();
   const theme = useColor();
   const drawer = useDrawer();
   return (
@@ -23,17 +23,17 @@ export default function HomeScreen() {
               {
                 title: "Buy",
                 key: "buy",
-                isActive: store.activeTab === "BUY",
+                isActive: store.tradeType === "BUY",
                 onPress: () => {
-                  store.update({ activeTab: "BUY" });
+                  store.update({ tradeType: "BUY" });
                 },
               },
               {
                 title: "Sell",
                 key: "sell",
-                isActive: store.activeTab === "SELL",
+                isActive: store.tradeType === "SELL",
                 onPress: () => {
-                  store.update({ activeTab: "SELL" });
+                  store.update({ tradeType: "SELL" });
                 },
               },
             ]}

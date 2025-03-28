@@ -19,10 +19,9 @@ export const useDrawer = () => {
 };
 const links: { title: string; link: string }[] = [
   { title: "Profile", link: "/(core)/settings" },
-  { title: "Adverts", link: "(core)/advert/index" },
   { title: "Orders", link: "(core)/orders/index" },
+  { title: "Manage Adverts", link: "(core)/advert" },
   { title: "Transactions", link: "/adverts" },
-  { title: "Manage adverts", link: "/adverts" },
 ];
 
 export default function DrawerContent(props: DrawerContentComponentProps) {

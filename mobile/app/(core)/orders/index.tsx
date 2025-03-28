@@ -1,11 +1,12 @@
-import { Image, SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native";
 import { TText } from "@/components/TText";
 import { TView } from "@/components/TView";
 import HeaderBar from "@/components/Header";
+import Wrapper from "@/components/Wrapper";
 
 export default function Page() {
   return (
-    <SafeAreaView>
+    <Wrapper>
       <HeaderBar title="Orders" showBackBtn headerShown={false} backTo="Home" />
       <TView
         style={{
@@ -16,6 +17,6 @@ export default function Page() {
       >
         <TText type="title">Welcome!</TText>
       </TView>
-    </SafeAreaView>
+    </Wrapper>
   );
 }

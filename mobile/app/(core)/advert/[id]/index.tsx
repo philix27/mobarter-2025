@@ -1,40 +1,14 @@
-import { Image, SafeAreaView, StyleSheet } from "react-native";
-import { TText } from "@/components/TText";
-import { TView } from "@/components/TView";
 import HeaderBar from "@/components/Header";
+import { AppStores } from "@/lib";
+import AdvertScreen from "@/screens/advert";
 
 export default function Page() {
+  const store = AppStores.useAdvert();
+  const salesType = store.tradeType === "BUY" ? "Buy" : "Sell";
   return (
-    <SafeAreaView>
-      <HeaderBar title="Advert" showBackBtn />
-      <TView
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          gap: 8,
-        }}
-      >
-        <TText type="title">Welcome!</TText>
-      </TView>
-    </SafeAreaView>
+    <>
+      <HeaderBar title={`${salesType} Advert`} showBackBtn />
+      <AdvertScreen />
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
-  },
-});
