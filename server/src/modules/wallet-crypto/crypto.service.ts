@@ -25,13 +25,31 @@ export class WalletCryptoService {
             throw GqlErr("User already has wallets");
         }
 
-        const ethWallet = await this.createEthereumWallet({
-            userId: params.userId,
-        });
+        // todo: should never execute until app goes live
+        if (params.userId === undefined) {
+            const ethWallet = await this.createEthereumWallet({
+                userId: params.userId,
+            });
+            const solWallet = await this.createSolanaWallet({
+                userId: params.userId,
+            });
+            return [ethWallet, solWallet];
+        }
 
-        const solWallet = await this.createSolanaWallet({
-            userId: params.userId,
-        });
+        const ethWallet = {
+            id: 1,
+            address: "ethWallet",
+            wallet_id: "string;",
+            chainType: $Enums.ChainType.Ethereum,
+            user_id: params.userId,
+        };
+        const solWallet = {
+            id: 1,
+            address: "solWallet",
+            wallet_id: "wallet_id;",
+            chainType: $Enums.ChainType.Solana,
+            user_id: params.userId,
+        };
 
         return [ethWallet, solWallet];
     }

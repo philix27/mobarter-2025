@@ -89,6 +89,33 @@ export class Auth_LoginInput {
     @Field()
     password: string;
 }
+
+@InputType()
+export class Auth_LoginMinipay {
+    @Field()
+    walletAddress: string;
+}
+@ObjectType()
+export class Auth_LoginMinipayResponse {
+    @Field({ nullable: true })
+    email?: string;
+
+    @Field({ nullable: true })
+    firstname?: string;
+
+    @Field({ nullable: true })
+    lastname?: string;
+
+    @Field({ nullable: true })
+    middlename?: string;
+
+    @Field({ nullable: true })
+    token: string;
+
+    @Field()
+    walletAddress: string;
+}
+
 @ObjectType()
 export class Auth_LoginResponse {
     @Field({ nullable: false })

@@ -5,6 +5,8 @@ import {
     Auth_CreateAccountInput,
     Auth_CreateAccountResponse,
     Auth_LoginInput,
+    Auth_LoginMinipay,
+    Auth_LoginMinipayResponse,
     Auth_LoginResponse,
     Auth_LogoutInput,
     Auth_ResetPasswordInput,
@@ -73,6 +75,43 @@ export class AuthService {
         return { message: "Valid otp" };
     }
 
+    public async minipayLogin(
+        params: Auth_LoginMinipay
+    ): Promise<Auth_LoginMinipayResponse> {
+        // try {
+        this.logger.info("Create user account");
+
+        let _user = await this.prisma.user.findFirst({
+            where: {
+                minipay_wallet: params.walletAddress.trim(),
+            },
+        });
+
+        if (!_user) {
+            _user = await this.prisma.user.create({
+                data: {
+                    minipay: true,
+                    minipay_wallet: params.walletAddress,
+                },
+            });
+        }
+
+        if (!_user) throw GqlErr("User was not found");
+
+        const token = this.jwtService.generateToken({
+            userId: _user.id,
+            email: _user.minipay_wallet,
+        });
+
+        return {
+            walletAddress: params.walletAddress,
+            token: token,
+            email: _user.email!,
+            firstname: _user.firstname!,
+            lastname: _user.lastname!,
+            middlename: _user.middlename!,
+        };
+    }
     public async createAccount(
         params: Auth_CreateAccountInput
     ): Promise<Auth_CreateAccountResponse> {
@@ -164,10 +203,14 @@ export class AuthService {
             this.logger.error("Invalid credentials");
             throw GqlErr("Invalid credentials");
         }
+        if (!user.password) {
+            this.logger.error("No password for this account");
+            throw GqlErr("No password for this account");
+        }
 
         const isValid = await this.jwtService.verifyPassword(
             params.password,
-            user?.password
+            user?.password!
         );
 
         if (!isValid) {
@@ -181,10 +224,10 @@ export class AuthService {
         });
 
         return {
-            country: user.country,
-            email: user.email,
-            firstname: user.firstname,
-            lastname: user.lastname,
+            country: user.country!,
+            email: user.email!,
+            firstname: user.firstname!,
+            lastname: user.lastname!,
             middlename: user.middlename!,
             token,
         };

@@ -9,13 +9,16 @@ datasource db {
 
 model User {
   id                Int                @id @default(autoincrement())
-  firstname         String
-  lastname          String
+  firstname         String?
+  lastname          String?
   middlename        String?
-  email             String             @unique
-  password          String
+  email             String?            @unique
+  password          String?
+  transaction_pin   String?
+  minipay_wallet    String?
+  minipay           Boolean?           @default(false)
   role              UserRole?          @default(Regular)
-  country           Country
+  country           Country?
   created_at        DateTime?          @default(now())
   updated_at        DateTime?          @updatedAt
   bvn               String?

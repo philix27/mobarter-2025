@@ -1,10 +1,11 @@
 import { Args, Context, Mutation, Resolver } from "@nestjs/graphql";
-
 import { AuthService } from "./auth.service";
 import {
     Auth_CreateAccountInput,
     Auth_CreateAccountResponse,
     Auth_LoginInput,
+    Auth_LoginMinipay,
+    Auth_LoginMinipayResponse,
     Auth_LoginResponse,
     Auth_LogoutInput,
     Auth_ResetPasswordInput,
@@ -51,6 +52,14 @@ export class AuthResolver {
         @Args("input") input: Auth_LoginInput
     ): Promise<Auth_LoginResponse> {
         const res = await this.service.login(input);
+
+        return res!;
+    }
+    @Mutation((returns) => Auth_LoginMinipayResponse)
+    async auth_minipayLogin(
+        @Args("input") input: Auth_LoginMinipay
+    ): Promise<Auth_LoginMinipayResponse> {
+        const res = await this.service.minipayLogin(input);
 
         return res!;
     }

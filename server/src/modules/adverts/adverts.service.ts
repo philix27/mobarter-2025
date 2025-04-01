@@ -15,7 +15,8 @@ type User = { userId: number };
 @Injectable()
 export class AdvertsService {
     public constructor(
-        private readonly logger: LoggerService, // private readonly notification: NotificationService
+        private readonly logger: LoggerService,
+        // private readonly notification: NotificationService
         private readonly prisma: PrismaService
     ) {}
 
@@ -88,11 +89,12 @@ export class AdvertsService {
         params: Advert_DeleteInput & User
     ): Promise<Advert_AdvertResponse> {
         this.logger.info(this.getAll.name);
-        const ads = await this.prisma.adverts.delete({
+        const ads = await this.prisma.adverts.update({
             where: {
                 merchant_id: params.userId,
                 id: params.id,
             },
+            data: { status: "CLOSE" },
         });
         return ads;
     }
