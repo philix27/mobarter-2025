@@ -5,10 +5,11 @@ import {
     Auth_CreateAccountInput,
     Auth_CreateAccountResponse,
     Auth_LoginInput,
-    Auth_LoginMinipay,
+    Auth_LoginMinipayInput,
     Auth_LoginMinipayResponse,
     Auth_LoginResponse,
     Auth_LogoutInput,
+    Auth_MinipayCreateAccountInput,
     Auth_ResetPasswordInput,
     Auth_ResetPasswordResponse,
     Auth_sendEmailOtpInput,
@@ -20,6 +21,7 @@ import { GqlErr } from "../common/errors/gqlErr";
 import { OtpPurpose } from "../common/enums";
 import { HelperService } from "../helper/helper.service";
 import { WalletCryptoService } from "../wallet-crypto/crypto.service";
+import { isValidEthereumAddress } from "../../lib";
 
 @Injectable()
 export class AuthService {
@@ -76,31 +78,32 @@ export class AuthService {
     }
 
     public async minipayLogin(
-        params: Auth_LoginMinipay
+        params: Auth_LoginMinipayInput
     ): Promise<Auth_LoginMinipayResponse> {
-        // try {
-        this.logger.info("Create user account");
+        this.logger.info("MinipayLogin: " + params.walletAddress);
 
-        let _user = await this.prisma.user.findFirst({
+        if (!isValidEthereumAddress(params.walletAddress))
+            throw GqlErr("Invalid Ethereum Wallet");
+
+        let cryptoWallet = await this.prisma.cryptoWallets.findFirst({
             where: {
-                minipay_wallet: params.walletAddress.trim(),
+                address: params.walletAddress.trim(),
             },
         });
 
-        if (!_user) {
-            _user = await this.prisma.user.create({
-                data: {
-                    minipay: true,
-                    minipay_wallet: params.walletAddress,
-                },
-            });
-        }
+        if (!cryptoWallet) throw GqlErr("Wallet not found!");
 
-        if (!_user) throw GqlErr("User was not found");
+        let _user = await this.prisma.user.findFirst({
+            where: {
+                id: cryptoWallet.user_id!,
+            },
+        });
+
+        if (!_user) throw GqlErr("User account not found");
 
         const token = this.jwtService.generateToken({
             userId: _user.id,
-            email: _user.minipay_wallet,
+            email: cryptoWallet,
         });
 
         return {
@@ -112,6 +115,64 @@ export class AuthService {
             middlename: _user.middlename!,
         };
     }
+    
+    public async minipayCreateAccount(
+        params: Auth_MinipayCreateAccountInput
+    ): Promise<Auth_LoginMinipayResponse> {
+        this.logger.info("minipayCreateAccount: " + params.walletAddress);
+
+        if (!isValidEthereumAddress(params.walletAddress))
+            throw GqlErr("Invalid Ethereum Wallet");
+
+        if (!this.isValidEmail(params.email))
+            throw GqlErr("Invalid email address");
+
+        let user;
+        if (await this.doesEmailExist(params.email)) {
+            user = await this.prisma.user.findFirst({
+                where: {
+                    email: params.email,
+                },
+            });
+
+            await this.prisma.cryptoWallets.create({
+                data: {
+                    address: params.walletAddress.trim(),
+                    chainType: "Ethereum",
+                    minipay: true,
+                    user_id: user?.id,
+                },
+            });
+        } else {
+            user = await this.prisma.user.create({
+                data: {
+                    email: params.email,
+                    crypto_wallets: {
+                        create: {
+                            address: params.walletAddress.trim(),
+                            chainType: "Ethereum",
+                            minipay: true,
+                        },
+                    },
+                },
+            });
+        }
+
+        const token = this.jwtService.generateToken({
+            userId: user!.id,
+            email: user!.email,
+        });
+
+        return {
+            walletAddress: params.walletAddress,
+            token: token,
+            email: user!.email!,
+            firstname: user!.firstname!,
+            lastname: user!.lastname!,
+            middlename: user!.middlename!,
+        };
+    }
+
     public async createAccount(
         params: Auth_CreateAccountInput
     ): Promise<Auth_CreateAccountResponse> {

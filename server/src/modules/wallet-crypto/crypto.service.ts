@@ -1,8 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { LoggerService, PrismaService } from "../common";
 import { PrivyWalletService } from "./privy.service";
-import { $Enums } from "@prisma/client";
+import { ChainType } from "@prisma/client";
 import { GqlErr } from "../common/errors/gqlErr";
+import { WalletCryptoResponse } from "./crypto.dto";
 
 @Injectable()
 export class WalletCryptoService {
@@ -12,7 +13,9 @@ export class WalletCryptoService {
         private readonly privy: PrivyWalletService
     ) {}
 
-    public async createWalletsForNewUser(params: { userId: number }) {
+    public async createWalletsForNewUser(params: {
+        userId: number;
+    }): Promise<WalletCryptoResponse[]> {
         this.logger.info("Creating crypto wallet accounts ...");
 
         const userWallets = await this.prisma.cryptoWallets.findMany({
@@ -33,22 +36,22 @@ export class WalletCryptoService {
             const solWallet = await this.createSolanaWallet({
                 userId: params.userId,
             });
-            return [ethWallet, solWallet];
+            [ethWallet, solWallet];
         }
 
-        const ethWallet = {
+        const ethWallet: WalletCryptoResponse = {
             id: 1,
             address: "ethWallet",
             wallet_id: "string;",
-            chainType: $Enums.ChainType.Ethereum,
-            user_id: params.userId,
+            chainType: ChainType.Ethereum,
+            minipay: true,
         };
-        const solWallet = {
+        const solWallet: WalletCryptoResponse = {
             id: 1,
             address: "solWallet",
             wallet_id: "wallet_id;",
-            chainType: $Enums.ChainType.Solana,
-            user_id: params.userId,
+            chainType: ChainType.Solana,
+            minipay: true,
         };
 
         return [ethWallet, solWallet];
@@ -86,14 +89,9 @@ export class WalletCryptoService {
         return cryptoWallets;
     }
 
-    public async getWallets(params: { userId: number }): Promise<
-        {
-            id: number;
-            address: string;
-            wallet_id: string;
-            chainType: $Enums.ChainType;
-        }[]
-    > {
+    public async getWallets(params: {
+        userId: number;
+    }): Promise<WalletCryptoResponse[]> {
         this.logger.info("Retrieve user wallets ...");
 
         const wallets = await this.prisma.cryptoWallets.findMany({
@@ -101,7 +99,15 @@ export class WalletCryptoService {
                 user_id: params.userId,
             },
         });
-        console.log("wallets: ", wallets);
-        return wallets;
+
+        const _wallets: WalletCryptoResponse[] = wallets.map((val) => {
+            return {
+                id: val.id,
+                address: val.address,
+                chainType: val.chainType,
+                minipay: val.minipay!,
+            };
+        });
+        return _wallets;
     }
 }

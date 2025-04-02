@@ -15,8 +15,8 @@ model User {
   email             String?            @unique
   password          String?
   transaction_pin   String?
-  minipay_wallet    String?
-  minipay           Boolean?           @default(false)
+  // minipay_wallet    String?
+  // minipay           Boolean?           @default(false)
   role              UserRole?          @default(Regular)
   country           Country?
   created_at        DateTime?          @default(now())
@@ -58,11 +58,12 @@ enum Country {
 model CryptoWallets {
   id         Int       @id @default(autoincrement())
   address    String    @unique
-  wallet_id  String
+  wallet_id  String?
   chainType  ChainType
+  minipay    Boolean?  @default(false)
   created_at DateTime? @default(now())
   updated_at DateTime? @updatedAt
-  user_id    Int
+  user_id    Int?
   user       User?     @relation(fields: [user_id], references: [id])
 }
 

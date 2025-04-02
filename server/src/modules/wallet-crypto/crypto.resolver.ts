@@ -21,7 +21,7 @@ export class WalletCryptoResolver {
         return result;
     }
 
-    @Mutation((returns) => WalletCryptoResponse)
+    @Mutation((returns) => [WalletCryptoResponse])
     @UseGuards(GqlAuthGuard)
     async walletCrypto_create(
         @Context() context: { req: { userId: string } }
@@ -30,6 +30,14 @@ export class WalletCryptoResolver {
         const res = await this.service.createWalletsForNewUser({
             userId: parseInt(user.userId),
         });
-        return res;
+        return res.map((val) => {
+            return {
+                address: val.address,
+                chainType: val.chainType,
+                minipay: val.minipay!,
+                wallet_id: val.wallet_id,
+                id: val.id,
+            };
+        });
     }
 }

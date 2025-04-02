@@ -91,9 +91,17 @@ export class Auth_LoginInput {
 }
 
 @InputType()
-export class Auth_LoginMinipay {
+export class Auth_LoginMinipayInput {
     @Field()
     walletAddress: string;
+}
+@InputType()
+export class Auth_MinipayCreateAccountInput {
+    @Field()
+    walletAddress: string;
+
+    @Field()
+    email: string;
 }
 @ObjectType()
 export class Auth_LoginMinipayResponse {

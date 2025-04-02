@@ -1,60 +1,77 @@
-import { Args, Mutation, Resolver } from "@nestjs/graphql";
+import { Args, Context, Mutation, Resolver } from "@nestjs/graphql";
 
 import { KycService } from "./kyc.service";
 import {
-    Auth_CreateAccount,
-    Auth_Login,
-    Auth_Logout,
-    Auth_ResetPassword,
-    Auth_sendEmailOtp,
-    Auth_verifyEmailOtp,
+    Kyc_AddBvnInput,
+    Kyc_AddBvnResponse,
+    Kyc_AddNinInput,
+    Kyc_AddNinResponse,
+    Kyc_SendEmailOtpInput,
+    Kyc_SendEmailResponse,
+    Kyc_VerifyEmailOtpInput,
+    Kyc_VerifyEmailResponse,
 } from "./kyc.dto";
 import { UserDto } from "../user/user.dto";
+import { IContextUser } from "../../lib";
+import { UseGuards } from "@nestjs/common";
+import { GqlAuthGuard } from "../common/guards";
 
 @Resolver((of: any) => UserDto)
 export class KycResolver {
     constructor(private readonly service: KycService) {}
 
-    @Mutation((returns) => String)
-    async kyc_createAccount(
-        @Args("input") input: Auth_CreateAccount
-    ): Promise<String> {
-        const res = await this.service.createAccount(input);
+    @Mutation((returns) => Kyc_AddBvnResponse)
+    @UseGuards(GqlAuthGuard)
+    async kyc_addBvn(
+        @Context() context: IContextUser,
+        @Args("input") input: Kyc_AddBvnInput
+    ): Promise<Kyc_AddBvnResponse> {
+        const res = await this.service.addBvn({
+            ...input,
+            userId: context.req.userId,
+        });
 
         return res!;
     }
 
-    @Mutation((returns) => String)
-    async kyc_login(@Args("input") input: Auth_Login) {
-        const res = await this.service.login(input);
+    @Mutation((returns) => Kyc_AddNinResponse)
+    @UseGuards(GqlAuthGuard)
+    async kyc_addNin(
+        @Context() context: IContextUser,
+        @Args("input") input: Kyc_AddNinInput
+    ): Promise<Kyc_AddNinResponse> {
+        const res = await this.service.addNin({
+            ...input,
+            userId: context.req.userId,
+        });
 
         return res!;
     }
 
-    @Mutation((returns) => String)
-    async kyc_logout(@Args("input") input: Auth_Logout) {
-        const res = await this.service.logout(input);
+    @Mutation((returns) => Kyc_VerifyEmailResponse)
+    @UseGuards(GqlAuthGuard)
+    async kyc_verifyEmailOtp(
+        @Context() context: IContextUser,
+        @Args("input") input: Kyc_VerifyEmailOtpInput
+    ): Promise<Kyc_VerifyEmailResponse> {
+        const res = await this.service.verifyEmailOtp({
+            ...input,
+            userId: context.req.userId,
+        });
 
         return res!;
     }
 
-    @Mutation((returns) => String)
-    async kyc_verifyEmailOtp(@Args("input") input: Auth_verifyEmailOtp) {
-        const res = await this.service.verifyEmailOtp(input);
-
-        return res!;
-    }
-
-    @Mutation((returns) => String)
-    async kyc_sendEmailOtp(@Args("input") input: Auth_sendEmailOtp) {
-        const res = await this.service.sendEmailOtp(input);
-
-        return res!;
-    }
-
-    @Mutation((returns) => String)
-    async kyc_resetPassword(@Args("input") input: Auth_ResetPassword) {
-        const res = await this.service.resetPassword(input);
+    @Mutation((returns) => Kyc_SendEmailResponse)
+    @UseGuards(GqlAuthGuard)
+    async kyc_sendEmailOtp(
+        @Context() context: IContextUser,
+        @Args("input") input: Kyc_SendEmailOtpInput
+    ): Promise<Kyc_SendEmailResponse> {
+        const res = await this.service.sendEmailOtp({
+            ...input,
+            userId: context.req.userId,
+        });
 
         return res!;
     }

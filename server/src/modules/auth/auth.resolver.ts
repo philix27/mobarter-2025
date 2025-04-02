@@ -4,10 +4,11 @@ import {
     Auth_CreateAccountInput,
     Auth_CreateAccountResponse,
     Auth_LoginInput,
-    Auth_LoginMinipay,
+    Auth_LoginMinipayInput,
     Auth_LoginMinipayResponse,
     Auth_LoginResponse,
     Auth_LogoutInput,
+    Auth_MinipayCreateAccountInput,
     Auth_ResetPasswordInput,
     Auth_ResetPasswordResponse,
     Auth_sendEmailOtpInput,
@@ -57,10 +58,17 @@ export class AuthResolver {
     }
     @Mutation((returns) => Auth_LoginMinipayResponse)
     async auth_minipayLogin(
-        @Args("input") input: Auth_LoginMinipay
+        @Args("input") input: Auth_LoginMinipayInput
     ): Promise<Auth_LoginMinipayResponse> {
         const res = await this.service.minipayLogin(input);
+        return res!;
+    }
 
+    @Mutation((returns) => Auth_LoginMinipayResponse)
+    async auth_minipayCreateAccount(
+        @Args("input") input: Auth_MinipayCreateAccountInput
+    ): Promise<Auth_LoginMinipayResponse> {
+        const res = await this.service.minipayCreateAccount(input);
         return res!;
     }
 

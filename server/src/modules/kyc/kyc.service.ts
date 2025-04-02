@@ -1,60 +1,58 @@
 import { Injectable } from "@nestjs/common";
-import { LoggerService } from "../common";
-import { NotificationService } from "../notification/notification.service";
 import {
-    Auth_CreateAccount,
-    Auth_Login,
-    Auth_ResetPassword,
-    Auth_sendEmailOtp,
-    Auth_verifyEmailOtp,
+    Kyc_AddBvnInput,
+    Kyc_AddBvnResponse,
+    Kyc_AddNinInput,
+    Kyc_AddNinResponse,
+    Kyc_CreateTransactionPinInput,
+    Kyc_SendEmailOtpInput,
+    Kyc_SendEmailResponse,
+    Kyc_SendPhoneOtpInput,
+    Kyc_VerifyEmailOtpInput,
+    Kyc_VerifyEmailResponse,
+    Kyc_VerifyPhoneOtpInput,
 } from "./kyc.dto";
+import { UserInput } from "../../lib";
+import { GqlErr } from "../common/errors/gqlErr";
 
 @Injectable()
-export class KycServiceX {
-    public async send1(params: Auth_sendEmailOtp) { }
-    public async send2(params: Auth_sendEmailOtp) { }
-    public async send3(params: Auth_sendEmailOtp) { }
- }
-@Injectable()
-export class KycService extends KycServiceX {
-    public constructor(
-        private readonly logger: LoggerService,
-        private readonly notification: NotificationService
-    ) {
-        super();
+export class KycService {
+    public constructor() {} // private readonly notification: NotificationService // private readonly logger: LoggerService
+
+    public async sendPhoneOtp(params: Kyc_SendPhoneOtpInput & UserInput) {
+        // this.logger.info("Creating platform account ...");
+        throw GqlErr("Unimplemented");
     }
 
-    public async sendPhoneOtp(params: Auth_sendEmailOtp) {
-        this.logger.info("Creating platform account ...");
-
-        const otp = this.genOtp();
-
-        try {
-            await this.notification.sendEmailOtp({ email: params.email, otp });
-            return "Sent successfully";
-        } catch (error) {
-            this.logger.error("Could not send otp to email");
-        }
+    public async verifyPhoneOtp(params: Kyc_VerifyPhoneOtpInput & UserInput) {
+        throw GqlErr("Unimplemented");
     }
 
-    public async verifyPhoneOtp(params: Auth_verifyEmailOtp) {
-        this.logger.info("Creating platform account ...");
-
-        //    todo: Create Account
+    public async createTransactionPin(params: Kyc_CreateTransactionPinInput) {
+        throw GqlErr("Unimplemented");
     }
 
-    public async createTransactionPin(params: Auth_CreateAccount) {
-        try {
-            await this.notification.sendWelcomeMessage({ email: params.email });
-            return "Sent successfully";
-        } catch (error) {
-            this.logger.error("Could not send otp to email");
-        }
+    public async addBvn(
+        params: Kyc_AddBvnInput & UserInput
+    ): Promise<Kyc_AddBvnResponse> {
+        throw GqlErr("Unimplemented");
     }
 
-    public async addBvn(params: Auth_ResetPassword) {}
+    public async addNin(
+        params: Kyc_AddNinInput & UserInput
+    ): Promise<Kyc_AddNinResponse> {
+        throw GqlErr("Unimplemented");
+    }
 
-    public async addNin(params: Auth_ResetPassword) {}
+    public async sendEmailOtp(
+        params: Kyc_SendEmailOtpInput & UserInput
+    ): Promise<Kyc_SendEmailResponse> {
+        throw GqlErr("Unimplemented");
+    }
 
-    public async getKycStatus(params: Auth_Login) {}
+    public async verifyEmailOtp(
+        params: Kyc_VerifyEmailOtpInput & UserInput
+    ): Promise<Kyc_VerifyEmailResponse> {
+        throw GqlErr("Unimplemented");
+    }
 }

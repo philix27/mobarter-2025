@@ -10,8 +10,8 @@ import {
     Advert_UpdateInput,
 } from "./adverts.dto";
 import { GqlErr } from "../common/errors/gqlErr";
+import { UserInput } from "../../lib";
 
-type User = { userId: number };
 @Injectable()
 export class AdvertsService {
     public constructor(
@@ -21,7 +21,7 @@ export class AdvertsService {
     ) {}
 
     public async getAll(
-        params: Advert_GetAllInput & User
+        params: Advert_GetAllInput & UserInput
     ): Promise<Advert_AdvertResponse[]> {
         this.logger.info(this.getAll.name);
 
@@ -34,9 +34,9 @@ export class AdvertsService {
     }
 
     public async update(
-        params: Advert_UpdateInput & User
+        params: Advert_UpdateInput & UserInput
     ): Promise<Advert_AdvertResponse> {
-        this.logger.info(this.getAll.name);
+        this.logger.info(this.update.name);
 
         const ads = await this.prisma.adverts.update({
             where: {
@@ -49,19 +49,38 @@ export class AdvertsService {
     }
 
     public async create(
-        params: Advert_CreateInput & User
+        params: Advert_CreateInput & UserInput
     ): Promise<Advert_AdvertResponse> {
-        this.logger.info(this.getAll.name);
-        const ads = await this.prisma.adverts.create({
-            data: { ...params, merchant_id: params.userId },
-        });
-        return ads;
+        this.logger.info(this.create.name);
+        try {
+            const ads = await this.prisma.adverts.create({
+                data: {
+                    // ...params,
+                    currencyFiat: params.currencyFiat,
+                    currencyCrypto: params.currencyCrypto,
+                    instructions: params.instructions,
+                    limitLower: params.limitLower,
+                    limitUpper: params.limitUpper,
+                    status: params.advertStatus,
+                    tradeType: params.tradeType,
+                    duration: params.duration,
+                    merchant_id: params.userId,
+                },
+            });
+            return {
+                ...ads,
+                advertStatus: ads.status!,
+            };
+        } catch (error) {
+            this.logger.error(error);
+            throw GqlErr("Could not create advert: " + error);
+        }
     }
 
     public async getOne(
-        params: Advert_GetOneInput & User
+        params: Advert_GetOneInput & UserInput
     ): Promise<Advert_AdvertResponse> {
-        this.logger.info(this.getAll.name);
+        this.logger.info(this.getOne.name);
         const ads = await this.prisma.adverts.findFirst({
             where: {
                 id: params.id,
@@ -73,9 +92,9 @@ export class AdvertsService {
         return ads;
     }
     public async getMerchantAdverts(
-        params: Advert_GetAllMerchantAdsInput & User
+        params: Advert_GetAllMerchantAdsInput & UserInput
     ): Promise<Advert_AdvertResponse[]> {
-        this.logger.info(this.getAll.name);
+        this.logger.info(this.getMerchantAdverts.name);
         const ads = await this.prisma.adverts.findMany({
             where: {
                 merchant_id: params.userId,
@@ -86,9 +105,9 @@ export class AdvertsService {
     }
 
     public async delete(
-        params: Advert_DeleteInput & User
+        params: Advert_DeleteInput & UserInput
     ): Promise<Advert_AdvertResponse> {
-        this.logger.info(this.getAll.name);
+        this.logger.info(this.delete.name);
         const ads = await this.prisma.adverts.update({
             where: {
                 merchant_id: params.userId,

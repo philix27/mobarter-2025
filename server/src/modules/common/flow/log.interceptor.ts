@@ -38,7 +38,7 @@ export class LogInterceptor implements NestInterceptor {
                 return data;
             }),
             catchError((err: unknown) => {
-                console.log("DataErr:", err);
+                // console.log("DataErr:", err);
                 // Log fomat inspired by the Squid docs
                 // See https://docs.trafficserver.apache.org/en/6.1.x/admin-guide/monitoring/logging/log-formats.en.html
                 // const status = this.hasStatus(err) ? err.status : "XXX";

@@ -1,43 +1,77 @@
-import { Field, InputType } from "@nestjs/graphql";
+import { Field, InputType, ObjectType, PartialType } from "@nestjs/graphql";
+import {
+    Auth_sendEmailOtpInput,
+    Auth_sendEmailOtpResponse,
+    Auth_verifyEmailOtpInput,
+    Auth_verifyOtpResponse,
+} from "../auth/auth.dto";
+
+@ObjectType()
+export class Kyc_SendEmailResponse extends PartialType(
+    Auth_sendEmailOtpResponse,
+    ObjectType
+) {}
+
+@ObjectType()
+export class Kyc_VerifyEmailResponse extends PartialType(
+    Auth_verifyOtpResponse,
+    ObjectType
+) {}
 
 @InputType()
-export class Auth_CreateAccount {
-    @Field({ nullable: false })
-    email: string;
-}
+export class Kyc_SendEmailOtpInput extends PartialType(
+    Auth_sendEmailOtpInput,
+    InputType
+) {}
 
 @InputType()
-export class Auth_sendEmailOtp {
+export class Kyc_VerifyEmailOtpInput extends PartialType(
+    Auth_verifyEmailOtpInput,
+    InputType
+) {}
+
+@InputType()
+export class Kyc_SendPhoneOtpInput {
     @Field()
-    email: string;
+    phone: string;
 }
-
 @InputType()
-export class Auth_verifyEmailOtp {
+export class Kyc_VerifyPhoneOtpInput {
     @Field()
-    email: string;
+    phone: string;
+
+    @Field()
+    otp: string;
 
     @Field()
     token: string;
 }
 
 @InputType()
-export class Auth_ResetPassword {
+export class Kyc_AddBvnInput {
     @Field()
-    email: string;
+    bvn: string;
+}
+
+@ObjectType()
+export class Kyc_AddBvnResponse {
+    @Field()
+    message: string;
 }
 
 @InputType()
-export class Auth_Login {
+export class Kyc_AddNinInput {
     @Field()
-    email: string;
-
-    @Field()
-    password: string;
+    nin: string;
 }
 
+@ObjectType()
+export class Kyc_AddNinResponse extends PartialType(
+    Kyc_AddBvnResponse,
+    ObjectType
+) {}
 @InputType()
-export class Auth_Logout {
-    @Field({ nullable: false })
-    email: string;
+export class Kyc_CreateTransactionPinInput {
+    @Field()
+    nin: string;
 }

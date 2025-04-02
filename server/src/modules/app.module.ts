@@ -18,7 +18,7 @@ import { AdvertsModule } from "./adverts/adverts.module";
 // import { CronModule } from "./cron/cron.module";
 // import { OrdersModule } from "./orders/orders.module";
 // import { SwapModule } from "./swap/swap.module";
-// import { KycModule } from "./kyc/kyc.module";
+import { KycModule } from "./kyc/kyc.module";
 
 @Module({
     imports: [
@@ -51,7 +51,7 @@ import { AdvertsModule } from "./adverts/adverts.module";
         // CronModule,
         // OrdersModule,
         // SwapModule,
-        // KycModule,
+        KycModule,
         WalletFiatModule,
         WalletCryptoModule,
     ],
