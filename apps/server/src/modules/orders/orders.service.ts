@@ -42,6 +42,27 @@ export class OrderService {
 
         return res;
     }
+    public async createBuy(p: Order_CreateInput & { userId: number }) {
+        this.logger.info("Creating platform account ...");
+
+        const res = await this.prisma.orders.create({
+            data: {
+                amountCrypto: p.amountCrypto,
+                amountFiat: p.amountFiat,
+                duration: p.duration,
+                currencyCrypto: p.currencyCrypto,
+                currencyFiat: p.currencyFiat,
+                merchantAction: p.merchantAction,
+                status: p.status,
+                userAction: p.userAction,
+                merchant_id: p.userId,
+                timeCompleted: p.timeCompleted,
+                tradeType: p.tradeType,
+            },
+        });
+
+        return res;
+    }
 
     public async getAll(p: Order_GetAllInput & { userId: number }) {
         const res = await this.prisma.orders.findMany({

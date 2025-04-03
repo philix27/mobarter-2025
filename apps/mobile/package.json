@@ -3,6 +3,7 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
+    "dev": "expo start",
     "start": "expo start",
     "cstart": "expo start -- --reset-cache",
     "reset-project": "node ./scripts/reset-project.js",

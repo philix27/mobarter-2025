@@ -10,7 +10,7 @@ import { IconButton } from "./icon-button";
 import { MoonpaySvg } from "./fiat/moonpay";
 import { KadoSvg } from "./fiat/kado";
 import { TransakSvg } from "./fiat/transak";
-import { registerCardModal } from "../../components/modal/card";
+import { registerCardModal } from "./card";
 // import { StackNavProp } from "../../navigation.tsx";
 import { Button } from "./button";
 import { FiatOnRampServiceInfo } from "./config.ui";

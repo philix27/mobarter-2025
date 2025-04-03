@@ -18,22 +18,22 @@ export class NotificationService {
         phoneNo: string;
         otp: string;
     }) {
-        this.logger.info("NotificationService sendPhoneOtp");
+        this.logger.info("NotificationService sendPhoneOtpToWhatsApp");
     }
 
     public async sendWelcomeMessage(params: { email: string }) {
-        this.logger.info("Fetching platform accounts");
+        this.logger.info("NotificationService sendWelcomeMessage");
     }
 
     public async sendP2pMessage(params: { email: string }) {
-        this.logger.info("Fetching platform accounts");
+        this.logger.info("NotificationService sendP2pMessage");
     }
 
     public async orderCreated(params: { email: string }) {
-        this.logger.info("Fetching platform accounts");
+        this.logger.info("NotificationService orderCreated");
     }
 
     public async orderCompleted(params: { email: string }) {
-        this.logger.info("Fetching platform accounts");
+        this.logger.info("NotificationService orderCompleted");
     }
 }

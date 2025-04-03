@@ -14,11 +14,11 @@ import { BankAccountModule } from "./bankAccount/bankAccount.module";
 import { PassportModule } from "@nestjs/passport";
 import { HelpersModule } from "./helper/helper.module";
 import { AdvertsModule } from "./adverts/adverts.module";
+import { KycModule } from "./kyc/kyc.module";
 // import { PricesModule } from "./prices/prices.module";
 // import { CronModule } from "./cron/cron.module";
 // import { OrdersModule } from "./orders/orders.module";
 // import { SwapModule } from "./swap/swap.module";
-import { KycModule } from "./kyc/kyc.module";
 
 @Module({
     imports: [
@@ -28,6 +28,7 @@ import { KycModule } from "./kyc/kyc.module";
             playground: true,
             autoSchemaFile: true,
             sortSchema: true,
+            introspection: true,
             subscriptions: {
                 "graphql-ws": true,
             },

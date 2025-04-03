@@ -35,6 +35,7 @@ model User {
   merchant_status   MerchantStatus?    @default(Offline)
   adverts           Adverts[]
   orders            Orders[]
+  orders_buy        OrdersBuy[]
 }
 
 enum MerchantStatus {
@@ -81,15 +82,17 @@ enum CredentialsStatus {
 }
 
 model BankAccount {
-  id           Int       @id @default(autoincrement())
+  id           Int         @id @default(autoincrement())
   account_name String
   account_no   String
+  soft_delete  Boolean?    @default(false)
   bank_name    BankName
-  created_at   DateTime? @default(now())
-  updated_at   DateTime? @updatedAt
+  created_at   DateTime?   @default(now())
+  updated_at   DateTime?   @updatedAt
   user_id      Int
-  user         User?     @relation(fields: [user_id], references: [id])
+  user         User?       @relation(fields: [user_id], references: [id])
   advert       Adverts[]
+  orders_buy   OrdersBuy[]
 }
 
 enum TradeType {
@@ -151,6 +154,26 @@ model Orders {
   user_id        Int
   user           User?          @relation(fields: [user_id], references: [id])
   merchant_id    Int
+}
+
+model OrdersBuy {
+  id              Int            @id @default(autoincrement())
+  amountFiat      Int
+  amountCrypto    Int
+  duration        String
+  status          OrderStatus    @default(OPEN)
+  userAction      OrderActions
+  merchantAction  OrderActions
+  currencyCrypto  CurrencyCrypto
+  currencyFiat    CurrencyFiat
+  timeCompleted   DateTime?
+  created_at      DateTime?      @default(now())
+  updated_at      DateTime?      @updatedAt
+  bank_account_id Int
+  bank_account    BankAccount?   @relation(fields: [bank_account_id], references: [id])
+  customer_id     Int
+  customer        User?          @relation(fields: [customer_id], references: [id])
+  merchant_id     Int
 }
 
 enum OrderStatus {
