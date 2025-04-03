@@ -12,7 +12,7 @@ import {
   MutationAuth_VerifyEmailOtpArgs,
   MutationAuth_CreateAccountArgs,
 } from "../__generated__/graphql";
-import { WrappedResponse, Input } from "../types";
+import { WrappedResponse, Input } from "./types";
 
 export const useAuthLogin = () =>
   useMutation<WrappedResponse<"auth_login">, MutationAuth_LoginArgs>(

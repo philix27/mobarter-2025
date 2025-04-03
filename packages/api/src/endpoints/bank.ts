@@ -4,7 +4,7 @@ import {
   BankAccount_DeleteResponse,
   BankAccount_DeleteDocument,
 } from "../__generated__/graphql";
-import { WrappedResponse, Input } from "../types";
+import { WrappedResponse, Input } from "./types";
 
 export const useBankAccount_delete = () => {
   const [mutate, { data, loading, error }] = useMutation<

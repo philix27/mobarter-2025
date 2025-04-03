@@ -10,3 +10,5 @@ export type Response<V, K extends keyof V> = {
 
 export type MutationResponse<K extends keyof Mutation> = Response<Mutation, K>;
 export type QueryResponse<K extends keyof Query> = Response<Query, K>;
+
+export type WrappedResponse<K extends keyof Mutation> = Response<Mutation, K>;
