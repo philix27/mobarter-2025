@@ -1,0 +1,37 @@
+{
+  "name": "@repo/api",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist",
+    "#graphql": "Graphql scripts",
+    "gqlgen": "graphql-codegen",
+    "gen": "graphql-codegen --config codegen.ts",
+    "genY": "graphql-codegen --config codegen.yml",
+    "gql watch": "graphql-codegen -w"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "*",
+    "@graphql-codegen/cli": "^5.0.5",
+    "@graphql-codegen/introspection": "^4.0.3",
+    "@graphql-codegen/typed-document-node": "^5.1.0",
+    "@graphql-codegen/typescript": "^4.1.5",
+    "@graphql-codegen/typescript-document-nodes": "^4.0.15",
+    "@graphql-codegen/typescript-operations": "^4.5.1",
+    "@graphql-codegen/typescript-react-apollo": "^4.3.2",
+    "@graphql-codegen/typescript-resolvers": "^4.4.4",
+    "@graphql-codegen/typescript-urql": "^4.0.0",
+    "@types/react": "^18.2.14",
+    "tsup": "^8.0.1",
+    "graphql": "^16.10.0",
+    "@apollo/client": "^3.13.4",
+    "typescript": "5.5.4"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-native": "0.74.5"
+  }
+}

@@ -1,27 +1,35 @@
 {
-  "name": "nest-template",
+  "name": "mobarter",
   "version": "0.1.0",
-  "description": "NestJS API project template crafted for Docker environments",
-  "author": "Saluki",
+  "description": "Mobarter P2P app",
   "license": "MIT",
   "private": true,
+  "author": "Felix Eligbue",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/philix27/mobarter"
+  },
+  "homepage": "https://mobarter.com",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "engines": {
-    "node": ">=20.0.0"
+   "node": "^22.6.0"
   },
+ 
+
   "scripts": {
-    "clean": "rimraf ./dist",
-    "start": "node dist/server.js",
-    "dev": "cd server && node dist/server.js && cd .. && expo start",
-    "d": "cd mobile && expo start",
-    "build": "npm run clean && tsc",
-    "test": "env-cmd -f .env jest --config=jest.json",
-    "lint": "eslint -c .eslintrc.js --ext .ts 'src/**/*.ts'",
-    "#Prisma scripts": "Prisma scripts",
-    "gen": "npx prisma format && npx prisma generate",
-    "push": "npx prisma format && npx prisma db push",
-    "pull": "npx prisma db pull --force",
-    "studio": "npx prisma studio"
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore"
   },
+  "devDependencies": {
+    "prettier": "^3.1.1",
+    "turbo": "^2.4.4"
+  },
+  "packageManager": "yarn@1.22.19",
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint"
