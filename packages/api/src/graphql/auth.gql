@@ -1,0 +1,35 @@
+mutation Auth_login($input: Auth_LoginInput!) {
+  auth_login(input: $input) {
+    firstname
+    country
+    lastname
+    middlename
+    email
+    token
+  }
+}
+
+mutation Auth_resetPassword($input: Auth_ResetPasswordInput!) {
+  auth_resetPassword(input: $input) {
+    message
+  }
+}
+
+mutation Auth_sendEmailOtp($input: Auth_sendEmailOtpInput!) {
+  auth_sendEmailOtp(input: $input) {
+    message
+    token
+  }
+}
+
+mutation Auth_verifyEmailOtp($input: Auth_verifyEmailOtpInput!) {
+  auth_verifyEmailOtp(input: $input) {
+    message
+  }
+}
+
+mutation Auth_CreateAccount($input: Auth_CreateAccountInput!) {
+  auth_createAccount(input: $input) {
+    message
+  }
+}

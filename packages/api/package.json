@@ -14,6 +14,8 @@
     "gql watch": "graphql-codegen -w"
   },
   "devDependencies": {
+    "axios": "^1.8.4",
+    "@tanstack/react-query": "^5.67.2",
     "@repo/typescript-config": "*",
     "@graphql-codegen/cli": "^5.0.5",
     "@graphql-codegen/introspection": "^4.0.3",

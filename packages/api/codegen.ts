@@ -2,13 +2,13 @@ import type { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
   schema: "http://localhost:4545/graphql",
-  documents: ["./src/**/*.{ts,tsx}", "./lib/**/*.gql", "./lib/graphql/*.gql"],
+  documents: ["./src/**/*.{ts,tsx}", "./src/**/*.gql", "./src/graphql/*.gql"],
   generates: {
-    "./lib/__generated__/": {
+    "./src/__generated__/": {
       // './src/graphql/': {
       preset: "client",
       presetConfig: {
-        gqlTagName: "gql",
+        // gqlTagName: "gql",
         fragmentMasking: false,
       },
       // plugins: [
@@ -18,12 +18,14 @@ const config: CodegenConfig = {
       // 	'graphql-codegen-svelte-apollo'
       // ]
       plugins: [
-        "typescript",
-        "typescript-operations",
+        // "typescript",
+        // "typescript-operations",
+        // !
         // "typed-document-node",
-        "typescript-document-nodes",
-        "typescript-react-apollo",
-        "typescript-resolvers",
+        // "typescript-document-nodes",
+        // !
+        // "typescript-react-apollo",
+        // "typescript-resolvers",
       ],
     },
   },
