@@ -18,7 +18,8 @@ import { HelperService } from "../helper/helper.service";
         VendorGuard,
         HelperService,
     ],
-    exports: [configProvider, LoggerService, LogInterceptor, PrismaService],
+    exports: [configProvider, LoggerService, LogInterceptor, PrismaService,   GqlAuthGuard,
+        VendorGuard, HelperService,],
     controllers: [HealthController],
 })
 export class CommonModule {}

@@ -1,14 +1,13 @@
 import { Context, Query, Resolver } from "@nestjs/graphql";
 import {
     ExchangeRate_Response,
-    OrderDto,
 } from "./rates.dto";
 import { UseGuards } from "@nestjs/common";
 import { GqlAuthGuard } from "../common/guards";
 import { ExchangeRateService } from "./rates.service";
 
 
-@Resolver((of: any) => OrderDto)
+@Resolver((of: any) => ExchangeRate_Response)
 export class OrdersResolver {
     constructor(private readonly service: ExchangeRateService) {}
 

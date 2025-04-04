@@ -5,14 +5,12 @@ import { NotificationModule } from "../notification/notification.module";
 import { NotificationService } from "../notification/notification.service";
 import { AdvertsResolver } from "./adverts.resolver";
 import { HelperService } from "../helper/helper.service";
-import { VendorGuard } from "../common/guards";
 
 @Module({
     imports: [CommonModule, NotificationModule],
     providers: [
         AdvertsService,
         AdvertsResolver,
-        VendorGuard,
         HelperService,
         NotificationService,
     ],

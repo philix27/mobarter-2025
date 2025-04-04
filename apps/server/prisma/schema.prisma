@@ -211,48 +211,6 @@ enum BankName {
   NG_FIRST
 }
 
-// Review
-model Market {
-  id         Int        @id @default(autoincrement())
-  name       MarketName @unique
-  img        String?
-  created_at DateTime?  @default(now())
-  updated_at DateTime?  @updatedAt
-  traders    Traders[]
-}
-
-enum MarketName {
-  BITMAMA
-  CASHRAMP
-  FONBANK
-  ONERAMP
-  TELEGRAM_WALLET
-}
-
-model Traders {
-  id         Int         @id @default(autoincrement())
-  name       String
-  img        String?
-  created_at DateTime?   @default(now())
-  updated_at DateTime?   @updatedAt
-  currencies PriceRate[]
-  market_id  Int
-  market     Market?     @relation(fields: [market_id], references: [id])
-}
-
-model PriceRate {
-  id           Int          @id @default(autoincrement())
-  name         CurrencyName
-  img          String?
-  buyRate      Int?
-  sellRate     Int?
-  currencyType CurrencyType
-  trader_id    Int
-  trader       Traders?     @relation(fields: [trader_id], references: [id])
-  created_at   DateTime?    @default(now())
-  updated_at   DateTime?    @updatedAt
-}
-
 enum CurrencyType {
   FIAT
   CRYPTO
@@ -265,4 +223,12 @@ enum CurrencyName {
   USDT
   USDTx
   ETH
+}
+
+model ExchangeRates {
+  id               Int       @id @default(autoincrement())
+  rates            String?
+  exchangeratesapi String?
+  created_at       DateTime? @default(now())
+  updated_at       DateTime? @updatedAt
 }

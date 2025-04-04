@@ -16,7 +16,6 @@ import { ConfigModule } from "@nestjs/config";
 import { HelperService } from "../helper/helper.service";
 import { HelpersModule } from "../helper/helper.module";
 import { ItemsController } from "./auth.controller";
-import { GqlAuthGuard } from "../common/guards";
 
 @Module({
     imports: [
@@ -37,7 +36,6 @@ import { GqlAuthGuard } from "../common/guards";
         UserService,
         PrivyWalletService,
         JwtStrategy,
-        GqlAuthGuard,
     ],
     controllers: [ItemsController],
     // exports: [JwtStrategy, GqlAuthGuard],
