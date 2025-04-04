@@ -1,4 +1,4 @@
-import { Field, ID, InputType, ObjectType, PartialType } from "@nestjs/graphql";
+import { Field, ID, InputType, Int, ObjectType, PartialType } from "@nestjs/graphql";
 import { $Enums } from "@prisma/client";
 @InputType()
 export class Advert_CreateInput {
@@ -16,6 +16,12 @@ export class Advert_CreateInput {
 
     @Field({ nullable: false })
     instructions: string;
+
+    @Field({ nullable: false })
+    fiatAmountPerCrypto: number;
+
+    @Field({ nullable: false })
+    wallet_address: string;
 
     @Field((type) => $Enums.TradeType)
     tradeType: $Enums.TradeType;
@@ -68,10 +74,27 @@ export class Advert_AdvertResponse extends PartialType(
     @Field((type) => ID)
     id: number;
 }
+@ObjectType()
+export class Advert_GetResponse extends PartialType(
+    Advert_CreateInput,
+    ObjectType
+) {
+    @Field((type) => ID)
+    id: number;
+
+    @Field({ nullable: false })
+    merchant_nickname: string;
+
+    @Field({ nullable: false })
+    merchant_trade_count: number;
+
+    @Field({ nullable: false })
+    merchant_wallet: string;
+}
 
 @InputType()
 export class Advert_GetOneInput {
-    @Field((type) => ID)
+    @Field((type) => Int)
     id: number;
 }
 @InputType()

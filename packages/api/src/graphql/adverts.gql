@@ -36,8 +36,9 @@ mutation Adverts_delete($input: Advert_DeleteInput!) {
   }
 }
 
-query Adverts_getAll($input: Advert_GetAllInput!) {
-  adverts_getAll(input: $input) {
+query Adverts_getAll {
+  adverts_getAll {
+    id
     advertStatus
     duration
     tradeType
@@ -45,18 +46,32 @@ query Adverts_getAll($input: Advert_GetAllInput!) {
     instructions
     limitLower
     limitUpper
+    currencyFiat
+    currencyCrypto
+    merchant_wallet
+    merchant_nickname
+    merchant_trade_count
+    wallet_address
+    fiatAmountPerCrypto
   }
 }
 
 query Adverts_getOne($input: Advert_GetOneInput!) {
   adverts_getOne(input: $input) {
-    rate
-    currencyFiat
-    currencyCrypto
+    id
     advertStatus
     duration
+    tradeType
+    rate
+    instructions
     limitLower
     limitUpper
-    tradeType
+    currencyFiat
+    currencyCrypto
+    merchant_wallet
+    merchant_nickname
+    merchant_trade_count
+    wallet_address
+    fiatAmountPerCrypto
   }
 }

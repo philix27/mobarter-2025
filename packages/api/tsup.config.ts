@@ -5,11 +5,14 @@ export default defineConfig((options: Options) => ({
     index: "src/index.ts",
   },
   banner: {
-    js: "'use client'",
+    // js: "'use client'",
   },
+  sourcemap: true,
   clean: true,
   format: ["cjs", "esm"],
   external: ["js"],
+  // external: ["ts"],
   dts: true,
+  // bundle: false,
   ...options,
 }));

@@ -15,6 +15,7 @@ import { PassportModule } from "@nestjs/passport";
 import { HelpersModule } from "./helper/helper.module";
 import { AdvertsModule } from "./adverts/adverts.module";
 import { KycModule } from "./kyc/kyc.module";
+import { ExchangeRateModule } from "./rates/rates.module";
 // import { PricesModule } from "./prices/prices.module";
 // import { CronModule } from "./cron/cron.module";
 // import { OrdersModule } from "./orders/orders.module";
@@ -55,6 +56,7 @@ import { KycModule } from "./kyc/kyc.module";
         KycModule,
         WalletFiatModule,
         WalletCryptoModule,
+        ExchangeRateModule,
     ],
 })
 export class ApplicationModule {}

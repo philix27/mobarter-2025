@@ -18,7 +18,7 @@ import {
 } from "./auth.dto";
 import { UserDto } from "../user/user.dto";
 import { UseGuards } from "@nestjs/common";
-import { GqlAuthGuard } from "./gql.guard";
+import { GqlAuthGuard } from "../common/guards";
 
 @Resolver((of: any) => UserDto)
 export class AuthResolver {

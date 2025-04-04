@@ -3,8 +3,8 @@ import { CommonModule } from "../common";
 import { WalletCryptoResolver } from "./crypto.resolver";
 import { WalletCryptoService } from "./crypto.service";
 import { PrivyWalletService } from "./privy.service";
-import { GqlAuthGuard } from "../auth/gql.guard";
 import { HelperService } from "../helper/helper.service";
+import { GqlAuthGuard } from "../common/guards";
 
 @Module({
     imports: [CommonModule],

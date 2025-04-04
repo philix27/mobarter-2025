@@ -9,7 +9,6 @@ export class VendorGuard implements CanActivate {
     constructor(private readonly jwt: HelperService) {}
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
-        console.log("h1 authorization: ");
         const ctx = GqlExecutionContext.create(context);
 
         const ob = ctx.getContext().req.raw.rawHeaders;
@@ -28,8 +27,7 @@ export class VendorGuard implements CanActivate {
 
         const user = this.jwt.verifyToken(authToken);
         if (!user) throw GqlErr("User not found");
-        console.log("user:", user);
-        console.log("authToken:", authToken);
+        // console.log("user:", user);
         ctx.getContext().req = user;
         return ctx.getContext().req;
     }

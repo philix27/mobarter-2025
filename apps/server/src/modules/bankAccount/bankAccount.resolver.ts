@@ -7,8 +7,8 @@ import {
     BankAccount_DeleteResponse,
     BankAccount_Response,
 } from "./bankAccount.dto";
-import { GqlAuthGuard } from "../auth/gql.guard";
 import { UseGuards } from "@nestjs/common";
+import { GqlAuthGuard } from "../common/guards";
 
 @Resolver((of: any) => BankAccount_Response)
 export class BankAccountResolver {

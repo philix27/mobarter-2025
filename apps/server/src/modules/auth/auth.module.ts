@@ -10,13 +10,13 @@ import { UserService } from "../user/user.service";
 import { WalletCryptoModule } from "../wallet-crypto/crypto.module";
 import { PrivyWalletService } from "../wallet-crypto/privy.service";
 import { JwtStrategy } from "./jwt.strategy";
-import { GqlAuthGuard } from "./gql.guard";
 import jwtConfig from "./jwt.config";
 import { JwtModule } from "@nestjs/jwt";
 import { ConfigModule } from "@nestjs/config";
 import { HelperService } from "../helper/helper.service";
 import { HelpersModule } from "../helper/helper.module";
 import { ItemsController } from "./auth.controller";
+import { GqlAuthGuard } from "../common/guards";
 
 @Module({
     imports: [

@@ -4,6 +4,7 @@ import {
     Advert_AdvertResponse,
     Advert_CreateInput,
     Advert_DeleteInput,
+    Advert_GetResponse,
     Advert_GetAllInput,
     Advert_GetAllMerchantAdsInput,
     Advert_GetOneInput,
@@ -22,15 +23,46 @@ export class AdvertsService {
 
     public async getAll(
         params: Advert_GetAllInput & UserInput
-    ): Promise<Advert_AdvertResponse[]> {
+    ): Promise<Advert_GetResponse[]> {
         this.logger.info(this.getAll.name);
 
-        const ads = await this.prisma.adverts.findMany({
+        const adverts = await this.prisma.adverts.findMany({
             where: {
                 status: "OPEN",
             },
         });
-        return ads;
+
+        let list:Advert_GetResponse[]= []
+        for await (const ad of adverts) {
+            const merchant = await this.prisma.user.findFirst({
+                where: {
+                    id: ad.merchant_id,
+                }
+            })
+
+            if (!merchant) {
+                continue;
+            }
+
+            list.push({
+                id: ad.id,
+                advertStatus: ad.status!,
+                limitUpper: ad.limitUpper,
+                limitLower: ad.limitLower,
+                duration: ad.duration,
+                instructions: ad.instructions,
+                tradeType: ad.tradeType,
+                currencyFiat: ad.currency_fiat,
+                currencyCrypto: ad.currency_crypto,
+                rate: `1${ad.currency_crypto}/${ad.currency_fiat}`,
+                merchant_nickname: merchant.merchant_nickname || "Vendy Broski",
+                merchant_trade_count: merchant.merchant_trade_count!,
+                merchant_wallet: ad.wallet_address!
+                
+            })
+        }
+
+        return list
     }
 
     public async update(
@@ -55,13 +87,14 @@ export class AdvertsService {
         try {
             const ads = await this.prisma.adverts.create({
                 data: {
-                    // ...params,
-                    currencyFiat: params.currencyFiat,
-                    currencyCrypto: params.currencyCrypto,
+                    fiatAmountPerCrypto: params.fiatAmountPerCrypto,
+                    wallet_address: params.wallet_address,
+                    currency_fiat: params.currencyFiat,
+                    currency_crypto: params.currencyCrypto,
                     instructions: params.instructions,
                     limitLower: params.limitLower,
                     limitUpper: params.limitUpper,
-                    status: params.advertStatus,
+                    status: params.advertStatus!,
                     tradeType: params.tradeType,
                     duration: params.duration,
                     merchant_id: params.userId,
@@ -79,17 +112,44 @@ export class AdvertsService {
 
     public async getOne(
         params: Advert_GetOneInput & UserInput
-    ): Promise<Advert_AdvertResponse> {
+    ): Promise<Advert_GetResponse> {
         this.logger.info(this.getOne.name);
-        const ads = await this.prisma.adverts.findFirst({
+        const ad = await this.prisma.adverts.findFirst({
             where: {
                 id: params.id,
             },
         });
 
-        if (!ads) throw GqlErr("No advert found!");
+        if (!ad) throw GqlErr("No advert found!");
 
-        return ads;
+         const merchant = await this.prisma.user.findFirst({
+                where: {
+                    id: ad.merchant_id,
+                }
+            })
+
+            if (!merchant) {
+                throw GqlErr("No merchant found");
+            }
+
+           
+
+        return {
+                id: ad.id,
+                advertStatus: ad.status!,
+                limitUpper: ad.limitUpper,
+                limitLower: ad.limitLower,
+                duration: ad.duration,
+                instructions: ad.instructions,
+                tradeType: ad.tradeType,
+                currencyFiat: ad.currency_fiat,
+                currencyCrypto: ad.currency_crypto,
+                rate: `1${ad.currency_crypto}/${ad.currency_fiat}`,
+                merchant_nickname: merchant!.merchant_nickname || "Vendy Broski",
+                merchant_trade_count: merchant!.merchant_trade_count!,
+                merchant_wallet: ad.wallet_address!
+                
+            };
     }
     public async getMerchantAdverts(
         params: Advert_GetAllMerchantAdsInput & UserInput

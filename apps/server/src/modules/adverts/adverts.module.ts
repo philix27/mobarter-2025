@@ -4,8 +4,8 @@ import { AdvertsService } from "./adverts.service";
 import { NotificationModule } from "../notification/notification.module";
 import { NotificationService } from "../notification/notification.service";
 import { AdvertsResolver } from "./adverts.resolver";
-import { VendorGuard } from "../auth/vendor.guard";
 import { HelperService } from "../helper/helper.service";
+import { VendorGuard } from "../common/guards";
 
 @Module({
     imports: [CommonModule, NotificationModule],

@@ -13,8 +13,14 @@ export class CronService {
     }
 
     // Runs at midnight every day
-    @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
+    @Cron(CronExpression.EVERY_HOUR)
     handleMidnightTask() {
+        this.logger.info("Running a daily task at midnight");
+    }
+
+    // Runs at midnight every day
+    @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
+    getLatestRate() {
         this.logger.info("Running a daily task at midnight");
     }
 

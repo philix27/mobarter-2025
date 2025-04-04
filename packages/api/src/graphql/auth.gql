@@ -1,3 +1,23 @@
+mutation Auth_minipayLogin($input: Auth_LoginMinipayInput!) {
+  auth_minipayLogin(input:$input) {
+    firstname
+    lastname
+    middlename
+    email
+    token
+  }
+}
+
+mutation Auth_minipayCreateAccount($input: Auth_MinipayCreateAccountInput!) {
+  auth_minipayCreateAccount(input:$input) {
+    firstname
+    lastname
+    middlename
+    email
+    token
+  }
+}
+
 mutation Auth_login($input: Auth_LoginInput!) {
   auth_login(input: $input) {
     firstname
@@ -33,3 +53,4 @@ mutation Auth_CreateAccount($input: Auth_CreateAccountInput!) {
     message
   }
 }
+
