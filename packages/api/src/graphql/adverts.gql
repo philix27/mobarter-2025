@@ -1,6 +1,5 @@
 mutation Adverts_update($input: Advert_UpdateInput!) {
   adverts_update(input: $input) {
-    rate
     currencyFiat
     currencyCrypto
     advertStatus
@@ -8,24 +7,32 @@ mutation Adverts_update($input: Advert_UpdateInput!) {
     limitLower
     limitUpper
     tradeType
+    rateFixed
+    rateFloat
+    isFloatRate
   }
 }
 
 mutation Adverts_create($input: Advert_CreateInput!) {
   adverts_create(input: $input) {
-    rate
+    rateFixed
+    rateFloat
+    isFloatRate
     advertStatus
     limitLower
     limitUpper
     tradeType
     currencyFiat
     currencyCrypto
+    duration
   }
 }
 
 mutation Adverts_delete($input: Advert_DeleteInput!) {
   adverts_delete(input: $input) {
-    rate
+    rateFixed
+    rateFloat
+    isFloatRate
     currencyFiat
     currencyCrypto
     advertStatus
@@ -39,10 +46,12 @@ mutation Adverts_delete($input: Advert_DeleteInput!) {
 query Adverts_getAll {
   adverts_getAll {
     id
+    rateFixed
+    rateFloat
+    isFloatRate
     advertStatus
     duration
     tradeType
-    rate
     instructions
     limitLower
     limitUpper
@@ -62,7 +71,9 @@ query Adverts_getOne($input: Advert_GetOneInput!) {
     advertStatus
     duration
     tradeType
-    rate
+    rateFixed
+    rateFloat
+    isFloatRate
     instructions
     limitLower
     limitUpper

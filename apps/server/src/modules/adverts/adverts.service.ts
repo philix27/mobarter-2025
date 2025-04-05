@@ -54,10 +54,12 @@ export class AdvertsService {
                 tradeType: ad.tradeType,
                 currencyFiat: ad.currency_fiat,
                 currencyCrypto: ad.currency_crypto,
-                rate: `1${ad.currency_crypto}/${ad.currency_fiat}`,
                 merchant_nickname: merchant.merchant_nickname || "Vendy Broski",
                 merchant_trade_count: merchant.merchant_trade_count!,
-                merchant_wallet: ad.wallet_address!
+                merchant_wallet: ad.wallet_address!,
+                rateFixed: ad.rateFixed!,
+                rateFloat: ad.rateFloat!,
+                isFloatRate: !ad.isFloatRate 
                 
             })
         }
@@ -77,7 +79,12 @@ export class AdvertsService {
             },
             data: { ...params },
         });
-        return ads;
+        return {
+            ...ads,
+          rateFixed: params.rateFixed,
+          rateFloat: params.rateFloat,
+          isFloatRate: params.isFloatRate 
+        };
     }
 
     public async create(
@@ -85,23 +92,29 @@ export class AdvertsService {
     ): Promise<Advert_AdvertResponse> {
         this.logger.info(this.create.name);
         try {
-            const ads = await this.prisma.adverts.create({
+
+            const {isFloatRate, ...ads} = await this.prisma.adverts.create({
                 data: {
-                    fiatAmountPerCrypto: params.fiatAmountPerCrypto,
-                    wallet_address: params.wallet_address,
-                    currency_fiat: params.currencyFiat,
-                    currency_crypto: params.currencyCrypto,
-                    instructions: params.instructions,
-                    limitLower: params.limitLower,
-                    limitUpper: params.limitUpper,
-                    status: params.advertStatus!,
-                    tradeType: params.tradeType,
-                    duration: params.duration,
-                    merchant_id: params.userId,
+                fiatAmountPerCrypto: params.fiatAmountPerCrypto,
+                wallet_address: params.wallet_address,
+                currency_fiat: params.currencyFiat,
+                currency_crypto: params.currencyCrypto,
+                instructions: params.instructions,
+                limitLower: params.limitLower,
+                limitUpper: params.limitUpper,
+                status: params.advertStatus!,
+                tradeType: params.tradeType,
+                duration: params.duration,
+                merchant_id: params.userId,
+                rateFixed: params.rateFixed,
+                rateFloat: params.rateFloat,
+                isFloatRate: params.isFloatRate 
                 },
             });
             return {
                 ...ads,
+                rateFixed: ads.rateFixed!,
+                rateFloat: ads.rateFloat!,
                 advertStatus: ads.status!,
             };
         } catch (error) {
@@ -135,20 +148,21 @@ export class AdvertsService {
            
 
         return {
-                id: ad.id,
-                advertStatus: ad.status!,
-                limitUpper: ad.limitUpper,
-                limitLower: ad.limitLower,
-                duration: ad.duration,
-                instructions: ad.instructions,
-                tradeType: ad.tradeType,
-                currencyFiat: ad.currency_fiat,
-                currencyCrypto: ad.currency_crypto,
-                rate: `1${ad.currency_crypto}/${ad.currency_fiat}`,
-                merchant_nickname: merchant!.merchant_nickname || "Vendy Broski",
-                merchant_trade_count: merchant!.merchant_trade_count!,
-                merchant_wallet: ad.wallet_address!
-                
+            id: ad.id,
+            advertStatus: ad.status!,
+            limitUpper: ad.limitUpper,
+            limitLower: ad.limitLower,
+            duration: ad.duration,
+            instructions: ad.instructions,
+            tradeType: ad.tradeType,
+            currencyFiat: ad.currency_fiat,
+            currencyCrypto: ad.currency_crypto,
+            merchant_nickname: merchant!.merchant_nickname || "Vendy Broski",
+            merchant_trade_count: merchant!.merchant_trade_count!,
+            merchant_wallet: ad.wallet_address!,
+            rateFixed: ad.rateFixed!,
+            rateFloat: ad.rateFloat!,
+                isFloatRate: ad.isFloatRate
             };
     }
     public async getMerchantAdverts(
@@ -161,7 +175,16 @@ export class AdvertsService {
             },
         });
 
-        return ads;
+        return ads.map((val) => {
+            return {
+                ...val,
+                 rateFixed: val.rateFixed!,
+                rateFloat: val.rateFloat!,
+                advertStatus: val.status!,
+                
+            }
+            
+        })
     }
 
     public async delete(
@@ -175,6 +198,10 @@ export class AdvertsService {
             },
             data: { status: "CLOSE" },
         });
-        return ads;
+        return {
+            ...ads,
+              rateFixed: ads.rateFixed!,
+                rateFloat: ads.rateFloat!,
+        };
     }
 }

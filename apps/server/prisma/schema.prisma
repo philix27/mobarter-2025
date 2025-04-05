@@ -119,8 +119,11 @@ enum CurrencyFiat {
 // Buy and sell is always dependent on the crypto value
 model Adverts {
   id                  Int            @id @default(autoincrement())
-  limitUpper          Int
-  limitLower          Int
+  rateFloat           Float?
+  rateFixed           Float?
+  isFloatRate         Boolean        @default(true)
+  limitUpper          Float
+  limitLower          Float
   fiatAmountPerCrypto Int
   tradeType           TradeType
   currency_crypto     CurrencyCrypto

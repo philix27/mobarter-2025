@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client'
 import { Advert_GetResponse, QueryResponse } from '@repo/api'
 import * as Api from '@repo/api'
 import React, { useState } from 'react'
+import { toast } from 'react-toastify'
 import { Button } from 'src/components/Button'
 import { formatCurrency, roundUpTo2Decimals } from 'src/lib/helpers'
 import { AppStores } from 'src/lib/zustand'
@@ -27,6 +28,24 @@ export function SellDetails({ data }: { data: Advert_GetResponse }) {
 
   const { fxRate_GetAll } = fxData!
   const fiatAmt = roundUpTo2Decimals(cryptoAmount.amount * fxRate_GetAll[data.currencyFiat!], 100)
+
+  function handleSubmit() {
+    if (cryptoAmount.amount <= 0) {
+      toast.error('Crypto value needed')
+      return
+    }
+   
+    if (!store.bankName || !store.accountName || !store.accountNo) {
+      toast.error('Bank account info needed')
+      return
+    }
+    store.update({
+      steps: '2ConfirmDetails',
+      amountFiat: fiatAmt,
+      amountCrypto: cryptoAmount.amount,
+    })
+  }
+
   return (
     <>
       <Label className="mt-0">You SELL</Label>
@@ -85,17 +104,7 @@ export function SellDetails({ data }: { data: Advert_GetResponse }) {
         <Row text="Crypto" text2={data.currencyCrypto!.toString()} /> <Line />
         <Row text="Fiat" text2={data.currencyFiat!.toString()} />
       </div>
-      <Button
-        onClick={() => {
-          store.update({
-            steps: '2ConfirmDetails',
-            amountFiat: fiatAmt,
-            amountCrypto: cryptoAmount.amount,
-          })
-        }}
-      >
-        Place Order
-      </Button>
+      <Button onClick={handleSubmit}>Place Order</Button>
     </>
   )
 }

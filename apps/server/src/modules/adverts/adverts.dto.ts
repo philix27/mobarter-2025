@@ -8,8 +8,14 @@ export class Advert_CreateInput {
     @Field({ nullable: false })
     limitLower: number;
 
-    @Field({ nullable: false })
-    rate: string;
+    @Field({ nullable: true })
+    rateFloat?: number;
+    
+    @Field({ nullable: true })
+    rateFixed?: number;
+
+    @Field({ nullable: true })
+    isFloatRate: boolean;
 
     @Field({ nullable: false })
     duration: string;
