@@ -1,11 +1,11 @@
 import { Module } from "@nestjs/common";
 import { ExchangeRateService } from "./rates.service";
-import { CommonModule, LoggerService } from "../common";
+import { CommonModule } from "../common";
+import { ExchangeRateResolver } from "./rates.resolver";
 
 
 @Module({
-    imports: [CommonModule, ],
-    providers: [LoggerService, ExchangeRateService,   
-        ],
+    imports: [CommonModule],
+    providers: [ ExchangeRateService, ExchangeRateResolver],
 })
 export class ExchangeRateModule {}

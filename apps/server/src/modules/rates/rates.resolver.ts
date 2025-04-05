@@ -8,7 +8,7 @@ import { ExchangeRateService } from "./rates.service";
 
 
 @Resolver((of: any) => ExchangeRate_Response)
-export class OrdersResolver {
+export class ExchangeRateResolver {
     constructor(private readonly service: ExchangeRateService) {}
 
     @Query((returns) => ExchangeRate_Response)
