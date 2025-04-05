@@ -7,21 +7,11 @@ export type ISteps = '1EnterDetails' | '2ConfirmDetails'
 export interface ISlice {
   tradeType?: IViews
   steps?: ISteps
-  amountFiat?: number
-  amountCrypto?: number
-  bankName?: string
-  accountName?: string
-  accountNo?: string
 }
 
 export const defaultValues: Required<ISlice> = {
   tradeType: 'BUY',
   steps: '1EnterDetails',
-  amountFiat: 0,
-  amountCrypto: 0,
-  bankName: '',
-  accountName: '',
-  accountNo: ''
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
@@ -29,7 +19,7 @@ export interface ISliceUpdate extends Required<ISlice> {
   clear: () => void
 }
 
-export const useAdvert = create(
+export const useOrder = create(
   persist<ISliceUpdate>(
     (set) => ({
       ...defaultValues,
@@ -43,7 +33,7 @@ export const useAdvert = create(
         }),
     }),
     {
-      name: 'advert',
+      name: 'orders',
     }
   )
 )

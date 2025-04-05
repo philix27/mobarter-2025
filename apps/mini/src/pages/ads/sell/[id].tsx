@@ -3,7 +3,7 @@ import * as Api from '@repo/api'
 import { QueryResponse } from '@repo/api'
 import { useRouter } from 'next/router'
 import Wrapper from 'src/components/wrapper/Wrapper'
-import SellAd from 'src/features/adverts/SellAd'
+import SellAd from 'src/features/adverts/sell'
 
 export default function Page() {
   const router = useRouter()
@@ -20,7 +20,7 @@ export default function Page() {
 
   const { adverts_getOne } = data!
   return (
-    <Wrapper>
+    <Wrapper hideBottomNav showBack>
       <SellAd data={adverts_getOne} />
     </Wrapper>
   )

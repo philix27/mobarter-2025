@@ -1,14 +1,31 @@
-import { useQuery } from '@apollo/client'
-import * as Api from '@repo/api'
-import { QueryResponse } from '@repo/api'
-import Link from 'next/link'
-import Wrapper from 'src/components/wrapper/Wrapper'
-import { cn } from 'src/lib/utils'
-import { AppStores } from 'src/lib/zustand'
+import { useQuery } from '@apollo/client';
+import * as Api from '@repo/api';
+import { QueryResponse } from '@repo/api';
+import Link from 'next/link';
+import { useEffect } from 'react';
+import Wrapper from 'src/components/wrapper/Wrapper';
+import { cn } from 'src/lib/utils';
+import { AppStores } from 'src/lib/zustand';
+
 
 type IAd = { data: Api.Advert_GetResponse }
 
 export default function Page() {
+  const store = AppStores.useAdvert()
+  useEffect(() => {
+    store.clear()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  return (
+    <Wrapper>
+      <div className="w-full items-center justify-center flex flex-col bg-background h-full">
+        <Tab />
+        <List />
+      </div>
+    </Wrapper>
+  )
+}
+function List() {
   const store = AppStores.useAdvert()
   const { data, loading, error } = useQuery<QueryResponse<'adverts_getAll'>>(
     Api.Adverts_GetAllDocument
@@ -17,20 +34,14 @@ export default function Page() {
   if (loading) return <div>Loading...</div>
   if (error) return <div>Error...</div>
   return (
-    <Wrapper>
-      <div className="w-full items-center justify-center flex flex-col bg-background h-full">
-        <Tab />
-        <div className="w-full bg-background no-scrollbar">
-          {data &&
-            data.adverts_getAll
-              .filter((val) => val.tradeType! === store.tradeType)
-              .map((ad, i) => <AdItem key={i} data={ad} />)}
-        </div>
-      </div>
-    </Wrapper>
+    <div className="w-full bg-background no-scrollbar">
+      {data &&
+        data.adverts_getAll
+          .filter((val) => val.tradeType! === store.tradeType)
+          .map((ad, i) => <AdItem key={i} data={ad} />)}
+    </div>
   )
 }
-
 function Tab() {
   const store = AppStores.useAdvert()
   return (
