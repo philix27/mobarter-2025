@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #cbe2e5;
+    --foreground: #494a4a;
+
+    --muted: #8f8f8f;
+    --muted-foreground: #cecece;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --card: #fefefe;
+    --card-foreground: #0e151d;
+
+    --primary: #ff6719;
+    --primary-foreground: #fff;
+
+    --secondary: #c1d0d5;
+    --secondary-foreground: #19232f;
+
+    --accent: #ffffff;
+    --accent-foreground: #f8f8f8;
+
+    --destructive: #d00000;
+    --destructive-foreground: #ffffff;
+
+    --ring: #4c4847;
+    --border: #3b3b3b;
+    --input: #ff3300;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: #363637;
+    /* --background: #3c3c3c; */
+    --foreground: #ebebeb;
+
+    --muted: #909090;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --card: #282828;
+    --card-foreground: #ffff;
+
+    --primary: #ff6719;
+    --primary-foreground: #fff;
+
+    --secondary: #282828;
+    --secondary-foreground: #f8f8f8;
+
+    --accent: #222525;
+    --accent-foreground: #f8f8f8;
+
+    --destructive: #d00000;
+    --destructive-foreground: #ffffff;
+
+    --ring: #353636;
+    --border: #717171;
+    --input: #151718;
+    --tw-shadow: #545353;
+    --radius: 0.5rem;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    /* font-family: 'Fira Mono', serif; */
+  }
+}
+
+ide scrollbar for Chrome,
+Safari and Opera */ .no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+:root {
+  -ms-content-zooming: none;
+  touch-action: pan-x pan-y;
+  -ms-touch-action: pan-x pan-y;
+}
+
+body {
+  -ms-content-zooming: none;
+  touch-action: pan-x pan-y;
+  -ms-touch-action: pan-x pan-y;
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+/*
+Toasts
+======
+*/
+:root {
+  --toastify-color-light: #ffffff;
+  --toastify-color-dark: #2e3338;
+  --toastify-color-info: #3498db;
+  --toastify-color-success: #35d07f;
+  --toastify-color-warning: #fcd34d;
+  --toastify-color-error: #dc2626;
+  --toastify-color-transparent: rgba(255, 255, 255, 0.7);
+
+  --toastify-icon-color-info: var(--toastify-color-info);
+  --toastify-icon-color-success: var(--toastify-color-success);
+  --toastify-icon-color-warning: var(--toastify-color-warning);
+  --toastify-icon-color-error: var(--toastify-color-error);
+
+  --toastify-toast-width: 300px;
+  --toastify-toast-background: #fff;
+  --toastify-toast-min-height: 64px;
+  --toastify-toast-max-height: 800px;
+  --toastify-font-family: Roboto, sans-serif;
+  --toastify-z-index: 9999;
+
+  --toastify-text-color-light: #2e3338;
+  --toastify-text-color-dark: #fff;
+
+  --toastify-text-color-info: #fff;
+  --toastify-text-color-success: #fff;
+  --toastify-text-color-warning: #fff;
+  --toastify-text-color-error: #fff;
+
+  --toastify-spinner-color: #616161;
+  --toastify-spinner-color-empty-area: #e0e0e0;
+
+  --toastify-color-progress-light: linear-gradient(
+    to right,
+    #4cd964,
+    #5ac8fa,
+    #007aff,
+    #34aadc,
+    #5856d6,
+    #ff2d55
+  );
+  --toastify-color-progress-dark: #bb86fc;
+  --toastify-color-progress-info: var(--toastify-color-info);
+  --toastify-color-progress-success: var(--toastify-color-success);
+  --toastify-color-progress-warning: var(--toastify-color-warning);
+  --toastify-color-progress-error: var(--toastify-color-error);
+}
