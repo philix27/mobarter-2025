@@ -1,0 +1,9 @@
+query FxRate_GetAll {
+  fxRate_GetAll {
+    GHS
+    NGN
+    KES
+    USD
+    EUR
+  }
+}

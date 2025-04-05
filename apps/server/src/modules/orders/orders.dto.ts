@@ -44,6 +44,8 @@ export class Order_CreateInput {
 
     @Field((type) => $Enums.OrderStatus)
     status: $Enums.OrderStatus;
+
+  
 }
 
 @ObjectType()
@@ -65,6 +67,18 @@ export class Order_AdvertResponse extends PartialType(
 export class Order_GetAllInput {
     @Field({ nullable: true })
     filter?: string;
+
+     @Field((type) => $Enums.TradeType)
+     tradeType?: $Enums.TradeType;
+    
+     @Field((type) => $Enums.CurrencyFiat)
+    currencyFiat?: $Enums.CurrencyFiat;
+
+    @Field((type) => $Enums.CurrencyCrypto)
+    currencyCrypto?: $Enums.CurrencyCrypto;
+
+    @Field((type) => $Enums.OrderStatus)
+    status?: $Enums.OrderStatus;
 }
 
 @InputType()

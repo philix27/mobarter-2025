@@ -8,9 +8,11 @@ import {
     Advert_GetAllInput,
     Advert_GetOneInput,
     Advert_AdvertResponse,
+    Advert_GetResponse,
 } from "./adverts.dto";
 import { UseGuards } from "@nestjs/common";
-import { VendorGuard } from "../auth/vendor.guard";
+import { VendorGuard } from "../common/guards";
+
 
 @Resolver((of: any) => AdvertDto)
 export class AdvertsResolver {
@@ -57,14 +59,13 @@ export class AdvertsResolver {
         return res!;
     }
 
-    @Query((returns) => [Advert_AdvertResponse])
+    @Query((returns) => [Advert_GetResponse])
     @UseGuards(VendorGuard)
     async adverts_getAll(
-        @Context() context: { req: { userId: number } },
-        @Args("input") input: Advert_GetAllInput
-    ): Promise<Advert_AdvertResponse[]> {
+        @Context() context: { req: { userId: number } }
+        // @Args("input") input: Advert_GetAllInput
+    ): Promise<Advert_GetResponse[]> {
         const res = await this.service.getAll({
-            ...input,
             userId: context.req.userId,
         });
 
@@ -84,12 +85,12 @@ export class AdvertsResolver {
         return res!;
     }
 
-    @Query((returns) => Advert_AdvertResponse)
+    @Query((returns) => Advert_GetResponse)
     @UseGuards(VendorGuard)
     async adverts_getOne(
         @Context() context: { req: { userId: number } },
         @Args("input") input: Advert_GetOneInput
-    ): Promise<Advert_AdvertResponse> {
+    ): Promise<Advert_GetResponse> {
         const res = await this.service.getOne({
             ...input,
             userId: context.req.userId,

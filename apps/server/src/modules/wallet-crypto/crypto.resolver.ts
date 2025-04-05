@@ -2,7 +2,7 @@ import { Context, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { WalletCryptoService } from "./crypto.service";
 import { WalletCryptoResponse } from "./crypto.dto";
 import { UseGuards } from "@nestjs/common";
-import { GqlAuthGuard } from "../auth/gql.guard";
+import { GqlAuthGuard } from "../common/guards";
 
 @Resolver((of: any) => WalletCryptoResponse)
 export class WalletCryptoResolver {

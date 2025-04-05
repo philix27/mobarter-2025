@@ -4,7 +4,6 @@ import { AdvertsService } from "./adverts.service";
 import { NotificationModule } from "../notification/notification.module";
 import { NotificationService } from "../notification/notification.service";
 import { AdvertsResolver } from "./adverts.resolver";
-import { VendorGuard } from "../auth/vendor.guard";
 import { HelperService } from "../helper/helper.service";
 
 @Module({
@@ -12,7 +11,6 @@ import { HelperService } from "../helper/helper.service";
     providers: [
         AdvertsService,
         AdvertsResolver,
-        VendorGuard,
         HelperService,
         NotificationService,
     ],

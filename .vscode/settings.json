@@ -1,4 +1,8 @@
 {
+  "eslint.format.enable": true,
+    "editor.codeActionsOnSave": {
+         "source.fixAll": "explicit"
+    },
   "cSpell.words": [
     "codegen",
     "firstname",
@@ -14,5 +18,6 @@
     "sveltestack",
     "tailwindcss",
     "wagmi"
-  ]
+  ],
+  
 }

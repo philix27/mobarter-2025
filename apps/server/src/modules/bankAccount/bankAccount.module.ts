@@ -6,11 +6,9 @@ import { NotificationService } from "../notification/notification.service";
 import { BankAccountResolver } from "./bankAccount.resolver";
 import { AuthModule } from "../auth/auth.module";
 import { JwtStrategy } from "../auth/jwt.strategy";
-import { GqlAuthGuard } from "../auth/gql.guard";
 import { ConfigModule } from "@nestjs/config";
 import { JwtModule } from "@nestjs/jwt";
 import jwtConfig from "../auth/jwt.config";
-import { HelperService } from "../helper/helper.service";
 
 @Module({
     imports: [
@@ -25,8 +23,6 @@ import { HelperService } from "../helper/helper.service";
         BankAccountResolver,
         NotificationService,
         JwtStrategy,
-        GqlAuthGuard,
-        HelperService,
     ],
     exports: [],
 })

@@ -15,10 +15,8 @@
     "packages/*"
   ],
   "engines": {
-   "node": "^22.6.0"
+    "node": "^22.6.0"
   },
- 
-
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
@@ -34,5 +32,8 @@
     "hooks": {
       "pre-commit": "npm run lint"
     }
+  },
+  "dependencies": {
+    "@typescript-eslint/parser": "^8.29.0"
   }
 }

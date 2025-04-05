@@ -1,0 +1,77 @@
+mutation Adverts_update($input: Advert_UpdateInput!) {
+  adverts_update(input: $input) {
+    rate
+    currencyFiat
+    currencyCrypto
+    advertStatus
+    duration
+    limitLower
+    limitUpper
+    tradeType
+  }
+}
+
+mutation Adverts_create($input: Advert_CreateInput!) {
+  adverts_create(input: $input) {
+    rate
+    advertStatus
+    limitLower
+    limitUpper
+    tradeType
+    currencyFiat
+    currencyCrypto
+  }
+}
+
+mutation Adverts_delete($input: Advert_DeleteInput!) {
+  adverts_delete(input: $input) {
+    rate
+    currencyFiat
+    currencyCrypto
+    advertStatus
+    duration
+    limitLower
+    limitUpper
+    tradeType
+  }
+}
+
+query Adverts_getAll {
+  adverts_getAll {
+    id
+    advertStatus
+    duration
+    tradeType
+    rate
+    instructions
+    limitLower
+    limitUpper
+    currencyFiat
+    currencyCrypto
+    merchant_wallet
+    merchant_nickname
+    merchant_trade_count
+    wallet_address
+    fiatAmountPerCrypto
+  }
+}
+
+query Adverts_getOne($input: Advert_GetOneInput!) {
+  adverts_getOne(input: $input) {
+    id
+    advertStatus
+    duration
+    tradeType
+    rate
+    instructions
+    limitLower
+    limitUpper
+    currencyFiat
+    currencyCrypto
+    merchant_wallet
+    merchant_nickname
+    merchant_trade_count
+    wallet_address
+    fiatAmountPerCrypto
+  }
+}

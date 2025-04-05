@@ -8,34 +8,36 @@ datasource db {
 }
 
 model User {
-  id                Int                @id @default(autoincrement())
-  firstname         String?
-  lastname          String?
-  middlename        String?
-  email             String?            @unique
-  password          String?
-  transaction_pin   String?
+  id                    Int                @id @default(autoincrement())
+  firstname             String?
+  lastname              String?
+  middlename            String?
+  email                 String?            @unique
+  password              String?
+  transaction_pin       String?
   // minipay_wallet    String?
   // minipay           Boolean?           @default(false)
-  role              UserRole?          @default(Regular)
-  country           Country?
-  created_at        DateTime?          @default(now())
-  updated_at        DateTime?          @updatedAt
-  bvn               String?
-  bvn_status        CredentialsStatus? @default(NONE)
-  nin               String?
-  nin_status        CredentialsStatus? @default(NONE)
-  home_address      String?
-  phone             String?
-  phone_verified    Boolean?           @default(false)
-  crypto_wallets    CryptoWallets[]
-  bank_accounts     BankAccount[]
+  role                  UserRole?          @default(Regular)
+  country               Country?
+  created_at            DateTime?          @default(now())
+  updated_at            DateTime?          @updatedAt
+  bvn                   String?
+  bvn_status            CredentialsStatus? @default(NONE)
+  nin                   String?
+  nin_status            CredentialsStatus? @default(NONE)
+  home_address          String?
+  phone                 String?
+  phone_verified        Boolean?           @default(false)
+  crypto_wallets        CryptoWallets[]
+  bank_accounts         BankAccount[]
   //* Vendor
-  merchant_nickname String?
-  merchant_status   MerchantStatus?    @default(Offline)
-  adverts           Adverts[]
-  orders            Orders[]
-  orders_buy        OrdersBuy[]
+  merchant_success_rate Int?
+  merchant_trade_count  Int?               @default(0)
+  merchant_nickname     String?
+  merchant_status       MerchantStatus?    @default(Offline)
+  adverts               Adverts[]
+  orders                Orders[]
+  // orders_buy        OrderSell[]
 }
 
 enum MerchantStatus {
@@ -82,17 +84,17 @@ enum CredentialsStatus {
 }
 
 model BankAccount {
-  id           Int         @id @default(autoincrement())
+  id           Int       @id @default(autoincrement())
   account_name String
   account_no   String
-  soft_delete  Boolean?    @default(false)
+  soft_delete  Boolean?  @default(false)
   bank_name    BankName
-  created_at   DateTime?   @default(now())
-  updated_at   DateTime?   @updatedAt
+  created_at   DateTime? @default(now())
+  updated_at   DateTime? @updatedAt
   user_id      Int
-  user         User?       @relation(fields: [user_id], references: [id])
+  user         User?     @relation(fields: [user_id], references: [id])
   advert       Adverts[]
-  orders_buy   OrdersBuy[]
+  orders       Orders[]
 }
 
 enum TradeType {
@@ -116,20 +118,22 @@ enum CurrencyFiat {
 
 // Buy and sell is always dependent on the crypto value
 model Adverts {
-  id             Int            @id @default(autoincrement())
-  limitUpper     Int
-  limitLower     Int
-  tradeType      TradeType
-  currencyCrypto CurrencyCrypto
-  currencyFiat   CurrencyFiat
-  instructions   String
-  status         AdvertStatus?  @default(OPEN)
-  duration       String
-  created_at     DateTime?      @default(now())
-  updated_at     DateTime?      @updatedAt
-  bank_accounts  BankAccount[]
-  merchant_id    Int
-  merchant       User?          @relation(fields: [merchant_id], references: [id])
+  id                  Int            @id @default(autoincrement())
+  limitUpper          Int
+  limitLower          Int
+  fiatAmountPerCrypto Int
+  tradeType           TradeType
+  currency_crypto     CurrencyCrypto
+  currency_fiat       CurrencyFiat
+  instructions        String
+  wallet_address      String
+  status              AdvertStatus?  @default(OPEN)
+  duration            String
+  created_at          DateTime?      @default(now())
+  updated_at          DateTime?      @updatedAt
+  bank_accounts       BankAccount[]
+  merchant_id         Int
+  merchant            User?          @relation(fields: [merchant_id], references: [id])
 }
 
 enum AdvertStatus {
@@ -138,46 +142,41 @@ enum AdvertStatus {
 }
 
 model Orders {
-  id             Int            @id @default(autoincrement())
-  amountFiat     Int
-  amountCrypto   Int
-  duration       String
-  status         OrderStatus
-  userAction     OrderActions
-  merchantAction OrderActions
-  tradeType      TradeType
-  currencyCrypto CurrencyCrypto
-  currencyFiat   CurrencyFiat
-  timeCompleted  DateTime?
-  created_at     DateTime?      @default(now())
-  updated_at     DateTime?      @updatedAt
-  user_id        Int
-  user           User?          @relation(fields: [user_id], references: [id])
-  merchant_id    Int
-}
-
-model OrdersBuy {
-  id              Int            @id @default(autoincrement())
-  amountFiat      Int
-  amountCrypto    Int
-  duration        String
-  status          OrderStatus    @default(OPEN)
-  userAction      OrderActions
-  merchantAction  OrderActions
-  currencyCrypto  CurrencyCrypto
-  currencyFiat    CurrencyFiat
-  timeCompleted   DateTime?
-  created_at      DateTime?      @default(now())
-  updated_at      DateTime?      @updatedAt
-  bank_account_id Int
-  bank_account    BankAccount?   @relation(fields: [bank_account_id], references: [id])
-  customer_id     Int
-  customer        User?          @relation(fields: [customer_id], references: [id])
-  merchant_id     Int
+  id                                 Int            @id @default(autoincrement())
+  amount_fiat                        Int
+  amount_crypto                      Int
+  estimated_duration                 String?
+  trade_type                         TradeType
+  status                             OrderStatus    @default(OPEN)
+  user_action                        OrderActions
+  merchant_action                    OrderActions
+  currency_crypto                    CurrencyCrypto
+  currency_fiat                      CurrencyFiat
+  // ! fiat
+  sell_time1_customer_request        DateTime?
+  sell_time2_customer_lock_crypto    DateTime?
+  sell_time3_merchant_send_fiat      DateTime?
+  sell_time4_customer_release_crypto DateTime?
+  // ! open
+  buy_time1_customer_request         DateTime?
+  buy_time2_merchant_lock_crypto     DateTime?
+  buy_time3_customer_send_fiat       DateTime?
+  buy_time4_merchant_release_crypto  DateTime?
+  // ! open
+  created_at                         DateTime?      @default(now())
+  updated_at                         DateTime?      @updatedAt
+  bank_account_id                    Int
+  bank_account                       BankAccount?   @relation(fields: [bank_account_id], references: [id])
+  customer_id                        Int
+  customer                           User?          @relation(fields: [customer_id], references: [id])
+  merchant_id                        Int
 }
 
 enum OrderStatus {
   OPEN
+  PENDING
+  CANCEL
+  APPEAL
   CLOSE
 }
 
@@ -212,48 +211,6 @@ enum BankName {
   NG_FIRST
 }
 
-// Review
-model Market {
-  id         Int        @id @default(autoincrement())
-  name       MarketName @unique
-  img        String?
-  created_at DateTime?  @default(now())
-  updated_at DateTime?  @updatedAt
-  traders    Traders[]
-}
-
-enum MarketName {
-  BITMAMA
-  CASHRAMP
-  FONBANK
-  ONERAMP
-  TELEGRAM_WALLET
-}
-
-model Traders {
-  id         Int         @id @default(autoincrement())
-  name       String
-  img        String?
-  created_at DateTime?   @default(now())
-  updated_at DateTime?   @updatedAt
-  currencies PriceRate[]
-  market_id  Int
-  market     Market?     @relation(fields: [market_id], references: [id])
-}
-
-model PriceRate {
-  id           Int          @id @default(autoincrement())
-  name         CurrencyName
-  img          String?
-  buyRate      Int?
-  sellRate     Int?
-  currencyType CurrencyType
-  trader_id    Int
-  trader       Traders?     @relation(fields: [trader_id], references: [id])
-  created_at   DateTime?    @default(now())
-  updated_at   DateTime?    @updatedAt
-}
-
 enum CurrencyType {
   FIAT
   CRYPTO
@@ -266,4 +223,12 @@ enum CurrencyName {
   USDT
   USDTx
   ETH
+}
+
+model ExchangeRates {
+  id               Int       @id @default(autoincrement())
+  rates            String?
+  exchangeratesapi String?
+  created_at       DateTime? @default(now())
+  updated_at       DateTime? @updatedAt
 }
