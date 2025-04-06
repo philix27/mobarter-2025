@@ -30,11 +30,12 @@ export function SellDetails({ data }: { data: Advert_GetResponse }) {
   const fiatAmt = roundUpTo2Decimals(cryptoAmount.amount * fxRate_GetAll[data.currencyFiat!], 100)
 
   function handleSubmit() {
-    if (cryptoAmount.amount <= 0) {
-      toast.error('Crypto value needed')
+    const gtZ = cryptoAmount.amount > 0
+    if (!gtZ) {
+      toast.error('Crypto value needed. Must be greater than zero')
       return
     }
-   
+
     if (!store.bankName || !store.accountName || !store.accountNo) {
       toast.error('Bank account info needed')
       return

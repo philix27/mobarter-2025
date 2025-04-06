@@ -46,6 +46,7 @@ export class AdvertsService {
 
             list.push({
                 id: ad.id,
+                merchant_id: ad.merchant_id,
                 advertStatus: ad.status!,
                 limitUpper: ad.limitUpper,
                 limitLower: ad.limitLower,
@@ -160,9 +161,10 @@ export class AdvertsService {
             merchant_nickname: merchant!.merchant_nickname || "Vendy Broski",
             merchant_trade_count: merchant!.merchant_trade_count!,
             merchant_wallet: ad.wallet_address!,
+            merchant_id: ad.merchant_id,
             rateFixed: ad.rateFixed!,
             rateFloat: ad.rateFloat!,
-                isFloatRate: ad.isFloatRate
+            isFloatRate: ad.isFloatRate
             };
     }
     public async getMerchantAdverts(
@@ -200,8 +202,9 @@ export class AdvertsService {
         });
         return {
             ...ads,
+              merchant_id: ads.merchant_id,
               rateFixed: ads.rateFixed!,
-                rateFloat: ads.rateFloat!,
+              rateFloat: ads.rateFloat!,
         };
     }
 }

@@ -1,21 +1,22 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
-import { connectorsForWallets } from '@rainbow-me/rainbowkit'
-import '@rainbow-me/rainbowkit/styles.css'
-import { injectedWallet } from '@rainbow-me/rainbowkit/wallets'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { Analytics } from '@vercel/analytics/react'
-import type { AppProps } from 'next/app'
-import { PropsWithChildren } from 'react'
-import { ToastContainer, Zoom, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import { ErrorBoundary } from 'src/components/Errors'
-import { useIsSsr } from 'src/lib/utils/ssr'
-import 'src/styles/globals.css'
-import { WagmiProvider, createConfig, http } from 'wagmi'
-import { celo, celoAlfajores } from 'wagmi/chains'
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import '@rainbow-me/rainbowkit/styles.css';
+import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Analytics } from '@vercel/analytics/react';
+import type { AppProps } from 'next/app';
+import { PropsWithChildren } from 'react';
+import { ToastContainer, Zoom, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ErrorBoundary } from 'src/components/Errors';
+import { useIsSsr } from 'src/lib/utils/ssr';
+import 'src/styles/globals.css';
+import { WagmiProvider, createConfig, http } from 'wagmi';
+import { celo, celoAlfajores } from 'wagmi/chains';
+
 
 const API_KEY =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjp7ImlkIjoxLCJhZGRyZXNzIjoiMHgyMEY1MGI4ODMyZjg3MTA0ODUzZGYzRmREQTQ3RGQ0NjRmODg1YTQ5Iiwid2FsbGV0X2lkIjpudWxsLCJjaGFpblR5cGUiOiJFdGhlcmV1bSIsIm1pbmlwYXkiOnRydWUsImNyZWF0ZWRfYXQiOiIyMDI1LTA0LTA0VDA2OjE1OjEzLjk4N1oiLCJ1cGRhdGVkX2F0IjoiMjAyNS0wNC0wNFQwNjoxNToxMy45ODdaIiwidXNlcl9pZCI6MX0sImlhdCI6MTc0MzkyNjc4MCwiZXhwIjoxNzQzOTY5OTgwfQ.yNJ_XqNA-RwWnYLrEpavTEtVrYyTlo12gbi5zYATxvE'
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjp7ImlkIjoxLCJhZGRyZXNzIjoiMHgyMEY1MGI4ODMyZjg3MTA0ODUzZGYzRmREQTQ3RGQ0NjRmODg1YTQ5Iiwid2FsbGV0X2lkIjpudWxsLCJjaGFpblR5cGUiOiJFdGhlcmV1bSIsIm1pbmlwYXkiOnRydWUsImNyZWF0ZWRfYXQiOiIyMDI1LTA0LTA2VDE1OjIzOjU0LjI1MloiLCJ1cGRhdGVkX2F0IjoiMjAyNS0wNC0wNlQxNToyMzo1NC4yNTJaIiwidXNlcl9pZCI6MX0sImlhdCI6MTc0Mzk1MzA1MiwiZXhwIjoxNzQzOTk2MjUyfQ.-pXQi4R9o6_lVgR5-ujppkqhY2HLXB2NeefiJ1bStpk'
 
 const connectors = connectorsForWallets(
   [

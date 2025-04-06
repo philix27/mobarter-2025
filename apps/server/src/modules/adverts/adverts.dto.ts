@@ -3,10 +3,16 @@ import { $Enums } from "@prisma/client";
 @InputType()
 export class Advert_CreateInput {
     @Field({ nullable: false })
+    merchant_id: number;
+    
+    @Field({ nullable: false })
     limitUpper: number;
 
     @Field({ nullable: false })
     limitLower: number;
+
+    @Field({ nullable: true })
+    rate?: string;
 
     @Field({ nullable: true })
     rateFloat?: number;

@@ -39,7 +39,7 @@ export function Row(params: {
 export const Line = () => <hr className="border-[0.2px] h-[0.2px] border-muted" />
 
 export const Instructions = (props: { children: ReactNode }) => (
-  <div className="bg-card rounded-md p-3 w-full hover:disabled:">
+  <div className="bg-card rounded-md p-3  w-full hover:disabled:">
     <p className="text-muted">{props.children}</p>
   </div>
 )

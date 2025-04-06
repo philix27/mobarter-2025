@@ -14,7 +14,7 @@ export default function BankAccount() {
   return (
     <>
       <Label>Payment Method</Label>
-      <div className="bg-card rounded-md p-3 w-full">
+      <div className="bg-card rounded-md px-3 py-1 w-full">
         <Row
           text={store.accountNo ? store.bankName : 'No account'}
           text2={store.accountNo ? store.accountNo : 'Select'}
