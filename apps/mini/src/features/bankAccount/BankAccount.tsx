@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import BottomModal from 'src/components/BottomModal'
 import { AppStores } from 'src/lib/zustand'
 
-import { Label, Line, Row } from '../adverts/comps'
+import { Label, Line, Row } from '../../components/comps'
 
 import { AddBankAccount } from './AddAccount'
 import ListAccounts from './ListAccounts'

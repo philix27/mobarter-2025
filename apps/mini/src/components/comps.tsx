@@ -8,6 +8,7 @@ export function Label(params: { children: ReactNode; className?: string }) {
     </div>
   )
 }
+
 export function BottomNote(params: { children: ReactNode }) {
   return (
     <div className="mb-1 flex items-center w-full justify-start mt-0">
@@ -16,7 +17,7 @@ export function BottomNote(params: { children: ReactNode }) {
   )
 }
 
-export function Row(params: {
+export function AdsRow(params: {
   text: string
   text2: string
   text2options?: { onClick: VoidFunction; active?: boolean }
@@ -39,6 +40,12 @@ export function Row(params: {
 export const Line = () => <hr className="border-[0.2px] h-[0.2px] border-muted" />
 
 export const Instructions = (props: { children: ReactNode }) => (
+  <div className="bg-card rounded-md p-3  w-full hover:disabled:">
+    <p className="text-muted">{props.children}</p>
+  </div>
+)
+
+export const Card = (props: { children: ReactNode }) => (
   <div className="bg-card rounded-md p-3  w-full hover:disabled:">
     <p className="text-muted">{props.children}</p>
   </div>

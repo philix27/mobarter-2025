@@ -1,8 +1,7 @@
 import { Advert_GetResponse } from '@repo/api'
 import React from 'react'
-
-import {  Instructions, Label, Line, Row } from './comps'
 import { Button } from 'src/components/Button'
+import { AdsRow, Card, Label, Line } from 'src/components/comps'
 
 export default function BuyAd({ data }: { data: Advert_GetResponse }) {
   return (
@@ -24,25 +23,25 @@ export default function BuyAd({ data }: { data: Advert_GetResponse }) {
         </div>
       </div>
       <Label>Instructions</Label>
-      <Instructions>{data.instructions}</Instructions>
+      <Card>{data.instructions}</Card>
       <Label>Details</Label>
       <div className="bg-card rounded-md p-3 w-full">
-        <Row text="Duration" text2={data.duration!} />
+        <AdsRow text="Duration" text2={data.duration!} />
         <Line />
-        <Row text="Status" text2={data.advertStatus!} />
+        <AdsRow text="Status" text2={data.advertStatus!} />
         <Line />
-        <Row text="Lower Limit" text2={data.limitLower!.toString()!} />
+        <AdsRow text="Lower Limit" text2={data.limitLower!.toString()!} />
         <Line />
-        <Row text="Upper Limit" text2={data.limitUpper!.toString()} /> <Line />
-        <Row text="Crypto" text2={data.currencyCrypto!.toString()} /> <Line />
-        <Row text="Fiat" text2={data.currencyFiat!.toString()} /> <Line />
-        <Row text="Nickname" text2={data.merchant_nickname.toString()} /> <Line />
-        <Row text="Trade count" text2={data.merchant_trade_count.toString()} /> <Line />
-        <Row text="Merchant Address" text2={data.merchant_wallet.toString().substring(0, 7)} />
+        <AdsRow text="Upper Limit" text2={data.limitUpper!.toString()} /> <Line />
+        <AdsRow text="Crypto" text2={data.currencyCrypto!.toString()} /> <Line />
+        <AdsRow text="Fiat" text2={data.currencyFiat!.toString()} /> <Line />
+        <AdsRow text="Nickname" text2={data.merchant_nickname.toString()} /> <Line />
+        <AdsRow text="Trade count" text2={data.merchant_trade_count.toString()} /> <Line />
+        <AdsRow text="Merchant Address" text2={data.merchant_wallet.toString().substring(0, 7)} />
         <Line />
-        <Row text="Bank" text2={'Opay'} />
+        <AdsRow text="Bank" text2={'Opay'} />
         <Line />
-        <Row text="Trade type" text2={data.tradeType!.toString()} />
+        <AdsRow text="Trade type" text2={data.tradeType!.toString()} />
       </div>
       <Button className={'bg-secondary'}>Place Order</Button>
     </div>

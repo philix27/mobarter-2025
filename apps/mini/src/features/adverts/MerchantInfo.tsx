@@ -1,6 +1,6 @@
 import { Advert_GetResponse } from '@repo/api'
 
-import { Label, Line, Row } from './comps'
+import { Label, Line, Row } from '../../components/comps'
 
 export function MerchantInfo({ data }: { data: Advert_GetResponse }) {
   return (

@@ -30,12 +30,14 @@ export default function HomeNav(props: { showBack?: boolean }) {
         <div className="flex gap-x-2 items-center">
           {/* <ConnectButton /> */}
 
-          <MenuIcon
-            className="text-muted"
-            onClick={() => {
-              store.update({ drawerIsOpen: true })
-            }}
-          />
+          {props.showBack || (
+            <MenuIcon
+              className="text-muted"
+              onClick={() => {
+                store.update({ drawerIsOpen: true })
+              }}
+            />
+          )}
         </div>
       </div>
     </div>

@@ -4,12 +4,12 @@ import * as Api from '@repo/api'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import { Button } from 'src/components/Button'
+import { AdsRow, BottomNote, Card, Label, Line } from 'src/components/comps'
 import { formatCurrency, roundUpTo2Decimals } from 'src/lib/helpers'
 import { AppStores } from 'src/lib/zustand'
 
 import BankAccount from '../../bankAccount/BankAccount'
 import { MerchantInfo } from '../MerchantInfo'
-import { BottomNote, Instructions, Label, Line, Row } from '../comps'
 
 export function SellDetails({ data }: { data: Advert_GetResponse }) {
   const store = AppStores.useAdvert()
@@ -89,21 +89,21 @@ export function SellDetails({ data }: { data: Advert_GetResponse }) {
         </p>
       </div>
 
-      <Label>Instructions from {data.merchant_nickname}</Label>
-      <Instructions>{data.instructions}</Instructions>
+      <Label>Card from {data.merchant_nickname}</Label>
+      <Card>{data.instructions}</Card>
 
       <BankAccount />
       <MerchantInfo data={data} />
       <Label>Trade Details</Label>
       <div className="bg-card rounded-md p-3 w-full">
-        <Row text="Trade type" text2={data.tradeType!.toString()} />
+        <AdsRow text="Trade type" text2={data.tradeType!.toString()} />
         <Line />
-        <Row text="Duration" text2={data.duration!} />
+        <AdsRow text="Duration" text2={data.duration!} />
         <Line />
-        <Row text="Status" text2={data.advertStatus!} />
+        <AdsRow text="Status" text2={data.advertStatus!} />
         <Line />
-        <Row text="Crypto" text2={data.currencyCrypto!.toString()} /> <Line />
-        <Row text="Fiat" text2={data.currencyFiat!.toString()} />
+        <AdsRow text="Crypto" text2={data.currencyCrypto!.toString()} /> <Line />
+        <AdsRow text="Fiat" text2={data.currencyFiat!.toString()} />
       </div>
       <Button onClick={handleSubmit}>Place Order</Button>
     </>
