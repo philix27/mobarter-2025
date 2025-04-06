@@ -5,14 +5,10 @@ import Drawer from './Drawer'
 import Sidebar from './Sidebar'
 import TopNav from './TopNav'
 
-export default function Wrapper(props: {
-  children: ReactNode
-  hideBottomNav?: boolean
-  showBack?: boolean
-}) {
+export default function Wrapper(props: { children: ReactNode; hideBottomNav?: boolean }) {
   return (
     <div className="w-screen bg-background h-screen p-0 m-0">
-      <TopNav showBack={props.showBack} />
+      <TopNav showBack={props.hideBottomNav} />
       <div className="flex w-full bg-background">
         <Sidebar />
         <div

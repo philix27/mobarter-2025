@@ -1,12 +1,12 @@
-import { useQuery } from '@apollo/client';
-import * as Api from '@repo/api';
-import { QueryResponse } from '@repo/api';
-import Link from 'next/link';
-import { useEffect } from 'react';
-import Wrapper from 'src/components/wrapper/Wrapper';
-import { cn } from 'src/lib/utils';
-import { AppStores } from 'src/lib/zustand';
-
+import { useQuery } from '@apollo/client'
+import * as Api from '@repo/api'
+import { QueryResponse } from '@repo/api'
+import Link from 'next/link'
+import { useEffect } from 'react'
+import { Tab } from 'src/components/Tab'
+import Wrapper from 'src/components/wrapper/Wrapper'
+import { cn } from 'src/lib/utils'
+import { AppStores } from 'src/lib/zustand'
 
 type IAd = { data: Api.Advert_GetResponse }
 
@@ -19,7 +19,28 @@ export default function Page() {
   return (
     <Wrapper>
       <div className="w-full items-center justify-center flex flex-col bg-background h-full">
-        <Tab />
+        <Tab
+          data={[
+            {
+              title: 'BUY',
+              isActive: store.tradeType === 'BUY',
+              onClick: () => {
+                store.update({
+                  tradeType: 'BUY',
+                })
+              },
+            },
+            {
+              title: 'SELL',
+              isActive: store.tradeType === 'SELL',
+              onClick: () => {
+                store.update({
+                  tradeType: 'SELL',
+                })
+              },
+            },
+          ]}
+        />
         <List />
       </div>
     </Wrapper>
@@ -39,40 +60,6 @@ function List() {
         data.adverts_getAll
           .filter((val) => val.tradeType! === store.tradeType)
           .map((ad, i) => <AdItem key={i} data={ad} />)}
-    </div>
-  )
-}
-function Tab() {
-  const store = AppStores.useAdvert()
-  return (
-    <div className="flex w-[40%] bg-background p-1 mb-2 rounded-lg border-muted border">
-      <div
-        className={cn(
-          'w-full px-2 py-1 rounded-md flex items-center justify-center',
-          store.tradeType === 'BUY' ? `bg-[#35afca]` : 'bg-background'
-          // `bg-[${activeColor(store.tradeType)}]`
-        )}
-        onClick={() => {
-          store.update({
-            tradeType: 'BUY',
-          })
-        }}
-      >
-        <p className={cn(store.tradeType === 'BUY' ? 'text-white' : 'text-muted')}>Buy</p>
-      </div>
-      <div
-        className={cn(
-          'w-full px-2 py-1 rounded-md flex items-center justify-center',
-          store.tradeType === 'SELL' ? 'bg-primary primary-foreground' : 'bg-background'
-        )}
-        onClick={() => {
-          store.update({
-            tradeType: 'SELL',
-          })
-        }}
-      >
-        <p className={cn(store.tradeType === 'SELL' ? 'text-white' : 'text-muted')}>Sell</p>
-      </div>
     </div>
   )
 }

@@ -20,7 +20,7 @@ export default function Page() {
 
   const { adverts_getOne } = data!
   return (
-    <Wrapper hideBottomNav showBack>
+    <Wrapper hideBottomNav>
       <BuyAd data={adverts_getOne} />
     </Wrapper>
   )

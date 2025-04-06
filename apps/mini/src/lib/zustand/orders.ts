@@ -1,16 +1,17 @@
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
-export type IViews = 'BUY' | 'SELL'
+
+export type IViews = 'PENDING' | 'COMPLETED' | 'CANCELED' | 'APPEAL'
 export type ISteps = '1EnterDetails' | '2ConfirmDetails'
 
 export interface ISlice {
-  tradeType?: IViews
+  tabs?: IViews
   steps?: ISteps
 }
 
 export const defaultValues: Required<ISlice> = {
-  tradeType: 'BUY',
+  tabs: 'PENDING',
   steps: '1EnterDetails',
 }
 
