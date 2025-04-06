@@ -17,7 +17,7 @@ export default function BottomModal({
       className={cn(
         `h-screen w-screen 
         bg-[#0000008c]
-        fixed left-0 bottom-0  z-10
+        fixed left-0 bottom-0 top-0  z-40
         flex items-center justify-between flex-col`,
         showSheet ? 'block' : 'hidden'
       )}

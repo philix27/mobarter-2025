@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { useEffect } from 'react'
 import { Tab } from 'src/components/Tab'
 import Wrapper from 'src/components/wrapper/Wrapper'
+import { Constants } from 'src/lib/consts'
+import { formatCurrency } from 'src/lib/helpers'
 import { cn } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
 
@@ -67,29 +69,31 @@ function List() {
 function AdItem({ data }: IAd) {
   return (
     <Link href={`/ads/${data.tradeType === 'BUY' ? 'buy' : 'sell'}/${data.id}`}>
-      <div className="rounded-lg bg-secondary mb-1 p-4">
+      <div className="rounded-lg bg-secondary mb-1 px-3 py-2">
         <div className="flex w-full justify-between pb-2 mb-2 border-b border-muted">
-          <p>{data.rate}</p>
-          <p
+          <p>{data.currencyCrypto}/{data.currencyCrypto} </p>
+          <div className={cn(
+            "rounded-md px-3 py-[2px]",
+              data.tradeType! === 'BUY'
+                ? Constants.buyColor
+                : Constants.sellColor
+            )}>
+            <p
             className={cn(
-              ' font-semibold',
-              data.tradeType! === 'BUY' ? 'text-[#48ddff]' : 'text-primary'
+              'font-medium text-primary-foreground text-[12px]',
+             
             )}
           >
             {data.tradeType}
           </p>
+          </div>
         </div>
         <AdRow
           text1={`${data.merchant_nickname}`}
           text2={`${data.merchant_trade_count!.toString()} trades`}
         />
-        <AdRow
-          text1="Limit"
-          text2={`${data.limitLower!.toString()} - ${data.limitUpper!.toString()}`}
-        />
-        <AdRow text1="Duration" text2={data.duration!} />
-        <AdRow text1="Crypto" text2={data.currencyCrypto!} />
-        <AdRow text1="Fiat" text2={data.currencyFiat!} />
+        <AdRow text1={`Duration: ${data.duration!}`}   text2={`${data.currencyFiat} ${formatCurrency(data.limitLower!, 0)} - ${formatCurrency(data.limitUpper!, 0)}`} />
+        <AdRow text1={`Fiat: ${data.currencyFiat!}`} text2={`Crypto: ${data.currencyCrypto!}`} />
       </div>
     </Link>
   )
@@ -97,9 +101,9 @@ function AdItem({ data }: IAd) {
 
 function AdRow(props: { text1: string; text2: string }) {
   return (
-    <div className="flex w-full justify-between mb-2">
-      <p className="text-muted">{props.text1}</p>
-      <p>{props.text2}</p>
+    <div className="flex w-full justify-between mb-1">
+      <p className="text-muted text-sm">{props.text1}</p>
+      <p className='text-muted text-sm '>{props.text2}</p>
     </div>
   )
 }
