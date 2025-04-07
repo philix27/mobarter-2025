@@ -1,38 +1,20 @@
-# THIS DOCKERFILE IS INTENDED FOR DEVELOPMENT ENVIRONMENTS
-# DO NOT USE THIS FOR PRODUCTION USAGES.
-
-version: "3"
-
 services:
-  api_server:
-    build:
-      dockerfile: Dockerfile
-      context: .
-    env_file: .env
-    depends_on:
-      - postgresDb
-      - redis
-    command: npm run start
-    ports:
-      - 8080:${PORT}
-
-  postgresDb:
-    image: docker.io/bitnami/postgresql:16
-    ports:
-      - "5432:5438"
-    volumes:
-      - "postgresql_data:/bitnami/postgresql"
+  postgres:
+    image: postgres:latest
+    container_name: mobartex
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-      - POSTGRESQL_DATABASE=employee_db
-      - POSTGRESQL_USERNAME=employee_user
-      - POSTGRESQL_PASSWORD=employee_pass
-
-  redis:
-    image: "redis:alpine"
+      POSTGRES_USER: mobartex_user
+      POSTGRES_PASSWORD: mobartex_pass
+      POSTGRES_DB: mobartex_db
     ports:
-      - 6379:${REDIS_PORT}
+      - "5439:5432"
+    volumes:
+      - employee_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mobartex_user -d mobartex_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 volumes:
-  postgresql_data:
-    driver: local
+  employee_data:

@@ -7,7 +7,6 @@ import {
     Advert_DeleteInput,
     Advert_GetAllInput,
     Advert_GetOneInput,
-    Advert_AdvertResponse,
     Advert_GetResponse,
 } from "./adverts.dto";
 import { UseGuards } from "@nestjs/common";
@@ -18,12 +17,12 @@ import { VendorGuard } from "../common/guards";
 export class AdvertsResolver {
     constructor(private readonly service: AdvertsService) {}
 
-    @Mutation((returns) => Advert_AdvertResponse)
+    @Mutation((returns) => Advert_GetResponse)
     @UseGuards(VendorGuard)
     async adverts_create(
         @Context() context: { req: { userId: number } },
         @Args("input") input: Advert_CreateInput
-    ): Promise<Advert_AdvertResponse> {
+    ): Promise<Advert_GetResponse> {
         const res = await this.service.create({
             ...input,
             userId: context.req.userId,
@@ -31,12 +30,12 @@ export class AdvertsResolver {
         return res!;
     }
 
-    @Mutation((returns) => Advert_AdvertResponse)
+    @Mutation((returns) => Advert_GetResponse)
     @UseGuards(VendorGuard)
     async adverts_update(
         @Context() context: { req: { userId: number } },
         @Args("input") input: Advert_UpdateInput
-    ): Promise<Advert_AdvertResponse> {
+    ): Promise<Advert_GetResponse> {
         const res = await this.service.update({
             ...input,
             userId: context.req.userId,
@@ -45,12 +44,12 @@ export class AdvertsResolver {
         return res!;
     }
 
-    @Mutation((returns) => Advert_AdvertResponse)
+    @Mutation((returns) => Advert_GetResponse)
     @UseGuards(VendorGuard)
     async adverts_delete(
         @Context() context: { req: { userId: number } },
         @Args("input") input: Advert_DeleteInput
-    ): Promise<Advert_AdvertResponse> {
+    ): Promise<Advert_GetResponse> {
         const res = await this.service.delete({
             ...input,
             userId: context.req.userId,
@@ -71,12 +70,12 @@ export class AdvertsResolver {
 
         return res!;
     }
-    @Query((returns) => [Advert_AdvertResponse])
+    @Query((returns) => [Advert_GetResponse])
     @UseGuards(VendorGuard)
     async adverts_getMerchantAdverts(
         @Context() context: { req: { userId: number } },
         @Args("input") input: Advert_GetAllInput
-    ): Promise<Advert_AdvertResponse[]> {
+    ): Promise<Advert_GetResponse[]> {
         const res = await this.service.getMerchantAdverts({
             ...input,
             userId: context.req.userId,

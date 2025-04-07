@@ -1,19 +1,27 @@
-import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
-
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 export type IViews = 'BUY' | 'SELL'
-export type IDisputes = 'Cancel' | 'Appeal' | ''
-export type ISteps = '1EnterAmount' | '2ConfirmOrderDetails' | '3ConfirmPayment' | '4RateMerchant'
+export type ISteps = '1EnterDetails' | '2ConfirmDetails'
 
 export interface ISlice {
   tradeType?: IViews
-  steps?: ISteps | IDisputes
+  steps?: ISteps
+  amountFiat?: number
+  amountCrypto?: number
+  bankName?: string
+  accountName?: string
+  accountNo?: string
 }
 
 export const defaultValues: Required<ISlice> = {
   tradeType: 'BUY',
-  steps: '1EnterAmount',
+  steps: '1EnterDetails',
+  amountFiat: 0,
+  amountCrypto: 0,
+  bankName: '',
+  accountName: '',
+  accountNo: '',
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
@@ -36,7 +44,6 @@ export const useAdvert = create(
     }),
     {
       name: 'advert',
-      storage: createJSONStorage(() => localStorage),
     }
   )
 )

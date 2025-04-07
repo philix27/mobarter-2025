@@ -3,13 +3,25 @@ import { $Enums } from "@prisma/client";
 @InputType()
 export class Advert_CreateInput {
     @Field({ nullable: false })
+    merchant_id: number;
+    
+    @Field({ nullable: false })
     limitUpper: number;
 
     @Field({ nullable: false })
     limitLower: number;
 
-    @Field({ nullable: false })
-    rate: string;
+    @Field({ nullable: true })
+    rate?: string;
+
+    @Field({ nullable: true })
+    rateFloat?: number;
+    
+    @Field({ nullable: true })
+    rateFixed?: number;
+
+    @Field({ nullable: true })
+    isFloatRate: boolean;
 
     @Field({ nullable: false })
     duration: string;
@@ -62,18 +74,18 @@ export class Advert_DeleteInput {
 
 @InputType()
 export class Advert_GetAllInput {
-    @Field({ nullable: true })
-    filter?: string;
+    @Field((type) => $Enums.AdvertStatus, { nullable: true })
+    status?: $Enums.AdvertStatus;
 }
 
-@ObjectType()
-export class Advert_AdvertResponse extends PartialType(
-    Advert_CreateInput,
-    ObjectType
-) {
-    @Field((type) => ID)
-    id: number;
-}
+// @ObjectType()
+// export class Advert_AdvertResponse extends PartialType(
+//     Advert_CreateInput,
+//     ObjectType
+// ) {
+//     @Field((type) => ID)
+//     id: number;
+// }
 @ObjectType()
 export class Advert_GetResponse extends PartialType(
     Advert_CreateInput,
@@ -82,23 +94,18 @@ export class Advert_GetResponse extends PartialType(
     @Field((type) => ID)
     id: number;
 
-    @Field({ nullable: false })
-    merchant_nickname: string;
+    @Field({ nullable: true })
+    merchant_nickname?: string;
 
-    @Field({ nullable: false })
-    merchant_trade_count: number;
+    @Field({ nullable: true })
+    merchant_trade_count?: number;
 
-    @Field({ nullable: false })
-    merchant_wallet: string;
+    // @Field({ nullable: false })
+    // merchant_wallet: string;
 }
 
 @InputType()
 export class Advert_GetOneInput {
     @Field((type) => Int)
     id: number;
-}
-@InputType()
-export class Advert_GetAllMerchantAdsInput {
-    @Field({ nullable: true })
-    filter?: string;
 }

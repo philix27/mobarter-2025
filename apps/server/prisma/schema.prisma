@@ -37,7 +37,8 @@ model User {
   merchant_status       MerchantStatus?    @default(Offline)
   adverts               Adverts[]
   orders                Orders[]
-  // orders_buy        OrderSell[]
+  // orders_sell        OrdersSell[]
+  // orders_buy        OrdersBuy[]
 }
 
 enum MerchantStatus {
@@ -94,7 +95,6 @@ model BankAccount {
   user_id      Int
   user         User?     @relation(fields: [user_id], references: [id])
   advert       Adverts[]
-  orders       Orders[]
 }
 
 enum TradeType {
@@ -119,8 +119,11 @@ enum CurrencyFiat {
 // Buy and sell is always dependent on the crypto value
 model Adverts {
   id                  Int            @id @default(autoincrement())
-  limitUpper          Int
-  limitLower          Int
+  rateFloat           Float?
+  rateFixed           Float?
+  isFloatRate         Boolean        @default(true)
+  limitUpper          Float
+  limitLower          Float
   fiatAmountPerCrypto Int
   tradeType           TradeType
   currency_crypto     CurrencyCrypto
@@ -142,49 +145,56 @@ enum AdvertStatus {
 }
 
 model Orders {
-  id                                 Int            @id @default(autoincrement())
-  amount_fiat                        Int
-  amount_crypto                      Int
-  estimated_duration                 String?
-  trade_type                         TradeType
-  status                             OrderStatus    @default(OPEN)
-  user_action                        OrderActions
-  merchant_action                    OrderActions
-  currency_crypto                    CurrencyCrypto
-  currency_fiat                      CurrencyFiat
+  id                                    Int            @id @default(autoincrement())
+  amount_fiat                           Float
+  amount_crypto                         Float
+  wallet_customer                       String
+  wallet_merchant                       String
+  estimated_duration                    String
+  bank_account_name                     String
+  bank_account_no                       String
+  bank_name                             BankName
+  currency_crypto                       CurrencyCrypto
+  currency_fiat                         CurrencyFiat
+  trade_type                            TradeType
+  status                                OrderStatus    @default(PENDING)
+  action_user                           OrderActions?
+  action_merchant                       OrderActions?
   // ! fiat
-  sell_time1_customer_request        DateTime?
-  sell_time2_customer_lock_crypto    DateTime?
-  sell_time3_merchant_send_fiat      DateTime?
-  sell_time4_customer_release_crypto DateTime?
+  sell_txn_hash_customer_lock_crypto    String?
+  sell_txn_hash_customer_release_crypto String?
+  // ! fiat
+  sell_time2_customer_lock_crypto       DateTime?
+  sell_time1_customer_request           DateTime?
+  sell_time3_merchant_send_fiat         DateTime?
+  sell_time4_customer_release_crypto    DateTime?
   // ! open
-  buy_time1_customer_request         DateTime?
-  buy_time2_merchant_lock_crypto     DateTime?
-  buy_time3_customer_send_fiat       DateTime?
-  buy_time4_merchant_release_crypto  DateTime?
+  buy_time1_customer_request            DateTime?
+  buy_time2_merchant_lock_crypto        DateTime?
+  buy_time3_customer_send_fiat          DateTime?
+  buy_time4_merchant_release_crypto     DateTime?
+  buy_txn_hash_merchant_lock_crypto     String?
+  buy_txn_hash_merchant_release_crypto  String?
   // ! open
-  created_at                         DateTime?      @default(now())
-  updated_at                         DateTime?      @updatedAt
-  bank_account_id                    Int
-  bank_account                       BankAccount?   @relation(fields: [bank_account_id], references: [id])
-  customer_id                        Int
-  customer                           User?          @relation(fields: [customer_id], references: [id])
-  merchant_id                        Int
+  created_at                            DateTime?      @default(now())
+  updated_at                            DateTime?      @updatedAt
+  customer_id                           Int
+  customer                              User?          @relation(fields: [customer_id], references: [id])
+  merchant_id                           Int
 }
 
 enum OrderStatus {
-  OPEN
   PENDING
+  COMPLETED
   CANCEL
   APPEAL
-  CLOSE
 }
 
 enum OrderActions {
-  MoveCryptoToEscrow
+  LockCrypto
   FaitSent
   FaitReceived
-  ReleaseCryptoFromEscrow
+  ReleaseCrypto
   Appeal
   Cancel
 }

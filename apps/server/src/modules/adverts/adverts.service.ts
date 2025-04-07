@@ -1,12 +1,10 @@
 import { Injectable } from "@nestjs/common";
 import { LoggerService, PrismaService } from "../common";
 import {
-    Advert_AdvertResponse,
     Advert_CreateInput,
     Advert_DeleteInput,
     Advert_GetResponse,
     Advert_GetAllInput,
-    Advert_GetAllMerchantAdsInput,
     Advert_GetOneInput,
     Advert_UpdateInput,
 } from "./adverts.dto";
@@ -17,7 +15,6 @@ import { UserInput } from "../../lib";
 export class AdvertsService {
     public constructor(
         private readonly logger: LoggerService,
-        // private readonly notification: NotificationService
         private readonly prisma: PrismaService
     ) {}
 
@@ -46,6 +43,7 @@ export class AdvertsService {
 
             list.push({
                 id: ad.id,
+                merchant_id: ad.merchant_id,
                 advertStatus: ad.status!,
                 limitUpper: ad.limitUpper,
                 limitLower: ad.limitLower,
@@ -54,10 +52,12 @@ export class AdvertsService {
                 tradeType: ad.tradeType,
                 currencyFiat: ad.currency_fiat,
                 currencyCrypto: ad.currency_crypto,
-                rate: `1${ad.currency_crypto}/${ad.currency_fiat}`,
                 merchant_nickname: merchant.merchant_nickname || "Vendy Broski",
                 merchant_trade_count: merchant.merchant_trade_count!,
-                merchant_wallet: ad.wallet_address!
+                wallet_address: ad.wallet_address!,
+                rateFixed: ad.rateFixed!,
+                rateFloat: ad.rateFloat!,
+                isFloatRate: !ad.isFloatRate 
                 
             })
         }
@@ -67,7 +67,7 @@ export class AdvertsService {
 
     public async update(
         params: Advert_UpdateInput & UserInput
-    ): Promise<Advert_AdvertResponse> {
+    ): Promise<Advert_GetResponse> {
         this.logger.info(this.update.name);
 
         const ads = await this.prisma.adverts.update({
@@ -77,31 +77,45 @@ export class AdvertsService {
             },
             data: { ...params },
         });
-        return ads;
+        return {
+            ...ads,
+          rateFixed: params.rateFixed,
+          rateFloat: params.rateFloat,
+            isFloatRate: params.isFloatRate,
+        //    merchant_nickname: params .merchant_nickname ,
+        //         merchant_trade_count: merchant.merchant_trade_count!,
+        //         merchant_wallet: ad.wallet_address!,
+        };
     }
 
     public async create(
         params: Advert_CreateInput & UserInput
-    ): Promise<Advert_AdvertResponse> {
+    ): Promise<Advert_GetResponse> {
         this.logger.info(this.create.name);
         try {
-            const ads = await this.prisma.adverts.create({
+
+            const {isFloatRate, ...ads} = await this.prisma.adverts.create({
                 data: {
-                    fiatAmountPerCrypto: params.fiatAmountPerCrypto,
-                    wallet_address: params.wallet_address,
-                    currency_fiat: params.currencyFiat,
-                    currency_crypto: params.currencyCrypto,
-                    instructions: params.instructions,
-                    limitLower: params.limitLower,
-                    limitUpper: params.limitUpper,
-                    status: params.advertStatus!,
-                    tradeType: params.tradeType,
-                    duration: params.duration,
-                    merchant_id: params.userId,
+                fiatAmountPerCrypto: params.fiatAmountPerCrypto,
+                wallet_address: params.wallet_address,
+                currency_fiat: params.currencyFiat,
+                currency_crypto: params.currencyCrypto,
+                instructions: params.instructions,
+                limitLower: params.limitLower,
+                limitUpper: params.limitUpper,
+                status: params.advertStatus!,
+                tradeType: params.tradeType,
+                duration: params.duration,
+                merchant_id: params.userId,
+                rateFixed: params.rateFixed,
+                rateFloat: params.rateFloat,
+                isFloatRate: params.isFloatRate 
                 },
             });
             return {
                 ...ads,
+                rateFixed: ads.rateFixed!,
+                rateFloat: ads.rateFloat!,
                 advertStatus: ads.status!,
             };
         } catch (error) {
@@ -135,38 +149,50 @@ export class AdvertsService {
            
 
         return {
-                id: ad.id,
-                advertStatus: ad.status!,
-                limitUpper: ad.limitUpper,
-                limitLower: ad.limitLower,
-                duration: ad.duration,
-                instructions: ad.instructions,
-                tradeType: ad.tradeType,
-                currencyFiat: ad.currency_fiat,
-                currencyCrypto: ad.currency_crypto,
-                rate: `1${ad.currency_crypto}/${ad.currency_fiat}`,
-                merchant_nickname: merchant!.merchant_nickname || "Vendy Broski",
-                merchant_trade_count: merchant!.merchant_trade_count!,
-                merchant_wallet: ad.wallet_address!
-                
+            id: ad.id,
+            advertStatus: ad.status!,
+            limitUpper: ad.limitUpper,
+            limitLower: ad.limitLower,
+            duration: ad.duration,
+            instructions: ad.instructions,
+            tradeType: ad.tradeType,
+            currencyFiat: ad.currency_fiat,
+            currencyCrypto: ad.currency_crypto,
+            merchant_nickname: merchant!.merchant_nickname || "Vendy Broski",
+            merchant_trade_count: merchant!.merchant_trade_count!,
+            wallet_address: ad.wallet_address,
+            merchant_id: ad.merchant_id,
+            rateFixed: ad.rateFixed!,
+            rateFloat: ad.rateFloat!,
+            isFloatRate: ad.isFloatRate
             };
     }
     public async getMerchantAdverts(
-        params: Advert_GetAllMerchantAdsInput & UserInput
-    ): Promise<Advert_AdvertResponse[]> {
+        params: Advert_GetAllInput & UserInput
+    ): Promise<Advert_GetResponse[]> {
         this.logger.info(this.getMerchantAdverts.name);
         const ads = await this.prisma.adverts.findMany({
             where: {
                 merchant_id: params.userId,
+                status: params.status
             },
         });
 
-        return ads;
+        return ads.map((val) => {
+            return {
+                ...val,
+                 rateFixed: val.rateFixed!,
+                rateFloat: val.rateFloat!,
+                advertStatus: val.status!,
+                
+            }
+            
+        })
     }
 
     public async delete(
         params: Advert_DeleteInput & UserInput
-    ): Promise<Advert_AdvertResponse> {
+    ): Promise<Advert_GetResponse> {
         this.logger.info(this.delete.name);
         const ads = await this.prisma.adverts.update({
             where: {
@@ -175,6 +201,11 @@ export class AdvertsService {
             },
             data: { status: "CLOSE" },
         });
-        return ads;
+        return {
+            ...ads,
+              merchant_id: ads.merchant_id,
+              rateFixed: ads.rateFixed!,
+              rateFloat: ads.rateFloat!,
+        };
     }
 }

@@ -2,96 +2,103 @@ import { useQuery } from '@apollo/client'
 import * as Api from '@repo/api'
 import { QueryResponse } from '@repo/api'
 import Link from 'next/link'
+import { useEffect } from 'react'
+import { Tab } from 'src/components/Tab'
 import Wrapper from 'src/components/wrapper/Wrapper'
+import { Constants } from 'src/lib/consts'
+import { formatCurrency } from 'src/lib/helpers'
 import { cn } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
 
 type IAd = { data: Api.Advert_GetResponse }
 
 export default function Page() {
-  const store = AppStores.useAdvert()
+  const store = AppStores.useSettings()
+  const adsStore = AppStores.useAdvert()
+  useEffect(() => {
+    adsStore.clear()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  return (
+    <Wrapper>
+      <div className="w-full items-center justify-center flex flex-col bg-background h-full">
+        <Tab
+          data={[
+            {
+              title: 'BUY',
+              isActive: store.p2pTab === 'BUY',
+              onClick: () => {
+                store.update({
+                  p2pTab: 'BUY',
+                })
+              },
+            },
+            {
+              title: 'SELL',
+              isActive: store.p2pTab === 'SELL',
+              onClick: () => {
+                store.update({
+                  p2pTab: 'SELL',
+                })
+              },
+            },
+          ]}
+        />
+        <List />
+      </div>
+    </Wrapper>
+  )
+}
+function List() {
+  const store = AppStores.useSettings()
   const { data, loading, error } = useQuery<QueryResponse<'adverts_getAll'>>(
-    Api.Adverts_GetAllDocument
+    Api.Adverts_GetAllDocument,
+    { pollInterval: 2000 }
   )
 
   if (loading) return <div>Loading...</div>
   if (error) return <div>Error...</div>
   return (
-    <Wrapper>
-      <div className="w-full items-center justify-center flex flex-col bg-background h-full">
-        <Tab />
-        <div className="w-full bg-background no-scrollbar">
-          {data &&
-            data.adverts_getAll
-              .filter((val) => val.tradeType! === store.tradeType)
-              .map((ad, i) => <AdItem key={i} data={ad} />)}
-        </div>
-      </div>
-    </Wrapper>
-  )
-}
-
-function Tab() {
-  const store = AppStores.useAdvert()
-  return (
-    <div className="flex w-[40%] bg-background p-1 mb-2 rounded-lg border-muted border">
-      <div
-        className={cn(
-          'w-full px-2 py-1 rounded-md flex items-center justify-center',
-          store.tradeType === 'BUY' ? `bg-[#35afca]` : 'bg-background'
-          // `bg-[${activeColor(store.tradeType)}]`
-        )}
-        onClick={() => {
-          store.update({
-            tradeType: 'BUY',
-          })
-        }}
-      >
-        <p className={cn(store.tradeType === 'BUY' ? 'text-white' : 'text-muted')}>Buy</p>
-      </div>
-      <div
-        className={cn(
-          'w-full px-2 py-1 rounded-md flex items-center justify-center',
-          store.tradeType === 'SELL' ? 'bg-primary primary-foreground' : 'bg-background'
-        )}
-        onClick={() => {
-          store.update({
-            tradeType: 'SELL',
-          })
-        }}
-      >
-        <p className={cn(store.tradeType === 'SELL' ? 'text-white' : 'text-muted')}>Sell</p>
-      </div>
+    <div className="w-full bg-background no-scrollbar">
+      {data &&
+        data.adverts_getAll
+          .filter((val) => val.tradeType! === store.p2pTab)
+          .map((ad, i) => <AdvertCardItem key={i} data={ad} />)}
     </div>
   )
 }
 
-function AdItem({ data }: IAd) {
+function AdvertCardItem({ data }: IAd) {
   return (
     <Link href={`/ads/${data.tradeType === 'BUY' ? 'buy' : 'sell'}/${data.id}`}>
-      <div className="rounded-lg bg-secondary mb-1 p-4">
+      <div className="rounded-lg bg-secondary mb-1 px-3 py-2">
         <div className="flex w-full justify-between pb-2 mb-2 border-b border-muted">
-          <p>{data.rate}</p>
-          <p
+          <p>
+            {data.currencyCrypto}/{data.currencyCrypto}{' '}
+          </p>
+          <div
             className={cn(
-              ' font-semibold',
-              data.tradeType! === 'BUY' ? 'text-[#48ddff]' : 'text-primary'
+              'rounded-md px-3 py-[2px]',
+              data.tradeType! === 'BUY' ? Constants.buyColor : Constants.sellColor
             )}
           >
-            {data.tradeType}
-          </p>
+            <p className={cn('font-medium text-primary-foreground text-[12px]')}>
+              {data.tradeType}
+            </p>
+          </div>
         </div>
         <AdRow
           text1={`${data.merchant_nickname}`}
           text2={`${data.merchant_trade_count!.toString()} trades`}
         />
         <AdRow
-          text1="Limit"
-          text2={`${data.limitLower!.toString()} - ${data.limitUpper!.toString()}`}
+          text1={`Duration: ${data.duration!}`}
+          text2={`${data.currencyFiat} ${formatCurrency(data.limitLower!, 0)} - ${formatCurrency(
+            data.limitUpper!,
+            0
+          )}`}
         />
-        <AdRow text1="Duration" text2={data.duration!} />
-        <AdRow text1="Crypto" text2={data.currencyCrypto!} />
-        <AdRow text1="Fiat" text2={data.currencyFiat!} />
+        <AdRow text1={`Fiat: ${data.currencyFiat!}`} text2={`Crypto: ${data.currencyCrypto!}`} />
       </div>
     </Link>
   )
@@ -99,9 +106,9 @@ function AdItem({ data }: IAd) {
 
 function AdRow(props: { text1: string; text2: string }) {
   return (
-    <div className="flex w-full justify-between mb-2">
-      <p className="text-muted">{props.text1}</p>
-      <p>{props.text2}</p>
+    <div className="flex w-full justify-between mb-1">
+      <p className="text-muted text-sm">{props.text1}</p>
+      <p className="text-muted text-sm ">{props.text2}</p>
     </div>
   )
 }
