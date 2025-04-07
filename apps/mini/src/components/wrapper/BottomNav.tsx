@@ -19,14 +19,14 @@ export default function BottomNav() {
     <div className="w-screen h-[70px] bg-background fixed bottom-0 md:hidden border-t-[0.2px] border-muted">
       <div className="flex w-full items-center justify-evenly relative h-full">
         {navLinks.slice(0, 3).map((val, i) => {
-          const  Icon  = val.Icon as unknown as JSX.Element
+          const Icon = val.Icon as any
           return (
             <Link
               key={i}
               href={val.link}
               className={cn(iconStyle, router.pathname === val.link && 'bg-card')}
             >
-              {Icon && <Icon size={20} /> }
+              {Icon && <Icon size={20} />}
               <p className=" font-light text-[10px] mt-2">{val.title}</p>
             </Link>
           )
@@ -50,7 +50,7 @@ export default function BottomNav() {
         }}
       >
         {bottomLinks.map((val, i) => {
-          const { Icon } = val
+          const Icon = val.Icon as any
           return (
             <div className="bg-background mb-1 rounded-md py-3 px-3" key={i}>
               <Link href={val.link} className={'flex items-center gap-x-5'}>

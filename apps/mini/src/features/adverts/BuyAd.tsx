@@ -35,10 +35,24 @@ export default function BuyAd({ data }: { data: Advert_GetResponse }) {
         <AdsRow text="Upper Limit" text2={data.limitUpper!.toString()} /> <Line />
         <AdsRow text="Crypto" text2={data.currencyCrypto!.toString()} /> <Line />
         <AdsRow text="Fiat" text2={data.currencyFiat!.toString()} /> <Line />
-        <AdsRow text="Nickname" text2={data.merchant_nickname.toString()} /> <Line />
-        <AdsRow text="Trade count" text2={data.merchant_trade_count.toString()} /> <Line />
-        <AdsRow text="Merchant Address" text2={data.merchant_wallet.toString().substring(0, 7)} />
-        <Line />
+        {data.merchant_nickname && (
+          <>
+            <AdsRow text="Nickname" text2={data.merchant_nickname.toString()} />
+            <Line />
+          </>
+        )}
+        {data.merchant_trade_count && (
+          <>
+            <AdsRow text="Trade count" text2={data.merchant_trade_count.toString()} />
+            <Line />
+          </>
+        )}
+        {data.wallet_address && (
+          <>
+            <AdsRow text="Merchant Address" text2={data.wallet_address.substring(0, 7)} />
+            <Line />
+          </>
+        )}
         <AdsRow text="Bank" text2={'Opay'} />
         <Line />
         <AdsRow text="Trade type" text2={data.tradeType!.toString()} />

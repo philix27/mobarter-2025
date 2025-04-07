@@ -7,7 +7,7 @@ export default function Sidebar() {
     <div className="w-[100px] h-screen hidden md:block fixed left-0 mt-[70px] bg-background">
       <div className="flex flex-col h-full border-r-[0.2px] border-muted w-full">
         {navLinks.slice(0, 4).map((val, i) => {
-          const { Icon } = val
+          const Icon  = val.Icon as any
           return (
             <Link
               key={i}
