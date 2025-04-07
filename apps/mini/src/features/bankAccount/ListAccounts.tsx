@@ -9,7 +9,7 @@ export default function ListAccounts() {
   const { data, loading, error } = useQuery<QueryResponse<'bankAccount_getAll'>>(
     BankAccount_GetAllDocument,
     {
-      // pollInterval: 5000,
+      pollInterval: 5000,
     }
   )
 
@@ -17,7 +17,7 @@ export default function ListAccounts() {
   if (error) return <div>Error...</div>
   return (
     <div className="w-full  no-scrollbar">
-      {data &&
+      {data && data.bankAccount_getAll.length > 0 ? (
         data.bankAccount_getAll.map((bank, i) => (
           <div
             key={i}
@@ -44,7 +44,12 @@ export default function ListAccounts() {
               <p className="">{bank.account_no}</p>
             </div>
           </div>
-        ))}
+        ))
+      ) : (
+        <div className="flex items-center justify-center h-full flex-col my-5">
+          <p>No Bank Account Found</p>
+        </div>
+      )}
     </div>
   )
 }

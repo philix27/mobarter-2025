@@ -31,7 +31,7 @@ export default function SellConfirm({ data }: { data: Advert_GetResponse }) {
 
       <div className="w-[75%] justify-between flex mt-4">
         <Button
-          className="bg-secondary"
+          className="bg-secondary w-[35%]"
           onClick={() => {
             logger.info('Back clicked')
             store.update({ steps: '1EnterDetails' })
@@ -41,6 +41,7 @@ export default function SellConfirm({ data }: { data: Advert_GetResponse }) {
         </Button>
         <Button
           type="button"
+          className='w-[35%]'
           onClick={() => {
             // store.update({ steps: '2ConfirmDetails' })
           }}

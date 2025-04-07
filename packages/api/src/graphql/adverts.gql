@@ -4,6 +4,7 @@ mutation Adverts_update($input: Advert_UpdateInput!) {
     currencyCrypto
     advertStatus
     duration
+    merchant_id
     limitLower
     limitUpper
     tradeType
@@ -17,6 +18,7 @@ mutation Adverts_create($input: Advert_CreateInput!) {
   adverts_create(input: $input) {
     rateFixed
     rateFloat
+    merchant_id
     isFloatRate
     advertStatus
     limitLower
@@ -24,12 +26,13 @@ mutation Adverts_create($input: Advert_CreateInput!) {
     tradeType
     currencyFiat
     currencyCrypto
-    duration
+    wallet_address
   }
 }
 
 mutation Adverts_delete($input: Advert_DeleteInput!) {
   adverts_delete(input: $input) {
+    merchant_id
     rateFixed
     rateFloat
     isFloatRate
@@ -40,6 +43,7 @@ mutation Adverts_delete($input: Advert_DeleteInput!) {
     limitLower
     limitUpper
     tradeType
+    wallet_address
   }
 }
 
@@ -57,8 +61,9 @@ query Adverts_getAll {
     limitUpper
     currencyFiat
     currencyCrypto
-    merchant_wallet
+    wallet_address
     merchant_nickname
+    merchant_id
     merchant_trade_count
     wallet_address
     fiatAmountPerCrypto
@@ -79,8 +84,32 @@ query Adverts_getOne($input: Advert_GetOneInput!) {
     limitUpper
     currencyFiat
     currencyCrypto
-    merchant_wallet
+    wallet_address
     merchant_nickname
+    merchant_id
+    merchant_trade_count
+    wallet_address
+    fiatAmountPerCrypto
+  }
+}
+
+query Adverts_getMerchantAdverts($input: Advert_GetAllInput!) {
+  adverts_getMerchantAdverts(input: $input) {
+    id
+    advertStatus
+    duration
+    tradeType
+    rateFixed
+    rateFloat
+    isFloatRate
+    instructions
+    limitLower
+    limitUpper
+    currencyFiat
+    currencyCrypto
+    wallet_address
+    merchant_nickname
+    merchant_id
     merchant_trade_count
     wallet_address
     fiatAmountPerCrypto

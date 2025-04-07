@@ -1,68 +1,49 @@
 import { useQuery } from '@apollo/client'
-import * as Api from '@repo/api'
-import { QueryResponse } from '@repo/api'
+import {
+  AdvertStatus,
+  Advert_GetResponse,
+  Adverts_GetMerchantAdvertsDocument,
+  QueryAdverts_GetMerchantAdvertsArgs,
+  QueryResponse,
+} from '@repo/api'
 import Link from 'next/link'
-import { useEffect } from 'react'
-import { Tab } from 'src/components/Tab'
-import Wrapper from 'src/components/wrapper/Wrapper'
+import React from 'react'
 import { Constants } from 'src/lib/consts'
 import { formatCurrency } from 'src/lib/helpers'
 import { cn } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
 
-type IAd = { data: Api.Advert_GetResponse }
-
-export default function Page() {
-  const store = AppStores.useSettings()
-  const adsStore = AppStores.useAdvert()
-  useEffect(() => {
-    adsStore.clear()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-  return (
-    <Wrapper>
-      <div className="w-full items-center justify-center flex flex-col bg-background h-full">
-        <Tab
-          data={[
-            {
-              title: 'BUY',
-              isActive: store.p2pTab === 'BUY',
-              onClick: () => {
-                store.update({
-                  p2pTab: 'BUY',
-                })
-              },
-            },
-            {
-              title: 'SELL',
-              isActive: store.p2pTab === 'SELL',
-              onClick: () => {
-                store.update({
-                  p2pTab: 'SELL',
-                })
-              },
-            },
-          ]}
-        />
-        <List />
-      </div>
-    </Wrapper>
-  )
+type IAd = { data: Advert_GetResponse }
+export default function OpenAdverts() {
+  return <List />
 }
+
 function List() {
   const store = AppStores.useSettings()
-  const { data, loading, error } = useQuery<QueryResponse<'adverts_getAll'>>(
-    Api.Adverts_GetAllDocument,
-    { pollInterval: 2000 }
-  )
+  const { data, loading, error } = useQuery<
+    QueryResponse<'adverts_getMerchantAdverts'>,
+    QueryAdverts_GetMerchantAdvertsArgs
+  >(Adverts_GetMerchantAdvertsDocument, {
+    pollInterval: 2000,
+    variables: {
+      input: {
+        status:
+          store.manageAdsTab === 'OPEN'
+            ? AdvertStatus.Open
+            : store.manageAdsTab === 'CLOSED'
+            ? AdvertStatus.Close
+            : undefined,
+      },
+    },
+  })
 
   if (loading) return <div>Loading...</div>
   if (error) return <div>Error...</div>
   return (
     <div className="w-full bg-background no-scrollbar">
       {data &&
-        data.adverts_getAll
-          .filter((val) => val.tradeType! === store.p2pTab)
+        data.adverts_getMerchantAdverts
+          //   .filter((val) => val.tradeType! === store.manageAdsTab)
           .map((ad, i) => <AdvertCardItem key={i} data={ad} />)}
     </div>
   )
@@ -87,10 +68,13 @@ function AdvertCardItem({ data }: IAd) {
             </p>
           </div>
         </div>
-        <AdRow
-          text1={`${data.merchant_nickname}`}
-          text2={`${data.merchant_trade_count!.toString()} trades`}
-        />
+        {data.merchant_nickname && data.merchant_trade_count && (
+          <AdRow
+            text1={`${data.merchant_nickname}`}
+            text2={`${data.merchant_trade_count!.toString()} trades`}
+          />
+        )}
+
         <AdRow
           text1={`Duration: ${data.duration!}`}
           text2={`${data.currencyFiat} ${formatCurrency(data.limitLower!, 0)} - ${formatCurrency(

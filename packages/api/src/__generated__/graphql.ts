@@ -21,24 +21,6 @@ export enum AdvertStatus {
   Open = 'OPEN'
 }
 
-export type Advert_AdvertResponse = {
-  __typename?: 'Advert_AdvertResponse';
-  advertStatus?: Maybe<AdvertStatus>;
-  currencyCrypto?: Maybe<CurrencyCrypto>;
-  currencyFiat?: Maybe<CurrencyFiat>;
-  duration?: Maybe<Scalars['String']['output']>;
-  fiatAmountPerCrypto?: Maybe<Scalars['Float']['output']>;
-  id: Scalars['ID']['output'];
-  instructions?: Maybe<Scalars['String']['output']>;
-  isFloatRate?: Maybe<Scalars['Boolean']['output']>;
-  limitLower?: Maybe<Scalars['Float']['output']>;
-  limitUpper?: Maybe<Scalars['Float']['output']>;
-  rateFixed?: Maybe<Scalars['Float']['output']>;
-  rateFloat?: Maybe<Scalars['Float']['output']>;
-  tradeType?: Maybe<TradeType>;
-  wallet_address?: Maybe<Scalars['String']['output']>;
-};
-
 export type Advert_CreateInput = {
   advertStatus: AdvertStatus;
   currencyCrypto: CurrencyCrypto;
@@ -49,6 +31,8 @@ export type Advert_CreateInput = {
   isFloatRate?: InputMaybe<Scalars['Boolean']['input']>;
   limitLower: Scalars['Float']['input'];
   limitUpper: Scalars['Float']['input'];
+  merchant_id: Scalars['Float']['input'];
+  rate?: InputMaybe<Scalars['String']['input']>;
   rateFixed?: InputMaybe<Scalars['Float']['input']>;
   rateFloat?: InputMaybe<Scalars['Float']['input']>;
   tradeType: TradeType;
@@ -60,7 +44,7 @@ export type Advert_DeleteInput = {
 };
 
 export type Advert_GetAllInput = {
-  filter?: InputMaybe<Scalars['String']['input']>;
+  status?: InputMaybe<AdvertStatus>;
 };
 
 export type Advert_GetOneInput = {
@@ -79,9 +63,10 @@ export type Advert_GetResponse = {
   isFloatRate?: Maybe<Scalars['Boolean']['output']>;
   limitLower?: Maybe<Scalars['Float']['output']>;
   limitUpper?: Maybe<Scalars['Float']['output']>;
-  merchant_nickname: Scalars['String']['output'];
-  merchant_trade_count: Scalars['Float']['output'];
-  merchant_wallet: Scalars['String']['output'];
+  merchant_id?: Maybe<Scalars['Float']['output']>;
+  merchant_nickname?: Maybe<Scalars['String']['output']>;
+  merchant_trade_count?: Maybe<Scalars['Float']['output']>;
+  rate?: Maybe<Scalars['String']['output']>;
   rateFixed?: Maybe<Scalars['Float']['output']>;
   rateFloat?: Maybe<Scalars['Float']['output']>;
   tradeType?: Maybe<TradeType>;
@@ -99,6 +84,8 @@ export type Advert_UpdateInput = {
   isFloatRate?: InputMaybe<Scalars['Boolean']['input']>;
   limitLower: Scalars['Float']['input'];
   limitUpper: Scalars['Float']['input'];
+  merchant_id: Scalars['Float']['input'];
+  rate?: InputMaybe<Scalars['String']['input']>;
   rateFixed?: InputMaybe<Scalars['Float']['input']>;
   rateFloat?: InputMaybe<Scalars['Float']['input']>;
   tradeType: TradeType;
@@ -312,9 +299,9 @@ export type Kyc_VerifyEmailResponse = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  adverts_create: Advert_AdvertResponse;
-  adverts_delete: Advert_AdvertResponse;
-  adverts_update: Advert_AdvertResponse;
+  adverts_create: Advert_GetResponse;
+  adverts_delete: Advert_GetResponse;
+  adverts_update: Advert_GetResponse;
   auth_createAccount: Auth_CreateAccountResponse;
   auth_login: Auth_LoginResponse;
   auth_logout: Scalars['String']['output'];
@@ -329,6 +316,11 @@ export type Mutation = {
   kyc_addNin: Kyc_AddNinResponse;
   kyc_sendEmailOtp: Kyc_SendEmailResponse;
   kyc_verifyEmailOtp: Kyc_VerifyEmailResponse;
+  orders_Appeal: Order_Response;
+  orders_Cancel: Order_Response;
+  orders_CreateBuy: Order_CreteBuyResponse;
+  orders_CreateSell: Order_CreteSellResponse;
+  orders_MoveCryptoToEscrow: Order_Response;
   walletCrypto_create: Array<WalletCryptoResponse>;
 };
 
@@ -417,6 +409,171 @@ export type MutationKyc_VerifyEmailOtpArgs = {
   input: Kyc_VerifyEmailOtpInput;
 };
 
+
+export type MutationOrders_AppealArgs = {
+  input: Order_AppealInput;
+};
+
+
+export type MutationOrders_CancelArgs = {
+  input: Order_CancelInput;
+};
+
+
+export type MutationOrders_CreateBuyArgs = {
+  input: Order_CreteBuyInput;
+};
+
+
+export type MutationOrders_CreateSellArgs = {
+  input: Order_CreteSellInput;
+};
+
+
+export type MutationOrders_MoveCryptoToEscrowArgs = {
+  input: Order_MoveCryptoToEscrowInput;
+};
+
+export enum OrderActions {
+  Appeal = 'Appeal',
+  Cancel = 'Cancel',
+  FaitReceived = 'FaitReceived',
+  FaitSent = 'FaitSent',
+  LockCrypto = 'LockCrypto',
+  ReleaseCrypto = 'ReleaseCrypto'
+}
+
+export enum OrderStatus {
+  Appeal = 'APPEAL',
+  Cancel = 'CANCEL',
+  Completed = 'COMPLETED',
+  Pending = 'PENDING'
+}
+
+export type Order_AppealInput = {
+  id: Scalars['ID']['input'];
+  reason: Scalars['String']['input'];
+};
+
+export type Order_CancelInput = {
+  id: Scalars['ID']['input'];
+  reason: Scalars['String']['input'];
+};
+
+export type Order_CreteBuyInput = {
+  action_merchant?: InputMaybe<OrderActions>;
+  action_user?: InputMaybe<OrderActions>;
+  amount_crypto: Scalars['Float']['input'];
+  amount_fiat: Scalars['Float']['input'];
+  bank_account_name: Scalars['String']['input'];
+  bank_account_no: Scalars['String']['input'];
+  bank_name: BankName;
+  currency_crypto: CurrencyCrypto;
+  currency_fiat: CurrencyFiat;
+  estimated_duration: Scalars['String']['input'];
+  merchant_id: Scalars['Float']['input'];
+  status: OrderStatus;
+  trade_type: TradeType;
+  wallet_customer: Scalars['String']['input'];
+  wallet_merchant: Scalars['String']['input'];
+};
+
+export type Order_CreteBuyResponse = {
+  __typename?: 'Order_CreteBuyResponse';
+  action_merchant?: Maybe<OrderActions>;
+  action_user?: Maybe<OrderActions>;
+  amount_crypto?: Maybe<Scalars['Float']['output']>;
+  amount_fiat?: Maybe<Scalars['Float']['output']>;
+  bank_account_name?: Maybe<Scalars['String']['output']>;
+  bank_account_no?: Maybe<Scalars['String']['output']>;
+  bank_name?: Maybe<BankName>;
+  currency_crypto?: Maybe<CurrencyCrypto>;
+  currency_fiat?: Maybe<CurrencyFiat>;
+  estimated_duration?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  merchant_id?: Maybe<Scalars['Float']['output']>;
+  status?: Maybe<OrderStatus>;
+  trade_type?: Maybe<TradeType>;
+  wallet_customer?: Maybe<Scalars['String']['output']>;
+  wallet_merchant?: Maybe<Scalars['String']['output']>;
+};
+
+export type Order_CreteSellInput = {
+  action_merchant?: InputMaybe<OrderActions>;
+  action_user?: InputMaybe<OrderActions>;
+  amount_crypto: Scalars['Float']['input'];
+  amount_fiat: Scalars['Float']['input'];
+  bank_account_name: Scalars['String']['input'];
+  bank_account_no: Scalars['String']['input'];
+  bank_name: BankName;
+  currency_crypto: CurrencyCrypto;
+  currency_fiat: CurrencyFiat;
+  estimated_duration: Scalars['String']['input'];
+  merchant_id: Scalars['Float']['input'];
+  status: OrderStatus;
+  trade_type: TradeType;
+  wallet_customer: Scalars['String']['input'];
+  wallet_merchant: Scalars['String']['input'];
+};
+
+export type Order_CreteSellResponse = {
+  __typename?: 'Order_CreteSellResponse';
+  action_merchant?: Maybe<OrderActions>;
+  action_user?: Maybe<OrderActions>;
+  amount_crypto?: Maybe<Scalars['Float']['output']>;
+  amount_fiat?: Maybe<Scalars['Float']['output']>;
+  bank_account_name?: Maybe<Scalars['String']['output']>;
+  bank_account_no?: Maybe<Scalars['String']['output']>;
+  bank_name?: Maybe<BankName>;
+  currency_crypto?: Maybe<CurrencyCrypto>;
+  currency_fiat?: Maybe<CurrencyFiat>;
+  estimated_duration?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  merchant_id?: Maybe<Scalars['Float']['output']>;
+  status?: Maybe<OrderStatus>;
+  trade_type?: Maybe<TradeType>;
+  wallet_customer?: Maybe<Scalars['String']['output']>;
+  wallet_merchant?: Maybe<Scalars['String']['output']>;
+};
+
+export type Order_GetAllInput = {
+  currency_crypto?: InputMaybe<CurrencyCrypto>;
+  currency_fiat?: InputMaybe<CurrencyFiat>;
+  status?: InputMaybe<OrderStatus>;
+  trade_type?: InputMaybe<TradeType>;
+};
+
+export type Order_GetOneInput = {
+  id: Scalars['ID']['input'];
+};
+
+export type Order_MoveCryptoToEscrowInput = {
+  action: OrderActions;
+  amountCrypto: Scalars['Int']['input'];
+  currencyCrypto: CurrencyCrypto;
+  id: Scalars['ID']['input'];
+};
+
+export type Order_Response = {
+  __typename?: 'Order_Response';
+  action_merchant?: Maybe<OrderActions>;
+  action_user?: Maybe<OrderActions>;
+  amount_crypto?: Maybe<Scalars['Float']['output']>;
+  amount_fiat?: Maybe<Scalars['Float']['output']>;
+  bank_account_name?: Maybe<Scalars['String']['output']>;
+  bank_account_no?: Maybe<Scalars['String']['output']>;
+  bank_name?: Maybe<BankName>;
+  currency_crypto?: Maybe<CurrencyCrypto>;
+  currency_fiat?: Maybe<CurrencyFiat>;
+  estimated_duration?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  merchant_id?: Maybe<Scalars['Float']['output']>;
+  status?: Maybe<OrderStatus>;
+  trade_type?: Maybe<TradeType>;
+  wallet_customer?: Maybe<Scalars['String']['output']>;
+  wallet_merchant?: Maybe<Scalars['String']['output']>;
+};
+
 export enum OtpPurpose {
   SignUp = 'SignUp',
   Verification = 'Verification'
@@ -425,10 +582,13 @@ export enum OtpPurpose {
 export type Query = {
   __typename?: 'Query';
   adverts_getAll: Array<Advert_GetResponse>;
-  adverts_getMerchantAdverts: Array<Advert_AdvertResponse>;
+  adverts_getMerchantAdverts: Array<Advert_GetResponse>;
   adverts_getOne: Advert_GetResponse;
   bankAccount_getAll: Array<BankAccount_Response>;
   fxRate_GetAll: ExchangeRate_Response;
+  orders_GetAll: Array<Order_Response>;
+  orders_GetAllAsMerchant: Array<Order_Response>;
+  orders_GetOne: Order_Response;
   user_getOne: UserDto;
   walletCrypto_getAll: Array<WalletCryptoResponse>;
   walletFiat_getAll: WalletFiat;
@@ -442,6 +602,21 @@ export type QueryAdverts_GetMerchantAdvertsArgs = {
 
 export type QueryAdverts_GetOneArgs = {
   input: Advert_GetOneInput;
+};
+
+
+export type QueryOrders_GetAllArgs = {
+  input: Order_GetAllInput;
+};
+
+
+export type QueryOrders_GetAllAsMerchantArgs = {
+  input: Order_GetAllInput;
+};
+
+
+export type QueryOrders_GetOneArgs = {
+  input: Order_GetOneInput;
 };
 
 
@@ -491,33 +666,40 @@ export type Adverts_UpdateMutationVariables = Exact<{
 }>;
 
 
-export type Adverts_UpdateMutation = { __typename?: 'Mutation', adverts_update: { __typename?: 'Advert_AdvertResponse', currencyFiat?: CurrencyFiat | null, currencyCrypto?: CurrencyCrypto | null, advertStatus?: AdvertStatus | null, duration?: string | null, limitLower?: number | null, limitUpper?: number | null, tradeType?: TradeType | null, rateFixed?: number | null, rateFloat?: number | null, isFloatRate?: boolean | null } };
+export type Adverts_UpdateMutation = { __typename?: 'Mutation', adverts_update: { __typename?: 'Advert_GetResponse', currencyFiat?: CurrencyFiat | null, currencyCrypto?: CurrencyCrypto | null, advertStatus?: AdvertStatus | null, duration?: string | null, merchant_id?: number | null, limitLower?: number | null, limitUpper?: number | null, tradeType?: TradeType | null, rateFixed?: number | null, rateFloat?: number | null, isFloatRate?: boolean | null } };
 
 export type Adverts_CreateMutationVariables = Exact<{
   input: Advert_CreateInput;
 }>;
 
 
-export type Adverts_CreateMutation = { __typename?: 'Mutation', adverts_create: { __typename?: 'Advert_AdvertResponse', rateFixed?: number | null, rateFloat?: number | null, isFloatRate?: boolean | null, advertStatus?: AdvertStatus | null, limitLower?: number | null, limitUpper?: number | null, tradeType?: TradeType | null, currencyFiat?: CurrencyFiat | null, currencyCrypto?: CurrencyCrypto | null, duration?: string | null } };
+export type Adverts_CreateMutation = { __typename?: 'Mutation', adverts_create: { __typename?: 'Advert_GetResponse', rateFixed?: number | null, rateFloat?: number | null, merchant_id?: number | null, isFloatRate?: boolean | null, advertStatus?: AdvertStatus | null, limitLower?: number | null, limitUpper?: number | null, tradeType?: TradeType | null, currencyFiat?: CurrencyFiat | null, currencyCrypto?: CurrencyCrypto | null, wallet_address?: string | null } };
 
 export type Adverts_DeleteMutationVariables = Exact<{
   input: Advert_DeleteInput;
 }>;
 
 
-export type Adverts_DeleteMutation = { __typename?: 'Mutation', adverts_delete: { __typename?: 'Advert_AdvertResponse', rateFixed?: number | null, rateFloat?: number | null, isFloatRate?: boolean | null, currencyFiat?: CurrencyFiat | null, currencyCrypto?: CurrencyCrypto | null, advertStatus?: AdvertStatus | null, duration?: string | null, limitLower?: number | null, limitUpper?: number | null, tradeType?: TradeType | null } };
+export type Adverts_DeleteMutation = { __typename?: 'Mutation', adverts_delete: { __typename?: 'Advert_GetResponse', merchant_id?: number | null, rateFixed?: number | null, rateFloat?: number | null, isFloatRate?: boolean | null, currencyFiat?: CurrencyFiat | null, currencyCrypto?: CurrencyCrypto | null, advertStatus?: AdvertStatus | null, duration?: string | null, limitLower?: number | null, limitUpper?: number | null, tradeType?: TradeType | null, wallet_address?: string | null } };
 
 export type Adverts_GetAllQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Adverts_GetAllQuery = { __typename?: 'Query', adverts_getAll: Array<{ __typename?: 'Advert_GetResponse', id: string, rateFixed?: number | null, rateFloat?: number | null, isFloatRate?: boolean | null, advertStatus?: AdvertStatus | null, duration?: string | null, tradeType?: TradeType | null, instructions?: string | null, limitLower?: number | null, limitUpper?: number | null, currencyFiat?: CurrencyFiat | null, currencyCrypto?: CurrencyCrypto | null, merchant_wallet: string, merchant_nickname: string, merchant_trade_count: number, wallet_address?: string | null, fiatAmountPerCrypto?: number | null }> };
+export type Adverts_GetAllQuery = { __typename?: 'Query', adverts_getAll: Array<{ __typename?: 'Advert_GetResponse', id: string, rateFixed?: number | null, rateFloat?: number | null, isFloatRate?: boolean | null, advertStatus?: AdvertStatus | null, duration?: string | null, tradeType?: TradeType | null, instructions?: string | null, limitLower?: number | null, limitUpper?: number | null, currencyFiat?: CurrencyFiat | null, currencyCrypto?: CurrencyCrypto | null, wallet_address?: string | null, merchant_nickname?: string | null, merchant_id?: number | null, merchant_trade_count?: number | null, fiatAmountPerCrypto?: number | null }> };
 
 export type Adverts_GetOneQueryVariables = Exact<{
   input: Advert_GetOneInput;
 }>;
 
 
-export type Adverts_GetOneQuery = { __typename?: 'Query', adverts_getOne: { __typename?: 'Advert_GetResponse', id: string, advertStatus?: AdvertStatus | null, duration?: string | null, tradeType?: TradeType | null, rateFixed?: number | null, rateFloat?: number | null, isFloatRate?: boolean | null, instructions?: string | null, limitLower?: number | null, limitUpper?: number | null, currencyFiat?: CurrencyFiat | null, currencyCrypto?: CurrencyCrypto | null, merchant_wallet: string, merchant_nickname: string, merchant_trade_count: number, wallet_address?: string | null, fiatAmountPerCrypto?: number | null } };
+export type Adverts_GetOneQuery = { __typename?: 'Query', adverts_getOne: { __typename?: 'Advert_GetResponse', id: string, advertStatus?: AdvertStatus | null, duration?: string | null, tradeType?: TradeType | null, rateFixed?: number | null, rateFloat?: number | null, isFloatRate?: boolean | null, instructions?: string | null, limitLower?: number | null, limitUpper?: number | null, currencyFiat?: CurrencyFiat | null, currencyCrypto?: CurrencyCrypto | null, wallet_address?: string | null, merchant_nickname?: string | null, merchant_id?: number | null, merchant_trade_count?: number | null, fiatAmountPerCrypto?: number | null } };
+
+export type Adverts_GetMerchantAdvertsQueryVariables = Exact<{
+  input: Advert_GetAllInput;
+}>;
+
+
+export type Adverts_GetMerchantAdvertsQuery = { __typename?: 'Query', adverts_getMerchantAdverts: Array<{ __typename?: 'Advert_GetResponse', id: string, advertStatus?: AdvertStatus | null, duration?: string | null, tradeType?: TradeType | null, rateFixed?: number | null, rateFloat?: number | null, isFloatRate?: boolean | null, instructions?: string | null, limitLower?: number | null, limitUpper?: number | null, currencyFiat?: CurrencyFiat | null, currencyCrypto?: CurrencyCrypto | null, wallet_address?: string | null, merchant_nickname?: string | null, merchant_id?: number | null, merchant_trade_count?: number | null, fiatAmountPerCrypto?: number | null }> };
 
 export type Auth_MinipayLoginMutationVariables = Exact<{
   input: Auth_LoginMinipayInput;
@@ -603,52 +785,12 @@ export type WalletCrypto_GetAllQueryVariables = Exact<{ [key: string]: never; }>
 export type WalletCrypto_GetAllQuery = { __typename?: 'Query', walletCrypto_getAll: Array<{ __typename?: 'WalletCryptoResponse', address: string, chainType: ChainType, id: number, wallet_id?: string | null }> };
 
 
-export const Adverts_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Adverts_update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Advert_UpdateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adverts_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"currencyFiat"}},{"kind":"Field","name":{"kind":"Name","value":"currencyCrypto"}},{"kind":"Field","name":{"kind":"Name","value":"advertStatus"}},{"kind":"Field","name":{"kind":"Name","value":"duration"}},{"kind":"Field","name":{"kind":"Name","value":"limitLower"}},{"kind":"Field","name":{"kind":"Name","value":"limitUpper"}},{"kind":"Field","name":{"kind":"Name","value":"tradeType"}},{"kind":"Field","name":{"kind":"Name","value":"rateFixed"}},{"kind":"Field","name":{"kind":"Name","value":"rateFloat"}},{"kind":"Field","name":{"kind":"Name","value":"isFloatRate"}}]}}]}}]} as unknown as DocumentNode<Adverts_UpdateMutation, Adverts_UpdateMutationVariables>;
-export const Adverts_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Adverts_create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Advert_CreateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adverts_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"rateFixed"}},{"kind":"Field","name":{"kind":"Name","value":"rateFloat"}},{"kind":"Field","name":{"kind":"Name","value":"isFloatRate"}},{"kind":"Field","name":{"kind":"Name","value":"advertStatus"}},{"kind":"Field","name":{"kind":"Name","value":"limitLower"}},{"kind":"Field","name":{"kind":"Name","value":"limitUpper"}},{"kind":"Field","name":{"kind":"Name","value":"tradeType"}},{"kind":"Field","name":{"kind":"Name","value":"currencyFiat"}},{"kind":"Field","name":{"kind":"Name","value":"currencyCrypto"}},{"kind":"Field","name":{"kind":"Name","value":"duration"}}]}}]}}]} as unknown as DocumentNode<Adverts_CreateMutation, Adverts_CreateMutationVariables>;
-export const Adverts_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Adverts_delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Advert_DeleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adverts_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"rateFixed"}},{"kind":"Field","name":{"kind":"Name","value":"rateFloat"}},{"kind":"Field","name":{"kind":"Name","value":"isFloatRate"}},{"kind":"Field","name":{"kind":"Name","value":"currencyFiat"}},{"kind":"Field","name":{"kind":"Name","value":"currencyCrypto"}},{"kind":"Field","name":{"kind":"Name","value":"advertStatus"}},{"kind":"Field","name":{"kind":"Name","value":"duration"}},{"kind":"Field","name":{"kind":"Name","value":"limitLower"}},{"kind":"Field","name":{"kind":"Name","value":"limitUpper"}},{"kind":"Field","name":{"kind":"Name","value":"tradeType"}}]}}]}}]} as unknown as DocumentNode<Adverts_DeleteMutation, Adverts_DeleteMutationVariables>;
-export const Adverts_GetAllDocument = {
-  "kind": "Document", "definitions":
-    [{
-      "kind": "OperationDefinition",
-      "operation": "query",
-      "name": { "kind": "Name", "value": "Adverts_getAll" },
-      "selectionSet": {
-        "kind": "SelectionSet",
-        "selections": [
-          {
-            "kind": "Field",
-            "name": {
-              "kind": "Name",
-              "value": "adverts_getAll"
-            },
-            "selectionSet": {
-              "kind": "SelectionSet",
-              "selections": [
-                { "kind": "Field", "name": { "kind": "Name", "value": "id" } },
-                {
-                  "kind": "Field", "name":
-                    { "kind": "Name", "value": "rateFixed" }
-                }, { "kind": "Field", "name": { "kind": "Name", "value": "rateFloat" } },
-                { "kind": "Field", "name": { "kind": "Name", "value": "isFloatRate" } },
-                { "kind": "Field", "name": { "kind": "Name", "value": "advertStatus" } },
-                { "kind": "Field", "name": { "kind": "Name", "value": "duration" } },
-                { "kind": "Field", "name": { "kind": "Name", "value": "tradeType" } },
-                { "kind": "Field", "name": { "kind": "Name", "value": "instructions" } },
-                { "kind": "Field", "name": { "kind": "Name", "value": "limitLower" } },
-                { "kind": "Field", "name": { "kind": "Name", "value": "limitUpper" } },
-                { "kind": "Field", "name": { "kind": "Name", "value": "currencyFiat" } },
-                { "kind": "Field", "name": { "kind": "Name", "value": "currencyCrypto" } },
-                { "kind": "Field", "name": { "kind": "Name", "value": "merchant_wallet" } },
-                { "kind": "Field", "name": { "kind": "Name", "value": "merchant_nickname" } },
-                { "kind": "Field", "name": { "kind": "Name", "value": "merchant_trade_count" } },
-                { "kind": "Field", "name": { "kind": "Name", "value": "wallet_address" } },
-                { "kind": "Field", "name": { "kind": "Name", "value": "fiatAmountPerCrypto" } }]
-            }
-          }]
-      }
-    }]
-} as unknown as DocumentNode<Adverts_GetAllQuery, Adverts_GetAllQueryVariables>;
-export const Adverts_GetOneDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Adverts_getOne"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Advert_GetOneInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adverts_getOne"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"advertStatus"}},{"kind":"Field","name":{"kind":"Name","value":"duration"}},{"kind":"Field","name":{"kind":"Name","value":"tradeType"}},{"kind":"Field","name":{"kind":"Name","value":"rateFixed"}},{"kind":"Field","name":{"kind":"Name","value":"rateFloat"}},{"kind":"Field","name":{"kind":"Name","value":"isFloatRate"}},{"kind":"Field","name":{"kind":"Name","value":"instructions"}},{"kind":"Field","name":{"kind":"Name","value":"limitLower"}},{"kind":"Field","name":{"kind":"Name","value":"limitUpper"}},{"kind":"Field","name":{"kind":"Name","value":"currencyFiat"}},{"kind":"Field","name":{"kind":"Name","value":"currencyCrypto"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_wallet"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_nickname"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_trade_count"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_address"}},{"kind":"Field","name":{"kind":"Name","value":"fiatAmountPerCrypto"}}]}}]}}]} as unknown as DocumentNode<Adverts_GetOneQuery, Adverts_GetOneQueryVariables>;
+export const Adverts_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Adverts_update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Advert_UpdateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adverts_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"currencyFiat"}},{"kind":"Field","name":{"kind":"Name","value":"currencyCrypto"}},{"kind":"Field","name":{"kind":"Name","value":"advertStatus"}},{"kind":"Field","name":{"kind":"Name","value":"duration"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_id"}},{"kind":"Field","name":{"kind":"Name","value":"limitLower"}},{"kind":"Field","name":{"kind":"Name","value":"limitUpper"}},{"kind":"Field","name":{"kind":"Name","value":"tradeType"}},{"kind":"Field","name":{"kind":"Name","value":"rateFixed"}},{"kind":"Field","name":{"kind":"Name","value":"rateFloat"}},{"kind":"Field","name":{"kind":"Name","value":"isFloatRate"}}]}}]}}]} as unknown as DocumentNode<Adverts_UpdateMutation, Adverts_UpdateMutationVariables>;
+export const Adverts_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Adverts_create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Advert_CreateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adverts_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"rateFixed"}},{"kind":"Field","name":{"kind":"Name","value":"rateFloat"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_id"}},{"kind":"Field","name":{"kind":"Name","value":"isFloatRate"}},{"kind":"Field","name":{"kind":"Name","value":"advertStatus"}},{"kind":"Field","name":{"kind":"Name","value":"limitLower"}},{"kind":"Field","name":{"kind":"Name","value":"limitUpper"}},{"kind":"Field","name":{"kind":"Name","value":"tradeType"}},{"kind":"Field","name":{"kind":"Name","value":"currencyFiat"}},{"kind":"Field","name":{"kind":"Name","value":"currencyCrypto"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_address"}}]}}]}}]} as unknown as DocumentNode<Adverts_CreateMutation, Adverts_CreateMutationVariables>;
+export const Adverts_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Adverts_delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Advert_DeleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adverts_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"merchant_id"}},{"kind":"Field","name":{"kind":"Name","value":"rateFixed"}},{"kind":"Field","name":{"kind":"Name","value":"rateFloat"}},{"kind":"Field","name":{"kind":"Name","value":"isFloatRate"}},{"kind":"Field","name":{"kind":"Name","value":"currencyFiat"}},{"kind":"Field","name":{"kind":"Name","value":"currencyCrypto"}},{"kind":"Field","name":{"kind":"Name","value":"advertStatus"}},{"kind":"Field","name":{"kind":"Name","value":"duration"}},{"kind":"Field","name":{"kind":"Name","value":"limitLower"}},{"kind":"Field","name":{"kind":"Name","value":"limitUpper"}},{"kind":"Field","name":{"kind":"Name","value":"tradeType"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_address"}}]}}]}}]} as unknown as DocumentNode<Adverts_DeleteMutation, Adverts_DeleteMutationVariables>;
+export const Adverts_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Adverts_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adverts_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"rateFixed"}},{"kind":"Field","name":{"kind":"Name","value":"rateFloat"}},{"kind":"Field","name":{"kind":"Name","value":"isFloatRate"}},{"kind":"Field","name":{"kind":"Name","value":"advertStatus"}},{"kind":"Field","name":{"kind":"Name","value":"duration"}},{"kind":"Field","name":{"kind":"Name","value":"tradeType"}},{"kind":"Field","name":{"kind":"Name","value":"instructions"}},{"kind":"Field","name":{"kind":"Name","value":"limitLower"}},{"kind":"Field","name":{"kind":"Name","value":"limitUpper"}},{"kind":"Field","name":{"kind":"Name","value":"currencyFiat"}},{"kind":"Field","name":{"kind":"Name","value":"currencyCrypto"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_address"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_nickname"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_id"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_trade_count"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_address"}},{"kind":"Field","name":{"kind":"Name","value":"fiatAmountPerCrypto"}}]}}]}}]} as unknown as DocumentNode<Adverts_GetAllQuery, Adverts_GetAllQueryVariables>;
+export const Adverts_GetOneDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Adverts_getOne"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Advert_GetOneInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adverts_getOne"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"advertStatus"}},{"kind":"Field","name":{"kind":"Name","value":"duration"}},{"kind":"Field","name":{"kind":"Name","value":"tradeType"}},{"kind":"Field","name":{"kind":"Name","value":"rateFixed"}},{"kind":"Field","name":{"kind":"Name","value":"rateFloat"}},{"kind":"Field","name":{"kind":"Name","value":"isFloatRate"}},{"kind":"Field","name":{"kind":"Name","value":"instructions"}},{"kind":"Field","name":{"kind":"Name","value":"limitLower"}},{"kind":"Field","name":{"kind":"Name","value":"limitUpper"}},{"kind":"Field","name":{"kind":"Name","value":"currencyFiat"}},{"kind":"Field","name":{"kind":"Name","value":"currencyCrypto"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_address"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_nickname"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_id"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_trade_count"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_address"}},{"kind":"Field","name":{"kind":"Name","value":"fiatAmountPerCrypto"}}]}}]}}]} as unknown as DocumentNode<Adverts_GetOneQuery, Adverts_GetOneQueryVariables>;
+export const Adverts_GetMerchantAdvertsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Adverts_getMerchantAdverts"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Advert_GetAllInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adverts_getMerchantAdverts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"advertStatus"}},{"kind":"Field","name":{"kind":"Name","value":"duration"}},{"kind":"Field","name":{"kind":"Name","value":"tradeType"}},{"kind":"Field","name":{"kind":"Name","value":"rateFixed"}},{"kind":"Field","name":{"kind":"Name","value":"rateFloat"}},{"kind":"Field","name":{"kind":"Name","value":"isFloatRate"}},{"kind":"Field","name":{"kind":"Name","value":"instructions"}},{"kind":"Field","name":{"kind":"Name","value":"limitLower"}},{"kind":"Field","name":{"kind":"Name","value":"limitUpper"}},{"kind":"Field","name":{"kind":"Name","value":"currencyFiat"}},{"kind":"Field","name":{"kind":"Name","value":"currencyCrypto"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_address"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_nickname"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_id"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_trade_count"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_address"}},{"kind":"Field","name":{"kind":"Name","value":"fiatAmountPerCrypto"}}]}}]}}]} as unknown as DocumentNode<Adverts_GetMerchantAdvertsQuery, Adverts_GetMerchantAdvertsQueryVariables>;
 export const Auth_MinipayLoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Auth_minipayLogin"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Auth_LoginMinipayInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"auth_minipayLogin"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"token"}}]}}]}}]} as unknown as DocumentNode<Auth_MinipayLoginMutation, Auth_MinipayLoginMutationVariables>;
 export const Auth_MinipayCreateAccountDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Auth_minipayCreateAccount"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Auth_MinipayCreateAccountInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"auth_minipayCreateAccount"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"token"}}]}}]}}]} as unknown as DocumentNode<Auth_MinipayCreateAccountMutation, Auth_MinipayCreateAccountMutationVariables>;
 export const Auth_LoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Auth_login"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Auth_LoginInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"auth_login"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"token"}}]}}]}}]} as unknown as DocumentNode<Auth_LoginMutation, Auth_LoginMutationVariables>;

@@ -2,6 +2,7 @@ import React from 'react'
 import { Tab } from 'src/components/Tab'
 import Wrapper from 'src/components/wrapper/Wrapper'
 import { AddAdsView } from 'src/features/adverts'
+import OpenAdverts from 'src/features/adverts/open'
 import { AppStores } from 'src/lib/zustand'
 
 export default function Page() {
@@ -52,10 +53,10 @@ function View() {
     case 'ADD':
       return <AddAdsView />
     case 'OPEN':
-      return <div>List of open ads</div>
+      return <OpenAdverts />
     case 'CLOSED':
-      return <div>List of closed ads</div>
+      return <OpenAdverts />
     default:
-      return <div>List of open ads</div>
+      return <OpenAdverts />
   }
 }

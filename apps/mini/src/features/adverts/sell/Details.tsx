@@ -5,11 +5,16 @@ import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import { Button } from 'src/components/Button'
 import { AdsRow, BottomNote, Card, Label, Line } from 'src/components/comps'
+import BankAccount from 'src/features/bankAccount/BankAccount'
 import { formatCurrency, roundUpTo2Decimals } from 'src/lib/helpers'
 import { AppStores } from 'src/lib/zustand'
 
-import BankAccount from '../../bankAccount/BankAccount'
 import { MerchantInfo } from '../MerchantInfo'
+
+// import { MerchantInfo } from '../MerchantInfo'
+
+// import BankAccount from '../../bankAccount/BankAccount'
+// import { MerchantInfo } from '../MerchantInfo'
 
 export function SellDetails({ data }: { data: Advert_GetResponse }) {
   const store = AppStores.useAdvert()
