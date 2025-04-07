@@ -1,11 +1,17 @@
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
+export type IManageAdsTab = 'OPEN' | 'CLOSED' | 'ADD'
+export type IP2PTabs = 'BUY' | 'SELL'
+export type IOrdersTabs = 'PENDING' | 'COMPLETED' | 'CANCELED' | 'APPEAL'
 export interface ISlice {
   sidebarOpen?: boolean
   infoTabOpen?: boolean
   drawerIsOpen?: boolean
   searchValue?: string
+  manageAdsTab?: IManageAdsTab
+  p2pTab?: IP2PTabs
+  ordersTab?: IOrdersTabs
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
@@ -18,6 +24,9 @@ export const defaultValues: Required<ISlice> = {
   sidebarOpen: false,
   infoTabOpen: false,
   searchValue: '',
+  manageAdsTab: 'OPEN',
+  p2pTab: 'BUY',
+  ordersTab: 'PENDING',
 }
 
 export const useSettings = create(

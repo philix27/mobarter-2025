@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import BottomModal from 'src/components/BottomModal'
 import { AppStores } from 'src/lib/zustand'
 
-import { Label, Line, Row } from '../../components/comps'
+import { AdsRow, Label, Line } from '../../components/comps'
 
 import { AddBankAccount } from './AddAccount'
 import ListAccounts from './ListAccounts'
@@ -15,7 +15,7 @@ export default function BankAccount() {
     <>
       <Label>Payment Method</Label>
       <div className="bg-card rounded-md px-3 py-1 w-full">
-        <Row
+        <AdsRow
           text={store.accountNo ? store.bankName : 'No account'}
           text2={store.accountNo ? store.accountNo : 'Select'}
           text2options={{
@@ -26,7 +26,7 @@ export default function BankAccount() {
           }}
         />
         <Line />
-        <Row
+        <AdsRow
           text="Bank account"
           text2={'ADD'}
           text2options={{

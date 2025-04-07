@@ -7,45 +7,36 @@ import PendingOrders from 'src/features/orders/Pending'
 import { AppStores } from 'src/lib/zustand'
 
 export default function Page() {
-  const store = AppStores.useOrder()
+  const store = AppStores.useSettings()
   return (
     <Wrapper>
-      <div className="w-full">
+      <div className="w-full flex flex-col items-center justify-center">
         <Tab
           data={[
             {
               title: 'PENDING',
-              isActive: store.tabs === 'PENDING',
+              isActive: store.ordersTab === 'PENDING',
               onClick: () => {
                 store.update({
-                  tabs: 'PENDING',
+                  ordersTab: 'PENDING',
                 })
               },
             },
             {
               title: 'COMPLETED',
-              isActive: store.tabs === 'COMPLETED',
+              isActive: store.ordersTab === 'COMPLETED',
               onClick: () => {
                 store.update({
-                  tabs: 'COMPLETED',
+                  ordersTab: 'COMPLETED',
                 })
               },
             },
             {
               title: 'APPEAL',
-              isActive: store.tabs === 'APPEAL',
+              isActive: store.ordersTab === 'APPEAL',
               onClick: () => {
                 store.update({
-                  tabs: 'APPEAL',
-                })
-              },
-            },
-            {
-              title: 'CANCELED',
-              isActive: store.tabs === 'CANCELED',
-              onClick: () => {
-                store.update({
-                  tabs: 'CANCELED',
+                  ordersTab: 'APPEAL',
                 })
               },
             },
@@ -58,8 +49,8 @@ export default function Page() {
 }
 
 function View() {
-  const store = AppStores.useOrder()
-  switch (store.tabs) {
+  const store = AppStores.useSettings()
+  switch (store.ordersTab) {
     case 'COMPLETED':
       return <CompletedOrders />
     case 'PENDING':

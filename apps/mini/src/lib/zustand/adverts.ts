@@ -21,7 +21,7 @@ export const defaultValues: Required<ISlice> = {
   amountCrypto: 0,
   bankName: '',
   accountName: '',
-  accountNo: ''
+  accountNo: '',
 }
 
 export interface ISliceUpdate extends Required<ISlice> {

@@ -13,9 +13,10 @@ import { AppStores } from 'src/lib/zustand'
 type IAd = { data: Api.Advert_GetResponse }
 
 export default function Page() {
-  const store = AppStores.useAdvert()
+  const store = AppStores.useSettings()
+  const adsStore = AppStores.useAdvert()
   useEffect(() => {
-    store.clear()
+    adsStore.clear()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
@@ -25,19 +26,19 @@ export default function Page() {
           data={[
             {
               title: 'BUY',
-              isActive: store.tradeType === 'BUY',
+              isActive: store.p2pTab === 'BUY',
               onClick: () => {
                 store.update({
-                  tradeType: 'BUY',
+                  p2pTab: 'BUY',
                 })
               },
             },
             {
               title: 'SELL',
-              isActive: store.tradeType === 'SELL',
+              isActive: store.p2pTab === 'SELL',
               onClick: () => {
                 store.update({
-                  tradeType: 'SELL',
+                  p2pTab: 'SELL',
                 })
               },
             },
@@ -49,9 +50,10 @@ export default function Page() {
   )
 }
 function List() {
-  const store = AppStores.useAdvert()
+  const store = AppStores.useSettings()
   const { data, loading, error } = useQuery<QueryResponse<'adverts_getAll'>>(
-    Api.Adverts_GetAllDocument
+    Api.Adverts_GetAllDocument,
+    { pollInterval: 2000 }
   )
 
   if (loading) return <div>Loading...</div>
@@ -60,7 +62,7 @@ function List() {
     <div className="w-full bg-background no-scrollbar">
       {data &&
         data.adverts_getAll
-          .filter((val) => val.tradeType! === store.tradeType)
+          .filter((val) => val.tradeType! === store.p2pTab)
           .map((ad, i) => <AdItem key={i} data={ad} />)}
     </div>
   )
@@ -71,28 +73,31 @@ function AdItem({ data }: IAd) {
     <Link href={`/ads/${data.tradeType === 'BUY' ? 'buy' : 'sell'}/${data.id}`}>
       <div className="rounded-lg bg-secondary mb-1 px-3 py-2">
         <div className="flex w-full justify-between pb-2 mb-2 border-b border-muted">
-          <p>{data.currencyCrypto}/{data.currencyCrypto} </p>
-          <div className={cn(
-            "rounded-md px-3 py-[2px]",
-              data.tradeType! === 'BUY'
-                ? Constants.buyColor
-                : Constants.sellColor
-            )}>
-            <p
+          <p>
+            {data.currencyCrypto}/{data.currencyCrypto}{' '}
+          </p>
+          <div
             className={cn(
-              'font-medium text-primary-foreground text-[12px]',
-             
+              'rounded-md px-3 py-[2px]',
+              data.tradeType! === 'BUY' ? Constants.buyColor : Constants.sellColor
             )}
           >
-            {data.tradeType}
-          </p>
+            <p className={cn('font-medium text-primary-foreground text-[12px]')}>
+              {data.tradeType}
+            </p>
           </div>
         </div>
         <AdRow
           text1={`${data.merchant_nickname}`}
           text2={`${data.merchant_trade_count!.toString()} trades`}
         />
-        <AdRow text1={`Duration: ${data.duration!}`}   text2={`${data.currencyFiat} ${formatCurrency(data.limitLower!, 0)} - ${formatCurrency(data.limitUpper!, 0)}`} />
+        <AdRow
+          text1={`Duration: ${data.duration!}`}
+          text2={`${data.currencyFiat} ${formatCurrency(data.limitLower!, 0)} - ${formatCurrency(
+            data.limitUpper!,
+            0
+          )}`}
+        />
         <AdRow text1={`Fiat: ${data.currencyFiat!}`} text2={`Crypto: ${data.currencyCrypto!}`} />
       </div>
     </Link>
@@ -103,7 +108,7 @@ function AdRow(props: { text1: string; text2: string }) {
   return (
     <div className="flex w-full justify-between mb-1">
       <p className="text-muted text-sm">{props.text1}</p>
-      <p className='text-muted text-sm '>{props.text2}</p>
+      <p className="text-muted text-sm ">{props.text2}</p>
     </div>
   )
 }
