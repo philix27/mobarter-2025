@@ -3,9 +3,11 @@ import { Tab } from 'src/components/Tab'
 import Wrapper from 'src/components/wrapper/Wrapper'
 import { AddAdsView } from 'src/features/adverts'
 import OpenAdverts from 'src/features/adverts/open'
+import { useTgBackButton } from 'src/lib/telegram'
 import { AppStores } from 'src/lib/zustand'
 
 export default function Page() {
+  useTgBackButton()
   const store = AppStores.useSettings()
   return (
     <Wrapper hideBottomNav>

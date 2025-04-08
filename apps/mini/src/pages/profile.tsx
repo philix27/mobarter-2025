@@ -1,8 +1,10 @@
 import React from 'react'
 import { Card, Label } from 'src/components/comps'
 import Wrapper from 'src/components/wrapper/Wrapper'
+import { useTgBackButton } from 'src/lib/telegram'
 
 export default function Page() {
+  useTgBackButton()
   return (
     <Wrapper hideBottomNav>
       <div className="w-full">
