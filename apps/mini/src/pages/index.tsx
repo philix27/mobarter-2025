@@ -1,9 +1,8 @@
-import Image from 'next/image';
-import { Tab } from 'src/components/Tab';
-import Wrapper from 'src/components/wrapper/Wrapper';
-import { TokenIcons } from 'src/images/tokens/TokenIcon';
-import { AppStores } from 'src/lib/zustand';
-
+import Image from 'next/image'
+import { Tab } from 'src/components/Tab'
+import Wrapper from 'src/components/wrapper/Wrapper'
+import { TokenIcons } from 'src/images/tokens/TokenIcon'
+import { AppStores } from 'src/lib/zustand'
 
 type IToken = {
   fullName: string
@@ -34,18 +33,19 @@ const dummyTokens: IToken[] = [
 ]
 
 export default function HomePage() {
-    const store = AppStores.useSettings()
+  const store = AppStores.useSettings()
+
   return (
     <Wrapper>
       <div className="w-full items-center justify-center flex flex-col">
-         <Tab
+        <Tab
           data={[
             {
               title: 'HOME',
               isActive: store.homeTab === 'Balances',
               onClick: () => {
                 store.update({
-                  homeTab: "Balances",
+                  homeTab: 'Balances',
                 })
               },
             },
@@ -54,7 +54,7 @@ export default function HomePage() {
               isActive: store.homeTab === 'Services',
               onClick: () => {
                 store.update({
-                  homeTab: "Services",
+                  homeTab: 'Services',
                 })
               },
             },

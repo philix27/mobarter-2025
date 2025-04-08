@@ -70,6 +70,7 @@
   body {
     font-family: 'Inter', sans-serif;
     /* font-family: 'Fira Mono', serif; */
+    background: var(--tg-theme-secondary-bg-color, #363637);
   }
 }
 
@@ -93,6 +94,7 @@ body {
   -ms-content-zooming: none;
   touch-action: pan-x pan-y;
   -ms-touch-action: pan-x pan-y;
+  background: var(--tg-theme-secondary-bg-color, #363637);
 }
 
 @layer utilities {

@@ -1,19 +1,19 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
-import '@rainbow-me/rainbowkit/styles.css';
-import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Analytics } from '@vercel/analytics/react';
-import type { AppProps } from 'next/app';
-import { PropsWithChildren } from 'react';
-import { ToastContainer, Zoom, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { ErrorBoundary } from 'src/components/Errors';
-import { useIsSsr } from 'src/lib/utils/ssr';
-import 'src/styles/globals.css';
-import { WagmiProvider, createConfig, http } from 'wagmi';
-import { celo, celoAlfajores } from 'wagmi/chains';
-
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
+import { connectorsForWallets } from '@rainbow-me/rainbowkit'
+import '@rainbow-me/rainbowkit/styles.css'
+import { injectedWallet } from '@rainbow-me/rainbowkit/wallets'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Analytics } from '@vercel/analytics/react'
+import type { AppProps } from 'next/app'
+import { PropsWithChildren } from 'react'
+import { ToastContainer, Zoom, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { ErrorBoundary } from 'src/components/Errors'
+import { TgProvider } from 'src/lib/telegram'
+import { useIsSsr } from 'src/lib/utils/ssr'
+import 'src/styles/globals.css'
+import { WagmiProvider, createConfig, http } from 'wagmi'
+import { celo, celoAlfajores } from 'wagmi/chains'
 
 const API_KEY =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjp7ImlkIjozLCJhZGRyZXNzIjoiMHg0NjJFNUYyNzJCODQzMTU2MjgxMTEyNjc3OWRhNkVjYUU1MUE1QjQwIiwid2FsbGV0X2lkIjpudWxsLCJjaGFpblR5cGUiOiJFdGhlcmV1bSIsIm1pbmlwYXkiOnRydWUsImNyZWF0ZWRfYXQiOiIyMDI1LTA0LTA2VDE1OjMzOjIxLjg4M1oiLCJ1cGRhdGVkX2F0IjoiMjAyNS0wNC0wNlQxNTozMzoyMS44ODNaIiwidXNlcl9pZCI6M30sImlhdCI6MTc0NDAwNDM2NiwiZXhwIjoxNzQ0MDQ3NTY2fQ.nuT-l_rXFzKQDMYgzWDAvvnWNG2dhNpiPynwdbqlRvI'
@@ -61,20 +61,26 @@ const apollo = new ApolloClient({
 const queryClient = new QueryClient()
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <WagmiProvider config={config}>
-      <ErrorBoundary>
+    <ErrorBoundary>
+      <WagmiProvider config={config}>
         <SafeHydrate>
           <QueryClientProvider client={queryClient}>
             {/* <RainbowKitProvider> */}
             <ApolloProvider client={apollo}>
-              <Component {...pageProps} />
-              <ToastContainer transition={Zoom} position={toast.POSITION.BOTTOM_RIGHT} limit={2} />
+              <TgProvider>
+                <Component {...pageProps} />
+                <ToastContainer
+                  transition={Zoom}
+                  position={toast.POSITION.BOTTOM_RIGHT}
+                  limit={2}
+                />
+              </TgProvider>
             </ApolloProvider>
             {/* </RainbowKitProvider> */}
           </QueryClientProvider>
         </SafeHydrate>
         <Analytics />
-      </ErrorBoundary>
-    </WagmiProvider>
+      </WagmiProvider>
+    </ErrorBoundary>
   )
 }
