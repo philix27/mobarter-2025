@@ -4,8 +4,10 @@ import { QueryResponse } from '@repo/api'
 import { useRouter } from 'next/router'
 import Wrapper from 'src/components/wrapper/Wrapper'
 import BuyAd from 'src/features/adverts/BuyAd'
+import { useTgBackButton } from 'src/lib/telegram'
 
 export default function Page() {
+  useTgBackButton()
   const router = useRouter()
 
   const { data, loading, error } = useQuery<QueryResponse<'adverts_getOne'>>(
