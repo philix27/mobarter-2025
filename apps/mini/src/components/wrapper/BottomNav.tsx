@@ -20,7 +20,7 @@ export default function BottomNav() {
     <div
       className={cn(
         'w-screen h-[70px] bg-background fixed bottom-0 md:hidden border-t-[0.1px] border-card',
-        isTelegram && 'h-[50px]'
+        isTelegram && 'h-[50px] fixed'
       )}
     >
       <div className="flex w-full items-center justify-evenly relative h-full">
