@@ -54,9 +54,9 @@ function Row(props: IToken) {
         <Image src={props.imgUrl} alt={TokenIcons.cUSDIcon.name} />
       </div>
       <div className="flex justify-between w-full items-center">
-        <div className="flex flex-col justify-between gap-y-2">
+        <div className="flex flex-col justify-between gap-y-[2px]">
           <p className="">{props.symbol}</p>
-          <p className="text-muted text-sm">{props.fullName}</p>
+          <p className="text-muted text-[12px]">{props.fullName}</p>
         </div>
         <p className="text-[18px]">120.023</p>
       </div>

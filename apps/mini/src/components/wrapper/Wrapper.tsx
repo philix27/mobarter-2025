@@ -3,17 +3,19 @@ import { ReactNode } from 'react'
 import BottomNav from './BottomNav'
 import Drawer from './Drawer'
 import Sidebar from './Sidebar'
-import TopNav from './TopNav'
+
+// import TopNav from './TopNav'
 
 export default function Wrapper(props: { children: ReactNode; hideBottomNav?: boolean }) {
   return (
     <div className="w-screen bg-background h-screen p-0 m-0">
-      <TopNav showBack={props.hideBottomNav} />
+      {/* <TopNav showBack={props.hideBottomNav} /> */}
       <div className="flex w-full bg-background">
         <Sidebar />
+        {/* mt-[50px] md:mt-[70px] mb-[70px] md:mb-0 md:ml-[100px]  */}
         <div
           className={`
-        mt-[50px] md:mt-[70px] mb-[70px] md:mb-0 md:ml-[100px] 
+        mt-[20px] md:mt-[70px] mb-[70px] md:mb-0 md:ml-[100px] 
         w-full h-full
         px-4 py-0 md:py-2
         flex items-center justify-center
