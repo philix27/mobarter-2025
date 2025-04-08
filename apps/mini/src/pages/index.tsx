@@ -1,6 +1,9 @@
-import Image from 'next/image'
-import Wrapper from 'src/components/wrapper/Wrapper'
-import { TokenIcons } from 'src/images/tokens/TokenIcon'
+import Image from 'next/image';
+import { Tab } from 'src/components/Tab';
+import Wrapper from 'src/components/wrapper/Wrapper';
+import { TokenIcons } from 'src/images/tokens/TokenIcon';
+import { AppStores } from 'src/lib/zustand';
+
 
 type IToken = {
   fullName: string
@@ -31,13 +34,36 @@ const dummyTokens: IToken[] = [
 ]
 
 export default function HomePage() {
+    const store = AppStores.useSettings()
   return (
     <Wrapper>
-      <div className="w-full items-center justify-center">
-        <div className="h-[150px] flex items-center justify-center">
+      <div className="w-full items-center justify-center flex flex-col">
+         <Tab
+          data={[
+            {
+              title: 'HOME',
+              isActive: store.homeTab === 'Balances',
+              onClick: () => {
+                store.update({
+                  homeTab: "Balances",
+                })
+              },
+            },
+            {
+              title: 'OTHERS',
+              isActive: store.homeTab === 'Services',
+              onClick: () => {
+                store.update({
+                  homeTab: "Services",
+                })
+              },
+            },
+          ]}
+        />
+        <div className="h-[100px] flex items-center justify-center">
           <p className="text-[27.5px]">23.000 cUSD</p>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col bg-card rounded-md p-1 w-full">
           {dummyTokens.map((val, i) => (
             <Row key={i} {...val} />
           ))}
@@ -49,14 +75,17 @@ export default function HomePage() {
 
 function Row(props: IToken) {
   return (
-    <div className="w-full bg-card px-2 py-2 mb-1 flex rounded-md">
-      <div className="h-[40px] w-[45px] bg-background rounded-[25px] mr-3">
-        <Image src={props.imgUrl} alt={TokenIcons.cUSDIcon.name} />
-      </div>
+    <div className="w-full bg-background px-2 py-1 flex border-b border-card  items-center justify-center">
+      <Image
+        src={props.imgUrl}
+        alt={TokenIcons.cUSDIcon.name}
+        className="h-[35px] w-[35px] bg-background rounded-[25px] mr-3"
+      />
+
       <div className="flex justify-between w-full items-center">
-        <div className="flex flex-col justify-between gap-y-2">
+        <div className="flex flex-col justify-between">
           <p className="">{props.symbol}</p>
-          <p className="text-muted text-sm">{props.fullName}</p>
+          <p className="text-muted text-[12px]">{props.fullName}</p>
         </div>
         <p className="text-[18px]">120.023</p>
       </div>

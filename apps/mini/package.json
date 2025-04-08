@@ -43,6 +43,7 @@
     "@telegram-apps/sdk-react": "^3.1.9",
     "@vercel/analytics": "^1.0.1",
     "@wagmi/connectors": "^5.7.12",
+    "@web3auth/base-provider": "^9.7.0",
     "@web3auth/single-factor-auth": "^9.5.0",
     "big.js": "^6.2.1",
     "bignumber.js": "^9.1.1",
