@@ -39,7 +39,6 @@
     "@rainbow-me/rainbowkit": "^2.2.4",
     "@reduxjs/toolkit": "^1.9.5",
     "@repo/api": "*",
-    "@repo/ui": "*",
     "@tanstack/react-query": "^4.29.14",
     "@twa-dev/sdk": "^8.0.2",
     "@vercel/analytics": "^1.0.1",
