@@ -8,8 +8,9 @@ import {
     Body,
 } from "@nestjs/common";
 
-@Controller("items")
-export class ItemsController {
+@Controller("auth")
+export class AuthController {
+    public constructor() {}
     private items: { id: string; name: string }[] = [];
 
     @Get()

@@ -77,10 +77,41 @@ export class Auth_ResetPasswordInput {
 }
 
 @ObjectType()
+export class Auth_TelegramAuthResponse {
+    @Field()
+    token: string;
+}
+
+@InputType()
+export class Auth_TelegramAuthInput {
+    @Field()
+    username: string;
+
+    @Field()
+    id: string;
+
+    @Field()
+    photo_url?: string;
+
+    @Field()
+    first_name?: string;
+
+    @Field()
+    last_name?: string;
+
+    @Field()
+    isMocked: boolean;
+
+    @Field()
+    initDataRaw: string;
+}
+
+@ObjectType()
 export class Auth_ResetPasswordResponse {
     @Field()
     message: string;
 }
+
 @InputType()
 export class Auth_LoginInput {
     @Field()

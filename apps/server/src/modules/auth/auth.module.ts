@@ -15,7 +15,8 @@ import { JwtModule } from "@nestjs/jwt";
 import { ConfigModule } from "@nestjs/config";
 import { HelperService } from "../helper/helper.service";
 import { HelpersModule } from "../helper/helper.module";
-import { ItemsController } from "./auth.controller";
+import { AuthController } from "./auth.controller";
+import { TelegramAuthService } from "./telegram.service";
 
 @Module({
     imports: [
@@ -36,8 +37,9 @@ import { ItemsController } from "./auth.controller";
         UserService,
         PrivyWalletService,
         JwtStrategy,
+        TelegramAuthService
     ],
-    controllers: [ItemsController],
+    controllers: [AuthController],
     // exports: [JwtStrategy, GqlAuthGuard],
 })
 export class AuthModule {}
