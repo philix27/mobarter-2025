@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: mobartex
+    environment:
+      POSTGRES_USER: mobartex_user
+      POSTGRES_PASSWORD: mobartex_pass
+      POSTGRES_DB: mobartex_db
+    ports:
+      - "5439:5432"
+    volumes:
+      - employee_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mobartex_user -d mobartex_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  employee_data:

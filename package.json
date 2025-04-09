@@ -21,7 +21,18 @@
     "dev": "turbo run dev",
     "build": "turbo run build",
     "clean": "turbo run clean && rm -rf node_modules",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore"
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore",
+    "docker:install": "docker-compose up",
+    "docker:uninstall": "docker-compose down",
+    "docker:restart": "docker-compose restart",
+    "build:api": "dotenv -- turbo build --filter=server",
+    "db:dev": "dotenv -- turbo db:dev --filter=server",
+    "db:reset": "dotenv -- turbo db:reset --filter=server",
+    "db:generate": "dotenv -- turbo db:generate --filter=server",
+    "db:deploy": "dotenv -- turbo db:deploy --filter=server",
+    "db:push": "dotenv -- turbo db:push --filter=server",
+    "db:pull": "dotenv -- turbo db:pull --filter=server",
+    "db:studio": "dotenv -- turbo db:studio --filter=server"
   },
   "devDependencies": {
     "prettier": "^3.1.1",
@@ -34,6 +45,8 @@
     }
   },
   "dependencies": {
-    "@typescript-eslint/parser": "^8.29.0"
+    "@typescript-eslint/parser": "^8.29.0",
+    "dotenv-cli": "^7.4.1"
+
   }
 }
