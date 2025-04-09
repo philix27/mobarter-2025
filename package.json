@@ -11,7 +11,7 @@
   },
   "homepage": "https://mobarter.com",
   "workspaces": [
-    "apps/*",
+    "apps/mini",
     "packages/*"
   ],
   "engines": {
