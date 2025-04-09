@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react'
 import { DisableZoom } from './DissableZoom'
-// import { useDidMount } from './hooks/useMount';
 import { type PropsWithChildren, } from 'react';
 import {
   miniApp,
@@ -35,11 +34,6 @@ function RootInner({children  }: PropsWithChildren) {
   const isDark = useSignal(miniApp.isDark);
   // const initDataUser = useSignal(initData.user);
 
-  // Set the user locale.
-  // useEffect(() => {
-  //   initDataUser && setLocale(initDataUser.languageCode);
-  // }, [initDataUser]);
-
   return (
     <TonConnectUIProvider manifestUrl="/tonconnect-manifest.json">
       <AppRoot
@@ -54,13 +48,16 @@ function RootInner({children  }: PropsWithChildren) {
 
 
 export function TgProvider(props: { children: ReactNode }) {
+
   // const didMount = useDidMount();
    return (
-    <div className="no-scrollbar">
-       <DisableZoom />
+    <div className="no-scrollbar" id="root">
+       <DisableZoom > 
+         
        <RootInner>     
            {props.children}
        </RootInner>
+       </DisableZoom>
     </div>
    ) 
   

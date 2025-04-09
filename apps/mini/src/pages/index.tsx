@@ -60,7 +60,7 @@ export default function HomePage() {
             },
           ]}
         />
-        <div className="h-[100px] flex items-center justify-center">
+        <div className="h-[120px] flex items-center justify-center">
           <p className="text-[27.5px]">23.000 cUSD</p>
         </div>
         <div className="flex flex-col bg-card rounded-md p-1 w-full">

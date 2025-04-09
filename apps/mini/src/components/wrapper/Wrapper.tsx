@@ -1,4 +1,4 @@
-import { backButton } from '@telegram-apps/sdk-react';
+import { backButton, } from '@telegram-apps/sdk-react';
 import {  useEffect, ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import BottomNav from './BottomNav'

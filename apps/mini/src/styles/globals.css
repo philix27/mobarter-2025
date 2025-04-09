@@ -4,6 +4,12 @@
 
 @layer base {
   :root {
+    /* Telegram */
+    --safe-area-inset-bottom: calc(100vh - var(--tg-viewport-stable-height, 100vh));
+    .safemybottomelement {
+      padding-bottom: calc(1rem + var(--safe-area-inset-bottom));
+    }
+    /* Tailwind */
     --background: #cbe2e5;
     --foreground: #494a4a;
 
@@ -74,6 +80,18 @@
   }
 }
 
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+#root {
+  /* Preserve scrolling behavior */
+  overflow-y: auto;
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -90,6 +108,10 @@
   -ms-touch-action: pan-x pan-y;
 }
 
+html,
+body {
+  overscroll-behavior: none;
+}
 body {
   -ms-content-zooming: none;
   touch-action: pan-x pan-y;

@@ -42,6 +42,8 @@ export default class MyDocument extends Document {
             content="Simple exchanges of Mento sustainable stable assets"
           />
           <meta name="twitter:image" content="https://mobarter.app/logo.png" />
+          <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no,viewport-fit=cover" />
+
           {/* <Script src='https://telegram.org/js/telegram-web-app.js' strategy="beforeInteractive" /> */}
         </Head>
         <body className=" text-foreground p-0 m-0">
