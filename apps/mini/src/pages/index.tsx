@@ -41,7 +41,7 @@ export default function HomePage() {
         <div className={`w-full 
         items-center justify-center flex flex-col
         fixed bg-background top-0 left-0
-        pt-4 h-[180px]`}>
+        pt-4 h-[150px]`}>
           <Tab
             data={[
               {
@@ -68,7 +68,7 @@ export default function HomePage() {
             <p className="text-[27.5px]">23.000 cUSD</p>
           </div>
         </div>
-        <div className="flex flex-col bg-card rounded-md py-[0px] w-full mt-[180px]">
+        <div className="flex flex-col bg-card rounded-md py-[0px] w-full mt-[150px]">
           {dummyTokens.map((val, i) => (
             <Row key={i} {...val} />
           ))}
