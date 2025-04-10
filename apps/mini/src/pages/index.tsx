@@ -41,7 +41,7 @@ export default function HomePage() {
         <div className={`w-full 
         items-center justify-center flex flex-col
         fixed bg-background top-0 left-0
-        pt-4 h-[150px]`}>
+        pt-[5px] h-[150px]`}>
           <Tab
             data={[
               {

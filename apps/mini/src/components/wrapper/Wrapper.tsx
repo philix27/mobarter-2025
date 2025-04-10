@@ -8,24 +8,6 @@ import BottomNav from './BottomNav'
 import Drawer from './Drawer'
 import Sidebar from './Sidebar'
 
-// type IThemeVar = {
-//   subtitleTextColor: string
-//   sectionHeaderTextColor: string
-//   sectionSeparatorColor: string
-//   linkColor: string
-//   bgColor: string
-//   buttonColor: string
-//   accentTextColor: string
-//   buttonTextColor: string
-//   secondaryBgColor: string
-//   sectionBgColor: string
-//   bottomBarBgColor: string
-//   headerBgColor: string
-//   hintColor: string
-//   destructiveTextColor: string
-// }
-// import TopNav from './TopNav'
-
 export default function Wrapper({
   hideBottomNav,
   ...props
@@ -37,9 +19,9 @@ export default function Wrapper({
   const { isDarkMode } = useDarkMode()
 
   useEffect(() => {
-    tg.setMiniAppBackgroundColor(isDarkMode ? '#363637' : '#cbe2e5')
-    tg.setMiniAppBottomBarColor(isDarkMode ? '#363637' : '#cbe2e5')
-    tg.setMiniAppHeaderColor(isDarkMode ? '#363637' : '#cbe2e5')
+    tg.setMiniAppBackgroundColor(isDarkMode ? '#2f2f30' : '#cbe2e5')
+    tg.setMiniAppBottomBarColor(isDarkMode ? '#2f2f30' : '#cbe2e5')
+    tg.setMiniAppHeaderColor(isDarkMode ? '#2f2f30' : '#cbe2e5')
   }, [isDarkMode])
 
   useEffect(() => {
