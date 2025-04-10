@@ -38,32 +38,37 @@ export default function HomePage() {
   return (
     <Wrapper>
       <div className="w-full items-center justify-center flex flex-col">
-        <Tab
-          data={[
-            {
-              title: 'HOME',
-              isActive: store.homeTab === 'Balances',
-              onClick: () => {
-                store.update({
-                  homeTab: 'Balances',
-                })
+        <div className={`w-full 
+        items-center justify-center flex flex-col
+        fixed bg-background top-0 left-0
+        pt-4 h-[180px]`}>
+          <Tab
+            data={[
+              {
+                title: 'HOME',
+                isActive: store.homeTab === 'Balances',
+                onClick: () => {
+                  store.update({
+                    homeTab: 'Balances',
+                  })
+                },
               },
-            },
-            {
-              title: 'OTHERS',
-              isActive: store.homeTab === 'Services',
-              onClick: () => {
-                store.update({
-                  homeTab: 'Services',
-                })
+              {
+                title: 'OTHERS',
+                isActive: store.homeTab === 'Services',
+                onClick: () => {
+                  store.update({
+                    homeTab: 'Services',
+                  })
+                },
               },
-            },
-          ]}
-        />
-        <div className="h-[120px] flex items-center justify-center">
-          <p className="text-[27.5px]">23.000 cUSD</p>
+            ]}
+          />
+          <div className="h-full flex items-center justify-center">
+            <p className="text-[27.5px]">23.000 cUSD</p>
+          </div>
         </div>
-        <div className="flex flex-col bg-card rounded-md p-1 w-full">
+        <div className="flex flex-col bg-card rounded-md py-[0px] w-full mt-[180px]">
           {dummyTokens.map((val, i) => (
             <Row key={i} {...val} />
           ))}
@@ -75,7 +80,7 @@ export default function HomePage() {
 
 function Row(props: IToken) {
   return (
-    <div className="w-full bg-background px-2 py-1 flex border-b border-card  items-center justify-center">
+    <div className="w-full bg-background px-0 py-1 flex border-b-[0.2px] border-card items-center justify-center">
       <Image
         src={props.imgUrl}
         alt={TokenIcons.cUSDIcon.name}

@@ -32,7 +32,7 @@ export default function Wrapper({ hideBottomNav, ...props}: { children: ReactNod
         {/* mt-[50px] md:mt-[70px] mb-[70px] md:mb-0 md:ml-[100px]  */}
         <div
           className={`
-        mt-[15px] md:mt-[70px] mb-[70px] md:mb-0 md:ml-[100px] 
+        mt-[15px] md:mt-[70px] mb-[90px] md:mb-0 md:ml-[100px] 
         w-full h-full
         px-4 py-0 md:py-2
         flex items-center justify-center
