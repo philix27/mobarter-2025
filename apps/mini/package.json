@@ -47,6 +47,7 @@
     "@wagmi/connectors": "^5.7.12",
     "@web3auth/base-provider": "^9.7.0",
     "@web3auth/single-factor-auth": "^9.5.0",
+    "autoprefixer": "^10.4.21",
     "big.js": "^6.2.1",
     "bignumber.js": "^9.1.1",
     "decimal.js-light": "^2.5.1",
