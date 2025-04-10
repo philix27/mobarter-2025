@@ -8,8 +8,7 @@ import BottomModal from '../BottomModal'
 
 import { navLinks } from './links'
 
-const iconStyle =
-  'cursor-pointer w-full hover:bg-card flex flex-col items-center justify-center h-full'
+const iconStyle = 'w-full flex flex-col items-center justify-start h-full pt-2'
 
 export default function BottomNav() {
   const [showMore, setShowMore] = useState(false)
@@ -20,7 +19,7 @@ export default function BottomNav() {
     <div
       className={cn(
         'w-screen h-[70px] bg-background fixed bottom-0 md:hidden border-t-[0.1px] border-card',
-        isTelegram && 'h-[50px] fixed'
+        isTelegram && 'h-[80px] fixed'
       )}
     >
       <div className="flex w-full items-center justify-evenly relative h-full">
@@ -28,16 +27,26 @@ export default function BottomNav() {
           const Icon = val.Icon as any
           const isActive = router.pathname === val.link
           return (
-            <Link key={i} href={val.link} className={cn(iconStyle, isActive ? 'bg-card' : '')}>
+            <Link
+              key={i}
+              href={val.link}
+              className={cn(iconStyle, isActive ? 'bg-background' : 'bg-background')}
+            >
               {Icon && (
                 <Icon
-                  size={isActive ? 24 : 20}
+                  size={isActive ? 22 : 20}
                   className={cn(isActive ? 'text-primary' : 'text-muted')}
                 />
               )}
-              {isActive || (
-                <p className={cn('font-light text-[10px] mt-2 text-muted', isTelegram && "mt-1")}>{val.title}</p>
-              )}
+              <p
+                className={cn(
+                  'font-light text-[10px] mt-1',
+                  isTelegram && 'mt-1',
+                  isActive ? 'text-primary' : 'text-muted'
+                )}
+              >
+                {val.title}
+              </p>
             </Link>
           )
         })}
