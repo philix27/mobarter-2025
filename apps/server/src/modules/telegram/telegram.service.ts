@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { LoggerService } from "../common";
 import { JwtService } from "@nestjs/jwt";
 import { validate } from "@telegram-apps/init-data-node";
-import { Auth_TelegramAuthInput, Auth_TelegramAuthResponse } from "./auth.dto";
+import { Telegram_GenerateTokenInput, Telegram_GenerateTokenResponse } from "./telegram.dto";
 
 type ITgUser = {
     username: string;
@@ -11,8 +11,9 @@ type ITgUser = {
     first_name?: string;
     last_name?: string;
 };
+
 @Injectable()
-export class TelegramAuthService {
+export class TelegramService {
     public constructor(
         private readonly logger: LoggerService,
         private readonly jwt: JwtService,
@@ -41,9 +42,9 @@ export class TelegramAuthService {
         // });
     }
 
-    async auth(
-        params: Auth_TelegramAuthInput,
-    ): Promise<Auth_TelegramAuthResponse> {
+    async generateToken(
+        params: Telegram_GenerateTokenInput,
+    ): Promise<Telegram_GenerateTokenResponse> {
         this.logger.info("Telegram endpoint");
         const { initDataRaw, isMocked, photo_url, id, username, first_name } =
             params; // Extract photoUrl from request body

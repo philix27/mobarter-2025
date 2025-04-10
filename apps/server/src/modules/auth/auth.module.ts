@@ -16,7 +16,6 @@ import { ConfigModule } from "@nestjs/config";
 import { HelperService } from "../helper/helper.service";
 import { HelpersModule } from "../helper/helper.module";
 import { AuthController } from "./auth.controller";
-import { TelegramAuthService } from "./telegram.service";
 
 @Module({
     imports: [
@@ -37,7 +36,6 @@ import { TelegramAuthService } from "./telegram.service";
         UserService,
         PrivyWalletService,
         JwtStrategy,
-        TelegramAuthService
     ],
     controllers: [AuthController],
     // exports: [JwtStrategy, GqlAuthGuard],

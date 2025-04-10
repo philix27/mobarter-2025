@@ -13,21 +13,17 @@ import {
     Auth_ResetPasswordResponse,
     Auth_sendEmailOtpInput,
     Auth_sendEmailOtpResponse,
-    Auth_TelegramAuthInput,
-    Auth_TelegramAuthResponse,
     Auth_verifyEmailOtpInput,
     Auth_verifyOtpResponse,
 } from "./auth.dto";
 import { UserDto } from "../user/user.dto";
 import { UseGuards } from "@nestjs/common";
 import { GqlAuthGuard } from "../common/guards";
-import { TelegramAuthService } from "./telegram.service";
 
 @Resolver((of: any) => UserDto)
 export class AuthResolver {
     constructor(
         private readonly service: AuthService,
-        private readonly tgService: TelegramAuthService,
     ) {}
 
     @Mutation((returns) => Auth_sendEmailOtpResponse)
@@ -97,13 +93,5 @@ export class AuthResolver {
 
         return res!;
     }
-
-    @Mutation((returns) => Auth_TelegramAuthResponse)
-    async auth_telegram(
-        @Args("input") input: Auth_TelegramAuthInput,
-    ): Promise<Auth_TelegramAuthResponse> {
-        const res = await this.tgService.auth(input);
-
-        return res!;
-    }
+   
 }
