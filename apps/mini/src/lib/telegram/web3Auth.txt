@@ -1,36 +1,34 @@
-import { getHttpEndpoint } from '@orbs-network/ton-access'
-import { User } from '@telegram-apps/sdk-react'
-import { Computed } from '@telegram-apps/signals'
-import { CHAIN_NAMESPACES, WEB3AUTH_NETWORK, } from '@web3auth/base'
-import { CommonPrivateKeyProvider ,} from '@web3auth/base-provider'
-import { Web3Auth, decodeToken } from '@web3auth/single-factor-auth'
-import React, { useCallback, useEffect, useState } from 'react'
+import { useMutation } from '@apollo/client';
+import { getHttpEndpoint } from '@orbs-network/ton-access';
+import * as Api from '@repo/api';
+import { CHAIN_NAMESPACES, WEB3AUTH_NETWORK } from '@web3auth/base';
+import { CommonPrivateKeyProvider } from '@web3auth/base-provider';
+import { Web3Auth, decodeToken } from '@web3auth/single-factor-auth';
+import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 
-import { tg } from './tg'
-import { useTelegramMock } from './hooks/useTelegramMock'
 
-function getIdTokenFromServer(
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  _initDataRaw: Computed<string | undefined>,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  _user: Computed<User | undefined>
-) {
-  // tg.miniApp
 
-  tg.miniApp
-  return ''
-}
+import { useTelegramMock } from './hooks/useTelegramMock';
+import { tg } from './tg';
+
 
 // const VITE_SERVER_URL = 'https://your-server-url.com'
 const verifier = 'mobarter1-telegram2-verifier3'
-const clientId = process.env.WEB3AUTH_CLIENT_ID
+// const clientId = process.env.WEB3AUTH_CLIENT_ID
+const clientId =
+  'BIft7CSLYu-F1OoyG126OXz5Ki5GhvAe3C9gmdEXKDGRrmpVXsIQzssJrhL_nZ4puw3-CkvyHH5iri-zIZDgVpQ'
 
-export default function TelegramProvider() {
+export default function Web3AuthProvider(props: { children: ReactNode }) {
   const [isLoggingIn, setIsLoggingIn] = useState(false)
   const [web3authSfa, setWeb3authSfa] = useState<Web3Auth | null>(null)
   const [web3AuthInitialized, setWeb3AuthInitialized] = useState(false)
   const [userData, setUserData] = useState<any | null>(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const [mutate] = useMutation<
+    Api.MutationResponse<'telegram_generateToken'>,
+    Api.MutationTelegram_GenerateTokenArgs
+  >(Api.Telegram_GenerateTokenDocument)
 
   // const { initDataRaw, initData, themeParams } = useLaunchParams() || {}
   const connectWeb3Auth = useCallback(async () => {
@@ -41,25 +39,41 @@ export default function TelegramProvider() {
           await web3authSfa.logout()
         }
 
-        const idToken = getIdTokenFromServer(tg.initDataRaw, tg.initData.user) // Fetch ID token
-        // Fetch ID token
-        const { payload } = decodeToken(idToken) as any
+        // const idToken = getIdTokenFromServer(tg.initDataRaw, tg.initData.user) // Fetch ID token
+        void mutate({
+          variables: {
+            input: {
+              id: '232342',
+              first_name: 'Philix',
+              username: 'philixbob',
+              last_name: '',
+              photo_url: 'https://www.gravatar.com/avatar',
+              initDataRaw: 'why the noise',
+              isMocked: true,
+            },
+          },
+          onCompleted: async (ids) => {
+            const tokens = ids.telegram_generateToken.token
 
-        await web3authSfa.connect({
-          verifier,
-          verifierId: payload.sub,
-          idToken,
+            // const idToken =
+            const { payload } = decodeToken(tokens) as any
+
+            await web3authSfa.connect({
+              verifier,
+              verifierId: payload.sub,
+              idToken: tokens,
+            })
+
+            console.log('ID Tokens:', ids)
+            console.log('Tokens:', tokens)
+            console.log('Payload:', payload)
+
+            // console.log('Payload:', provider)
+
+            setUserData(payload)
+            setIsLoggedIn(true)
+          },
         })
-
-        setUserData(payload)
-        setIsLoggedIn(true)
-
-        // const tonRpc = new TonRPC(web3authSfa.provider)
-        // const tonAddress = await tonRpc.getAccounts()
-        // setTonAccountAddress(tonAddress)
-
-        // const signedMsg = await tonRpc.signMessage('Hello, TON!')
-        // setSignedMessage(signedMsg)
       } catch (error) {
         console.error('Error during Web3Auth connection:', error)
       } finally {
@@ -138,17 +152,14 @@ export default function TelegramProvider() {
     </div>
   )
 
-
   return (
-    <div className="container">
-      <h1 className="title">Web3Auth TON Telegram MiniApp</h1>
-      {isLoggedIn ? (
-        <>
-          {userInfoBox}
-        </>
-      ) : (
-        <div>Loading...</div>
-      )}
+    <div className="flex items-center justify-center flex-col h-screen">
+      <div>
+        <h1 className="title">Web3Auth TON Telegram MiniApp</h1>
+        {isLoggingIn ? 'Loading...' : 'Not Loading'}
+        {isLoggedIn ? <>{userInfoBox}</> : <div>Loading...</div>}
+        {/* {props.children} */}
+      </div>
     </div>
   )
 }

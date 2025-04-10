@@ -1,29 +1,61 @@
-import { backButton, } from '@telegram-apps/sdk-react';
-import {  useEffect, ReactNode } from 'react';
-import { useRouter } from 'next/router';
+import { backButton } from '@telegram-apps/sdk-react'
+import * as tg from '@telegram-apps/sdk-react'
+import { useRouter } from 'next/router'
+import { ReactNode, useEffect } from 'react'
+import { useDarkMode } from 'src/styles/mediaQueries'
+
 import BottomNav from './BottomNav'
 import Drawer from './Drawer'
 import Sidebar from './Sidebar'
 
+// type IThemeVar = {
+//   subtitleTextColor: string
+//   sectionHeaderTextColor: string
+//   sectionSeparatorColor: string
+//   linkColor: string
+//   bgColor: string
+//   buttonColor: string
+//   accentTextColor: string
+//   buttonTextColor: string
+//   secondaryBgColor: string
+//   sectionBgColor: string
+//   bottomBarBgColor: string
+//   headerBgColor: string
+//   hintColor: string
+//   destructiveTextColor: string
+// }
 // import TopNav from './TopNav'
 
-export default function Wrapper({ hideBottomNav, ...props}: { children: ReactNode; hideBottomNav?: boolean }) {
-   const router = useRouter();
+export default function Wrapper({
+  hideBottomNav,
+  ...props
+}: {
+  children: ReactNode
+  hideBottomNav?: boolean
+}) {
+  const router = useRouter()
+  const { isDarkMode } = useDarkMode()
+
+  useEffect(() => {
+    tg.setMiniAppBackgroundColor(isDarkMode ? '#363637' : '#cbe2e5')
+    tg.setMiniAppBottomBarColor(isDarkMode ? '#363637' : '#cbe2e5')
+    tg.setMiniAppHeaderColor(isDarkMode ? '#363637' : '#cbe2e5')
+  }, [isDarkMode])
 
   useEffect(() => {
     if (hideBottomNav) {
-      backButton.show();
+      backButton.show()
     } else {
-      backButton.hide();
+      backButton.hide()
     }
-  }, [hideBottomNav]);
+  }, [hideBottomNav])
 
   useEffect(() => {
     return backButton.onClick(() => {
-      router.back();
-    });
-  }, [router]);
-  
+      router.back()
+    })
+  }, [router])
+
   return (
     <div className="w-screen bg-background h-screen p-0 m-0">
       {/* <TopNav showBack={props.hideBottomNav} /> */}
@@ -46,5 +78,3 @@ export default function Wrapper({ hideBottomNav, ...props}: { children: ReactNod
     </div>
   )
 }
-
-

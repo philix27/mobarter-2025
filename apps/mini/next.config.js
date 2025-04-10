@@ -29,35 +29,37 @@ const isDev = process.env.NODE_ENV !== 'production'
 // ]
 
 module.exports = {
-  // webpack: (config, { webpack }) => {
-  //   config.resolve.fallback = {
-  //     ...config.resolve.fallback,
-  //     fs: false,
-  //     net: false,
-  //     child_process: false,
-  //     readline: false,
-  //   }
-  //   config.plugins.push(new webpack.IgnorePlugin({ resourceRegExp: /^electron$/ }))
-  //   return config
-  // },
+  webpack: (config, { webpack }) => {
+    //   config.resolve.fallback = {
+    //     ...config.resolve.fallback,
+    //     fs: false,
+    //     net: false,
+    //     child_process: false,
+    //     readline: false,
+    //   }
+    //   config.plugins.push(new webpack.IgnorePlugin({ resourceRegExp: /^electron$/ }))
+    //   return config
+    // },
 
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: '/:any*',
-  //       destination: '/',
-  //     },
-  //   ]
-  // },
+    // async rewrites() {
+    //   return [
+    //     {
+    //       source: '/:any*',
+    //       destination: '/',
+    //     },
+    //   ]
+    // },
 
-  // async headers() {
-  //   return [
-  //     {
-  //       source: '/(.*)',
-  //       headers: securityHeaders,
-  //     },
-  //   ]
-  // },
+    // async headers() {
+    //   return [
+    //     {
+    //       source: '/(.*)',
+    //       headers: securityHeaders,
+    //     },
+    //   ]
+    config.externals['@solana/web3.js'] = 'commonjs @solana/web3.js'
+    return config
+  },
 
   env: {
     NEXT_PUBLIC_VERSION: version,
