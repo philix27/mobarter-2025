@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
 import Wrapper from 'src/components/wrapper/Wrapper'
+import { logger } from 'src/lib/utils/logger'
 
 export default function LoginWithEmail() {
   const [email, setEmail] = useState('')
@@ -30,7 +31,19 @@ export default function LoginWithEmail() {
 
 function CallMe() {
   const w = useWallets()
+  const { createWallet } = p.useCreateWallet({
+    onSuccess(p) {
+      logger.info('Wallet created: ', p.wallet.address)
+    },
+    onError(e) {
+      logger.error('Wallet could not be created', e)
+    },
+  })
 
+  async function create() {
+    const r = await createWallet({ walletIndex: 8 })
+    r.address
+  }
   const lopez = p.getEmbeddedConnectedWallet([])
   if (!w.ready) return <div>Not ready</div>
 

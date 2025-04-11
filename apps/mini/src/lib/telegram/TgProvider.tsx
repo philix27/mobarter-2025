@@ -60,9 +60,9 @@ export function TgProvider(props: { children: ReactNode }) {
               },
               // Create embedded wallets for users who don't have a wallet
               embeddedWallets: {
-                createOnLogin: 'all-users',
+                createOnLogin: 'users-without-wallets',
                 ethereum: {
-                  createOnLogin: "all-users",
+                  createOnLogin: 'users-without-wallets',
                 },
               },
             }}
