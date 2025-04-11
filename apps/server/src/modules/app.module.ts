@@ -19,6 +19,7 @@ import { ExchangeRateModule } from "./rates/rates.module";
 import { CronModule } from "./cron/cron.module";
 import { OrdersModule } from "./orders/orders.module";
 import { TelegramModule } from "./telegram/telegram.module";
+import { UtilitiesModule } from "./utilities/utilities.module";
 // import { CryptoModule } from "./crypto/crypto.module";
 
 @Module({
@@ -57,7 +58,8 @@ import { TelegramModule } from "./telegram/telegram.module";
         WalletFiatModule,
         WalletCryptoModule,
         ExchangeRateModule,
-        TelegramModule
+        TelegramModule,
+        UtilitiesModule
         // CryptoModule,
     ],
 })

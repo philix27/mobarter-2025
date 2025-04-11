@@ -93,4 +93,10 @@ export class TelegramService {
             // return { token: "" };
         }
     }
+
+
+    async validateToken(initDataRaw: string) {
+          validate(initDataRaw, process.env.TELEGRAM_BOT_TOKEN!);
+    }
+
 }

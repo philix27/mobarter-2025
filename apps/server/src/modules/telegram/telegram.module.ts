@@ -7,6 +7,7 @@ import { HelperService } from "../helper/helper.service";
 import { ConfigModule } from "@nestjs/config";
 import jwtConfig from "../auth/jwt.config";
 import { JwtModule } from "@nestjs/jwt";
+import { TelegramController } from "./telegram.controller";
 
 @Module({
     imports: [CommonModule, NotificationModule,
@@ -17,7 +18,7 @@ import { JwtModule } from "@nestjs/jwt";
         TelegramService,
         TelegramResolver,
         HelperService,
-       
     ],
+    controllers: [TelegramController]
 })
 export class TelegramModule {}
