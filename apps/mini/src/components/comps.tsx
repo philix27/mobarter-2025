@@ -45,8 +45,8 @@ export const Instructions = (props: { children: ReactNode }) => (
   </div>
 )
 
-export const Card = (props: { children: ReactNode }) => (
-  <div className="bg-card rounded-md p-3  w-full hover:disabled:">
-    <p className="text-muted">{props.children}</p>
+export const Card = (props: { children: ReactNode; onClick?: VoidFunction }) => (
+  <div className="bg-card rounded-md p-2  w-full hover:disabled text-muted" onClick={props.onClick}>
+    {props.children}
   </div>
 )

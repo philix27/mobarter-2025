@@ -38,10 +38,12 @@ export default function HomePage() {
   return (
     <Wrapper>
       <div className="w-full items-center justify-center flex flex-col">
-        <div className={`w-full 
+        <div
+          className={`w-full 
         items-center justify-center flex flex-col
         fixed bg-background top-0 left-0
-        pt-[5px] h-[150px]`}>
+        pt-[5px] h-[150px]`}
+        >
           <Tab
             data={[
               {
@@ -68,7 +70,7 @@ export default function HomePage() {
             <p className="text-[27.5px]">23.000 cUSD</p>
           </div>
         </div>
-        <div className="flex flex-col bg-card rounded-md py-[0px] w-full mt-[150px]">
+        <div className="flex flex-col bg-card rounded-md w-full mt-[150px] p-[2px]">
           {dummyTokens.map((val, i) => (
             <Row key={i} {...val} />
           ))}
@@ -80,7 +82,7 @@ export default function HomePage() {
 
 function Row(props: IToken) {
   return (
-    <div className="w-full bg-background px-0 py-1 flex border-b-[0.2px] border-card items-center justify-center">
+    <div className="w-full bg-background px-2 py-1 flex items-center justify-center mb-[2px] rounded-md">
       <Image
         src={props.imgUrl}
         alt={TokenIcons.cUSDIcon.name}
