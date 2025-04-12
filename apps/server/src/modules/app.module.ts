@@ -4,7 +4,7 @@ import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
 import { ScheduleModule } from "@nestjs/schedule";
 import { JwtModule } from "@nestjs/jwt";
 import { CommonModule, secrets } from "./common";
-import { PubSubModule } from "./pubsub/pubsub.module";
+// import { PubSubModule } from "./pubsub/pubsub.module";
 import { NotificationModule } from "./notification/notification.module";
 import { AuthModule } from "./auth/auth.module";
 import { UserModule } from "./user/user.module";
@@ -18,6 +18,9 @@ import { KycModule } from "./kyc/kyc.module";
 import { ExchangeRateModule } from "./rates/rates.module";
 import { CronModule } from "./cron/cron.module";
 import { OrdersModule } from "./orders/orders.module";
+import { TelegramModule } from "./telegram/telegram.module";
+import { UtilitiesModule } from "./utilities/utilities.module";
+// import { CryptoModule } from "./crypto/crypto.module";
 
 @Module({
     imports: [
@@ -37,11 +40,13 @@ import { OrdersModule } from "./orders/orders.module";
         JwtModule.register({
             global: true,
             secret: secrets.JWT_SECRET,
-            signOptions: { expiresIn: "12h" },
+            signOptions: { expiresIn: "12h", algorithm: "RS256", "keyid": "", },
+            "privateKey": ""
+            
         }),
         CommonModule,
         HelpersModule,
-        PubSubModule,
+        // PubSubModule,
         NotificationModule,
         AuthModule,
         UserModule,
@@ -53,6 +58,9 @@ import { OrdersModule } from "./orders/orders.module";
         WalletFiatModule,
         WalletCryptoModule,
         ExchangeRateModule,
+        TelegramModule,
+        UtilitiesModule
+        // CryptoModule,
     ],
 })
 export class ApplicationModule {}

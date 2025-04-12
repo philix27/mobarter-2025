@@ -1,15 +1,14 @@
-import type { IconType } from 'react-icons';
-import { BsBank } from 'react-icons/bs';
-import { HiHome } from 'react-icons/hi';
-import { MdNotes, MdOutlineNoteAlt } from 'react-icons/md';
-import { RiExchange2Fill, RiUserFill } from 'react-icons/ri';
-
+import type { IconType } from 'react-icons'
+import { BsBank } from 'react-icons/bs'
+import { CiWallet } from 'react-icons/ci'
+import { MdNotes, MdOutlineNoteAlt } from 'react-icons/md'
+import { RiExchange2Fill, RiUserFill } from 'react-icons/ri'
 
 export const navLinks: { title: string; link: string; Icon: IconType }[] = [
   {
-    title: 'Home',
+    title: 'Wallet',
     link: '/',
-    Icon: HiHome,
+    Icon: CiWallet,
   },
 
   {

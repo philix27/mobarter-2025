@@ -1,0 +1,5 @@
+mutation Telegram_generateToken($input: Telegram_GenerateTokenInput!) {
+  telegram_generateToken(input: $input) {
+    token
+  }
+}

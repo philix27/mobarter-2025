@@ -28,21 +28,20 @@ export default function BottomModal({
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, ease: 'easeOut', easeInOut: 'easeOut' }}
           className={cn(
-            `min-h-[375px] bg-card 
+            `min-h-[375px] bg-card border-none 
         w-full bot
          rounded-t-[15px] 
-        border-2 border-card
         `
           )}
         >
           <div
-            className="w-full  flex items-center justify-between py-[10px] px-5 bg-background rounded-t-[15px]"
+            className="w-full  flex items-center justify-between py-[10px] px-5  border-b-[0.2px] border-b-background"
             onClick={props.onClose}
           >
             {props.title ? <p className="text-xs font-semibold">{props.title}</p> : <div />}
             <XIcon size={18} />
           </div>
-          <div className="p-2">{props.children}</div>
+          <div className="px-3 py-2">{props.children}</div>
           <div className="h-[70px]" />
         </motion.div>
       </div>

@@ -1,9 +1,8 @@
-import Image from 'next/image';
-import { Tab } from 'src/components/Tab';
-import Wrapper from 'src/components/wrapper/Wrapper';
-import { TokenIcons } from 'src/images/tokens/TokenIcon';
-import { AppStores } from 'src/lib/zustand';
-
+import Image from 'next/image'
+import { Tab } from 'src/components/Tab'
+import Wrapper from 'src/components/wrapper/Wrapper'
+import { TokenIcons } from 'src/images/tokens/TokenIcon'
+import { AppStores } from 'src/lib/zustand'
 
 type IToken = {
   fullName: string
@@ -34,36 +33,44 @@ const dummyTokens: IToken[] = [
 ]
 
 export default function HomePage() {
-    const store = AppStores.useSettings()
+  const store = AppStores.useSettings()
+
   return (
     <Wrapper>
       <div className="w-full items-center justify-center flex flex-col">
-         <Tab
-          data={[
-            {
-              title: 'HOME',
-              isActive: store.homeTab === 'Balances',
-              onClick: () => {
-                store.update({
-                  homeTab: "Balances",
-                })
+        <div
+          className={`w-full 
+        items-center justify-center flex flex-col
+        fixed bg-background top-0 left-0
+        pt-[5px] h-[150px]`}
+        >
+          <Tab
+            data={[
+              {
+                title: 'HOME',
+                isActive: store.homeTab === 'Balances',
+                onClick: () => {
+                  store.update({
+                    homeTab: 'Balances',
+                  })
+                },
               },
-            },
-            {
-              title: 'OTHERS',
-              isActive: store.homeTab === 'Services',
-              onClick: () => {
-                store.update({
-                  homeTab: "Services",
-                })
+              {
+                title: 'OTHERS',
+                isActive: store.homeTab === 'Services',
+                onClick: () => {
+                  store.update({
+                    homeTab: 'Services',
+                  })
+                },
               },
-            },
-          ]}
-        />
-        <div className="h-[100px] flex items-center justify-center">
-          <p className="text-[27.5px]">23.000 cUSD</p>
+            ]}
+          />
+          <div className="h-full flex items-center justify-center">
+            <p className="text-[27.5px]">23.000 cUSD</p>
+          </div>
         </div>
-        <div className="flex flex-col bg-card rounded-md p-1 w-full">
+        <div className="flex flex-col bg-card rounded-md w-full mt-[150px] gap-y-[0.1px] px-1 py-1">
           {dummyTokens.map((val, i) => (
             <Row key={i} {...val} />
           ))}
@@ -75,7 +82,7 @@ export default function HomePage() {
 
 function Row(props: IToken) {
   return (
-    <div className="w-full bg-background px-2 py-1 flex border-b border-card  items-center justify-center">
+    <div className="w-full px-2 py-1 flex items-center justify-center hover:bg-background ">
       <Image
         src={props.imgUrl}
         alt={TokenIcons.cUSDIcon.name}
@@ -84,10 +91,10 @@ function Row(props: IToken) {
 
       <div className="flex justify-between w-full items-center">
         <div className="flex flex-col justify-between">
-          <p className="">{props.symbol}</p>
+          <p className="text-[14px]">{props.symbol}</p>
           <p className="text-muted text-[12px]">{props.fullName}</p>
         </div>
-        <p className="text-[18px]">120.023</p>
+        <p className="text-[15px] font-medium">120.023</p>
       </div>
     </div>
   )

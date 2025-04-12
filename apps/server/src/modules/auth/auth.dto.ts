@@ -81,6 +81,7 @@ export class Auth_ResetPasswordResponse {
     @Field()
     message: string;
 }
+
 @InputType()
 export class Auth_LoginInput {
     @Field()

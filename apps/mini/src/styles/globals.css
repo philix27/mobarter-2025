@@ -4,6 +4,12 @@
 
 @layer base {
   :root {
+    /* Telegram */
+    --safe-area-inset-bottom: calc(100vh - var(--tg-viewport-stable-height, 100vh));
+    .safemybottomelement {
+      padding-bottom: calc(1rem + var(--safe-area-inset-bottom));
+    }
+    /* Tailwind */
     --background: #cbe2e5;
     --foreground: #494a4a;
 
@@ -36,7 +42,8 @@
   }
 
   .dark {
-    --background: #363637;
+    --background: #272727;
+    /* --background: #2f2f30; */
     /* --background: #3c3c3c; */
     --foreground: #ebebeb;
 
@@ -46,7 +53,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 47.4% 11.2%;
 
-    --card: #282828;
+    --card: #1f1f1f;
     --card-foreground: #ffff;
 
     --primary: #ff6719;
@@ -61,8 +68,8 @@
     --destructive: #d00000;
     --destructive-foreground: #ffffff;
 
-    --ring: #575757;
-    --border: #717171;
+    --ring: #454547;
+    --border: #454547;
     --input: #151718;
     --tw-shadow: #545353;
     --radius: 0.5rem;
@@ -70,7 +77,20 @@
   body {
     font-family: 'Inter', sans-serif;
     /* font-family: 'Fira Mono', serif; */
+    background: var(--tg-theme-secondary-bg-color, #363637);
   }
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+#root {
+  /* Preserve scrolling behavior */
+  overflow-y: auto;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -89,10 +109,15 @@
   -ms-touch-action: pan-x pan-y;
 }
 
+html,
+body {
+  overscroll-behavior: none;
+}
 body {
   -ms-content-zooming: none;
   touch-action: pan-x pan-y;
   -ms-touch-action: pan-x pan-y;
+  background: var(--tg-theme-secondary-bg-color, #363637);
 }
 
 @layer utilities {

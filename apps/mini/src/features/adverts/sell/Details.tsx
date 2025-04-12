@@ -94,7 +94,7 @@ export function SellDetails({ data }: { data: Advert_GetResponse }) {
         </p>
       </div>
 
-      <Label>Card from {data.merchant_nickname}</Label>
+      <Label>Instructions from {data.merchant_nickname}</Label>
       <Card>{data.instructions}</Card>
 
       <BankAccount />
