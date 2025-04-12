@@ -44,8 +44,8 @@ function RootInner({ children }: PropsWithChildren) {
     <AuthCoreContextProvider
       options={{
         projectId: process.env.NEXT_PUBLIC_PARTICLE_PROJECT_ID as string,
-        clientKey: process.env.PARTICLE_CLIENT_KEY as string,
-        appId: process.env.PARTICLE_APP_ID as string,
+        clientKey: process.env.NEXT_PUBLIC_PARTICLE_CLIENT_KEY as string,
+        appId: process.env.NEXT_PUBLIC_PARTICLE_APP_ID as string,
         customStyle: {
           projectName: 'Mobarter',
           subtitle: 'Welcome to a Celo based P2P marketplace',

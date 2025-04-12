@@ -52,8 +52,8 @@ export const AppProvder = ({ children }: React.PropsWithChildren) => {
       })
       return new SmartAccount(provider, {
         projectId: process.env.NEXT_PUBLIC_PARTICLE_PROJECT_ID as string,
-        clientKey: process.env.PARTICLE_CLIENT_KEY as string,
-        appId: process.env.PARTICLE_APP_ID as string,
+        clientKey: process.env.NEXT_PUBLIC_PARTICLE_CLIENT_KEY as string,
+        appId: process.env.NEXT_PUBLIC_PARTICLE_APP_ID as string,
         aaOptions: {
           accountContracts,
         },
