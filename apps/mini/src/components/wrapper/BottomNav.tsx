@@ -18,7 +18,7 @@ export default function BottomNav() {
   return (
     <div
       className={cn(
-        'w-screen h-[70px] bg-background fixed bottom-0 md:hidden border-t-[0.1px] border-card',
+        'w-screen h-[70px] bg-background fixed bottom-0 md:hidden border-t-[0.2px] border-t-background',
         isTelegram && 'h-[80px] fixed'
       )}
     >

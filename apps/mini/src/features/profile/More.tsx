@@ -1,4 +1,4 @@
-import { useAuthCore, useSolana, useUserInfo } from '@particle-network/auth-core-modal'
+import { useAuthCore, useUserInfo } from '@particle-network/auth-core-modal'
 import { miniApp, viewport } from '@telegram-apps/sdk-react'
 import { useEffect } from 'react'
 import { IconType } from 'react-icons'
@@ -6,16 +6,16 @@ import { BsWallet } from 'react-icons/bs'
 import { MdLogout, MdSecurity } from 'react-icons/md'
 import { useAppContext } from 'src/Root/context'
 import { Button } from 'src/components/Button'
-import EVMDemo from 'src/components/EVMDemo'
-import SolanaDemo from 'src/components/SolanaDemo'
+import EVMDemo from 'src/components/demo/evm'
+import SolanaDemo from 'src/components/demo/solana'
 import { Card, Label } from 'src/components/comps'
 import { copyTextToClipboard, shortString } from 'src/utils'
 
 export function MoreFeat() {
-  const { address: solanaAddress, enable: enableSolana } = useSolana()
   const { openWallet, openAccountAndSecurity } = useAuthCore()
   const userInfo = useUserInfo()
-  const { handleError, connectError, evmAddress, connectionStatus } = useAppContext()
+  const { handleError, connectError, evmAddress, solanaAddress, enableSolana, connectionStatus } =
+    useAppContext()
   // TODO: Cross check
   useEffect(() => {
     if (viewport) {
@@ -45,15 +45,11 @@ export function MoreFeat() {
 
   const onAction = (key: 'logout' | 'account-security') => {
     if (key === 'logout') {
-      onLogout()
+      localStorage.clear()
+      miniApp.close()
     } else if (key === 'account-security') {
       openAccountAndSecurity()
     }
-  }
-
-  const onLogout = () => {
-    localStorage.clear()
-    miniApp.close()
   }
 
   if (connectionStatus !== 'connected') {
@@ -113,7 +109,7 @@ export function MoreFeat() {
           }}
         />
       </div>
-      
+
       {!solanaAddress && (
         <Button
           className="mt-2 rounded-3xl text-xs"

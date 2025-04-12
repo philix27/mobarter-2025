@@ -1,12 +1,13 @@
-import { SmartAccount } from '@particle-network/aa'
-import type { ConnectParam, UserInfo } from '@particle-network/auth-core'
-import { AuthType } from '@particle-network/auth-core'
-import type { ConnectionStatus } from '@particle-network/auth-core-modal'
-import { useConnect, useCustomize, useEthereum } from '@particle-network/auth-core-modal'
-import { miniApp, popup, useLaunchParams } from '@telegram-apps/sdk-react'
-import React, { createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { toast } from 'sonner'
-import { erc4337Config } from 'src/config/erc4337'
+import { SmartAccount } from '@particle-network/aa';
+import type { ConnectParam, UserInfo } from '@particle-network/auth-core';
+import { AuthType } from '@particle-network/auth-core';
+import type { ConnectionStatus } from '@particle-network/auth-core-modal';
+import { useAuthCore, useConnect, useCustomize, useEthereum, useSolana } from '@particle-network/auth-core-modal';
+import { miniApp, popup, useLaunchParams } from '@telegram-apps/sdk-react';
+import React, { createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { toast } from 'sonner';
+import { erc4337Config } from 'src/config/erc4337';
+
 
 type ContextValue = {
   handleError: (error: any) => void
@@ -15,22 +16,24 @@ type ContextValue = {
   evmAddress?: string
   connect: (options?: ConnectParam) => Promise<UserInfo | undefined>
   connectionStatus: ConnectionStatus
+  solanaAddress: string | null
+  enableSolana: () => Promise<string>
+  openWallet: VoidFunction
+  onAction: (key: 'logout' | 'account-security') => void
 }
 
 export const AppContext = createContext<ContextValue | null>(null)
 
 export const AppProvder = ({ children }: React.PropsWithChildren) => {
-  // const miniApp = useMiniApp();
-  // const popup = usePopup();
   const { initDataRaw } = useLaunchParams()
-
   const { connect, connectionStatus } = useConnect()
   const { provider, address } = useEthereum()
   const { erc4337 } = useCustomize()
-
+  const { openWallet, openAccountAndSecurity } = useAuthCore()
   const [connectError, setConnectError] = useState<any>()
   const initDataConnectedRef = useRef(false)
   const [evmAddress, setEVMAddress] = useState<string>()
+  const { address: solanaAddress, enable: enableSolana } = useSolana()
 
   const smartAccount = useMemo(() => {
     if (provider) {
@@ -95,6 +98,7 @@ export const AppProvder = ({ children }: React.PropsWithChildren) => {
           thirdpartyCode: initData,
         })
       } catch (error: any) {
+        console.log('Error: ', error)
         if (error.message) {
           setConnectError(error)
         }
@@ -146,6 +150,15 @@ export const AppProvder = ({ children }: React.PropsWithChildren) => {
     [connectWithTelegram, initDataRaw, miniApp, popup]
   )
 
+  const onAction = (key: 'logout' | 'account-security') => {
+    if (key === 'logout') {
+      localStorage.clear()
+      miniApp.close()
+    } else if (key === 'account-security') {
+      openAccountAndSecurity()
+    }
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -155,6 +168,10 @@ export const AppProvder = ({ children }: React.PropsWithChildren) => {
         evmAddress,
         connect,
         connectionStatus,
+        solanaAddress,
+        enableSolana,
+        openWallet,
+        onAction,
       }}
     >
       {children}
