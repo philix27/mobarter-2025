@@ -40,7 +40,6 @@ function RootInner({ children }: PropsWithChildren) {
   }, [debug])
 
   return (
-    // <SDKProvider acceptCustomStyles debug={debug}>
     <AuthCoreContextProvider
       options={{
         projectId: process.env.NEXT_PUBLIC_PARTICLE_PROJECT_ID as string,
@@ -60,11 +59,8 @@ function RootInner({ children }: PropsWithChildren) {
       }}
     >
       <Toaster richColors position="bottom-center" expand={false} closeButton duration={2000} />
-      <AppProvder>
-        {children}
-      </AppProvder>
+      <AppProvder>{children}</AppProvder>
     </AuthCoreContextProvider>
-    // </SDKProvider>
   )
 }
 

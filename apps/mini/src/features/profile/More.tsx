@@ -129,7 +129,7 @@ export function MoreFeat() {
 }
 
 function Row(props: { text: string; Icon: IconType; onClick: VoidFunction }) {
-  const { Icon } = props
+  const  Icon  = props.Icon as any
   return (
     <div
       className="flex p-2 items-center bg-background rounded-md hover:bg-card"

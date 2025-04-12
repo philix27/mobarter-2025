@@ -3,7 +3,7 @@ import { cn } from 'src/lib/utils'
 
 export function Label(params: { children: ReactNode; className?: string }) {
   return (
-    <div className={cn('flex items-center w-full justify-start mb-1 mt-4', params.className)}>
+    <div className={cn('flex items-center justify-start mb-1 mt-4', params.className)}>
       <p className="text-muted text-[12.5px] uppercase ml-2 font-light">{params.children}</p>
     </div>
   )
