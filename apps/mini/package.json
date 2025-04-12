@@ -44,6 +44,7 @@
     "@telegram-apps/telegram-ui": "^2.1.5",
     "@tonconnect/ui-react": "^2.0.5",
     "@twa-dev/sdk": "^8.0.2",
+    "@types/bs58": "^5.0.0",
     "@vercel/analytics": "^1.0.1",
     "@wagmi/connectors": "^5.7.12",
     "autoprefixer": "^10.4.21",

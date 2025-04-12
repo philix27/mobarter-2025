@@ -8,7 +8,6 @@ import React, { createContext, useCallback, useEffect, useMemo, useRef, useState
 import { toast } from 'sonner';
 import { erc4337Config } from 'src/config/erc4337';
 
-
 type ContextValue = {
   handleError: (error: any) => void
   connectError: any

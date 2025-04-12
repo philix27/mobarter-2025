@@ -10,7 +10,7 @@ export class UtilitiesResolver {
 
     @Mutation((returns) => Utilities_PurchaseAirtimeResponse)
     @UseGuards(GqlAuthGuard)
-    async airtime_purchase(
+    async utility_purchaseAirtime(
         @Args("input") input: Utilities_PurchaseAirtimeInput,
         @Context() context: { req: { userId: number } },
     ): Promise<Utilities_PurchaseAirtimeResponse> {
