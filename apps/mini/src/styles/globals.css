@@ -42,7 +42,8 @@
   }
 
   .dark {
-    --background: #2f2f30;
+    --background: #272727;
+    /* --background: #2f2f30; */
     /* --background: #3c3c3c; */
     --foreground: #ebebeb;
 
@@ -67,8 +68,8 @@
     --destructive: #d00000;
     --destructive-foreground: #ffffff;
 
-    --ring: #575757;
-    --border: #717171;
+    --ring: #454547;
+    --border: #454547;
     --input: #151718;
     --tw-shadow: #545353;
     --radius: 0.5rem;

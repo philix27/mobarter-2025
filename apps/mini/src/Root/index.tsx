@@ -61,7 +61,7 @@ function RootInner({ children }: PropsWithChildren) {
     >
       <Toaster richColors position="bottom-center" expand={false} closeButton duration={2000} />
       <AppProvder>
-        <div className="box-border w-screen">{children}</div>
+        {children}
       </AppProvder>
     </AuthCoreContextProvider>
     // </SDKProvider>

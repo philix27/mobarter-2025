@@ -19,9 +19,9 @@ export default function Wrapper({
   const { isDarkMode } = useDarkMode()
 
   useEffect(() => {
-    tg.setMiniAppBackgroundColor(isDarkMode ? '#2f2f30' : '#cbe2e5')
-    tg.setMiniAppBottomBarColor(isDarkMode ? '#2f2f30' : '#cbe2e5')
-    tg.setMiniAppHeaderColor(isDarkMode ? '#2f2f30' : '#cbe2e5')
+    tg.setMiniAppBackgroundColor(isDarkMode ? '#272727' : '#cbe2e5')
+    tg.setMiniAppBottomBarColor(isDarkMode ? '#272727' : '#cbe2e5')
+    tg.setMiniAppHeaderColor(isDarkMode ? '#272727' : '#cbe2e5')
   }, [isDarkMode])
 
   useEffect(() => {

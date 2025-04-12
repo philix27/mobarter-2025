@@ -70,7 +70,7 @@ export default function HomePage() {
             <p className="text-[27.5px]">23.000 cUSD</p>
           </div>
         </div>
-        <div className="flex flex-col bg-card rounded-md w-full mt-[150px] p-[2px]">
+        <div className="flex flex-col bg-card rounded-md w-full mt-[150px] gap-y-[0.1px] px-1 py-1">
           {dummyTokens.map((val, i) => (
             <Row key={i} {...val} />
           ))}
@@ -82,7 +82,7 @@ export default function HomePage() {
 
 function Row(props: IToken) {
   return (
-    <div className="w-full bg-background px-2 py-1 flex items-center justify-center mb-[2px] rounded-md">
+    <div className="w-full px-2 py-1 flex items-center justify-center hover:bg-background ">
       <Image
         src={props.imgUrl}
         alt={TokenIcons.cUSDIcon.name}
@@ -91,10 +91,10 @@ function Row(props: IToken) {
 
       <div className="flex justify-between w-full items-center">
         <div className="flex flex-col justify-between">
-          <p className="">{props.symbol}</p>
+          <p className="text-[14px]">{props.symbol}</p>
           <p className="text-muted text-[12px]">{props.fullName}</p>
         </div>
-        <p className="text-[18px]">120.023</p>
+        <p className="text-[15px] font-medium">120.023</p>
       </div>
     </div>
   )

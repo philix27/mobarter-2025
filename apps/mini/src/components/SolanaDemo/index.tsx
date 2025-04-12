@@ -1,6 +1,5 @@
-import { Select, SelectItem } from '@nextui-org/react'
 import { useSolana } from '@particle-network/auth-core-modal'
-import { chains } from '@particle-network/chains'
+// import { chains } from '@particle-network/chains'
 import { PublicKey, SystemProgram, Transaction } from '@solana/web3.js'
 import bs58 from 'bs58'
 import { toast } from 'sonner'
@@ -11,7 +10,8 @@ import { shortString } from 'src/utils'
 import { Button } from '../Button'
 
 const SolanaDemo = () => {
-  const { address, signMessage, chainInfo, switchChain, signAndSendTransaction } = useSolana()
+  const { address, signMessage, signAndSendTransaction } = useSolana()
+  // const { address, signMessage, chainInfo, switchChain, signAndSendTransaction } = useSolana()
   const { handleError } = useAppContext()
 
   const onSignMessage = async () => {
@@ -24,12 +24,12 @@ const SolanaDemo = () => {
     }
   }
 
-  const onSwitchChain = (key: string) => {
-    if (!key) return
-    const chainId = Number(key.split('-')[1])
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    switchChain(chainId)
-  }
+  // const onSwitchChain = (key: string) => {
+  //   if (!key) return
+  //   const chainId = Number(key.split('-')[1])
+  //   // eslint-disable-next-line @typescript-eslint/no-floating-promises
+  //   switchChain(chainId)
+  // }
 
   const sendNative = async () => {
     try {
@@ -63,7 +63,7 @@ const SolanaDemo = () => {
 
   return (
     <div className="flex w-full flex-col items-center gap-4 py-10">
-      <Select
+      {/* <Select
         label="Current Chain"
         placeholder="Select an chain"
         className="w-4/5"
@@ -76,7 +76,7 @@ const SolanaDemo = () => {
           .map((chain) => (
             <SelectItem key={`${chain.name}-${chain.id}`}>{chain.fullname}</SelectItem>
           ))}
-      </Select>
+      </Select> */}
       <Button onClick={onSignMessage}>Sign Message</Button>
       <Button onClick={sendNative}>Send Native (1 Lamports)</Button>
     </div>
