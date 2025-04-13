@@ -5,6 +5,7 @@ import { useEffect, useMemo } from 'react'
 import { toast } from 'sonner'
 import { messageValue, typedDataValue } from 'src/config'
 import { erc4337Config } from 'src/config/erc4337'
+import { logger } from 'src/lib/utils/logger'
 import { useAppContext } from 'src/root/context'
 import { shortString } from 'src/utils'
 
@@ -30,7 +31,7 @@ const EVMDemo = () => {
       const result = await signMessage(messageValue)
       toast.success(`Sign Message Success! Signature: ${shortString(result)}`)
     } catch (error: any) {
-      console.log('signMessage error', error)
+      logger.error('signMessage error', error)
       handleError(error)
     }
   }
@@ -43,7 +44,7 @@ const EVMDemo = () => {
       })
       toast.success(`Sign Typed Data Success! Signature: ${shortString(result)}`)
     } catch (error: any) {
-      console.log('signMessage error', error)
+      logger.error('signMessage error', error)
       handleError(error)
     }
   }
@@ -68,7 +69,7 @@ const EVMDemo = () => {
         toast.success(`(AA)Send Native Success! Hash: ${shortString(result)}`)
       }
     } catch (error: any) {
-      console.log('sendNative error', error)
+      logger.error('sendNative error', error)
       handleError(error)
     }
   }

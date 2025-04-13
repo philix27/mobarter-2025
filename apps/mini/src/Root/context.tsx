@@ -1,12 +1,19 @@
-import { SmartAccount } from '@particle-network/aa';
-import type { ConnectParam, UserInfo } from '@particle-network/auth-core';
-import { AuthType } from '@particle-network/auth-core';
-import type { ConnectionStatus } from '@particle-network/auth-core-modal';
-import { useAuthCore, useConnect, useCustomize, useEthereum, useSolana } from '@particle-network/auth-core-modal';
-import { miniApp, popup, useLaunchParams } from '@telegram-apps/sdk-react';
-import React, { createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { toast } from 'sonner';
-import { erc4337Config } from 'src/config/erc4337';
+import { SmartAccount } from '@particle-network/aa'
+import type { ConnectParam, UserInfo } from '@particle-network/auth-core'
+import { AuthType } from '@particle-network/auth-core'
+import type { ConnectionStatus } from '@particle-network/auth-core-modal'
+import {
+  useAuthCore,
+  useConnect,
+  useCustomize,
+  useEthereum,
+  useSolana,
+} from '@particle-network/auth-core-modal'
+import { miniApp, popup, useLaunchParams } from '@telegram-apps/sdk-react'
+import React, { createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { toast } from 'sonner'
+import { erc4337Config } from 'src/config/erc4337'
+import { logger } from 'src/lib/utils/logger'
 
 type ContextValue = {
   handleError: (error: any) => void
@@ -90,14 +97,14 @@ export const AppProvder = ({ children }: React.PropsWithChildren) => {
 
   const connectWithTelegram = useCallback(
     async (initData: string) => {
-      console.log('connectWithTelegram')
+      logger.debug('connectWithTelegram')
       try {
         await connect({
           provider: AuthType.telegram,
           thirdpartyCode: initData,
         })
       } catch (error: any) {
-        console.log('Error: ', error)
+        logger.debug('Error: ', error)
         if (error.message) {
           setConnectError(error)
         }
@@ -120,13 +127,13 @@ export const AppProvder = ({ children }: React.PropsWithChildren) => {
 
   const handleError = useCallback(
     (error: any) => {
-      console.log('handleError', error)
+      logger.debug('handleError', error)
       if (error.error_code === 10005) {
         if (!initDataConnectedRef.current && initDataRaw) {
           // eslint-disable-next-line @typescript-eslint/no-floating-promises
           connectWithTelegram(initDataRaw)
         } else {
-          console.log('popup open')
+          logger.debug('popup open')
           popup
             .open({
               title: 'Invalid Token',
