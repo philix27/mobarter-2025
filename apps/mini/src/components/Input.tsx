@@ -31,7 +31,8 @@ export default function Input(
           className={`
             w-full bg-card 
             border-none outline-none
-            text-[20px] font-normal placeholder:font-light placeholder:text-sm
+            text-[16px] font-normal placeholder:font-light placeholder:text-sm
+            py-[2px]
           `}
           onFocus={() => {
             setFocus(true)

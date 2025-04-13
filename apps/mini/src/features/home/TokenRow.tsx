@@ -1,9 +1,9 @@
 import Image from 'next/image'
-import { useAppContext } from 'src/Root/context'
 import { TokenIcons } from 'src/images/tokens/TokenIcon'
 import { ChainId } from 'src/lib/config/chains'
 import { IToken } from 'src/lib/config/tokenData'
 import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
+import { useAppContext } from 'src/root/context'
 import { formatEtherBalance } from 'src/utils'
 import { useBalance } from 'wagmi'
 
