@@ -5,7 +5,7 @@ export type IToken = {
   imgUrl: string
   symbol: string
 }
-export const dummyTokens: IToken[] = [
+export const tokensList: IToken[] = [
   { fullName: 'Celo Dollar', symbol: 'cUSD', imgUrl: TokenIcons.cUSDIcon },
   { fullName: 'Celo Native Token', symbol: 'CELO', imgUrl: TokenIcons.CeloIcon },
   { fullName: 'Celo Dollar', symbol: 'PUSD', imgUrl: TokenIcons.PUSOIcon },

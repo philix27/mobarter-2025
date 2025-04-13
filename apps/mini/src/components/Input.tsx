@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import { cn } from 'src/lib/utils';
+import React, { useState } from 'react'
+import { cn } from 'src/lib/utils'
 
+import { BottomNote, Label } from './comps'
 
 export default function Input(
   props: {
     error?: string
     desc?: string
     label?: string
+    trailingIcon?: JSX.Element
     control?: any
   } & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 ) {
@@ -14,10 +16,10 @@ export default function Input(
   const [focus, setFocus] = useState(false)
   return (
     <div className="w-full">
-      {props.label && <p className="text-muted text-[15px] mb-1">{props.label}</p>}
+      {props.label && <Label>{props.label}</Label>}
       <div
         className={cn(
-          'rounded-md px-3 py-[5px] bg-card border-muted border-[0.5px]',
+          'rounded-md px-3 py-[5px] bg-card border-muted border-[0.5px] flex items-center justify-center',
           focus && 'border-primary ',
           props.error && 'border-destructive',
           className
@@ -38,8 +40,9 @@ export default function Input(
             setFocus(false)
           }}
         />
+        {props.trailingIcon && props.trailingIcon}
       </div>
-      {props.desc && <p className="text-muted text-[13px] mt-[3px]">{props.desc}</p>}
+      {props.desc && <BottomNote>{props.desc}</BottomNote>}
       {props.error && <p className="text-destructive text-[13px] mt-1">{props.error}</p>}
     </div>
   )

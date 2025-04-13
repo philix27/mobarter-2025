@@ -12,33 +12,40 @@ import { Button } from 'src/components/Button'
 import { Label } from 'src/components/comps'
 import { copyTextToClipboard, shortString } from 'src/utils'
 
+import SendCrypto from '../send/crypto'
+import SwapModal from '../swap'
+
 import { TokenRow } from './TokenRow'
 import HomeTabs from './tabs'
-import { dummyTokens } from './tokenData'
+import { tokensList } from './tokenData'
 
+type BottomSheet = 'WALLET' | 'SEND_CRYPTO' | 'SWAP' | undefined
 export default function Home() {
-  const [showWallet, setShowWallet] = useState(false)
+  const [showBtmSheet, setBottomSheet] = useState<BottomSheet>()
   const router = useRouter()
+  const showWallet = showBtmSheet === 'WALLET'
+  const showSendCrypto = showBtmSheet === 'SEND_CRYPTO'
+  const showSwap = showBtmSheet === 'SWAP'
   const icons: { title: string; onClick: VoidFunction; icon: IconType }[] = [
     {
       title: 'Send',
       icon: BsSend,
       onClick: () => {
-        void router.push('/send')
+        setBottomSheet('SEND_CRYPTO')
       },
     },
     {
       title: 'Receive',
       icon: SlWallet,
       onClick: () => {
-        setShowWallet(true)
+        setBottomSheet('WALLET')
       },
     },
     {
       title: 'Swap',
       icon: IoSwapHorizontalOutline,
       onClick: () => {
-        void router.push('/swap')
+        setBottomSheet('SWAP')
       },
     },
     {
@@ -75,14 +82,14 @@ export default function Home() {
                 <div className="p-2 bg-card rounded-full h-[45px] w-[45px] flex items-center justify-center hover:bg-primary">
                   <Icon size={20} />
                 </div>
-                <p className="text-[10px] font-normal"> {val.title}</p>
+                <p className="text-[10px] font-normal text-muted"> {val.title}</p>
               </div>
             )
           })}
         </div>
       </div>
       <div className="flex flex-col bg-card rounded-md w-full gap-y-[0.1px] px-1 py-1">
-        {dummyTokens.map((val, i) => (
+        {tokensList.map((val, i) => (
           <TokenRow key={i} {...val} />
         ))}
       </div>
@@ -90,7 +97,7 @@ export default function Home() {
         title="Wallet address"
         showSheet={showWallet}
         onClose={() => {
-          setShowWallet(false)
+          setBottomSheet(undefined)
         }}
       >
         <div className="w-full items-center justify-center flex flex-col">
@@ -107,6 +114,24 @@ export default function Home() {
             Copy Address
           </Button>
         </div>
+      </BottomModal>
+      <BottomModal
+        title="Send crypto"
+        showSheet={showSendCrypto}
+        onClose={() => {
+          setBottomSheet(undefined)
+        }}
+      >
+        <SendCrypto />
+      </BottomModal>
+      <BottomModal
+        title="Swap crypto"
+        showSheet={showSwap}
+        onClose={() => {
+          setBottomSheet(undefined)
+        }}
+      >
+        <SwapModal />
       </BottomModal>
     </div>
   )

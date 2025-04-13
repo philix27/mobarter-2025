@@ -3,6 +3,8 @@
 import Select from 'react-select'
 import { useDarkMode } from 'src/styles/mediaQueries'
 
+import { BottomNote, Label } from './comps'
+
 export const AppSelect = (props: {
   label?: string
   error?: string
@@ -21,8 +23,8 @@ export const AppSelect = (props: {
   const borderColor = (isFocused: boolean) => (isFocused ? '#f24500' : '#4c4847')
   const outlineColor = (isFocused: boolean) => (isFocused ? '#f24500' : '#4c4847')
   return (
-    <div className='w-full'>
-      {props.label && <p className="text-muted text-[15px] mb-1">{props.label}</p>}
+    <div className="w-full">
+      {props.label && <Label>{props.label}</Label>}
       <Select
         options={props.data}
         className="w-full m-0"
@@ -38,6 +40,7 @@ export const AppSelect = (props: {
             outline: outlineColor(state.isFocused),
             borderStyle: 'solid',
             marginTop: 0,
+            borderRadius: 5,
           }),
           option: (base: any, state: any) => ({
             ...base,
@@ -67,12 +70,13 @@ export const AppSelect = (props: {
             outline: outlineColor(state.isFocused),
             borderStyle: 'none',
             margin: 0,
-            borderRadius: 15,
+            borderRadius: 5,
           }),
           valueContainer: (base: any) => ({
             ...base,
             background: bgColor,
             color: textColor,
+            borderRadius: 5,
           }),
           control: (baseStyles: any, state: any) => ({
             ...baseStyles,
@@ -85,7 +89,7 @@ export const AppSelect = (props: {
         }}
       />
       {props.error && <p className="text-destructive text-[13px] mt-1">{props.error}</p>}
-      {props.desc && <p>{props.desc}</p>}
+      {props.desc && <BottomNote>{props.desc}</BottomNote>}
     </div>
   )
 }

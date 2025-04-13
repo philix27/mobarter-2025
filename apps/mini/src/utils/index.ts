@@ -17,11 +17,16 @@ export function shortString(str: any, len = 5): string {
 }
 
 export const copyTextToClipboard = async (text: string) => {
-  try {
-    await navigator.clipboard.writeText(text)
+  await navigator.clipboard.writeText(text).then(() => {
     toast.success('Copied')
-    console.log('Text copied to clipboard')
-  } catch (err) {
-    console.error('Failed to copy text: ', err)
-  }
+  })
+}
+export const pasteTextFromClipboard = async () => {
+  let val = ''
+  await navigator.clipboard.readText().then((text) => {
+    val = text
+    toast.success('Paste from clipboard')
+  })
+
+  return val
 }
