@@ -1,20 +1,19 @@
 import { useState } from 'react'
 import { FaCopy } from 'react-icons/fa6'
+import { toast } from 'sonner'
 import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
 import { AppSelect } from 'src/components/Select'
+import { tokensList } from 'src/lib/config/tokenData'
 import { logger } from 'src/lib/utils/logger'
 import { pasteTextFromClipboard } from 'src/utils'
-
-import { tokensList } from '../home/tokenData'
-import { toast } from 'sonner'
 
 export default function SendCrypto() {
   const [walletAddress, setWalletAddress] = useState('')
   const Copy = FaCopy as any
 
   const handleSend = () => {
-    toast.success("Sent")
+    toast.success('Sent')
   }
   return (
     <div className="w-full items-center justify-center flex flex-col px-1 mb-5">
@@ -43,7 +42,9 @@ export default function SendCrypto() {
         })}
       />
       <Input label="Amount" placeholder="Amount to send" type="number" />
-      <Button className="mt-5" onClick={handleSend}>Send</Button>
+      <Button className="mt-5" onClick={handleSend}>
+        Send
+      </Button>
     </div>
   )
 }

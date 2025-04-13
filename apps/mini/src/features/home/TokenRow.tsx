@@ -1,9 +1,18 @@
 import Image from 'next/image'
+import { useAppContext } from 'src/Root/context'
 import { TokenIcons } from 'src/images/tokens/TokenIcon'
-
-import { IToken } from './tokenData'
+import { ChainId } from 'src/lib/config/chains'
+import { IToken } from 'src/lib/config/tokenData'
+import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
+import { useBalance } from 'wagmi'
 
 export function TokenRow(props: IToken) {
+  const { evmAddress } = useAppContext()
+  const { data, isLoading } = useBalance({
+    address: evmAddress as `0x${string}`,
+    chainId: 42220,
+    token: getTokenAddress(props.symbol as TokenId, ChainId.Celo) as `0x${string}`,
+  })
   return (
     <div className="w-full px-2 py-1 flex items-center justify-center hover:bg-background ">
       <Image
@@ -17,8 +26,16 @@ export function TokenRow(props: IToken) {
           <p className="text-[14px]">{props.symbol}</p>
           <p className="text-muted text-[12px]">{props.fullName}</p>
         </div>
-        <p className="text-[15px] font-medium">120.023</p>
+        <p className="text-[15px] font-medium">
+          {isLoading ? 'X.XX' : data ? formatEtherBalance(data.value, props.decimals) : '0'}
+        </p>
       </div>
     </div>
   )
+}
+
+function formatEtherBalance(balance: bigint, decimals = 18, precision = 4) {
+  const divisor = 10 ** decimals
+  const ether = Number(balance) / divisor
+  return ether.toFixed(precision) // returns a string like "0.1234"
 }

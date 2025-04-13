@@ -8,7 +8,7 @@ export default function HomeTabs() {
     <Tab
       data={[
         {
-          title: 'HOME',
+          title: 'WALLET',
           isActive: store.homeTab === 'Balances',
           onClick: () => {
             store.update({
@@ -17,7 +17,7 @@ export default function HomeTabs() {
           },
         },
         {
-          title: 'OTHERS',
+          title: 'UTILITIES',
           isActive: store.homeTab === 'Services',
           onClick: () => {
             store.update({

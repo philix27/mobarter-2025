@@ -1,54 +1,43 @@
 import { useRouter } from 'next/router'
-import { useState } from 'react'
 import { IconType } from 'react-icons'
 import { BsSend } from 'react-icons/bs'
 import { GoHistory } from 'react-icons/go'
 import { IoSwapHorizontalOutline } from 'react-icons/io5'
 import { SlWallet } from 'react-icons/sl'
-import QRCode from 'react-qr-code'
-import { useAppContext } from 'src/Root/context'
-import BottomModal from 'src/components/BottomModal'
-import { Button } from 'src/components/Button'
-import { Label } from 'src/components/comps'
+import { tokensList } from 'src/lib/config/tokenData'
 import { AppStores } from 'src/lib/zustand'
-import { copyTextToClipboard, shortString } from 'src/utils'
 
 import Airtime from '../airtime'
-import SendCrypto from '../send/crypto'
-import SwapModal from '../swap'
 
+import BottomPopup from './BottomPopup'
 import { TokenRow } from './TokenRow'
 import HomeTabs from './tabs'
-import { tokensList } from './tokenData'
 
-type BottomSheet = 'WALLET' | 'SEND_CRYPTO' | 'SWAP' | undefined
 export default function Home() {
   const store = AppStores.useSettings()
-  const [showBtmSheet, setBottomSheet] = useState<BottomSheet>()
   const router = useRouter()
-  const showWallet = showBtmSheet === 'WALLET'
-  const showSendCrypto = showBtmSheet === 'SEND_CRYPTO'
-  const showSwap = showBtmSheet === 'SWAP'
+  // const { provider } = useEthereum() // For provider retrieval
+
   const icons: { title: string; onClick: VoidFunction; icon: IconType }[] = [
     {
       title: 'Send',
       icon: BsSend,
       onClick: () => {
-        setBottomSheet('SEND_CRYPTO')
+        store.update({ homeBtmSheet: 'SEND_CRYPTO' })
       },
     },
     {
       title: 'Receive',
       icon: SlWallet,
       onClick: () => {
-        setBottomSheet('WALLET')
+        store.update({ homeBtmSheet: 'WALLET' })
       },
     },
     {
       title: 'Swap',
       icon: IoSwapHorizontalOutline,
       onClick: () => {
-        setBottomSheet('SWAP')
+        store.update({ homeBtmSheet: 'SWAP' })
       },
     },
     {
@@ -60,7 +49,6 @@ export default function Home() {
     },
   ]
 
-  const { evmAddress } = useAppContext()
   return (
     <div className="w-full items-center justify-center flex flex-col">
       <div
@@ -70,6 +58,7 @@ export default function Home() {
         pt-[5px] mb-5`}
       >
         <HomeTabs />
+
         <div className="h-full flex items-center justify-center mt-5">
           <p className="text-[27.5px]">23.000 cUSD</p>
         </div>
@@ -100,47 +89,7 @@ export default function Home() {
           ))}
         </div>
       )}
-
-      <BottomModal
-        title="Wallet address"
-        showSheet={showWallet}
-        onClose={() => {
-          setBottomSheet(undefined)
-        }}
-      >
-        <div className="w-full items-center justify-center flex flex-col">
-          <QRCode
-            size={256}
-            style={{ height: 'auto' }}
-            value={evmAddress || 'Not found'}
-            viewBox={`0 0 256 256`}
-            enableBackground={'#fff'}
-            className="w-[75%] rounded-md"
-          />
-          <Label>{shortString(evmAddress, 10)}</Label>
-          <Button className="mt-3" onClick={() => copyTextToClipboard(evmAddress!)}>
-            Copy Address
-          </Button>
-        </div>
-      </BottomModal>
-      <BottomModal
-        title="Send crypto"
-        showSheet={showSendCrypto}
-        onClose={() => {
-          setBottomSheet(undefined)
-        }}
-      >
-        <SendCrypto />
-      </BottomModal>
-      <BottomModal
-        title="Swap crypto"
-        showSheet={showSwap}
-        onClose={() => {
-          setBottomSheet(undefined)
-        }}
-      >
-        <SwapModal />
-      </BottomModal>
+      <BottomPopup />
     </div>
   )
 }

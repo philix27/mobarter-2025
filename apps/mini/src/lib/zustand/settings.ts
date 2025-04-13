@@ -6,6 +6,7 @@ export type IHomeTab = 'Balances' | 'Services'
 export type IManageAdsTab = 'OPEN' | 'CLOSED' | 'ADD'
 export type IP2PTabs = 'BUY' | 'SELL'
 export type IOrdersTabs = 'PENDING' | 'COMPLETED' | 'CANCELED' | 'APPEAL'
+export type IHomeBottomSheet = 'WALLET' | 'SEND_CRYPTO' | 'SWAP' | "NULL"| undefined
 export interface ISlice {
   sidebarOpen?: boolean
   infoTabOpen?: boolean
@@ -15,6 +16,7 @@ export interface ISlice {
   p2pTab?: IP2PTabs
   ordersTab?: IOrdersTabs
   homeTab?: IHomeTab
+  homeBtmSheet?: IHomeBottomSheet
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
@@ -30,7 +32,8 @@ export const defaultValues: Required<ISlice> = {
   manageAdsTab: 'OPEN',
   p2pTab: 'BUY',
   ordersTab: 'PENDING',
-  homeTab: 'Balances'
+  homeTab: 'Balances',
+  homeBtmSheet: "NULL",
 }
 
 export const useSettings = create(

@@ -6,9 +6,10 @@ import { BsWallet } from 'react-icons/bs'
 import { MdLogout, MdSecurity } from 'react-icons/md'
 import { useAppContext } from 'src/Root/context'
 import { Button } from 'src/components/Button'
+import { Card, Label } from 'src/components/comps'
 import EVMDemo from 'src/components/demo/evm'
 import SolanaDemo from 'src/components/demo/solana'
-import { Card, Label } from 'src/components/comps'
+import { shortenAddress } from 'src/lib/config/addresses'
 import { copyTextToClipboard, shortString } from 'src/utils'
 
 export function MoreFeat() {
@@ -82,7 +83,7 @@ export function MoreFeat() {
       {evmAddress && (
         <>
           <Label>EVM Wallet</Label>
-          <Card onClick={() => copyText(evmAddress!)}> {shortString(evmAddress, 7)}</Card>
+          <Card onClick={() => copyText(evmAddress!)}> {shortenAddress(evmAddress)}</Card>
         </>
       )}
       {solanaAddress && (
@@ -110,6 +111,44 @@ export function MoreFeat() {
         />
       </div>
 
+      <Label>Links</Label>
+      <div className="p-1 bg-card gap-y-[2px] flex flex-col rounded-md">
+        <Row
+          text="About Us"
+          Icon={MdLogout}
+          onClick={() => {
+            return
+          }}
+        />
+        <Row
+          text="Contact Us"
+          Icon={MdLogout}
+          onClick={() => {
+            return
+          }}
+        />
+        <Row
+          text="Website"
+          Icon={MdLogout}
+          onClick={() => {
+            return
+          }}
+        />
+        <Row
+          text="Privacy Policy"
+          Icon={MdLogout}
+          onClick={() => {
+            return
+          }}
+        />
+        <Row
+          text="Terms of Service"
+          Icon={MdLogout}
+          onClick={() => {
+            return
+          }}
+        />
+      </div>
       {!solanaAddress && (
         <Button
           className="mt-2 rounded-3xl text-xs"
@@ -129,14 +168,14 @@ export function MoreFeat() {
 }
 
 function Row(props: { text: string; Icon: IconType; onClick: VoidFunction }) {
-  const  Icon  = props.Icon as any
+  const Icon = props.Icon as any
   return (
     <div
       className="flex p-2 items-center bg-background rounded-md hover:bg-card"
       onClick={props.onClick}
     >
       <Icon className="mr-3" />
-      <p className="text-[13px]">{props.text}</p>
+      <p className="text-[14px]">{props.text}</p>
     </div>
   )
 }

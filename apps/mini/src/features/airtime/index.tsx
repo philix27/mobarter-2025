@@ -19,7 +19,6 @@ export default function Airtime() {
     <div className="w-full items-center justify-center flex flex-col px-1 mb-5">
       <AppSelect
         label="Country"
-        desc="Balance: 10.2 cUSD"
         onChange={(data) => {
           logger.info('Change: ' + data)
         }}
@@ -31,7 +30,6 @@ export default function Airtime() {
       />
       <AppSelect
         label="Network"
-        desc="Balance: 10.2 cUSD"
         onChange={(data) => {
           logger.info('Change: ' + data)
         }}
@@ -43,7 +41,7 @@ export default function Airtime() {
       />
       <Input
         label="Phone number"
-        placeholder="+2348101234567"
+        placeholder="2348101234567"
         value={phoneNo}
         trailingIcon={
           <Copy
