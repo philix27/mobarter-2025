@@ -30,7 +30,7 @@ type ContextValue = {
 
 export const AppContext = createContext<ContextValue | null>(null)
 
-export const AppProvder = ({ children }: React.PropsWithChildren) => {
+export const AppProvider = ({ children }: React.PropsWithChildren) => {
   const { initDataRaw } = useLaunchParams()
   const { connect, connectionStatus } = useConnect()
   const { provider, address } = useEthereum()
@@ -153,7 +153,7 @@ export const AppProvder = ({ children }: React.PropsWithChildren) => {
         toast.error(error.message || 'unknown')
       }
     },
-    [connectWithTelegram, initDataRaw, miniApp, popup]
+    [connectWithTelegram, initDataRaw]
   )
 
   const onAction = (key: 'logout' | 'account-security') => {
