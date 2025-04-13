@@ -10,8 +10,10 @@ import { useAppContext } from 'src/Root/context'
 import BottomModal from 'src/components/BottomModal'
 import { Button } from 'src/components/Button'
 import { Label } from 'src/components/comps'
+import { AppStores } from 'src/lib/zustand'
 import { copyTextToClipboard, shortString } from 'src/utils'
 
+import Airtime from '../airtime'
 import SendCrypto from '../send/crypto'
 import SwapModal from '../swap'
 
@@ -21,6 +23,7 @@ import { tokensList } from './tokenData'
 
 type BottomSheet = 'WALLET' | 'SEND_CRYPTO' | 'SWAP' | undefined
 export default function Home() {
+  const store = AppStores.useSettings()
   const [showBtmSheet, setBottomSheet] = useState<BottomSheet>()
   const router = useRouter()
   const showWallet = showBtmSheet === 'WALLET'
@@ -88,11 +91,16 @@ export default function Home() {
           })}
         </div>
       </div>
-      <div className="flex flex-col bg-card rounded-md w-full gap-y-[0.1px] px-1 py-1">
-        {tokensList.map((val, i) => (
-          <TokenRow key={i} {...val} />
-        ))}
-      </div>
+      {store.homeTab === 'Services' ? (
+        <Airtime />
+      ) : (
+        <div className="flex flex-col bg-card rounded-md w-full gap-y-[0.1px] px-1 py-1">
+          {tokensList.map((val, i) => (
+            <TokenRow key={i} {...val} />
+          ))}
+        </div>
+      )}
+
       <BottomModal
         title="Wallet address"
         showSheet={showWallet}
