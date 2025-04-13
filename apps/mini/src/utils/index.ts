@@ -1,4 +1,5 @@
-import { toast } from 'sonner'
+import { toast } from 'sonner';
+
 
 export function shortString(str: any, len = 5): string {
   if (Array.isArray(str)) {
@@ -29,4 +30,11 @@ export const pasteTextFromClipboard = async () => {
   })
 
   return val
+}
+
+
+export function formatEtherBalance(balance: bigint, decimals = 18, precision = 4) {
+  const divisor = 10 ** decimals
+  const ether = Number(balance) / divisor
+  return ether.toFixed(precision) // returns a string like "0.1234"
 }

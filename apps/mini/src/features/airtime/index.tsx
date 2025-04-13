@@ -5,6 +5,7 @@ import { toast } from 'sonner'
 import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
 import { AppSelect } from 'src/components/Select'
+import { Label } from 'src/components/comps'
 import { logger } from 'src/lib/utils/logger'
 import { pasteTextFromClipboard } from 'src/utils'
 
@@ -17,6 +18,7 @@ export default function Airtime() {
   }
   return (
     <div className="w-full items-center justify-center flex flex-col px-1 mb-5">
+      <Label>Purchase Airtime</Label>
       <AppSelect
         label="Country"
         onChange={(data) => {

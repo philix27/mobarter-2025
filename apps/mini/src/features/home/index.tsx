@@ -4,8 +4,13 @@ import { BsSend } from 'react-icons/bs'
 import { GoHistory } from 'react-icons/go'
 import { IoSwapHorizontalOutline } from 'react-icons/io5'
 import { SlWallet } from 'react-icons/sl'
+import { useAppContext } from 'src/Root/context'
+import { ChainId } from 'src/lib/config/chains'
 import { tokensList } from 'src/lib/config/tokenData'
+import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
 import { AppStores } from 'src/lib/zustand'
+import { formatEtherBalance } from 'src/utils'
+import { useBalance } from 'wagmi'
 
 import Airtime from '../airtime'
 
@@ -50,35 +55,25 @@ export default function Home() {
   ]
 
   return (
-    <div className="w-full items-center justify-center flex flex-col">
-      <div
-        className={`w-full 
-        items-center justify-center flex flex-col
-        bg-background
-        pt-[5px] mb-5`}
-      >
-        <HomeTabs />
-
-        <div className="h-full flex items-center justify-center mt-5">
-          <p className="text-[27.5px]">23.000 cUSD</p>
-        </div>
-        <div className="flex w-full items-center justify-around mt-[20px]">
-          {icons.map((val, i) => {
-            const Icon = val.icon as any
-            return (
-              <div
-                key={i}
-                className="flex flex-col items-center justify-center"
-                onClick={val.onClick}
-              >
-                <div className="p-2 bg-card rounded-full h-[45px] w-[45px] flex items-center justify-center hover:bg-primary">
-                  <Icon size={20} />
-                </div>
-                <p className="text-[10px] font-normal text-muted"> {val.title}</p>
+    <div className="w-full items-center justify-center flex flex-col  pt-[5px]">
+      <HomeTabs />
+      <Balance />
+      <div className="flex w-full items-center justify-around mt-[30px] mb-[20px]">
+        {icons.map((val, i) => {
+          const Icon = val.icon as any
+          return (
+            <div
+              key={i}
+              className="flex flex-col items-center justify-center"
+              onClick={val.onClick}
+            >
+              <div className="p-2 bg-card rounded-full h-[45px] w-[45px] flex items-center justify-center hover:bg-primary">
+                <Icon size={20} />
               </div>
-            )
-          })}
-        </div>
+              <p className="text-[10px] font-normal text-muted"> {val.title}</p>
+            </div>
+          )
+        })}
       </div>
       {store.homeTab === 'Services' ? (
         <Airtime />
@@ -90,6 +85,29 @@ export default function Home() {
         </div>
       )}
       <BottomPopup />
+    </div>
+  )
+}
+
+function Balance() {
+  const { evmAddress } = useAppContext()
+
+  const { data, isLoading } = useBalance({
+    address: evmAddress as `0x${string}`,
+    chainId: ChainId.Celo,
+    token: getTokenAddress(TokenId.cUSD, ChainId.Celo) as `0x${string}`,
+  })
+
+  if (isLoading)
+    return (
+      <div className="h-full flex items-center justify-center mt-5">
+        <p className="text-[25px]">.. .. cUSD</p>
+      </div>
+    )
+
+  return (
+    <div className="h-full flex items-center justify-center mt-5">
+      <p className="text-[25px]">{formatEtherBalance(data!.value, 2)} cUSD</p>
     </div>
   )
 }

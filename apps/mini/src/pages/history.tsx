@@ -1,13 +1,10 @@
 import Wrapper from 'src/components/wrapper/Wrapper'
+import TransactionHistory from 'src/features/history'
 
 export default function Page() {
   return (
     <Wrapper hideBottomNav>
-      <div>History Page </div>
-      <div>Crypto Transaction </div>
-      <div>Airtime Transaction </div>
-      <div>Swap Transaction </div>
-      <div>Others Transaction </div>
+      <TransactionHistory />
     </Wrapper>
   )
 }

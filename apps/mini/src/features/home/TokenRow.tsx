@@ -4,13 +4,14 @@ import { TokenIcons } from 'src/images/tokens/TokenIcon'
 import { ChainId } from 'src/lib/config/chains'
 import { IToken } from 'src/lib/config/tokenData'
 import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
+import { formatEtherBalance } from 'src/utils'
 import { useBalance } from 'wagmi'
 
 export function TokenRow(props: IToken) {
   const { evmAddress } = useAppContext()
   const { data, isLoading } = useBalance({
     address: evmAddress as `0x${string}`,
-    chainId: 42220,
+    chainId: ChainId.Celo,
     token: getTokenAddress(props.symbol as TokenId, ChainId.Celo) as `0x${string}`,
   })
   return (
@@ -32,10 +33,4 @@ export function TokenRow(props: IToken) {
       </div>
     </div>
   )
-}
-
-function formatEtherBalance(balance: bigint, decimals = 18, precision = 4) {
-  const divisor = 10 ** decimals
-  const ether = Number(balance) / divisor
-  return ether.toFixed(precision) // returns a string like "0.1234"
 }
