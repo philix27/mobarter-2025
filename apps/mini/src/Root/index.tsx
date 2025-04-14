@@ -10,7 +10,8 @@ import { useClientOnce } from 'src/hooks/useClientOnce'
 import { useDidMount } from 'src/hooks/useDidMount'
 import { useTelegramMock } from 'src/hooks/useTelegramMock'
 import { init } from 'src/lib/telegram/init'
-import { AppProvider } from 'src/root/context'
+
+import { AppProvider } from './context'
 
 if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_PARTICLE_ENV === 'development') {
   window.__PARTICLE_ENVIRONMENT__ = 'development'
