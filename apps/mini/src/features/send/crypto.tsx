@@ -22,7 +22,7 @@ export default function SendCrypto() {
     try {
       const result = await sendTransaction({
         to: walletAddress,
-        value: '0x1',
+        value: amount.toString(),
         data: 'Send to recipient',
       })
       toast.success(`Send Native Success! Hash: ${shortString(result)}`)
@@ -42,6 +42,13 @@ export default function SendCrypto() {
 
   return (
     <div className="w-full items-center justify-center flex flex-col px-1 mb-5 gap-y-2">
+      {/* <p
+        onClick={async () => {
+          await sendCusd('0x20F50b8832f87104853df3FdDA47Dd464f885a49', '0.01')
+        }}
+      >
+        Send
+      </p> */}
       <Input
         label="Wallet Address"
         placeholder="Recipients wallet eg: 0x3428928..."

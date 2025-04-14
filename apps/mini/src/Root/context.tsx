@@ -15,6 +15,36 @@ import { toast } from 'sonner'
 import { erc4337Config } from 'src/config/erc4337'
 import { logger } from 'src/lib/utils/logger'
 
+// import { walletEntryPlugin, EntryPosition } from '@particle-network/wallet'
+
+// const useP = () => {
+//   walletEntryPlugin.init(
+//     {
+//       projectId: process.env.REACT_APP_PROJECT_ID!,
+//       clientKey: process.env.REACT_APP_CLIENT_KEY!,
+//       appId: process.env.REACT_APP_APP_ID!,
+//     },
+//     {
+//       erc4337: {
+//         // Optional
+//         name: 'SIMPLE', // SIMPLE, LIGHT, BICONOMY, or CYBERCONNECT
+//         version: '1.0.0',
+//       },
+//       visible: true, // Optional
+//       preload: true, // Optional
+//       entryPosition: EntryPosition.BR, // Optional
+//       topMenuType: 'close', // Optional
+//       // And so on.
+//     }
+//   )
+
+//   walletEntryPlugin.setWalletCore({
+//     ethereum: window.ethereum, // Any EIP-1193 provider
+//   })
+
+//   const r = walletEntryPlugin.getWalletUrl(WalletConfig)
+// }
+
 type ContextValue = {
   handleError: (error: any) => void
   connectError: any
@@ -41,6 +71,10 @@ export const AppProvider = ({ children }: React.PropsWithChildren) => {
   const [evmAddress, setEVMAddress] = useState<string>()
   const { address: solanaAddress, enable: enableSolana } = useSolana()
 
+  if (provider) {
+    const w = window as any
+    w.ethereum = provider
+  }
   const smartAccount = useMemo(() => {
     if (provider) {
       const accountContracts = {} as any
@@ -75,7 +109,7 @@ export const AppProvider = ({ children }: React.PropsWithChildren) => {
     if (erc4337 && smartAccount) {
       smartAccount.setSmartAccountContract(erc4337)
     }
-  }, [erc4337, smartAccount])
+  }, [erc4337, provider, smartAccount])
 
   useEffect(() => {
     if (address) {

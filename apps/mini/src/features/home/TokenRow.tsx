@@ -27,7 +27,7 @@ export function TokenRow(props: IToken) {
           <p className="text-[14px]">{props.symbol}</p>
           <p className="text-muted text-[12px]">{props.fullName}</p>
         </div>
-        <p className="text-[15px] font-medium">
+        <p className="text-[14px] font-medium">
           {isLoading ? 'X.XX' : data ? formatEtherBalance(data.value, props.decimals) : '0'}
         </p>
       </div>
