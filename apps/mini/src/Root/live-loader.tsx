@@ -1,6 +1,4 @@
-import React, { ReactNode } from 'react'
-// import { LiveChatLoaderProvider } from 'react-live-chat-loader'
-
+import React, { ReactNode, useEffect, useState } from 'react'
 import ChatwootWidget from './chatwoot'
 
 export default function LiveLoader({
@@ -10,11 +8,23 @@ export default function LiveLoader({
   children: ReactNode
   hide?: boolean
 }) {
-  //   const theme = useThemeColor()
+  const [hideB, setHideB] = useState(false)
+
+  useEffect(() => {
+    setHideB(true)
+    return () => {
+      const w = window as any
+      w.chatwootSettings = {
+        hideMessageBubble: false,
+        showPopoutButton: false,
+      }
+    }
+  }, [])
   return (
     <>
       {children}
-      {hide || <ChatwootWidget />}
+      {/* <Chatwoot color={theme.primary} containerClass="bg_chatwoot" /> */}
+      {hide || <ChatwootWidget hideBubble={hideB} />}
     </>
   )
 }
@@ -29,4 +39,11 @@ export default function LiveLoader({
 //       {/* <Chatwoot color={theme.primary} containerClass="bg_chatwoot" /> */}
 //       {hide || <ChatwootWidget />}
 //     </LiveChatLoaderProvider>
+//   )
+
+//  return (
+//     <>
+//       {children}
+//  <ChatwootWidget />
+//     </>
 //   )

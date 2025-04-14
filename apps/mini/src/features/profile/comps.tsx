@@ -1,6 +1,6 @@
 import { IconType } from 'react-icons'
 
-export function Row(props: { text: string; Icon: IconType; onClick: VoidFunction }) {
+export function Row(props: { text: string; Icon: IconType; onClick?: VoidFunction }) {
   const Icon = props.Icon as any
   return (
     <div

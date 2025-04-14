@@ -41,7 +41,7 @@ export default function SendCrypto() {
   }
 
   return (
-    <div className="w-full items-center justify-center flex flex-col px-1 mb-5">
+    <div className="w-full items-center justify-center flex flex-col px-1 mb-5 gap-y-2">
       <Input
         label="Wallet Address"
         placeholder="Recipients wallet eg: 0x3428928..."

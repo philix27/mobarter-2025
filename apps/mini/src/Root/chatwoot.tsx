@@ -2,16 +2,19 @@ import { useEffect } from 'react'
 
 const BASE_URL = process.env.NEXT_PUBLIC_LIVE_CHAT_BASE_URL!
 const CHATWOOT_TOKEN = process.env.NEXT_PUBLIC_LIVE_CHAT!
-export function ChatwootWidget() {
+export function ChatwootWidget(props: { hideBubble: boolean }) {
   useEffect(() => {
     const windowA = window as any
     // Add Chatwoot Settings
     windowA.chatwootSettings = {
-      hideMessageBubble: false,
-      position: 'right', // This can be left or right
+      hideMessageBubble: true,
+      showPopoutButton: false,
+      launcherTitle: 'Chat with us',
+      position: 'top', // This can be left or right
       locale: 'en', // Language to be set
       type: 'standard', // [standard, expanded_bubble]
       darkMode: 'auto',
+      baseDomain: 'mobarter.com',
     }
     // Paste the script from inbox settings except the <script> tag(function (d, t) {
     function init(d: any, t: any) {
@@ -30,7 +33,7 @@ export function ChatwootWidget() {
     }
 
     init(document, 'script')
-  }, [])
+  }, [props.hideBubble])
 
   return null
 }

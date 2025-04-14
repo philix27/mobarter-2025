@@ -1,21 +1,19 @@
-import { useAuthCore, useUserInfo } from '@particle-network/auth-core-modal'
+import { useAuthCore } from '@particle-network/auth-core-modal'
 import { miniApp, viewport } from '@telegram-apps/sdk-react'
-import { useEffect } from 'react'
+import { ReactNode, useEffect } from 'react'
 import { BsWallet } from 'react-icons/bs'
 import { MdLogout, MdSecurity } from 'react-icons/md'
 import { useAppContext } from 'src/Root/context'
 import { Button } from 'src/components/Button'
-import { Card, Label } from 'src/components/comps'
-import { shortenAddress } from 'src/lib/config/addresses'
-import { copyTextToClipboard, shortString } from 'src/utils'
+import { Label } from 'src/components/comps'
 
 import { Row } from './comps'
 import LinksAndActions from './links'
+import Support from './support'
 
 export function MoreFeat() {
   const { openWallet, openAccountAndSecurity } = useAuthCore()
-  const userInfo = useUserInfo()
-  const { handleError, connectError, evmAddress, solanaAddress, enableSolana, connectionStatus } =
+  const { handleError, connectError, solanaAddress, enableSolana, connectionStatus } =
     useAppContext()
   // TODO: Cross check
   useEffect(() => {
@@ -30,11 +28,6 @@ export function MoreFeat() {
     } catch (error) {
       handleError(error)
     }
-  }
-
-  const copyText = (text: string) => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    copyTextToClipboard(text)
   }
 
   const onOpenWallet = () => {
@@ -74,34 +67,12 @@ export function MoreFeat() {
 
   return (
     <>
-      {userInfo.userInfo!.email && (
-        <>
-          <Label>Email</Label>
-          <Card> {userInfo.userInfo!.email}</Card>
-        </>
-      )}
-      {evmAddress && (
-        <>
-          <Label>EVM Wallet</Label>
-          <Card onClick={() => copyText(evmAddress!)}> {shortenAddress(evmAddress)}</Card>
-        </>
-      )}
-      {solanaAddress && (
-        <>
-          <Label>Solana Wallet</Label>
-          <Card onClick={() => copyText(solanaAddress)}> {shortString(solanaAddress, 7)}</Card>
-        </>
-      )}
-      <Label>ACTIONS</Label>
-      <div className="p-1 bg-card gap-y-[2px] flex flex-col rounded-md">
-        <Row
-          text="Logout"
-          Icon={MdLogout}
-          onClick={() => {
-            onAction('logout')
-          }}
-        />
-        <Row text="Open Particle Wallet" Icon={BsWallet} onClick={onOpenWallet} />
+      <Container>
+        <Support />
+      </Container>
+      <Container>
+        <Label>ACTIONS</Label>
+        <Row text="Particle Wallet" Icon={BsWallet} onClick={onOpenWallet} />
         <Row
           text="Account Security"
           Icon={MdSecurity}
@@ -109,17 +80,39 @@ export function MoreFeat() {
             onAction('account-security')
           }}
         />
-      </div>
-      <LinksAndActions />
-      {!solanaAddress && (
-        <Button
-          className="mt-2 rounded-3xl text-xs"
-          color="primary"
-          onClick={() => createSolanaWallet()}
-        >
-          Create Solana Wallet
-        </Button>
+      </Container>
+      <Container>
+        <LinksAndActions />
+      </Container>
+      <Container>
+        <Row
+          text="Logout"
+          Icon={MdLogout}
+          onClick={() => {
+            localStorage.clear()
+            miniApp.close()
+          }}
+        />
+      </Container>
+      {solanaAddress && (
+        <div className="w-full flex items-center justify-center mt-4">
+          <Button
+            className="mt-2 rounded-3xl text-xs"
+            color="primary"
+            onClick={() => createSolanaWallet()}
+          >
+            Create Solana Wallet
+          </Button>
+        </div>
       )}
     </>
+  )
+}
+
+function Container(props: { children: ReactNode }) {
+  return (
+    <div className="p-[2px] bg-card gap-y-[2px] flex flex-col rounded-md mt-4">
+      {props.children}
+    </div>
   )
 }
