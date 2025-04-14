@@ -1,9 +1,9 @@
 import QRCode from 'react-qr-code'
+import { useAppContext } from 'src/Root/context'
 import BottomModal from 'src/components/BottomModal'
 import { Button } from 'src/components/Button'
 import { Label } from 'src/components/comps'
 import { AppStores } from 'src/lib/zustand'
-import { useAppContext } from 'src/root/context'
 import { copyTextToClipboard, shortString } from 'src/utils'
 
 import SendCrypto from '../send/crypto'

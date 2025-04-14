@@ -2,13 +2,13 @@ import { useEthereum } from '@particle-network/auth-core-modal'
 import { useState } from 'react'
 import { FaCopy } from 'react-icons/fa6'
 import { toast } from 'sonner'
+import { useAppContext } from 'src/Root/context'
 import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
 import { AppSelect } from 'src/components/Select'
 import { isValidAddress } from 'src/lib/config/addresses'
 import { tokensList } from 'src/lib/config/tokenData'
 import { logger } from 'src/lib/utils/logger'
-import { useAppContext } from 'src/root/context'
 import { pasteTextFromClipboard, shortString } from 'src/utils'
 
 export default function SendCrypto() {
@@ -39,7 +39,7 @@ export default function SendCrypto() {
     }
     void sendNative()
   }
-  
+
   return (
     <div className="w-full items-center justify-center flex flex-col px-1 mb-5">
       <Input
