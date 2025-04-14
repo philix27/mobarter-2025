@@ -13,7 +13,7 @@ import { Button } from '../Button'
 import { AppSelect } from '../Select'
 
 const EVMDemo = () => {
-  const { signMessage, signTypedData, sendTransaction, chainInfo, switchChain } = useEthereum()
+  const { signMessage, signTypedData, sendTransaction, chainInfo, switchChain,  } = useEthereum()
 
   const { handleError, smartAccount } = useAppContext()
 

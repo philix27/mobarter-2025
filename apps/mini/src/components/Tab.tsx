@@ -14,7 +14,7 @@ export function Tab(props: {
           )}
           onClick={onClick}
         >
-          <p className={cn('text-[12px]', isActive ? 'text-primary' : 'text-muted')}>{title}</p>
+          <p className={cn('text-[12px] font-normal', isActive ? 'text-primary font-semibold' : 'text-muted')}>{title}</p>
         </div>
       ))}
     </div>

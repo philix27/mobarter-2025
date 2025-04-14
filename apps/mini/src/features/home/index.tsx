@@ -1,22 +1,72 @@
+import { JsonRpcProvider, ethers } from 'ethers'
 import { useRouter } from 'next/router'
 import { IconType } from 'react-icons'
 import { BsSend } from 'react-icons/bs'
 import { GoHistory } from 'react-icons/go'
 import { IoSwapHorizontalOutline } from 'react-icons/io5'
 import { SlWallet } from 'react-icons/sl'
-import { ChainId } from 'src/lib/config/chains'
+import { toast } from 'sonner'
+import { ChainId, chainIdToChain } from 'src/lib/config/chains'
 import { tokensList } from 'src/lib/config/tokenData'
 import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
 import { AppStores } from 'src/lib/zustand'
 import { useAppContext } from 'src/root/context'
 import { formatEtherBalance } from 'src/utils'
-import { useBalance } from 'wagmi'
+import { useAccount, useBalance } from 'wagmi'
 
 import Airtime from '../airtime'
 
 import BottomPopup from './BottomPopup'
 import { TokenRow } from './TokenRow'
 import HomeTabs from './tabs'
+
+export function getProvider(chainId: ChainId): JsonRpcProvider {
+  // if (cache[chainId]) return cache[chainId]
+  const chain = chainIdToChain[chainId]
+  const provider = new JsonRpcProvider(chain.rpcUrl, chainId)
+
+  return provider
+}
+
+const CUSD_CONTRACT_ADDRESS = '0xA0b86991c6218b36c1d19D4A2e9eb0CE3606E9d0' // cUSD contract address on Celo
+const CUSD_ABI = [
+  // ABI for the `transfer` function (simplified)
+  'function transfer(address recipient, uint256 amount) public returns (bool)',
+]
+
+function useSendErc20() {
+  // Create an ethers provider from MetaMask
+  const provider = getProvider(ChainId.Celo)
+
+  // Get the signer (the connected wallet)
+
+  const { isConnected } = useAccount() // Get user's connected account info
+  // const { provider: pv } = useEthereum()
+
+  if (!isConnected) {
+    toast.error('Not connected')
+  }
+
+  const sendCusd = async (recipient: string, amount: string) => {
+    const signer = await provider.getSigner()
+    if (!signer) {
+      toast.error('Please connect your wallet')
+      return
+    }
+
+    const contract = new ethers.Contract(CUSD_CONTRACT_ADDRESS, CUSD_ABI, signer)
+
+    try {
+      const tx = await contract.transfer(recipient, ethers.parseUnits(amount, 18)) // cUSD has 18 decimals
+      await tx.wait() // Wait for transaction to be mined
+      toast.success(`Transaction successful: ${tx.hash}`)
+    } catch (error: any) {
+      toast.error('Error sending cUSD:', error.message)
+    }
+  }
+
+  return { sendCusd }
+}
 
 export default function Home() {
   const store = AppStores.useSettings()
@@ -54,9 +104,18 @@ export default function Home() {
     },
   ]
 
+  const { sendCusd } = useSendErc20()
+
   return (
-    <div className="w-full items-center justify-center flex flex-col  pt-[5px]">
+    <div className="w-full items-center justify-center flex flex-col">
       <HomeTabs />
+      <button
+        onClick={async () => {
+          await sendCusd('0x20F50b8832f87104853df3FdDA47Dd464f885a49', '2')
+        }}
+      >
+        Send
+      </button>
       <Balance />
       <div className="flex w-full items-center justify-around mt-[30px] mb-[20px]">
         {icons.map((val, i) => {
