@@ -16,8 +16,9 @@ export default function Support() {
         text="Customer Support"
         Icon={FcCustomerSupport}
         onClick={() => {
-          // window.$chatwoot.toggle('open') // To open widget
-          window.$chatwoot.toggle('open')
+          const w = window as any
+          // e.$chatwoot.toggle('open') // To open widget
+          w.$chatwoot.toggle('open')
           return
         }}
       />
