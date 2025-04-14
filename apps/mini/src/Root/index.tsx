@@ -12,7 +12,6 @@ import { useTelegramMock } from 'src/hooks/useTelegramMock'
 import { init } from 'src/lib/telegram/init'
 
 import { AppProvider } from './context'
-import LiveLoader from './live-loader'
 
 if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_PARTICLE_ENV === 'development') {
   window.__PARTICLE_ENVIRONMENT__ = 'development'
@@ -76,9 +75,7 @@ function RootInner({ children }: PropsWithChildren) {
       }}
     >
       <Toaster richColors position="bottom-center" expand={false} closeButton duration={2000} />
-      <AppProvider>
-        <LiveLoader>{children}</LiveLoader>
-      </AppProvider>
+      <AppProvider>{children}</AppProvider>
     </AuthCoreContextProvider>
   )
 }

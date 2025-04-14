@@ -1,3 +1,5 @@
+import { useDarkMode } from './mediaQueries'
+
 // Should mostly match tailwind.config.js
 export enum Color {
   mentoGreen = '#19D88A',
@@ -21,4 +23,51 @@ export enum Color {
   borderLight = '#F3F3F3',
   borderMedium = '#EDEEEF',
   borderError = '#E53935',
+}
+
+type ITheme = {
+  bg: string
+  text: string
+  primary: string
+  muted: string
+  secondary: string
+  accent: string
+  border: string
+  destructive: string
+  card: string
+}
+
+type IThemeColor = {
+  light: ITheme
+  dark: ITheme
+}
+export const ThemeColor: IThemeColor = {
+  light: {
+    bg: '',
+    text: '',
+    primary: '',
+    card: '',
+    muted: '',
+    secondary: '',
+    accent: '',
+    border: '',
+    destructive: '',
+  },
+  dark: {
+    bg: '#272727',
+    text: '#ebebeb',
+    primary: '#ff6719',
+    muted: '#272727',
+    card: '#1f1f1f',
+    secondary: '#282828',
+    accent: '#222525',
+    border: '#454547',
+    destructive: '#d00000',
+  },
+}
+
+export const useThemeColor = () => {
+  const { isDarkMode } = useDarkMode()
+  if (isDarkMode) return ThemeColor['dark']
+  return ThemeColor['light']
 }

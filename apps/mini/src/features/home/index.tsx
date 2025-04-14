@@ -1,18 +1,17 @@
-import { JsonRpcProvider, ethers } from 'ethers'
+import { JsonRpcProvider } from 'ethers'
 import { useRouter } from 'next/router'
 import { IconType } from 'react-icons'
 import { BsSend } from 'react-icons/bs'
 import { GoHistory } from 'react-icons/go'
 import { IoSwapHorizontalOutline } from 'react-icons/io5'
 import { SlWallet } from 'react-icons/sl'
-import { toast } from 'sonner'
 import { useAppContext } from 'src/Root/context'
 import { ChainId, chainIdToChain } from 'src/lib/config/chains'
 import { tokensList } from 'src/lib/config/tokenData'
 import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
 import { AppStores } from 'src/lib/zustand'
 import { formatEtherBalance } from 'src/utils'
-import { useAccount, useBalance } from 'wagmi'
+import { useBalance } from 'wagmi'
 
 import Airtime from '../airtime'
 
@@ -28,50 +27,49 @@ export function getProvider(chainId: ChainId): JsonRpcProvider {
   return provider
 }
 
-const CUSD_CONTRACT_ADDRESS = '0xA0b86991c6218b36c1d19D4A2e9eb0CE3606E9d0' // cUSD contract address on Celo
-const CUSD_ABI = [
-  // ABI for the `transfer` function (simplified)
-  'function transfer(address recipient, uint256 amount) public returns (bool)',
-]
+// const CUSD_CONTRACT_ADDRESS = '0xA0b86991c6218b36c1d19D4A2e9eb0CE3606E9d0' // cUSD contract address on Celo
+// const CUSD_ABI = [
+//   // ABI for the `transfer` function (simplified)
+//   'function transfer(address recipient, uint256 amount) public returns (bool)',
+// ]
 
-function useSendErc20() {
-  // Create an ethers provider from MetaMask
-  const provider = getProvider(ChainId.Celo)
+// function useSendErc20() {
+//   // Create an ethers provider from MetaMask
+//   const provider = getProvider(ChainId.Celo)
 
-  // Get the signer (the connected wallet)
+//   // Get the signer (the connected wallet)
 
-  const { isConnected } = useAccount() // Get user's connected account info
-  // const { provider: pv } = useEthereum()
+//   const { isConnected } = useAccount() // Get user's connected account info
+//   // const { provider: pv } = useEthereum()
 
-  if (!isConnected) {
-    toast.error('Not connected')
-  }
+//   if (!isConnected) {
+//     toast.error('Not connected')
+//   }
 
-  const sendCusd = async (recipient: string, amount: string) => {
-    const signer = await provider.getSigner()
-    if (!signer) {
-      toast.error('Please connect your wallet')
-      return
-    }
+//   const sendCusd = async (recipient: string, amount: string) => {
+//     const signer = await provider.getSigner()
+//     if (!signer) {
+//       toast.error('Please connect your wallet')
+//       return
+//     }
 
-    const contract = new ethers.Contract(CUSD_CONTRACT_ADDRESS, CUSD_ABI, signer)
+//     const contract = new ethers.Contract(CUSD_CONTRACT_ADDRESS, CUSD_ABI, signer)
 
-    try {
-      const tx = await contract.transfer(recipient, ethers.parseUnits(amount, 18)) // cUSD has 18 decimals
-      await tx.wait() // Wait for transaction to be mined
-      toast.success(`Transaction successful: ${tx.hash}`)
-    } catch (error: any) {
-      toast.error('Error sending cUSD:', error.message)
-    }
-  }
+//     try {
+//       const tx = await contract.transfer(recipient, ethers.parseUnits(amount, 18)) // cUSD has 18 decimals
+//       await tx.wait() // Wait for transaction to be mined
+//       toast.success(`Transaction successful: ${tx.hash}`)
+//     } catch (error: any) {
+//       toast.error('Error sending cUSD:', error.message)
+//     }
+//   }
 
-  return { sendCusd }
-}
+//   return { sendCusd }
+// }
 
 export default function Home() {
   const store = AppStores.useSettings()
   const router = useRouter()
-  // const { provider } = useEthereum() // For provider retrieval
 
   const icons: { title: string; onClick: VoidFunction; icon: IconType }[] = [
     {
@@ -104,19 +102,12 @@ export default function Home() {
     },
   ]
 
-  const { sendCusd } = useSendErc20()
-
   return (
     <div className="w-full items-center justify-center flex flex-col">
       <HomeTabs />
-      <button
-        onClick={async () => {
-          await sendCusd('0x20F50b8832f87104853df3FdDA47Dd464f885a49', '2')
-        }}
-      >
-        Send
-      </button>
+
       <Balance />
+
       <div className="flex w-full items-center justify-around mt-[30px] mb-[20px]">
         {icons.map((val, i) => {
           const Icon = val.icon as any
@@ -127,13 +118,14 @@ export default function Home() {
               onClick={val.onClick}
             >
               <div className="p-2 bg-card rounded-full h-[45px] w-[45px] flex items-center justify-center hover:bg-primary">
-                <Icon size={20} />
+                <Icon size={18} />
               </div>
               <p className="text-[10px] font-normal text-muted"> {val.title}</p>
             </div>
           )
         })}
       </div>
+
       {store.homeTab === 'Services' ? (
         <Airtime />
       ) : (

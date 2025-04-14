@@ -11,6 +11,7 @@ export interface ISlice {
   sidebarOpen?: boolean
   infoTabOpen?: boolean
   drawerIsOpen?: boolean
+  showSupportModal?: boolean
   searchValue?: string
   manageAdsTab?: IManageAdsTab
   p2pTab?: IP2PTabs
@@ -36,6 +37,7 @@ export const defaultValues: Required<ISlice> = {
   homeTab: 'Balances',
   homeBtmSheet: 'NULL',
   historyTab: 'ALL',
+  showSupportModal: false
 }
 
 export const useSettings = create(

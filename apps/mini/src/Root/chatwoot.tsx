@@ -1,10 +1,10 @@
-import React from 'react'
+import { useEffect } from 'react'
 
-const windowA = window as any
 const BASE_URL = process.env.NEXT_PUBLIC_LIVE_CHAT_BASE_URL!
 const CHATWOOT_TOKEN = process.env.NEXT_PUBLIC_LIVE_CHAT!
-class ChatwootWidget extends React.Component {
-  componentDidMount() {
+export function ChatwootWidget() {
+  useEffect(() => {
+    const windowA = window as any
     // Add Chatwoot Settings
     windowA.chatwootSettings = {
       hideMessageBubble: false,
@@ -30,11 +30,9 @@ class ChatwootWidget extends React.Component {
     }
 
     init(document, 'script')
-  }
+  }, [])
 
-  render() {
-    return null
-  }
+  return null
 }
 
 export default ChatwootWidget
