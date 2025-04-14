@@ -67,7 +67,7 @@ function RootInner({ children }: PropsWithChildren) {
         // },
         wallet: {
           // Optional, streamlines the wallet modal popup
-          visible: true, // Displays an embedded wallet popup on the bottom right of the screen after login
+          visible: false, // Displays an embedded wallet popup on the bottom right of the screen after login
           customStyle: {
             supportChains: [Celo],
           },

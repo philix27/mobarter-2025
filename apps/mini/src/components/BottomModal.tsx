@@ -8,6 +8,7 @@ export default function BottomModal({
   ...props
 }: {
   title?: string
+  className?: string
   showSheet?: boolean
   onClose: VoidFunction
   children: ReactNode
@@ -31,7 +32,8 @@ export default function BottomModal({
             `min-h-[375px] bg-card border-none 
         w-full bot
          rounded-t-[15px] 
-        `
+        `,
+            props.className
           )}
         >
           <div
