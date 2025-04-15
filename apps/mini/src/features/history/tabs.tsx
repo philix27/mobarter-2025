@@ -25,15 +25,6 @@ export default function HistoryTabs() {
             })
           },
         },
-        {
-          title: 'SWAP',
-          isActive: store.historyTab === 'SWAP',
-          onClick: () => {
-            store.update({
-              historyTab: 'SWAP',
-            })
-          },
-        },
       ]}
     />
   )

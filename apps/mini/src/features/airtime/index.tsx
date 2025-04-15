@@ -5,20 +5,22 @@ import { toast } from 'sonner'
 import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
 import { AppSelect } from 'src/components/Select'
-import { Label } from 'src/components/comps'
 import { logger } from 'src/lib/utils/logger'
 import { pasteTextFromClipboard } from 'src/utils'
 
 export default function Airtime() {
-  const [phoneNo, setPhoneNo] = useState('')
+  const [amtValue, setAmountVal] = useState<number>()
+  const [phoneNo, setPhoneNo] = useState<string>('')
   const Copy = FaCopy as any
 
   const handleSend = () => {
-    toast.success('Sent')
+    if (amtValue == undefined || amtValue < 1000) {
+      toast.error('Minimum of NGN1,000')
+    }
   }
   return (
-    <div className="w-full items-center justify-center flex flex-col px-1 mb-5">
-      <Label>Purchase Airtime</Label>
+    <div className="w-full items-center justify-center flex flex-col px-1 mb-[20vh]">
+      {/* <Label>Purchase Airtime</Label> */}
       <AppSelect
         label="Country"
         onChange={(data) => {
@@ -45,6 +47,18 @@ export default function Airtime() {
         label="Phone number"
         placeholder="2348101234567"
         value={phoneNo}
+        type="number"
+        pattern="[0-9]*"
+        inputMode="decimal"
+        min={0}
+        onChange={(e) => {
+          const num = e.target.value
+          if (num.length > 11) {
+            toast.error('11 characters max')
+            return
+          }
+          setPhoneNo(num.toString())
+        }}
         trailingIcon={
           <Copy
             className="text-muted"
@@ -56,10 +70,35 @@ export default function Airtime() {
         }
       />
 
-      <Input label="Amount" placeholder="Amount to send" type="number" />
-      <Button className="mt-5" onClick={handleSend}>
+      <Input
+        label="Amount"
+        placeholder="Amount to send"
+        type="number"
+        pattern="[0-9]*"
+        inputMode="decimal"
+        step=".01"
+        min={0}
+        value={amtValue}
+        onChange={(e) => {
+          const num = parseFloat(e.target.value)
+          if (isNaN(num)) {
+            return
+          }
+          console.log(num)
+          // if (parseInt(e.target.value) < 0) {
+          //   return
+          // }
+          setAmountVal(num)
+        }}
+      />
+
+      <Button className="mt-5 w-[70%]" onClick={handleSend}>
         Send
       </Button>
     </div>
   )
+}
+
+function isNumber(value: any) {
+  return typeof value === 'number' && !isNaN(value)
 }

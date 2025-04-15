@@ -6,7 +6,7 @@ export type IManageAdsTab = 'OPEN' | 'CLOSED' | 'ADD'
 export type IP2PTabs = 'BUY' | 'SELL'
 export type IOrdersTabs = 'PENDING' | 'COMPLETED' | 'CANCELED' | 'APPEAL'
 export type IHomeBottomSheet = 'WALLET' | 'SEND_CRYPTO' | 'SWAP' | 'NULL' | undefined
-export type IHistoryTabs = 'ALL' | 'AIRTIME' | 'SWAP'
+export type IHistoryTabs = 'ALL' | 'AIRTIME'
 export type IProfileTabs = 'INFO' | 'ACTIONS'
 export interface ISlice {
   sidebarOpen?: boolean
@@ -40,7 +40,7 @@ export const defaultValues: Required<ISlice> = {
   homeBtmSheet: 'NULL',
   historyTab: 'ALL',
   showSupportModal: false,
-  profileTabs: 'INFO'
+  profileTabs: 'INFO',
 }
 
 export const useSettings = create(

@@ -11,7 +11,7 @@ export const tokensList: IToken[] = [
   { fullName: 'Celo Dollar', imgUrl: TokenIcons.cUSDIcon, ...cUSD },
 
   { fullName: 'Celo Native Token', imgUrl: TokenIcons.CeloIcon, ...t.CELO },
-  { fullName: 'Celo Dollar', imgUrl: TokenIcons.PUSOIcon, ...t.cUSD },
+  { fullName: 'Celo Dollar', imgUrl: TokenIcons.PUSOIcon, ...t.PUSO },
   { fullName: 'US Dollar Tether', imgUrl: TokenIcons.USDTIcon, ...t.USDT },
   {
     fullName: 'Ax EURO',

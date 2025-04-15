@@ -41,7 +41,7 @@ export const navLinks: { title: string; link: string; Icon: IconType }[] = [
   },
   {
     title: 'Bank Account',
-    link: '/orders',
+    link: '/bank',
     Icon: BsBank,
   },
 ]

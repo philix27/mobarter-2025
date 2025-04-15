@@ -12,10 +12,9 @@ import { AppStores } from 'src/lib/zustand'
 import { formatEtherBalance } from 'src/utils'
 import { useBalance } from 'wagmi'
 
-import Airtime from '../airtime'
-
 import BottomPopup from './BottomPopup'
 import { TokenRow } from './TokenRow'
+import Utilities from './Utilities'
 import HomeTabs from './tabs'
 
 export default function Home() {
@@ -75,7 +74,7 @@ export default function Home() {
       </div>
 
       {store.homeTab === 'Services' ? (
-        <Airtime />
+        <Utilities />
       ) : (
         <div className="flex flex-col bg-card rounded-md w-full gap-y-[0.1px] px-1 py-1">
           {tokensList.map((val, i) => (
