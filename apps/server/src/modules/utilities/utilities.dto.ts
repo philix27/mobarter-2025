@@ -1,4 +1,25 @@
-import { Field,  Float,  InputType,   ObjectType, } from "@nestjs/graphql";
+import { Field,  Float,  InputType, ObjectType, registerEnumType, } from "@nestjs/graphql";
+
+export enum AirtimeCountryCode {
+  NIGERIA = "NG",
+  GHANA = "GH",
+  KENYA = "KE"
+}
+
+export enum Operator {
+  MTN = "MTN",
+  AIRTEL = "AIRTEL",
+  GLO = "GLO",
+  ETISALAT = "ETISALAT",
+}
+
+registerEnumType(Operator, {
+    name: "Operator",
+});
+
+registerEnumType(AirtimeCountryCode, {
+    name: "AirtimeCountryCode",
+});
 
 @InputType()
 export class Utilities_PurchaseAirtimeInput {
@@ -13,6 +34,12 @@ export class Utilities_PurchaseAirtimeInput {
 
     @Field()
     network: string;
+
+     @Field((type) => AirtimeCountryCode)
+     countryCode: AirtimeCountryCode;
+    
+     @Field((type) => Operator)
+    operator: Operator;
 }
 
 @ObjectType()

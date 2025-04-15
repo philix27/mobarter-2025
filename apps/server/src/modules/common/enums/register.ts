@@ -1,6 +1,7 @@
 import { registerEnumType } from "@nestjs/graphql";
 import { $Enums } from "@prisma/client";
 
+
 export enum OtpPurpose {
     SignUp,
     Verification,
@@ -10,13 +11,13 @@ export enum OrderParticipant {
   MERCHANT = "MERCHANT",
   CUSTOMER = "CUSTOMER"
 }
-registerEnumType(OtpPurpose, {
-    name: "OtpPurpose",
-});
+
 registerEnumType(OrderParticipant, {
     name: "OtpPurpose",
 });
-
+registerEnumType(OtpPurpose, {
+  name: 'OtpPurpose',
+});
 registerEnumType($Enums.Country, {
     name: "country",
 });

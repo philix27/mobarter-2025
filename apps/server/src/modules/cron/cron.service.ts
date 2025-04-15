@@ -14,6 +14,12 @@ export class CronService {
         await this.fx.updateRates()
     }
 
+    @Cron(CronExpression.EVERY_WEEK)
+    async validateReloadlyAccessToken() {
+        this.logger.info("Running a daily task at midnight");
+        await this.fx.updateRates()
+    }
+
     //  // Runs at every 10 seconds
     // @Cron("*/10 * * * * *")
     // handleCron() {
