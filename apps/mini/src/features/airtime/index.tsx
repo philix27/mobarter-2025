@@ -99,6 +99,3 @@ export default function Airtime() {
   )
 }
 
-function isNumber(value: any) {
-  return typeof value === 'number' && !isNaN(value)
-}
