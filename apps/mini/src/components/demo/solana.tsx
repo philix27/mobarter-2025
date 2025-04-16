@@ -5,6 +5,7 @@ import bs58 from 'bs58'
 import { toast } from 'sonner'
 import { useAppContext } from 'src/Root/context'
 import { messageValue } from 'src/config'
+import { logger } from 'src/lib/utils/logger'
 import { shortString } from 'src/utils'
 
 import { Button } from '../Button'
@@ -19,7 +20,7 @@ const SolanaDemo = () => {
       const result = await signMessage(Buffer.from(messageValue))
       toast.success(`Sign Message Success! Signature: ${shortString(bs58.encode(result))}`)
     } catch (error: any) {
-      console.log('signMessage error', error)
+      logger.error('signMessage error', error)
       handleError(error)
     }
   }

@@ -2,6 +2,7 @@ import { useAdvert } from './adverts';
 import { useOrder } from './orders';
 import { useView } from './screens';
 import { useSettings } from './settings';
+import { useUser } from './user';
 
 
 export const AppStores = {
@@ -9,4 +10,5 @@ export const AppStores = {
   useView,
   useAdvert,
   useOrder,
+  useUser,
 }

@@ -1,23 +1,25 @@
-import React, { useState } from 'react';
-import { cn } from 'src/lib/utils';
+import React, { useState } from 'react'
+import { cn } from 'src/lib/utils'
 
+import { BottomNote, Label } from './comps'
 
 export default function Input(
   props: {
     error?: string
     desc?: string
     label?: string
+    trailingIcon?: JSX.Element
     control?: any
   } & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 ) {
-  const { className, ...inputParams } = props
+  const { className, error, desc, label, trailingIcon, ...inputParams } = props
   const [focus, setFocus] = useState(false)
   return (
     <div className="w-full">
-      {props.label && <p className="text-muted text-[15px] mb-1">{props.label}</p>}
+      {label && <Label>{label}</Label>}
       <div
         className={cn(
-          'rounded-md px-3 py-[5px] bg-card border-muted border-[0.5px]',
+          'rounded-md px-3 py-[5px] bg-card border-muted border-[0.5px] flex items-center justify-center',
           focus && 'border-primary ',
           props.error && 'border-destructive',
           className
@@ -29,7 +31,8 @@ export default function Input(
           className={`
             w-full bg-card 
             border-none outline-none
-            text-[20px] font-normal placeholder:font-light placeholder:text-sm
+            text-[16px] font-normal placeholder:font-light placeholder:text-sm
+            py-[2px]
           `}
           onFocus={() => {
             setFocus(true)
@@ -38,9 +41,10 @@ export default function Input(
             setFocus(false)
           }}
         />
+        {trailingIcon && trailingIcon}
       </div>
-      {props.desc && <p className="text-muted text-[13px] mt-[3px]">{props.desc}</p>}
-      {props.error && <p className="text-destructive text-[13px] mt-1">{props.error}</p>}
+      {desc && <BottomNote>{desc}</BottomNote>}
+      {error && <p className="text-destructive text-[13px] mt-1">{error}</p>}
     </div>
   )
 }

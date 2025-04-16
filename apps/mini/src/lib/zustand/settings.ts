@@ -1,20 +1,26 @@
-import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
-
+import { create } from 'zustand'
+import { createJSONStorage, persist } from 'zustand/middleware'
 
 export type IHomeTab = 'Balances' | 'Services'
 export type IManageAdsTab = 'OPEN' | 'CLOSED' | 'ADD'
 export type IP2PTabs = 'BUY' | 'SELL'
 export type IOrdersTabs = 'PENDING' | 'COMPLETED' | 'CANCELED' | 'APPEAL'
+export type IHomeBottomSheet = 'WALLET' | 'SEND_CRYPTO' | 'SWAP' | 'NULL' | undefined
+export type IHistoryTabs = 'ALL' | 'AIRTIME'
+export type IProfileTabs = 'INFO' | 'ACTIONS'
 export interface ISlice {
   sidebarOpen?: boolean
   infoTabOpen?: boolean
   drawerIsOpen?: boolean
+  showSupportModal?: boolean
   searchValue?: string
   manageAdsTab?: IManageAdsTab
   p2pTab?: IP2PTabs
   ordersTab?: IOrdersTabs
   homeTab?: IHomeTab
+  homeBtmSheet?: IHomeBottomSheet
+  historyTab?: IHistoryTabs
+  profileTabs?: IProfileTabs
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
@@ -30,7 +36,11 @@ export const defaultValues: Required<ISlice> = {
   manageAdsTab: 'OPEN',
   p2pTab: 'BUY',
   ordersTab: 'PENDING',
-  homeTab: 'Balances'
+  homeTab: 'Balances',
+  homeBtmSheet: 'NULL',
+  historyTab: 'ALL',
+  showSupportModal: false,
+  profileTabs: 'INFO',
 }
 
 export const useSettings = create(

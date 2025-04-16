@@ -1,17 +1,17 @@
 import { AuthType } from '@particle-network/auth-core'
 import { AuthCoreContextProvider } from '@particle-network/auth-core-modal'
+import { Celo } from '@particle-network/chains'
 import { useLaunchParams } from '@telegram-apps/sdk-react'
 import { type PropsWithChildren, useEffect } from 'react'
 import { Toaster } from 'sonner'
-import { AppProvder } from 'src/Root/context'
 import { ErrorBoundary } from 'src/components/ErrorBoundary'
 import { ErrorPage } from 'src/components/ErrorPage'
 import { useClientOnce } from 'src/hooks/useClientOnce'
-// import { ErrorBoundary } from "@/components/ErrorBoundary";
-// import { ErrorPage } from "@/components/ErrorPage";
 import { useDidMount } from 'src/hooks/useDidMount'
 import { useTelegramMock } from 'src/hooks/useTelegramMock'
 import { init } from 'src/lib/telegram/init'
+
+import { AppProvider } from './context'
 
 if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_PARTICLE_ENV === 'development') {
   window.__PARTICLE_ENVIRONMENT__ = 'development'
@@ -40,7 +40,6 @@ function RootInner({ children }: PropsWithChildren) {
   }, [debug])
 
   return (
-    // <SDKProvider acceptCustomStyles debug={debug}>
     <AuthCoreContextProvider
       options={{
         projectId: process.env.NEXT_PUBLIC_PARTICLE_PROJECT_ID as string,
@@ -57,14 +56,27 @@ function RootInner({ children }: PropsWithChildren) {
           },
         },
         authTypes: [AuthType.telegram],
+        themeType: 'dark', // Optional
+        fiatCoin: 'USD', // Optional
+        language: 'en', // Optional
+        //* reference https://docs.celo.org/developer/particle-network
+        // promptSettingConfig: {
+        //   // Optional, determines the security settings that a user has to configure
+        //   promptPaymentPasswordSettingWhenSign: PromptSettingType.first,
+        //   promptMasterPasswordSettingWhenLogin: PromptSettingType.first,
+        // },
+        wallet: {
+          // Optional, streamlines the wallet modal popup
+          visible: false, // Displays an embedded wallet popup on the bottom right of the screen after login
+          customStyle: {
+            supportChains: [Celo],
+          },
+        },
       }}
     >
       <Toaster richColors position="bottom-center" expand={false} closeButton duration={2000} />
-      <AppProvder>
-        {children}
-      </AppProvder>
+      <AppProvider>{children}</AppProvider>
     </AuthCoreContextProvider>
-    // </SDKProvider>
   )
 }
 

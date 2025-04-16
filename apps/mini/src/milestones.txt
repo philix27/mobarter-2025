@@ -1,0 +1,31 @@
+Deploy on Telegram App Center
+
+I am picking telegram mini apps for the early phase of of the product, because I found it challenging to ask potential users to test my dApp through a link. The app is also compatible with minipay (same. logic, same flow).
+
+
+Users should be able to sell their crypto
+
+Because the primary goal of Mobarter is to enable on/off ramping of Celo based crypto assets using a p2p market place, users should be able to sell their assets on the p2p market.
+
+
+Deploy backend
+Containerize and deploy backend server to Railway cloud hosting
+
+Integrate Particle Network
+This is to be used for managing users telegram wallets.
+
+Backend: Manage of of CRUD operations for Adverts
+Create Adverts
+Update Adverts
+Display Adverts to the user
+
+
+Backend: Manage of of CRUD operations for Orders
+Create P2P Order
+Update Orders
+Display Historical Orders to the user
+
+
+TawkTo
+
+- Setup Live chat for customers

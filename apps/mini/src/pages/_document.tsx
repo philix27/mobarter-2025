@@ -45,10 +45,10 @@ export default class MyDocument extends Document {
             content="P2P crypto exchanges on stable coins (cUSD cEUR cREAL)"
           />
           <meta name="twitter:image" content="https://mobarter.app/logo.png" />
-          <meta
+          {/* <meta
             name="viewport"
             content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no,viewport-fit=cover"
-          />
+          /> */}
 
           {/* <Script src='https://telegram.org/js/telegram-web-app.js' strategy="beforeInteractive" /> */}
         </Head>

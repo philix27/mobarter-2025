@@ -242,3 +242,38 @@ model ExchangeRates {
   created_at       DateTime? @default(now())
   updated_at       DateTime? @updatedAt
 }
+
+enum AccessTokenPlatform {
+  RELOADLY
+}
+
+model AccessTokens {
+  id            Int                 @id @default(autoincrement())
+  token         String
+  platform      AccessTokenPlatform
+  purpose       String?
+  response_data String?
+  created_at    DateTime?           @default(now())
+  updated_at    DateTime?           @updatedAt
+}
+
+enum TransactionsCategory {
+  AIRTIME
+  DATA_BUNDLE
+  GIFT_CARD
+}
+
+enum TransactionsMode {
+  CREDIT
+  DEBIT
+}
+
+model Transactions {
+  id         Int                  @id @default(autoincrement())
+  amount     Float
+  note       String
+  category   TransactionsCategory
+  mode       TransactionsMode
+  created_at DateTime?            @default(now())
+  updated_at DateTime?            @updatedAt
+}

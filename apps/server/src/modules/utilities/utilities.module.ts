@@ -3,6 +3,7 @@ import { CommonModule } from "../common";
 import { UtilitiesService } from "./utilities.service";
 import { NotificationModule } from "../notification/notification.module";
 import { UtilitiesResolver } from "./utilies.resolver";
+import { ReloadlyTopUpService } from "../../lib/integrations/reloadly/reloadly.service";
 
 
 @Module({
@@ -10,6 +11,7 @@ import { UtilitiesResolver } from "./utilies.resolver";
     providers: [
         UtilitiesService,
         UtilitiesResolver,
+        ReloadlyTopUpService
     ],
 })
 export class UtilitiesModule {}

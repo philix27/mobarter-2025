@@ -1,30 +1,29 @@
-import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { create } from 'zustand'
+import { createJSONStorage, persist } from 'zustand/middleware'
 
-
-export type IViews = "INBOX" | "BOTS" | "GROUPS" | "MARKET";
-export type IAssets = "Crypto" | "Fiat" | "Services";
-export type IWalletQrCode = "Ethereum" | "Fiat" | "Services";
-export type IBots = "General" | "DeFi" | "WEB3";
+export type IViews = 'INBOX' | 'BOTS' | 'GROUPS' | 'MARKET'
+export type IAssets = 'Crypto' | 'Fiat' | 'Services'
+export type IWalletQrCode = 'Ethereum' | 'Fiat' | 'Services'
+export type IBots = 'General' | 'DeFi' | 'WEB3'
 
 export interface ISlice {
-  activeScreen?: IViews;
-  activeViewAsset?: IAssets;
-  activeBot?: IBots;
-  activePersonalChat?: string;
+  activeScreen?: IViews
+  activeViewAsset?: IAssets
+  activeBot?: IBots
+  activePersonalChat?: string
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
-  update: (data: ISlice) => void;
-  clear: () => void;
+  update: (data: ISlice) => void
+  clear: () => void
 }
 
 export const defaultValues: Required<ISlice> = {
-  activeScreen: "INBOX",
-  activeBot: "General",
-  activePersonalChat: "",
-  activeViewAsset: "Services",
-};
+  activeScreen: 'INBOX',
+  activeBot: 'General',
+  activePersonalChat: '',
+  activeViewAsset: 'Services',
+}
 export const useView = create(
   persist<ISliceUpdate>(
     (set) => ({

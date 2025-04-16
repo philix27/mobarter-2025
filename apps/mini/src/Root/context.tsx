@@ -1,12 +1,19 @@
-import { SmartAccount } from '@particle-network/aa';
-import type { ConnectParam, UserInfo } from '@particle-network/auth-core';
-import { AuthType } from '@particle-network/auth-core';
-import type { ConnectionStatus } from '@particle-network/auth-core-modal';
-import { useAuthCore, useConnect, useCustomize, useEthereum, useSolana } from '@particle-network/auth-core-modal';
-import { miniApp, popup, useLaunchParams } from '@telegram-apps/sdk-react';
-import React, { createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { toast } from 'sonner';
-import { erc4337Config } from 'src/config/erc4337';
+import { SmartAccount } from '@particle-network/aa'
+import type { ConnectParam, UserInfo } from '@particle-network/auth-core'
+import { AuthType } from '@particle-network/auth-core'
+import type { ConnectionStatus } from '@particle-network/auth-core-modal'
+import {
+  useAuthCore,
+  useConnect,
+  useCustomize,
+  useEthereum,
+  useSolana,
+} from '@particle-network/auth-core-modal'
+import { miniApp, popup, useLaunchParams } from '@telegram-apps/sdk-react'
+import React, { createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { toast } from 'sonner'
+import { erc4337Config } from 'src/config/erc4337'
+import { logger } from 'src/lib/utils/logger'
 
 type ContextValue = {
   handleError: (error: any) => void
@@ -23,7 +30,7 @@ type ContextValue = {
 
 export const AppContext = createContext<ContextValue | null>(null)
 
-export const AppProvder = ({ children }: React.PropsWithChildren) => {
+export const AppProvider = ({ children }: React.PropsWithChildren) => {
   const { initDataRaw } = useLaunchParams()
   const { connect, connectionStatus } = useConnect()
   const { provider, address } = useEthereum()
@@ -34,6 +41,10 @@ export const AppProvder = ({ children }: React.PropsWithChildren) => {
   const [evmAddress, setEVMAddress] = useState<string>()
   const { address: solanaAddress, enable: enableSolana } = useSolana()
 
+  if (provider) {
+    const w = window as any
+    w.ethereum = provider
+  }
   const smartAccount = useMemo(() => {
     if (provider) {
       const accountContracts = {} as any
@@ -68,7 +79,7 @@ export const AppProvder = ({ children }: React.PropsWithChildren) => {
     if (erc4337 && smartAccount) {
       smartAccount.setSmartAccountContract(erc4337)
     }
-  }, [erc4337, smartAccount])
+  }, [erc4337, provider, smartAccount])
 
   useEffect(() => {
     if (address) {
@@ -90,14 +101,14 @@ export const AppProvder = ({ children }: React.PropsWithChildren) => {
 
   const connectWithTelegram = useCallback(
     async (initData: string) => {
-      console.log('connectWithTelegram')
+      logger.debug('connectWithTelegram')
       try {
         await connect({
           provider: AuthType.telegram,
           thirdpartyCode: initData,
         })
       } catch (error: any) {
-        console.log('Error: ', error)
+        logger.debug('Error: ', error)
         if (error.message) {
           setConnectError(error)
         }
@@ -120,13 +131,13 @@ export const AppProvder = ({ children }: React.PropsWithChildren) => {
 
   const handleError = useCallback(
     (error: any) => {
-      console.log('handleError', error)
+      logger.debug('handleError', error)
       if (error.error_code === 10005) {
         if (!initDataConnectedRef.current && initDataRaw) {
           // eslint-disable-next-line @typescript-eslint/no-floating-promises
           connectWithTelegram(initDataRaw)
         } else {
-          console.log('popup open')
+          logger.debug('popup open')
           popup
             .open({
               title: 'Invalid Token',
@@ -146,7 +157,7 @@ export const AppProvder = ({ children }: React.PropsWithChildren) => {
         toast.error(error.message || 'unknown')
       }
     },
-    [connectWithTelegram, initDataRaw, miniApp, popup]
+    [connectWithTelegram, initDataRaw]
   )
 
   const onAction = (key: 'logout' | 'account-security') => {
