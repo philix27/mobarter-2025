@@ -17,6 +17,7 @@ This project uses Next.JS, React, Redux, Tailwind, Wagmi, and RainbowKit.
 1. Start server: `yarn dev`
 1. `open http://localhost:3000`
 
+
 ## Deploy
 
 - Deployments happen automatically via Vercel's Github app.
@@ -31,3 +32,8 @@ For new features, please create an issue to start a discussion on [Discord](http
 ## License
 
 This project is [Apache 2.0 Licensed](LICENSE).
+
+
+PORTS
+
+https://172.20.10.11:3000
