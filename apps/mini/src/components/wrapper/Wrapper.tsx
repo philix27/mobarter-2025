@@ -22,6 +22,18 @@ export default function Wrapper({
     tg.setMiniAppBackgroundColor(isDarkMode ? '#272727' : '#cbe2e5')
     tg.setMiniAppBottomBarColor(isDarkMode ? '#272727' : '#cbe2e5')
     tg.setMiniAppHeaderColor(isDarkMode ? '#272727' : '#cbe2e5')
+
+    async function setFullScreen() {
+      if (tg.requestFullscreen.isAvailable() && !tg.isChangingFullscreen()) {
+        await tg.requestFullscreen()
+      }
+
+      if (tg.expandViewport.isAvailable()) {
+        tg.expandViewport()
+      }
+    }
+
+    void setFullScreen()
   }, [isDarkMode])
 
   useEffect(() => {

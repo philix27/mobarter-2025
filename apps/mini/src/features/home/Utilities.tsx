@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { IconType } from 'react-icons'
 import { GrGift } from 'react-icons/gr'
+import { LiaPhoneVolumeSolid } from 'react-icons/lia'
 import BottomModal from 'src/components/BottomModal'
 
 import Airtime from '../airtime'
@@ -11,7 +12,7 @@ export default function Utilities() {
     {
       title: 'Airtime',
       desc: 'Purchase airtime with cUSD',
-      icon: GrGift,
+      icon: LiaPhoneVolumeSolid,
       onClick: () => {
         setBtmSheet('AIRTIME')
       },
@@ -25,7 +26,7 @@ export default function Utilities() {
         return (
           <div
             key={i}
-            className="flex items-center w-full bg-card px-2 py-1 mb-1 rounded-md"
+            className="flex items-center w-full bg-card px-2 py-2 mb-1 rounded-md"
             onClick={val.onClick}
           >
             <div className="mr-3 size-[35px] rounded-full bg-background flex items-center justify-center">
