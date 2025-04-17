@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import { IconType } from 'react-icons'
+import { CiBank } from 'react-icons/ci'
 import { GrGift } from 'react-icons/gr'
 import { LiaPhoneVolumeSolid } from 'react-icons/lia'
 import BottomModal from 'src/components/BottomModal'
 
 import Airtime from '../airtime'
+import SendToBank from '../send/sendToBank'
 
 export default function Utilities() {
-  const [btmSheet, setBtmSheet] = useState<'AIRTIME' | 'GIFT_CARD' | undefined>(undefined)
+  const [btmSheet, setBtmSheet] = useState<'AIRTIME' | 'GIFT_CARD' | 'SEND_TO_BANK' | undefined>(
+    undefined
+  )
   const list: { title: string; onClick?: VoidFunction; desc: string; icon: IconType }[] = [
     {
       title: 'Airtime',
@@ -15,6 +19,14 @@ export default function Utilities() {
       icon: LiaPhoneVolumeSolid,
       onClick: () => {
         setBtmSheet('AIRTIME')
+      },
+    },
+    {
+      title: 'Send to bank accounts',
+      desc: 'Settle local fiat transactions',
+      icon: CiBank,
+      onClick: () => {
+        setBtmSheet('SEND_TO_BANK')
       },
     },
     { title: 'Gift Cards', desc: 'Purchase cards with cUSD', icon: GrGift },
@@ -47,6 +59,15 @@ export default function Utilities() {
         }}
       >
         <Airtime />
+      </BottomModal>
+      <BottomModal
+        title="Send to Bank Account"
+        showSheet={btmSheet === 'SEND_TO_BANK'}
+        onClose={() => {
+          setBtmSheet(undefined)
+        }}
+      >
+        <SendToBank />
       </BottomModal>
     </div>
   )
