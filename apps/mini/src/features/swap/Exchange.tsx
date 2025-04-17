@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'src/components/Button'
 import { AppStores } from 'src/lib/zustand'
 
-import { SwapForm } from './SwapForm'
+// import { SwapForm } from './SwapForm'
 import { SettingsMenu } from './comps/SettingsMenu'
 
 export default function Swap() {
@@ -14,7 +14,7 @@ export default function Swap() {
         <SettingsMenu />
       </div>
       <div className="p-6">
-        <SwapForm />
+        {/* <SwapForm /> */}
         <div>
           <div className="flex items-center justify-around">
             <Button
