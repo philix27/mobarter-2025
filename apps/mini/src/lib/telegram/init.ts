@@ -7,6 +7,7 @@ import {
   themeParams,
   viewport,
 } from '@telegram-apps/sdk-react'
+import { logger } from '../utils/logger'
 
 /**
  * Initializes the application and configures its dependencies.
@@ -30,7 +31,7 @@ export function init(debug: boolean): void {
       viewport.bindCssVars()
     })
     .catch((e) => {
-      console.error('Something went wrong mounting the viewport', e)
+      logger.error('Something went wrong mounting the viewport', e)
     })
 
   // Define components-related CSS variables.

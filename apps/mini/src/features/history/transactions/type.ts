@@ -1,10 +1,10 @@
 export interface ITransactions {
   message: string
-  result: Result[]
+  result: ITransactionsResult[]
   status: string
 }
 
-export interface Result {
+export interface ITransactionsResult {
   blockHash: string
   blockNumber: string
   confirmations: string

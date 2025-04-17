@@ -1,10 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect } from 'react'
+import { logger } from 'src/utils/logger'
 
-export function ErrorPage({ error, reset }: { error: Error & { digest?: string }; reset?: () => void }) {
+export function ErrorPage({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string }
+  reset?: () => void
+}) {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error(error);
-  }, [error]);
+    logger.error(error)
+  }, [error])
 
   return (
     <div>
@@ -14,5 +21,5 @@ export function ErrorPage({ error, reset }: { error: Error & { digest?: string }
       </blockquote>
       {reset && <button onClick={() => reset()}>Try again</button>}
     </div>
-  );
+  )
 }

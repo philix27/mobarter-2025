@@ -57,7 +57,7 @@ const SolanaDemo = () => {
       const result = await signAndSendTransaction(tx)
       toast.success(`Send Native Success! Hash: ${shortString(result)}`)
     } catch (error: any) {
-      console.log('sendNative error', error)
+      logger.error('sendNative error', error)
       handleError(error)
     }
   }

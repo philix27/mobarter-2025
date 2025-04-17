@@ -8,6 +8,8 @@ export type IOrdersTabs = 'PENDING' | 'COMPLETED' | 'CANCELED' | 'APPEAL'
 export type IHomeBottomSheet = 'WALLET' | 'SEND_CRYPTO' | 'SWAP' | 'NULL' | undefined
 export type IHistoryTabs = 'ALL' | 'AIRTIME'
 export type IProfileTabs = 'INFO' | 'ACTIONS'
+export type ISwap = 'EXCHANGE' | 'CONFIRM'
+
 export interface ISlice {
   sidebarOpen?: boolean
   infoTabOpen?: boolean
@@ -21,6 +23,9 @@ export interface ISlice {
   homeBtmSheet?: IHomeBottomSheet
   historyTab?: IHistoryTabs
   profileTabs?: IProfileTabs
+  swapSteps?: ISwap
+  showSlippage?: boolean
+  showChart?: boolean
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
@@ -41,6 +46,9 @@ export const defaultValues: Required<ISlice> = {
   historyTab: 'ALL',
   showSupportModal: false,
   profileTabs: 'INFO',
+  swapSteps: 'EXCHANGE',
+  showSlippage: false,
+  showChart: false
 }
 
 export const useSettings = create(
