@@ -53,6 +53,7 @@
     "big.js": "^6.2.1",
     "bignumber.js": "^9.1.1",
     "blo": "^1.2.0",
+    "dayjs": "^1.11.13",
     "decimal.js-light": "^2.5.1",
     "dotenv": "^16.4.7",
     "eruda": "^3.0.1",

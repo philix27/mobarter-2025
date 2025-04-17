@@ -1,9 +1,7 @@
 import { Mento, TradablePair } from '@mento-protocol/mento-sdk'
-// import { ChainId } from 'src/config/chains'
-// import { TokenId, getTokenAddress } from 'src/config/tokens'
 import { getProvider } from 'src/features/providers'
 import { ChainId } from 'src/lib/config/chains'
-import { getTokenAddress, TokenId } from 'src/lib/config/tokens'
+import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
 
 const cache: Record<number, Mento> = {}
 
