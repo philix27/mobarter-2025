@@ -8,6 +8,8 @@ import BottomModal from 'src/components/BottomModal'
 import Airtime from '../airtime'
 import SendToBank from '../send/sendToBank'
 
+import { HomeRow } from './comps'
+
 export default function Utilities() {
   const [btmSheet, setBtmSheet] = useState<'AIRTIME' | 'GIFT_CARD' | 'SEND_TO_BANK' | undefined>(
     undefined
@@ -34,21 +36,14 @@ export default function Utilities() {
   return (
     <div className="w-full">
       {list.map((val, i) => {
-        const Icon = val.icon as any
         return (
-          <div
+          <HomeRow
             key={i}
-            className="flex items-center w-full bg-card px-2 py-2 mb-1 rounded-md"
             onClick={val.onClick}
-          >
-            <div className="mr-3 size-[35px] rounded-full bg-background flex items-center justify-center">
-              <Icon className="text-primary" />
-            </div>
-            <div>
-              <p className="font-semibold text-[14px]"> {val.title}</p>
-              <p className="text-muted text-[11px] font-light">{val.desc}</p>
-            </div>
-          </div>
+            title={val.title}
+            desc={val.desc}
+            icon={val.icon}
+          />
         )
       })}
       <BottomModal

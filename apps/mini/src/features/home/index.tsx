@@ -36,10 +36,10 @@ export default function Home() {
       },
     },
     {
-      title: 'Swap',
+      title: 'Withdraw',
       icon: IoSwapHorizontalOutline,
       onClick: () => {
-        store.update({ homeBtmSheet: 'SWAP' })
+        store.update({ homeBtmSheet: 'WITHDRAW' })
       },
     },
     {
@@ -58,6 +58,7 @@ export default function Home() {
       <div className="flex w-full items-center justify-around mt-[30px] mb-[20px]">
         {icons.map((val, i) => {
           const Icon = val.icon as any
+
           return (
             <div
               key={i}

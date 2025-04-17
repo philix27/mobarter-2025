@@ -1,3 +1,6 @@
+import { useRouter } from 'next/router'
+import { GiSpeedometer } from 'react-icons/gi'
+import { IoSwapHorizontalOutline } from 'react-icons/io5'
 import QRCode from 'react-qr-code'
 import { useAppContext } from 'src/Root/context'
 import BottomModal from 'src/components/BottomModal'
@@ -7,14 +10,16 @@ import { AppStores } from 'src/lib/zustand'
 import { copyTextToClipboard, shortString } from 'src/utils'
 
 import SendCrypto from '../send/crypto'
-import SwapModal from '../swap'
+
+import { HomeRow } from './comps'
 
 export default function BottomPopup() {
   const store = AppStores.useSettings()
   const showWallet = store.homeBtmSheet === 'WALLET'
   const showSendCrypto = store.homeBtmSheet === 'SEND_CRYPTO'
-  const showSwap = store.homeBtmSheet === 'SWAP'
+  const showSwap = store.homeBtmSheet === 'WITHDRAW'
   const { evmAddress } = useAppContext()
+  const router = useRouter()
   return (
     <>
       <BottomModal
@@ -55,7 +60,24 @@ export default function BottomPopup() {
           store.update({ homeBtmSheet: undefined })
         }}
       >
-        <SwapModal />
+        <div className="w-full">
+          <HomeRow
+            title={'Instant Withdraw'}
+            desc={'Use the best price offering at the moment'}
+            icon={GiSpeedometer}
+            onClick={async () => {
+              await router.push('/instant')
+            }}
+          />
+          <HomeRow
+            title={'Marketplace'}
+            desc={'Select from our list of verified vendors'}
+            icon={IoSwapHorizontalOutline}
+            onClick={async () => {
+              await router.push('/ads')
+            }}
+          />
+        </div>
       </BottomModal>
     </>
   )

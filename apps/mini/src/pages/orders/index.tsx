@@ -9,7 +9,7 @@ import { AppStores } from 'src/lib/zustand'
 export default function Page() {
   const store = AppStores.useSettings()
   return (
-    <Wrapper>
+    <Wrapper hideBottomNav>
       <div className="w-full flex flex-col items-center justify-center">
         <Tab
           data={[
