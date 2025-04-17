@@ -37,7 +37,7 @@ model User {
   merchant_status       MerchantStatus?    @default(Offline)
   adverts               Adverts[]
   orders                Orders[]
-  // orders_sell        OrdersSell[]
+  transactions          Transactions[]
   // orders_buy        OrdersBuy[]
 }
 
@@ -257,7 +257,7 @@ model AccessTokens {
   updated_at    DateTime?           @updatedAt
 }
 
-enum TransactionsCategory {
+enum TransactionCategory {
   AIRTIME
   DATA_BUNDLE
   GIFT_CARD
@@ -268,12 +268,20 @@ enum TransactionsMode {
   DEBIT
 }
 
+enum TransactionStatus {
+  COMPLETED
+  PENDING
+}
+
 model Transactions {
   id         Int                  @id @default(autoincrement())
   amount     Float
   note       String
-  category   TransactionsCategory
+  category   TransactionCategory
   mode       TransactionsMode
+  status     TransactionStatus
   created_at DateTime?            @default(now())
   updated_at DateTime?            @updatedAt
+  user_id    Int?
+  user       User?                @relation(fields: [user_id], references: [id])
 }

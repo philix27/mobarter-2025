@@ -18,8 +18,9 @@ import { KycModule } from "./kyc/kyc.module";
 import { ExchangeRateModule } from "./rates/rates.module";
 import { CronModule } from "./cron/cron.module";
 import { OrdersModule } from "./orders/orders.module";
-import { TelegramModule } from "./telegram/telegram.module";
 import { UtilitiesModule } from "./utilities/utilities.module";
+import { TransactionsModule } from "./transactions/transact.module";
+// import { TelegramModule } from "./telegram/telegram.module";
 // import { CryptoModule } from "./crypto/crypto.module";
 
 @Module({
@@ -58,8 +59,8 @@ import { UtilitiesModule } from "./utilities/utilities.module";
         WalletFiatModule,
         WalletCryptoModule,
         ExchangeRateModule,
-        TelegramModule,
-        UtilitiesModule
+        UtilitiesModule,
+        TransactionsModule
         // CryptoModule,
     ],
 })

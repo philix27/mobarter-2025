@@ -7,9 +7,9 @@ import { GqlErr } from "../common/errors/gqlErr";
 
 @Injectable()
 export class UtilitiesService {
+private reloadly: ReloadlyTopUpService
     public  constructor(
         private readonly logger: LoggerService,
-        private reloadly: ReloadlyTopUpService,
         private readonly prisma: PrismaService,
     ) {
        this.initializeReloadly() 

@@ -1,25 +1,26 @@
 import { Injectable } from "@nestjs/common";
-import { PrivyClient } from "@privy-io/server-auth";
-import { LoggerService, secrets } from "../common";
+// import { PrivyClient } from "@privy-io/server-auth";
+import { LoggerService,  } from "../common";
 
 @Injectable()
 export class PrivyWalletService {
-    client: PrivyClient;
+    // client: PrivyClient;
+    client: any;
 
     public constructor(private readonly logger: LoggerService) {
         this.init();
     }
 
     private async init() {
-        this.client = new PrivyClient(
-            secrets.PRIVY_APP_ID,
-            secrets.PRIVY_APP_SECRET,
-            {
-                walletApi: {
-                    authorizationPrivateKey: secrets.PRIVY_AUTH_KEY,
-                },
-            }
-        );
+        // this.client = new PrivyClient(
+        //     secrets.PRIVY_APP_ID,
+        //     secrets.PRIVY_APP_SECRET,
+        //     {
+        //         walletApi: {
+        //             authorizationPrivateKey: secrets.PRIVY_AUTH_KEY,
+        //         },
+        //     }
+        // );
 
         this.logger.info("Initialized");
     }
