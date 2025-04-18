@@ -68,6 +68,7 @@ export default function BottomPopup() {
             onClick={async () => {
               await router.push('/instant')
             }}
+            className="bg-background"
           />
           <HomeRow
             title={'Marketplace'}
@@ -76,6 +77,7 @@ export default function BottomPopup() {
             onClick={async () => {
               await router.push('/ads')
             }}
+               className="bg-background"
           />
         </div>
       </BottomModal>

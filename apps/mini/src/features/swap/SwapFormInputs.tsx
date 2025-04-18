@@ -1,17 +1,15 @@
 import { useFormikContext } from 'formik'
 import { useEffect } from 'react'
-import { TokenSelectField } from 'src/components/input/TokenSelectField'
-// import { AccountBalances } from 'src/features/accounts/fetchBalances'
-
-import { useSwapQuote } from '../hooks/useSwapQuote'
-import { useTokenBalance } from '../hooks/useTokenBalance'
-import { useTokenOptions } from '../hooks/useTokenOptions'
-import { SwapFormValues } from '../types'
-
-import { AmountField } from './AmountField'
-import { ReverseTokenButton } from './ReverseTokenButton'
-import { TokenSelectFieldWrapper } from './TokenSelectFieldWrapper'
 import { AccountBalances } from 'src/lib/zustand/swap'
+
+import { TokenSelectField } from './TokenSelectField'
+import { AmountField } from './comps/AmountField'
+import { ReverseTokenButton } from './comps/ReverseTokenButton'
+import { TokenSelectFieldWrapper } from './comps/TokenSelectFieldWrapper'
+import { useSwapQuote } from './hooks/useSwapQuote'
+import { useTokenBalance } from './hooks/useTokenBalance'
+import { useTokenOptions } from './hooks/useTokenOptions'
+import { SwapFormValues } from './types'
 
 interface Props {
   balances: AccountBalances

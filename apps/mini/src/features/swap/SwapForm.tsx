@@ -5,7 +5,7 @@ import { AppStores } from 'src/lib/zustand'
 import { debounce } from 'src/utils/debounce'
 import { useAccount } from 'wagmi'
 
-// import { SwapFormInputs } from './SwapFormInputs'
+import { SwapFormInputs } from './SwapFormInputs'
 import { SlippageRow } from './comps/SlippageRow'
 import { SwapFormValues } from './types'
 import { useFormValidator } from './useFormValidator'
@@ -48,7 +48,7 @@ export function SwapForm() {
       validateOnBlur={false}
     >
       <Form>
-        {/* <SwapFormInputs balances={store.account_balances} /> */}
+        <SwapFormInputs balances={store.account_balances} />
         {store.swap_showSlippage && <SlippageRow />}
         <div className="flex justify-center w-full my-6 mb-0">
           <SubmitButton isWalletConnected={isWalletConnected} isBalanceLoaded={isBalanceLoaded} />

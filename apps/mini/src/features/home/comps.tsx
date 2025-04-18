@@ -1,15 +1,17 @@
 import { IconType } from 'react-icons'
+import { cn } from 'src/lib/utils'
 
 export function HomeRow(params: {
   title: string
   desc: string
+  className?: string
   onClick?: VoidFunction
   icon: IconType
 }) {
   const Icon = params.icon as any
   return (
     <div
-      className="flex items-center w-full bg-card px-2 py-2 mb-1 rounded-md"
+      className={cn('flex items-center w-full bg-card px-2 py-2 mb-1 rounded-md', params.className)}
       onClick={params.onClick}
     >
       <div className="mr-3 size-[35px] rounded-full bg-background flex items-center justify-center">

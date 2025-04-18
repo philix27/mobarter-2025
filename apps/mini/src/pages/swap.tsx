@@ -1,10 +1,10 @@
 import Wrapper from 'src/components/wrapper/Wrapper'
-import SendCrypto from 'src/features/send/crypto'
+import SwapModal from 'src/features/swap'
 
 export default function Page() {
   return (
     <Wrapper>
-      <SendCrypto />
+      <SwapModal />
     </Wrapper>
   )
 }

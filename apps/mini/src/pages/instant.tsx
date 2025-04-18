@@ -1,10 +1,10 @@
 import Wrapper from 'src/components/wrapper/Wrapper'
-import SwapModal from 'src/features/swap'
+import SendFiat from 'src/features/send/fiat'
 
 export default function Page() {
   return (
     <Wrapper hideBottomNav>
-      <SwapModal />
+      <SendFiat />
     </Wrapper>
   )
 }
