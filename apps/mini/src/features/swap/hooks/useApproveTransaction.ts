@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { toast } from 'sonner'
 import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
 import { getMentoSdk, getTradablePairForTokens } from 'src/features/sdk'
-import { logger } from 'src/utils/logger'
+import { logger } from 'src/lib/utils/logger'
 import { useSendTransaction } from 'wagmi'
 
 export function useApproveTransaction(

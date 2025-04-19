@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { logger } from 'src/utils/logger'
+import { logger } from 'src/lib/utils/logger'
 
 export function ErrorPage({
   error,

@@ -5,7 +5,7 @@ import { IUseFormValidatorProps, SwapFormValues } from 'src/features/swap/types'
 import { MIN_ROUNDED_VALUE } from 'src/lib/config/consts'
 import { Tokens, getTokenByAddress } from 'src/lib/config/tokens'
 import { parseAmount, toWei } from 'src/lib/utils/amount'
-import { logger } from 'src/utils/logger'
+import { logger } from 'src/lib/utils/logger'
 import { useChainId } from 'wagmi'
 
 export function useFormValidator({

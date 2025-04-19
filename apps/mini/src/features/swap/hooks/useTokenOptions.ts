@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Celo } from 'src/lib/config/chains';
 import { TokenId,  getSwappableTokenOptions,  getTokenOptionsByChainId } from 'src/lib/config/tokens';
-import { logger } from 'src/utils/logger';
+import { logger } from 'src/lib/utils/logger';
 import { useChainId } from 'wagmi';
 
 

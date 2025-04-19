@@ -9,8 +9,8 @@ import {
 import Link from 'next/link'
 import React from 'react'
 import { Constants } from 'src/lib/consts'
-import { formatCurrency as fc } from 'src/lib/helpers'
 import { cn } from 'src/lib/utils'
+import { formatCurrency as fc } from 'src/lib/utils/helpers'
 import { AppStores } from 'src/lib/zustand'
 
 type IData = { data: Order_Response }

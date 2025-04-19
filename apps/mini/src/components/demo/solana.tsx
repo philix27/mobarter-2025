@@ -5,10 +5,10 @@ import bs58 from 'bs58'
 import { toast } from 'sonner'
 import { useAppContext } from 'src/Root/context'
 import { messageValue } from 'src/config'
-import { shortString } from 'src/lib/utils'
 import { logger } from 'src/lib/utils/logger'
 
 import { Button } from '../Button'
+import { shortString } from 'src/lib/utils/string'
 
 const SolanaDemo = () => {
   const { address, signMessage, signAndSendTransaction } = useSolana()

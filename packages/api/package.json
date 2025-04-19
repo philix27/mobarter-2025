@@ -11,7 +11,7 @@
     "clean": "rm -rf dist",
     "#graphql": "Graphql scripts",
     "gqlgen": "graphql-codegen",
-    "gen": "graphql-codegen --config codegen.ts",
+    "gen": "graphql-codegen --config codegen.ts && tsup",
     "genY": "graphql-codegen --config codegen.yml",
     "gql watch": "graphql-codegen -w"
   },

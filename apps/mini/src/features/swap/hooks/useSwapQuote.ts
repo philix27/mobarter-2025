@@ -12,8 +12,8 @@ import {
 import { SWAP_QUOTE_REFETCH_INTERVAL } from 'src/lib/config/consts'
 import { TokenId, Tokens, getTokenAddress } from 'src/lib/config/tokens'
 import { fromWei } from 'src/lib/utils/amount'
-import { useDebounce } from 'src/utils/debounce'
-import { logger } from 'src/utils/logger'
+import { useDebounce } from 'src/lib/utils/debounce'
+import { logger } from 'src/lib/utils/logger'
 import { useChainId } from 'wagmi'
 
 export function useSwapQuote(

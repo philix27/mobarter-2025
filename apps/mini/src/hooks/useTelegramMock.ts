@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { mockTelegramEnv, parseInitData, retrieveLaunchParams } from '@telegram-apps/sdk-react'
 import { useClientOnce } from 'src/hooks/useClientOnce'
-import { logger } from 'src/utils/logger'
+import { logger } from 'src/lib/utils/logger'
 
 /**
  * Mocks Telegram environment in development mode.

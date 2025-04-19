@@ -6,8 +6,8 @@ import { useEffect } from 'react'
 import { Tab } from 'src/components/Tab'
 import Wrapper from 'src/components/wrapper/Wrapper'
 import { Constants } from 'src/lib/consts'
-import { formatCurrency } from 'src/lib/helpers'
 import { cn } from 'src/lib/utils'
+import { formatCurrency } from 'src/lib/utils/helpers'
 import { AppStores } from 'src/lib/zustand'
 
 type IAd = { data: Api.Advert_GetResponse }

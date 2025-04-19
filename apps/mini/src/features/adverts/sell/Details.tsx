@@ -6,7 +6,7 @@ import { toast } from 'sonner'
 import { Button } from 'src/components/Button'
 import { AdsRow, BottomNote, Card, Label, Line } from 'src/components/comps'
 import BankAccount from 'src/features/bankAccount/BankAccount'
-import { formatCurrency, roundUpTo2Decimals } from 'src/lib/helpers'
+import { formatCurrency, roundUpTo2Decimals } from 'src/lib/utils/helpers'
 import { AppStores } from 'src/lib/zustand'
 
 import { MerchantInfo } from '../MerchantInfo'

@@ -1,5 +1,8 @@
-mutation Telegram_generateToken($input: Telegram_GenerateTokenInput!) {
-  telegram_generateToken(input: $input) {
+mutation Auth_TelegramLogin($input: Auth_TelegramLoginInput!) {
+  auth_loginTelegram(input: $input) {
     token
+    email
+    firstname
+    lastname
   }
 }

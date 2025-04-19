@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
 import { useEffect } from 'react'
 import type { TokenId } from 'src/lib/config/tokens'
-import { logger } from 'src/utils/logger'
+import { logger } from 'src/lib/utils/logger'
 
 import { useAllowance } from './useAllowance'
 

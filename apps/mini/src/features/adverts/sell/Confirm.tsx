@@ -12,7 +12,7 @@ import React from 'react'
 import { toast } from 'sonner'
 import { Button } from 'src/components/Button'
 import { Card, Label } from 'src/components/comps'
-import { formatCurrency } from 'src/lib/helpers'
+import { formatCurrency } from 'src/lib/utils/helpers'
 import { logger } from 'src/lib/utils/logger'
 import { AppStores } from 'src/lib/zustand'
 

@@ -2,7 +2,7 @@ import { Form, Formik } from 'formik'
 import { SubmitButton } from 'src/components/SubmitButton'
 import { TokenId } from 'src/lib/config/tokens'
 import { AppStores } from 'src/lib/zustand'
-import { debounce } from 'src/utils/debounce'
+import { debounce } from 'src/lib/utils/debounce'
 import { useAccount } from 'wagmi'
 
 import { SwapFormInputs } from './SwapFormInputs'
