@@ -18,7 +18,7 @@ export default function BottomModal({
     <Drawer.Root open={showSheet}
       onOpenChange={props.onClose}
       repositionInputs={true}
-      snapPoints={snapPoints}
+      // snapPoints={snapPoints}
       // activeSnapPoint={snap}
       setActiveSnapPoint={setSnap}
     >
