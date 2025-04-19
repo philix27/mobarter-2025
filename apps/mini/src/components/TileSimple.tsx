@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { IconType } from 'react-icons'
 import { cn } from 'src/lib/utils'
 
@@ -19,7 +18,8 @@ export function TileSimple(params: {
       <div className="mr-3 size-[35px] rounded-full bg-background flex items-center justify-center">
         {params.icon && <Icon className="text-primary" />}
         {params.imgUrl && (
-          <Image src={params.imgUrl} alt="flag" height={40} width={40} className="rounded-full" />
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={params.imgUrl} alt="flag" className="rounded-full h-full object-cover" />
         )}
       </div>
       <div>

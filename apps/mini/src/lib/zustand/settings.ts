@@ -33,6 +33,9 @@ export interface ISlice {
   swapSteps?: ISwap
   showSlippage?: boolean
   showChart?: boolean
+  token?: boolean
+  countryIso?: string
+  chainIcon?: string
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
@@ -56,6 +59,9 @@ export const defaultValues: Required<ISlice> = {
   swapSteps: 'EXCHANGE',
   showSlippage: false,
   showChart: false,
+  token: false,
+  countryIso: '',
+  chainIcon: ''
 }
 
 export const useSettings = create(

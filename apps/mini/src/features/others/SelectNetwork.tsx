@@ -3,8 +3,10 @@ import { type ChainInfo, chains } from '@particle-network/chains'
 import { useMemo } from 'react'
 import { TileSimple } from 'src/components/TileSimple'
 import { erc4337Config } from 'src/lib/config/erc4337'
+import { AppStores } from 'src/lib/zustand'
 
 export default function SelectNetwork() {
+  const store = AppStores.useSettings()
   const { erc4337 } = useCustomize()
   const supportChains = useMemo((): ChainInfo[] => {
     if (erc4337) {
@@ -21,9 +23,19 @@ export default function SelectNetwork() {
   }, [erc4337])
   return (
     <div>
-      {supportChains.map((val, i) => (
-        <TileSimple key={i} title={val.name} desc={val.name} imgUrl={val.nativeIcon} />
-      ))}
+      {supportChains
+        .filter((val) => val.id === 42220)
+        .map((val, i) => (
+          <TileSimple
+            key={i}
+            title={val.name}
+            desc={val.name}
+            imgUrl={val.nativeIcon}
+            onClick={() => {
+              store.update({ chainIcon: val.icon })
+            }}
+          />
+        ))}
     </div>
   )
 }

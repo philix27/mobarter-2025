@@ -2,16 +2,24 @@ import React from 'react'
 import { Tab } from 'src/components/Tab'
 import { AppStores } from 'src/lib/zustand'
 
+import { essentialCountriesList } from '../others/SelectCountry'
+
 export default function HomeTabs() {
   const store = AppStores.useSettings()
   return (
-    <div className="w-full items-center justify-between">
+    <div className="w-full flex items-center justify-between">
       <div
-        className="bg-primary rounded-full size-[50px]"
+        className="bg-primary rounded-full size-[35px]"
         onClick={() => {
           store.update({ homeBtmSheet: 'SELECT_COUNTRY' })
         }}
-      ></div>
+      >
+        <img
+          src={essentialCountriesList.filter((val) => val.isoName === store.countryIso)[0].flag}
+          alt="flag"
+          className="object-cover w-full h-full rounded-full"
+        />
+      </div>
       <Tab
         data={[
           {
@@ -35,11 +43,13 @@ export default function HomeTabs() {
         ]}
       />
       <div
-        className="bg-primary rounded-full size-[50px]"
+        className="bg-primary rounded-full size-[35px]"
         onClick={() => {
           store.update({ homeBtmSheet: 'SELECT_NETWORK' })
         }}
-      ></div>
+      >
+        <img src={store.chainIcon} alt="flag" className="object-cover w-full h-full rounded-full" />
+      </div>
     </div>
   )
 }
