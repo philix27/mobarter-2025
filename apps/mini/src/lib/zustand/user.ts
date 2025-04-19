@@ -29,7 +29,7 @@ export const useUser = create(
         }),
     }),
     {
-      name: 'screens',
+      name: 'userData',
       storage: createJSONStorage(() => localStorage),
     }
   )

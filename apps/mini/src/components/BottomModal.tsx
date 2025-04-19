@@ -19,7 +19,7 @@ export default function BottomModal({
       onOpenChange={props.onClose}
       repositionInputs={true}
       snapPoints={snapPoints}
-      activeSnapPoint={snap}
+      // activeSnapPoint={snap}
       setActiveSnapPoint={setSnap}
     >
       <Drawer.Overlay className="fixed inset-0  bg-[#0000008c]" />

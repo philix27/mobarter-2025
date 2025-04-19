@@ -7,6 +7,7 @@ import { useDarkMode } from 'src/styles/mediaQueries'
 import BottomNav from './BottomNav'
 import Drawer from './Drawer'
 import Sidebar from './Sidebar'
+import { useInitUserToken } from 'src/Root/context'
 
 export default function Wrapper({
   hideBottomNav,
@@ -51,6 +52,7 @@ export default function Wrapper({
     })
   }, [router])
 
+  useInitUserToken() 
   return (
     <div className="w-screen bg-background h-screen p-0 m-0">
       {/* <TopNav showBack={props.hideBottomNav} /> */}

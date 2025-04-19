@@ -42,13 +42,14 @@ type ContextValue = {
   onAction: (key: 'logout' | 'account-security') => void
 }
 
-export function useInitData() {
+export function useInitUserToken() {
   const store = AppStores.useUser()
   const initDataState = useSignal(initData.state)
   const { address } = useEthereum()
   const userInfo = useMemo<User | undefined>(() => {
     return initDataState && initDataState.user ? initDataState.user : undefined
   }, [initDataState])
+  
   const [mutate] = useMutation<
     MutationResponse<'auth_loginTelegram'>,
     MutationAuth_LoginTelegramArgs
