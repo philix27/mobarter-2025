@@ -3,7 +3,7 @@ import { miniApp, viewport } from '@telegram-apps/sdk-react'
 import { ReactNode, useEffect } from 'react'
 import { BsWallet } from 'react-icons/bs'
 import { MdLogout, MdSecurity } from 'react-icons/md'
-import { useAppContext } from 'src/Root/context'
+import { useAppContext } from 'src/root/context'
 import { Button } from 'src/components/Button'
 import { Label } from 'src/components/comps'
 

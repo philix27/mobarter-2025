@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion'
-import { XIcon } from 'lucide-react'
-import { ReactNode } from 'react'
-import { cn } from 'src/lib/utils'
+import { ReactNode, useState } from 'react'
+import { clsx } from 'clsx';
+import { Drawer } from 'vaul';
 
+const snapPoints = ['148px', '355px', "1"];
 export default function BottomModal({
   showSheet = false,
   ...props
@@ -12,41 +12,36 @@ export default function BottomModal({
   showSheet?: boolean
   onClose: VoidFunction
   children: ReactNode
-}) {
+  }) {
+   const [snap, setSnap] = useState<number | string | null>(snapPoints[0]);
   return (
-    <div
-      className={cn(
-        `h-screen w-screen 
-        bg-[#0000008c]
-        fixed left-0 bottom-0 top-0  z-40
-        flex items-center justify-between flex-col`,
-        showSheet ? 'block' : 'hidden'
-      )}
+    <Drawer.Root open={showSheet}
+      onOpenChange={props.onClose}
+      repositionInputs={true}
+      // snapPoints={snapPoints}
+      activeSnapPoint={snap}
+      setActiveSnapPoint={setSnap}
     >
-      <div className="h-full w-full flex flex-col items-end justify-end">
-        <motion.div
-          initial={{ y: 200, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, ease: 'easeOut', easeInOut: 'easeOut' }}
-          className={cn(
-            `min-h-[375px] bg-card border-none 
-        w-full bot
-         rounded-t-[15px] 
-        `,
-            props.className
-          )}
-        >
-          <div
-            className="w-full  flex items-center justify-between py-[10px] px-5  border-b-[0.2px] border-b-background"
-            onClick={props.onClose}
+      <Drawer.Overlay className="fixed inset-0  bg-[#0000008c]" />
+      <Drawer.Portal>
+        <Drawer.Content className="bg-card flex flex-col rounded-t-[10px] p-2 h-fit fixed bottom-0 left-0 right-0 outline-none">
+          <div className={clsx('flex flex-col max-w-md mx-auto w-full pt-1 mb-5 px-2', {
+            'overflow-y-auto': snap === 1,
+            'overflow-hidden': snap !== 1,
+          })}>
+             <Drawer.Handle className='bg-muted mb-4' />
+              {/* <div
+            className="w-full flex items-center justify-between px-3"
           >
-            {props.title ? <p className="text-xs font-semibold">{props.title}</p> : <div />}
-            <XIcon size={18} />
-          </div>
-          <div className="px-3 py-2">{props.children}</div>
-          <div className="h-[70px]" />
-        </motion.div>
-      </div>
-    </div>
-  )
+           
+            {props.title && <Drawer.Title className="text-[12px] font-semibold">{props.title}</Drawer.Title>}
+          </div> */}
+              {props.children}
+            </div>
+        </Drawer.Content>
+      </Drawer.Portal>
+    </Drawer.Root>
+  );
 }
+
+

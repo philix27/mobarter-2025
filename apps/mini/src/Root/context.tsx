@@ -25,7 +25,7 @@ import {
 } from '@telegram-apps/sdk-react'
 import React, { createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { toast } from 'sonner'
-import { erc4337Config } from 'src/config/erc4337'
+import { erc4337Config } from 'src/lib/config/erc4337'
 import { logger } from 'src/lib/utils/logger'
 import { AppStores } from 'src/lib/zustand'
 
@@ -42,7 +42,7 @@ type ContextValue = {
   onAction: (key: 'logout' | 'account-security') => void
 }
 
-function useInitData() {
+export function useInitData() {
   const store = AppStores.useUser()
   const initDataState = useSignal(initData.state)
   const { address } = useEthereum()
@@ -89,7 +89,7 @@ export const AppProvider = ({ children }: React.PropsWithChildren) => {
   const [evmAddress, setEVMAddress] = useState<string>()
   const { address: solanaAddress, enable: enableSolana } = useSolana()
 
-  useInitData()
+  // useInitData()
 
   if (provider) {
     const w = window as any

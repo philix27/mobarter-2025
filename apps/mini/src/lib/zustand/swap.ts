@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
 import { TokenId } from '../config/tokens'
-import { SwapFormValues, ToCeloRates } from 'src/features/swap/types'
+// import { SwapFormValues, ToCeloRates } from 'src/features/swap/types'
 
 export type AccountBalances = Record<TokenId, string>
 
@@ -13,8 +13,8 @@ export interface ISlice {
   swapSteps?: ISwap
   account_balances?: AccountBalances
   account_lastUpdated?: number | null
-  swap_formValues?: SwapFormValues | null
-  swap_toCeloRates?: ToCeloRates
+  // swap_formValues?: SwapFormValues | null
+  // swap_toCeloRates?: ToCeloRates
   swap_showSlippage?: boolean
   swap_showChart?: boolean
   swap_confirmView?: boolean
@@ -29,8 +29,8 @@ export const defaultValues: Required<ISlice> = {
     return result
   }, {} as AccountBalances),
   account_lastUpdated: null,
-  swap_formValues: null,
-  swap_toCeloRates: {},
+  // swap_formValues: null,
+  // swap_toCeloRates: {},
   swap_showSlippage: false,
   swap_showChart: false,
   swap_confirmView: false,

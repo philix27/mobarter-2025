@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 import React, { useState } from 'react'
-import { useAppContext } from 'src/Root/context'
+import { useAppContext } from 'src/root/context'
 import BottomModal from 'src/components/BottomModal'
 import { Spinner } from 'src/components/Spinner'
 import { shortenAddress } from 'src/lib/config/addresses'

@@ -4,7 +4,7 @@ import { BsSend } from 'react-icons/bs'
 import { GoHistory } from 'react-icons/go'
 import { IoSwapHorizontalOutline } from 'react-icons/io5'
 import { SlWallet } from 'react-icons/sl'
-import { useAppContext } from 'src/Root/context'
+import { useAppContext } from 'src/root/context'
 import { ChainId } from 'src/lib/config/chains'
 import { tokensList } from 'src/lib/config/tokenData'
 import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
@@ -18,7 +18,6 @@ import Utilities from './Utilities'
 import HomeTabs from './tabs'
 
 export default function Home() {
-  const storeUser = AppStores.useUser()
   const store = AppStores.useSettings()
   const router = useRouter()
   const icons: { title: string; onClick: VoidFunction; icon: IconType }[] = [
@@ -55,7 +54,6 @@ export default function Home() {
   return (
     <div className="w-full items-center justify-center flex flex-col">
       <HomeTabs />
-      <p>Token: {storeUser.token}</p>
       <Balance />
       <div className="flex w-full items-center justify-around mt-[30px] mb-[20px]">
         {icons.map((val, i) => {

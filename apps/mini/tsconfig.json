@@ -19,6 +19,6 @@
     "strict": true,
     "target": "es2020"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/vendor/*", "src/lib/telegram/particleConfig.txr"],
-  "exclude": ["node_modules"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx",],
+  "exclude": ["node_modules", ".trash", ".next"]
 }
