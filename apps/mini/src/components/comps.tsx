@@ -1,5 +1,6 @@
-import { ReactNode } from 'react'
-import { cn } from 'src/lib/utils'
+import { ReactNode } from 'react';
+import { cn } from 'src/lib/utils';
+
 
 export function Label(params: { children: ReactNode; className?: string }) {
   return (
@@ -45,8 +46,11 @@ export const Instructions = (props: { children: ReactNode }) => (
   </div>
 )
 
-export const Card = (props: { children: ReactNode; onClick?: VoidFunction }) => (
-  <div className="bg-card rounded-md p-2  w-full hover:disabled text-muted" onClick={props.onClick}>
+export const Card = (props: { children: ReactNode; onClick?: VoidFunction; className?: string }) => (
+  <div
+    className={cn('bg-card rounded-md p-2  w-full hover:disabled text-muted', props.className)}
+    onClick={props.onClick}
+  >
     {props.children}
   </div>
 )

@@ -49,7 +49,7 @@ export function useInitUserToken() {
   const userInfo = useMemo<User | undefined>(() => {
     return initDataState && initDataState.user ? initDataState.user : undefined
   }, [initDataState])
-  
+
   const [mutate] = useMutation<
     MutationResponse<'auth_loginTelegram'>,
     MutationAuth_LoginTelegramArgs

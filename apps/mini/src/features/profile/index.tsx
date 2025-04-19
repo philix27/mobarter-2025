@@ -21,7 +21,6 @@ function useInitData() {
 }
 
 export default function Profile() {
-  const userStore = AppStores.useUser()
   const store = AppStores.useSettings()
   const { userInfo } = useInitData()
   const particleUser = useUserInfo()
@@ -73,7 +72,6 @@ export default function Profile() {
             ]}
           />
         </div>
-<p>Tokens: {userStore.token}</p>
 
         {store.profileTabs === 'ACTIONS' ? (
           <MoreFeat />
