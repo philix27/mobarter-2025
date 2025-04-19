@@ -2,7 +2,7 @@ import { ReactNode, useState } from 'react'
 import { clsx } from 'clsx';
 import { Drawer } from 'vaul';
 
-const snapPoints = ['148px', '355px', "1"];
+const snapPoints = ['148px', '355px', 1];
 export default function BottomModal({
   showSheet = false,
   ...props
@@ -18,7 +18,7 @@ export default function BottomModal({
     <Drawer.Root open={showSheet}
       onOpenChange={props.onClose}
       repositionInputs={true}
-      // snapPoints={snapPoints}
+      snapPoints={snapPoints}
       activeSnapPoint={snap}
       setActiveSnapPoint={setSnap}
     >
