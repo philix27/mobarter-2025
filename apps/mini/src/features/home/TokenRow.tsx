@@ -4,7 +4,7 @@ import { TokenIcons } from 'src/images/tokens/TokenIcon'
 import { ChainId } from 'src/lib/config/chains'
 import { IToken } from 'src/lib/config/tokenData'
 import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
-import { formatEtherBalance } from 'src/utils'
+import { formatEtherBalance } from 'src/lib/utils'
 import { useBalance } from 'wagmi'
 
 export function TokenRow(props: IToken) {

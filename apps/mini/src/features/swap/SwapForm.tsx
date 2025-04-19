@@ -8,7 +8,7 @@ import { useAccount } from 'wagmi'
 import { SwapFormInputs } from './SwapFormInputs'
 import { SlippageRow } from './comps/SlippageRow'
 import { SwapFormValues } from './types'
-import { useFormValidator } from './useFormValidator'
+import { useFormValidator } from './hooks/useFormValidator'
 
 const initialValues: SwapFormValues = {
   fromTokenId: TokenId.CELO,

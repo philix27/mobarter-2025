@@ -9,7 +9,7 @@ import {
   Orders_CreateSellDocument,
 } from '@repo/api'
 import React from 'react'
-import { toast } from 'react-toastify'
+import { toast } from 'sonner'
 import { Button } from 'src/components/Button'
 import { Card, Label } from 'src/components/comps'
 import { formatCurrency } from 'src/lib/helpers'

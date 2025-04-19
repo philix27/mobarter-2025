@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import BigNumber from 'bignumber.js'
 import { useEffect } from 'react'
-import { toast } from 'react-toastify'
+import { toast } from 'sonner'
 import { getMentoSdk, getTradablePairForTokens } from 'src/features/sdk'
 import { SwapDirection } from 'src/features/swap/types'
 import {
@@ -11,7 +11,7 @@ import {
 } from 'src/features/swap/utils'
 import { SWAP_QUOTE_REFETCH_INTERVAL } from 'src/lib/config/consts'
 import { TokenId, Tokens, getTokenAddress } from 'src/lib/config/tokens'
-import { fromWei } from 'src/utils/amount'
+import { fromWei } from 'src/lib/utils/amount'
 import { useDebounce } from 'src/utils/debounce'
 import { logger } from 'src/utils/logger'
 import { useChainId } from 'wagmi'

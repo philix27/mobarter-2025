@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
 import { formatUnits } from 'ethers'
 import { TokenId, Tokens } from 'src/lib/config/tokens'
-import { NumberT, parseAmountWithDefault, toWei } from 'src/utils/amount'
+import { NumberT, parseAmountWithDefault, toWei } from 'src/lib/utils/amount'
 import { logger } from 'src/utils/logger'
 
 export function parseInputExchangeAmount(

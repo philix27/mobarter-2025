@@ -5,8 +5,8 @@ import { toast } from 'sonner'
 import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
 import { AppSelect } from 'src/components/Select'
+import { pasteTextFromClipboard } from 'src/lib/utils'
 import { logger } from 'src/lib/utils/logger'
-import { pasteTextFromClipboard } from 'src/utils'
 
 export default function Airtime() {
   const [amtValue, setAmountVal] = useState<number>()
@@ -98,4 +98,3 @@ export default function Airtime() {
     </div>
   )
 }
-

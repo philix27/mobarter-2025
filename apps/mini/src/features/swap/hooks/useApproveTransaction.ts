@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import BigNumber from 'bignumber.js'
 import { useEffect } from 'react'
-import { toast } from 'react-toastify'
+import { toast } from 'sonner'
 import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
 import { getMentoSdk, getTradablePairForTokens } from 'src/features/sdk'
 import { logger } from 'src/utils/logger'

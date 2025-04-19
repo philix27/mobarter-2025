@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import BigNumber from 'bignumber.js'
 import { useEffect } from 'react'
-import { toast } from 'react-toastify'
-import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
+import { toast } from 'sonner'
 import { getMentoSdk, getTradablePairForTokens } from 'src/features/sdk'
 import { SwapDirection } from 'src/features/swap/types'
+import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
 import { logger } from 'src/utils/logger'
 import { useSendTransaction } from 'wagmi'
 

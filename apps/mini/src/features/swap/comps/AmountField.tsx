@@ -1,6 +1,6 @@
 import { useFormikContext } from 'formik'
+import { toSignificant } from 'src/lib/utils/amount'
 import { escapeRegExp, inputRegex } from 'src/lib/utils/string'
-import { toSignificant } from 'src/utils/amount'
 
 import { SwapDirection, SwapFormValues } from '../types'
 

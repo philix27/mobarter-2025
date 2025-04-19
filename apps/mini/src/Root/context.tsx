@@ -1,3 +1,4 @@
+import { useMutation } from '@apollo/client'
 import { SmartAccount } from '@particle-network/aa'
 import type { ConnectParam, UserInfo } from '@particle-network/auth-core'
 import { AuthType } from '@particle-network/auth-core'
@@ -9,11 +10,24 @@ import {
   useEthereum,
   useSolana,
 } from '@particle-network/auth-core-modal'
-import { miniApp, popup, useLaunchParams } from '@telegram-apps/sdk-react'
+import {
+  Auth_TelegramLoginDocument,
+  MutationAuth_LoginTelegramArgs,
+  MutationResponse,
+} from '@repo/api'
+import {
+  User,
+  initData,
+  miniApp,
+  popup,
+  useLaunchParams,
+  useSignal,
+} from '@telegram-apps/sdk-react'
 import React, { createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { toast } from 'sonner'
 import { erc4337Config } from 'src/config/erc4337'
 import { logger } from 'src/lib/utils/logger'
+import { AppStores } from 'src/lib/zustand'
 
 type ContextValue = {
   handleError: (error: any) => void
@@ -28,6 +42,40 @@ type ContextValue = {
   onAction: (key: 'logout' | 'account-security') => void
 }
 
+function useInitData() {
+  const store = AppStores.useUser()
+  const initDataState = useSignal(initData.state)
+  const { address } = useEthereum()
+  const userInfo = useMemo<User | undefined>(() => {
+    return initDataState && initDataState.user ? initDataState.user : undefined
+  }, [initDataState])
+  const [mutate] = useMutation<
+    MutationResponse<'auth_loginTelegram'>,
+    MutationAuth_LoginTelegramArgs
+  >(Auth_TelegramLoginDocument)
+
+  if (!store.token) {
+    void mutate({
+      variables: {
+        input: {
+          telegramUserId: `${userInfo!.id}`,
+          walletAddress: address!,
+        },
+      },
+      onCompleted(data) {
+        store.update({
+          walletAddress: address!,
+          token: data.auth_loginTelegram.token!,
+        })
+      },
+      onError(err) {
+        logger.error('TOken err: ' + err)
+      },
+    })
+  }
+  return { userInfo }
+}
+
 export const AppContext = createContext<ContextValue | null>(null)
 
 export const AppProvider = ({ children }: React.PropsWithChildren) => {
@@ -40,6 +88,8 @@ export const AppProvider = ({ children }: React.PropsWithChildren) => {
   const initDataConnectedRef = useRef(false)
   const [evmAddress, setEVMAddress] = useState<string>()
   const { address: solanaAddress, enable: enableSolana } = useSolana()
+
+  useInitData()
 
   if (provider) {
     const w = window as any

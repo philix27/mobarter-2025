@@ -3,8 +3,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Analytics } from '@vercel/analytics/react'
 import type { AppProps } from 'next/app'
 import { PropsWithChildren } from 'react'
-import { ToastContainer, Zoom, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import { Root } from 'src/Root'
 import { ErrorBoundary } from 'src/components/Errors'
 import { Provider } from 'src/lib/telegram'
@@ -55,11 +53,6 @@ export default function App({ Component, pageProps }: AppProps) {
                 <Root>
                   <Component {...pageProps} />
                 </Root>
-                <ToastContainer
-                  transition={Zoom}
-                  position={toast.POSITION.BOTTOM_RIGHT}
-                  limit={2}
-                />
               </Provider>
             </ApolloProvider>
             {/* </RainbowKitProvider> */}

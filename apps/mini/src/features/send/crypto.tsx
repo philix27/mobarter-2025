@@ -1,19 +1,18 @@
-import { useEthereum } from '@particle-network/auth-core-modal';
-import { useState } from 'react';
-import { FaCopy } from 'react-icons/fa6';
-import { toast } from 'sonner';
-import { useAppContext } from 'src/Root/context';
-import { Button } from 'src/components/Button';
-import Input from 'src/components/Input';
-import { AppSelect } from 'src/components/Select';
-import { isValidAddress } from 'src/lib/config/addresses';
-import { ChainId } from 'src/lib/config/chains';
-import { tokensList } from 'src/lib/config/tokenData';
-import { TokenId, getTokenAddress } from 'src/lib/config/tokens';
-import { logger } from 'src/lib/utils/logger';
-import { formatEtherBalance, pasteTextFromClipboard, shortString } from 'src/utils';
-import { useBalance } from 'wagmi';
-
+import { useEthereum } from '@particle-network/auth-core-modal'
+import { useState } from 'react'
+import { FaCopy } from 'react-icons/fa6'
+import { toast } from 'sonner'
+import { useAppContext } from 'src/Root/context'
+import { Button } from 'src/components/Button'
+import Input from 'src/components/Input'
+import { AppSelect } from 'src/components/Select'
+import { isValidAddress } from 'src/lib/config/addresses'
+import { ChainId } from 'src/lib/config/chains'
+import { tokensList } from 'src/lib/config/tokenData'
+import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
+import { formatEtherBalance, pasteTextFromClipboard, shortString } from 'src/lib/utils'
+import { logger } from 'src/lib/utils/logger'
+import { useBalance } from 'wagmi'
 
 export default function SendCrypto() {
   const [selectedToken, setToken] = useState('CELO')

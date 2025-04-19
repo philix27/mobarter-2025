@@ -6,7 +6,7 @@ import BottomModal from 'src/components/BottomModal'
 import { Spinner } from 'src/components/Spinner'
 import { shortenAddress } from 'src/lib/config/addresses'
 import { cn } from 'src/lib/utils'
-import { formatEtherBalance, shortString } from 'src/utils'
+import { formatEtherBalance, shortString } from 'src/lib/utils'
 
 // import { AppStores } from 'src/lib/zustand'
 import { getTxHistory } from './func'

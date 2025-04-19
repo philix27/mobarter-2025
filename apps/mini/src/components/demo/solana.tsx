@@ -5,8 +5,8 @@ import bs58 from 'bs58'
 import { toast } from 'sonner'
 import { useAppContext } from 'src/Root/context'
 import { messageValue } from 'src/config'
+import { shortString } from 'src/lib/utils'
 import { logger } from 'src/lib/utils/logger'
-import { shortString } from 'src/utils'
 
 import { Button } from '../Button'
 

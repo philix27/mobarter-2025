@@ -10,8 +10,8 @@ import { isValidAddress } from 'src/lib/config/addresses'
 import { ChainId } from 'src/lib/config/chains'
 import { tokensList } from 'src/lib/config/tokenData'
 import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
+import { formatEtherBalance, pasteTextFromClipboard, shortString } from 'src/lib/utils'
 import { logger } from 'src/lib/utils/logger'
-import { formatEtherBalance, pasteTextFromClipboard, shortString } from 'src/utils'
 import { useBalance } from 'wagmi'
 
 export default function SendToBank() {

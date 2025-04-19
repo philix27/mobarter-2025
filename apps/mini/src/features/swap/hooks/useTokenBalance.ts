@@ -1,11 +1,11 @@
 import { useFormikContext } from 'formik'
-import { toast } from 'react-toastify'
-import { fromWei, fromWeiRounded } from 'src/utils/amount'
+import { toast } from 'sonner'
+import { TokenId, Tokens } from 'src/lib/config/tokens'
+import { fromWei, fromWeiRounded } from 'src/lib/utils/amount'
+import { AccountBalances } from 'src/lib/zustand/swap'
 import { useAccount } from 'wagmi'
 
 import { SwapFormValues } from '../types'
-import { TokenId, Tokens } from 'src/lib/config/tokens'
-import { AccountBalances } from 'src/lib/zustand/swap'
 
 // Gets the user's token balances and checks if the user has enough balance to perform a swap
 export function useTokenBalance(balances: AccountBalances, tokenId: TokenId) {
@@ -22,7 +22,7 @@ export function useTokenBalance(balances: AccountBalances, tokenId: TokenId) {
     setFieldValue('direction', 'in')
 
     if (tokenId === TokenId.CELO) {
-      toast.warn('Consider keeping some CELO for transaction fees')
+      toast.info('Consider keeping some CELO for transaction fees')
     }
   }
 

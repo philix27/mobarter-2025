@@ -8,8 +8,8 @@ import { useAppContext } from 'src/Root/context'
 import { ChainId } from 'src/lib/config/chains'
 import { tokensList } from 'src/lib/config/tokenData'
 import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
+import { formatEtherBalance } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
-import { formatEtherBalance } from 'src/utils'
 import { useBalance } from 'wagmi'
 
 import BottomPopup from './BottomPopup'
@@ -18,6 +18,7 @@ import Utilities from './Utilities'
 import HomeTabs from './tabs'
 
 export default function Home() {
+  const storeUser = AppStores.useUser()
   const store = AppStores.useSettings()
   const router = useRouter()
   const icons: { title: string; onClick: VoidFunction; icon: IconType }[] = [
@@ -54,6 +55,7 @@ export default function Home() {
   return (
     <div className="w-full items-center justify-center flex flex-col">
       <HomeTabs />
+      <p>Token: {storeUser.token}</p>
       <Balance />
       <div className="flex w-full items-center justify-around mt-[30px] mb-[20px]">
         {icons.map((val, i) => {

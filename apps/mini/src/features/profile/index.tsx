@@ -1,16 +1,16 @@
+import { useUserInfo } from '@particle-network/auth-core-modal'
 import { type User, initData, useSignal } from '@telegram-apps/sdk-react'
 import Image from 'next/image'
 import React, { useMemo } from 'react'
+import { useAppContext } from 'src/Root/context'
 import LiveLoader from 'src/Root/live-loader'
+import { Tab } from 'src/components/Tab'
 import { Card, Label } from 'src/components/comps'
+import { shortenAddress } from 'src/lib/config/addresses'
+import { copyTextToClipboard, shortString } from 'src/lib/utils'
+import { AppStores } from 'src/lib/zustand'
 
 import { MoreFeat } from './More'
-import { Tab } from 'src/components/Tab'
-import { AppStores } from 'src/lib/zustand'
-import { useUserInfo } from '@particle-network/auth-core-modal'
-import { useAppContext } from 'src/Root/context'
-import { shortenAddress } from 'src/lib/config/addresses'
-import { copyTextToClipboard, shortString } from 'src/utils'
 
 function useInitData() {
   const initDataState = useSignal(initData.state)

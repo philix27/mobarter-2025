@@ -1,4 +1,6 @@
-import { toast } from 'react-toastify'
+import { toast } from 'sonner'
+
+import { logger } from './utils/logger'
 
 export function shortString(str: any): string {
   if (Array.isArray(str)) {
@@ -20,8 +22,8 @@ export const copyTextToClipboard = async (text: string) => {
   try {
     await navigator.clipboard.writeText(text)
     toast.success('Copied')
-    console.log('Text copied to clipboard')
+    logger.info('Text copied to clipboard')
   } catch (err) {
-    console.error('Failed to copy text: ', err)
+    logger.error('Failed to copy text: ', err)
   }
 }

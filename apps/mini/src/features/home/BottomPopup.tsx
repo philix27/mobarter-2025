@@ -6,8 +6,8 @@ import { useAppContext } from 'src/Root/context'
 import BottomModal from 'src/components/BottomModal'
 import { Button } from 'src/components/Button'
 import { Label } from 'src/components/comps'
+import { copyTextToClipboard, shortString } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
-import { copyTextToClipboard, shortString } from 'src/utils'
 
 import SendCrypto from '../send/crypto'
 
@@ -77,7 +77,7 @@ export default function BottomPopup() {
             onClick={async () => {
               await router.push('/ads')
             }}
-               className="bg-background"
+            className="bg-background"
           />
         </div>
       </BottomModal>
