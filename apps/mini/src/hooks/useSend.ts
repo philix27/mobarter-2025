@@ -15,19 +15,15 @@ export function useSendToken() {
     const signer = await provider.getSigner()
     if (!signer) {
       toast.error('Please connect your wallet')
-      return
+      throw new Error('Signer needed')
     }
 
     const contract = new ethers.Contract(CUSD_CONTRACT_ADDRESS, CUSD_ABI, signer)
 
-    try {
-      const tx = await contract.transfer(props.recipient, ethers.parseUnits(props.amount, 18)) // cUSD has 18 decimals
-      await tx.wait() // Wait for transaction to be mined
-      toast.success(`Transaction successful: ${tx.hash}`)
-      return JSON.stringify(tx.hash)
-    } catch (error: any) {
-      toast.error('Error sending cUSD:', error.message)
-    }
+    const tx = await contract.transfer(props.recipient, ethers.parseUnits(props.amount, 18)) // cUSD has 18 decimals
+    await tx.wait() // Wait for transaction to be mined
+    toast.success(`Transaction successful: ${tx.hash}`)
+    return JSON.stringify(tx.hash)
   }
 
   return { sendCusd }

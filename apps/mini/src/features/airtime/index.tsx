@@ -44,28 +44,32 @@ export default function Airtime() {
       recipient: '0x20F50b8832f87104853df3FdDA47Dd464f885a49',
       amount: cusdAmt.toString(),
       token: TokenId.cUSD,
-    }).then((txHash) => {
-      void mutate({
-        variables: {
-          input: {
-            amount: amtValue,
-            countryCode: AirtimeCountryCode.Nigeria,
-            currency: Currencies.Ngn,
-            operator: Operator.Mtn,
-            transaction_hash: txHash || `${Date.now()}`,
-            phoneNo,
-          },
-        },
-        onCompleted() {
-          toast.success('Sent successfully')
-          setPhoneNo('')
-          setAmountVal(0)
-        },
-        onError(err) {
-          logger.error('TOken err: ' + err)
-        },
-      })
     })
+      .then((txHash) => {
+        void mutate({
+          variables: {
+            input: {
+              amount: amtValue,
+              countryCode: AirtimeCountryCode.Nigeria,
+              currency: Currencies.Ngn,
+              operator: Operator.Mtn,
+              transaction_hash: txHash || `${Date.now()}`,
+              phoneNo,
+            },
+          },
+          onCompleted() {
+            toast.success('Sent successfully')
+            setPhoneNo('')
+            setAmountVal(0)
+          },
+          onError(err) {
+            logger.error('TOken err: ' + err)
+          },
+        })
+      })
+      .catch((err) => {
+        toast.error('Error sending cUSD:', err.message)
+      })
   }
   return (
     <div className="w-full items-center justify-center flex flex-col px-1 mb-[20vh]">
