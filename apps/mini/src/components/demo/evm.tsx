@@ -24,7 +24,7 @@ const EVMDemo = () => {
     if (option) {
       setERC4337(JSON.parse(option))
     }
-  }, [])
+  }, [setERC4337])
 
   const onSignMessage = async () => {
     try {

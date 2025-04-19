@@ -4,16 +4,16 @@ import { CiBank } from 'react-icons/ci'
 import { GrGift } from 'react-icons/gr'
 import { LiaPhoneVolumeSolid } from 'react-icons/lia'
 import BottomModal from 'src/components/BottomModal'
+import { TileSimple } from 'src/components/TileSimple'
 
-import Airtime from '../airtime'
+import Airtime from '../others/Airtime'
+import FXRates from '../others/FxRates'
 import SendToBank from '../send/sendToBank'
 
-import { HomeRow } from './comps'
-
 export default function Utilities() {
-  const [btmSheet, setBtmSheet] = useState<'AIRTIME' | 'GIFT_CARD' | 'SEND_TO_BANK' | undefined>(
-    undefined
-  )
+  const [btmSheet, setBtmSheet] = useState<
+    'AIRTIME' | 'GIFT_CARD' | 'SEND_TO_BANK' | 'FX_RATES' | undefined
+  >(undefined)
   const list: { title: string; onClick?: VoidFunction; desc: string; icon: IconType }[] = [
     {
       title: 'Airtime',
@@ -24,20 +24,29 @@ export default function Utilities() {
       },
     },
     {
-      title: 'Send to bank accounts',
-      desc: 'Settle local fiat transactions',
+      title: 'Instant Pay',
+      desc: 'Send to bank accounts',
       icon: CiBank,
       onClick: () => {
         setBtmSheet('SEND_TO_BANK')
       },
     },
+    {
+      title: 'Rates',
+      desc: 'See our in house FX rates',
+      icon: GrGift,
+      onClick: () => {
+        setBtmSheet('FX_RATES')
+      },
+    },
     { title: 'Gift Cards', desc: 'Purchase cards with cUSD', icon: GrGift },
   ]
+
   return (
     <div className="w-full">
       {list.map((val, i) => {
         return (
-          <HomeRow
+          <TileSimple
             key={i}
             onClick={val.onClick}
             title={val.title}
@@ -63,6 +72,14 @@ export default function Utilities() {
         }}
       >
         <SendToBank />
+      </BottomModal>
+      <BottomModal
+        showSheet={btmSheet === 'FX_RATES'}
+        onClose={() => {
+          setBtmSheet(undefined)
+        }}
+      >
+        <FXRates />
       </BottomModal>
     </div>
   )

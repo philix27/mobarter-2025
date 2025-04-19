@@ -5,19 +5,22 @@ import QRCode from 'react-qr-code'
 import { useAppContext } from 'src/Root/context'
 import BottomModal from 'src/components/BottomModal'
 import { Button } from 'src/components/Button'
+import { TileSimple } from 'src/components/TileSimple'
 import { Label } from 'src/components/comps'
 import { copyTextToClipboard, shortString } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
 
+import SelectCountry from '../others/SelectCountry'
+import SelectNetwork from '../others/SelectNetwork'
 import SendCrypto from '../send/crypto'
-
-import { HomeRow } from './comps'
 
 export default function BottomPopup() {
   const store = AppStores.useSettings()
   const showWallet = store.homeBtmSheet === 'WALLET'
   const showSendCrypto = store.homeBtmSheet === 'SEND_CRYPTO'
   const showSwap = store.homeBtmSheet === 'WITHDRAW'
+  const showNetwork = store.homeBtmSheet === 'SELECT_NETWORK'
+  const showCountry = store.homeBtmSheet === 'SELECT_COUNTRY'
   const { evmAddress } = useAppContext()
   const router = useRouter()
   return (
@@ -61,7 +64,7 @@ export default function BottomPopup() {
         }}
       >
         <div className="w-full">
-          <HomeRow
+          <TileSimple
             title={'Instant Withdraw'}
             desc={'Use the best price offering at the moment'}
             icon={GiSpeedometer}
@@ -70,7 +73,7 @@ export default function BottomPopup() {
             }}
             className="bg-background"
           />
-          <HomeRow
+          <TileSimple
             title={'Marketplace'}
             desc={'Select from our list of verified vendors'}
             icon={IoSwapHorizontalOutline}
@@ -79,7 +82,24 @@ export default function BottomPopup() {
             }}
             className="bg-background"
           />
+          <div className="h-[50px]" />
         </div>
+      </BottomModal>
+      <BottomModal
+        showSheet={showNetwork}
+        onClose={() => {
+          store.update({ homeBtmSheet: undefined })
+        }}
+      >
+        <SelectNetwork />
+      </BottomModal>
+      <BottomModal
+        showSheet={showCountry}
+        onClose={() => {
+          store.update({ homeBtmSheet: undefined })
+        }}
+      >
+        <SelectCountry />
       </BottomModal>
     </>
   )

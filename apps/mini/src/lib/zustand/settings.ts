@@ -5,7 +5,14 @@ export type IHomeTab = 'Balances' | 'Services'
 export type IManageAdsTab = 'OPEN' | 'CLOSED' | 'ADD'
 export type IP2PTabs = 'BUY' | 'SELL'
 export type IOrdersTabs = 'PENDING' | 'COMPLETED' | 'CANCELED' | 'APPEAL'
-export type IHomeBottomSheet = 'WALLET' | 'SEND_CRYPTO' | 'WITHDRAW' | 'NULL' | undefined
+export type IHomeBottomSheet =
+  | 'WALLET'
+  | 'SEND_CRYPTO'
+  | 'WITHDRAW'
+  | 'SELECT_COUNTRY'
+  | 'SELECT_NETWORK'
+  | 'NULL'
+  | undefined
 export type IHistoryTabs = 'ALL' | 'AIRTIME'
 export type IProfileTabs = 'INFO' | 'ACTIONS'
 export type ISwap = 'EXCHANGE' | 'CONFIRM'
@@ -48,7 +55,7 @@ export const defaultValues: Required<ISlice> = {
   profileTabs: 'INFO',
   swapSteps: 'EXCHANGE',
   showSlippage: false,
-  showChart: false
+  showChart: false,
 }
 
 export const useSettings = create(

@@ -1,12 +1,14 @@
+import Image from 'next/image'
 import { IconType } from 'react-icons'
 import { cn } from 'src/lib/utils'
 
-export function HomeRow(params: {
+export function TileSimple(params: {
   title: string
-  desc: string
+  desc?: string
+  imgUrl?: string
   className?: string
   onClick?: VoidFunction
-  icon: IconType
+  icon?: IconType
 }) {
   const Icon = params.icon as any
   return (
@@ -15,11 +17,14 @@ export function HomeRow(params: {
       onClick={params.onClick}
     >
       <div className="mr-3 size-[35px] rounded-full bg-background flex items-center justify-center">
-        <Icon className="text-primary" />
+        {params.icon && <Icon className="text-primary" />}
+        {params.imgUrl && (
+          <Image src={params.imgUrl} alt="flag" height={40} width={40} className="rounded-full" />
+        )}
       </div>
       <div>
         <p className="font-semibold text-[14px]"> {params.title}</p>
-        <p className="text-muted text-[11px] font-light">{params.desc}</p>
+        {params.desc && <p className="text-muted text-[11px] font-light">{params.desc}</p>}
       </div>
     </div>
   )
