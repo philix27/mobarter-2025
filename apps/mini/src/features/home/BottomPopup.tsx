@@ -12,7 +12,7 @@ import { AppStores } from 'src/lib/zustand'
 
 import SelectCountry from '../others/SelectCountry'
 import SelectNetwork from '../others/SelectNetwork'
-import SendCrypto from '../send/crypto'
+import SendCrypto from '../others/SendCrypto'
 
 export default function BottomPopup() {
   const store = AppStores.useSettings()

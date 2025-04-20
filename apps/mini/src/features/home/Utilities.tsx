@@ -7,8 +7,7 @@ import BottomModal from 'src/components/BottomModal'
 import { TileSimple } from 'src/components/TileSimple'
 
 import Airtime from '../others/Airtime'
-import FXRates from '../others/FxRates'
-import SendToBank from '../send/sendToBank'
+import SendToBank from '../others/SendToBank'
 
 export default function Utilities() {
   const [btmSheet, setBtmSheet] = useState<
@@ -29,14 +28,6 @@ export default function Utilities() {
       icon: CiBank,
       onClick: () => {
         setBtmSheet('SEND_TO_BANK')
-      },
-    },
-    {
-      title: 'Rates',
-      desc: 'See our in house FX rates',
-      icon: GrGift,
-      onClick: () => {
-        setBtmSheet('FX_RATES')
       },
     },
     { title: 'Gift Cards', desc: 'Purchase cards with cUSD', icon: GrGift },
@@ -72,14 +63,6 @@ export default function Utilities() {
         }}
       >
         <SendToBank />
-      </BottomModal>
-      <BottomModal
-        showSheet={btmSheet === 'FX_RATES'}
-        onClose={() => {
-          setBtmSheet(undefined)
-        }}
-      >
-        <FXRates />
       </BottomModal>
     </div>
   )
