@@ -69,9 +69,6 @@ export function useInitUserToken() {
           token: data.auth_loginTelegram.token!,
         })
       },
-      onError(err) {
-        logger.error('TOken err: ' + err)
-      },
     })
   }
   return { userInfo }

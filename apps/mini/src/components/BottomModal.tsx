@@ -40,7 +40,7 @@ export default function BottomModal({
             {props.title && <Drawer.Title className="text-[12px] font-semibold">{props.title}</Drawer.Title>}
           </div> */}
             {props.children}
-            <div className="h-[100px]" />
+            {/* <div className="h-[10px]" /> */}
           </div>
         </Drawer.Content>
       </Drawer.Portal>

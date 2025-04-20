@@ -35,12 +35,12 @@ export default function Airtime() {
     MutationUtility_PurchaseAirtimeArgs
   >(Utility_PurchaseAirtimeDocument)
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (amtValue == undefined || amtValue < 50) {
       toast.error('Minimum of NGN1,000')
       return
     }
-    void sendCusd({
+    await sendCusd({
       recipient: '0x20F50b8832f87104853df3FdDA47Dd464f885a49',
       amount: cusdAmt.toString(),
       token: TokenId.cUSD,
@@ -61,9 +61,6 @@ export default function Airtime() {
             toast.success('Sent successfully')
             setPhoneNo('')
             setAmountVal(0)
-          },
-          onError(err) {
-            logger.error('TOken err: ' + err)
           },
         })
       })
