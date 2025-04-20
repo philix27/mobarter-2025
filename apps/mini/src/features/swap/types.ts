@@ -6,8 +6,8 @@ export type SwapDirection = 'in' | 'out'
 export interface SwapFormValues {
   fromTokenId: TokenId
   toTokenId: TokenId
-  amount: number | string
-  quote: number | string
+  amount: number
+  quote: number
   direction: SwapDirection
   slippage: string
 }

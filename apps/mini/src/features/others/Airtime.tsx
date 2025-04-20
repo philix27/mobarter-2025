@@ -21,12 +21,17 @@ import { useSendToken } from 'src/hooks/useSend'
 import { TokenId } from 'src/lib/config/tokens'
 import { pasteTextFromClipboard } from 'src/lib/utils'
 import { logger } from 'src/lib/utils/logger'
+import { AppStores } from 'src/lib/zustand'
+
+import { essentialCountriesList } from './SelectCountry'
 
 export default function Airtime() {
   const [amtValue, setAmountVal] = useState<number>()
   const [phoneNo, setPhoneNo] = useState<string>('')
   const Copy = FaCopy as any
-
+  const store = AppStores.useSettings()
+  const countryCode = essentialCountriesList.filter((val) => val.isoName === store.countryIso)[0]
+    .callingCodes[0]
   const { sendCusd } = useSendToken()
   const { cusdAmt, handleOnChange } = useGetPrice()
 
@@ -34,6 +39,20 @@ export default function Airtime() {
     MutationResponse<'utility_purchaseAirtime'>,
     MutationUtility_PurchaseAirtimeArgs
   >(Utility_PurchaseAirtimeDocument)
+
+  function IsoToCountryCode() {
+    switch (store.countryIso) {
+      case 'NG':
+        return AirtimeCountryCode.Nigeria
+      case 'GH':
+        return AirtimeCountryCode.Ghana
+      case 'KE':
+        return AirtimeCountryCode.Kenya
+
+      default:
+        return AirtimeCountryCode.Nigeria
+    }
+  }
 
   const handleSend = async () => {
     if (amtValue == undefined || amtValue < 50) {
@@ -50,7 +69,7 @@ export default function Airtime() {
           variables: {
             input: {
               amount: amtValue,
-              countryCode: AirtimeCountryCode.Nigeria,
+              countryCode: IsoToCountryCode(),
               currency: Currencies.Ngn,
               operator: Operator.Mtn,
               transaction_hash: txHash || `${Date.now()}`,
@@ -70,32 +89,9 @@ export default function Airtime() {
   }
   return (
     <div className="w-full items-center justify-center flex flex-col px-1 mb-[20vh]">
-      {/* <Label>Purchase Airtime</Label> */}
-      <AppSelect
-        label="Country"
-        onChange={(data) => {
-          logger.info('Change: ' + data)
-        }}
-        data={[
-          { label: 'Nigeria', value: Country.Nigeria },
-          { label: 'Ghana', value: Country.Ghana },
-          { label: 'Kenya', value: Country.Kenya },
-        ]}
-      />
-      <AppSelect
-        label="Network"
-        onChange={(data) => {
-          logger.info('Change: ' + data)
-        }}
-        data={[
-          { label: 'MTN', value: Country.Nigeria },
-          { label: 'AIRTEL', value: Country.Ghana },
-          { label: 'GLO', value: Country.Kenya },
-        ]}
-      />
       <Input
-        label="Phone number"
-        placeholder="2348101234567"
+        label={`${IsoToCountryCode()} Phone number`}
+        placeholder={`${countryCode}8101234567`}
         value={phoneNo}
         type="number"
         pattern="[0-9]*"
@@ -119,7 +115,17 @@ export default function Airtime() {
           />
         }
       />
-
+      <AppSelect
+        label="Network"
+        onChange={(data) => {
+          logger.info('Change: ' + data)
+        }}
+        data={[
+          { label: 'MTN', value: Country.Nigeria },
+          { label: 'AIRTEL', value: Country.Ghana },
+          { label: 'GLO', value: Country.Kenya },
+        ]}
+      />
       <Input
         label="Amount"
         placeholder="Amount to send"

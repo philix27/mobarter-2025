@@ -2,8 +2,18 @@ import React from 'react'
 import { TileSimple } from 'src/components/TileSimple'
 import { cn } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
+import { ICountryIso } from 'src/lib/zustand/settings'
 
-export const essentialCountriesList = [
+export const essentialCountriesList: {
+  isoName: ICountryIso
+  name: string
+  continent: string
+  currencyCode: string
+  currencyName: string
+  currencySymbol: string
+  flag: string
+  callingCodes: string[]
+}[] = [
   {
     isoName: 'NG',
     name: 'Nigeria',
@@ -45,7 +55,10 @@ export default function SelectCountry() {
           title={val.name}
           desc={val.continent}
           imgUrl={val.flag}
-          className={cn("bg-background", val.isoName === store.countryIso && "border-primary border")}
+          className={cn(
+            'bg-background',
+            val.isoName === store.countryIso && 'border-primary border'
+          )}
           onClick={() => {
             store.update({ countryIso: val.isoName })
           }}

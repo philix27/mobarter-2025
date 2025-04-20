@@ -2,7 +2,9 @@ import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react'
 import { cn } from 'src/lib/utils'
 
 export function Button(
-  props: DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+  props: DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
+    isLoading?: boolean
+  }
 ) {
   return (
     <button

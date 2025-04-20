@@ -16,7 +16,7 @@ export default function HomeTabs() {
       >
         <img
           src={essentialCountriesList.filter((val) => val.isoName === store.countryIso)[0].flag}
-          alt="flag"
+          alt=""
           className="object-cover w-full h-full rounded-full"
         />
       </div>

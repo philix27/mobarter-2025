@@ -17,6 +17,7 @@ export type IHomeBottomSheet =
 export type IHistoryTabs = 'ALL' | 'AIRTIME'
 export type IProfileTabs = 'INFO' | 'ACTIONS'
 export type ISwap = 'EXCHANGE' | 'CONFIRM'
+export type ICountryIso = 'NG' | 'KE' | "GH"
 
 export interface ISlice {
   sidebarOpen?: boolean
@@ -35,7 +36,7 @@ export interface ISlice {
   showSlippage?: boolean
   showChart?: boolean
   token?: boolean
-  countryIso?: string
+  countryIso?: ICountryIso
   chainIcon?: string
 }
 

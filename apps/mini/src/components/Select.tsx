@@ -1,16 +1,14 @@
-'use client';
+'use client'
 
-import Select from 'react-select';
-import { useDarkMode } from 'src/styles/mediaQueries';
+import Select from 'react-select'
+import { useDarkMode } from 'src/styles/mediaQueries'
 
-
-
-import { BottomNote, Label } from './comps';
-
+import { BottomNote, Label } from './comps'
 
 export const AppSelect = (props: {
   label?: string
   error?: string
+  value?: string
   desc?: string
   onChange: (newValue: string) => void
   data: {
@@ -31,6 +29,7 @@ export const AppSelect = (props: {
       {props.label && <Label>{props.label}</Label>}
       <Select
         options={props.data}
+        value={props.value}
         className="w-full m-0"
         onChange={(newValue: any) => {
           props.onChange(newValue!.value!)
