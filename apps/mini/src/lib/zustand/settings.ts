@@ -1,5 +1,6 @@
-import { create } from 'zustand'
-import { createJSONStorage, persist } from 'zustand/middleware'
+import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
+
 
 export type IHomeTab = 'Balances' | 'Services'
 export type IManageAdsTab = 'OPEN' | 'CLOSED' | 'ADD'
@@ -60,8 +61,8 @@ export const defaultValues: Required<ISlice> = {
   showSlippage: false,
   showChart: false,
   token: false,
-  countryIso: '',
-  chainIcon: ''
+  countryIso: 'NG',
+  chainIcon: '',
 }
 
 export const useSettings = create(
