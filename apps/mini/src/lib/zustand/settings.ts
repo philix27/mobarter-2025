@@ -15,7 +15,7 @@ export type IHomeBottomSheet =
   | 'NULL'
   | undefined
 export type IHistoryTabs = 'ALL' | 'AIRTIME'
-export type IProfileTabs = 'INFO' | 'ACTIONS'
+export type IProfileTabs = 'INFO' | 'ACTIONS' | "BANK"
 export type ISwap = 'EXCHANGE' | 'CONFIRM'
 export type ICountryIso = 'NG' | 'KE' | "GH"
 

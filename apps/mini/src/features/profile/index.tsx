@@ -10,6 +10,8 @@ import { shortenAddress } from 'src/lib/config/addresses'
 import { copyTextToClipboard, shortString } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
 
+import BankAccount from '../bankAccount'
+
 import { MoreFeat } from './More'
 
 function useInitData() {
@@ -69,66 +71,80 @@ export default function Profile() {
                   })
                 },
               },
+              {
+                title: 'BANK',
+                isActive: store.profileTabs === 'BANK',
+                onClick: () => {
+                  store.update({
+                    profileTabs: 'BANK',
+                  })
+                },
+              },
             ]}
           />
         </div>
 
-        {store.profileTabs === 'ACTIONS' ? (
-          <MoreFeat />
-        ) : (
+        {store.profileTabs === 'ACTIONS' && <MoreFeat />}
+        {store.profileTabs === 'BANK' && <BankAccount />}
+        {store.profileTabs === 'INFO' && (
           <>
             {userInfo.username && (
               <>
                 <Label>Username</Label>
-                <Card>{userInfo.username}</Card>
+                <Card className="mb-3">{userInfo.username}</Card>
               </>
             )}
             {userInfo.firstName && (
               <>
                 <Label>First name</Label>
-                <Card>{userInfo.firstName}</Card>
+                <Card className="mb-3">{userInfo.firstName}</Card>
               </>
             )}
             {userInfo.lastName && (
               <>
                 <Label>LastName</Label>
-                <Card>{userInfo.lastName}</Card>
+                <Card className="mb-3">{userInfo.lastName}</Card>
               </>
             )}
             {userInfo.lastName && (
               <>
                 <Label>Telegram LastName</Label>
-                <Card>{userInfo.lastName}</Card>
+                <Card className="mb-3">{userInfo.lastName}</Card>
               </>
             )}
             {userInfo.languageCode && (
               <>
                 <Label>Language</Label>
-                <Card>{userInfo.languageCode}</Card>
+                <Card className="mb-3">{userInfo.languageCode}</Card>
               </>
             )}
             {userInfo.id && (
               <>
                 <Label>User ID</Label>
-                <Card>{userInfo.id}</Card>
+                <Card className="mb-3">{userInfo.id}</Card>
               </>
             )}
             {particleUser.userInfo!.email && (
               <>
                 <Label>Email</Label>
-                <Card> {particleUser.userInfo!.email}</Card>
+                <Card className="mb-3"> {particleUser.userInfo!.email}</Card>
               </>
             )}
             {evmAddress && (
               <>
                 <Label>EVM Wallet</Label>
-                <Card onClick={() => copyText(evmAddress!)}> {shortenAddress(evmAddress)}</Card>
+                <Card className="mb-3" onClick={() => copyText(evmAddress!)}>
+                  {' '}
+                  {shortenAddress(evmAddress)}
+                </Card>
               </>
             )}
             {solanaAddress && (
               <>
                 <Label>Solana Wallet</Label>
-                <Card onClick={() => copyText(solanaAddress)}>{shortString(solanaAddress, 7)}</Card>
+                <Card className="mb-3" onClick={() => copyText(solanaAddress)}>
+                  {shortString(solanaAddress, 7)}
+                </Card>
               </>
             )}
           </>

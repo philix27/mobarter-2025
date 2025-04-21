@@ -5,14 +5,12 @@ import Input from 'src/components/Input'
 import { AppSelect } from 'src/components/Select'
 import { TokenId } from 'src/lib/config'
 import { AppStores } from 'src/lib/zustand'
-
-// import { AmountField } from './comps/AmountField'
 import { IFormData, initialValues, schema } from './formData'
 import { useSwapQuote } from './hooks/useSwapQuote'
-// import { useSwapQuote } from './hooks/useSwapQuote'
 import { useTokenOptions } from './useTokenOptions'
 import { SwapDirection, SwapFormValues } from './types'
 import { Card, Label } from '@/src/components/comps'
+import { useTokenBalance } from './hooks/useTokenBalance'
 
 export function SwapForm() {
   const store = AppStores.useSwap()
@@ -26,7 +24,7 @@ export function SwapForm() {
     },
   })
 
-  // const { allTokenOptions, swappableTokens } = useTokenOptions(values.fromTokenId)
+
   const { allTokenOptions, swappableTokens, } = useTokenOptions(
     f.getValues('fromTokenId') as TokenId
   )
@@ -93,15 +91,12 @@ export function SwapForm() {
           )} */}
           <Input
             label="Amount"
-            autoComplete="off"
             value={f.getValues("amount")}
             name={`amount-${direction}`}
-            step="any"
+            // step="any"
             placeholder="0.00"
             type="number"
-            onChange={(v) => {
-              f.setValue('amount', parseFloat(v.target.value))
-            }}
+             control={f.register("amount", { valueAsNumber: true })}
           />
           {/* <AmountField quote={quote} isQuoteLoading={isLoading} direction="in" /> */}
         </div>

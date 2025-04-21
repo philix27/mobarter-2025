@@ -4,6 +4,9 @@ import React from 'react'
 import { cn } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
 
+import { ErrorNotFound } from '@/src/components/ComingSoon'
+import { Spinner } from '@/src/components/Spinner'
+
 export default function ListAccounts() {
   const store = AppStores.useAdvert()
   const { data, loading, error } = useQuery<QueryResponse<'bankAccount_getAll'>>(
@@ -13,8 +16,13 @@ export default function ListAccounts() {
     }
   )
 
-  if (loading) return <div>Loading...</div>
-  if (error) return <div>Error...</div>
+  if (loading)
+    return (
+      <div className="h-[70vh]">
+        <Spinner />
+      </div>
+    )
+  if (error) return <ErrorNotFound text="No Back Account record found" />
   return (
     <div className="w-full  no-scrollbar">
       {data && data.bankAccount_getAll.length > 0 ? (

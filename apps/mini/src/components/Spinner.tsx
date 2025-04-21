@@ -14,7 +14,7 @@ export function Spinner(props: {
   }
 
   return (
-    <div className="w-full flex items-center justify-center">
+    <div className="w-full flex items-center justify-center h-full">
       <ThreeDots
         visible={true}
         height={props.size || '80'}

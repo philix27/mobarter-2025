@@ -35,6 +35,7 @@ export default function Input(
             text-[16px] font-normal placeholder:font-light placeholder:text-sm
             py-[2px]
           `}
+          autoComplete={isNum && "off"}
           onFocus={() => {
             setFocus(true)
           }}
