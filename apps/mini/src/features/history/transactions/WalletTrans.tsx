@@ -1,13 +1,13 @@
 import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
+import { ethers } from 'ethers'
 import React, { useState } from 'react'
 import { useAppContext } from 'src/Root/context'
 import BottomModal from 'src/components/BottomModal'
 import { Spinner } from 'src/components/Spinner'
 import { shortenAddress } from 'src/lib/config/addresses'
-import {cn, formatEtherBalance, shortString } from 'src/lib/utils'
+import { cn, shortString } from 'src/lib/utils'
 
-// import { AppStores } from 'src/lib/zustand'
 import { getTxHistory } from './func'
 import { ITransactionsResult } from './type'
 
@@ -80,7 +80,7 @@ export default function WalletTransactions() {
               </div>
               <Row
                 text1="Amount"
-                text2={formatEtherBalance(BigInt(val.value), 18, 4)}
+                text2={ethers.parseUnits(val.value, 18).toString()}
                 text2class={isSender ? 'text-[#CE0606]' : 'text-[#06ce06]'}
               />
             </div>
@@ -100,7 +100,7 @@ export default function WalletTransactions() {
       >
         <div className="gap-y-2 w-full flex flex-col">
           {showMore && showMore!.data.value && (
-            <Row text1="Amount" text2={formatEtherBalance(BigInt(showMore!.data.value), 18, 10)} />
+            <Row text1="Amount" text2={ethers.parseUnits(showMore!.data.value, 18).toString()} />
             // <Row text1="Amount" text2={showMore!.data.value} />
           )}
           {showMore && showMore!.data.from && (
