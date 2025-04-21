@@ -3,16 +3,18 @@ import { useForm } from 'react-hook-form'
 import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
 import { AppSelect } from 'src/components/Select'
-import { ChainId, getTokenAddress, TokenId } from 'src/lib/config'
+import { ChainId, getTokenAddress, TokenAddresses, TokenId } from 'src/lib/config'
 import { AppStores } from 'src/lib/zustand'
 import { IFormData, initialValues, schema } from './formData'
-import { useSwapQuote } from './hooks/useSwapQuote'
+// import { useSwapQuote } from './hooks/useSwapQuote'
 import { useTokenOptions } from './useTokenOptions'
-import { SwapDirection, SwapFormValues } from './types'
+import {  SwapFormValues } from './types'
 import { Card, Label } from '@/src/components/comps'
 import { useBalance } from 'wagmi'
 import { useAppContext } from '@/src/Root/context'
 import {  formatEtherBalance } from '@/src/lib/utils'
+import { useMento } from './node'
+import { useState } from 'react'
 
 const useTokenBalanceX =  (selectedToken: TokenId) => {
   const { evmAddress } = useAppContext()
@@ -26,33 +28,41 @@ const useTokenBalanceX =  (selectedToken: TokenId) => {
   return {balance: data, isLoading}
 }
 export function SwapForm() {
+    const [selectedTokenFrom, setTokenFrom] = useState('CELO')
+    const [selectedTokenTo, setTokenTo] = useState('CELO')
   const store = AppStores.useSwap()
-  // const [values, setValues] = useState()
-  // const { address, isConnected } = useAccount()
-  // const { values, setFieldValue } = useFormikContext<SwapFormValues>()
   const f = useForm<IFormData>({
     resolver: zodResolver(schema),
     defaultValues: {
       ...initialValues,
     },
   })
-const {balance, isLoading} = useTokenBalanceX(f.getValues("fromTokenId") as TokenId)
+const {balance, isLoading} = useTokenBalanceX(selectedTokenFrom as TokenId)
 
   const { allTokenOptions, swappableTokens, } = useTokenOptions(
     f.getValues('fromTokenId') as TokenId
   )
+  
+  const { amount,  } = f.getValues()
+  const m = useMento({
+    "amount": `${amount}`,
+    fromTokenAddr: TokenAddresses[ChainId.Celo][selectedTokenFrom as TokenId],
+    toTokenAddr: TokenAddresses[ChainId.Celo][selectedTokenTo as TokenId],
+    "tokenUnit": 18
+
+  })
+  
   // const { balance, hasBalance, useMaxBalance } = useTokenBalance(
   //   store.account_balances,
   //   f.getValues('fromTokenId') as TokenId
   // )
 
-  const { amount, direction,  fromTokenId, toTokenId} = f.getValues()
-  const { quote,rate } = useSwapQuote(
-    amount,
-    direction as SwapDirection,
-    fromTokenId as TokenId,
-    toTokenId as TokenId
-  )
+  // const { quote,rate } = useSwapQuote(
+  //   amount,
+  //   direction as SwapDirection,
+  //   fromTokenId as TokenId,
+  //   toTokenId as TokenId
+  // )
 
   // ! Functions
 
@@ -87,9 +97,9 @@ const {balance, isLoading} = useTokenBalanceX(f.getValues("fromTokenId") as Toke
           label="From Token"
          desc={`${
           isLoading ? '...' : formatEtherBalance(balance!.value, balance!.decimals, 3)
-        } ${f.getValues("fromTokenId")}`}
+        } ${selectedTokenFrom}`}
           onChange={(v) => {
-            f.setValue('fromTokenId', v)
+            setTokenFrom(v)
           }}
           data={allTokenOptions.map((val) => {
             return { value: val, label: val }
@@ -108,7 +118,6 @@ const {balance, isLoading} = useTokenBalanceX(f.getValues("fromTokenId") as Toke
           <Input
             label="Amount"
             value={f.getValues("amount")}
-            name={`amount-${direction}`}
             // step="any"
             placeholder="0.00"
             type="number"
@@ -119,14 +128,14 @@ const {balance, isLoading} = useTokenBalanceX(f.getValues("fromTokenId") as Toke
 
         <div className="flex items-center justify-center">
           <div className="flex items-center justify-end px-1.5 text-xs">
-            {rate ? `${rate} ${fromTokenId} ~ 1 ${toTokenId}` : '...'}
+            {`${m.getQuoteQuery.data && m.getQuoteQuery.data} ${selectedTokenFrom} ~ 1 ${selectedTokenTo}`}
           </div>
         </div>
 
         <AppSelect
           label="To Token"
           onChange={(v) => {
-            f.setValue('toTokenId', v)
+            setTokenTo(v)
           }}
           data={swappableTokens.map((val) => {
             return { value: val, label: val }
@@ -136,7 +145,7 @@ const {balance, isLoading} = useTokenBalanceX(f.getValues("fromTokenId") as Toke
         <div className="w-full">
            <Label>Quote</Label>
         <Card className='bg-background'>
-          { quote  ? `${f.getValues("toTokenId")} ${quote}` : "0.00"}
+{f.getValues("toTokenId")} 0.00
         </Card>
        </div>
       </div>
