@@ -58,11 +58,13 @@ export default function SendCrypto() {
     if (selectedToken === 'CELO') {
       void sendNative()
     } else {
-      await sendErc20({
+      const hash = await sendErc20({
         recipient: walletAddress,
         amount: ethers.parseUnits(amount.toString(), 18).toString(),
         token: selectedToken as TokenId,
       })
+      toast.success(`Send Native Success! Hash: ${shortString(hash)}`)
+      setWalletAddress('')
     }
   }
 
@@ -77,7 +79,7 @@ export default function SendCrypto() {
           setToken(data)
         }}
         data={tokensList.map((val) => {
-          return { label: val.fullName, value: val.symbol }
+          return { label: val.symbol, value: val.symbol }
         })}
       />
       <Input

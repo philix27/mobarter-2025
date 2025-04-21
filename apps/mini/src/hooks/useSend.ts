@@ -1,12 +1,14 @@
 import { ethers } from 'ethers'
 import { toast } from 'sonner'
-import { TokenId } from 'src/lib/config/tokens'
+import { TokenAddresses, TokenId } from 'src/lib/config/tokens'
+
+import { ChainId } from '../lib/config'
 
 import { useProvider } from './useProvider'
 
-const CUSD_CONTRACT_ADDRESS = '0x765DE816845861e75A25fCA122bb6898B8B1282a' // cUSD contract address on Celo
+// const CUSD_CONTRACT_ADDRESS = '0x765DE816845861e75A25fCA122bb6898B8B1282a' // cUSD contract address on Celo
 // ABI for the `transfer` function (simplified)
-const CUSD_ABI = ['function transfer(address recipient, uint256 amount) public returns (bool)']
+const ERC20_ABI = ['function transfer(address recipient, uint256 amount) public returns (bool)']
 
 export function useSendToken() {
   const provider = useProvider()
@@ -18,7 +20,11 @@ export function useSendToken() {
       throw new Error('Signer needed')
     }
 
-    const contract = new ethers.Contract(CUSD_CONTRACT_ADDRESS, CUSD_ABI, signer)
+    const contract = new ethers.Contract(
+      TokenAddresses[ChainId.Celo][props.token],
+      ERC20_ABI,
+      signer
+    )
 
     const tx = await contract.transfer(props.recipient, ethers.parseUnits(props.amount, 18)) // cUSD has 18 decimals
     await tx.wait() // Wait for transaction to be mined

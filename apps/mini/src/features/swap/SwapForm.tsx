@@ -1,7 +1,5 @@
-import { zodResolver } from '@hookform/resolvers/zod'
 import Image from 'next/image'
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
 import { Button } from 'src/components/Button'
 import {
   ChainId,
@@ -11,14 +9,11 @@ import {
   getTokenAddress,
   tokensList,
 } from 'src/lib/config'
-import { AppStores } from 'src/lib/zustand'
 import { useBalance } from 'wagmi'
 
 import { TokenRow } from '../home/TokenRow'
 
-import { IFormData, initialValues, schema } from './formData'
 import { useMento } from './node'
-import { SwapFormValues } from './types'
 import { useAppContext } from '@/src/Root/context'
 import BottomModal from '@/src/components/BottomModal'
 import { Card, Label } from '@/src/components/comps'
@@ -38,20 +33,14 @@ export function SwapForm() {
   const [showSheets, setSheets] = useState<'from' | 'to' | undefined>(undefined)
   const [selectedTokenFrom, setTokenFrom] = useState<IToken>()
   const [selectedTokenTo, setTokenTo] = useState<IToken>()
-  const store = AppStores.useSwap()
-  const f = useForm<IFormData>({
-    resolver: zodResolver(schema),
-    defaultValues: {
-      ...initialValues,
-    },
-  })
+  const [amount, setAmount] = useState<number>(0)
+
   // const { balance, isLoading } = useTokenBalanceX((selectedTokenFrom!.id as TokenId) || 'CELO')
 
   // const { allTokenOptions, swappableTokens } = useTokenOptions(
   //   f.getValues('fromTokenId') as TokenId
   // )
 
-  const { amount } = f.getValues()
   const m = useMento({
     amount: `${amount}`,
     fromTokenAddr:
@@ -75,13 +64,13 @@ export function SwapForm() {
 
   // ! Functions
 
-  const onSubmit = (values: IFormData) => {
-    store.update({ swap_formValues: values as SwapFormValues, swap_confirmView: true })
+  const onSubmit = () => {
+    return
   }
 
   return (
     <>
-      <form onSubmit={f.handleSubmit(onSubmit)} className="w-full">
+      <div className="w-full">
         <div className="flex flex-col gap-3 w-full">
           <div className="flex flex-col items-end">
             {/* {hasBalance && (
@@ -100,7 +89,7 @@ export function SwapForm() {
                   setSheets('from')
                 }}
               >
-                {selectedTokenFrom && selectedTokenFrom?.imgUrl && (
+                {selectedTokenFrom && selectedTokenFrom!.imgUrl && (
                   <Image
                     src={selectedTokenFrom!.imgUrl}
                     alt={selectedTokenFrom!.name}
@@ -115,6 +104,10 @@ export function SwapForm() {
                 pattern={'[0-9]*'}
                 inputMode={'decimal'}
                 min={0}
+                onChange={(e) => {
+                  const num = e.target.value
+                  setAmount(parseFloat(num))
+                }}
               />
             </div>
           </div>
@@ -135,7 +128,7 @@ export function SwapForm() {
                 setSheets('to')
               }}
             >
-              {selectedTokenTo && selectedTokenTo?.imgUrl && (
+              {selectedTokenTo && selectedTokenTo!.imgUrl && (
                 <Image
                   src={selectedTokenTo!.imgUrl}
                   alt={selectedTokenTo!.name.slice(0, 2)}
@@ -143,22 +136,24 @@ export function SwapForm() {
                 />
               )}
             </div>
-            <Card className="bg-background">{f.getValues('toTokenId')} 0.00</Card>
+            <Card className="bg-background"> 0.00</Card>
           </div>
         </div>
         <div className="flex justify-center w-full my-6 mb-0">
-          <Button type="submit">Submit</Button>
+          <Button type="button" onClick={onSubmit}>
+            Submit
+          </Button>
         </div>
-      </form>
+      </div>
       <BottomModal
-        showSheet={!showSheets}
+        showSheet={showSheets === 'from' || showSheets === 'to'}
         onClose={() => {
           setSheets(undefined)
         }}
       >
         <div className="w-full max-h-[75vh] overflow-y-scroll no-scrollbar">
           {tokensList
-            .filter((val) => val.id === selectedTokenFrom!.id)
+            // .filter((val) => val.id === selectedTokenFrom!.id)
             .map((val, i) => (
               <TokenRow
                 key={i}
