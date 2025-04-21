@@ -71,7 +71,7 @@ export default function BottomNav() {
         {bottomLinks.map((val, i) => {
           const Icon = val.Icon as any
           return (
-            <div className="hover:bg-background mb-0 py-3 px-3" key={i}>
+            <div className="hover:bg-card rounded-lg mb-0 py-3 px-3" key={i}>
               <Link href={val.link} className={'flex items-center gap-x-5'}>
                 {Icon && <Icon size={20} />}
                 <p className=" font-light text-xs">{val.title}</p>

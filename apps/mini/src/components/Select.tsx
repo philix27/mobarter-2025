@@ -1,9 +1,9 @@
 'use client'
 
 import Select from 'react-select'
-import { useDarkMode } from 'src/styles/mediaQueries'
 
 import { BottomNote, Label } from './comps'
+import {  useThemeColor } from '../styles/Color'
 
 export const AppSelect = (props: {
   label?: string
@@ -16,14 +16,13 @@ export const AppSelect = (props: {
     value: string
   }[]
 }) => {
-  const { isDarkMode } = useDarkMode()
-  const isDark = isDarkMode
 
-  const bgCard = isDark ? '#272727' : '#e6e6e6'
-  // const bgColor = isDark ? '#282828' : '#e6e6e6'
-  const textColor = isDark ? '#e3e6e6' : '#535353'
-  const borderColor = (isFocused: boolean) => (isFocused ? '#f24500' : '#4c4847')
-  const outlineColor = (isFocused: boolean) => (isFocused ? '#f24500' : '#4c4847')
+const theme = useThemeColor()
+  const bgCard = theme.bg
+  const textColor = theme.text
+
+  const borderColor = (isFocused: boolean) => (isFocused ? theme.primary : theme.muted)
+  const outlineColor = (isFocused: boolean) => (isFocused ? theme.primary : theme.muted)
   return (
     <div className="w-full">
       {props.label && <Label>{props.label}</Label>}

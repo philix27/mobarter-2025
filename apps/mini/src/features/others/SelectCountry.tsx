@@ -56,7 +56,7 @@ export default function SelectCountry() {
           desc={val.continent}
           imgUrl={val.flag}
           className={cn(
-            'bg-background',
+            'bg-card',
             val.isoName === store.countryIso && 'border-primary border'
           )}
           onClick={() => {

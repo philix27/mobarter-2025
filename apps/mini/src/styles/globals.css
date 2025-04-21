@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* @import 'tailwindcss'; */
+/* @import 'tw-animate-css'; */
 
 @layer base {
   :root {
@@ -42,10 +44,9 @@
   }
 
   .dark {
-    --background: #272727;
-    /* --background: #2f2f30; */
-    /* --background: #3c3c3c; */
-    --foreground: #ebebeb;
+    --background: #18222e;
+    /* --background: #272727; */
+    --foreground: #ffffff;
 
     --muted: #717171;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -53,10 +54,12 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 47.4% 11.2%;
 
-    --card: #1f1f1f;
+    --card: #1c2937;
+    /* --card: #1f1f1f; */
     --card-foreground: #ffff;
 
     --primary: #ff6719;
+    /* --primary: #ff6719; */
     --primary-foreground: #fff;
 
     --secondary: #282828;

@@ -94,7 +94,7 @@ export function MoreFeat() {
           }}
         />
       </Container>
-      {solanaAddress && (
+      {!solanaAddress && (
         <div className="w-full flex items-center justify-center mt-4">
           <Button
             className="mt-2 rounded-3xl text-xs"

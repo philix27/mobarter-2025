@@ -16,7 +16,7 @@ export function TileSimple(params: {
       onClick={params.onClick}
     >
       <div className="mr-3 size-[35px] rounded-full bg-background flex items-center justify-center">
-        {params.icon && <Icon className="text-primary" />}
+        {params.icon && <Icon className="text-muted" />}
         {params.imgUrl && (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={params.imgUrl} alt="flag" className="rounded-full h-full object-cover" />

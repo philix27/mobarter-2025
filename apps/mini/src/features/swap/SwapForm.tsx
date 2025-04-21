@@ -141,7 +141,7 @@ export function SwapForm() {
           // isBalanceLoaded={isBalanceLoaded}
           type="submit"
         >
-          SubmitButton
+          Submit
         </Button>
       </div>
     </form>
