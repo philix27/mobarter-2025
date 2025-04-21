@@ -8,10 +8,11 @@ import { AppStores } from 'src/lib/zustand'
 
 // import { AmountField } from './comps/AmountField'
 import { IFormData, initialValues, schema } from './formData'
-// import { useSwapQuote } from './hooks/useSwapQuote'
+import { useSwapQuote } from './hooks/useSwapQuote'
 // import { useSwapQuote } from './hooks/useSwapQuote'
 import { useTokenOptions } from './useTokenOptions'
-import { SwapFormValues } from './types'
+import { SwapDirection, SwapFormValues } from './types'
+import { Card, Label } from '@/src/components/comps'
 
 export function SwapForm() {
   const store = AppStores.useSwap()
@@ -26,7 +27,7 @@ export function SwapForm() {
   })
 
   // const { allTokenOptions, swappableTokens } = useTokenOptions(values.fromTokenId)
-  const { allTokenOptions, swappableTokens } = useTokenOptions(
+  const { allTokenOptions, swappableTokens, } = useTokenOptions(
     f.getValues('fromTokenId') as TokenId
   )
   // const { balance, hasBalance, useMaxBalance } = useTokenBalance(
@@ -34,13 +35,13 @@ export function SwapForm() {
   //   f.getValues('fromTokenId') as TokenId
   // )
 
-  const { amount, direction, fromTokenId, toTokenId, quote } = f.getValues()
-  // const { isLoading, quote } = useSwapQuote(
-  //   amount,
-  //   direction as SwapDirection,
-  //   fromTokenId as TokenId,
-  //   toTokenId as TokenId
-  // )
+  const { amount, direction,  fromTokenId, toTokenId} = f.getValues()
+  const { quote,rate } = useSwapQuote(
+    amount,
+    direction as SwapDirection,
+    fromTokenId as TokenId,
+    toTokenId as TokenId
+  )
 
   // ! Functions
 
@@ -73,7 +74,7 @@ export function SwapForm() {
       <div className="flex flex-col gap-3 w-full">
         <AppSelect
           label="From Token"
-          value={fromTokenId}
+          // value={fromTokenId}
           onChange={(v) => {
             // onChangeToken(true)
             f.setValue('fromTokenId', v)
@@ -95,10 +96,11 @@ export function SwapForm() {
           <Input
             label="Amount"
             autoComplete="off"
-            value={amount}
+            value={f.getValues("amount")}
             name={`amount-${direction}`}
             step="any"
             placeholder="0.00"
+            type="number"
             onChange={(v) => {
               f.setValue('amount', parseFloat(v.target.value))
             }}
@@ -107,14 +109,14 @@ export function SwapForm() {
         </div>
 
         <div className="flex items-center justify-center">
-          {/* <div className="flex items-center justify-end px-1.5 text-xs">
+          <div className="flex items-center justify-end px-1.5 text-xs">
             {rate ? `${rate} ${fromTokenId} ~ 1 ${toTokenId}` : '...'}
-          </div> */}
+          </div>
         </div>
 
         <AppSelect
           label="To Token"
-          value={toTokenId}
+          // value={toTokenId}
           onChange={(v) => {
             f.setValue('toTokenId', v)
           }}
@@ -122,7 +124,7 @@ export function SwapForm() {
             return { value: val, label: val }
           })}
         />
-        <Input
+        {/* <Input
           label="Amount"
           autoComplete="off"
           value={quote}
@@ -132,7 +134,13 @@ export function SwapForm() {
           onChange={(v) => {
             f.setValue('quote', parseFloat(v.target.value))
           }}
-        />
+        /> */}
+        <div className="w-full">
+           <Label>Quote</Label>
+        <Card>
+          {quote || "0.00"}
+        </Card>
+       </div>
         {/* <AmountField quote={quote} isQuoteLoading={isLoading} direction="out" /> */}
       </div>
       <div className="flex justify-center w-full my-6 mb-0">

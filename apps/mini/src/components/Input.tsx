@@ -14,6 +14,7 @@ export default function Input(
 ) {
   const { className, error, desc, label, trailingIcon, ...inputParams } = props
   const [focus, setFocus] = useState(false)
+  const isNum = props.type === 'number'
   return (
     <div className="w-full">
       {label && <Label>{label}</Label>}
@@ -40,6 +41,10 @@ export default function Input(
           onBlur={() => {
             setFocus(false)
           }}
+          type={isNum && 'number'}
+          pattern={isNum && '[0-9]*'}
+          inputMode={isNum && 'decimal'}
+          min={isNum && 0}
         />
         {trailingIcon && trailingIcon}
       </div>

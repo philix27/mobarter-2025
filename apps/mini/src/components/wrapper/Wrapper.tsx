@@ -23,7 +23,7 @@ export default function Wrapper({
     tg.setMiniAppBackgroundColor(theme.bg as any)
     tg.setMiniAppBottomBarColor(theme.bg as any)
     tg.setMiniAppHeaderColor(theme.bg as any)
-  }, [])
+  }, [theme.bg])
 
   useEffect(() => {
     if (hideBottomNav) {

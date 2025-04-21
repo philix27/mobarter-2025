@@ -94,9 +94,6 @@ export default function Airtime() {
         placeholder={`${countryCode}8101234567`}
         value={phoneNo}
         type="number"
-        pattern="[0-9]*"
-        inputMode="decimal"
-        min={0}
         onChange={(e) => {
           const num = e.target.value
           if (num.length > 13) {
@@ -130,10 +127,7 @@ export default function Airtime() {
         label="Amount"
         placeholder="Amount to send"
         type="number"
-        pattern="[0-9]*"
-        inputMode="decimal"
         step=".01"
-        min={0}
         value={amtValue}
         onChange={(e) => {
           const num = parseFloat(e.target.value)

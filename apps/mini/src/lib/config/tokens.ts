@@ -1,8 +1,11 @@
-import { getMentoSdk } from 'src/features/sdk'
-import { Color } from 'src/styles/Color'
+import { getMentoSdk } from 'src/features/sdk';
+import { Color } from 'src/styles/Color';
 
-import { areAddressesEqual } from './addresses'
-import { ChainId } from './chains'
+
+
+import { areAddressesEqual } from './addresses';
+import { ChainId } from './chains';
+
 
 export interface Token {
   id: string
@@ -228,16 +231,18 @@ export async function getSwappableTokenOptions(inputTokenId: string, chainId: Ch
     (tokenId) => tokenId !== inputTokenId
   )
 
+  // console.log('TokenOptions: ' + tokenOptions)
   // Check swappability in parallel and maintain order
-  const swappableTokens = await Promise.all(
-    tokenOptions.map(async (tokenId) => {
-      const swappable = await isSwappable(tokenId, inputTokenId, chainId)
-      return swappable ? tokenId : null
-    })
-  )
+  // const swappableTokens = await Promise.all(
+  //   tokenOptions.map(async (tokenId) => {
+  //     const swappable = await isSwappable(tokenId, inputTokenId, chainId)
+  //     return swappable ? tokenId : null
+  //   })
+  // )
 
   // Filter out non-swappable tokens (null values)
-  return swappableTokens.filter((tokenId): tokenId is TokenId => tokenId !== null)
+  // return swappableTokens.filter((tokenId): tokenId is TokenId => tokenId !== null)
+  return tokenOptions
 }
 
 export function getTokenOptionsByChainId(chainId: ChainId): TokenId[] {

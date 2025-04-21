@@ -71,8 +71,8 @@
     --destructive: #d00000;
     --destructive-foreground: #ffffff;
 
-    --ring: #454547;
-    --border: #454547;
+    --ring: #2a333c;
+    --border: #2a333c;
     --input: #151718;
     --tw-shadow: #545353;
     --radius: 0.5rem;
@@ -122,7 +122,7 @@ body {
   -ms-content-zooming: none;
   touch-action: pan-x pan-y;
   -ms-touch-action: pan-x pan-y;
-  background: var(--tg-theme-secondary-bg-color, #363637);
+  background: var(--tg-theme-secondary-bg-color, #18222e);
 }
 
 @layer utilities {
