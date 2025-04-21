@@ -53,13 +53,18 @@ export default function SendCrypto() {
 
   return (
     <div className="w-full items-center justify-center flex flex-col px-1 mb-[20%] gap-y-2">
-      {/* <p
-        onClick={async () => {
-          await sendCusd('0x20F50b8832f87104853df3FdDA47Dd464f885a49', '0.01')
+       <AppSelect
+        label="Currency"
+        desc={`${
+          isLoading ? '...' : formatEtherBalance(data!.value, data!.decimals, 3)
+        } ${selectedToken}`}
+        onChange={(data) => {
+          setToken(data)
         }}
-      >
-        Send
-      </p> */}
+        data={tokensList.map((val) => {
+          return { label: val.fullName, value: val.symbol }
+        })}
+      />
       <Input
         label="Wallet Address"
         placeholder="Recipients wallet eg: 0x3428928..."
@@ -77,18 +82,7 @@ export default function SendCrypto() {
           />
         }
       />
-      <AppSelect
-        label="Currency"
-        desc={`${
-          isLoading ? '...' : formatEtherBalance(data!.value, data!.decimals, 3)
-        } ${selectedToken}`}
-        onChange={(data) => {
-          setToken(data)
-        }}
-        data={tokensList.map((val) => {
-          return { label: val.fullName, value: val.symbol }
-        })}
-      />
+    
       <Input
         label="Amount"
         placeholder="Amount to send"

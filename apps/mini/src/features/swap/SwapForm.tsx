@@ -3,15 +3,28 @@ import { useForm } from 'react-hook-form'
 import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
 import { AppSelect } from 'src/components/Select'
-import { TokenId } from 'src/lib/config'
+import { ChainId, getTokenAddress, TokenId } from 'src/lib/config'
 import { AppStores } from 'src/lib/zustand'
 import { IFormData, initialValues, schema } from './formData'
 import { useSwapQuote } from './hooks/useSwapQuote'
 import { useTokenOptions } from './useTokenOptions'
 import { SwapDirection, SwapFormValues } from './types'
 import { Card, Label } from '@/src/components/comps'
-import { useTokenBalance } from './hooks/useTokenBalance'
+import { useBalance } from 'wagmi'
+import { useAppContext } from '@/src/Root/context'
+import {  formatEtherBalance } from '@/src/lib/utils'
 
+const useTokenBalanceX =  (selectedToken: TokenId) => {
+  const { evmAddress } = useAppContext()
+  
+   const { data,isLoading } = useBalance({
+    address: evmAddress as `0x${string}`,
+    chainId: ChainId.Celo,
+    token: getTokenAddress(selectedToken, ChainId.Celo) as `0x${string}`,
+  })
+
+  return {balance: data, isLoading}
+}
 export function SwapForm() {
   const store = AppStores.useSwap()
   // const [values, setValues] = useState()
@@ -23,7 +36,7 @@ export function SwapForm() {
       ...initialValues,
     },
   })
-
+const {balance, isLoading} = useTokenBalanceX(f.getValues("fromTokenId") as TokenId)
 
   const { allTokenOptions, swappableTokens, } = useTokenOptions(
     f.getValues('fromTokenId') as TokenId
@@ -72,6 +85,9 @@ export function SwapForm() {
       <div className="flex flex-col gap-3 w-full">
         <AppSelect
           label="From Token"
+         desc={`${
+          isLoading ? '...' : formatEtherBalance(balance!.value, balance!.decimals, 3)
+        } ${f.getValues("fromTokenId")}`}
           onChange={(v) => {
             f.setValue('fromTokenId', v)
           }}
@@ -123,12 +139,9 @@ export function SwapForm() {
           { quote  ? `${f.getValues("toTokenId")} ${quote}` : "0.00"}
         </Card>
        </div>
-        {/* <AmountField quote={quote} isQuoteLoading={isLoading} direction="out" /> */}
       </div>
       <div className="flex justify-center w-full my-6 mb-0">
         <Button
-          // isWalletConnected={isWalletConnected}
-          // isBalanceLoaded={isBalanceLoaded}
           type="submit"
         >
           Submit

@@ -65,7 +65,7 @@ export function AddBankAccount() {
     <div className="">
       <form className="px-2 flex flex-col py-1 gap-y-4" onSubmit={f.handleSubmit(onSubmit)}>
         <AppSelect
-          label="FX"
+          label="Bank"
           onChange={(value: string) => {
             f.setValue('bank', value)
           }}
