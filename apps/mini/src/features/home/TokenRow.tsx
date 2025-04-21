@@ -4,10 +4,10 @@ import { TokenIcons } from 'src/images/tokens/TokenIcon'
 import { ChainId } from 'src/lib/config/chains'
 import { IToken } from 'src/lib/config/tokenData'
 import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
-import { formatEtherBalance } from 'src/lib/utils'
+import { cn, formatEtherBalance } from 'src/lib/utils'
 import { useBalance } from 'wagmi'
 
-export function TokenRow(props: IToken) {
+export function TokenRow(props: IToken & { className?: string; onClick?:VoidFunction }) {
   const { evmAddress } = useAppContext()
   const { data, isLoading } = useBalance({
     address: evmAddress as `0x${string}`,
@@ -15,7 +15,13 @@ export function TokenRow(props: IToken) {
     token: getTokenAddress(props.symbol as TokenId, ChainId.Celo) as `0x${string}`,
   })
   return (
-    <div className="w-full px-2 py-1 flex items-center justify-center hover:bg-background ">
+    <div
+      onClick={props.onClick}
+      className={cn(
+        'w-full px-2 py-1 flex items-center justify-center hover:bg-background mb-1',
+        props.className
+      )}
+    >
       <Image
         src={props.imgUrl}
         alt={TokenIcons.cUSDIcon.name}
