@@ -15,6 +15,8 @@ import { formatEtherBalance, pasteTextFromClipboard, shortString } from 'src/lib
 import { logger } from 'src/lib/utils/logger'
 import { useBalance } from 'wagmi'
 
+import { useSendToken } from '@/src/hooks/useSend'
+
 export default function SendCrypto() {
   const [selectedToken, setToken] = useState('CELO')
   const [walletAddress, setWalletAddress] = useState('')
@@ -29,6 +31,8 @@ export default function SendCrypto() {
     token: getTokenAddress(selectedToken as TokenId, ChainId.Celo) as `0x${string}`,
   })
 
+  const { sendErc20 } = useSendToken()
+
   // const bal
   const sendNative = async () => {
     try {
@@ -38,6 +42,7 @@ export default function SendCrypto() {
         data: 'Send to recipient',
       })
       toast.success(`Send Native Success! Hash: ${shortString(result)}`)
+      setWalletAddress('')
     } catch (error: any) {
       logger.error('sendNative error', error)
       handleError(error)
@@ -49,7 +54,16 @@ export default function SendCrypto() {
       toast.error(`Invalid wallet address`)
       return
     }
-    void sendNative()
+
+    if (selectedToken === 'CELO') {
+      void sendNative()
+    } else {
+      await sendErc20({
+        recipient: walletAddress,
+        amount: ethers.parseUnits(amount.toString(), 18).toString(),
+        token: selectedToken as TokenId,
+      })
+    }
   }
 
   return (

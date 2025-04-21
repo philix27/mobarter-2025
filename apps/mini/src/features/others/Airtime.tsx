@@ -1,29 +1,22 @@
-import { useMutation, useQuery } from '@apollo/client'
-import {
-  AirtimeCountryCode,
-  Country,
-  Currencies,
-  FxRate_GetAllDocument,
-  MutationResponse,
-  MutationUtility_PurchaseAirtimeArgs,
-  Operator,
-  QueryResponse,
-  Utility_PurchaseAirtimeDocument,
-} from '@repo/api'
-import { useState } from 'react'
-import { FaCopy } from 'react-icons/fa6'
-import { toast } from 'sonner'
-import { Button } from 'src/components/Button'
-import Input from 'src/components/Input'
-import { AppSelect } from 'src/components/Select'
-import { Card, Label } from 'src/components/comps'
-import { useSendToken } from 'src/hooks/useSend'
-import { TokenId } from 'src/lib/config/tokens'
-import { pasteTextFromClipboard } from 'src/lib/utils'
-import { logger } from 'src/lib/utils/logger'
-import { AppStores } from 'src/lib/zustand'
+import { useMutation, useQuery } from '@apollo/client';
+import { AirtimeCountryCode, Country, Currencies, FxRate_GetAllDocument, MutationResponse, MutationUtility_PurchaseAirtimeArgs, Operator, QueryResponse, Utility_PurchaseAirtimeDocument } from '@repo/api';
+import { useState } from 'react';
+import { FaCopy } from 'react-icons/fa6';
+import { toast } from 'sonner';
+import { Button } from 'src/components/Button';
+import Input from 'src/components/Input';
+import { AppSelect } from 'src/components/Select';
+import { Card, Label } from 'src/components/comps';
+import { useSendToken } from 'src/hooks/useSend';
+import { TokenId } from 'src/lib/config/tokens';
+import { pasteTextFromClipboard } from 'src/lib/utils';
+import { logger } from 'src/lib/utils/logger';
+import { AppStores } from 'src/lib/zustand';
 
-import { essentialCountriesList } from './SelectCountry'
+
+
+import { essentialCountriesList } from './SelectCountry';
+
 
 export default function Airtime() {
   const [amtValue, setAmountVal] = useState<number>()
@@ -32,7 +25,7 @@ export default function Airtime() {
   const store = AppStores.useSettings()
   const countryCode = essentialCountriesList.filter((val) => val.isoName === store.countryIso)[0]
     .callingCodes[0]
-  const { sendCusd } = useSendToken()
+  const { sendErc20 } = useSendToken()
   const { cusdAmt, handleOnChange } = useGetPrice()
 
   const [mutate] = useMutation<
@@ -59,7 +52,7 @@ export default function Airtime() {
       toast.error('Minimum of NGN1,000')
       return
     }
-    await sendCusd({
+    await sendErc20({
       recipient: '0x20F50b8832f87104853df3FdDA47Dd464f885a49',
       amount: cusdAmt.toString(),
       token: TokenId.cUSD,

@@ -11,7 +11,7 @@ const CUSD_ABI = ['function transfer(address recipient, uint256 amount) public r
 export function useSendToken() {
   const provider = useProvider()
 
-  const sendCusd = async (props: { recipient: string; amount: string; token: TokenId }) => {
+  const sendErc20 = async (props: { recipient: string; amount: string; token: TokenId }) => {
     const signer = await provider.getSigner()
     if (!signer) {
       toast.error('Please connect your wallet')
@@ -26,5 +26,5 @@ export function useSendToken() {
     return JSON.stringify(tx.hash)
   }
 
-  return { sendCusd }
+  return { sendErc20 }
 }

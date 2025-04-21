@@ -100,11 +100,13 @@ export function SwapForm() {
                   setSheets('from')
                 }}
               >
-                <Image
-                  src={selectedTokenFrom!.imgUrl}
-                  alt={selectedTokenFrom!.name}
-                  className="h-[35px] w-[35px] bg-background rounded-[25px] mr-3"
-                />
+                {selectedTokenFrom && selectedTokenFrom?.imgUrl && (
+                  <Image
+                    src={selectedTokenFrom!.imgUrl}
+                    alt={selectedTokenFrom!.name}
+                    className="h-[35px] w-[35px] bg-background rounded-[25px] mr-3"
+                  />
+                )}
               </div>
               <input
                 className="bg-background border-none outline-none p-2 w-full"
@@ -133,11 +135,13 @@ export function SwapForm() {
                 setSheets('to')
               }}
             >
-              <Image
-                src={selectedTokenTo!.imgUrl}
-                alt={selectedTokenTo!.name}
-                className="h-[35px] w-[35px] bg-background rounded-[25px] mr-3"
-              />
+              {selectedTokenTo && selectedTokenTo?.imgUrl && (
+                <Image
+                  src={selectedTokenTo!.imgUrl}
+                  alt={selectedTokenTo!.name.slice(0, 2)}
+                  className="h-[35px] w-[35px] bg-background rounded-[25px] mr-3"
+                />
+              )}
             </div>
             <Card className="bg-background">{f.getValues('toTokenId')} 0.00</Card>
           </div>
