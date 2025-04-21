@@ -74,9 +74,7 @@ export function SwapForm() {
       <div className="flex flex-col gap-3 w-full">
         <AppSelect
           label="From Token"
-          // value={fromTokenId}
           onChange={(v) => {
-            // onChangeToken(true)
             f.setValue('fromTokenId', v)
           }}
           data={allTokenOptions.map((val) => {
@@ -116,7 +114,6 @@ export function SwapForm() {
 
         <AppSelect
           label="To Token"
-          // value={toTokenId}
           onChange={(v) => {
             f.setValue('toTokenId', v)
           }}
@@ -124,21 +121,11 @@ export function SwapForm() {
             return { value: val, label: val }
           })}
         />
-        {/* <Input
-          label="Amount"
-          autoComplete="off"
-          value={quote}
-          name={`amount-${direction}`}
-          step="any"
-          placeholder="0.00"
-          onChange={(v) => {
-            f.setValue('quote', parseFloat(v.target.value))
-          }}
-        /> */}
+       
         <div className="w-full">
            <Label>Quote</Label>
-        <Card>
-          {quote || "0.00"}
+        <Card className='bg-background'>
+          { quote  ? `${f.getValues("toTokenId")} ${quote}` : "0.00"}
         </Card>
        </div>
         {/* <AmountField quote={quote} isQuoteLoading={isLoading} direction="out" /> */}
