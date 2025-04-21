@@ -2,12 +2,12 @@ import { backButton } from '@telegram-apps/sdk-react'
 import * as tg from '@telegram-apps/sdk-react'
 import { useRouter } from 'next/router'
 import { ReactNode, useEffect } from 'react'
-import { useDarkMode } from 'src/styles/mediaQueries'
+import { useInitUserToken } from 'src/Root/context'
 
 import BottomNav from './BottomNav'
 import Drawer from './Drawer'
 import Sidebar from './Sidebar'
-import { useInitUserToken } from 'src/Root/context'
+import { useThemeColor } from '@/src/styles/Color'
 
 export default function Wrapper({
   hideBottomNav,
@@ -17,26 +17,13 @@ export default function Wrapper({
   hideBottomNav?: boolean
 }) {
   const router = useRouter()
-  const { isDarkMode } = useDarkMode()
 
+  const theme = useThemeColor()
   useEffect(() => {
-    tg.setMiniAppBackgroundColor(isDarkMode ? '#272727' : '#cbe2e5')
-    tg.setMiniAppBottomBarColor(isDarkMode ? '#272727' : '#cbe2e5')
-    tg.setMiniAppHeaderColor(isDarkMode ? '#272727' : '#cbe2e5')
-
-    //todo: Undesired layout distortion
-    // async function setFullScreen() {
-    //   if (tg.requestFullscreen.isAvailable() && !tg.isChangingFullscreen()) {
-    //     await tg.requestFullscreen()
-    //   }
-
-    //   if (tg.expandViewport.isAvailable()) {
-    //     tg.expandViewport()
-    //   }
-    // }
-
-    // void setFullScreen()
-  }, [isDarkMode])
+    tg.setMiniAppBackgroundColor(theme.bg as any)
+    tg.setMiniAppBottomBarColor(theme.bg as any)
+    tg.setMiniAppHeaderColor(theme.bg as any)
+  }, [])
 
   useEffect(() => {
     if (hideBottomNav) {
@@ -52,7 +39,7 @@ export default function Wrapper({
     })
   }, [router])
 
-  useInitUserToken() 
+  useInitUserToken()
   return (
     <div className="w-screen bg-background h-screen p-0 m-0">
       {/* <TopNav showBack={props.hideBottomNav} /> */}
