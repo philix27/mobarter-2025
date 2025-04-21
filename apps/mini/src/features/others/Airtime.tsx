@@ -81,7 +81,7 @@ export default function Airtime() {
       })
   }
   return (
-    <div className="w-full items-center justify-center flex flex-col px-1 mb-[20vh]">
+    <div className="w-full items-center justify-center flex flex-col px-1 mb-[20vh]" >
       <Input
         label={`${IsoToCountryCode()} Phone number`}
         placeholder={`${countryCode}8101234567`}

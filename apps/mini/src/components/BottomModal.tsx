@@ -23,7 +23,13 @@ export default function BottomModal({
       // activeSnapPoint={snap}
       setActiveSnapPoint={setSnap}
     >
-      <Drawer.Overlay className="fixed inset-0  bg-[#0000008c]" />
+      <Drawer.Overlay
+        className="fixed inset-0  bg-[#0000008c]"
+        onClick={() => {
+          return
+        }}
+        onDoubleClick={props.onClose}
+      />
       <Drawer.Portal>
         <Drawer.Content className="bg-background flex flex-col rounded-t-[10px] p-2 h-fit fixed bottom-0 left-0 right-0 outline-none">
           <div

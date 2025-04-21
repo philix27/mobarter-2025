@@ -8,8 +8,8 @@ import { ChainId } from './chains';
 
 
 export interface Token {
-  id: string
-  symbol: string // The same as id for now
+  id: TokenId
+  symbol: TokenId // The same as id for now
   name: string
   color: string
   decimals: number

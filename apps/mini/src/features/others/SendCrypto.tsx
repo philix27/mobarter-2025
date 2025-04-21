@@ -20,6 +20,7 @@ import { useSendToken } from '@/src/hooks/useSend'
 export default function SendCrypto() {
   const [selectedToken, setToken] = useState('CELO')
   const [walletAddress, setWalletAddress] = useState('')
+  // const [myErr, setMyErr] = useState('')
   const [amount, setAmount] = useState(0)
   const Copy = FaCopy as any
   const { sendTransaction } = useEthereum()
@@ -50,21 +51,32 @@ export default function SendCrypto() {
   }
 
   const handleSend = async () => {
+    // toast.success(`Clicked`)
     if (!isValidAddress(walletAddress)) {
       toast.error(`Invalid wallet address`)
       return
     }
+    // toast.success(`After Clicked`)
 
     if (selectedToken === 'CELO') {
+      toast.success(`CELO`)
       void sendNative()
     } else {
-      const hash = await sendErc20({
+      toast.success(`ERC20`)
+      // const token = tokensList.filter((val) => val.symbol === selectedToken)[0].symbol
+      await sendErc20({
         recipient: walletAddress,
-        amount: ethers.parseUnits(amount.toString(), 18).toString(),
-        token: selectedToken as TokenId,
+        amount: amount.toString(),
+        token: TokenId.cUSD,
       })
-      toast.success(`Send Native Success! Hash: ${shortString(hash)}`)
-      setWalletAddress('')
+        .then((hash) => {
+          toast.success(`Send Native Success! Hash: ${shortString(hash)}`)
+          setWalletAddress('')
+        })
+        .catch((err) => {
+          // setMyErr(err)
+          toast.error(`Error: ${err}`)
+        })
     }
   }
 
@@ -117,6 +129,7 @@ export default function SendCrypto() {
       <Button className="mt-5" onClick={handleSend}>
         Send
       </Button>
+      {/* {myErr && <p className="mt-d text-destructive text-wrap px-4 w-full overflow-y-scroll">{JSON.stringify(myErr)}</p>} */}
     </div>
   )
 }
