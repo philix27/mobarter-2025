@@ -10,7 +10,7 @@ export interface IToken extends Token {
 export const tokensList: IToken[] = [
   { fullName: 'Celo Dollar', imgUrl: TokenIcons.cUSDIcon, ...cUSD },
 
-  { fullName: 'Celo Native Token', imgUrl: TokenIcons.CeloIcon, ...t.CELO },
+  { fullName: 'Celo Token', imgUrl: TokenIcons.CeloIcon, ...t.CELO },
   { fullName: 'Celo Dollar', imgUrl: TokenIcons.PUSOIcon, ...t.PUSO },
   { fullName: 'US Dollar Tether', imgUrl: TokenIcons.USDTIcon, ...t.USDT },
   {
@@ -27,6 +27,6 @@ export const tokensList: IToken[] = [
   { fullName: 'Euro', imgUrl: TokenIcons.cEURIcon, ...t.cEUR },
   { fullName: 'Ghana Cedis', imgUrl: TokenIcons.cGHSIcon, ...t.cGHS },
   { fullName: 'Kenya Shillings', imgUrl: TokenIcons.cKESIcon, ...t.cKES },
-  { fullName: 'Celo Dollar', imgUrl: TokenIcons.cREALIcon, ...t.cREAL },
-  { fullName: 'Celo Dollar', imgUrl: TokenIcons.eXOFIcon, ...t.eXOF },
+  { fullName: 'Celo REAL', imgUrl: TokenIcons.cREALIcon, ...t.cREAL },
+  // { fullName: 'Celo Dollar', imgUrl: TokenIcons.eXOFIcon, ...t.eXOF },
 ]

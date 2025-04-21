@@ -1,4 +1,5 @@
 import { useEthereum } from '@particle-network/auth-core-modal'
+import { ethers } from 'ethers'
 import { useState } from 'react'
 import { FaCopy } from 'react-icons/fa6'
 import { toast } from 'sonner'
@@ -33,7 +34,7 @@ export default function SendCrypto() {
     try {
       const result = await sendTransaction({
         to: walletAddress,
-        value: amount.toString(),
+        value: ethers.parseUnits(amount.toString(), 18).toString(),
         data: 'Send to recipient',
       })
       toast.success(`Send Native Success! Hash: ${shortString(result)}`)
@@ -53,7 +54,7 @@ export default function SendCrypto() {
 
   return (
     <div className="w-full items-center justify-center flex flex-col px-1 mb-[20%] gap-y-2">
-       <AppSelect
+      <AppSelect
         label="Currency"
         desc={`${
           isLoading ? '...' : formatEtherBalance(data!.value, data!.decimals, 3)
@@ -82,7 +83,7 @@ export default function SendCrypto() {
           />
         }
       />
-    
+
       <Input
         label="Amount"
         placeholder="Amount to send"

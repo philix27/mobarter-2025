@@ -54,8 +54,10 @@ export function SwapForm() {
   const { amount } = f.getValues()
   const m = useMento({
     amount: `${amount}`,
-    fromTokenAddr: TokenAddresses[ChainId.Celo][selectedTokenFrom!.id as TokenId],
-    toTokenAddr: TokenAddresses[ChainId.Celo][selectedTokenTo!.id as TokenId],
+    fromTokenAddr:
+      TokenAddresses[ChainId.Celo][selectedTokenFrom ? (selectedTokenFrom!.id as TokenId) : 'cUSD'],
+    toTokenAddr:
+      TokenAddresses[ChainId.Celo][selectedTokenTo ? (selectedTokenTo!.id as TokenId) : 'CELO'],
     tokenUnit: 18,
   })
 
