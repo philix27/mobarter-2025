@@ -6,7 +6,7 @@ import { useAppContext } from 'src/Root/context'
 import BottomModal from 'src/components/BottomModal'
 import { Spinner } from 'src/components/Spinner'
 import { shortenAddress } from 'src/lib/config/addresses'
-import { cn, shortString } from 'src/lib/utils'
+import { cn, formatEtherBalance, shortString } from 'src/lib/utils'
 
 import { getTxHistory } from './func'
 import { ITransactionsResult } from './type'
@@ -80,7 +80,7 @@ export default function WalletTransactions() {
               </div>
               <Row
                 text1="Amount"
-                text2={ethers.parseUnits(val.value, 18).toString()}
+                text2={formatEtherBalance(ethers.parseUnits(val.value, 18), 18, 2)}
                 text2class={isSender ? 'text-[#CE0606]' : 'text-[#06ce06]'}
               />
             </div>

@@ -18,7 +18,7 @@ export const navLinks: { title: string; link: string; Icon: IconType }[] = [
   },
   {
     title: 'History',
-    link: '/History',
+    link: '/history',
     Icon: GoHistory,
   },
   // {

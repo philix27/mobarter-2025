@@ -92,7 +92,7 @@ export function SwapForm() {
       <div className="w-full">
         <div className="flex flex-col gap-3 w-full">
           <div className="flex flex-col ">
-            <Label>From</Label>
+            <Label>From {selectedTokenFrom.symbol}</Label>
             <div className="flex w-full bg-background rounded-md items-center justify-center px-2 py-[2px]">
               {selectedTokenFrom && selectedTokenFrom!.imgUrl && (
                 <Image
@@ -136,24 +136,26 @@ export function SwapForm() {
             </div>
           </div>
 
-          <Label>To</Label>
-          <div className="w-full flex items-center justify-center bg-background px-2 py-[2px] rounded-md">
-            {selectedTokenTo && selectedTokenTo!.imgUrl && (
-              <Image
-                src={selectedTokenTo!.imgUrl}
-                alt={selectedTokenTo!.name.slice(0, 2)}
-                className="h-[35px] w-[35px] bg-background rounded-[25px] mr-3"
-                onClick={() => {
-                  setSheets('to')
-                }}
-              />
-            )}
-            <Card className="bg-background"> 0.00</Card>
+          <div>
+            <Label className="">To {selectedTokenTo.symbol}</Label>
+            <div className="w-full flex items-center justify-center bg-background px-2 py-[2px] rounded-md">
+              {selectedTokenTo && selectedTokenTo!.imgUrl && (
+                <Image
+                  src={selectedTokenTo!.imgUrl}
+                  alt={selectedTokenTo!.name.slice(0, 2)}
+                  className="h-[35px] w-[35px] bg-background rounded-[25px] mr-3"
+                  onClick={() => {
+                    setSheets('to')
+                  }}
+                />
+              )}
+              <Card className="bg-background"> 0.00</Card>
+            </div>
           </div>
         </div>
         <div className="flex justify-center w-full my-6 mb-0">
           <Button type="button" onClick={onSubmit}>
-            Submit
+            Swap
           </Button>
         </div>
         {g.data && (

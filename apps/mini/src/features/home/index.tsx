@@ -15,6 +15,7 @@ import { useBalance } from 'wagmi'
 import BottomPopup from './BottomPopup'
 import { TokenRow } from './TokenRow'
 import Utilities from './Utilities'
+import RoundIcon from './comps'
 import HomeTabs from './tabs'
 
 export default function Home() {
@@ -57,20 +58,7 @@ export default function Home() {
       <Balance />
       <div className="flex w-full items-center justify-around mt-[30px] mb-[20px]">
         {icons.map((val, i) => {
-          const Icon = val.icon as any
-
-          return (
-            <div
-              key={i}
-              className="flex flex-col items-center justify-center"
-              onClick={val.onClick}
-            >
-              <div className="p-2 bg-card rounded-full h-[45px] w-[45px] flex items-center justify-center hover:bg-primary">
-                <Icon size={18} />
-              </div>
-              <p className="text-[10px] font-normal text-muted"> {val.title}</p>
-            </div>
-          )
+          return <RoundIcon key={i} Icon={val.icon} title={val.title} onClick={val.onClick} />
         })}
       </div>
 

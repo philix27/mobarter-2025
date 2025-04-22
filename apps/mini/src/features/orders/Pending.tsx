@@ -13,6 +13,9 @@ import { cn } from 'src/lib/utils'
 import { formatCurrency as fc } from 'src/lib/utils/helpers'
 import { AppStores } from 'src/lib/zustand'
 
+import { NotFound } from '@/src/components/ComingSoon'
+import { Spinner } from '@/src/components/Spinner'
+
 type IData = { data: Order_Response }
 export default function PendingOrders() {
   return <List />
@@ -38,8 +41,8 @@ function List() {
     }
   )
 
-  if (loading) return <div>Loading...</div>
-  if (error) return <div>Error...</div>
+  if (loading) return <Spinner />
+  if (error) return <NotFound />
   return (
     <div className="w-full bg-background no-scrollbar">
       {data && data.orders_GetAll.map((order, i) => <CardItem key={i} data={order} />)}

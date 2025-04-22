@@ -13,7 +13,7 @@ export  function ComingSoon(props: {text?:string}) {
   )
 }
 export default ComingSoon
-export  function ErrorNotFound(props: {text?:string}) {
+export  function NotFound(props: {text?:string}) {
   return (
     <div className="flex flex-col w-full items-center justify-center h-full gap-y-5 min-h-[50vh]">
       <Image src="/notfound.png" alt="coming soon" width={100} height={100} className='my-10' />

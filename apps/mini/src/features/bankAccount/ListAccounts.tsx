@@ -4,7 +4,7 @@ import React from 'react'
 import { cn } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
 
-import { ErrorNotFound } from '@/src/components/ComingSoon'
+import { NotFound } from '@/src/components/ComingSoon'
 import { Spinner } from '@/src/components/Spinner'
 
 export default function ListAccounts() {
@@ -22,7 +22,7 @@ export default function ListAccounts() {
         <Spinner />
       </div>
     )
-  if (error) return <ErrorNotFound text="No Back Account record found" />
+  if (error) return <NotFound text="No Back Account record found" />
   return (
     <div className="w-full  no-scrollbar">
       {data && data.bankAccount_getAll.length > 0 ? (
