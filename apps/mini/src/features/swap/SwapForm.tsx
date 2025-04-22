@@ -17,8 +17,10 @@ import { useMento } from './node'
 import { useAppContext } from '@/src/Root/context'
 import BottomModal from '@/src/components/BottomModal'
 import { Card, Label } from '@/src/components/comps'
+import { useProvider } from '@/src/hooks/useProvider'
+import { formatEtherBalance } from '@/src/lib/utils'
 
-export const useTokenBalanceX = (selectedToken: TokenId) => {
+export const useTokenBalance = (selectedToken: TokenId) => {
   const { evmAddress } = useAppContext()
 
   const { data, isLoading } = useBalance({
@@ -31,11 +33,11 @@ export const useTokenBalanceX = (selectedToken: TokenId) => {
 }
 export function SwapForm() {
   const [showSheets, setSheets] = useState<'from' | 'to' | undefined>(undefined)
-  const [selectedTokenFrom, setTokenFrom] = useState<IToken>()
-  const [selectedTokenTo, setTokenTo] = useState<IToken>()
+  const [selectedTokenFrom, setTokenFrom] = useState<IToken>(tokensList[0])
+  const [selectedTokenTo, setTokenTo] = useState<IToken>(tokensList[1])
   const [amount, setAmount] = useState<number>(0)
 
-  // const { balance, isLoading } = useTokenBalanceX((selectedTokenFrom!.id as TokenId) || 'CELO')
+  const { balance, isLoading } = useTokenBalance((selectedTokenFrom!.id as TokenId) || 'CELO')
 
   // const { allTokenOptions, swappableTokens } = useTokenOptions(
   //   f.getValues('fromTokenId') as TokenId
@@ -43,10 +45,8 @@ export function SwapForm() {
 
   const m = useMento({
     amount: `${amount}`,
-    fromTokenAddr:
-      TokenAddresses[ChainId.Celo][selectedTokenFrom ? (selectedTokenFrom!.id as TokenId) : 'cUSD'],
-    toTokenAddr:
-      TokenAddresses[ChainId.Celo][selectedTokenTo ? (selectedTokenTo!.id as TokenId) : 'CELO'],
+    fromTokenAddr: TokenAddresses[ChainId.Celo][selectedTokenFrom!.id as TokenId],
+    toTokenAddr: TokenAddresses[ChainId.Celo][selectedTokenTo!.id as TokenId],
     tokenUnit: 18,
   })
 
@@ -72,31 +72,20 @@ export function SwapForm() {
     <>
       <div className="w-full">
         <div className="flex flex-col gap-3 w-full">
-          <div className="flex flex-col items-end">
-            {/* {hasBalance && (
-            <button
-              type="button"
-              title="Use full balance"
-              className="text-xs text-muted hover:underline"
-              onClick={useMaxBalance}
-            >{`Use Max (${balance})`}</button>
-          )} */}
+          <div className="flex flex-col ">
             <Label>From</Label>
-            <div className="flex w-full bg-background rounded-md items-center justify-center">
-              <div
-                className="rounded-full mr-2 bg-primary"
-                onClick={() => {
-                  setSheets('from')
-                }}
-              >
-                {selectedTokenFrom && selectedTokenFrom!.imgUrl && (
-                  <Image
-                    src={selectedTokenFrom!.imgUrl}
-                    alt={selectedTokenFrom!.name}
-                    className="h-[35px] w-[35px] bg-background rounded-[25px] mr-3"
-                  />
-                )}
-              </div>
+            <div className="flex w-full bg-background rounded-md items-center justify-center px-2 py-[2px]">
+              {selectedTokenFrom && selectedTokenFrom!.imgUrl && (
+                <Image
+                  src={selectedTokenFrom!.imgUrl}
+                  alt={selectedTokenFrom!.name}
+                  className="h-[35px] w-[35px] bg-background rounded-[25px] mr-3"
+                  onClick={() => {
+                    setSheets('from')
+                  }}
+                />
+              )}
+
               <input
                 className="bg-background border-none outline-none p-2 w-full"
                 placeholder="0.00"
@@ -110,33 +99,37 @@ export function SwapForm() {
                 }}
               />
             </div>
+            <div className="flex w-full mt-1 justify-between">
+              <p className="text-[12px] text-muted">{`${
+                isLoading ? '...' : formatEtherBalance(balance!.value, balance!.decimals, 3)
+              } ${selectedTokenFrom.symbol}`}</p>
+              <p className="text-primary text-[12px] bg-background rounded-sm px-3 py-[2px] hover:bg-card">
+                max
+              </p>
+            </div>
           </div>
 
           <div className="flex items-center justify-center">
             <div className="flex items-center justify-end px-1.5 text-xs">
-              {`${
-                m.getQuoteQuery.data && m.getQuoteQuery.data
-              } ${selectedTokenFrom} ~ 1 ${selectedTokenTo}`}
+              {`${m.getQuoteQuery.data && JSON.stringify(m.getQuoteQuery.data)} ${
+                selectedTokenFrom.symbol
+              } ~ 1 ${selectedTokenTo.symbol}`}
             </div>
           </div>
 
           <Label>To</Label>
-          <div className="w-full flex items-center justify-center">
-            <div
-              className="rounded-full mr-2 bg-primary"
-              onClick={() => {
-                setSheets('to')
-              }}
-            >
-              {selectedTokenTo && selectedTokenTo!.imgUrl && (
-                <Image
-                  src={selectedTokenTo!.imgUrl}
-                  alt={selectedTokenTo!.name.slice(0, 2)}
-                  className="h-[35px] w-[35px] bg-background rounded-[25px] mr-3"
-                />
-              )}
-            </div>
-            <Card className="bg-background"> 0.00</Card>
+          <div className="w-full flex items-center justify-center bg-background px-2 py-[2px] rounded-md">
+            {selectedTokenTo && selectedTokenTo!.imgUrl && (
+              <Image
+                src={selectedTokenTo!.imgUrl}
+                alt={selectedTokenTo!.name.slice(0, 2)}
+                className="h-[35px] w-[35px] bg-background rounded-[25px] mr-3"
+                onClick={() => {
+                  setSheets('to')
+                }}
+              />
+            )}
+            <Card className="bg-background">{m.quote} 0.00</Card>
           </div>
         </div>
         <div className="flex justify-center w-full my-6 mb-0">
@@ -144,6 +137,11 @@ export function SwapForm() {
             Submit
           </Button>
         </div>
+        {!!m.getQuoteQuery.error && (
+          <p className="max-w-[400px] text-destructive text-[10px] text-wrap">
+            {`Err: ${m.getQuoteQuery.error}`}{' '}
+          </p>
+        )}
       </div>
       <BottomModal
         showSheet={showSheets === 'from' || showSheets === 'to'}
@@ -162,8 +160,10 @@ export function SwapForm() {
                 onClick={() => {
                   if (showSheets === 'from') {
                     setTokenFrom(val)
+                    setSheets(undefined)
                   } else {
                     setTokenTo(val)
+                    setSheets(undefined)
                   }
                 }}
               />

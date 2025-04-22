@@ -1,79 +1,126 @@
 import { Mento } from '@mento-protocol/mento-sdk'
-import {  useQuery } from '@tanstack/react-query'
-import { JsonRpcSigner } from 'ethers'
-import { useProvider } from 'src/hooks/useProvider'
+import { useQuery } from '@tanstack/react-query'
+import { JsonRpcProvider, JsonRpcSigner, ethers } from 'ethers'
+import { toast } from 'sonner'
+// import { useProvider } from 'src/hooks/useProvider'
 import { formatUnits, parseUnits } from 'viem'
 
-export function useMento({fromTokenAddr, toTokenAddr, amount}: {
-    fromTokenAddr: string; amount: string; tokenUnit: number;
-    toTokenAddr:string;}) {
-  const { provider } = useProvider()
-  const mento = async () => {
-    const signer = await provider.getSigner()
-    const mentoObj = await Mento.create(signer)
+import { ChainId, chainIdToChain } from '@/src/lib/config'
 
-    return { client: mentoObj, signer }
-  }
+const cache: Record<number, JsonRpcProvider> = {}
 
+// TODO remove and replace with useProvider from wagmi
+export function getProvider(chainId: ChainId): JsonRpcProvider {
+  if (cache[chainId]) return cache[chainId]
+  const chain = chainIdToChain[chainId]
+  const provider = new JsonRpcProvider(chain.rpcUrl, chainId)
+  cache[chainId] = provider
+  return provider
+}
 
- const getQuoteQuery = useQuery({
+export function useMento({
+  fromTokenAddr,
+  toTokenAddr,
+  amount,
+}: {
+  fromTokenAddr: string
+  amount: string
+  tokenUnit: number
+  toTokenAddr: string
+}) {
+  // const { provider } = useProvider()
+  const provider = getProvider(42220)
+  console.log('Initialize provider: ' + JSON.stringify(provider))
+
+  const getQuoteQuery = useQuery({
     queryKey: ['getQuote'],
-   queryFn: async () => {
-       const { client } = await mento()
+    queryFn: async () => {
+      const { client } = await initMento(provider)
+
       const res = await _getQuote({
         fromTokenAddr,
         amount,
         client,
         tokenUnit: 18,
-        toTokenAddr
+        toTokenAddr,
       })
       return res
     },
+    onError(err) {
+      toast.error('Catchy: ' + err)
+      return err
+    },
   })
 
-  return { getQuoteQuery, increaseAllowance, swap:_swap }
+  return {
+    getQuoteQuery,
+    increaseAllowance,
+    swap: _swap,
+    quote: getQuoteQuery.isLoading
+      ? '...'
+      : getQuoteQuery.error
+      ? JSON.stringify(getQuoteQuery.error)
+      : getQuoteQuery.data,
+  }
 }
 
+const increaseAllowance = async (i: {
+  fromTokenAddr: string
+  amount: string
+  client: Mento
+  signer: JsonRpcSigner
+}) => {
+  // const { client, signer } = await mento()
+  const allowanceTxObj = await i.client.increaseTradingAllowance(i.fromTokenAddr, i.amount)
+  const allowanceTx = await i.signer.sendTransaction(allowanceTxObj)
+  const allowanceReceipt = await allowanceTx.wait()
+  return allowanceReceipt
+}
 
-  const increaseAllowance = async (i: {
-    fromTokenAddr: string; amount: string; client: Mento; 
-    signer: JsonRpcSigner;} ) => {
-    // const { client, signer } = await mento()
-    const allowanceTxObj = await i.client.increaseTradingAllowance(i.fromTokenAddr, i.amount)
-    const allowanceTx = await i.signer.sendTransaction(allowanceTxObj)
-    const allowanceReceipt = await allowanceTx.wait()
-    return allowanceReceipt
-  }
+const _getQuote = async (i: {
+  fromTokenAddr: string
+  amount: string
+  client: Mento
+  tokenUnit: number
+  toTokenAddr: string
+}) => {
+  toast.info('Before Async: ' + i)
+  const amountIn = parseUnits(i.amount, i.tokenUnit)
+  const quoteAmountOut = await i.client.getAmountOut(i.fromTokenAddr, i.toTokenAddr, amountIn)
+  toast.success('quoteAmountOut: ' + quoteAmountOut)
+  const amountOut = formatUnits(quoteAmountOut, i.tokenUnit)
+  return amountOut
+}
 
+const _swap = async (i: {
+  fromTokenAddr: string
+  toTokenAddr: string
+  amount: string
+  tokenUnit: number
+  client: Mento
+  signer: JsonRpcSigner
+}) => {
+  // const { client, signer } = await mento()
+  const amountIn = parseUnits(i.amount, i.tokenUnit)
 
-    const _getQuote = async (i: {
-    fromTokenAddr: string; amount: string; client: Mento ;tokenUnit: number;
-    toTokenAddr:string;}
-  ) => {
+  const quoteAmountOut = await i.client.getAmountOut(i.fromTokenAddr, i.toTokenAddr, amountIn)
+  const expectedAmountOut = quoteAmountOut.mul(99).div(100)
+  const swapTxObj = await i.client.swapIn(
+    i.fromTokenAddr,
+    i.toTokenAddr,
+    amountIn,
+    expectedAmountOut
+  )
 
-    const amountIn = parseUnits(i.amount, i.tokenUnit)
-    const quoteAmountOut = await i.client.getAmountOut(i.fromTokenAddr, i.toTokenAddr, amountIn)
-    const amountOut = formatUnits(quoteAmountOut, i.tokenUnit)
-    return amountOut
-  }
+  const swapTx = await i.signer.sendTransaction(swapTxObj)
+  const swapReceipt = await swapTx.wait()
+  return swapReceipt
+}
 
-    const _swap = async (
-      i: {
-      fromTokenAddr: string,
-    toTokenAddr: string,
-    amount: string,
-        tokenUnit: number;
-    client: Mento ;signer: JsonRpcSigner
-    }
-  ) => {
-    // const { client, signer } = await mento()
-    const amountIn = parseUnits(i.amount, i.tokenUnit)
+const initMento = async (provider: ethers.BrowserProvider | JsonRpcProvider) => {
+  const signer = await provider!.getSigner()
+  const mentoObj = await Mento.create(provider)
+  const client = mentoObj.connectSigner(signer)
 
-    const quoteAmountOut = await i.client.getAmountOut(i.fromTokenAddr, i.toTokenAddr, amountIn)
-    const expectedAmountOut = quoteAmountOut.mul(99).div(100)
-    const swapTxObj = await i.client.swapIn(i.fromTokenAddr, i.toTokenAddr, amountIn, expectedAmountOut)
-
-    const swapTx = await i.signer.sendTransaction(swapTxObj)
-    const swapReceipt = await swapTx.wait()
-    return swapReceipt
-  }
+  return { client, signer }
+}

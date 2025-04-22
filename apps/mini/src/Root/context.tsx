@@ -10,6 +10,7 @@ import {
   useEthereum,
   useSolana,
 } from '@particle-network/auth-core-modal'
+import { EVMProvider } from '@particle-network/auth-core-modal/dist/context/evmProvider'
 import {
   Auth_TelegramLoginDocument,
   MutationAuth_LoginTelegramArgs,
@@ -40,6 +41,7 @@ type ContextValue = {
   enableSolana: () => Promise<string>
   openWallet: VoidFunction
   onAction: (key: 'logout' | 'account-security') => void
+  provider?: EVMProvider
 }
 
 export function useInitUserToken() {
@@ -230,6 +232,7 @@ export const AppProvider = ({ children }: React.PropsWithChildren) => {
         enableSolana,
         openWallet,
         onAction,
+        provider,
       }}
     >
       {children}

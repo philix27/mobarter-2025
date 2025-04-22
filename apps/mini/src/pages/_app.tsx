@@ -33,14 +33,14 @@ function SafeHydrate({ children }: PropsWithChildren<any>) {
 
 const queryClient = new QueryClient()
 export default function App({ Component, pageProps }: AppProps) {
-const store = AppStores.useUser()
+  const store = AppStores.useUser()
   const apollo = new ApolloClient({
-  uri: process.env.NEXT_PUBLIC_BACKEND_SERVER,
-  headers: {
-    Authorization: `Bearer ${store.token}`,
-  },
-  cache: new InMemoryCache(),
-})
+    uri: process.env.NEXT_PUBLIC_BACKEND_SERVER,
+    headers: {
+      Authorization: `Bearer ${store.token}`,
+    },
+    cache: new InMemoryCache(),
+  })
   return (
     <ErrorBoundary>
       <WagmiProvider config={config}>
@@ -57,7 +57,7 @@ const store = AppStores.useUser()
             {/* </RainbowKitProvider> */}
           </QueryClientProvider>
         </SafeHydrate>
-        <Analytics />
+        {process.env.NODE_ENV !== 'development' && <Analytics />}
       </WagmiProvider>
     </ErrorBoundary>
   )
