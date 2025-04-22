@@ -1,22 +1,17 @@
-import { useRouter } from 'next/router';
-import React, { useState } from 'react';
-import { IconType } from 'react-icons';
-import { CiBank } from 'react-icons/ci';
-import { GrNotification } from 'react-icons/gr';
-import { IoSwapHorizontalOutline } from 'react-icons/io5';
-import { LiaPhoneVolumeSolid } from 'react-icons/lia';
-import BottomModal from 'src/components/BottomModal';
+import { useRouter } from 'next/router'
+import React, { useState } from 'react'
+import { IconType } from 'react-icons'
+import { CiBank } from 'react-icons/ci'
+import { GrNotification } from 'react-icons/gr'
+import { IoSwapHorizontalOutline } from 'react-icons/io5'
+import { LiaPhoneVolumeSolid } from 'react-icons/lia'
+import { MdNotes } from 'react-icons/md'
+import BottomModal from 'src/components/BottomModal'
 
+import Airtime from '../others/Airtime'
+import SendToBank from '../others/SendToBank'
 
-
-import Airtime from '../others/Airtime';
-import SendToBank from '../others/SendToBank';
-
-
-
-import { AppStores } from '@/src/lib/zustand';
-import { MdNotes } from 'react-icons/md';
-
+import { AppStores } from '@/src/lib/zustand'
 
 export default function Utilities() {
   const store = AppStores.useSettings()
@@ -55,7 +50,7 @@ export default function Utilities() {
       },
     },
     {
-      title: 'Notification',
+      title: 'Notifications',
       icon: GrNotification,
       onClick: () => {
         return
