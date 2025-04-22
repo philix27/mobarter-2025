@@ -35,19 +35,21 @@ export function useMento({
   const getQuoteQuery = useQuery({
     queryKey: ['getQuote'],
     queryFn: async () => {
+      console.log('Before GetQuote')
       const { client } = await initMento(provider)
-
-      const res = await _getQuote({
+      const res = await getQuote({
         fromTokenAddr,
         amount,
         client,
         tokenUnit: 18,
         toTokenAddr,
       })
+      console.log('After GetQuote')
+      toast.success('GetQuote' + JSON.stringify(res))
       return res
     },
     onError(err) {
-      toast.error('Catchy: ' + err)
+      toast.error('GetQuote Catchy: ' + err)
       return err
     },
   })
@@ -55,7 +57,7 @@ export function useMento({
   return {
     getQuoteQuery,
     increaseAllowance,
-    swap: _swap,
+    swap: swap,
     quote: getQuoteQuery.isLoading
       ? '...'
       : getQuoteQuery.error
@@ -64,7 +66,7 @@ export function useMento({
   }
 }
 
-const increaseAllowance = async (i: {
+export const increaseAllowance = async (i: {
   fromTokenAddr: string
   amount: string
   client: Mento
@@ -77,22 +79,22 @@ const increaseAllowance = async (i: {
   return allowanceReceipt
 }
 
-const _getQuote = async (i: {
+export const getQuote = async (i: {
   fromTokenAddr: string
   amount: string
   client: Mento
   tokenUnit: number
   toTokenAddr: string
 }) => {
-  toast.info('Before Async: ' + i)
+  console.log('Before Async: ' + i)
   const amountIn = parseUnits(i.amount, i.tokenUnit)
   const quoteAmountOut = await i.client.getAmountOut(i.fromTokenAddr, i.toTokenAddr, amountIn)
-  toast.success('quoteAmountOut: ' + quoteAmountOut)
+  console.log('quoteAmountOut: ' + quoteAmountOut)
   const amountOut = formatUnits(quoteAmountOut, i.tokenUnit)
   return amountOut
 }
 
-const _swap = async (i: {
+export const swap = async (i: {
   fromTokenAddr: string
   toTokenAddr: string
   amount: string
@@ -117,10 +119,13 @@ const _swap = async (i: {
   return swapReceipt
 }
 
-const initMento = async (provider: ethers.BrowserProvider | JsonRpcProvider) => {
+export const initMento = async (provider: ethers.BrowserProvider | JsonRpcProvider) => {
   const signer = await provider!.getSigner()
-  const mentoObj = await Mento.create(provider)
-  const client = mentoObj.connectSigner(signer)
+  console.warn('Init signer: ' + JSON.stringify(signer))
+  const mentoObj = await Mento.create(signer.provider)
+  console.warn('Init obj: ' + JSON.stringify(mentoObj))
+  const client = mentoObj
+  // const client = mentoObj.connectSigner(signer)
 
   return { client, signer }
 }

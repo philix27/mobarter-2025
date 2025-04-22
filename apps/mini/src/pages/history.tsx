@@ -3,7 +3,7 @@ import TransactionHistory from 'src/features/history'
 
 export default function Page() {
   return (
-    <Wrapper hideBottomNav>
+    <Wrapper>
       <TransactionHistory />
     </Wrapper>
   )

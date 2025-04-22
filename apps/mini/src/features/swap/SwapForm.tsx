@@ -1,5 +1,7 @@
+import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import { useState } from 'react'
+import { toast } from 'sonner'
 import { Button } from 'src/components/Button'
 import {
   ChainId,
@@ -13,10 +15,11 @@ import { useBalance } from 'wagmi'
 
 import { TokenRow } from '../home/TokenRow'
 
-import { useMento } from './node'
+import { getQuote, initMento } from './node'
 import { useAppContext } from '@/src/Root/context'
 import BottomModal from '@/src/components/BottomModal'
 import { Card, Label } from '@/src/components/comps'
+import { useProvider } from '@/src/hooks/useProvider'
 // import { useProvider } from '@/src/hooks/useProvider'
 import { formatEtherBalance } from '@/src/lib/utils'
 
@@ -32,35 +35,51 @@ export const useTokenBalance = (selectedToken: TokenId) => {
   return { balance: data, isLoading }
 }
 export function SwapForm() {
+  const provider = useProvider()
+  // const provider = getProvider(42220)
   const [showSheets, setSheets] = useState<'from' | 'to' | undefined>(undefined)
   const [selectedTokenFrom, setTokenFrom] = useState<IToken>(tokensList[0])
   const [selectedTokenTo, setTokenTo] = useState<IToken>(tokensList[1])
   const [amount, setAmount] = useState<number>(0)
-
+  const fromTokenAddr = TokenAddresses[ChainId.Celo][selectedTokenFrom!.id as TokenId]
+  const toTokenAddr = TokenAddresses[ChainId.Celo][selectedTokenTo!.id as TokenId]
   const { balance, isLoading } = useTokenBalance((selectedTokenFrom!.id as TokenId) || 'CELO')
 
   // const { allTokenOptions, swappableTokens } = useTokenOptions(
   //   f.getValues('fromTokenId') as TokenId
   // )
 
-  const m = useMento({
-    amount: `${amount}`,
-    fromTokenAddr: TokenAddresses[ChainId.Celo][selectedTokenFrom!.id as TokenId],
-    toTokenAddr: TokenAddresses[ChainId.Celo][selectedTokenTo!.id as TokenId],
-    tokenUnit: 18,
+  // const m = useMento({
+  //   amount: `${amount}`,
+  //   fromTokenAddr,
+  //   toTokenAddr,
+  //   tokenUnit: 18,
+  // })
+
+  console.log('Initialize provider: ' + JSON.stringify(provider))
+
+  const g = useQuery({
+    queryKey: ['getQuote'],
+    queryFn: async () => {
+      console.log('Before GetQuote')
+      const { client } = await initMento(provider)
+      console.log('client ' + client)
+      const res = await getQuote({
+        fromTokenAddr,
+        amount: `${amount}`,
+        client,
+        tokenUnit: 18,
+        toTokenAddr,
+      })
+      console.log('After GetQuote')
+      toast.success('GetQuote' + JSON.stringify(res))
+      return res
+    },
+    onError(err) {
+      toast.error('GetQuote Catchy: ' + err)
+      return err
+    },
   })
-
-  // const { balance, hasBalance, useMaxBalance } = useTokenBalance(
-  //   store.account_balances,
-  //   f.getValues('fromTokenId') as TokenId
-  // )
-
-  // const { quote,rate } = useSwapQuote(
-  //   amount,
-  //   direction as SwapDirection,
-  //   fromTokenId as TokenId,
-  //   toTokenId as TokenId
-  // )
 
   // ! Functions
 
@@ -111,9 +130,9 @@ export function SwapForm() {
 
           <div className="flex items-center justify-center">
             <div className="flex items-center justify-end px-1.5 text-xs">
-              {`${m.getQuoteQuery.data && JSON.stringify(m.getQuoteQuery.data)} ${
-                selectedTokenFrom.symbol
-              } ~ 1 ${selectedTokenTo.symbol}`}
+              {`${g.data && JSON.stringify(g.data)} ${selectedTokenFrom.symbol} ~ 1 ${
+                selectedTokenTo.symbol
+              }`}
             </div>
           </div>
 
@@ -129,7 +148,7 @@ export function SwapForm() {
                 }}
               />
             )}
-            <Card className="bg-background">{m.quote} 0.00</Card>
+            <Card className="bg-background"> 0.00</Card>
           </div>
         </div>
         <div className="flex justify-center w-full my-6 mb-0">
@@ -137,11 +156,16 @@ export function SwapForm() {
             Submit
           </Button>
         </div>
-        {!!m.getQuoteQuery.error && (
+        {g.data && (
           <p className="max-w-[400px] text-destructive text-[10px] text-wrap">
-            {`Err: ${m.getQuoteQuery.error}`}{' '}
+            {JSON.stringify(g.data)}
           </p>
         )}
+        {/* {g.error && (
+          <p className="max-w-[400px] text-destructive text-[10px] text-wrap">
+            {`Err: ${g.error}`}
+          </p>
+        )} */}
       </div>
       <BottomModal
         showSheet={showSheets === 'from' || showSheets === 'to'}

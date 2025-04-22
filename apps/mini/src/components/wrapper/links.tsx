@@ -1,9 +1,9 @@
 import type { IconType } from 'react-icons'
 import { CiWallet } from 'react-icons/ci'
 import { FaRegUser } from 'react-icons/fa6'
+import { GoHistory } from 'react-icons/go'
 import { IoSwapHorizontalOutline } from 'react-icons/io5'
 import { MdNotes } from 'react-icons/md'
-import { RiExchange2Fill } from 'react-icons/ri'
 
 export const navLinks: { title: string; link: string; Icon: IconType }[] = [
   {
@@ -17,10 +17,15 @@ export const navLinks: { title: string; link: string; Icon: IconType }[] = [
     Icon: IoSwapHorizontalOutline,
   },
   {
-    title: 'P2P',
-    link: '/ads',
-    Icon: RiExchange2Fill,
+    title: 'History',
+    link: '/History',
+    Icon: GoHistory,
   },
+  // {
+  //   title: 'P2P',
+  //   link: '/ads',
+  //   Icon: RiExchange2Fill,
+  // },
   {
     title: 'Orders',
     link: '/orders',

@@ -39,7 +39,8 @@ export default function Wrapper({
     })
   }, [router])
 
-  useInitUserToken()
+  // useInitUserToken()
+
   return (
     <div className="w-screen bg-background h-screen p-0 m-0">
       {/* <TopNav showBack={props.hideBottomNav} /> */}

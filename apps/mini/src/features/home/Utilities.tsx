@@ -1,51 +1,88 @@
-import React, { useState } from 'react'
-import { IconType } from 'react-icons'
-import { CiBank } from 'react-icons/ci'
-import { GrGift } from 'react-icons/gr'
-import { LiaPhoneVolumeSolid } from 'react-icons/lia'
-import BottomModal from 'src/components/BottomModal'
-import { TileSimple } from 'src/components/TileSimple'
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import { IconType } from 'react-icons';
+import { CiBank } from 'react-icons/ci';
+import { GrNotification } from 'react-icons/gr';
+import { IoSwapHorizontalOutline } from 'react-icons/io5';
+import { LiaPhoneVolumeSolid } from 'react-icons/lia';
+import BottomModal from 'src/components/BottomModal';
 
-import Airtime from '../others/Airtime'
-import SendToBank from '../others/SendToBank'
+
+
+import Airtime from '../others/Airtime';
+import SendToBank from '../others/SendToBank';
+
+
+
+import { AppStores } from '@/src/lib/zustand';
+import { MdNotes } from 'react-icons/md';
+
 
 export default function Utilities() {
+  const store = AppStores.useSettings()
+  const router = useRouter()
   const [btmSheet, setBtmSheet] = useState<
     'AIRTIME' | 'GIFT_CARD' | 'SEND_TO_BANK' | 'FX_RATES' | undefined
   >(undefined)
-  const list: { title: string; onClick?: VoidFunction; desc: string; icon: IconType }[] = [
+
+  const icons: { title: string; onClick: VoidFunction; icon: IconType }[] = [
     {
       title: 'Airtime',
-      desc: 'Purchase airtime with cUSD',
       icon: LiaPhoneVolumeSolid,
       onClick: () => {
         setBtmSheet('AIRTIME')
       },
     },
     {
-      title: 'Instant Pay',
-      desc: 'Send to bank accounts',
+      title: 'Xpay',
       icon: CiBank,
       onClick: () => {
         setBtmSheet('SEND_TO_BANK')
       },
     },
-    { title: 'Gift Cards', desc: 'Purchase cards with cUSD', icon: GrGift },
+    {
+      title: 'Market',
+      icon: IoSwapHorizontalOutline,
+      onClick: () => {
+        store.update({ homeBtmSheet: 'WITHDRAW' })
+      },
+    },
+    {
+      title: 'Orders',
+      icon: MdNotes,
+      onClick: () => {
+        void router.push('/orders')
+      },
+    },
+    {
+      title: 'Notification',
+      icon: GrNotification,
+      onClick: () => {
+        return
+      },
+    },
   ]
-
   return (
-    <div className="w-full">
-      {list.map((val, i) => {
-        return (
-          <TileSimple
-            key={i}
-            onClick={val.onClick}
-            title={val.title}
-            desc={val.desc}
-            icon={val.icon}
-          />
-        )
-      })}
+    <>
+      <div className="grid grid-cols-4 gap-y-4 w-full items-center justify-around mb-[20px]">
+        {icons.map((val, i) => {
+          const Icon = val.icon as any
+
+          return (
+            <div
+              key={i}
+              className="flex flex-col items-center justify-center"
+              onClick={val.onClick}
+            >
+              <div className="p-2 bg-card rounded-full h-[45px] w-[45px] flex items-center justify-center hover:bg-primary">
+                <Icon size={18} />
+              </div>
+              <p className="text-[10px] font-normal text-muted"> {val.title}</p>
+            </div>
+          )
+        })}
+      </div>
+
       <BottomModal
         title="Purchase Airtime"
         showSheet={btmSheet === 'AIRTIME'}
@@ -64,6 +101,6 @@ export default function Utilities() {
       >
         <SendToBank />
       </BottomModal>
-    </div>
+    </>
   )
 }
