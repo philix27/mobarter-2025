@@ -17,7 +17,7 @@ import { useMento } from './node'
 import { useAppContext } from '@/src/Root/context'
 import BottomModal from '@/src/components/BottomModal'
 import { Card, Label } from '@/src/components/comps'
-import { useProvider } from '@/src/hooks/useProvider'
+// import { useProvider } from '@/src/hooks/useProvider'
 import { formatEtherBalance } from '@/src/lib/utils'
 
 export const useTokenBalance = (selectedToken: TokenId) => {
