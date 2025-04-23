@@ -5,6 +5,7 @@ import { BottomNote, Label } from './comps'
 
 export default function Input(
   props: {
+    useBg?: string
     error?: string
     desc?: string
     label?: string
@@ -20,22 +21,26 @@ export default function Input(
       {label && <Label>{label}</Label>}
       <div
         className={cn(
-          'rounded-md px-3 py-[5px] bg-card border-muted border-[0.5px] flex items-center justify-center',
-          focus && 'border-primary ',
+          'rounded-md px-3 py-[5px] bg-card flex items-center justify-center',
+          focus && 'border-primary border-[0.5px]',
           props.error && 'border-destructive',
+          props.useBg ? 'bg-background' : 'bg-card',
           className
         )}
       >
         <input
           {...inputParams}
           {...props.control}
-          className={`
-            w-full bg-card 
+          className={cn(
+            `
+            w-full
             border-none outline-none
             text-[16px] font-normal placeholder:font-light placeholder:text-sm
             py-[2px]
-          `}
-          autoComplete={isNum && "off"}
+          `,
+            props.useBg ? 'bg-background' : 'bg-card'
+          )}
+          autoComplete={isNum && 'off'}
           onFocus={() => {
             setFocus(true)
           }}

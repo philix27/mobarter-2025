@@ -1,4 +1,6 @@
-import React from 'react'
+/* eslint-disable @next/next/no-img-element */
+import { type ChainInfo, chains } from '@particle-network/chains'
+import React, { useMemo } from 'react'
 import { Tab } from 'src/components/Tab'
 import { AppStores } from 'src/lib/zustand'
 
@@ -6,6 +8,13 @@ import { essentialCountriesList } from '../others/SelectCountry'
 
 export default function HomeTabs() {
   const store = AppStores.useSettings()
+
+  const supportChains = useMemo((): ChainInfo[] => {
+    return chains
+      .getAllChainInfos()
+      .filter((chain) => chain.chainType === 'evm' && chain.id === 42220)
+  }, [])
+
   return (
     <div className="w-full flex items-center justify-between">
       <div
@@ -43,12 +52,16 @@ export default function HomeTabs() {
         ]}
       />
       <div
-        className="bg-primary rounded-full size-[35px]"
+        className="rounded-full size-[35px]"
         onClick={() => {
           store.update({ homeBtmSheet: 'SELECT_NETWORK' })
         }}
       >
-        <img src={store.chainIcon} alt="flag" className="object-cover w-full h-full rounded-full" />
+        <img
+          src={store.chainIcon.length < 3 ? store.chainIcon : supportChains[0].icon}
+          alt="flag"
+          className="object-cover w-full h-full rounded-full"
+        />
       </div>
     </div>
   )

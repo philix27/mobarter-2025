@@ -20,7 +20,7 @@ export default function Page() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <Wrapper>
+    <Wrapper hideBottomNav>
       <div className="w-full items-center justify-center flex flex-col bg-background h-full">
         <Tab
           data={[

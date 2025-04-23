@@ -1,6 +1,5 @@
-import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
-
+import { create } from 'zustand'
+import { createJSONStorage, persist } from 'zustand/middleware'
 
 export type IHomeTab = 'Balances' | 'Services'
 export type IManageAdsTab = 'OPEN' | 'CLOSED' | 'ADD'
@@ -12,12 +11,16 @@ export type IHomeBottomSheet =
   | 'WITHDRAW'
   | 'SELECT_COUNTRY'
   | 'SELECT_NETWORK'
+  | 'AIRTIME'
+  | 'GIFT_CARD'
+  | 'SEND_TO_BANK'
+  | 'FX_RATES'
   | 'NULL'
   | undefined
 export type IHistoryTabs = 'ALL' | 'AIRTIME'
-export type IProfileTabs = 'INFO' | 'ACTIONS' | "BANK"
+export type IProfileTabs = 'INFO' | 'ACTIONS' | 'BANK'
 export type ISwap = 'EXCHANGE' | 'CONFIRM'
-export type ICountryIso = 'NG' | 'KE' | "GH"
+export type ICountryIso = 'NG' | 'KE' | 'GH'
 
 export interface ISlice {
   sidebarOpen?: boolean

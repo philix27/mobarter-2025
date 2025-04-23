@@ -10,9 +10,11 @@ import { Label } from 'src/components/comps'
 import { copyTextToClipboard, shortString } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
 
+import Airtime from '../others/Airtime'
 import SelectCountry from '../others/SelectCountry'
 import SelectNetwork from '../others/SelectNetwork'
 import SendCrypto from '../others/SendCrypto'
+import SendToBank from '../others/SendToBank'
 
 export default function BottomPopup() {
   const store = AppStores.useSettings()
@@ -21,6 +23,7 @@ export default function BottomPopup() {
   const showSwap = store.homeBtmSheet === 'WITHDRAW'
   const showNetwork = store.homeBtmSheet === 'SELECT_NETWORK'
   const showCountry = store.homeBtmSheet === 'SELECT_COUNTRY'
+  const currentTab = store.homeBtmSheet
   const { evmAddress } = useAppContext()
   const router = useRouter()
   return (
@@ -98,6 +101,25 @@ export default function BottomPopup() {
         }}
       >
         <SelectCountry />
+      </BottomModal>
+
+      <BottomModal
+        title="Purchase Airtime"
+        showSheet={currentTab === 'AIRTIME'}
+        onClose={() => {
+          store.update({ homeBtmSheet: undefined })
+        }}
+      >
+        <Airtime />
+      </BottomModal>
+      <BottomModal
+        title="Send to Bank Account"
+        showSheet={currentTab === 'SEND_TO_BANK'}
+        onClose={() => {
+          store.update({ homeBtmSheet: undefined })
+        }}
+      >
+        <SendToBank />
       </BottomModal>
     </>
   )

@@ -2,27 +2,26 @@
 
 import Select from 'react-select'
 
+import { useThemeColor } from '../styles/Color'
+
 import { BottomNote, Label } from './comps'
-import {  useThemeColor } from '../styles/Color'
 
 export const AppSelect = (props: {
   label?: string
   error?: string
   value?: string
   desc?: string
+  useBg?: string
   onChange: (newValue: string) => void
   data: {
     label: string
     value: string
   }[]
 }) => {
-
-const theme = useThemeColor()
-  const bgCard = theme.bg
+  const theme = useThemeColor()
+  const bgCard = props.useBg ? theme.bg : theme.card
   const textColor = theme.text
 
-  const borderColor = (isFocused: boolean) => (isFocused ? theme.primary : theme.muted)
-  const outlineColor = (isFocused: boolean) => (isFocused ? theme.primary : theme.muted)
   return (
     <div className="w-full">
       {props.label && <Label>{props.label}</Label>}
@@ -34,29 +33,26 @@ const theme = useThemeColor()
           props.onChange(newValue!.value!)
         }}
         styles={{
-          menu: (base: any, state: any) => ({
+          menu: (base: any) => ({
             ...base,
             color: textColor,
             background: bgCard,
-            borderColor: borderColor(state.isFocused),
-            outline: outlineColor(state.isFocused),
-            borderStyle: 'solid',
+            borderStyle: 'none',
+            outlineStyle: 'none',
             marginTop: 0,
             borderRadius: 5,
           }),
-          option: (base: any, state: any) => ({
+          option: (base: any) => ({
             ...base,
             color: textColor,
             background: bgCard,
-            borderColor: borderColor(state.isFocused),
-            outline: outlineColor(state.isFocused),
           }),
-          indicatorsContainer: (base: any, state: any) => ({
+          indicatorsContainer: (base: any) => ({
             ...base,
             color: textColor,
             background: bgCard,
-            borderColor: borderColor(state.isFocused),
-            outline: outlineColor(state.isFocused),
+            borderStyle: 'none',
+            outlineStyle: 'none',
             borderRadius: 5,
           }),
           singleValue: (base: any) => ({
@@ -64,13 +60,12 @@ const theme = useThemeColor()
             color: textColor,
             background: bgCard,
           }),
-          container: (base: any, state: { isFocused: boolean }) => ({
+          container: (base: any) => ({
             ...base,
             background: bgCard,
             color: textColor,
-            borderColor: borderColor(state.isFocused),
-            outline: outlineColor(state.isFocused),
             borderStyle: 'none',
+            outlineStyle: 'none',
             margin: 0,
             borderRadius: 5,
           }),
@@ -79,13 +74,15 @@ const theme = useThemeColor()
             background: bgCard,
             color: textColor,
             borderRadius: 5,
+            borderStyle: 'none',
+            outlineStyle: 'none',
           }),
-          control: (baseStyles: any, state: any) => ({
+          control: (baseStyles: any) => ({
             ...baseStyles,
             color: textColor,
             background: bgCard,
-            borderColor: borderColor(state.isFocused),
-            borderStyle: 'solid',
+            borderStyle: 'none',
+            outlineStyle: 'none',
             borderRadius: 5,
           }),
         }}
