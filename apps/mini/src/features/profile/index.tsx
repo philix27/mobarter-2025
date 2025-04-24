@@ -10,7 +10,7 @@ import { useAppContext } from 'src/Root/context'
 import LiveLoader from 'src/Root/live-loader'
 import { Label } from 'src/components/comps'
 import { shortenAddress } from 'src/lib/config/addresses'
-import { copyTextToClipboard } from 'src/lib/utils'
+import { copyTextToClipboard, shortString } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
 
 import BankAccount from '../bankAccount'
@@ -108,7 +108,7 @@ export default function Profile() {
           )}
           {solanaAddress && (
             <Row
-              text={`Solana: ${shortenAddress(solanaAddress, true)}`}
+              text={`Solana: ${shortString(solanaAddress, 7)}`}
               Icon={BsWallet}
               onClick={() => copyText(solanaAddress!)}
             />
