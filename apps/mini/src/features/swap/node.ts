@@ -2,7 +2,7 @@ import { Mento } from '@mento-protocol/mento-sdk'
 import { useQuery } from '@tanstack/react-query'
 import { JsonRpcProvider, JsonRpcSigner, ethers } from 'ethers'
 import { toast } from 'sonner'
-// import { useProvider } from 'src/hooks/useProvider'
+import { useProvider } from 'src/hooks/useProvider'
 import { formatUnits, parseUnits } from 'viem'
 
 import { ChainId, chainIdToChain } from '@/src/lib/config'
@@ -28,15 +28,16 @@ export function useMento({
   tokenUnit: number
   toTokenAddr: string
 }) {
-  // const { provider } = useProvider()
-  const provider = getProvider(42220)
+  const { provider } = useProvider()
+  // const provider = getProvider(42220)
+
   console.log('Initialize provider: ' + JSON.stringify(provider))
 
   const getQuoteQuery = useQuery({
     queryKey: ['getQuote'],
     queryFn: async () => {
       console.log('Before GetQuote')
-      const { client } = await initMento(provider)
+      const { client } = await initMento(provider as unknown as ethers.BrowserProvider)
       const res = await getQuote({
         fromTokenAddr,
         amount,
@@ -121,8 +122,8 @@ export const swap = async (i: {
 
 export const initMento = async (provider: ethers.BrowserProvider | JsonRpcProvider) => {
   const signer = await provider!.getSigner()
-  console.warn('Init signer: ' + JSON.stringify(signer))
-  const mentoObj = await Mento.create(signer.provider)
+  // console.warn('Init signer: ' + JSON.stringify(signer))
+  const mentoObj = await Mento.create(provider)
   console.warn('Init obj: ' + JSON.stringify(mentoObj))
   const client = mentoObj
   // const client = mentoObj.connectSigner(signer)

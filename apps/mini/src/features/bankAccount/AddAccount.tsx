@@ -62,7 +62,7 @@ export function AddBankAccount() {
   }
 
   return (
-    <div className="">
+    <div className="pb-[20px]">
       <form className="px-2 flex flex-col py-1 gap-y-4" onSubmit={f.handleSubmit(onSubmit)}>
         <AppSelect
           label="Bank"
