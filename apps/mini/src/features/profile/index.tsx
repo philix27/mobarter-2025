@@ -11,9 +11,6 @@ import LiveLoader from 'src/Root/live-loader'
 import { Label } from 'src/components/comps'
 import { shortenAddress } from 'src/lib/config/addresses'
 import { copyTextToClipboard, shortString } from 'src/lib/utils'
-import { AppStores } from 'src/lib/zustand'
-
-import BankAccount from '../bankAccount'
 
 import { MoreFeat } from './More'
 import { Row } from './comps'
@@ -27,7 +24,6 @@ function useInitData() {
 }
 
 export default function Profile() {
-  const store = AppStores.useSettings()
   const { userInfo } = useInitData()
   const particleUser = useUserInfo()
   const { evmAddress, solanaAddress } = useAppContext()
@@ -41,54 +37,19 @@ export default function Profile() {
 
   return (
     <LiveLoader>
-      <div className="w-full">
-        <div className="w-full items-center justify-center flex flex-col">
-          {userInfo.photoUrl && (
-            <Image
-              className="mt-3 mb-2 h-[50px] w-[50px] rounded-full"
-              src={userInfo.photoUrl}
-              width={50}
-              height={50}
-              alt={userInfo.id.toString()}
-              // placeholder="blur"
-              unoptimized
-            />
-          )}
-          <div className="my-1" />
-          {/* <Tab
-            data={[
-              {
-                title: 'INFO',
-                isActive: store.profileTabs === 'INFO',
-                onClick: () => {
-                  store.update({
-                    profileTabs: 'INFO',
-                  })
-                },
-              },
-              {
-                title: 'ACTIONS',
-                isActive: store.profileTabs === 'ACTIONS',
-                onClick: () => {
-                  store.update({
-                    profileTabs: 'ACTIONS',
-                  })
-                },
-              },
-              {
-                title: 'BANK',
-                isActive: store.profileTabs === 'BANK',
-                onClick: () => {
-                  store.update({
-                    profileTabs: 'BANK',
-                  })
-                },
-              },
-            ]}
-          /> */}
-        </div>
+      <div className="w-full items-center justify-center flex flex-col mb-2">
+        {userInfo.photoUrl && (
+          <Image
+            className="mt-3 mb-2 h-[50px] w-[50px] rounded-full"
+            src={userInfo.photoUrl}
+            width={50}
+            height={50}
+            alt={userInfo.id.toString()}
+            // placeholder="blur"
+            unoptimized
+          />
+        )}
 
-        {store.profileTabs === 'BANK' && <BankAccount />}
         <Container>
           <Label>User</Label>
           {userInfo.username && <Row text={`${userInfo.username}`} Icon={FaRegUser} />}
@@ -99,6 +60,9 @@ export default function Profile() {
           {particleUser.userInfo!.email && (
             <Row text={`${particleUser.userInfo!.email}`} Icon={TbMail} />
           )}
+        </Container>
+        <Container>
+          <Label>Wallets</Label>
           {evmAddress && (
             <Row
               text={`EVM: ${shortenAddress(evmAddress, true)}`}
