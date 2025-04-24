@@ -85,6 +85,7 @@ export function MoreFeat() {
         <LinksAndActions />
       </Container>
       <Container>
+        <Label>Danger</Label>
         <Row
           text="Logout"
           Icon={MdLogout}
@@ -109,7 +110,7 @@ export function MoreFeat() {
   )
 }
 
-function Container(props: { children: ReactNode }) {
+export function Container(props: { children: ReactNode }) {
   return (
     <div className="p-[2px] bg-card gap-y-[2px] flex flex-col rounded-md mt-4">
       {props.children}
