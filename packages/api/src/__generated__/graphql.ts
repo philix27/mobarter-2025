@@ -637,9 +637,11 @@ export type Query = {
   fxRate_GetAll: ExchangeRate_Response;
   orders_GetAll: Array<Order_Response>;
   orders_GetAllAsMerchant: Array<Order_Response>;
+  orders_GetAllForAdmin: Array<Order_Response>;
   orders_GetOne: Order_Response;
   transactions_getAll: Array<Transaction_GetResponse>;
   transactions_getOne: Transaction_GetResponse;
+  user_getAll: Array<UserDto>;
   user_getOne: UserDto;
   walletCrypto_getAll: Array<WalletCryptoResponse>;
   walletFiat_getAll: WalletFiat;
@@ -662,6 +664,11 @@ export type QueryOrders_GetAllArgs = {
 
 
 export type QueryOrders_GetAllAsMerchantArgs = {
+  input: Order_GetAllInput;
+};
+
+
+export type QueryOrders_GetAllForAdminArgs = {
   input: Order_GetAllInput;
 };
 
@@ -717,13 +724,16 @@ export enum TransactionsMode {
 
 export type UserDto = {
   __typename?: 'UserDto';
-  country: Country;
-  email: Scalars['String']['output'];
-  firstname: Scalars['String']['output'];
+  country?: Maybe<Country>;
+  email?: Maybe<Scalars['String']['output']>;
+  firstname?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
-  lastname: Scalars['String']['output'];
+  lastname?: Maybe<Scalars['String']['output']>;
   middlename?: Maybe<Scalars['String']['output']>;
-  password: Scalars['String']['output'];
+  password?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  role?: Maybe<Scalars['String']['output']>;
+  telegram_id?: Maybe<Scalars['String']['output']>;
 };
 
 export type UserGetInfo = {
@@ -902,12 +912,24 @@ export type Orders_GetOneQueryVariables = Exact<{
 
 export type Orders_GetOneQuery = { __typename?: 'Query', orders_GetOne: { __typename?: 'Order_Response', id: string, action_user?: OrderActions | null, status?: OrderStatus | null, bank_account_no?: string | null, amount_fiat?: number | null, amount_crypto?: number | null, bank_name?: BankName | null, bank_account_name?: string | null, currency_fiat?: CurrencyFiat | null, estimated_duration?: string | null, merchant_id?: number | null, trade_type?: TradeType | null, wallet_customer?: string | null, wallet_merchant?: string | null, action_merchant?: OrderActions | null } };
 
+export type Orders_GetAllForAdminQueryVariables = Exact<{
+  input: Order_GetAllInput;
+}>;
+
+
+export type Orders_GetAllForAdminQuery = { __typename?: 'Query', orders_GetAllForAdmin: Array<{ __typename?: 'Order_Response', id: string, action_user?: OrderActions | null, status?: OrderStatus | null, bank_account_no?: string | null, amount_fiat?: number | null, amount_crypto?: number | null, bank_name?: BankName | null, bank_account_name?: string | null, currency_fiat?: CurrencyFiat | null, currency_crypto?: CurrencyCrypto | null, estimated_duration?: string | null, merchant_id?: number | null, trade_type?: TradeType | null, wallet_customer?: string | null, wallet_merchant?: string | null, action_merchant?: OrderActions | null }> };
+
 export type Auth_TelegramLoginMutationVariables = Exact<{
   input: Auth_TelegramLoginInput;
 }>;
 
 
 export type Auth_TelegramLoginMutation = { __typename?: 'Mutation', auth_loginTelegram: { __typename?: 'Auth_TelegramLoginResponse', token?: string | null, email?: string | null, firstname?: string | null, lastname?: string | null } };
+
+export type User_GetAllQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type User_GetAllQuery = { __typename?: 'Query', user_getAll: Array<{ __typename?: 'UserDto', telegram_id?: string | null, id: string, country?: Country | null, phone?: string | null, firstname?: string | null, lastname?: string | null, middlename?: string | null, email?: string | null }> };
 
 export type WalletCrypto_CreateMutationVariables = Exact<{ [key: string]: never; }>;
 
@@ -941,6 +963,8 @@ export const FxRate_GetAllDocument = {"kind":"Document","definitions":[{"kind":"
 export const Orders_CreateSellDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Orders_CreateSell"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Order_CreteSellInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"orders_CreateSell"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount_fiat"}},{"kind":"Field","name":{"kind":"Name","value":"amount_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"bank_account_no"}},{"kind":"Field","name":{"kind":"Name","value":"bank_name"}},{"kind":"Field","name":{"kind":"Name","value":"bank_account_name"}},{"kind":"Field","name":{"kind":"Name","value":"amount_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"currency_fiat"}},{"kind":"Field","name":{"kind":"Name","value":"currency_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"estimated_duration"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_id"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"trade_type"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_customer"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_merchant"}},{"kind":"Field","name":{"kind":"Name","value":"action_user"}},{"kind":"Field","name":{"kind":"Name","value":"action_merchant"}}]}}]}}]} as unknown as DocumentNode<Orders_CreateSellMutation, Orders_CreateSellMutationVariables>;
 export const Orders_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Orders_GetAll"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Order_GetAllInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"orders_GetAll"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"action_user"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"bank_account_no"}},{"kind":"Field","name":{"kind":"Name","value":"amount_fiat"}},{"kind":"Field","name":{"kind":"Name","value":"amount_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"bank_account_no"}},{"kind":"Field","name":{"kind":"Name","value":"bank_name"}},{"kind":"Field","name":{"kind":"Name","value":"bank_account_name"}},{"kind":"Field","name":{"kind":"Name","value":"amount_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"currency_fiat"}},{"kind":"Field","name":{"kind":"Name","value":"currency_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"estimated_duration"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_id"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"trade_type"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_customer"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_merchant"}},{"kind":"Field","name":{"kind":"Name","value":"action_user"}},{"kind":"Field","name":{"kind":"Name","value":"action_merchant"}}]}}]}}]} as unknown as DocumentNode<Orders_GetAllQuery, Orders_GetAllQueryVariables>;
 export const Orders_GetOneDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Orders_GetOne"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Order_GetOneInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"orders_GetOne"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"action_user"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"bank_account_no"}},{"kind":"Field","name":{"kind":"Name","value":"amount_fiat"}},{"kind":"Field","name":{"kind":"Name","value":"amount_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"bank_account_no"}},{"kind":"Field","name":{"kind":"Name","value":"bank_name"}},{"kind":"Field","name":{"kind":"Name","value":"bank_account_name"}},{"kind":"Field","name":{"kind":"Name","value":"amount_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"currency_fiat"}},{"kind":"Field","name":{"kind":"Name","value":"estimated_duration"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_id"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"trade_type"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_customer"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_merchant"}},{"kind":"Field","name":{"kind":"Name","value":"action_user"}},{"kind":"Field","name":{"kind":"Name","value":"action_merchant"}}]}}]}}]} as unknown as DocumentNode<Orders_GetOneQuery, Orders_GetOneQueryVariables>;
+export const Orders_GetAllForAdminDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Orders_GetAllForAdmin"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Order_GetAllInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"orders_GetAllForAdmin"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"action_user"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"bank_account_no"}},{"kind":"Field","name":{"kind":"Name","value":"amount_fiat"}},{"kind":"Field","name":{"kind":"Name","value":"amount_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"bank_account_no"}},{"kind":"Field","name":{"kind":"Name","value":"bank_name"}},{"kind":"Field","name":{"kind":"Name","value":"bank_account_name"}},{"kind":"Field","name":{"kind":"Name","value":"amount_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"currency_fiat"}},{"kind":"Field","name":{"kind":"Name","value":"currency_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"estimated_duration"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_id"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"trade_type"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_customer"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_merchant"}},{"kind":"Field","name":{"kind":"Name","value":"action_user"}},{"kind":"Field","name":{"kind":"Name","value":"action_merchant"}}]}}]}}]} as unknown as DocumentNode<Orders_GetAllForAdminQuery, Orders_GetAllForAdminQueryVariables>;
 export const Auth_TelegramLoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Auth_TelegramLogin"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Auth_TelegramLoginInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"auth_loginTelegram"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"token"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}}]}}]}}]} as unknown as DocumentNode<Auth_TelegramLoginMutation, Auth_TelegramLoginMutationVariables>;
+export const User_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"User_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"telegram_id"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]} as unknown as DocumentNode<User_GetAllQuery, User_GetAllQueryVariables>;
 export const WalletCrypto_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"WalletCrypto_create"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"walletCrypto_create"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"chainType"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_id"}}]}}]}}]} as unknown as DocumentNode<WalletCrypto_CreateMutation, WalletCrypto_CreateMutationVariables>;
 export const WalletCrypto_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"WalletCrypto_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"walletCrypto_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"chainType"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_id"}}]}}]}}]} as unknown as DocumentNode<WalletCrypto_GetAllQuery, WalletCrypto_GetAllQueryVariables>;

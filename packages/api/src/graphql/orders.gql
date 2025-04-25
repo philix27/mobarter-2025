@@ -67,3 +67,28 @@ query Orders_GetOne($input: Order_GetOneInput!) {
     action_merchant
   }
 }
+
+query Orders_GetAllForAdmin($input: Order_GetAllInput!) {
+  orders_GetAllForAdmin(input: $input) {
+    id
+    action_user
+    status
+    bank_account_no
+    amount_fiat
+    amount_crypto
+    bank_account_no
+    bank_name
+    bank_account_name
+    amount_crypto
+    currency_fiat
+    currency_crypto
+    estimated_duration
+    merchant_id
+    status
+    trade_type
+    wallet_customer
+    wallet_merchant
+    action_user
+    action_merchant
+  }
+}

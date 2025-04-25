@@ -1,0 +1,12 @@
+query User_getAll {
+  user_getAll {
+    telegram_id
+    id
+    country
+    phone
+    firstname
+    lastname
+    middlename
+    email
+  }
+}
