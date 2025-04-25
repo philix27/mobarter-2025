@@ -12,6 +12,7 @@
   "homepage": "https://mobarter.com",
   "workspaces": [
     "apps/mini",
+    "apps/admin",
     "packages/*"
   ],
   "engines": {
