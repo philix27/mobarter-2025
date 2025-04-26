@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import { type ChainInfo, chains } from '@particle-network/chains'
 import React, { useMemo } from 'react'
-import { Tab } from 'src/components/Tab'
+// import { Tab } from 'src/components/Tab'
 import { AppStores } from 'src/lib/zustand'
 
 import { essentialCountriesList } from '../others/SelectCountry'
 
-export default function HomeTabs() {
+export function HomeTabs() {
   const store = AppStores.useSettings()
 
   const supportChains = useMemo((): ChainInfo[] => {
@@ -29,7 +29,7 @@ export default function HomeTabs() {
           className="object-cover w-full h-full rounded-full"
         />
       </div>
-      <Tab
+      {/* <Tab
         data={[
           {
             title: 'WALLET',
@@ -50,7 +50,7 @@ export default function HomeTabs() {
             },
           },
         ]}
-      />
+      /> */}
       <div
         className="rounded-full size-[35px]"
         onClick={() => {

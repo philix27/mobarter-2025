@@ -6,10 +6,12 @@ import { formatEtherBalance } from 'src/lib/utils'
 import { useBalance } from 'wagmi'
 
 import { TokenRow } from './TokenRow'
+import { HomeTabs } from './TopTabs'
 
 export default function Home() {
   return (
     <div className="w-full items-center justify-center flex flex-col">
+      <HomeTabs />
       <Balance />
 
       <div className="h-8" />
