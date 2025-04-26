@@ -8,6 +8,7 @@ import BottomNav from './BottomNav'
 import Drawer from './Drawer'
 import Sidebar from './Sidebar'
 import { useThemeColor } from '@/src/styles/Color'
+import BottomPopup from './BottomPopup'
 
 export default function Wrapper({
   hideBottomNav,
@@ -60,6 +61,7 @@ export default function Wrapper({
       </div>
       {hideBottomNav || <BottomNav />}
       <Drawer />
+      <BottomPopup />
     </div>
   )
 }

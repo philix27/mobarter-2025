@@ -8,7 +8,6 @@ import { MdNotes } from 'react-icons/md'
 import { SiExpress } from 'react-icons/si'
 import { SlWallet } from 'react-icons/sl'
 
-import BottomPopup from './BottomPopup'
 import RoundIcon from './RoundIcon'
 import { AppStores } from '@/src/lib/zustand'
 
@@ -78,7 +77,6 @@ export default function Utilities(props: { length?: number }) {
               return <RoundIcon key={i} Icon={val.icon} title={val.title} onClick={val.onClick} />
             })}
       </div>
-      <BottomPopup />
     </>
   )
 }

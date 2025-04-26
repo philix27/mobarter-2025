@@ -10,11 +10,11 @@ import { Label } from 'src/components/comps'
 import { copyTextToClipboard, shortString } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
 
-import Airtime from '../others/Airtime'
-import SelectCountry from '../others/SelectCountry'
-import SelectNetwork from '../others/SelectNetwork'
-import SendCrypto from '../others/SendCrypto'
-import SendToBank from '../others/SendToBank'
+import Airtime from '../../features/others/Airtime'
+import SelectCountry from '../../features/others/SelectCountry'
+import SelectNetwork from '../../features/others/SelectNetwork'
+import SendCrypto from '../../features/others/SendCrypto'
+import SendToBank from '../../features/others/SendToBank'
 
 export default function BottomPopup() {
   const store = AppStores.useSettings()
