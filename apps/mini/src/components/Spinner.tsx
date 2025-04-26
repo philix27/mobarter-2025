@@ -3,6 +3,7 @@ import { ThreeDots } from 'react-loader-spinner'
 
 import { Skeleton } from './Skeleton'
 
+const DThreeDots = ThreeDots as any
 export function Spinner(props: {
   color?: string
   size?: number
@@ -15,7 +16,7 @@ export function Spinner(props: {
 
   return (
     <div className="w-full flex items-center justify-center h-full">
-      <ThreeDots
+      <DThreeDots
         visible={true}
         height={props.size || '80'}
         width={props.size || '80'}

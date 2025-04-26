@@ -14,6 +14,7 @@ import { copyTextToClipboard, shortString } from 'src/lib/utils'
 import { Container, MoreFeat } from './More'
 import { Row } from './comps'
 
+const DImage = Image as any
 function useInitData() {
   const initDataState = useSignal(initData.state)
   const userInfo = useMemo<User | undefined>(() => {
@@ -38,7 +39,7 @@ export default function Profile() {
     <LiveLoader>
       <div className="w-full items-center justify-center flex flex-col mb-2">
         {userInfo.photoUrl && (
-          <Image
+          <DImage
             className="mt-3 mb-2 h-[50px] w-[50px] rounded-full"
             src={userInfo.photoUrl}
             width={50}

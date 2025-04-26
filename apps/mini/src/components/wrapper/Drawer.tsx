@@ -6,6 +6,10 @@ import { AppStores } from 'src/lib/zustand'
 
 import { ThemeToggle } from '../ThemeToggle'
 
+const DArrowLeftIcon = ArrowLeftIcon as any
+const DArrowRight = ArrowRight as any
+const DLightbulb = Lightbulb as any
+
 export default function Drawer() {
   const store = AppStores.useSettings()
   return (
@@ -30,7 +34,7 @@ export default function Drawer() {
               store.update({ drawerIsOpen: false })
             }}
           >
-            <ArrowLeftIcon />
+            <DArrowLeftIcon />
           </div>
           <div className=" px-4">
             <Row title={'KYC'} Icon={Home} />
@@ -49,14 +53,14 @@ function Row(params: {
   hideArrow?: boolean
   onClick?: VoidFunction
 }) {
-  const { Icon } = params
+  const Icon = params.Icon as any
   return (
     <div className="flex my-1 px-5 py-3 bg-background justify-between items-center rounded-lg">
       <div className="flex items-center justify-center">
         <Icon className="mr-4" size={20} />
         <p className="text-muted">{params.title}</p>
       </div>
-      <ArrowRight className="text-muted" />
+      <DArrowRight className="text-muted" />
     </div>
   )
 }
@@ -64,7 +68,7 @@ function ThemeRow() {
   return (
     <div className="flex my-1 px-5 py-3 bg-background justify-between items-center rounded-lg">
       <div className="flex items-center justify-center gap-x-4">
-        <Lightbulb className="" />
+        <DLightbulb className="" />
         <p className="text-muted"> Theme</p>
       </div>
       <ThemeToggle />

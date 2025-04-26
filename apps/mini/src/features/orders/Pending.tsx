@@ -16,6 +16,8 @@ import { AppStores } from 'src/lib/zustand'
 import { NotFound } from '@/src/components/ComingSoon'
 import { Spinner } from '@/src/components/Spinner'
 
+const DLink = Link as any
+
 type IData = { data: Order_Response }
 export default function PendingOrders() {
   return <List />
@@ -58,7 +60,7 @@ function CardItem({ data }: IData) {
     SELL: Constants.textSellColor,
   }
   return (
-    <Link href={`/orders/${data.id}`}>
+    <DLink href={`/orders/${data.id}`}>
       <div className="rounded-lg bg-secondary mb-1 px-3 py-2">
         <div className="flex w-full justify-between pb-2 mb-2 border-b border-muted">
           <p className={cn('text-xs font-bold', textColor[trade])}>{trade}</p>
@@ -79,7 +81,7 @@ function CardItem({ data }: IData) {
         />
         {/* <AdRow text1={`Fiat: ${data.currency_fiat!}`} text2={`Crypto: ${data.currency_fiat!}`} /> */}
       </div>
-    </Link>
+    </DLink>
   )
 }
 

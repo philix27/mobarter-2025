@@ -13,6 +13,7 @@ import { cn } from 'src/lib/utils'
 import { formatCurrency } from 'src/lib/utils/helpers'
 import { AppStores } from 'src/lib/zustand'
 
+const DLink = Link as any
 type IAd = { data: Advert_GetResponse }
 export default function OpenAdverts() {
   return <List />
@@ -51,7 +52,7 @@ function List() {
 
 function AdvertCardItem({ data }: IAd) {
   return (
-    <Link href={`/ads/${data.tradeType === 'BUY' ? 'buy' : 'sell'}/${data.id}`}>
+    <DLink href={`/ads/${data.tradeType === 'BUY' ? 'buy' : 'sell'}/${data.id}`}>
       <div className="rounded-lg bg-secondary mb-1 px-3 py-2">
         <div className="flex w-full justify-between pb-2 mb-2 border-b border-muted">
           <p>
@@ -84,7 +85,7 @@ function AdvertCardItem({ data }: IAd) {
         />
         <AdRow text1={`Fiat: ${data.currencyFiat!}`} text2={`Crypto: ${data.currencyCrypto!}`} />
       </div>
-    </Link>
+    </DLink>
   )
 }
 
