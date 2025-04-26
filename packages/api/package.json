@@ -6,7 +6,7 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "tsup && graphql-codegen --config codegen.ts && tsup",
+    "build": "tsup",
     "dev": "tsup --watch",
     "clean": "rm -rf dist",
     "#graphql": "Graphql scripts",
