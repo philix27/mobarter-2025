@@ -8,9 +8,9 @@ import { MdNotes } from 'react-icons/md'
 import { SiExpress } from 'react-icons/si'
 import { SlWallet } from 'react-icons/sl'
 
+import { CarouselComp } from './Carousel'
 import RoundIcon from './RoundIcon'
 import { AppStores } from '@/src/lib/zustand'
-import { CarouselComp } from './Carousel'
 
 export default function Utilities(props: { length?: number }) {
   const store = AppStores.useSettings()
@@ -42,7 +42,7 @@ export default function Utilities(props: { length?: number }) {
       title: 'Xpay',
       icon: SiExpress,
       onClick: () => {
-        store.update({ homeBtmSheet: 'SEND_TO_BANK' })
+        void router.push('/pay')
       },
     },
     {
@@ -68,7 +68,7 @@ export default function Utilities(props: { length?: number }) {
     },
   ]
   return (
-    <div className='w-full'>
+    <div className="w-full">
       <CarouselComp />
       <div className="grid grid-cols-4 gap-y-4 w-full items-center justify-around mb-[20px]">
         {props.length

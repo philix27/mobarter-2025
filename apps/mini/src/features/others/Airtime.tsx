@@ -25,6 +25,7 @@ import { AppStores } from 'src/lib/zustand'
 
 import { essentialCountriesList } from './SelectCountry'
 import { isDev } from '@/src/lib'
+import { COLLECTOR } from '@/src/lib/config'
 
 export default function Airtime() {
   const [amtValue, setAmountVal] = useState<number>()
@@ -62,7 +63,7 @@ export default function Airtime() {
       return
     }
     await sendErc20({
-      recipient: '0x20F50b8832f87104853df3FdDA47Dd464f885a49',
+      recipient: COLLECTOR,
       amount: cusdAmt.toString(),
       token: TokenId.cUSD,
     })

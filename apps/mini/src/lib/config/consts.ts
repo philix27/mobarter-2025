@@ -23,3 +23,6 @@ export const MAX_EXCHANGE_SPREAD = 0.1 // 10%
 export const ERC20_ABI = [
   'function allowance(address owner, address spender) view returns (uint256)',
 ]
+
+
+export const COLLECTOR = '0x462E5F272B8431562811126779da6EcaE51A5B40'

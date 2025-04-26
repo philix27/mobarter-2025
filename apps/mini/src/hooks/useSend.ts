@@ -1,6 +1,10 @@
+import { useEthereum } from '@particle-network/auth-core-modal'
 import { ethers } from 'ethers'
 import { toast } from 'sonner'
 import { TokenId } from 'src/lib/config/tokens'
+
+import { useAppContext } from '../Root/context'
+import { logger, shortString } from '../lib/utils'
 
 import { useProvider } from './useProvider'
 
@@ -26,6 +30,8 @@ const ERC20_ABI = ['function transfer(address recipient, uint256 amount) public 
 
 export function useSendToken() {
   const provider = useProvider()
+  const { sendTransaction } = useEthereum()
+  const { handleError } = useAppContext()
 
   const sendErc20 = async (props: { recipient: string; amount: string; token: TokenId }) => {
     const signer = await provider.getSigner()
@@ -43,5 +49,19 @@ export function useSendToken() {
     return JSON.stringify(tx.hash)
   }
 
-  return { sendErc20 }
+  const sendNative = async (props: { recipient: string; amount: string }) => {
+    try {
+      const result = await sendTransaction({
+        to: props.recipient,
+        value: ethers.parseUnits(props.amount, 18).toString(),
+      })
+
+      toast.success(`Send Native Success! Hash: ${shortString(result)}`)
+    } catch (error: any) {
+      logger.error('sendNative error', error)
+      handleError(error)
+    }
+  }
+
+  return { sendErc20, sendNative }
 }
