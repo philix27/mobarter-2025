@@ -14,6 +14,7 @@ import { Card, Label } from '@/src/components/comps'
 import { usePrice } from '@/src/hooks/usePrice'
 import { useSendToken } from '@/src/hooks/useSend'
 import { useTokenBalance } from '@/src/hooks/useTokenBal'
+import { isDev } from '@/src/lib'
 import { BANKS_LIST } from '@/src/lib/banks'
 import { COLLECTOR } from '@/src/lib/config'
 
@@ -29,8 +30,9 @@ export default function SendToBank() {
   const balance = useTokenBalance(TokenId.cUSD)
 
   const handleSend = async () => {
-    if (amount < 1000) {
-      toast.error(`Must be above #1000`)
+    const leastAmount = isDev ? 50 : 50
+    if (amountToPay === undefined || amountToPay < leastAmount) {
+      toast.error(`Must be above #${leastAmount}`)
       return
     }
 
@@ -39,6 +41,7 @@ export default function SendToBank() {
       amount: amountToPay!.toString(),
       token: TokenId.cUSD,
     }).then((val) => {
+      toast.success('Sent successfully')
       val
       bankCode
       // send to bank account
@@ -51,7 +54,7 @@ export default function SendToBank() {
     if (!tBal) return undefined
     if (amountToPay === undefined) return undefined
 
-    if (amountToPay! > 0) return undefined
+    // if (amountToPay > 0) return undefined
 
     if (_tokenBal < amountToPay) return 'Amount is less than your balance'
     return undefined
@@ -64,7 +67,7 @@ export default function SendToBank() {
         <Card className="text-primary">{balance}</Card>
       </div>
       <AppSelect
-        label="Bank"
+        label="Bank*"
         onChange={(data) => {
           setBankCode(data)
         }}
@@ -73,7 +76,7 @@ export default function SendToBank() {
         })}
       />
       <Input
-        label="Bank Account Number"
+        label="Bank Account Number*"
         placeholder="Enter account no."
         value={bankAccountNo}
         type="number"
@@ -115,7 +118,7 @@ export default function SendToBank() {
           })}
       /> */}
       <Input
-        label="Amount"
+        label="NGN Amount*"
         placeholder="Amount to send"
         type="number"
         value={amount}
