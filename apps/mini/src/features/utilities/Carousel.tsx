@@ -1,8 +1,8 @@
-import { Carousel } from 'react-responsive-carousel';
+import * as C from 'react-responsive-carousel'
 
 export function Carousel() {
   return (
-    <Carousel>
+    <C.Carousel>
       <div>
         <img src="assets/1.jpeg" />
         <p className="legend">Legend 1</p>
@@ -15,6 +15,6 @@ export function Carousel() {
         <img src="assets/3.jpeg" />
         <p className="legend">Legend 3</p>
       </div>
-    </Carousel>
+    </C.Carousel>
   )
 }
