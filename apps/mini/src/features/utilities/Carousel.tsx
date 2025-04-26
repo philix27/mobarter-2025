@@ -14,8 +14,8 @@ export function CarouselComp() {
     showStatus = {false}
     >
       <Item  title={'Airtime'} text={'Send airtime to your loved ones'} img={''} />
-      <Item  title={'Swap'} text={'Airtime'} img={''} />
-      <Item  title={'Instant Pay'} text={'Airtime'} img={''} />
+      <Item  title={'Instant Pay'} text={'Send funds directly to friends'} img={''} />
+      <Item  title={'Swap'} text={'Swap between various digital currencies'} img={''} />
     </C.Carousel>
   )
 }

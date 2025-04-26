@@ -60,23 +60,26 @@ export function useInitUserToken() {
   // if (isDev) {
   //   return
   // }
+  // const storeTime = store.timeTokenStored
+  // const isTimeValid = storeTime > Date.now()
 
-  if (!store.token) {
-    void mutate({
-      variables: {
-        input: {
-          telegramUserId: `${userInfo!.id}`,
-          walletAddress: address!,
-        },
+  // if (!store.token) {
+  void mutate({
+    variables: {
+      input: {
+        telegramUserId: `${userInfo!.id}`,
+        walletAddress: address!,
       },
-      onCompleted(data) {
-        store.update({
-          walletAddress: address!,
-          token: data.auth_loginTelegram.token!,
-        })
-      },
-    })
-  }
+    },
+    onCompleted(data) {
+      store.update({
+        walletAddress: address!,
+        token: data.auth_loginTelegram.token!,
+        timeTokenStored: Date.now(),
+      })
+    },
+  })
+  // }
   return { userInfo }
 }
 

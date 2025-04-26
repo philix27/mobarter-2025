@@ -4,6 +4,7 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 export interface ISlice {
   walletAddress?: string
   token?: string
+  timeTokenStored?: number
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
@@ -13,7 +14,8 @@ export interface ISliceUpdate extends Required<ISlice> {
 
 export const defaultValues: Required<ISlice> = {
   walletAddress: '',
-  token: ''
+  token: '',
+  timeTokenStored: 0,
 }
 export const useUser = create(
   persist<ISliceUpdate>(
