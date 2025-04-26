@@ -1,22 +1,30 @@
-import { useMutation, useQuery } from '@apollo/client';
-import { AirtimeCountryCode, Country, Currencies, FxRate_GetAllDocument, MutationResponse, MutationUtility_PurchaseAirtimeArgs, Operator, QueryResponse, Utility_PurchaseAirtimeDocument } from '@repo/api';
-import { useState } from 'react';
-import { FaCopy } from 'react-icons/fa6';
-import { toast } from 'sonner';
-import { Button } from 'src/components/Button';
-import Input from 'src/components/Input';
-import { AppSelect } from 'src/components/Select';
-import { Card, Label } from 'src/components/comps';
-import { useSendToken } from 'src/hooks/useSend';
-import { TokenId } from 'src/lib/config/tokens';
-import { pasteTextFromClipboard } from 'src/lib/utils';
-import { logger } from 'src/lib/utils/logger';
-import { AppStores } from 'src/lib/zustand';
+import { useMutation, useQuery } from '@apollo/client'
+import {
+  AirtimeCountryCode,
+  Country,
+  Currencies,
+  FxRate_GetAllDocument,
+  MutationResponse,
+  MutationUtility_PurchaseAirtimeArgs,
+  Operator,
+  QueryResponse,
+  Utility_PurchaseAirtimeDocument,
+} from '@repo/api'
+import { useState } from 'react'
+import { FaCopy } from 'react-icons/fa6'
+import { toast } from 'sonner'
+import { Button } from 'src/components/Button'
+import Input from 'src/components/Input'
+import { AppSelect } from 'src/components/Select'
+import { Card, Label } from 'src/components/comps'
+import { useSendToken } from 'src/hooks/useSend'
+import { TokenId } from 'src/lib/config/tokens'
+import { pasteTextFromClipboard } from 'src/lib/utils'
+import { logger } from 'src/lib/utils/logger'
+import { AppStores } from 'src/lib/zustand'
 
-
-
-import { essentialCountriesList } from './SelectCountry';
-
+import { essentialCountriesList } from './SelectCountry'
+import { isDev } from '@/src/lib'
 
 export default function Airtime() {
   const [amtValue, setAmountVal] = useState<number>()
@@ -48,7 +56,8 @@ export default function Airtime() {
   }
 
   const handleSend = async () => {
-    if (amtValue == undefined || amtValue < 50) {
+    const leastAmount = isDev ? 50 : 1000
+    if (amtValue == undefined || amtValue < leastAmount) {
       toast.error('Minimum of NGN1,000')
       return
     }
@@ -81,7 +90,7 @@ export default function Airtime() {
       })
   }
   return (
-    <div className="w-full items-center justify-center flex flex-col px-1 mb-[20vh]" >
+    <div className="w-full items-center justify-center flex flex-col px-1 mb-[20vh]">
       <Input
         label={`${IsoToCountryCode()} Phone number`}
         placeholder={`${countryCode}8101234567`}
