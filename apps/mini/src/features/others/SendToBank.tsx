@@ -2,37 +2,31 @@ import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { FaCopy } from 'react-icons/fa6'
 import { toast } from 'sonner'
-import { useAppContext } from 'src/Root/context'
 import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
 import { AppSelect } from 'src/components/Select'
-import { ChainId } from 'src/lib/config/chains'
-import { tokensList } from 'src/lib/config/tokenData'
-import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
-import { formatEtherBalance, pasteTextFromClipboard } from 'src/lib/utils'
-import { useBalance } from 'wagmi'
+import { TokenId } from 'src/lib/config/tokens'
+import { pasteTextFromClipboard } from 'src/lib/utils'
 
 import { getAccountInfo } from '../history/transactions/func'
 
 import { Card, Label } from '@/src/components/comps'
+import { usePrice } from '@/src/hooks/usePrice'
 import { useSendToken } from '@/src/hooks/useSend'
+import { useTokenBalance } from '@/src/hooks/useTokenBal'
 import { BANKS_LIST } from '@/src/lib/banks'
 import { COLLECTOR } from '@/src/lib/config'
 
 const Copy = FaCopy as any
 export default function SendToBank() {
-  const [selectedToken, setToken] = useState('cUSD')
+  // const [selectedToken, setToken] = useState('cUSD')
   const [bankCode, setBankCode] = useState('0')
   const [bankAccountNo, setBankAccountNo] = useState('')
   const [amount, setAmount] = useState(0)
-  const { evmAddress } = useAppContext()
-  const { sendErc20 } = useSendToken()
 
-  const { data, isLoading } = useBalance({
-    address: evmAddress as `0x${string}`,
-    chainId: ChainId.Celo,
-    token: getTokenAddress(selectedToken as TokenId, ChainId.Celo) as `0x${string}`,
-  })
+  const { sendErc20 } = useSendToken()
+  const { amountToPay, handleOnChange } = usePrice()
+  const balance = useTokenBalance(TokenId.cUSD)
 
   const handleSend = async () => {
     if (amount < 1000) {
@@ -42,8 +36,8 @@ export default function SendToBank() {
 
     await sendErc20({
       recipient: COLLECTOR,
-      amount: amount.toString(),
-      token: TokenId.CELO,
+      amount: amountToPay!.toString(),
+      token: TokenId.cUSD,
     }).then((val) => {
       val
       bankCode
@@ -51,8 +45,24 @@ export default function SendToBank() {
     })
   }
 
+  const validateAmount = () => {
+    const _tokenBal = parseFloat(balance)
+    const tBal = _tokenBal > 0
+    if (!tBal) return undefined
+    if (amountToPay === undefined) return undefined
+
+    if (amountToPay! > 0) return undefined
+
+    if (_tokenBal < amountToPay) return 'Amount is less than your balance'
+    return undefined
+  }
+
   return (
     <div className="w-full items-center justify-center flex flex-col px-1 mb-[20%] gap-y-2">
+      <div className="w-full">
+        <Label>Balance</Label>
+        <Card className="text-primary">{balance}</Card>
+      </div>
       <AppSelect
         label="Bank"
         onChange={(data) => {
@@ -90,7 +100,7 @@ export default function SendToBank() {
         </div>
       )}
 
-      <AppSelect
+      {/* <AppSelect
         label="Currency"
         desc={`${
           isLoading ? '...' : formatEtherBalance(data!.value, data!.decimals, 3)
@@ -103,21 +113,25 @@ export default function SendToBank() {
           .map((val) => {
             return { label: val.symbol, value: val.symbol }
           })}
-      />
+      /> */}
       <Input
         label="Amount"
         placeholder="Amount to send"
         type="number"
         value={amount}
+        error={validateAmount()}
         onChange={(e) => {
           const n = parseFloat(e.target.value)
           setAmount(n)
+          handleOnChange(n)
         }}
       />
 
       <div className="w-full">
         <Label>You Pay</Label>
-        <Card className="text-primary">{selectedToken} ...</Card>
+        <Card className="text-primary">
+          {TokenId.cUSD} {amountToPay}
+        </Card>
       </div>
 
       <Button className="mt-5" onClick={handleSend}>

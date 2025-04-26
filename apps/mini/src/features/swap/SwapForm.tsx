@@ -3,37 +3,16 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { toast } from 'sonner'
 import { Button } from 'src/components/Button'
-import {
-  ChainId,
-  IToken,
-  TokenAddresses,
-  TokenId,
-  getTokenAddress,
-  tokensList,
-} from 'src/lib/config'
-import { useBalance } from 'wagmi'
+import { ChainId, IToken, TokenAddresses, TokenId, tokensList } from 'src/lib/config'
 
 import { TokenRow } from '../home/TokenRow'
 
 import { getQuote, initMento } from './node'
-import { useAppContext } from '@/src/Root/context'
 import BottomModal from '@/src/components/BottomModal'
 import { Card, Label } from '@/src/components/comps'
 import { useProvider } from '@/src/hooks/useProvider'
-// import { useProvider } from '@/src/hooks/useProvider'
-import { formatEtherBalance } from '@/src/lib/utils'
+import { useTokenBalance } from '@/src/hooks/useTokenBal'
 
-export const useTokenBalance = (selectedToken: TokenId) => {
-  const { evmAddress } = useAppContext()
-
-  const { data, isLoading } = useBalance({
-    address: evmAddress as `0x${string}`,
-    chainId: ChainId.Celo,
-    token: getTokenAddress(selectedToken, ChainId.Celo) as `0x${string}`,
-  })
-
-  return { balance: data, isLoading }
-}
 export function SwapForm() {
   const provider = useProvider()
   // const provider = getProvider(42220)
@@ -43,7 +22,7 @@ export function SwapForm() {
   const [amount, setAmount] = useState<number>(0)
   const fromTokenAddr = TokenAddresses[ChainId.Celo][selectedTokenFrom!.id as TokenId]
   const toTokenAddr = TokenAddresses[ChainId.Celo][selectedTokenTo!.id as TokenId]
-  const { balance, isLoading } = useTokenBalance((selectedTokenFrom!.id as TokenId) || 'CELO')
+  const balance = useTokenBalance((selectedTokenFrom!.id as TokenId) || 'CELO')
 
   // const { allTokenOptions, swappableTokens } = useTokenOptions(
   //   f.getValues('fromTokenId') as TokenId
@@ -119,9 +98,7 @@ export function SwapForm() {
               />
             </div>
             <div className="flex w-full mt-1 justify-between">
-              <p className="text-[12px] text-muted">{`${
-                isLoading ? '...' : formatEtherBalance(balance!.value, balance!.decimals, 3)
-              } ${selectedTokenFrom.symbol}`}</p>
+              <p className="text-[12px] text-muted">{balance}</p>
               <p className="text-primary text-[12px] bg-background rounded-sm px-3 py-[2px] hover:bg-card">
                 max
               </p>

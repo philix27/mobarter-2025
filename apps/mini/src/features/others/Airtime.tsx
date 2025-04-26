@@ -1,13 +1,11 @@
-import { useMutation, useQuery } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import {
   AirtimeCountryCode,
   Country,
   Currencies,
-  FxRate_GetAllDocument,
   MutationResponse,
   MutationUtility_PurchaseAirtimeArgs,
   Operator,
-  QueryResponse,
   Utility_PurchaseAirtimeDocument,
 } from '@repo/api'
 import { useState } from 'react'
@@ -24,6 +22,8 @@ import { logger } from 'src/lib/utils/logger'
 import { AppStores } from 'src/lib/zustand'
 
 import { essentialCountriesList } from './SelectCountry'
+import { usePrice } from '@/src/hooks/usePrice'
+import { useTokenBalance } from '@/src/hooks/useTokenBal'
 import { isDev } from '@/src/lib'
 import { COLLECTOR } from '@/src/lib/config'
 
@@ -35,7 +35,8 @@ export default function Airtime() {
   const countryCode = essentialCountriesList.filter((val) => val.isoName === store.countryIso)[0]
     .callingCodes[0]
   const { sendErc20 } = useSendToken()
-  const { cusdAmt, handleOnChange } = useGetPrice()
+  const { amountToPay, handleOnChange } = usePrice()
+  const tokenBalance = useTokenBalance(TokenId.cUSD)
 
   const [mutate] = useMutation<
     MutationResponse<'utility_purchaseAirtime'>,
@@ -57,14 +58,14 @@ export default function Airtime() {
   }
 
   const handleSend = async () => {
-    const leastAmount = isDev ? 50 : 1000
+    const leastAmount = isDev ? 50 : 50
     if (amtValue == undefined || amtValue < leastAmount) {
       toast.error('Minimum of NGN1,000')
       return
     }
     await sendErc20({
       recipient: COLLECTOR,
-      amount: cusdAmt.toString(),
+      amount: amountToPay!.toString(),
       token: TokenId.cUSD,
     })
       .then((txHash) => {
@@ -92,6 +93,10 @@ export default function Airtime() {
   }
   return (
     <div className="w-full items-center justify-center flex flex-col px-1 mb-[20vh]">
+      <div className="w-full">
+        <Label>Balance</Label>
+        <Card className="text-primary">{tokenBalance}</Card>
+      </div>
       <Input
         label={`${IsoToCountryCode()} Phone number`}
         placeholder={`${countryCode}8101234567`}
@@ -146,33 +151,11 @@ export default function Airtime() {
       />
       <div className="w-full mt-3">
         <Label>You Pay:</Label>
-        <Card className="bg-background">{cusdAmt}</Card>
+        <Card className="bg-background">{amountToPay}</Card>
       </div>
       <Button className="mt-5 w-[70%]" onClick={handleSend}>
         Send
       </Button>
     </div>
   )
-}
-
-export function useGetPrice() {
-  const [cusdAmt, setCusdAmt] = useState(0)
-  const { data: fxData } = useQuery<QueryResponse<'fxRate_GetAll'>>(FxRate_GetAllDocument)
-
-  if (!fxData)
-    return {
-      cusdAmt: 0,
-      handleOnChange: () => {
-        return
-      },
-    }
-  const rate = fxData!.fxRate_GetAll.NGN
-
-  const handleOnChange = (airtimeAmount: number) => {
-    const c = airtimeAmount / rate
-
-    setCusdAmt(c)
-  }
-
-  return { cusdAmt, handleOnChange }
 }
