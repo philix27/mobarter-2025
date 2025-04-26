@@ -3,7 +3,7 @@ import * as C from 'react-responsive-carousel'
 export function CarouselComp() {
   return (
     <C.Carousel
-      className='mb-5'
+      className='mb-5 z-0'
       emulateTouch
       infiniteLoop
       showArrows={false}
@@ -11,6 +11,7 @@ export function CarouselComp() {
       stopOnHover
       transitionTime={1000}
       autoPlay
+      showIndicators={false}
     showStatus = {false}
     >
       <Item  title={'Airtime'} text={'Send airtime to your loved ones'} img={''} />

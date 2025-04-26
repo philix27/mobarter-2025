@@ -16,17 +16,18 @@ import { getAccountInfo } from '../history/transactions/func'
 
 import { Card, Label } from '@/src/components/comps'
 import { useSendToken } from '@/src/hooks/useSend'
-import { BANKS_LIST } from '@/src/lib'
+import { BANKS_LIST } from '@/src/lib/banks'
 import { COLLECTOR } from '@/src/lib/config'
 
+const Copy = FaCopy as any
 export default function SendToBank() {
   const [selectedToken, setToken] = useState('cUSD')
   const [bankCode, setBankCode] = useState('0')
   const [bankAccountNo, setBankAccountNo] = useState('')
   const [amount, setAmount] = useState(0)
-  const Copy = FaCopy as any
   const { evmAddress } = useAppContext()
   const { sendErc20 } = useSendToken()
+
   const { data, isLoading } = useBalance({
     address: evmAddress as `0x${string}`,
     chainId: ChainId.Celo,
@@ -65,6 +66,7 @@ export default function SendToBank() {
         label="Bank Account Number"
         placeholder="Enter account no."
         value={bankAccountNo}
+        type="number"
         onChange={(e) => {
           setBankAccountNo(e.target.value)
         }}
@@ -106,10 +108,6 @@ export default function SendToBank() {
         label="Amount"
         placeholder="Amount to send"
         type="number"
-        pattern="[0-9]*"
-        inputMode="decimal"
-        step=".01"
-        min={0}
         value={amount}
         onChange={(e) => {
           const n = parseFloat(e.target.value)

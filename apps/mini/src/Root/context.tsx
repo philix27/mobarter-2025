@@ -30,6 +30,8 @@ import { erc4337Config } from 'src/lib/config/erc4337'
 import { logger } from 'src/lib/utils/logger'
 import { AppStores } from 'src/lib/zustand'
 
+import { isDev } from '../lib'
+
 type ContextValue = {
   handleError: (error: any) => void
   connectError: any
@@ -57,13 +59,16 @@ export function useInitUserToken() {
     MutationAuth_LoginTelegramArgs
   >(Auth_TelegramLoginDocument)
 
-  // if (isDev) {
-  //   return
-  // }
+  if (isDev) {
+    return
+  }
   // const storeTime = store.timeTokenStored
   // const isTimeValid = storeTime > Date.now()
 
-  // if (!store.token) {
+  if (store.token.length < 5) {
+    return
+  }
+  
   void mutate({
     variables: {
       input: {

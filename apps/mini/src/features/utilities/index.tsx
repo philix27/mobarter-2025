@@ -10,6 +10,7 @@ import { SlWallet } from 'react-icons/sl'
 
 import { CarouselComp } from './Carousel'
 import RoundIcon from './RoundIcon'
+import UtilityBottomPopups from './UtilityPopups'
 import { AppStores } from '@/src/lib/zustand'
 
 export default function Utilities(props: { length?: number }) {
@@ -79,6 +80,7 @@ export default function Utilities(props: { length?: number }) {
               return <RoundIcon key={i} Icon={val.icon} title={val.title} onClick={val.onClick} />
             })}
       </div>
+      <UtilityBottomPopups />
     </div>
   )
 }
