@@ -3,7 +3,7 @@ import Profile from 'src/features/profile'
 
 export default function Page() {
   return (
-    <Wrapper>
+    <Wrapper hideBottomNav>
       <Profile />
     </Wrapper>
   )
