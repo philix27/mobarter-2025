@@ -72,6 +72,7 @@
     "react-live-chat-loader": "^2.11.0",
     "react-loader-spinner": "^6.1.6",
     "react-qr-code": "^2.0.15",
+    "react-responsive-carousel": "^3.2.23",
     "react-select": "^5.10.1",
     "sharp": "^0.33.0",
     "sonner": "^2.0.3",

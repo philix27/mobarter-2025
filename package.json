@@ -49,6 +49,5 @@
   "dependencies": {
     "@typescript-eslint/parser": "^8.29.0",
     "dotenv-cli": "^7.4.1"
-
   }
 }

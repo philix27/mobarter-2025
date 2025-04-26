@@ -57,9 +57,10 @@ export function useInitUserToken() {
     MutationAuth_LoginTelegramArgs
   >(Auth_TelegramLoginDocument)
 
-  if (process.env.NODE_ENV !== 'development') {
-    return
-  }
+  // if (isDev) {
+  //   return
+  // }
+
   if (!store.token) {
     void mutate({
       variables: {

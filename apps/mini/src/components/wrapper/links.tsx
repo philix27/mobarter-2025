@@ -11,21 +11,18 @@ export const navLinks: { title: string; link: string; Icon: IconType }[] = [
     link: '/',
     Icon: CiWallet,
   },
-  // {
-  //   title: 'Swap',
-  //   link: '/swap',
-  //   Icon: IoSwapHorizontalOutline,
-  // },
+
+  {
+    title: 'Apps',
+    link: '/apps',
+    Icon: GoHistory,
+  },
   {
     title: 'History',
     link: '/history',
     Icon: GoHistory,
   },
-  // {
-  //   title: 'P2P',
-  //   link: '/ads',
-  //   Icon: RiExchange2Fill,
-  // },
+
   {
     title: 'Profile',
     link: '/profile',
@@ -36,7 +33,16 @@ export const navLinks: { title: string; link: string; Icon: IconType }[] = [
     link: '/orders',
     Icon: MdNotes,
   },
-
+  // {
+  //   title: 'P2P',
+  //   link: '/ads',
+  //   Icon: RiExchange2Fill,
+  // },
+  // {
+  //   title: 'Swap',
+  //   link: '/swap',
+  //   Icon: IoSwapHorizontalOutline,
+  // },
   // {
   //   title: 'KYC',
   //   link: '/profile',
