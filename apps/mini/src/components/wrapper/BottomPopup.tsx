@@ -18,11 +18,6 @@ import SendToBank from '../../features/others/SendToBank'
 
 export default function BottomPopup() {
   const store = AppStores.useSettings()
-  const showWallet = store.homeBtmSheet === 'WALLET'
-  const showSendCrypto = store.homeBtmSheet === 'SEND_CRYPTO'
-  const showSwap = store.homeBtmSheet === 'WITHDRAW'
-  const showNetwork = store.homeBtmSheet === 'SELECT_NETWORK'
-  const showCountry = store.homeBtmSheet === 'SELECT_COUNTRY'
   const currentTab = store.homeBtmSheet
   const { evmAddress } = useAppContext()
   const router = useRouter()
@@ -30,7 +25,7 @@ export default function BottomPopup() {
     <>
       <BottomModal
         title="Wallet address"
-        showSheet={showWallet}
+        showSheet={currentTab === 'WALLET'}
         onClose={() => {
           store.update({ homeBtmSheet: undefined })
         }}
@@ -50,18 +45,19 @@ export default function BottomPopup() {
           </Button>
         </div>
       </BottomModal>
+
       <BottomModal
         title="Send crypto"
-        showSheet={showSendCrypto}
+        showSheet={currentTab === 'SEND_CRYPTO'}
         onClose={() => {
           store.update({ homeBtmSheet: undefined })
         }}
       >
         <SendCrypto />
       </BottomModal>
+
       <BottomModal
-        title="Swap crypto"
-        showSheet={showSwap}
+        showSheet={currentTab === 'WITHDRAW'}
         onClose={() => {
           store.update({ homeBtmSheet: undefined })
         }}
@@ -86,16 +82,18 @@ export default function BottomPopup() {
           <div className="h-[50px]" />
         </div>
       </BottomModal>
+
       <BottomModal
-        showSheet={showNetwork}
+        showSheet={currentTab === 'SELECT_NETWORK'}
         onClose={() => {
           store.update({ homeBtmSheet: undefined })
         }}
       >
         <SelectNetwork />
       </BottomModal>
+
       <BottomModal
-        showSheet={showCountry}
+        showSheet={currentTab === 'SELECT_COUNTRY'}
         onClose={() => {
           store.update({ homeBtmSheet: undefined })
         }}
@@ -112,6 +110,7 @@ export default function BottomPopup() {
       >
         <Airtime />
       </BottomModal>
+
       <BottomModal
         title="Send to Bank Account"
         showSheet={currentTab === 'SEND_TO_BANK'}

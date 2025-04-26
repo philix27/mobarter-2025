@@ -10,6 +10,7 @@ import { SlWallet } from 'react-icons/sl'
 
 import RoundIcon from './RoundIcon'
 import { AppStores } from '@/src/lib/zustand'
+import { CarouselComp } from './Carousel'
 
 export default function Utilities(props: { length?: number }) {
   const store = AppStores.useSettings()
@@ -67,7 +68,8 @@ export default function Utilities(props: { length?: number }) {
     },
   ]
   return (
-    <>
+    <div className='w-full'>
+      <CarouselComp />
       <div className="grid grid-cols-4 gap-y-4 w-full items-center justify-around mb-[20px]">
         {props.length
           ? icons.slice(0, props.length).map((val, i) => {
@@ -77,6 +79,6 @@ export default function Utilities(props: { length?: number }) {
               return <RoundIcon key={i} Icon={val.icon} title={val.title} onClick={val.onClick} />
             })}
       </div>
-    </>
+    </div>
   )
 }
