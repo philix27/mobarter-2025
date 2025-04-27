@@ -1,16 +1,14 @@
-import { BankName } from "@repo/api"
+// export function BankCodeToBankName(params: { code: string }) {
+//   switch (params.code) {
+//     case '000013':
+//       return BankName.NgGtb
+//     case '000040':
+//       return BankName.NgUba
 
-export function BankCodeToBankName(params: { code: string }) {
-  switch (params.code) {
-    case '000013':
-      return BankName.NgGtb
-    case '000040':
-      return BankName.NgUba
-
-    default:
-      break
-  }
-}
+//     default:
+//       break
+//   }
+// }
 
 export const BANKS_LIST: {
   id: number

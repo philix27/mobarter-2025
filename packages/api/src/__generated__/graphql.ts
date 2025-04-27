@@ -255,15 +255,6 @@ export enum Country {
   Nigeria = 'Nigeria'
 }
 
-export enum Currencies {
-  Btc = 'BTC',
-  Cusd = 'CUSD',
-  Eth = 'ETH',
-  Ngn = 'NGN',
-  Usdt = 'USDT',
-  UsdTx = 'USDTx'
-}
-
 export enum CurrencyCrypto {
   BaseUsdt = 'BASE_USDT',
   Btc = 'BTC',
@@ -715,7 +706,9 @@ export enum TradeType {
 export enum TransactionCategory {
   Airtime = 'AIRTIME',
   DataBundle = 'DATA_BUNDLE',
-  GiftCard = 'GIFT_CARD'
+  ExpressExchange = 'EXPRESS_EXCHANGE',
+  GiftCard = 'GIFT_CARD',
+  P2PExchange = 'P2P_EXCHANGE'
 }
 
 export enum TransactionStatus {
@@ -764,7 +757,7 @@ export type UserGetInfo = {
 export type Utilities_PurchaseAirtimeInput = {
   amount: Scalars['Float']['input'];
   countryCode: AirtimeCountryCode;
-  currency: Currencies;
+  currency: CurrencyFiat;
   operator: Operator;
   phoneNo: Scalars['String']['input'];
   transaction_hash: Scalars['String']['input'];
