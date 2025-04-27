@@ -30,7 +30,7 @@ import { erc4337Config } from 'src/lib/config/erc4337'
 import { logger } from 'src/lib/utils/logger'
 import { AppStores } from 'src/lib/zustand'
 
-import { isDev } from '../lib'
+// import { isDev } from '../lib'
 
 type ContextValue = {
   handleError: (error: any) => void
@@ -59,15 +59,19 @@ export function useInitUserToken() {
     MutationAuth_LoginTelegramArgs
   >(Auth_TelegramLoginDocument)
 
-  if (isDev) {
-    return
-  }
-  // const storeTime = store.timeTokenStored
-  // const isTimeValid = storeTime > Date.now()
-
-  // if (store.token.length > 5) {
+  // if (isDev) {
   //   return
   // }
+
+  if (Date.now() < store.timeTokenStored) {
+    return
+  }
+
+  const now = Date.now() // Current time in ms
+
+  const twoDaysInMs = 1 * 24 * 60 * 60 * 1000 // 2 days -> hours -> minutes -> seconds -> milliseconds
+
+  const futureTime = now + twoDaysInMs
 
   void mutate({
     variables: {
@@ -80,7 +84,7 @@ export function useInitUserToken() {
       store.update({
         walletAddress: address!,
         token: data.auth_loginTelegram.token!,
-        timeTokenStored: Date.now(),
+        timeTokenStored: futureTime,
       })
     },
   })
