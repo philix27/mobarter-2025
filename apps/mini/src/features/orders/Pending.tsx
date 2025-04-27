@@ -61,8 +61,8 @@ function CardItem({ data }: IData) {
   }
   return (
     <DLink href={`/orders/${data.id}`}>
-      <div className="rounded-lg bg-secondary mb-1 px-3 py-2">
-        <div className="flex w-full justify-between pb-2 mb-2 border-b border-muted">
+      <div className="rounded-lg bg-card mb-1 px-3 py-2">
+        <div className="flex w-full justify-between pb-2 mb-2 border-b-[0.5px] border-muted">
           <p className={cn('text-xs font-bold', textColor[trade])}>{trade}</p>
 
           <p className={cn('font-bold')}>

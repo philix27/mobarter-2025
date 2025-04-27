@@ -24,7 +24,7 @@ export default function FiatTxn() {
   }
 
   return (
-    <div>
+    <div className="w-full">
       {transactions_getAll.map((val, i) => (
         <TileSimple key={i} title={val.amount.toString()} desc={val.category} />
       ))}

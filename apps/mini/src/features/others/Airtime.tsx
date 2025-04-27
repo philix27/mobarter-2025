@@ -1,7 +1,6 @@
 import { useMutation } from '@apollo/client'
 import {
   AirtimeCountryCode,
-  Country,
   CurrencyFiat,
   MutationResponse,
   MutationUtility_PurchaseAirtimeArgs,
@@ -18,7 +17,6 @@ import { Card, Label } from 'src/components/comps'
 import { useSendToken } from 'src/hooks/useSend'
 import { TokenId } from 'src/lib/config/tokens'
 import { pasteTextFromClipboard } from 'src/lib/utils'
-import { logger } from 'src/lib/utils/logger'
 import { AppStores } from 'src/lib/zustand'
 
 import { essentialCountriesList } from './SelectCountry'
@@ -30,6 +28,7 @@ import { COLLECTOR } from '@/src/lib/config'
 export default function Airtime() {
   const [amtValue, setAmountVal] = useState<number>()
   const [phoneNo, setPhoneNo] = useState<string>('')
+  const [selectedOperator, setOperator] = useState<Operator>()
   const Copy = FaCopy as any
   const store = AppStores.useSettings()
   const countryCode = essentialCountriesList.filter((val) => val.isoName === store.countryIso)[0]
@@ -59,6 +58,11 @@ export default function Airtime() {
 
   const handleSend = async () => {
     const leastAmount = isDev ? 50 : 50
+
+    if (selectedOperator === undefined) {
+      toast.error('Select an operator')
+      return
+    }
     if (amtValue == undefined || amtValue < leastAmount) {
       toast.error('Minimum of NGN1,000')
       return
@@ -75,7 +79,7 @@ export default function Airtime() {
               amount: amtValue,
               countryCode: IsoToCountryCode(),
               currency: CurrencyFiat.Ngn,
-              operator: Operator.Mtn,
+              operator: selectedOperator!,
               transaction_hash: txHash || `${Date.now()}`,
               phoneNo,
             },
@@ -92,7 +96,7 @@ export default function Airtime() {
       })
   }
   return (
-    <div className="w-full items-center justify-center flex flex-col gap-y-4 px-1 mb-[20vh]">
+    <div className="w-full items-center justify-center flex flex-col gap-y-4 px-1">
       <div className="w-full">
         <Label>Balance</Label>
         <Card className="text-primary">{tokenBalance}</Card>
@@ -121,18 +125,19 @@ export default function Airtime() {
         }
       />
       <AppSelect
-        label="Network"
+        label="Network*"
         onChange={(data) => {
-          logger.info('Change: ' + data)
+          setOperator(data as Operator)
         }}
         data={[
-          { label: 'MTN', value: Country.Nigeria },
-          { label: 'AIRTEL', value: Country.Ghana },
-          { label: 'GLO', value: Country.Kenya },
+          { label: Operator.Mtn, value: Operator.Mtn },
+          { label: Operator.Airtel, value: Operator.Airtel },
+          { label: Operator.Glo, value: Operator.Glo },
+          { label: Operator.Etisalat, value: Operator.Etisalat },
         ]}
       />
       <Input
-        label="Amount"
+        label="Amount*"
         placeholder="Amount to send"
         type="number"
         step=".01"
@@ -151,7 +156,7 @@ export default function Airtime() {
       />
       <div className="w-full mt-3">
         <Label>You Pay:</Label>
-        <Card className="bg-background">{amountToPay}</Card>
+        <Card>{amountToPay}</Card>
       </div>
       <Button className="mt-5 w-[70%]" onClick={handleSend}>
         Send
