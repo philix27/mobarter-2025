@@ -201,16 +201,17 @@ function GetAccountName(props: { accountNumber: string; bankCode: string }) {
     queryKey: ['getAccountName-' + props.accountNumber + '-' + props.bankCode],
     queryFn: async () => {
       const res = await getAccountInfo(props.accountNumber, props.bankCode)
+      store.update({ accountName: res.account_name })
       return res
     },
   })
   if (isLoading) return <>...</>
   if (error) {
-    store.update({ accountName: undefined })
+    // store.update({ accountName: undefined })
     return <>Not found</>
   }
   if (data) {
-    store.update({ accountName: data.account_name })
+    // store.update({ accountName: data.account_name })
     return <>{data.account_name}</>
   }
   return <>{''}</>
