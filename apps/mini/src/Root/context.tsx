@@ -65,9 +65,9 @@ export function useInitUserToken() {
   // const storeTime = store.timeTokenStored
   // const isTimeValid = storeTime > Date.now()
 
-  // if (store.token.length > 5) {
-  //   return
-  // }
+  if (store.token.length > 5) {
+    return
+  }
 
   void mutate({
     variables: {
