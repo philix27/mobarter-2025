@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { createJSONStorage, persist } from 'zustand/middleware'
+import {  persist } from 'zustand/middleware'
 
 export interface ISlice {
   walletAddress?: string
@@ -32,7 +32,7 @@ export const useUser = create(
     }),
     {
       name: 'userData',
-      storage: createJSONStorage(() => localStorage),
+      // storage: createJSONStorage(() => localStorage),
     }
   )
 )

@@ -176,6 +176,8 @@ export default function SendToBank() {
         error={validateAmount()}
         onChange={(e) => {
           const n = parseFloat(e.target.value)
+          const isValidNo = n > 0
+          if (!isValidNo) return
           setAmount(n)
           handleOnChange(n)
         }}
