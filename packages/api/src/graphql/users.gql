@@ -10,3 +10,4 @@ query User_getAll {
     email
   }
 }
+

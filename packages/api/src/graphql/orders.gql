@@ -16,6 +16,8 @@ mutation Orders_CreateSell($input: Order_CreteSellInput!) {
     wallet_merchant
     action_user
     action_merchant
+    mode
+    txn_hash
   }
 }
 
@@ -41,6 +43,8 @@ query Orders_GetAll($input: Order_GetAllInput!) {
     wallet_merchant
     action_user
     action_merchant
+    mode
+    txn_hash
   }
 }
 
@@ -65,6 +69,8 @@ query Orders_GetOne($input: Order_GetOneInput!) {
     wallet_merchant
     action_user
     action_merchant
+    mode
+    txn_hash
   }
 }
 
@@ -90,5 +96,7 @@ query Orders_GetAllForAdmin($input: Order_GetAllInput!) {
     wallet_merchant
     action_user
     action_merchant
+    mode
+    txn_hash
   }
 }

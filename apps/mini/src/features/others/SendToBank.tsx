@@ -115,8 +115,6 @@ export default function SendToBank() {
     if (!tBal) return undefined
     if (amountToPay === undefined) return undefined
 
-    // if (amountToPay > 0) return undefined
-
     if (_tokenBal < amountToPay) return 'Amount is less than your balance'
     return undefined
   }
