@@ -10,11 +10,7 @@ import { Label } from 'src/components/comps'
 import { copyTextToClipboard, shortString } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
 
-import Airtime from '../others/Airtime'
-import SelectCountry from '../others/SelectCountry'
-import SelectNetwork from '../others/SelectNetwork'
 import SendCrypto from '../others/SendCrypto'
-import SendToBank from '../others/SendToBank'
 
 export default function UtilityBottomPopups() {
   const store = AppStores.useSettings()
@@ -81,44 +77,6 @@ export default function UtilityBottomPopups() {
           />
           <div className="h-[50px]" />
         </div>
-      </BottomModal>
-
-      <BottomModal
-        showSheet={currentTab === 'SELECT_NETWORK'}
-        onClose={() => {
-          store.update({ homeBtmSheet: undefined })
-        }}
-      >
-        <SelectNetwork />
-      </BottomModal>
-
-      <BottomModal
-        showSheet={currentTab === 'SELECT_COUNTRY'}
-        onClose={() => {
-          store.update({ homeBtmSheet: undefined })
-        }}
-      >
-        <SelectCountry />
-      </BottomModal>
-
-      <BottomModal
-        title="Purchase Airtime"
-        showSheet={currentTab === 'AIRTIME'}
-        onClose={() => {
-          store.update({ homeBtmSheet: undefined })
-        }}
-      >
-        <Airtime />
-      </BottomModal>
-
-      <BottomModal
-        title="Send to Bank Account"
-        showSheet={currentTab === 'SEND_TO_BANK'}
-        onClose={() => {
-          store.update({ homeBtmSheet: undefined })
-        }}
-      >
-        <SendToBank />
       </BottomModal>
     </>
   )

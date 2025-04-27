@@ -92,7 +92,7 @@ export default function Airtime() {
       })
   }
   return (
-    <div className="w-full items-center justify-center flex flex-col px-1 mb-[20vh]">
+    <div className="w-full items-center justify-center flex flex-col gap-y-4 px-1 mb-[20vh]">
       <div className="w-full">
         <Label>Balance</Label>
         <Card className="text-primary">{tokenBalance}</Card>

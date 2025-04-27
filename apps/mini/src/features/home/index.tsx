@@ -7,6 +7,7 @@ import { useBalance } from 'wagmi'
 
 import { TokenRow } from './TokenRow'
 import { HomeTabs } from './TopTabs'
+import HomePopups from './HomePopups'
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
           <TokenRow key={i} {...val} />
         ))}
       </div>
+      <HomePopups />
     </div>
   )
 }

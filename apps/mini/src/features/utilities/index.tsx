@@ -36,7 +36,7 @@ export default function Utilities(props: { length?: number }) {
       title: 'Airtime',
       icon: LiaPhoneVolumeSolid,
       onClick: () => {
-        store.update({ homeBtmSheet: 'AIRTIME' })
+        void router.push('/airtime')
       },
     },
     {
