@@ -1,3 +1,16 @@
+import { useMutation } from '@apollo/client'
+import {
+  BankName,
+  CurrencyCrypto,
+  CurrencyFiat,
+  MutationOrders_CreateSellArgs,
+  MutationResponse,
+  OrderActions,
+  OrderMode,
+  OrderStatus,
+  Orders_CreateSellDocument,
+  TradeType,
+} from '@repo/api'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { FaCopy } from 'react-icons/fa6'
@@ -10,6 +23,7 @@ import { pasteTextFromClipboard } from 'src/lib/utils'
 
 import { getAccountInfo } from '../history/transactions/func'
 
+import { useAppContext } from '@/src/Root/context'
 import { Card, Label } from '@/src/components/comps'
 import { usePrice } from '@/src/hooks/usePrice'
 import { useSendToken } from '@/src/hooks/useSend'
@@ -17,22 +31,39 @@ import { useTokenBalance } from '@/src/hooks/useTokenBal'
 import { isDev } from '@/src/lib'
 import { BANKS_LIST } from '@/src/lib/banks'
 import { COLLECTOR } from '@/src/lib/config'
+import { AppStores } from '@/src/lib/zustand'
 
 const Copy = FaCopy as any
 export default function SendToBank() {
+  const store = AppStores.useSendToBank()
   // const [selectedToken, setToken] = useState('cUSD')
   const [bankCode, setBankCode] = useState('0')
   const [bankAccountNo, setBankAccountNo] = useState('')
-  const [amount, setAmount] = useState(0)
-
+  const [amountFiat, setAmount] = useState(0)
+  const { evmAddress } = useAppContext()
   const { sendErc20 } = useSendToken()
   const { amountToPay, handleOnChange } = usePrice()
   const balance = useTokenBalance(TokenId.cUSD)
 
+  const [mutate] = useMutation<
+    MutationResponse<'orders_CreateSell'>,
+    MutationOrders_CreateSellArgs
+  >(Orders_CreateSellDocument)
+
   const handleSend = async () => {
     const leastAmount = isDev ? 50 : 50
-    if (amountToPay === undefined || amountToPay < leastAmount) {
-      toast.error(`Must be above #${leastAmount}`)
+    if (amountToPay === undefined) {
+      toast.error(`Amount needed`)
+      return
+    }
+
+    if (amountToPay < leastAmount) {
+      toast.error(`Your balance is not enough`)
+      return
+    }
+
+    if (store.accountName === undefined || store.accountName.length < 2) {
+      toast.error(`Account Name not found`)
       return
     }
 
@@ -40,11 +71,41 @@ export default function SendToBank() {
       recipient: COLLECTOR,
       amount: amountToPay!.toString(),
       token: TokenId.cUSD,
-    }).then((val) => {
+    }).then(async (txn_hash) => {
       toast.success('Sent successfully')
-      val
-      bankCode
+
       // send to bank account
+      // todo: lock funds in escrow first.
+      await mutate({
+        variables: {
+          input: {
+            amount_fiat: amountFiat,
+            amount_crypto: amountToPay,
+            currency_fiat: CurrencyFiat.Ngn!,
+            currency_crypto: CurrencyCrypto.Cusd!,
+            estimated_duration: `EXPRESS`,
+            trade_type: TradeType.Sell!,
+            status: OrderStatus.Pending,
+            action_user: OrderActions.LockCrypto,
+            merchant_id: 1,
+            wallet_customer: evmAddress!,
+            wallet_merchant: COLLECTOR,
+            mode: OrderMode.Express,
+            bank_account_no: bankAccountNo,
+            bank_code: bankCode,
+            txn_hash: txn_hash,
+            bank_name: BankName.NgOpay,
+            bank_account_name: store.accountName,
+          },
+        },
+        onCompleted() {
+          toast.success('Success! Order created')
+        },
+        onError() {
+          toast.error('Could not create order')
+        },
+        refetchQueries: [],
+      })
     })
   }
 
@@ -81,6 +142,9 @@ export default function SendToBank() {
         value={bankAccountNo}
         type="number"
         onChange={(e) => {
+          if (e.target.value.length > 12) {
+            return
+          }
           setBankAccountNo(e.target.value)
         }}
         trailingIcon={
@@ -88,7 +152,10 @@ export default function SendToBank() {
             className="text-muted"
             onClick={async () => {
               const text = await pasteTextFromClipboard()
-              setBankAccountNo(text)
+              const n = parseInt(text)
+              if (n > 0) {
+                setBankAccountNo(text)
+              }
             }}
           />
         }
@@ -103,25 +170,11 @@ export default function SendToBank() {
         </div>
       )}
 
-      {/* <AppSelect
-        label="Currency"
-        desc={`${
-          isLoading ? '...' : formatEtherBalance(data!.value, data!.decimals, 3)
-        } ${selectedToken}`}
-        onChange={(data) => {
-          setToken(data)
-        }}
-        data={tokensList
-          .filter((val) => val.symbol !== TokenId.CELO)
-          .map((val) => {
-            return { label: val.symbol, value: val.symbol }
-          })}
-      /> */}
       <Input
         label="NGN Amount*"
         placeholder="Amount to send"
         type="number"
-        value={amount}
+        value={amountFiat}
         error={validateAmount()}
         onChange={(e) => {
           const n = parseFloat(e.target.value)
@@ -145,6 +198,7 @@ export default function SendToBank() {
 }
 
 function GetAccountName(props: { accountNumber: string; bankCode: string }) {
+  const store = AppStores.useSendToBank()
   const { data, isLoading, error } = useQuery({
     queryKey: ['getAccountName-' + props.accountNumber + '-' + props.bankCode],
     queryFn: async () => {
@@ -152,8 +206,14 @@ function GetAccountName(props: { accountNumber: string; bankCode: string }) {
       return res
     },
   })
-  if (error) return <>Not found</>
   if (isLoading) return <>...</>
-  if (data) return <>{data.account_name}</>
+  if (error) {
+    store.update({ accountName: undefined })
+    return <>Not found</>
+  }
+  if (data) {
+    store.update({ accountName: data.account_name })
+    return <>{data.account_name}</>
+  }
   return <>{''}</>
 }

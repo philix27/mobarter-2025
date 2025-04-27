@@ -43,6 +43,7 @@ export default function SellConfirm({ data }: { data: Advert_GetResponse }) {
           merchant_id: 2,
           wallet_customer: '0x20F50b8832f87104853df3FdDA47Dd464f885a49',
           wallet_merchant: '0x462E5F272B8431562811126779da6EcaE51A5B40',
+          bank_code: ""
         },
       },
       onCompleted() {
