@@ -52,12 +52,16 @@ export default function SendToBank() {
 
   const handleSend = async () => {
     const leastAmount = isDev ? 50 : 50
+
     if (amountToPay === undefined) {
       toast.error(`Amount needed`)
       return
     }
+    if (amountFiat < leastAmount) {
+      toast.error(`The least amount is: ${leastAmount}`)
+    }
 
-    if (amountToPay < leastAmount) {
+    if (amountToPay > parseFloat(balance)) {
       toast.error(`Your balance is not enough`)
       return
     }

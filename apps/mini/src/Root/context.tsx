@@ -69,7 +69,7 @@ export function useInitUserToken() {
 
   const now = Date.now() // Current time in ms
 
-  const twoDaysInMs = 1 * 24 * 60 * 60 * 1000 // 2 days -> hours -> minutes -> seconds -> milliseconds
+  const twoDaysInMs = 1 * 24 * 60 * 60 * 1000 // 1 day -> hours -> minutes -> seconds -> milliseconds
 
   const futureTime = now + twoDaysInMs
 
