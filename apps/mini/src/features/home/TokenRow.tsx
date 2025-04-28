@@ -34,7 +34,7 @@ export function TokenRow(props: IToken & { className?: string; onClick?:VoidFunc
           <p className="text-muted text-[12px]">{props.fullName}</p>
         </div>
         <p className="text-[14px] font-medium">
-          {isLoading ? 'X.XX' : data ? formatEtherBalance(data.value, props.decimals, 3) : '0'}
+          {isLoading ? '*.**' : data ? formatEtherBalance(data.value, props.decimals, 3) : '0'}
         </p>
       </div>
     </div>
