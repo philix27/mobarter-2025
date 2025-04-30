@@ -1,3 +1,10 @@
+import axios from 'axios'
+
+export async function getTxHistory(address: string) {
+  const res = await axios.get(`/api/history/${address}`)
+  return res.data as ITransactions
+}
+
 export interface ITransactions {
   message: string
   result: ITransactionsResult[]

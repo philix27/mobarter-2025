@@ -51,7 +51,7 @@ export default function Utilities() {
       title: 'Withdraw',
       icon: LuSquareArrowOutUpRight,
       onClick: () => {
-        void router.push('/ads')
+        toast.info('Coming soon!')
       },
     },
     {
@@ -118,7 +118,7 @@ export default function Utilities() {
       title: 'Notifications',
       icon: GrNotification,
       onClick: () => {
-        return
+        toast.info('Coming soon!')
       },
     },
   ]

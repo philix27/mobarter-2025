@@ -21,8 +21,7 @@ import { AppSelect } from 'src/components/Select'
 import { TokenId } from 'src/lib/config/tokens'
 import { pasteTextFromClipboard } from 'src/lib/utils'
 
-import { getAccountInfo } from '../history/transactions/func'
-
+import BalCard from './BalCard'
 import { useAppContext } from '@/src/Root/context'
 import { Card, Label } from '@/src/components/comps'
 import { usePrice } from '@/src/hooks/usePrice'
@@ -31,6 +30,7 @@ import { useTokenBalance } from '@/src/hooks/useTokenBal'
 import { isDev } from '@/src/lib'
 import { BANKS_LIST } from '@/src/lib/banks'
 import { COLLECTOR } from '@/src/lib/config'
+import { getAccountInfo } from '@/src/lib/server'
 import { AppStores } from '@/src/lib/zustand'
 
 const Copy = FaCopy as any
@@ -125,10 +125,7 @@ export default function SendToBank() {
 
   return (
     <div className="w-full items-center justify-center flex flex-col px-1 gap-y-2">
-      <div className="w-full">
-        <Label>Balance</Label>
-        <Card className="text-primary">{balance}</Card>
-      </div>
+      <BalCard />
       <AppSelect
         label="Bank*"
         onChange={(data) => {

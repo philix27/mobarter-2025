@@ -94,7 +94,7 @@ export function useInitUserToken() {
 
 export const AppContext = createContext<ContextValue | null>(null)
 
-export const AppProvider = ({ children }: React.PropsWithChildren) => {
+export const TgAppProvider = ({ children }: React.PropsWithChildren) => {
   const { initDataRaw } = useLaunchParams()
   const { connect, connectionStatus } = useConnect()
   const { provider, address } = useEthereum()

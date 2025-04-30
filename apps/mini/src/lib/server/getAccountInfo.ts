@@ -1,7 +1,5 @@
 import axios from 'axios'
 
-import { ITransactions } from './type'
-
 export type IAccountInfo = {
   account_name: string
   account_number: string
@@ -11,11 +9,6 @@ export type IAccountInfo = {
   execution_time: string
 }
 
-export async function getTxHistory(address: string) {
-  const res = await axios.get(`/api/history/${address}`)
-  return res.data as ITransactions
-}
-
 export async function getAccountInfo(account_number: string, bank_code: string) {
   const res = await axios.get(`/api/account-info`, {
     params: {
@@ -23,5 +16,5 @@ export async function getAccountInfo(account_number: string, bank_code: string) 
       account_number,
     },
   })
-  return res.data  as IAccountInfo
+  return res.data as IAccountInfo
 }

@@ -18,8 +18,8 @@ import { TokenId } from 'src/lib/config/tokens'
 import { pasteTextFromClipboard } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
 
+import BalCard from './BalCard'
 import { usePrice } from '@/src/hooks/usePrice'
-import { useTokenBalance } from '@/src/hooks/useTokenBal'
 import { isDev, mapCountryToData, mapCountryToIso } from '@/src/lib'
 import { COLLECTOR } from '@/src/lib/config'
 
@@ -32,7 +32,6 @@ export default function Airtime() {
   const countryCode = mapCountryToData[store.countryIso].callingCodes[0]
   const { sendErc20 } = useSendToken()
   const { amountToPay, handleOnChange } = usePrice()
-  const tokenBalance = useTokenBalance(TokenId.cUSD)
 
   const [mutate] = useMutation<
     MutationResponse<'utility_purchaseAirtime'>,
@@ -80,10 +79,7 @@ export default function Airtime() {
   }
   return (
     <div className="w-full items-center justify-center flex flex-col gap-y-4 px-1">
-      <div className="w-full">
-        <Label>Balance</Label>
-        <Card className="text-primary">{tokenBalance}</Card>
-      </div>
+      <BalCard />
       <Input
         label={`${mapCountryToIso[store.countryIso]} Phone number`}
         placeholder={`${countryCode}8101234567`}

@@ -8,8 +8,7 @@ import { Spinner } from 'src/components/Spinner'
 import { shortenAddress } from 'src/lib/config/addresses'
 import { cn, formatEtherBalance, shortString } from 'src/lib/utils'
 
-import { getTxHistory } from './func'
-import { ITransactionsResult } from './type'
+import { ITransactionsResult, getTxHistory } from '@/src/lib/server'
 
 export default function WalletTransactions() {
   // const store = AppStores.useUser()

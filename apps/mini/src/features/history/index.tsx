@@ -3,7 +3,7 @@ import { AppStores } from 'src/lib/zustand'
 
 import FiatTxn from './FiatTxn'
 import HistoryTabs from './tabs'
-import WalletTransactions from './transactions/WalletTrans'
+import WalletTransactions from './WalletTrans'
 
 export default function TransactionHistory() {
   const store = AppStores.useSettings()
