@@ -2,13 +2,17 @@ import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
 import { IconType } from 'react-icons'
 import { BsSend } from 'react-icons/bs'
+import { FaTv } from 'react-icons/fa'
+import { GoGift } from 'react-icons/go'
 import { GrNotification } from 'react-icons/gr'
-import { IoSwapHorizontalOutline } from 'react-icons/io5'
+import { IoArrowDownOutline, IoArrowUpOutline } from 'react-icons/io5'
 import { LiaPhoneVolumeSolid } from 'react-icons/lia'
-import { MdNotes } from 'react-icons/md'
+import { LuSquareArrowOutUpRight } from 'react-icons/lu'
+import { MdElectricalServices, MdNotes } from 'react-icons/md'
 import { SiExpress } from 'react-icons/si'
 import { SlWallet } from 'react-icons/sl'
 import { TbMobiledata } from 'react-icons/tb'
+import { toast } from 'sonner'
 
 import { CarouselComp } from './Carousel'
 import RoundIcon from './RoundIcon'
@@ -45,9 +49,23 @@ export default function Utilities() {
     },
     {
       title: 'Withdraw',
-      icon: IoSwapHorizontalOutline,
+      icon: LuSquareArrowOutUpRight,
       onClick: () => {
         void router.push('/ads')
+      },
+    },
+    {
+      title: 'Buy',
+      icon: IoArrowDownOutline,
+      onClick: () => {
+        toast.info('Coming soon!')
+      },
+    },
+    {
+      title: 'Sell',
+      icon: IoArrowUpOutline,
+      onClick: () => {
+        toast.info('Coming soon!')
       },
     },
   ]
@@ -64,6 +82,27 @@ export default function Utilities() {
       icon: TbMobiledata,
       onClick: () => {
         void router.push('/topup-data')
+      },
+    },
+    {
+      title: 'Gift Cards',
+      icon: GoGift,
+      onClick: () => {
+        toast.info('Coming soon!')
+      },
+    },
+    {
+      title: 'Electricity',
+      icon: MdElectricalServices,
+      onClick: () => {
+        toast.info('Coming soon!')
+      },
+    },
+    {
+      title: 'Go TV',
+      icon: FaTv,
+      onClick: () => {
+        toast.info('Coming soon!')
       },
     },
   ]
