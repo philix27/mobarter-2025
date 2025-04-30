@@ -10,6 +10,7 @@ import { formatCurrency, roundUpTo2Decimals } from 'src/lib/utils/helpers'
 import { AppStores } from 'src/lib/zustand'
 
 import { MerchantInfo } from '../MerchantInfo'
+import { Spinner } from '@/src/components/Spinner'
 
 // import { MerchantInfo } from '../MerchantInfo'
 
@@ -28,7 +29,7 @@ export function SellDetails({ data }: { data: Advert_GetResponse }) {
     error,
   } = useQuery<QueryResponse<'fxRate_GetAll'>>(Api.FxRate_GetAllDocument)
 
-  if (loading) return <div>Loading...</div>
+  if (loading) return <Spinner />
   if (error) return <div>Error...</div>
 
   const { fxRate_GetAll } = fxData!

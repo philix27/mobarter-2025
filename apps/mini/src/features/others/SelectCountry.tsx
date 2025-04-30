@@ -13,7 +13,7 @@ export default function SelectCountry() {
         <TileSimple
           key={i}
           title={val.name}
-          desc={val.continent}
+          desc={`${val.currencyCode} | ${val.currencyName} | ${val.callingCodes[0]}`}
           imgUrl={val.flag}
           className={cn('bg-card', val.isoName === store.countryIso && 'border-primary border')}
           onClick={() => {

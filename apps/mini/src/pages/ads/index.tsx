@@ -1,3 +1,4 @@
+import { Spinner } from '@/src/components/Spinner'
 import { useQuery } from '@apollo/client'
 import * as Api from '@repo/api'
 import { QueryResponse } from '@repo/api'
@@ -56,7 +57,7 @@ function List() {
     { pollInterval: 2000 }
   )
 
-  if (loading) return <div>Loading...</div>
+  if (loading) return <Spinner />
   if (error) return <div>Error...</div>
   return (
     <div className="w-full bg-background no-scrollbar">

@@ -1,3 +1,4 @@
+import { Spinner } from '@/src/components/Spinner'
 import { useQuery } from '@apollo/client'
 import {
   AdvertStatus,
@@ -38,7 +39,7 @@ function List() {
     },
   })
 
-  if (loading) return <div>Loading...</div>
+  if (loading) return <Spinner />
   if (error) return <div>Error...</div>
   return (
     <div className="w-full bg-background no-scrollbar">

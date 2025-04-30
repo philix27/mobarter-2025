@@ -17,9 +17,9 @@ export default function Home() {
 
       <div className="h-8" />
 
-      <div className="flex flex-col bg-card rounded-md w-full gap-y-[0.1px] px-1 py-1">
+      <div className="flex flex-col rounded-md w-full gap-y-[0.1px] px-1 py-1">
         {tokensList.map((val, i) => (
-          <TokenRow key={i} {...val} />
+          <TokenRow key={i} {...val} className='bg-card' />
         ))}
       </div>
       <HomePopups />

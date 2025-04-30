@@ -12,6 +12,8 @@ import { useDidMount } from 'src/hooks/useDidMount'
 import { useTelegramMock } from 'src/hooks/useTelegramMock'
 import { init } from 'src/lib/telegram/init'
 
+import { Spinner } from '../components/Spinner'
+
 import { AppProvider } from './context'
 
 if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_PARTICLE_ENV === 'development') {
@@ -95,6 +97,6 @@ export function Root(props: PropsWithChildren) {
       <RootInner {...props} />
     </ErrorBoundary>
   ) : (
-    <div className="text-gray-400">Loading...</div>
+    <Spinner />
   )
 }

@@ -11,7 +11,7 @@ export default function Page() {
   //     variables: { input: { id: parseInt(router.query.id as string) } },
   //   })
 
-  //   if (loading) return <div>Loading...</div>
+  //   if (loading) return <Spinner />
   //   if (error) return <div>Error...</div>
 
   //   const { adverts_getOne } = data!

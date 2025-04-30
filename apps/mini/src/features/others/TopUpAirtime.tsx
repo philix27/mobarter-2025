@@ -120,7 +120,7 @@ export default function Airtime() {
         ]}
       />
       <Input
-        label="Amount (NGN)*"
+        label={`Amount (${mapCountryToData[store.countryIso].currencySymbol})*`}
         placeholder="Amount to send"
         type="number"
         step=".01"

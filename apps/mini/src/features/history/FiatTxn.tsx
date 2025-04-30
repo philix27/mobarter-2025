@@ -4,6 +4,7 @@ import React from 'react'
 
 import { NotFound } from '@/src/components/ComingSoon'
 import { TileSimple } from '@/src/components/TileSimple'
+import { Spinner } from '@/src/components/Spinner'
 
 export default function FiatTxn() {
   const { data, loading, error } = useQuery<QueryResponse<'transactions_getAll'>>(
@@ -13,7 +14,7 @@ export default function FiatTxn() {
     }
   )
 
-  if (loading) return <div>Loading...</div>
+  if (loading) return <Spinner />
   if (error) return <div>Error...</div>
 
   const { transactions_getAll } = data!
