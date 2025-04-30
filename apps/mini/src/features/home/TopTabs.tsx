@@ -4,7 +4,7 @@ import React, { useMemo } from 'react'
 // import { Tab } from 'src/components/Tab'
 import { AppStores } from 'src/lib/zustand'
 
-import { essentialCountriesList } from '../others/SelectCountry'
+import { mapCountryToData } from '@/src/lib'
 
 export function HomeTabs() {
   const store = AppStores.useSettings()
@@ -24,7 +24,7 @@ export function HomeTabs() {
         }}
       >
         <img
-          src={essentialCountriesList.filter((val) => val.isoName === store.countryIso)[0].flag}
+          src={mapCountryToData[store.countryIso].flag}
           alt=""
           className="object-cover w-full h-full rounded-full"
         />

@@ -1,7 +1,7 @@
 import { AuthType } from '@particle-network/auth-core'
 import { AuthCoreContextProvider } from '@particle-network/auth-core-modal'
 import { Celo } from '@particle-network/chains'
-// import TelegramAnalytics from '@telegram-apps/analytics'
+import TelegramAnalytics from '@telegram-apps/analytics'
 import { useLaunchParams } from '@telegram-apps/sdk-react'
 import { type PropsWithChildren, useEffect } from 'react'
 import { Toaster } from 'sonner'
@@ -27,10 +27,10 @@ function RootInner({ children }: PropsWithChildren) {
 
   const debug = useLaunchParams().startParam === 'debug'
 
-  // void TelegramAnalytics.init({
-  //   token: process.env.TG_TOKEN!,
-  //   appName: process.env.TG_ANALYTIC_IDENTIFIER!,
-  // })
+  void TelegramAnalytics.init({
+    token: process.env.NEXT_PUBLIC_TG_TOKEN!,
+    appName: process.env.NEXT_PUBLIC_TG_ANALYTIC_IDENTIFIER!,
+  })
   // Initialize the library.
   useClientOnce(() => {
     init(debug)

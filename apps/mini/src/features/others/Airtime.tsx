@@ -1,6 +1,5 @@
 import { useMutation } from '@apollo/client'
 import {
-  AirtimeCountryCode,
   CurrencyFiat,
   MutationResponse,
   MutationUtility_PurchaseAirtimeArgs,
@@ -19,10 +18,9 @@ import { TokenId } from 'src/lib/config/tokens'
 import { pasteTextFromClipboard } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
 
-import { essentialCountriesList } from './SelectCountry'
 import { usePrice } from '@/src/hooks/usePrice'
 import { useTokenBalance } from '@/src/hooks/useTokenBal'
-import { isDev } from '@/src/lib'
+import { isDev, mapCountryToData, mapCountryToIso } from '@/src/lib'
 import { COLLECTOR } from '@/src/lib/config'
 
 export default function Airtime() {
@@ -31,8 +29,7 @@ export default function Airtime() {
   const [selectedOperator, setOperator] = useState<Operator>()
   const Copy = FaCopy as any
   const store = AppStores.useSettings()
-  const countryCode = essentialCountriesList.filter((val) => val.isoName === store.countryIso)[0]
-    .callingCodes[0]
+  const countryCode = mapCountryToData[store.countryIso].callingCodes[0]
   const { sendErc20 } = useSendToken()
   const { amountToPay, handleOnChange } = usePrice()
   const tokenBalance = useTokenBalance(TokenId.cUSD)
@@ -41,20 +38,6 @@ export default function Airtime() {
     MutationResponse<'utility_purchaseAirtime'>,
     MutationUtility_PurchaseAirtimeArgs
   >(Utility_PurchaseAirtimeDocument)
-
-  function IsoToCountryCode() {
-    switch (store.countryIso) {
-      case 'NG':
-        return AirtimeCountryCode.Nigeria
-      case 'GH':
-        return AirtimeCountryCode.Ghana
-      case 'KE':
-        return AirtimeCountryCode.Kenya
-
-      default:
-        return AirtimeCountryCode.Nigeria
-    }
-  }
 
   const handleSend = async () => {
     const leastAmount = isDev ? 50 : 50
@@ -77,7 +60,7 @@ export default function Airtime() {
           variables: {
             input: {
               amount: amtValue,
-              countryCode: IsoToCountryCode(),
+              countryCode: mapCountryToIso[store.countryIso],
               currency: CurrencyFiat.Ngn,
               operator: selectedOperator!,
               transaction_hash: txHash || `${Date.now()}`,
@@ -102,7 +85,7 @@ export default function Airtime() {
         <Card className="text-primary">{tokenBalance}</Card>
       </div>
       <Input
-        label={`${IsoToCountryCode()} Phone number`}
+        label={`${mapCountryToIso[store.countryIso]} Phone number`}
         placeholder={`${countryCode}8101234567`}
         value={phoneNo}
         type="number"
@@ -137,7 +120,7 @@ export default function Airtime() {
         ]}
       />
       <Input
-        label="Amount*"
+        label="Amount (NGN)*"
         placeholder="Amount to send"
         type="number"
         step=".01"

@@ -1,6 +1,8 @@
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
+import { CountriesIso } from '../countries'
+
 export type IHomeTab = 'Balances' | 'Services'
 export type IManageAdsTab = 'OPEN' | 'CLOSED' | 'ADD'
 export type IP2PTabs = 'BUY' | 'SELL'
@@ -20,7 +22,6 @@ export type IHomeBottomSheet =
 export type IHistoryTabs = 'ALL' | 'AIRTIME'
 export type IProfileTabs = 'INFO' | 'ACTIONS' | 'BANK'
 export type ISwap = 'EXCHANGE' | 'CONFIRM'
-export type ICountryIso = 'NG' | 'KE' | 'GH'
 
 export interface ISlice {
   sidebarOpen?: boolean
@@ -39,7 +40,7 @@ export interface ISlice {
   showSlippage?: boolean
   showChart?: boolean
   token?: boolean
-  countryIso?: ICountryIso
+  countryIso?: CountriesIso
   chainIcon?: string
 }
 
