@@ -1,7 +1,8 @@
 import axios from 'axios'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { ITransactions } from 'src/features/history/transactions/type'
 import { isValidAddress } from 'src/lib/config/addresses'
+
+import { ITransactions } from '@/src/lib/server'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ITransactions>) {
   const { address } = req.query

@@ -1,8 +1,7 @@
 import axios from 'axios'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { ITransactions } from 'src/features/history/transactions/type'
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<ITransactions>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { account_number, bank_code } = req.query
   const acctNo = account_number as string
   const code = bank_code as string
