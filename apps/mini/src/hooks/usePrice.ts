@@ -3,12 +3,12 @@ import { FxRate_GetAllDocument, QueryResponse } from '@repo/api'
 import { useState } from 'react'
 
 import { logger } from '../lib/utils'
+import { AppStores } from '../lib/zustand'
 
-const PROFIT_MARGIN = 20
 export function usePrice() {
+  const store = AppStores.useSettings()
   const [amountToPay, setAmtToPay] = useState(0)
   const { data: fxData, error } = useQuery<QueryResponse<'fxRate_GetAll'>>(FxRate_GetAllDocument)
-
   if (error) {
     logger.error('Error getting rate: ' + error.message)
   }
@@ -20,12 +20,12 @@ export function usePrice() {
       },
     }
 
-  const rate = fxData!.fxRate_GetAll.NGN + PROFIT_MARGIN
+  const rate = fxData!.fxRate_GetAll[store.countryIso]
 
   const handleOnChange = (amountInFiatCurrency: number) => {
     const c = amountInFiatCurrency / rate
-
-    setAmtToPay(c)
+    const plusFee = c + 0.1
+    setAmtToPay(plusFee)
   }
 
   return { amountToPay, handleOnChange }

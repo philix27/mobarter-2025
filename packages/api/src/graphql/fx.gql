@@ -1,8 +1,12 @@
 query FxRate_GetAll {
   fxRate_GetAll {
-    GHS
-    NGN
-    KES
+    GH
+    NG
+    KE
+    UG
+    MW
+    TZ
+    ZA
     USD
     EUR
   }

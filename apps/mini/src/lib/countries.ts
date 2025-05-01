@@ -1,16 +1,16 @@
-import { AirtimeCountryCode } from '@repo/api'
+import { TopUpCountryCode } from '@repo/api'
 
 export type CountriesIso = 'NG' | 'GH' | 'KE' | 'MW' | 'RW' | 'TZ' | 'UG' | 'ZA'
 
-export const mapCountryToIso: Record<CountriesIso, AirtimeCountryCode> = {
-  NG: AirtimeCountryCode.Nigeria,
-  GH: AirtimeCountryCode.Ghana,
-  KE: AirtimeCountryCode.Kenya,
-  MW: AirtimeCountryCode.Kenya,
-  RW: AirtimeCountryCode.Kenya,
-  TZ: AirtimeCountryCode.Kenya,
-  UG: AirtimeCountryCode.Kenya,
-  ZA: AirtimeCountryCode.Kenya,
+export const mapCountryToIso: Record<CountriesIso, TopUpCountryCode> = {
+  NG: TopUpCountryCode.Nigeria,
+  GH: TopUpCountryCode.Ghana,
+  KE: TopUpCountryCode.Kenya,
+  MW: TopUpCountryCode.Malawi,
+  RW: TopUpCountryCode.Rwanda,
+  TZ: TopUpCountryCode.Tanzania,
+  UG: TopUpCountryCode.Uganda,
+  ZA: TopUpCountryCode.SouthAfrica,
 }
 
 export type IData = {

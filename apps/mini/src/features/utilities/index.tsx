@@ -1,27 +1,24 @@
-import { useRouter } from 'next/router';
-import { ReactNode } from 'react';
-import { IconType } from 'react-icons';
-import { BsSend } from 'react-icons/bs';
-import { FaTv } from 'react-icons/fa';
-import { GoGift } from 'react-icons/go';
-import { GrNotification } from 'react-icons/gr';
-import { IoArrowDownOutline, IoArrowUpOutline } from 'react-icons/io5';
-import { LiaPhoneVolumeSolid } from 'react-icons/lia';
-import { LuSquareArrowOutUpRight } from 'react-icons/lu';
+import { useRouter } from 'next/router'
+import { ReactNode } from 'react'
+import { IconType } from 'react-icons'
+import { BsSend } from 'react-icons/bs'
+import { FaTv } from 'react-icons/fa'
+import { GoGift } from 'react-icons/go'
+import { GrNotification } from 'react-icons/gr'
+import { IoArrowDownOutline, IoArrowUpOutline } from 'react-icons/io5'
+import { LiaPhoneVolumeSolid } from 'react-icons/lia'
+import { LuSquareArrowOutUpRight } from 'react-icons/lu'
 import { MdElectricalServices, MdNotes, MdPermDataSetting } from 'react-icons/md'
-import { SiExpress } from 'react-icons/si';
-import { SlWallet } from 'react-icons/sl';
-import { TbMobiledata } from 'react-icons/tb';
-import { toast } from 'sonner';
+import { SiExpress } from 'react-icons/si'
+import { SlWallet } from 'react-icons/sl'
+import { TbMobiledata } from 'react-icons/tb'
+import { toast } from 'sonner'
 
-
-
-import { CarouselComp } from './Carousel';
-import RoundIcon from './RoundIcon';
-import UtilityBottomPopups from './UtilityPopups';
-import { Label } from '@/src/components/comps';
-import { AppStores } from '@/src/lib/zustand';
-
+import { CarouselComp } from './Carousel'
+import RoundIcon from './RoundIcon'
+import UtilityBottomPopups from './UtilityPopups'
+import { Label } from '@/src/components/comps'
+import { AppStores } from '@/src/lib/zustand'
 
 type IconItem = { title: string; onClick: VoidFunction; icon: IconType }
 export default function Utilities() {
