@@ -10,6 +10,7 @@ import { formatCurrency, roundUpTo2Decimals } from 'src/lib/utils/helpers'
 import { AppStores } from 'src/lib/zustand'
 
 import { MerchantInfo } from '../MerchantInfo'
+
 import { Spinner } from '@/src/components/Spinner'
 
 // import { MerchantInfo } from '../MerchantInfo'
@@ -19,6 +20,7 @@ import { Spinner } from '@/src/components/Spinner'
 
 export function SellDetails({ data }: { data: Advert_GetResponse }) {
   const store = AppStores.useAdvert()
+  const storeSettings = AppStores.useSettings()
   const [cryptoAmount, setAmount] = useState<{ amount: number; display: string }>({
     amount: 0,
     display: '',
@@ -33,7 +35,10 @@ export function SellDetails({ data }: { data: Advert_GetResponse }) {
   if (error) return <div>Error...</div>
 
   const { fxRate_GetAll } = fxData!
-  const fiatAmt = roundUpTo2Decimals(cryptoAmount.amount * fxRate_GetAll[data.currencyFiat!], 100)
+  const fiatAmt = roundUpTo2Decimals(
+    cryptoAmount.amount * fxRate_GetAll[storeSettings.countryIso],
+    100
+  )
 
   function handleSubmit() {
     const gtZ = cryptoAmount.amount > 0
