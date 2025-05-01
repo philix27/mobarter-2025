@@ -10,7 +10,7 @@ import { BottomNote, Label } from './comps'
 const CustomOption: ComponentType<OptionProps<any, false, GroupBase<any>>> = (props) =>
   !props.isDisabled ? (
     <div {...props.innerProps}>
-      <p className="w-full bg-card shadow-md py-2 px-3 text-[12.5px] hover:bg-primary">
+      <p className="w-full bg-card shadow-md py-[6px] px-3 text-[13.5px] hover:bg-primary">
         {props.label}
       </p>
     </div>
@@ -18,7 +18,7 @@ const CustomOption: ComponentType<OptionProps<any, false, GroupBase<any>>> = (pr
 
 const CustomPlaceholder: ComponentType<PlaceholderProps<any, false, GroupBase<any>>> = (props) =>
   !props.isDisabled ? (
-    <p {...props.innerProps} className="w-full bg-card shadow-md py-2 px-3 text-muted" />
+    <p {...props.innerProps} className="w-full bg-card shadow-md px-3 text-muted" />
   ) : null
 
 export const AppSelect = (props: {

@@ -114,7 +114,7 @@ export default function TopUpData() {
       <div className="w-full items-center justify-center flex flex-col gap-y-4 px-1">
         <BalCard />
         <Input
-          label={`Phone NO. (${mapCountryToIso[store.countryIso]})`}
+          label={`Phone NO. (${mapCountryToIso[store.countryIso]})*`}
           placeholder={`${countryCode.slice(1)}8101234567`}
           value={phoneNo}
           type="number"
@@ -158,6 +158,7 @@ export default function TopUpData() {
           <Label>Selected Plan*</Label>
           {operatorPlan && operatorPlan.desc ? (
             <Card
+              className="text-foreground"
               onClick={() => {
                 setShowBtmSheet(true)
               }}
@@ -174,8 +175,8 @@ export default function TopUpData() {
         </div>
 
         <div className="w-full ">
-          <Label>You Pay:</Label>
-          <Card>{amountToPay}</Card>
+          <Label>You Pay (cUSD)</Label>
+          <Card>{amountToPay} </Card>
         </div>
         <Button className="mt-5 w-[70%]" onClick={handleSend}>
           Send
