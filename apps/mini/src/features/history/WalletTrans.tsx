@@ -2,12 +2,12 @@ import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 import { ethers } from 'ethers'
 import React, { useState } from 'react'
-import { useAppContext } from 'src/Root/context'
 import BottomModal from 'src/components/BottomModal'
 import { Spinner } from 'src/components/Spinner'
 import { shortenAddress } from 'src/lib/config/addresses'
 import { cn, formatEtherBalance, shortString } from 'src/lib/utils'
 
+import { useAppContext } from '@/src/Root/TgContext'
 import { ITransactionsResult, getTxHistory } from '@/src/lib/server'
 
 export default function WalletTransactions() {

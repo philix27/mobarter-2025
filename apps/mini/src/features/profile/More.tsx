@@ -3,13 +3,13 @@ import { miniApp, viewport } from '@telegram-apps/sdk-react'
 import { ReactNode, useEffect } from 'react'
 import { BsWallet } from 'react-icons/bs'
 import { MdLogout, MdSecurity } from 'react-icons/md'
-import { useAppContext } from 'src/Root/context'
 import { Button } from 'src/components/Button'
 import { Label } from 'src/components/comps'
 
 import { Row } from './comps'
 import LinksAndActions from './links'
 import Support from './support'
+import { useAppContext } from '@/src/Root/TgContext'
 
 export function MoreFeat() {
   const { openWallet, openAccountAndSecurity } = useAuthCore()

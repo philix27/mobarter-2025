@@ -2,11 +2,11 @@ import { backButton } from '@telegram-apps/sdk-react'
 import * as tg from '@telegram-apps/sdk-react'
 import { useRouter } from 'next/router'
 import { ReactNode, useEffect } from 'react'
-import { useInitUserToken } from 'src/Root/context'
 
 import BottomNav from './BottomNav'
 import Drawer from './Drawer'
 import Sidebar from './Sidebar'
+import { useInitUserToken } from '@/src/Root/TgContext'
 import { useThemeColor } from '@/src/styles/Color'
 
 export default function Wrapper({

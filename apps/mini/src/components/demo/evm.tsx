@@ -3,14 +3,15 @@ import { useCustomize, useEthereum } from '@particle-network/auth-core-modal'
 import { type ChainInfo, chains } from '@particle-network/chains'
 import { useEffect, useMemo } from 'react'
 import { toast } from 'sonner'
-import { useAppContext } from 'src/Root/context'
-import { messageValue, typedDataValue } from 'src/lib/config/particleData'
 import { erc4337Config } from 'src/lib/config/erc4337'
+import { messageValue, typedDataValue } from 'src/lib/config/particleData'
 import { logger } from 'src/lib/utils/logger'
 import { shortString } from 'src/lib/utils/string'
 
 import { Button } from '../Button'
 import { AppSelect } from '../Select'
+
+import { useAppContext } from '@/src/Root/TgContext'
 
 const EVMDemo = () => {
   const { signMessage, signTypedData, sendTransaction, chainInfo, switchChain } = useEthereum()

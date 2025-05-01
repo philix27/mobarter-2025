@@ -2,7 +2,6 @@ import { useRouter } from 'next/router'
 import { GiSpeedometer } from 'react-icons/gi'
 import { IoSwapHorizontalOutline } from 'react-icons/io5'
 import QRCode from 'react-qr-code'
-import { useAppContext } from 'src/Root/context'
 import BottomModal from 'src/components/BottomModal'
 import { Button } from 'src/components/Button'
 import { TileSimple } from 'src/components/TileSimple'
@@ -11,6 +10,8 @@ import { copyTextToClipboard, shortString } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
 
 import SendCrypto from '../others/SendCrypto'
+
+import { useAppContext } from '@/src/Root/TgContext'
 
 export default function UtilityBottomPopups() {
   const store = AppStores.useSettings()

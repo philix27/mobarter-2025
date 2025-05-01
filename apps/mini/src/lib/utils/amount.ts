@@ -12,7 +12,9 @@ export function fromWei(
   value: NumberT | null | undefined,
   decimals = STANDARD_TOKEN_DECIMALS
 ): string {
+  
   if (!value) return '0'
+
   const valueString = value.toString().trim()
   const flooredValue = new BigNumber(valueString).toFixed(0, BigNumber.ROUND_FLOOR)
   return formatUnits(flooredValue, decimals)

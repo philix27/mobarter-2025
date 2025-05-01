@@ -5,7 +5,6 @@ import React, { useMemo } from 'react'
 import { BsWallet } from 'react-icons/bs'
 import { FaRegUser } from 'react-icons/fa6'
 import { TbMail } from 'react-icons/tb'
-import { useAppContext } from 'src/Root/context'
 import LiveLoader from 'src/Root/live-loader'
 import { Label } from 'src/components/comps'
 import { shortenAddress } from 'src/lib/config/addresses'
@@ -13,6 +12,7 @@ import { copyTextToClipboard, shortString } from 'src/lib/utils'
 
 import { Container, MoreFeat } from './More'
 import { Row } from './comps'
+import { useAppContext } from '@/src/Root/TgContext'
 
 const DImage = Image as any
 function useInitData() {

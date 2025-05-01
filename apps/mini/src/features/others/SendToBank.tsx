@@ -22,7 +22,7 @@ import { TokenId } from 'src/lib/config/tokens'
 import { pasteTextFromClipboard } from 'src/lib/utils'
 
 import BalCard from './BalCard'
-import { useAppContext } from '@/src/Root/context'
+import { useAppContext } from '@/src/Root/TgContext'
 import { Card, Label } from '@/src/components/comps'
 import { usePrice } from '@/src/hooks/usePrice'
 import { useSendToken } from '@/src/hooks/useSend'

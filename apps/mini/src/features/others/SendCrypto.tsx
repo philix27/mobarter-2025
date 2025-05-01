@@ -3,7 +3,6 @@ import { ethers } from 'ethers'
 import { useState } from 'react'
 import { FaCopy } from 'react-icons/fa6'
 import { toast } from 'sonner'
-import { useAppContext } from 'src/Root/context'
 import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
 import { AppSelect } from 'src/components/Select'
@@ -15,6 +14,7 @@ import { formatEtherBalance, pasteTextFromClipboard, shortString } from 'src/lib
 import { logger } from 'src/lib/utils/logger'
 import { useBalance } from 'wagmi'
 
+import { useAppContext } from '@/src/Root/TgContext'
 import { useSendToken } from '@/src/hooks/useSend'
 
 export default function SendCrypto() {

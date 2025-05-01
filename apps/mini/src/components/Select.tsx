@@ -1,10 +1,25 @@
 'use client'
 
-import Select from 'react-select'
+import { ComponentType } from 'react'
+import Select, { GroupBase, OptionProps, PlaceholderProps } from 'react-select'
 
 import { useThemeColor } from '../styles/Color'
 
 import { BottomNote, Label } from './comps'
+
+const CustomOption: ComponentType<OptionProps<any, false, GroupBase<any>>> = (props) =>
+  !props.isDisabled ? (
+    <div {...props.innerProps}>
+      <p className="w-full bg-card shadow-md py-2 px-3 text-[12.5px] hover:bg-primary">
+        {props.label}
+      </p>
+    </div>
+  ) : null
+
+const CustomPlaceholder: ComponentType<PlaceholderProps<any, false, GroupBase<any>>> = (props) =>
+  !props.isDisabled ? (
+    <p {...props.innerProps} className="w-full bg-card shadow-md py-2 px-3 text-muted" />
+  ) : null
 
 export const AppSelect = (props: {
   label?: string
@@ -26,6 +41,8 @@ export const AppSelect = (props: {
     <div className="w-full">
       {props.label && <Label>{props.label}</Label>}
       <Select
+        isSearchable
+        components={{ Option: CustomOption, Placeholder: CustomPlaceholder }}
         options={props.data}
         value={props.value}
         className="w-full m-0"

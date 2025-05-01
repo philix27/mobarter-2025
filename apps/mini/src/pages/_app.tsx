@@ -3,16 +3,16 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Analytics } from '@vercel/analytics/react'
 import type { AppProps } from 'next/app'
 import { PropsWithChildren } from 'react'
-
 import { Root } from 'src/Root'
 import { ErrorBoundary } from 'src/components/Errors'
-import { Provider } from 'src/lib/telegram'
+import { PreventZoom } from 'src/lib/telegram'
 import { useIsSsr } from 'src/lib/utils/ssr'
 import { AppStores } from 'src/lib/zustand'
 import 'src/styles/globals.css'
 // requires a loader
 import { WagmiProvider, createConfig, http } from 'wagmi'
 import { celo, celoAlfajores } from 'wagmi/chains'
+import { logger } from '../lib/utils'
 
 const config = createConfig({
   chains: [celo, celoAlfajores],
@@ -36,25 +36,32 @@ function SafeHydrate({ children }: PropsWithChildren<any>) {
 const queryClient = new QueryClient()
 export default function App({ Component, pageProps }: AppProps) {
   const store = AppStores.useUser()
-  const apollo = new ApolloClient({
-    uri: process.env.NEXT_PUBLIC_BACKEND_SERVER,
-    headers: {
-      Authorization: `Bearer ${store.token}`,
-    },
-    cache: new InMemoryCache(),
-  })
+  const apollo = () => {
+    try {
+      return new ApolloClient({
+        uri: process.env.NEXT_PUBLIC_BACKEND_SERVER,
+        headers: {
+          Authorization: `Bearer ${store.token}`,
+        },
+        cache: new InMemoryCache(),
+      })
+    } catch (e) {
+      logger.error(e)
+      return undefined
+    }
+  }
   return (
     <ErrorBoundary>
       <WagmiProvider config={config}>
         <SafeHydrate>
           <QueryClientProvider client={queryClient}>
             {/* <RainbowKitProvider> */}
-            <ApolloProvider client={apollo}>
-              <Provider>
+            <ApolloProvider client={apollo()!}>
+              <PreventZoom>
                 <Root>
                   <Component {...pageProps} />
                 </Root>
-              </Provider>
+              </PreventZoom>
             </ApolloProvider>
             {/* </RainbowKitProvider> */}
           </QueryClientProvider>

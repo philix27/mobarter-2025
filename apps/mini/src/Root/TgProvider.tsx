@@ -9,7 +9,7 @@ import { useClientOnce } from 'src/hooks/useClientOnce'
 import { useTelegramMock } from 'src/hooks/useTelegramMock'
 import { init } from 'src/lib/telegram/init'
 
-import { TgAppProvider } from './context'
+import { TgAppProvider } from './TgContext'
 
 if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_PARTICLE_ENV === 'development') {
   window.__PARTICLE_ENVIRONMENT__ = 'development'

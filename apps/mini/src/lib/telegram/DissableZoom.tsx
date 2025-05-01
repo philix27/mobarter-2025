@@ -1,6 +1,14 @@
 import { ReactNode, useEffect } from 'react'
 
-export function DisableZoom(props: {children: ReactNode}) {
+export function PreventZoom(props: { children: ReactNode }) {
+  return (
+    <div className="no-scrollbar" id="root">
+      <DisableZoom>{props.children}</DisableZoom>
+    </div>
+  )
+}
+
+export function DisableZoom(props: { children: ReactNode }) {
   useEffect(() => {
     document.addEventListener('gesturestart', function (e) {
       e.preventDefault()
@@ -47,15 +55,14 @@ export function DisableZoom(props: {children: ReactNode}) {
     }
   }, [])
 
-
   if (window.visualViewport) {
-  window.visualViewport.addEventListener('resize', () => {
-    document.body.style.height = window.visualViewport!.height + 'px';
-  });
-}
-// This will ensure user never overscroll the page
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 0) window.scrollTo(0, 0);
-});
+    window.visualViewport.addEventListener('resize', () => {
+      document.body.style.height = window.visualViewport!.height + 'px'
+    })
+  }
+  // This will ensure user never overscroll the page
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 0) window.scrollTo(0, 0)
+  })
   return <>{props.children}</>
 }

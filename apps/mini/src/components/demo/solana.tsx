@@ -3,12 +3,13 @@ import { useSolana } from '@particle-network/auth-core-modal'
 import { PublicKey, SystemProgram, Transaction } from '@solana/web3.js'
 import bs58 from 'bs58'
 import { toast } from 'sonner'
-import { useAppContext } from 'src/Root/context'
 import { messageValue } from 'src/lib/config/particleData'
 import { logger } from 'src/lib/utils/logger'
+import { shortString } from 'src/lib/utils/string'
 
 import { Button } from '../Button'
-import { shortString } from 'src/lib/utils/string'
+
+import { useAppContext } from '@/src/Root/TgContext'
 
 const SolanaDemo = () => {
   const { address, signMessage, signAndSendTransaction } = useSolana()

@@ -36,9 +36,14 @@ export default function BottomModal({
         onDoubleClick={props.onClose}
       />
       <DPortal>
-        <DContent className="bg-background flex flex-col rounded-t-[10px] p-2 h-fit fixed bottom-0 left-0 right-0 outline-none">
+        <DContent
+          className={`bg-background flex flex-col 
+        rounded-t-[10px] p-2 h-fit
+        fixed bottom-0 left-0 right-0
+        outline-none `}
+        >
           <div
-            className={clsx('flex flex-col max-w-md mx-auto w-full pt-1 mb-5 px-2', {
+            className={clsx('flex flex-col max-w-md mx-auto w-full pt-1 mb-5 px-2 max-h-[80vh] overflow-y-scroll', {
               'overflow-y-auto': snap === 1,
               'overflow-hidden': snap !== 1,
             })}

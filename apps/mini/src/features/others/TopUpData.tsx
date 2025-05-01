@@ -16,7 +16,7 @@ import { AppSelect } from 'src/components/Select'
 import { Card, Label } from 'src/components/comps'
 // import { useSendToken } from 'src/hooks/useSend'
 // import { TokenId } from 'src/lib/config/tokens'
-import { pasteTextFromClipboard } from 'src/lib/utils'
+import { cn, pasteTextFromClipboard } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
 
 import BalCard from './BalCard'
@@ -114,8 +114,8 @@ export default function TopUpData() {
       <div className="w-full items-center justify-center flex flex-col gap-y-4 px-1">
         <BalCard />
         <Input
-          label={`${mapCountryToIso[store.countryIso]} Phone number`}
-          placeholder={`${countryCode}8101234567`}
+          label={`Phone NO. (${mapCountryToIso[store.countryIso]})`}
+          placeholder={`${countryCode.slice(1)}8101234567`}
           value={phoneNo}
           type="number"
           onChange={(e) => {
@@ -141,6 +141,9 @@ export default function TopUpData() {
             label="Network*"
             onChange={(id) => {
               setOperatorId(id)
+              if (operatorId !== id) {
+                setOperatorPlan({ amount: '', desc: '' })
+              }
             }}
             data={data.map((val) => {
               return {
@@ -151,9 +154,9 @@ export default function TopUpData() {
           />
         )}
 
-        <div className="w-full mt-3">
-          <Label>Selected Plan</Label>
-          {operatorPlan!.desc ? (
+        <div className="w-full ">
+          <Label>Selected Plan*</Label>
+          {operatorPlan && operatorPlan.desc ? (
             <Card
               onClick={() => {
                 setShowBtmSheet(true)
@@ -162,11 +165,15 @@ export default function TopUpData() {
               operatorPlan!.desc
             }`}</Card>
           ) : (
-            <Card>{`Select a plan`}</Card>
+            <Card
+              onClick={() => {
+                setShowBtmSheet(true)
+              }}
+            >{`Select a plan`}</Card>
           )}
         </div>
 
-        <div className="w-full mt-3">
+        <div className="w-full ">
           <Label>You Pay:</Label>
           <Card>{amountToPay}</Card>
         </div>
@@ -175,27 +182,32 @@ export default function TopUpData() {
         </Button>
       </div>
       <BottomModal
-        showSheet={plansList() && showBtm}
+        showSheet={showBtm}
         onClose={() => {
           setShowBtmSheet(false)
         }}
       >
         <div className="w-full items-center justify-center flex flex-col">
-          {plansList()!.map((val, i) => (
-            <TileSimple
-              key={i}
-              title={`${val.symbol} ${val.amount}`}
-              desc={val.label}
-              onClick={() => {
-                // setAmountVal(parseFloat(val.amount))
-                handleOnChange(parseFloat(val.amount))
-                setOperatorPlan({
-                  amount: val.amount,
-                  desc: val.label,
-                })
-              }}
-            />
-          ))}
+          {plansList() &&
+            plansList()!.map((val, i) => {
+              const isActive = operatorPlan && operatorPlan.amount === val.amount
+              return (
+                <TileSimple
+                  key={i}
+                  title={`${val.symbol} ${val.amount}`}
+                  desc={val.label}
+                  className={cn(isActive && 'border-primary border')}
+                  onClick={() => {
+                    // setAmountVal(parseFloat(val.amount))
+                    handleOnChange(parseFloat(val.amount))
+                    setOperatorPlan({
+                      amount: val.amount,
+                      desc: val.label,
+                    })
+                  }}
+                />
+              )
+            })}
         </div>
       </BottomModal>
     </>

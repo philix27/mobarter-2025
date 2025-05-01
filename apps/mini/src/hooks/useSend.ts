@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import { toast } from 'sonner'
 import { TokenId } from 'src/lib/config/tokens'
 
-import { useAppContext } from '../Root/context'
+import { useAppContext } from '../Root/TgContext'
 import { logger, shortString } from '../lib/utils'
 
 import { useProvider } from './useProvider'
