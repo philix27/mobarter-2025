@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "gen": "graphql-codegen --config codegen.ts",
     "lint": "next lint"
   },
   "type": "module",
@@ -48,12 +49,27 @@
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
-    "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.1",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.2.8",
-    "typescript": "^5"
+    "@apollo/client": "^3.13.4",
+    "@graphql-codegen/cli": "^5.0.5",
+    "@graphql-codegen/introspection": "^4.0.3",
+    "@graphql-codegen/typed-document-node": "^5.1.0",
+    "@graphql-codegen/typescript": "^4.1.5",
+    "@graphql-codegen/typescript-document-nodes": "^4.0.15",
+    "@graphql-codegen/typescript-operations": "^4.5.1",
+    "@graphql-codegen/typescript-react-apollo": "^4.3.2",
+    "@graphql-codegen/typescript-resolvers": "^4.4.4",
+    "@graphql-codegen/typescript-urql": "^4.0.0",
+    "@repo/typescript-config": "*",
+    "@tanstack/react-query": "^5.67.2",
+    "@types/react": "^18.2.14",
+    "axios": "^1.8.4",
+    "graphql": "^16.10.0",
+    "tsup": "^8.0.1",
+    "typescript": "5.5.4"
   }
 }

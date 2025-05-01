@@ -1,0 +1,23 @@
+mutation BankAccount_delete($input: BankAccount_DeleteInput!) {
+  bankAccount_delete(input: $input) {
+    message
+  }
+}
+
+mutation BankAccount_create($input: BankAccount_CreateInput!) {
+  bankAccount_create(input: $input) {
+    id
+    bank_name
+    account_name
+    account_no
+  }
+}
+
+query BankAccount_getAll {
+  bankAccount_getAll {
+    id
+    account_name
+    account_no
+    bank_name
+  }
+}
