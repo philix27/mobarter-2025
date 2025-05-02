@@ -1,5 +1,9 @@
-import axios from 'axios';
+import axios from 'axios'
 
+export async function getBundlesOperator(countryIso: string) {
+  const res = await axios.get(`/api/operator-bundles/${countryIso}`)
+  return res.data as IOperators[]
+}
 
 export async function getDataOperator(countryIso: string) {
   const res = await axios.get(`/api/operator-data/${countryIso}`)

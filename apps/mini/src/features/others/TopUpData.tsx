@@ -1,11 +1,9 @@
-// import { useMutation } from '@apollo/client'
-// import {
-//   CurrencyFiat,
-//   MutationResponse,
-//   MutationUtility_PurchaseAirtimeArgs,
-//   Operator,
-//   Utility_PurchaseAirtimeDocument,
-// } from '@repo/api'
+import { useMutation } from '@apollo/client'
+import {
+  MutationResponse,
+  MutationUtility_PurchaseDataBundleArgs,
+  Utility_PurchaseDataBundleDocument,
+} from '@repo/api'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { FaCopy } from 'react-icons/fa6'
@@ -14,8 +12,8 @@ import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
 import { AppSelect } from 'src/components/Select'
 import { Card, Label } from 'src/components/comps'
-// import { useSendToken } from 'src/hooks/useSend'
-// import { TokenId } from 'src/lib/config/tokens'
+import { useSendToken } from 'src/hooks/useSend'
+import { TokenId } from 'src/lib/config/tokens'
 import { cn, pasteTextFromClipboard } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
 
@@ -23,28 +21,31 @@ import BalCard from './BalCard'
 import BottomModal from '@/src/components/BottomModal'
 import { TileSimple } from '@/src/components/TileSimple'
 import { usePrice } from '@/src/hooks/usePrice'
-import { mapCountryToData, mapCountryToIso } from '@/src/lib'
-// import { COLLECTOR } from '@/src/lib/config'
-import { getDataOperator } from '@/src/lib/server'
+import { isDev, mapCountryToData, mapCountryToIso } from '@/src/lib'
+import { COLLECTOR } from '@/src/lib/config'
+import { getBundlesOperator, getDataOperator } from '@/src/lib/server'
 
-export default function TopUpData() {
-  // const [amtValue, setAmountVal] = useState<number>()
+export default function TopUpData(props: { isData: boolean }) {
   const [phoneNo, setPhoneNo] = useState<string>('')
   const [showBtm, setShowBtmSheet] = useState<boolean>(false)
-  // const [selectedOperator, setOperator] = useState<Operator>()
   const [operatorId, setOperatorId] = useState('')
   const [operatorPlan, setOperatorPlan] = useState<{ amount: string; desc: string }>()
 
   const Copy = FaCopy as any
   const store = AppStores.useSettings()
   const countryCode = mapCountryToData[store.countryIso].callingCodes[0]
-  // const { sendErc20 } = useSendToken()
+  const { sendErc20 } = useSendToken()
   const { amountToPay, handleOnChange } = usePrice()
 
   const { data } = useQuery({
-    queryKey: ['getDataOperator'],
+    queryKey: [`getDataOperator-${props.isData ? 'isData' : 'isBundle'}`],
     queryFn: async () => {
-      const res = await getDataOperator(store.countryIso)
+      let res
+      if (props.isData) {
+        res = await getDataOperator(store.countryIso)
+      } else {
+        res = await getBundlesOperator(store.countryIso)
+      }
       return res
     },
   })
@@ -66,49 +67,54 @@ export default function TopUpData() {
 
     return amountDesc
   }
-  // const [mutate] = useMutation<
-  //   MutationResponse<'utility_purchaseAirtime'>,
-  //   MutationUtility_PurchaseAirtimeArgs
-  // >(Utility_PurchaseAirtimeDocument)
+  const [mutate] = useMutation<
+    MutationResponse<'utility_purchaseDataBundle'>,
+    MutationUtility_PurchaseDataBundleArgs
+  >(Utility_PurchaseDataBundleDocument)
 
   const handleSend = async () => {
-    // const leastAmount = isDev ? 50 : 50
-    // if (selectedOperator === undefined) {
-    //   toast.error('Select an operator')
-    //   return
-    // }
-    // if (amtValue == undefined || amtValue < leastAmount) {
-    //   toast.error('Minimum of NGN1,000')
-    //   return
-    // }
-    // await sendErc20({
-    //   recipient: COLLECTOR,
-    //   amount: amountToPay!.toString(),
-    //   token: TokenId.cUSD,
-    // })
-    //   .then((txHash) => {
-    //     void mutate({
-    //       variables: {
-    //         input: {
-    //           amount: amtValue,
-    //           countryCode: mapCountryToIso[store.countryIso],
-    //           currency: CurrencyFiat.Ngn,
-    //           operator: selectedOperator!,
-    //           transaction_hash: txHash || `${Date.now()}`,
-    //           phoneNo,
-    //         },
-    //       },
-    //       onCompleted() {
-    //         toast.success('Sent successfully')
-    //         setPhoneNo('')
-    //         setAmountVal(0)
-    //       },
-    //     })
-    //   })
-    //   .catch((err) => {
-    //     toast.error('Error sending cUSD:', err.message)
-    //   })
+    const leastAmount = isDev ? 50 : 50
+
+    if (operatorPlan === undefined) {
+      toast.error('Select an operator')
+      return
+    }
+
+    const amtValue = parseInt(operatorPlan.amount)
+
+    if (amtValue < 0 || amtValue < leastAmount) {
+      toast.error('Amount must be above zero')
+      return
+    }
+
+    await sendErc20({
+      recipient: COLLECTOR,
+      amount: amountToPay!.toString(),
+      token: TokenId.cUSD,
+    })
+      .then((txHash) => {
+        void mutate({
+          variables: {
+            input: {
+              amount: parseInt(operatorPlan.amount),
+              countryCode: mapCountryToIso[store.countryIso],
+              operator: parseInt(operatorId),
+              transaction_hash: txHash || `${Date.now()}`,
+              phoneNo,
+            },
+          },
+          onCompleted() {
+            toast.success('Sent successfully')
+            setPhoneNo('')
+            setOperatorPlan({ amount: '', desc: '' })
+          },
+        })
+      })
+      .catch((err) => {
+        toast.error('Error sending cUSD:', err.message)
+      })
   }
+
   return (
     <>
       <div className="w-full items-center justify-center flex flex-col gap-y-4 px-1">
@@ -179,7 +185,7 @@ export default function TopUpData() {
           <Card>{amountToPay} </Card>
         </div>
         <Button className="mt-5 w-[70%]" onClick={handleSend}>
-          Send
+          Confirm
         </Button>
       </div>
       <BottomModal

@@ -59,10 +59,8 @@ export default function SendCrypto() {
     // toast.success(`After Clicked`)
 
     if (selectedToken === 'CELO') {
-      toast.success(`CELO`)
       void sendNative()
     } else {
-      toast.success(`ERC20`)
       // const token = tokensList.filter((val) => val.symbol === selectedToken)[0].symbol
       await sendErc20({
         recipient: walletAddress,

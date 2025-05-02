@@ -1,6 +1,5 @@
 import { useMutation } from '@apollo/client'
 import {
-  CurrencyFiat,
   MutationResponse,
   MutationUtility_PurchaseAirtimeArgs,
   Operator,
@@ -60,7 +59,6 @@ export default function Airtime() {
             input: {
               amount: amtValue,
               countryCode: mapCountryToIso[store.countryIso],
-              currency: CurrencyFiat.Ngn,
               operator: selectedOperator!,
               transaction_hash: txHash || `${Date.now()}`,
               phoneNo,

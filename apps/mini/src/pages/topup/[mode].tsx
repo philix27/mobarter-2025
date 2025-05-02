@@ -2,7 +2,6 @@ import { useRouter } from 'next/router'
 import Wrapper from 'src/components/wrapper/Wrapper'
 
 import Airtime from '@/src/features/others/TopUpAirtime'
-import TopUpBundle from '@/src/features/others/TopUpBundle'
 import TopUpData from '@/src/features/others/TopUpData'
 
 export default function Page() {
@@ -11,8 +10,8 @@ export default function Page() {
 
   return (
     <Wrapper hideBottomNav>
-      {mode === 'data' && <TopUpData />}
-      {mode === 'bundles' && <TopUpBundle />}
+      {mode === 'data' && <TopUpData isData />}
+      {mode === 'bundles' && <TopUpData isData={false} />}
       {mode === 'airtime' && <Airtime />}
     </Wrapper>
   )
