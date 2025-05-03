@@ -258,9 +258,14 @@ export enum CurrencyCrypto {
 }
 
 export enum CurrencyFiat {
-  Ghs = 'GHS',
-  Kes = 'KES',
-  Ngn = 'NGN'
+  Gh = 'GH',
+  Ke = 'KE',
+  Mw = 'MW',
+  Ng = 'NG',
+  Rw = 'RW',
+  Tz = 'TZ',
+  Ug = 'UG',
+  Za = 'ZA'
 }
 
 export type ExchangeRate_Response = {
@@ -703,17 +708,6 @@ export type QueryUser_GetOneArgs = {
   input: UserGetInfo;
 };
 
-export enum TopUpCountryCode {
-  Ghana = 'GHANA',
-  Kenya = 'KENYA',
-  Malawi = 'MALAWI',
-  Nigeria = 'NIGERIA',
-  Rwanda = 'RWANDA',
-  SouthAfrica = 'SOUTH_AFRICA',
-  Tanzania = 'TANZANIA',
-  Uganda = 'UGANDA'
-}
-
 export enum TradeType {
   Buy = 'BUY',
   Sell = 'SELL'
@@ -772,8 +766,7 @@ export type UserGetInfo = {
 
 export type Utilities_PurchaseAirtimeInput = {
   amount: Scalars['Float']['input'];
-  countryCode: TopUpCountryCode;
-  currency: CurrencyFiat;
+  countryCode: CurrencyFiat;
   operator: Operator;
   phoneNo: Scalars['String']['input'];
   transaction_hash: Scalars['String']['input'];
@@ -781,8 +774,7 @@ export type Utilities_PurchaseAirtimeInput = {
 
 export type Utilities_PurchaseDataBundleInput = {
   amount: Scalars['Float']['input'];
-  countryCode: TopUpCountryCode;
-  currency: CurrencyFiat;
+  countryCode: CurrencyFiat;
   operator: Scalars['Int']['input'];
   phoneNo: Scalars['String']['input'];
   transaction_hash: Scalars['String']['input'];

@@ -1,4 +1,4 @@
-import { CurrencyFiat } from '@repo/api'
+import { CurrencyFiat,  } from '@repo/api'
 
 export type CountriesIso = 'NG' | 'GH' | 'KE' | 'MW' | 'RW' | 'TZ' | 'UG' | 'ZA'
 
@@ -13,6 +13,17 @@ export type CountriesIso = 'NG' | 'GH' | 'KE' | 'MW' | 'RW' | 'TZ' | 'UG' | 'ZA'
 //   ZA: TopUpCountryCode.SouthAfrica,
 // }
 export const mapCountryToIso: Record<CountriesIso, CurrencyFiat> = {
+  NG: CurrencyFiat.Ng,
+  GH: CurrencyFiat.Gh,
+  KE: CurrencyFiat.Ke,
+  MW: CurrencyFiat.Mw,
+  RW: CurrencyFiat.Rw,
+  TZ: CurrencyFiat.Tz,
+  UG: CurrencyFiat.Ug,
+  ZA: CurrencyFiat.Za,
+}
+
+export const mapCountryToIso: Record<CountriesIso, TopUpCountryCode> = {
   NG: CurrencyFiat.Ng,
   GH: CurrencyFiat.Gh,
   KE: CurrencyFiat.Ke,
