@@ -91,6 +91,7 @@ export default function Utilities() {
         void router.push('/topup/bundles')
       },
     },
+
     {
       title: 'Gift Cards',
       icon: GoGift,
@@ -98,21 +99,31 @@ export default function Utilities() {
         toast.info('Coming soon!')
       },
     },
-    {
-      title: 'Electricity',
-      icon: MdElectricalServices,
-      onClick: () => {
-        toast.info('Coming soon!')
-      },
-    },
-    {
-      title: 'Go TV',
-      icon: FaTv,
-      onClick: () => {
-        toast.info('Coming soon!')
-      },
-    },
   ]
+
+  const getUtils = () => {
+    const list = utilitiesBtn
+    if (store.countryIso === 'NG') {
+      list.push(
+        {
+          title: 'Electricity',
+          icon: MdElectricalServices,
+          onClick: () => {
+            void router.push('/bills/electricity')
+          },
+        },
+        {
+          title: 'TV',
+          icon: FaTv,
+          onClick: () => {
+            toast.info('Coming soon!')
+          },
+        }
+      )
+      return list
+    }
+    return list
+  }
   const othersBtn: IconItem[] = [
     {
       title: 'Orders',
@@ -138,7 +149,7 @@ export default function Utilities() {
         })}
       </GridContainer>
       <GridContainer title="Utilities">
-        {utilitiesBtn.map((val, i) => {
+        {getUtils().map((val, i) => {
           return <RoundIcon key={i} Icon={val.icon} title={val.title} onClick={val.onClick} />
         })}
       </GridContainer>
