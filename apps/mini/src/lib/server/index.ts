@@ -23,3 +23,4 @@ export async function getElectricityBillers(countryIso: string) {
 export * from './ElectricityBill'
 export * from './OperatorsData'
 export * from './getAccountInfo'
+export * from './getTxn'

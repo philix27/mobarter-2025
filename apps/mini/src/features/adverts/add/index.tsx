@@ -90,17 +90,17 @@ export function AddAdsView() {
         ]}
         error={f.formState.errors.crypto && f.formState.errors.crypto.message}
       />
-      <AppSelect
+      {/* <AppSelect
         label="Fiat Currency"
         onChange={(value: string) => {
           f.setValue('fiat', value)
         }}
         data={[
-          { value: CurrencyFiat.Ngn, label: CurrencyFiat.Ngn },
-          { value: CurrencyFiat.Kes, label: CurrencyFiat.Kes },
+          { value: mapCountryToIso, label: CurrencyFiat.Ng },
+          { value: CurrencyFiat.Ke, label: CurrencyFiat.Ke },
         ]}
         error={f.formState.errors.fiat && f.formState.errors.fiat.message}
-      />
+      /> */}
       <Input
         label="Amount"
         placeholder="Floating rate"
