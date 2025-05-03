@@ -2,7 +2,6 @@ import { useMutation } from '@apollo/client'
 import {
   BankName,
   CurrencyCrypto,
-  CurrencyFiat,
   MutationOrders_CreateSellArgs,
   MutationResponse,
   OrderActions,
@@ -27,7 +26,7 @@ import { Card, Label } from '@/src/components/comps'
 import { usePrice } from '@/src/hooks/usePrice'
 import { useSendToken } from '@/src/hooks/useSend'
 import { useTokenBalance } from '@/src/hooks/useTokenBal'
-import { isDev } from '@/src/lib'
+import { isDev, mapCountryToIso } from '@/src/lib'
 import { BANKS_LIST } from '@/src/lib/banks'
 import { COLLECTOR } from '@/src/lib/config'
 import { getAccountInfo } from '@/src/lib/server'
@@ -36,6 +35,7 @@ import { AppStores } from '@/src/lib/zustand'
 const Copy = FaCopy as any
 export default function SendToBank() {
   const store = AppStores.useSendToBank()
+  const storeSettings = AppStores.useSettings()
   // const [selectedToken, setToken] = useState('cUSD')
   const [bankCode, setBankCode] = useState('0')
   const [bankAccountNo, setBankAccountNo] = useState('')
@@ -85,7 +85,7 @@ export default function SendToBank() {
           input: {
             amount_fiat: amountFiat,
             amount_crypto: amountToPay,
-            currency_fiat: CurrencyFiat.Ng as CurrencyFiat,
+            currency_fiat: mapCountryToIso[storeSettings.countryIso],
             currency_crypto: CurrencyCrypto.Cusd!,
             estimated_duration: `EXPRESS`,
             trade_type: TradeType.Sell!,
