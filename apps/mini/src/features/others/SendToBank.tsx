@@ -85,7 +85,7 @@ export default function SendToBank() {
           input: {
             amount_fiat: amountFiat,
             amount_crypto: amountToPay,
-            currency_fiat: CurrencyFiat.Ng,
+            currency_fiat: CurrencyFiat.Ng as CurrencyFiat,
             currency_crypto: CurrencyCrypto.Cusd!,
             estimated_duration: `EXPRESS`,
             trade_type: TradeType.Sell!,

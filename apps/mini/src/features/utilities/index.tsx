@@ -5,7 +5,6 @@ import { BsSend } from 'react-icons/bs'
 import { FaTv } from 'react-icons/fa'
 import { GoGift } from 'react-icons/go'
 import { GrNotification } from 'react-icons/gr'
-import { IoArrowDownOutline, IoArrowUpOutline } from 'react-icons/io5'
 import { LiaPhoneVolumeSolid } from 'react-icons/lia'
 import { LuSquareArrowOutUpRight } from 'react-icons/lu'
 import { MdElectricalServices, MdNotes, MdPermDataSetting } from 'react-icons/md'
@@ -33,18 +32,12 @@ export default function Utilities() {
         store.update({ homeBtmSheet: 'SEND_CRYPTO' })
       },
     },
+
     {
       title: 'Receive',
       icon: SlWallet,
       onClick: () => {
         store.update({ homeBtmSheet: 'WALLET' })
-      },
-    },
-    {
-      title: 'Xpay',
-      icon: SiExpress,
-      onClick: () => {
-        void router.push('/pay')
       },
     },
     {
@@ -54,20 +47,20 @@ export default function Utilities() {
         toast.info('Coming soon!')
       },
     },
-    {
-      title: 'Buy',
-      icon: IoArrowDownOutline,
-      onClick: () => {
-        toast.info('Coming soon!')
-      },
-    },
-    {
-      title: 'Sell',
-      icon: IoArrowUpOutline,
-      onClick: () => {
-        toast.info('Coming soon!')
-      },
-    },
+    // {
+    //   title: 'Buy',
+    //   icon: IoArrowDownOutline,
+    //   onClick: () => {
+    //     toast.info('Coming soon!')
+    //   },
+    // },
+    // {
+    //   title: 'Sell',
+    //   icon: IoArrowUpOutline,
+    //   onClick: () => {
+    //     toast.info('Coming soon!')
+    //   },
+    // },
   ]
   const utilitiesBtn: IconItem[] = [
     {
@@ -101,6 +94,23 @@ export default function Utilities() {
     },
   ]
 
+  const othersBtn: IconItem[] = [
+    {
+      title: 'Orders',
+      icon: MdNotes,
+      onClick: () => {
+        void router.push('/orders')
+      },
+    },
+    {
+      title: 'Notifications',
+      icon: GrNotification,
+      onClick: () => {
+        toast.info('Coming soon!')
+      },
+    },
+  ]
+
   const getUtils = () => {
     const list = utilitiesBtn
     if (store.countryIso === 'NG') {
@@ -124,27 +134,26 @@ export default function Utilities() {
     }
     return list
   }
-  const othersBtn: IconItem[] = [
-    {
-      title: 'Orders',
-      icon: MdNotes,
-      onClick: () => {
-        void router.push('/orders')
-      },
-    },
-    {
-      title: 'Notifications',
-      icon: GrNotification,
-      onClick: () => {
-        toast.info('Coming soon!')
-      },
-    },
-  ]
+  const getUIcons = () => {
+    const list = icons
+    if (store.countryIso === 'NG') {
+      list.push({
+        title: 'Xpay',
+        icon: SiExpress,
+        onClick: () => {
+          void router.push('/pay')
+        },
+      })
+      return list
+    }
+    return list
+  }
+
   return (
     <div className="w-full">
       <CarouselComp />
       <GridContainer title="Payments">
-        {icons.map((val, i) => {
+        {getUIcons().map((val, i) => {
           return <RoundIcon key={i} Icon={val.icon} title={val.title} onClick={val.onClick} />
         })}
       </GridContainer>
