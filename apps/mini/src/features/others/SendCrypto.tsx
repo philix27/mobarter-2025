@@ -14,7 +14,7 @@ import { formatEtherBalance, pasteTextFromClipboard, shortString } from 'src/lib
 import { logger } from 'src/lib/utils/logger'
 import { useBalance } from 'wagmi'
 
-import { useAppContext } from '@/src/Root/TgContext'
+import { useAppContext } from '@/src/Root/providers/TgContext'
 import { useSendToken } from '@/src/hooks/useSend'
 
 export default function SendCrypto() {

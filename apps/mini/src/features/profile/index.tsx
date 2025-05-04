@@ -12,7 +12,7 @@ import { copyTextToClipboard, shortString } from 'src/lib/utils'
 
 import { Container, MoreFeat } from './More'
 import { Row } from './comps'
-import { useAppContext } from '@/src/Root/TgContext'
+import { useAppContext } from '@/src/Root/providers/TgContext'
 
 const DImage = Image as any
 function useInitData() {

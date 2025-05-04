@@ -1,10 +1,14 @@
-import { create } from 'zustand'
-import { createJSONStorage, persist } from 'zustand/middleware'
+import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
-import { CountriesIso } from '../countries'
+
+
+import { CountriesIso } from '../countries';
+
 
 export type IHomeTab = 'Balances' | 'Services'
 export type IManageAdsTab = 'OPEN' | 'CLOSED' | 'ADD'
+export type IAppEnv = 'MINIPAY' | 'FARCASTER' | 'TELEGRAM'
 export type IP2PTabs = 'BUY' | 'SELL'
 export type IOrdersTabs = 'PENDING' | 'COMPLETED' | 'CANCELED' | 'APPEAL'
 export type IHomeBottomSheet =
@@ -20,8 +24,6 @@ export type IHomeBottomSheet =
   | 'NULL'
   | undefined
 export type IHistoryTabs = 'ALL' | 'AIRTIME'
-export type IProfileTabs = 'INFO' | 'ACTIONS' | 'BANK'
-export type ISwap = 'EXCHANGE' | 'CONFIRM'
 
 export interface ISlice {
   sidebarOpen?: boolean
@@ -35,13 +37,10 @@ export interface ISlice {
   homeTab?: IHomeTab
   homeBtmSheet?: IHomeBottomSheet
   historyTab?: IHistoryTabs
-  profileTabs?: IProfileTabs
-  swapSteps?: ISwap
-  showSlippage?: boolean
-  showChart?: boolean
   token?: boolean
   countryIso?: CountriesIso
   chainIcon?: string
+  appEnv?: IAppEnv
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
@@ -61,13 +60,10 @@ export const defaultValues: Required<ISlice> = {
   homeBtmSheet: 'NULL',
   historyTab: 'ALL',
   showSupportModal: false,
-  profileTabs: 'INFO',
-  swapSteps: 'EXCHANGE',
-  showSlippage: false,
-  showChart: false,
   token: false,
   countryIso: 'NG',
   chainIcon: '',
+  appEnv: 'MINIPAY',
 }
 
 export const useSettings = create(

@@ -7,7 +7,7 @@ import { useBalance } from 'wagmi'
 import HomePopups from './HomePopups'
 import { TokenRow } from './TokenRow'
 import { HomeTabs } from './TopTabs'
-import { useAppContext } from '@/src/Root/TgContext'
+import { useAppContext } from '@/src/Root/providers/TgContext'
 
 export default function Home() {
   return (

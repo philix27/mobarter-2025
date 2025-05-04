@@ -4,38 +4,13 @@ import BottomNav from './BottomNav'
 import Drawer from './Drawer'
 import Sidebar from './Sidebar'
 
-export default function Wrapper({
+export default function WrapperComp({
   hideBottomNav,
   ...props
 }: {
   children: ReactNode
   hideBottomNav?: boolean
 }) {
-  // const router = useRouter()
-
-  // const theme = useThemeColor()
-  // useEffect(() => {
-  //   tg.setMiniAppBackgroundColor(theme.bg as any)
-  //   tg.setMiniAppBottomBarColor(theme.bg as any)
-  //   tg.setMiniAppHeaderColor(theme.bg as any)
-  // }, [theme.bg])
-
-  // useEffect(() => {
-  //   if (hideBottomNav) {
-  //     backButton.show()
-  //   } else {
-  //     backButton.hide()
-  //   }
-  // }, [hideBottomNav])
-
-  // useEffect(() => {
-  //   return backButton.onClick(() => {
-  //     router.back()
-  //   })
-  // }, [router])
-
-  // useInitUserToken()
-
   return (
     <div className="w-screen bg-background h-screen p-0 m-0">
       {/* <TopNav showBack={props.hideBottomNav} /> */}

@@ -3,7 +3,7 @@ import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
 import { formatEtherBalance } from 'src/lib/utils'
 import { useBalance } from 'wagmi'
 
-import { useAppContext } from '@/src/Root/TgContext'
+import { useAppContext } from '@/src/Root/providers/TgContext'
 
 export const useTokenBalance = (id: TokenId) => {
   const { evmAddress } = useAppContext()

@@ -7,7 +7,7 @@ import { Spinner } from 'src/components/Spinner'
 import { shortenAddress } from 'src/lib/config/addresses'
 import { cn, formatEtherBalance, shortString } from 'src/lib/utils'
 
-import { useAppContext } from '@/src/Root/TgContext'
+import { useAppContext } from '@/src/Root/providers/TgContext'
 import { ITransactionsResult, getTxHistory } from '@/src/lib/server'
 
 export default function WalletTransactions() {

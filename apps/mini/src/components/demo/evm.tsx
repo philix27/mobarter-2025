@@ -11,7 +11,7 @@ import { shortString } from 'src/lib/utils/string'
 import { Button } from '../Button'
 import { AppSelect } from '../Select'
 
-import { useAppContext } from '@/src/Root/TgContext'
+import { useAppContext } from '@/src/Root/providers/TgContext'
 
 const EVMDemo = () => {
   const { signMessage, signTypedData, sendTransaction, chainInfo, switchChain } = useEthereum()

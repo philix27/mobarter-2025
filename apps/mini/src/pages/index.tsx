@@ -1,10 +1,12 @@
 import Wrapper from 'src/components/wrapper/Wrapper'
-import Home from 'src/features/home'
+
+// import Home from 'src/features/home'
 
 export default function HomePage() {
   return (
     <Wrapper>
-      <Home />
+      <p>Homie</p>
+      {/* <Home /> */}
     </Wrapper>
   )
 }

@@ -9,7 +9,7 @@ import { Label } from 'src/components/comps'
 import { Row } from './comps'
 import LinksAndActions from './links'
 import Support from './support'
-import { useAppContext } from '@/src/Root/TgContext'
+import { useAppContext } from '@/src/Root/providers/TgContext'
 
 export function MoreFeat() {
   const { openWallet, openAccountAndSecurity } = useAuthCore()

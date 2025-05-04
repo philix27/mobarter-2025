@@ -9,18 +9,9 @@ import { PreventZoom } from 'src/lib/telegram'
 import { useIsSsr } from 'src/lib/utils/ssr'
 import { AppStores } from 'src/lib/zustand'
 import 'src/styles/globals.css'
-// requires a loader
-import { WagmiProvider, createConfig, http } from 'wagmi'
-import { celo, celoAlfajores } from 'wagmi/chains'
-import { logger } from '../lib/utils'
 
-const config = createConfig({
-  chains: [celo, celoAlfajores],
-  transports: {
-    [celo.id]: http(),
-    [celoAlfajores.id]: http(),
-  },
-})
+// requires a loader
+import { logger } from '../lib/utils'
 
 function SafeHydrate({ children }: PropsWithChildren<any>) {
   // Disable app SSR for now as it's not needed and
@@ -52,22 +43,20 @@ export default function App({ Component, pageProps }: AppProps) {
   }
   return (
     <ErrorBoundary>
-      <WagmiProvider config={config}>
-        <SafeHydrate>
-          <QueryClientProvider client={queryClient}>
-            {/* <RainbowKitProvider> */}
-            <ApolloProvider client={apollo()!}>
-              <PreventZoom>
-                <Root>
-                  <Component {...pageProps} />
-                </Root>
-              </PreventZoom>
-            </ApolloProvider>
-            {/* </RainbowKitProvider> */}
-          </QueryClientProvider>
-        </SafeHydrate>
-        {process.env.NODE_ENV !== 'development' && <Analytics />}
-      </WagmiProvider>
+      <SafeHydrate>
+        <QueryClientProvider client={queryClient}>
+          {/* <RainbowKitProvider> */}
+          <ApolloProvider client={apollo()!}>
+            <PreventZoom>
+              <Root>
+                <Component {...pageProps} />
+              </Root>
+            </PreventZoom>
+          </ApolloProvider>
+          {/* </RainbowKitProvider> */}
+        </QueryClientProvider>
+      </SafeHydrate>
+      {process.env.NODE_ENV !== 'development' && <Analytics />}
     </ErrorBoundary>
   )
 }

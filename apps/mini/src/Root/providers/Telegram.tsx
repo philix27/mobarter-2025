@@ -4,18 +4,34 @@ import { Celo } from '@particle-network/chains'
 import TelegramAnalytics from '@telegram-apps/analytics'
 import { useLaunchParams } from '@telegram-apps/sdk-react'
 import { type PropsWithChildren, useEffect } from 'react'
-import { Toaster } from 'sonner'
 import { useClientOnce } from 'src/hooks/useClientOnce'
 import { useTelegramMock } from 'src/hooks/useTelegramMock'
 import { init } from 'src/lib/telegram/init'
+import { WagmiProvider, createConfig, http } from 'wagmi'
+import { celo, celoAlfajores } from 'wagmi/chains'
 
 import { TgAppProvider } from './TgContext'
+
+const config = createConfig({
+  chains: [celo, celoAlfajores],
+  transports: {
+    [celo.id]: http(),
+    [celoAlfajores.id]: http(),
+  },
+})
 
 if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_PARTICLE_ENV === 'development') {
   window.__PARTICLE_ENVIRONMENT__ = 'development'
 }
 
 export function TgProvider({ children }: PropsWithChildren) {
+  return (
+    <WagmiProvider config={config}>
+      <Setup>{children}</Setup>
+    </WagmiProvider>
+  )
+}
+export function Setup({ children }: PropsWithChildren) {
   // Mock Telegram environment in development mode if needed.
   if (process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -76,7 +92,6 @@ export function TgProvider({ children }: PropsWithChildren) {
         },
       }}
     >
-      <Toaster richColors position="bottom-center" expand={false} closeButton duration={2000} />
       <TgAppProvider>{children}</TgAppProvider>
     </AuthCoreContextProvider>
   )

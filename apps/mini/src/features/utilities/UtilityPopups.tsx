@@ -11,7 +11,7 @@ import { AppStores } from 'src/lib/zustand'
 
 import SendCrypto from '../others/SendCrypto'
 
-import { useAppContext } from '@/src/Root/TgContext'
+import { useAppContext } from '@/src/Root/providers/TgContext'
 
 export default function UtilityBottomPopups() {
   const store = AppStores.useSettings()
