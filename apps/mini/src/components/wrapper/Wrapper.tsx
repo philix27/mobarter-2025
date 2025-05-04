@@ -3,39 +3,21 @@ import { ReactNode } from 'react'
 import BottomNav from './BottomNav'
 import Drawer from './Drawer'
 import Sidebar from './Sidebar'
+import WrapperMinipay from './WrapperMinipay'
+import WrapperTg from './WrapperTg'
+import { AppStores } from '@/src/lib/zustand'
 
-export default function Wrapper({
-  hideBottomNav,
-  ...props
-}: {
-  children: ReactNode
-  hideBottomNav?: boolean
-}) {
-  // const router = useRouter()
-
-  // const theme = useThemeColor()
-  // useEffect(() => {
-  //   tg.setMiniAppBackgroundColor(theme.bg as any)
-  //   tg.setMiniAppBottomBarColor(theme.bg as any)
-  //   tg.setMiniAppHeaderColor(theme.bg as any)
-  // }, [theme.bg])
-
-  // useEffect(() => {
-  //   if (hideBottomNav) {
-  //     backButton.show()
-  //   } else {
-  //     backButton.hide()
-  //   }
-  // }, [hideBottomNav])
-
-  // useEffect(() => {
-  //   return backButton.onClick(() => {
-  //     router.back()
-  //   })
-  // }, [router])
-
-  // useInitUserToken()
-
+export default function Wrapper(props: { children: ReactNode; hideBottomNav?: boolean }) {
+  const store = AppStores.useSettings()
+  if (store.appEnv === 'MINIPAY') {
+    return <WrapperMinipay hideBottomNav={props.hideBottomNav}> {props.children}</WrapperMinipay>
+  }
+  if (store.appEnv === 'TELEGRAM') {
+    return <WrapperTg hideBottomNav={props.hideBottomNav}> {props.children}</WrapperTg>
+  }
+  if (store.appEnv === 'FARCASTER') {
+    return <WrapperMinipay hideBottomNav={props.hideBottomNav}> {props.children}</WrapperMinipay>
+  }
   return (
     <div className="w-screen bg-background h-screen p-0 m-0">
       {/* <TopNav showBack={props.hideBottomNav} /> */}
@@ -53,7 +35,7 @@ export default function Wrapper({
           <div className="md:max-w-[840px] w-full">{props.children}</div>
         </div>
       </div>
-      {hideBottomNav || <BottomNav />}
+      {props.hideBottomNav || <BottomNav />}
       <Drawer />
     </div>
   )

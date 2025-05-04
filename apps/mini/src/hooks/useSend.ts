@@ -1,7 +1,8 @@
 import { useEthereum } from '@particle-network/auth-core-modal'
-import { ethers } from 'ethers'
+import { ethers, parseEther } from 'ethers'
 import { toast } from 'sonner'
 import { TokenId } from 'src/lib/config/tokens'
+import { useSendTransaction, useWriteContract } from 'wagmi'
 
 import { useAppContext } from '../Root/providers/TgContext'
 import { logger, shortString } from '../lib/utils'
@@ -61,6 +62,33 @@ export function useSendToken() {
       logger.error('sendNative error', error)
       handleError(error)
     }
+  }
+
+  return { sendErc20, sendNative }
+}
+export function useSendTokenWeb() {
+  const { data: hash, sendTransaction } = useSendTransaction()
+
+  const { writeContract, data: erc20hash } = useWriteContract()
+
+  const sendErc20 = async (props: { recipient: string; amount: string; token: TokenId }) => {
+    writeContract({
+      address: props.recipient as `0x${string}`,
+      abi: ERC20_ABI,
+      functionName: 'transfer',
+      args: [tokenAddress[props.token], ethers.parseUnits(props.amount, 18), 18],
+    })
+
+    toast.success(`Transaction successful: ${erc20hash}`)
+    return JSON.stringify(hash)
+  }
+
+  const sendNative = async (props: { recipient: string; amount: string }) => {
+    sendTransaction({
+      to: props.recipient as `0x${string}`,
+      value: parseEther(props.amount),
+    })
+    toast.success(`Send Native Success! Hash: ${shortString(hash)}`)
   }
 
   return { sendErc20, sendNative }

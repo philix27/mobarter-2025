@@ -5,7 +5,6 @@ import { ErrorPage } from 'src/components/ErrorPage'
 
 import { Spinner } from '../components/Spinner'
 import { useDidMount } from '../hooks/useDidMount'
-import { AppStores } from '../lib/zustand'
 
 import { appEnv } from './const'
 import { FarcasterProvider } from './providers/Facaster'
@@ -17,7 +16,6 @@ export function Root(props: PropsWithChildren) {
   // Unfortunately, Telegram Mini Apps does not allow us to use all features of the Server Side
   // Rendering. That's why we are showing loader on the server side.
   const didMount = useDidMount()
-  const store = AppStores.useSettings()
   if (!didMount) return <Spinner />
 
   // return (
@@ -27,7 +25,6 @@ export function Root(props: PropsWithChildren) {
   // )
 
   if (appEnv === 'MINIPAY') {
-    store.update({ appEnv: 'MINIPAY' })
     return (
       <ErrorBoundary fallback={ErrorPage}>
         <MinipayProvider {...props} />
@@ -37,7 +34,6 @@ export function Root(props: PropsWithChildren) {
   }
 
   if (appEnv === 'FARCASTER') {
-    store.update({ appEnv: 'FARCASTER' })
     return (
       <ErrorBoundary fallback={ErrorPage}>
         <FarcasterProvider {...props} />
@@ -46,7 +42,6 @@ export function Root(props: PropsWithChildren) {
     )
   }
   if (appEnv === 'TELEGRAM') {
-    store.update({ appEnv: 'TELEGRAM' })
     return (
       <ErrorBoundary fallback={ErrorPage}>
         <TgProvider {...props} />
@@ -54,7 +49,7 @@ export function Root(props: PropsWithChildren) {
       </ErrorBoundary>
     )
   }
-  store.update({ appEnv: 'TELEGRAM' })
+  // store.update({ appEnv: 'TELEGRAM' })
   return (
     <ErrorBoundary fallback={ErrorPage}>
       <WebProvider {...props} />

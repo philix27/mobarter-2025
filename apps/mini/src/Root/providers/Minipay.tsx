@@ -1,9 +1,53 @@
-import { PropsWithChildren, useEffect } from 'react'
+import { useMutation } from '@apollo/client'
+import {
+  Auth_MinipayLoginDocument,
+  MutationAuth_MinipayLoginArgs,
+  MutationResponse,
+} from '@repo/api'
+import { PropsWithChildren } from 'react'
 import { custom } from 'viem'
 import { celo, celoAlfajores } from 'viem/chains'
-import { WagmiProvider, createConfig, injected, useConnect } from 'wagmi'
+import { WagmiProvider, createConfig, useAccount } from 'wagmi'
 
 import { AppStores } from '@/src/lib/zustand'
+
+export function useInitMinipayUser() {
+  const store = AppStores.useUser()
+
+  const { address } = useAccount()
+
+  const [mutate] = useMutation<
+    MutationResponse<'auth_minipayLogin'>,
+    MutationAuth_MinipayLoginArgs
+  >(Auth_MinipayLoginDocument)
+
+  if (Date.now() < store.timeTokenStored) {
+    return
+  }
+
+  const now = Date.now() // Current time in ms
+
+  const twoDaysInMs = 1 * 24 * 60 * 60 * 1000 // 1 day -> hours -> minutes -> seconds -> milliseconds
+
+  const futureTime = now + twoDaysInMs
+
+  void mutate({
+    variables: {
+      input: {
+        walletAddress: address!,
+      },
+    },
+    onCompleted(data) {
+      store.update({
+        walletAddress: address!,
+        token: data.auth_minipayLogin.token!,
+        timeTokenStored: futureTime,
+      })
+    },
+  })
+  // }
+  return {}
+}
 
 export function MinipayProvider({ children }: PropsWithChildren) {
   const win = window as any
@@ -16,27 +60,5 @@ export function MinipayProvider({ children }: PropsWithChildren) {
     },
   })
 
-  return (
-    <WagmiProvider config={config}>
-      <Setup />
-      {children}
-    </WagmiProvider>
-  )
-}
-
-function Setup() {
-  const win = window as any
-  const store = AppStores.useSettings()
-  const { connect } = useConnect()
-
-  useEffect(() => {
-    if (win.ethereum && win.ethereum.isMiniPay) {
-      // User is using MiniPay so hide connect wallet button.
-
-      store.update({ appEnv: 'MINIPAY' })
-
-      connect({ connector: injected({ target: 'metaMask' }) })
-    }
-  }, [connect])
-  return <></>
+  return <WagmiProvider config={config}>{children}</WagmiProvider>
 }

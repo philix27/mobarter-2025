@@ -9,7 +9,7 @@
     "Exchange"
   ],
   "scripts": {
-    "dev": "NODE_ENV=development next -p 3232",
+    "dev": "NODE_ENV=development next -p 3233",
     "deva": "next dev --experimental-https",
     "build": "next build",
     "typecheck": "tsc",

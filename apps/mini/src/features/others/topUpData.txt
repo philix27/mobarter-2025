@@ -1,69 +1,54 @@
-import { useMutation } from '@apollo/client'
-import {
-  MutationResponse,
-  MutationUtility_PurchaseDataBundleArgs,
-  Utility_PurchaseDataBundleDocument,
-} from '@repo/api'
-import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
-import { FaCopy } from 'react-icons/fa6'
-import { toast } from 'sonner'
-import { Button } from 'src/components/Button'
-import Input from 'src/components/Input'
-import { AppSelect } from 'src/components/Select'
-import { Card, Label } from 'src/components/comps'
-import { useSendToken, useSendTokenWeb } from 'src/hooks/useSend'
-import { TokenId } from 'src/lib/config/tokens'
-import { cn, pasteTextFromClipboard } from 'src/lib/utils'
-import { AppStores } from 'src/lib/zustand'
-
-import BalCard from './BalCard'
-import BottomModal from '@/src/components/BottomModal'
-import { TileSimple } from '@/src/components/TileSimple'
-import { usePrice } from '@/src/hooks/usePrice'
-import { isDev, mapCountryToData, mapCountryToIso } from '@/src/lib'
-import { COLLECTOR } from '@/src/lib/config'
-import { getBundlesOperator, getDataOperator } from '@/src/lib/server'
-
-export default function TopUpData(props: { isData?: boolean }) {
-  const store = AppStores.useSettings()
-  if (store.appEnv === 'MINIPAY') return <MinipayTopUp {...props} />
-  return <TgTopUp {...props} />
-}
-
-export function MinipayTopUp(props: { isData?: boolean }) {
-  const { sendErc20 } = useSendTokenWeb()
-  return <TopUpDataComps sendErc20={sendErc20} isData={props.isData} />
-}
-
-export function TgTopUp(props: { isData?: boolean }) {
-  const { sendErc20 } = useSendToken()
-  return <TopUpDataComps sendErc20={sendErc20} isData={props.isData} />
-}
-
-export function TopUpDataComps({
-  sendErc20,
-  ...props
-}: {
+export function TopUpDataComps(props: {
   isData?: boolean
-  sendErc20: (props: { recipient: string; amount: string; token: TokenId }) => Promise<string>
+  showBtm?: boolean
+  phoneNo: string
+  operatorId: string
+  operatorPlan:
+    | {
+        amount: string
+        desc: string
+      }
+    | undefined
+  setShowBtmSheet: Dispatch<SetStateAction<boolean>>
+  setOperatorId: Dispatch<SetStateAction<string>>
+  setPhoneNo: Dispatch<SetStateAction<string>>
+  setOperatorPlan: Dispatch<
+    SetStateAction<
+      | {
+          amount: string
+          desc: string
+        }
+      | undefined
+    >
+  >
 }) {
-  const [phoneNo, setPhoneNo] = useState<string>('')
-  const [showBtm, setShowBtmSheet] = useState<boolean>(false)
-  const [operatorId, setOperatorId] = useState('')
-  const [operatorPlan, setOperatorPlan] = useState<{ amount: string; desc: string }>()
+  const {
+    isData,
+    showBtm,
+    phoneNo,
+    setShowBtmSheet,
+    operatorId,
+    operatorPlan,
+    setOperatorPlan,
+    setPhoneNo,
+    setOperatorId,
+  } = props
+  // const [phoneNo, setPhoneNo] = useState<string>('')
+  // const [showBtm, setShowBtmSheet] = useState<boolean>(false)
+  // const [operatorId, setOperatorId] = useState('')
+  // const [operatorPlan, setOperatorPlan] = useState<{ amount: string; desc: string }>()
 
   const Copy = FaCopy as any
   const store = AppStores.useSettings()
   const countryCode = mapCountryToData[store.countryIso].callingCodes[0]
-  // const { sendErc20 } = useSendToken()
+  const { sendErc20 } = useSendToken()
   const { amountToPay, handleOnChange } = usePrice()
 
   const { data } = useQuery({
     queryKey: [`getDataOperator-${props.isData ? 'isData' : 'isBundle'}`],
     queryFn: async () => {
       let res
-      if (props.isData) {
+      if (isData) {
         res = await getDataOperator(store.countryIso)
       } else {
         res = await getBundlesOperator(store.countryIso)
@@ -233,7 +218,6 @@ export function TopUpDataComps({
                       amount: val.amount,
                       desc: val.label,
                     })
-                    setShowBtmSheet(false)
                   }}
                 />
               )

@@ -1,12 +1,27 @@
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import Wrapper from 'src/components/wrapper/Wrapper'
 
-// import Home from 'src/features/home'
+import { AppStores } from '../lib/zustand'
 
 export default function HomePage() {
+  const router = useRouter()
+  const store = AppStores.useSettings()
+  useEffect(() => {
+    if (store.appEnv === 'MINIPAY') {
+      void router.replace('/minipay')
+    }
+    if (store.appEnv === 'TELEGRAM') {
+      void router.replace('/tg')
+    }
+    if (store.appEnv === 'FARCASTER') {
+      void router.replace('/minipay')
+    }
+  }, [router, store.appEnv])
+
   return (
     <Wrapper>
-      <p>Homie</p>
-      {/* <Home /> */}
+      <p>Welcome</p>
     </Wrapper>
   )
 }

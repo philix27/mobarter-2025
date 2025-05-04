@@ -9,9 +9,11 @@ export function usePrice() {
   const store = AppStores.useSettings()
   const [amountToPay, setAmtToPay] = useState(0)
   const { data: fxData, error } = useQuery<QueryResponse<'fxRate_GetAll'>>(FxRate_GetAllDocument)
+
   if (error) {
     logger.error('Error getting rate: ' + error.message)
   }
+
   if (!fxData)
     return {
       cusdAmt: 0,

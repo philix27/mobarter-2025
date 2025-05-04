@@ -1,11 +1,9 @@
-import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
+import { create } from 'zustand'
+import { createJSONStorage, persist } from 'zustand/middleware'
 
+import { CountriesIso } from '../countries'
 
-
-import { CountriesIso } from '../countries';
-
-
+export type IMinipayTab = 'AIRTIME' | 'DATA' | 'ELECTRICITY'
 export type IHomeTab = 'Balances' | 'Services'
 export type IManageAdsTab = 'OPEN' | 'CLOSED' | 'ADD'
 export type IAppEnv = 'MINIPAY' | 'FARCASTER' | 'TELEGRAM'
@@ -41,6 +39,7 @@ export interface ISlice {
   countryIso?: CountriesIso
   chainIcon?: string
   appEnv?: IAppEnv
+  minipayTab?: IMinipayTab
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
@@ -64,6 +63,7 @@ export const defaultValues: Required<ISlice> = {
   countryIso: 'NG',
   chainIcon: '',
   appEnv: 'MINIPAY',
+  minipayTab: 'AIRTIME',
 }
 
 export const useSettings = create(
