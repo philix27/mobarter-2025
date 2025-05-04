@@ -1,26 +1,24 @@
-import { useMutation } from '@apollo/client'
-import {
-  MutationResponse,
-  MutationUtility_PurchaseAirtimeArgs,
-  Operator,
-  Utility_PurchaseAirtimeDocument,
-} from '@repo/api'
-import { useState } from 'react'
-import { FaCopy } from 'react-icons/fa6'
-import { toast } from 'sonner'
-import { Button } from 'src/components/Button'
-import Input from 'src/components/Input'
-import { AppSelect } from 'src/components/Select'
-import { Card, Label } from 'src/components/comps'
-import { useSendToken, useSendTokenWeb } from 'src/hooks/useSend'
-import { TokenId } from 'src/lib/config/tokens'
-import { pasteTextFromClipboard } from 'src/lib/utils'
-import { AppStores } from 'src/lib/zustand'
+import { useMutation } from '@apollo/client';
+import { MutationResponse, MutationUtility_PurchaseAirtimeArgs, Operator, Utility_PurchaseAirtimeDocument } from '@repo/api';
+import { useState } from 'react';
+import { FaCopy } from 'react-icons/fa6';
+import { toast } from 'sonner';
+import { Button } from 'src/components/Button';
+import Input from 'src/components/Input';
+import { AppSelect } from 'src/components/Select';
+import { Card, Label } from 'src/components/comps';
+import { useSendToken, useSendTokenWeb } from 'src/hooks/useSend';
+import { TokenId } from 'src/lib/config/tokens';
+import { pasteTextFromClipboard } from 'src/lib/utils';
+import { AppStores } from 'src/lib/zustand';
 
-import BalCard from './BalCard'
-import { usePrice } from '@/src/hooks/usePrice'
-import { isDev, mapCountryToData, mapCountryToIso } from '@/src/lib'
-import { COLLECTOR } from '@/src/lib/config'
+
+
+import BalCard from './BalCard';
+import { usePrice } from '@/src/hooks/usePrice';
+import { isDev, mapCountryToData, mapCountryToIso } from '@/src/lib';
+import { COLLECTOR } from '@/src/lib/config';
+
 
 export default function Airtime() {
   const store = AppStores.useSettings()
@@ -58,6 +56,11 @@ function AirtimeComps(props: {
   const handleSend = async () => {
     const leastAmount = isDev ? 50 : 50
 
+    if (phoneNo.length < 9) {
+      toast.error('Enter a valid phone number')
+      return
+    }
+
     if (selectedOperator === undefined) {
       toast.error('Select an operator')
       return
@@ -79,7 +82,7 @@ function AirtimeComps(props: {
               countryCode: mapCountryToIso[store.countryIso],
               operator: selectedOperator!,
               transaction_hash: txHash || `${Date.now()}`,
-              phoneNo,
+              phoneNo: `${countryCode.slice(1)}${phoneNo}`,
             },
           },
           onCompleted() {
@@ -98,7 +101,8 @@ function AirtimeComps(props: {
       <BalCard />
       <Input
         label={`${mapCountryToIso[store.countryIso]} Phone number`}
-        placeholder={`${countryCode}8101234567`}
+        placeholder={`8101234567`}
+        preText={countryCode}
         value={phoneNo}
         type="number"
         onChange={(e) => {

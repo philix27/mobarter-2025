@@ -6,6 +6,7 @@ import { BottomNote, Label } from './comps'
 export default function Input(
   props: {
     useBg?: string
+    preText?: string
     error?: string
     desc?: string
     label?: string
@@ -28,6 +29,11 @@ export default function Input(
           className
         )}
       >
+        {props.preText && (
+          <div className="h-full pr-1">
+            <p className="font-normal  text-[16px]">{props.preText}</p>
+          </div>
+        )}
         <input
           {...inputParams}
           {...props.control}

@@ -122,7 +122,7 @@ export function TopUpDataComps({
               countryCode: mapCountryToIso[store.countryIso],
               operator: parseInt(operatorId),
               transaction_hash: txHash || `${Date.now()}`,
-              phoneNo,
+              phoneNo: `${countryCode.slice(1)}${phoneNo}`,
             },
           },
           onCompleted() {
@@ -143,7 +143,8 @@ export function TopUpDataComps({
         <BalCard />
         <Input
           label={`Phone NO. (${mapCountryToIso[store.countryIso]})*`}
-          placeholder={`${countryCode.slice(1)}8101234567`}
+          placeholder={`8101234567`}
+          preText={countryCode}
           value={phoneNo}
           type="number"
           onChange={(e) => {
