@@ -1,11 +1,13 @@
 import { useMutation } from '@apollo/client'
+import { RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit'
+import { injectedWallet } from '@rainbow-me/rainbowkit/wallets'
 import {
   Auth_MinipayLoginDocument,
   MutationAuth_MinipayLoginArgs,
   MutationResponse,
 } from '@repo/api'
 import { PropsWithChildren } from 'react'
-import { custom } from 'viem'
+import { http } from 'viem'
 import { celo, celoAlfajores } from 'viem/chains'
 import { WagmiProvider, createConfig, useAccount } from 'wagmi'
 
@@ -49,16 +51,36 @@ export function useInitMinipayUser() {
   return {}
 }
 
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Recommended',
+      wallets: [injectedWallet],
+    },
+  ],
+  {
+    appName: 'Mobarter',
+    projectId: process.env.WC_PROJECT_ID ?? '044601f65212332475a09bc14ceb3c34',
+  }
+)
+
 export function MinipayProvider({ children }: PropsWithChildren) {
-  const win = window as any
+  // const win = window as any
 
   const config = createConfig({
+    connectors,
     chains: [celo, celoAlfajores],
     transports: {
-      [celo.id]: custom(win.ethereum),
-      [celoAlfajores.id]: custom(win.ethereum),
+      [celo.id]: http(),
+      [celoAlfajores.id]: http(),
+      // [celo.id]: custom(win.ethereum),
+      // [celoAlfajores.id]: custom(win.ethereum),
     },
   })
 
-  return <WagmiProvider config={config}>{children}</WagmiProvider>
+  return (
+    <WagmiProvider config={config}>
+      <RainbowKitProvider>{children}</RainbowKitProvider>
+    </WagmiProvider>
+  )
 }
