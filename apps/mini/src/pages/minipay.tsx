@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Wrapper from 'src/components/wrapper/Wrapper'
-import { injected, useConnect } from 'wagmi'
+import { injected, useAccount, useConnect } from 'wagmi'
 
 import { Tab } from '../components/Tab'
 import SelectCountryBtn from '../features/home/SelectCountry'
@@ -13,6 +13,19 @@ export default function Minipay() {
   const win = window as any
   const store = AppStores.useSettings()
   const { connect } = useConnect()
+  const [userAddress, setUserAddress] = useState('')
+  const [isMounted, setIsMounted] = useState(false)
+  const { address, isConnected } = useAccount()
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (isConnected && address) {
+      setUserAddress(address)
+    }
+  }, [address, isConnected])
 
   useEffect(() => {
     if (win.ethereum && win.ethereum.isMiniPay) {
@@ -24,10 +37,19 @@ export default function Minipay() {
     }
   }, [connect, win.ethereum])
 
+  if (!isMounted) {
+    return null
+  }
   return (
     <Wrapper hideBottomNav>
-      <div className="w-full flex items-center justify-center flex-col ">
+      <div className="w-full flex items-center justify-center flex-col pt-4">
         <TopBar />
+        <p>Windows Ethereum: {JSON.stringify(win.ethereum)}</p>
+        {isConnected ? (
+          <div className="h2 text-center">Your address: {userAddress}</div>
+        ) : (
+          <div>No Wallet Connected</div>
+        )}
         {store.minipayTab === 'AIRTIME' && <Airtime />}
         {store.minipayTab === 'DATA' && <TopUpData isData />}
         {store.minipayTab === 'ELECTRICITY' && <ElectricityBill />}
