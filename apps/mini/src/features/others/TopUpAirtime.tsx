@@ -12,7 +12,7 @@ import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
 import { AppSelect } from 'src/components/Select'
 import { Card, Label } from 'src/components/comps'
-import { useSendToken } from 'src/hooks/useSend'
+import { useSendToken, useSendTokenWeb } from 'src/hooks/useSend'
 import { TokenId } from 'src/lib/config/tokens'
 import { pasteTextFromClipboard } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
@@ -23,13 +23,31 @@ import { isDev, mapCountryToData, mapCountryToIso } from '@/src/lib'
 import { COLLECTOR } from '@/src/lib/config'
 
 export default function Airtime() {
+  const store = AppStores.useSettings()
+  if (store.appEnv === 'MINIPAY') return <Minipay />
+  return <Tg />
+}
+
+function Minipay() {
+  const { sendErc20 } = useSendTokenWeb()
+  return <AirtimeComps sendErc20={sendErc20} />
+}
+
+function Tg() {
+  const { sendErc20 } = useSendToken()
+  return <AirtimeComps sendErc20={sendErc20} />
+}
+
+function AirtimeComps(props: {
+  sendErc20: (props: { recipient: string; amount: string; token: TokenId }) => Promise<string>
+}) {
   const [amtValue, setAmountVal] = useState<number>()
   const [phoneNo, setPhoneNo] = useState<string>('')
   const [selectedOperator, setOperator] = useState<Operator>()
   const Copy = FaCopy as any
   const store = AppStores.useSettings()
   const countryCode = mapCountryToData[store.countryIso].callingCodes[0]
-  const { sendErc20 } = useSendToken()
+  const { sendErc20 } = props
   const { amountToPay, handleOnChange } = usePrice()
 
   const [mutate] = useMutation<

@@ -4,6 +4,8 @@ import { injected, useConnect } from 'wagmi'
 
 import { Tab } from '../components/Tab'
 import SelectCountryBtn from '../features/home/SelectCountry'
+import ElectricityBill from '../features/others/ElectricityBill'
+import Airtime from '../features/others/TopUpAirtime'
 import TopUpData from '../features/others/TopUpData'
 import { AppStores } from '../lib/zustand'
 
@@ -26,9 +28,9 @@ export default function Minipay() {
     <Wrapper hideBottomNav>
       <div className="w-full flex items-center justify-center flex-col ">
         <TopBar />
-        {store.minipayTab === 'AIRTIME' && <TopUpData />}
+        {store.minipayTab === 'AIRTIME' && <Airtime />}
         {store.minipayTab === 'DATA' && <TopUpData isData />}
-        {store.minipayTab === 'ELECTRICITY' && <p>E Reach ELECTRICITY</p>}
+        {store.minipayTab === 'ELECTRICITY' && <ElectricityBill />}
       </div>
     </Wrapper>
   )

@@ -71,7 +71,11 @@ export default function ElectricityBill() {
           step=".01"
           value={amtValue}
           onChange={(e) => {
-            const num = parseFloat(e.target.value)
+            const str = e.target.value
+            const num = parseFloat(str)
+            if (str.length > 10) {
+              return
+            }
             if (isNaN(num)) {
               return
             }
@@ -87,9 +91,12 @@ export default function ElectricityBill() {
           placeholder="Account No."
           type="number"
           step=".01"
-          value={amtValue}
+          value={subscriberAccountNumber}
           onChange={(e) => {
             const num = e.target.value
+            if (num.length > 10) {
+              return
+            }
             setSubscriberAccountNumber(num)
           }}
         />
