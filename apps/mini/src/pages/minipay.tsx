@@ -44,7 +44,7 @@ export default function Minipay() {
     <Wrapper hideBottomNav>
       <div className="w-full flex items-center justify-center flex-col pt-4">
         <TopBar />
-        <p>Windows Ethereum: {JSON.stringify(win.ethereum)}</p>
+        <p>Windows Ethereum: {win.ethereum}</p>
         {isConnected ? (
           <div className="h2 text-center">Your address: {userAddress}</div>
         ) : (
