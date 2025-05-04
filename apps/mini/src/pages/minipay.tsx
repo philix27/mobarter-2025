@@ -44,7 +44,6 @@ export default function Minipay() {
     <Wrapper hideBottomNav>
       <div className="w-full flex items-center justify-center flex-col pt-4">
         <TopBar />
-
         {store.minipayTab === 'AIRTIME' && <Airtime />}
         {store.minipayTab === 'DATA' && <TopUpData isData />}
         {store.minipayTab === 'ELECTRICITY' && <ElectricityBill />}
@@ -87,7 +86,7 @@ export function TopBar() {
     return list
   }
   return (
-    <div className="flex items-center justify-between w-full">
+    <div className="flex items-center justify-between w-full mb-3">
       <SelectCountryBtn />
       <Tab data={getTab()} />
       <div />

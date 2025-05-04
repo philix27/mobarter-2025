@@ -1,16 +1,19 @@
-import { backButton } from '@telegram-apps/sdk-react';
-import * as tg from '@telegram-apps/sdk-react';
-import { useRouter } from 'next/router';
-import { ReactNode, useEffect } from 'react';
+import { backButton } from '@telegram-apps/sdk-react'
+import * as tg from '@telegram-apps/sdk-react'
+import { useRouter } from 'next/router'
+import { ReactNode, useEffect } from 'react'
 
+import WrapperComp from './WrapperComps'
+import { useInitUserToken } from '@/src/Root/providers/TgContext'
+import { useThemeColor } from '@/src/styles/Color'
 
-
-import WrapperComp from './WrapperComps';
-import { useInitUserToken } from '@/src/Root/providers/TgContext';
-import { useThemeColor } from '@/src/styles/Color';
-
-
-export default function WrapperTg({ hideBottomNav, ...props }: { children: ReactNode; hideBottomNav?: boolean }) {
+export default function WrapperTg({
+  hideBottomNav,
+  ...props
+}: {
+  children: ReactNode
+  hideBottomNav?: boolean
+}) {
   const router = useRouter()
 
   const theme = useThemeColor()

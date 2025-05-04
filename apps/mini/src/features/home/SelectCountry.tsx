@@ -11,7 +11,7 @@ export default function SelectCountryBtn() {
   return (
     <>
       <div
-        className="bg-primary rounded-full size-[35px]"
+        className="bg-primary rounded-full size-[30px]"
         onClick={() => {
           store.update({ homeBtmSheet: 'SELECT_COUNTRY' })
         }}

@@ -2,7 +2,7 @@ import { useEthereum } from '@particle-network/auth-core-modal'
 import { ethers, parseEther } from 'ethers'
 import { toast } from 'sonner'
 import { TokenId } from 'src/lib/config/tokens'
-import { useSendTransaction, useWriteContract } from 'wagmi'
+import { useSendTransaction } from 'wagmi'
 
 import { useAppContext } from '../Root/providers/TgContext'
 import { logger, shortString } from '../lib/utils'
@@ -69,18 +69,16 @@ export function useSendToken() {
 export function useSendTokenWeb() {
   const { data: hash, sendTransaction } = useSendTransaction()
 
-  const { writeContract, data: erc20hash } = useWriteContract()
-
   const sendErc20 = async (props: { recipient: string; amount: string; token: TokenId }) => {
-    writeContract({
-      address: props.recipient as `0x${string}`,
-      abi: ERC20_ABI,
-      functionName: 'transfer',
-      args: [tokenAddress[props.token], ethers.parseUnits(props.amount, 18), 18],
-    })
+    const provider = new ethers.BrowserProvider(window.ethereum)
+    const signer = await provider.getSigner()
 
-    toast.success(`Transaction successful: ${erc20hash}`)
-    return JSON.stringify(hash)
+    const contract = new ethers.Contract(tokenAddress[props.token], ERC20_ABI, signer)
+
+    const tx = await contract.transfer(props.recipient, ethers.parseUnits(props.amount, 18)) // cUSD has 18 decimals
+    await tx.wait() // Wait for transaction to be mined
+    toast.success(`Transaction successful: ${tx.hash}`)
+    return JSON.stringify(tx.hash)
   }
 
   const sendNative = async (props: { recipient: string; amount: string }) => {

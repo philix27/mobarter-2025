@@ -9,10 +9,10 @@ export default function HomePage() {
   const store = AppStores.useSettings()
   useEffect(() => {
     if (store.appEnv === 'MINIPAY') {
-      void router.replace('/minipay')
+      void router.push('/minipay')
       return
     }
-    void router.replace('/tg')
+    void router.push('/tg')
   }, [router, store.appEnv])
 
   return (
