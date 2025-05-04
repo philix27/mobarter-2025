@@ -3,15 +3,14 @@ import { CiWallet } from 'react-icons/ci'
 import { FaRegUser } from 'react-icons/fa6'
 import { GoHistory } from 'react-icons/go'
 import { MdNotes } from 'react-icons/md'
-import { RiAppsFill } from "react-icons/ri";
+import { RiAppsFill } from 'react-icons/ri'
 
 export const navLinks: { title: string; link: string; Icon: IconType }[] = [
   {
     title: 'Wallet',
-    link: '/',
+    link: '/tg',
     Icon: CiWallet,
   },
-
   {
     title: 'Apps',
     link: '/apps',
