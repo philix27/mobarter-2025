@@ -10,13 +10,9 @@ export default function HomePage() {
   useEffect(() => {
     if (store.appEnv === 'MINIPAY') {
       void router.replace('/minipay')
+      return
     }
-    if (store.appEnv === 'TELEGRAM') {
-      void router.replace('/tg')
-    }
-    if (store.appEnv === 'FARCASTER') {
-      void router.replace('/minipay')
-    }
+    void router.replace('/tg')
   }, [router, store.appEnv])
 
   return (

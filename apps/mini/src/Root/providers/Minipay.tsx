@@ -1,5 +1,5 @@
 import { useMutation } from '@apollo/client'
-import { RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit'
+import { connectorsForWallets } from '@rainbow-me/rainbowkit'
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets'
 import {
   Auth_MinipayLoginDocument,
@@ -78,9 +78,5 @@ export function MinipayProvider({ children }: PropsWithChildren) {
     },
   })
 
-  return (
-    <WagmiProvider config={config}>
-      <RainbowKitProvider>{children}</RainbowKitProvider>
-    </WagmiProvider>
-  )
+  return <WagmiProvider config={config}>{children}</WagmiProvider>
 }
