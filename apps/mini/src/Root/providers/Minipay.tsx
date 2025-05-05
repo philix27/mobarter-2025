@@ -1,20 +1,20 @@
-import { useMutation } from '@apollo/client'
-import { sdk } from '@farcaster/frame-sdk'
-import { farcasterFrame as miniAppConnector } from '@farcaster/frame-wagmi-connector'
-import { connectorsForWallets } from '@rainbow-me/rainbowkit'
-import { injectedWallet } from '@rainbow-me/rainbowkit/wallets'
-import {
-  Auth_MinipayLoginDocument,
-  MutationAuth_MinipayLoginArgs,
-  MutationResponse,
-} from '@repo/api'
-import { PropsWithChildren } from 'react'
-import { http } from 'viem'
-import { celo, celoAlfajores } from 'viem/chains'
-import { WagmiProvider, createConfig, useAccount } from 'wagmi'
-import { base } from 'wagmi/chains'
+import { useMutation } from '@apollo/client';
+import { farcasterFrame } from "@farcaster/frame-wagmi-connector";
+// import { sdk } from '@farcaster/frame-sdk'
+// import { farcasterFrame as miniAppConnector } from '@farcaster/frame-wagmi-connector'
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
+import { Auth_MinipayLoginDocument, MutationAuth_MinipayLoginArgs, MutationResponse } from '@repo/api';
+import { PropsWithChildren } from 'react';
+import { http } from 'viem';
+import { celo, celoAlfajores } from 'viem/chains';
+import { WagmiProvider, createConfig, useAccount } from 'wagmi';
+import { base } from 'wagmi/chains';
 
-import { AppStores } from '@/src/lib/zustand'
+
+
+import { AppStores } from '@/src/lib/zustand';
+
 
 export function useInitMinipayUser() {
   const store = AppStores.useUser()
@@ -36,7 +36,7 @@ export function useInitMinipayUser() {
 
   const futureTime = now + twoDaysInMs
 
-  void sdk.actions.ready({ disableNativeGestures: true })
+  // void sdk.actions.ready({ disableNativeGestures: true })
 
   void mutate({
     variables: {
@@ -76,7 +76,7 @@ export function MinipayProvider({ children }: PropsWithChildren) {
   // const win = window as any
 
   const config = createConfig({
-    connectors: [...connectors, miniAppConnector()],
+    connectors: [...connectors, farcasterFrame()],
     chains: [celo, celoAlfajores, base],
     transports: {
       [celo.id]: http(),
