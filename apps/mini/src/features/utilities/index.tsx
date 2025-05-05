@@ -89,7 +89,7 @@ export default function Utilities() {
       title: 'Gift Cards',
       icon: GoGift,
       onClick: () => {
-        toast.info('Coming soon!')
+        void router.push('/gifts')
       },
     },
   ]
