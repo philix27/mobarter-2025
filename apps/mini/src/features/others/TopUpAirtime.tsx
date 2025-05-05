@@ -1,24 +1,26 @@
-import { useMutation } from '@apollo/client';
-import { MutationResponse, MutationUtility_PurchaseAirtimeArgs, Operator, Utility_PurchaseAirtimeDocument } from '@repo/api';
-import { useState } from 'react';
-import { FaCopy } from 'react-icons/fa6';
-import { toast } from 'sonner';
-import { Button } from 'src/components/Button';
-import Input from 'src/components/Input';
-import { AppSelect } from 'src/components/Select';
-import { Card, Label } from 'src/components/comps';
-import { useSendToken, useSendTokenWeb } from 'src/hooks/useSend';
-import { TokenId } from 'src/lib/config/tokens';
-import { pasteTextFromClipboard } from 'src/lib/utils';
-import { AppStores } from 'src/lib/zustand';
+import { useMutation } from '@apollo/client'
+import {
+  MutationResponse,
+  MutationUtility_PurchaseAirtimeArgs,
+  Operator,
+  Utility_PurchaseAirtimeDocument,
+} from '@repo/api'
+import { useState } from 'react'
+import { FaCopy } from 'react-icons/fa6'
+import { toast } from 'sonner'
+import { Button } from 'src/components/Button'
+import Input from 'src/components/Input'
+import { AppSelect } from 'src/components/Select'
+import { Card, Label } from 'src/components/comps'
+import { useSendToken, useSendTokenWeb } from 'src/hooks/useSend'
+import { TokenId } from 'src/lib/config/tokens'
+import { pasteTextFromClipboard } from 'src/lib/utils'
+import { AppStores } from 'src/lib/zustand'
 
-
-
-import BalCard from './BalCard';
-import { usePrice } from '@/src/hooks/usePrice';
-import { isDev, mapCountryToData, mapCountryToIso } from '@/src/lib';
-import { COLLECTOR } from '@/src/lib/config';
-
+import BalCard from './BalCard'
+import { usePrice } from '@/src/hooks/usePrice'
+import { isDev, mapCountryToData, mapCountryToIso } from '@/src/lib'
+import { COLLECTOR } from '@/src/lib/config'
 
 export default function Airtime() {
   const store = AppStores.useSettings()
@@ -93,7 +95,7 @@ function AirtimeComps(props: {
         })
       })
       .catch((err) => {
-        toast.error('Error sending cUSD:', err.message)
+        toast.error('Error: ', err.message)
       })
   }
   return (

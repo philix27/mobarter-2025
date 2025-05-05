@@ -82,7 +82,8 @@ export function useSendTokenWeb() {
     // toast.success(`Transaction successful: ${tx.hash}`)
 
     if (!window.ethereum) {
-      return { success: false, transactionHash: null }
+      throw new Error('No eth connection')
+      // return { success: false, transactionHash: null }
     }
     const _chainId = 42220
     const privateClient = createWalletClient({
@@ -113,9 +114,10 @@ export function useSendTokenWeb() {
       //     hash: txnHash,
       //   })
 
-      return txnHash
-    } catch (err) {
-      return { success: false, transactionHash: null }
+      return txnHash as string
+    } catch (err: any) {
+      throw new Error(err.message.toString())
+      // return { success: false, transactionHash: null }
     }
   }
 

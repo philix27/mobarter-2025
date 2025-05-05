@@ -16,7 +16,7 @@ function Web() {
   return (
     <div className="w-full">
       <Label>Balance</Label>
-      <Card className="text-primary">{tokenBalance}</Card>
+      <Card className="bg-primary text-primary-foreground">{tokenBalance}</Card>
     </div>
   )
 }
@@ -25,7 +25,7 @@ function Tg() {
   return (
     <div className="w-full">
       <Label>Balance</Label>
-      <Card className="text-primary">{tokenBalance}</Card>
+      <Card className="bg-primary text-primary-foreground">{tokenBalance}</Card>
     </div>
   )
 }
