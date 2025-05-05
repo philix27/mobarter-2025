@@ -21,7 +21,7 @@ import BalCard from './BalCard'
 import BottomModal from '@/src/components/BottomModal'
 import { TileSimple } from '@/src/components/TileSimple'
 import { usePrice } from '@/src/hooks/usePrice'
-import { isDev, mapCountryToData, mapCountryToIso } from '@/src/lib'
+import { mapCountryToData, mapCountryToIso } from '@/src/lib'
 import { COLLECTOR } from '@/src/lib/config'
 import { getBundlesOperator, getDataOperator } from '@/src/lib/server'
 
@@ -95,8 +95,6 @@ export function TopUpDataComps({
   >(Utility_PurchaseDataBundleDocument)
 
   const handleSend = async () => {
-    const leastAmount = isDev ? 50 : 50
-
     if (operatorPlan === undefined) {
       toast.error('Select an operator')
       return
@@ -104,7 +102,7 @@ export function TopUpDataComps({
 
     const amtValue = parseInt(operatorPlan.amount)
 
-    if (amtValue < 0 || amtValue < leastAmount) {
+    if (amtValue < 0) {
       toast.error('Amount must be above zero')
       return
     }

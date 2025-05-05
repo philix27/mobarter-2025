@@ -1,14 +1,34 @@
-import React, { useEffect, useState } from 'react'
-import Wrapper from 'src/components/wrapper/Wrapper'
-import { injected, useConnect } from 'wagmi'
+import Head from 'next/head';
+import React, { useEffect, useState } from 'react';
+import Wrapper from 'src/components/wrapper/Wrapper';
+import { injected, useConnect } from 'wagmi';
 
-import { Tab } from '../components/Tab'
-import SelectCountryBtn from '../features/home/SelectCountry'
-import ElectricityBill from '../features/others/ElectricityBill'
-import Airtime from '../features/others/TopUpAirtime'
-import TopUpData from '../features/others/TopUpData'
-import { AppStores } from '../lib/zustand'
 
+
+import { Tab } from '../components/Tab';
+import SelectCountryBtn from '../features/home/SelectCountry';
+import ElectricityBill from '../features/others/ElectricityBill';
+import Airtime from '../features/others/TopUpAirtime';
+import TopUpData from '../features/others/TopUpData';
+import { AppStores } from '../lib/zustand';
+
+
+export function FrameTitle(props: {
+  version: string
+  imageUrl: string
+  'button.title': string
+  'button.action.type': 'launch_frame'
+  'button.action.url'?: string
+  'button.action.name'?: string
+  'button.action.splashImageUrl'?: string
+  'button.action.splashBackgroundColor'?: string
+}) {
+  return (
+    <Head>
+      <meta name="fc:frame" content={JSON.stringify(props)} />
+    </Head>
+  )
+}
 export default function Minipay() {
   const win = window as any
   const store = AppStores.useSettings()

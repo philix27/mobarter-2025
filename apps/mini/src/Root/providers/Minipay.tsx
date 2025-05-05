@@ -1,4 +1,6 @@
 import { useMutation } from '@apollo/client'
+import { sdk } from '@farcaster/frame-sdk'
+import { farcasterFrame as miniAppConnector } from '@farcaster/frame-wagmi-connector'
 import { connectorsForWallets } from '@rainbow-me/rainbowkit'
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets'
 import {
@@ -10,6 +12,7 @@ import { PropsWithChildren } from 'react'
 import { http } from 'viem'
 import { celo, celoAlfajores } from 'viem/chains'
 import { WagmiProvider, createConfig, useAccount } from 'wagmi'
+import { base } from 'wagmi/chains'
 
 import { AppStores } from '@/src/lib/zustand'
 
@@ -33,13 +36,15 @@ export function useInitMinipayUser() {
 
   const futureTime = now + twoDaysInMs
 
+  void sdk.actions.ready({ disableNativeGestures: true })
+
   void mutate({
     variables: {
       input: {
         walletAddress: address!,
       },
     },
-    onCompleted(data) {
+    onCompleted: async (data) => {
       store.update({
         walletAddress: address!,
         token: data.auth_minipayLogin.token!,
@@ -60,6 +65,9 @@ const connectors = connectorsForWallets(
   ],
   {
     appName: 'Mobarter',
+    appDescription: 'One stop payment solution for Africans',
+    appUrl: 'www.mobarter.com',
+    appIcon: 'www.mobarter.com/logo.png',
     projectId: process.env.WC_PROJECT_ID ?? '044601f65212332475a09bc14ceb3c34',
   }
 )
@@ -68,11 +76,12 @@ export function MinipayProvider({ children }: PropsWithChildren) {
   // const win = window as any
 
   const config = createConfig({
-    connectors,
-    chains: [celo, celoAlfajores],
+    connectors: [...connectors, miniAppConnector()],
+    chains: [celo, celoAlfajores, base],
     transports: {
       [celo.id]: http(),
       [celoAlfajores.id]: http(),
+      [base.id]: http(),
       // [celo.id]: custom(win.ethereum),
       // [celoAlfajores.id]: custom(win.ethereum),
     },

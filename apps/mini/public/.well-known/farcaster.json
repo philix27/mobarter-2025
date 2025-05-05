@@ -1,0 +1,17 @@
+{ 
+  "version": "1",
+  "subtitle": "Mobarter Finance",
+  "description": "Your day to day payment solution",
+  "primaryCategory": "finance",
+   "iconUrl": "https://app.mobarter.com/logo.png",
+  "button": {
+    "title": "🚩 Start",
+    "action": {
+      "type": "launch_frame",
+      "url": "https://app.mobarter.com",
+      "name":"Mobarter",
+      "splashImageUrl": "https://app.mobarter.com/logo.png",
+      "splashBackgroundColor":"#18222e"
+    }
+  }
+}
