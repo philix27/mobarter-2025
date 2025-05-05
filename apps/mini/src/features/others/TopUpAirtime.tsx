@@ -139,11 +139,11 @@ function AirtimeComps(props: {
       />
       <Input
         label={`Amount*`}
-        preText={countryCode}
+        preText={mapCountryToData[store.countryIso].currencySymbol}
         placeholder="Amount to send"
         type="number"
         step=".01"
-        value={mapCountryToData[store.countryIso].currencySymbol}
+        value={amtValue}
         onChange={(e) => {
           const num = parseFloat(e.target.value)
           if (isNaN(num)) {
