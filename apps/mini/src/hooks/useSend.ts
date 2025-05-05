@@ -2,6 +2,8 @@ import { useEthereum } from '@particle-network/auth-core-modal'
 import { ethers, parseEther } from 'ethers'
 import { toast } from 'sonner'
 import { TokenId } from 'src/lib/config/tokens'
+import { createPublicClient, createWalletClient, custom } from 'viem'
+import { celo, celoAlfajores } from 'viem/chains'
 import { useSendTransaction } from 'wagmi'
 
 import { useAppContext } from '../Root/providers/TgContext'
@@ -70,15 +72,51 @@ export function useSendTokenWeb() {
   const { data: hash, sendTransaction } = useSendTransaction()
 
   const sendErc20 = async (props: { recipient: string; amount: string; token: TokenId }) => {
-    const provider = new ethers.BrowserProvider(window.ethereum)
-    const signer = await provider.getSigner()
+    // const provider = new ethers.BrowserProvider(window.ethereum)
+    // const signer = await provider.getSigner()
 
-    const contract = new ethers.Contract(tokenAddress[props.token], ERC20_ABI, signer)
+    // const contract = new ethers.Contract(tokenAddress[props.token], ERC20_ABI, signer)
 
-    const tx = await contract.transfer(props.recipient, ethers.parseUnits(props.amount, 18)) // cUSD has 18 decimals
-    await tx.wait() // Wait for transaction to be mined
-    toast.success(`Transaction successful: ${tx.hash}`)
-    return JSON.stringify(tx.hash)
+    // const tx = await contract.transfer(props.recipient, ethers.parseUnits(props.amount, 18)) // cUSD has 18 decimals
+    // await tx.wait() // Wait for transaction to be mined
+    // toast.success(`Transaction successful: ${tx.hash}`)
+
+    if (!window.ethereum) {
+      return { success: false, transactionHash: null }
+    }
+    const _chainId = 42220
+    const privateClient = createWalletClient({
+      chain: _chainId === celo.id ? celo : celoAlfajores,
+      transport: custom(window.ethereum),
+    })
+
+    const publicClient = createPublicClient({
+      chain: _chainId === celo.id ? celo : celoAlfajores,
+      transport: custom(window.ethereum),
+    })
+
+    try {
+      const [address] = await privateClient.getAddresses()
+
+      const { request: rqst } = await publicClient.simulateContract({
+        account: address,
+        address: tokenAddress[props.token] as `0x${string}`,
+        abi: ERC20_ABI,
+        functionName: 'transfer',
+        args: [props.recipient, parseEther(props.amount)],
+      })
+
+      const txnHash = await privateClient.writeContract(rqst)
+
+      // const txnReceipt =
+      //   await publicClient.waitForTransactionReceipt({
+      //     hash: txnHash,
+      //   })
+
+      return txnHash
+    } catch (err) {
+      return { success: false, transactionHash: null }
+    }
   }
 
   const sendNative = async (props: { recipient: string; amount: string }) => {
@@ -91,3 +129,28 @@ export function useSendTokenWeb() {
 
   return { sendErc20, sendNative }
 }
+// export function useSendTokenWeb() {
+//   const { data: hash, sendTransaction } = useSendTransaction()
+
+//   const sendErc20 = async (props: { recipient: string; amount: string; token: TokenId }) => {
+//     const provider = new ethers.BrowserProvider(window.ethereum)
+//     const signer = await provider.getSigner()
+
+//     const contract = new ethers.Contract(tokenAddress[props.token], ERC20_ABI, signer)
+
+//     const tx = await contract.transfer(props.recipient, ethers.parseUnits(props.amount, 18)) // cUSD has 18 decimals
+//     await tx.wait() // Wait for transaction to be mined
+//     toast.success(`Transaction successful: ${tx.hash}`)
+//     return JSON.stringify(tx.hash)
+//   }
+
+//   const sendNative = async (props: { recipient: string; amount: string }) => {
+//     sendTransaction({
+//       to: props.recipient as `0x${string}`,
+//       value: parseEther(props.amount),
+//     })
+//     toast.success(`Send Native Success! Hash: ${shortString(hash)}`)
+//   }
+
+//   return { sendErc20, sendNative }
+// }
