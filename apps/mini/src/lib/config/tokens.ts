@@ -1,11 +1,8 @@
-import { getMentoSdk } from 'src/features/sdk';
-import { Color } from 'src/styles/Color';
+// import { getMentoSdk } from 'src/features/sdk';
+import { Color } from 'src/styles/Color'
 
-
-
-import { areAddressesEqual } from './addresses';
-import { ChainId } from './chains';
-
+import { areAddressesEqual } from './addresses'
+import { ChainId } from './chains'
 
 export interface Token {
   id: TokenId
@@ -207,23 +204,23 @@ export function isNativeStableToken(tokenId: string) {
   return NativeStableTokenIds.includes(tokenId as TokenId)
 }
 
-export async function isSwappable(token1: string, token2: string, chainId: number) {
-  // Exit early if the same token was passed in two times
-  if (token1 === token2) return false
+// export async function isSwappable(token1: string, token2: string, chainId: number) {
+//   // Exit early if the same token was passed in two times
+//   if (token1 === token2) return false
 
-  const sdk = await getMentoSdk(chainId)
-  const tradablePairs = await sdk.getTradablePairs()
-  if (!tradablePairs) return false
+//   // const sdk = await getMentoSdk(chainId)
+//   const tradablePairs = await sdk.getTradablePairs()
+//   if (!tradablePairs) return false
 
-  const token1Address = getTokenAddress(token1 as TokenId, chainId)
-  const token2Address = getTokenAddress(token2 as TokenId, chainId)
+// const token1Address = getTokenAddress(token1 as TokenId, chainId)
+// const token2Address = getTokenAddress(token2 as TokenId, chainId)
 
-  return tradablePairs.some(
-    (pair) =>
-      pair.find((asset) => asset.address === token1Address) &&
-      pair.find((asset) => asset.address === token2Address)
-  )
-}
+// return tradablePairs.some(
+//   (pair) =>
+//     pair.find((asset) => asset.address === token1Address) &&
+//     pair.find((asset) => asset.address === token2Address)
+// )
+// }
 
 export async function getSwappableTokenOptions(inputTokenId: string, chainId: ChainId) {
   // Get all available tokens for the chain except the input token

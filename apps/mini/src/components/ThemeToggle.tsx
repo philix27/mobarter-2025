@@ -1,6 +1,4 @@
-import Image from 'next/image'
-import Moon from 'src/images/icons/moon.svg'
-import Sun from 'src/images/icons/sun.svg'
+import { Moon, Sun } from 'lucide-react'
 import { useDarkMode } from 'src/styles/mediaQueries'
 
 export function ThemeToggle() {
@@ -12,10 +10,10 @@ export function ThemeToggle() {
     >
       <div className="transition-color relative px-0.5 py-[1px] dark:bg-fuchsia-200 rounded-[32px] border border-gray-950 justify-center items-center gap-[5px] flex">
         <div className="relative flex flex-col items-start justify-start w-4 h-5 p-1 pr-0">
-          <Image src={Sun} alt="light theme icon" width={14} height={14} />
+          <Sun size={14} />
         </div>
         <div className="relative flex flex-col items-start justify-start w-4 h-5 py-1 pr-1">
-          <Image src={Moon} alt="dark theme icon" width={14} height={14} />
+          <Moon size={14} />
         </div>
         <div
           className={`absolute transition transform left-[2px] w-[18px] h-[18px] bg-gray-950 rounded-full border border-gray-950 ${
