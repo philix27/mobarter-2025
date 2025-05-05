@@ -32,12 +32,12 @@ export default function WrapperTg({
   }, [hideBottomNav])
 
   useEffect(() => {
-    return backButton.onClick(() => {
+    backButton.onClick(() => {
       router.back()
     })
   }, [router])
 
   useInitUserToken()
 
-  return <WrapperComp {...props}>{props.children}</WrapperComp>
+  return <WrapperComp hideBottomNav={hideBottomNav}>{props.children}</WrapperComp>
 }

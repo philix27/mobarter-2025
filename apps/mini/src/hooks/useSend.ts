@@ -2,13 +2,14 @@ import { useEthereum } from '@particle-network/auth-core-modal'
 import { ethers, parseEther } from 'ethers'
 import { toast } from 'sonner'
 import { TokenId } from 'src/lib/config/tokens'
-import { createPublicClient, createWalletClient, custom } from 'viem'
-import { celo, celoAlfajores } from 'viem/chains'
+import { createWalletClient, custom } from 'viem'
+import { celo } from 'viem/chains'
 import { useSendTransaction } from 'wagmi'
 
 import { useAppContext } from '../Root/providers/TgContext'
 import { logger, shortString } from '../lib/utils'
 
+import StableTokenABI from './cusdAbi.json'
 import { useProvider } from './useProvider'
 
 const tokenAddress: Record<TokenId, string> = {
@@ -85,29 +86,38 @@ export function useSendTokenWeb() {
       throw new Error('No eth connection')
       // return { success: false, transactionHash: null }
     }
-    const _chainId = 42220
+    // const _chainId = 42220
     const privateClient = createWalletClient({
-      chain: _chainId === celo.id ? celo : celoAlfajores,
+      chain: celo,
+      // chain: _chainId === celo.id ? celo : celoAlfajores,
       transport: custom(window.ethereum),
     })
 
-    const publicClient = createPublicClient({
-      chain: _chainId === celo.id ? celo : celoAlfajores,
-      transport: custom(window.ethereum),
-    })
+    // const publicClient = createPublicClient({
+    //   chain: _chainId === celo.id ? celo : celoAlfajores,
+    //   transport: custom(window.ethereum),
+    // })
 
     try {
       const [address] = await privateClient.getAddresses()
 
-      const { request: rqst } = await publicClient.simulateContract({
-        account: address,
-        address: tokenAddress[props.token] as `0x${string}`,
-        abi: ERC20_ABI,
-        functionName: 'transfer',
-        args: [props.recipient, parseEther(props.amount)],
-      })
+      // const { request: rqst } = await publicClient.simulateContract({
+      //   account: address,
+      //   address: tokenAddress[props.token] as `0x${string}`,
+      //   abi: ERC20_ABI,
+      //   functionName: 'transfer',
+      //   args: [props.recipient, parseEther(props.amount)],
+      // })
 
-      const txnHash = await privateClient.writeContract(rqst)
+      const amountInWei = parseEther(props.amount)
+      const txnHash = await privateClient.writeContract({
+        // rqst,
+        address: tokenAddress[props.token] as `0x${string}`,
+        abi: StableTokenABI.abi,
+        functionName: 'transfer',
+        account: address,
+        args: [props.recipient, amountInWei],
+      })
 
       // const txnReceipt =
       //   await publicClient.waitForTransactionReceipt({
