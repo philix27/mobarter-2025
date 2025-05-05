@@ -1,4 +1,4 @@
-import { sdk } from '@farcaster/frame-sdk'
+// import { sdk } from '@farcaster/frame-sdk'
 import React, { useEffect, useState } from 'react'
 import Wrapper from 'src/components/wrapper/Wrapper'
 import { injected, useAccount, useConnect, useSignMessage } from 'wagmi'
@@ -30,7 +30,7 @@ export default function Minipay() {
   }, [connect, win.ethereum])
 
   useEffect(() => {
-    void sdk.actions.ready()
+    // void sdk.actions.ready()
   }, [])
 
   return (

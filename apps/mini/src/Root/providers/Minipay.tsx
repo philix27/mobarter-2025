@@ -1,7 +1,5 @@
 import { useMutation } from '@apollo/client'
-import { farcasterFrame } from '@farcaster/frame-wagmi-connector'
-// import { sdk } from '@farcaster/frame-sdk'
-// import { farcasterFrame as miniAppConnector } from '@farcaster/frame-wagmi-connector'
+// import { farcasterFrame } from '@farcaster/frame-wagmi-connector'
 import { connectorsForWallets } from '@rainbow-me/rainbowkit'
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets'
 import {
@@ -77,7 +75,7 @@ export function MinipayProvider({ children }: PropsWithChildren) {
   // const win = window as any
 
   const config = createConfig({
-    connectors: [...connectors, farcasterFrame()],
+    connectors: [...connectors],
     chains: [celo, celoAlfajores, base],
     transports: {
       [celo.id]: http(),
