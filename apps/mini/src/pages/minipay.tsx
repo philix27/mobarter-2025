@@ -14,7 +14,7 @@ export default function Minipay() {
   const win = window as any
   const store = AppStores.useSettings()
   const { connect } = useConnect()
-  const [isMinipay, setIsMinipay] = useState<boolean>(false)
+
   // const [userAddress, setUserAddress] = useState('')
 
   // const { address, isConnected } = useAccount()
@@ -23,8 +23,6 @@ export default function Minipay() {
     if (win.ethereum && win.ethereum.isMiniPay) {
       //     // User is using MiniPay so hide connect wallet button.
 
-      //     store.update({ appEnv: 'MINIPAY' })
-      setIsMinipay(true)
       connect({ connector: injected({ target: 'metaMask' }) })
     }
   }, [connect, win.ethereum])
@@ -37,7 +35,7 @@ export default function Minipay() {
     <Wrapper hideBottomNav>
       <div className="w-full flex items-center justify-center flex-col pt-4">
         <TopBar />
-        {isMinipay && <ConnectMenu />}
+        {store.appEnv === 'FARCASTER' && <ConnectMenu />}
 
         {store.minipayTab === 'AIRTIME' && <Airtime />}
         {store.minipayTab === 'DATA' && <TopUpData isData />}

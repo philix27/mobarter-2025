@@ -17,6 +17,7 @@ export const useTokenBalance = (id: TokenId) => {
 
   return isLoading ? '...' : `${formatEtherBalance(data!.value, data!.decimals, 3)} ${id}`
 }
+
 export const useTokenBalanceWeb = (id: TokenId) => {
   const { address } = useAccount()
 

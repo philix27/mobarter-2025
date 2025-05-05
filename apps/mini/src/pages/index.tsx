@@ -10,9 +10,9 @@ export default function HomePage() {
   useEffect(() => {
     if (store.appEnv === 'MINIPAY') {
       void router.push('/minipay')
-      return
+    } else {
+      void router.push('/tg')
     }
-    void router.push('/tg')
   }, [router, store.appEnv])
 
   return (
