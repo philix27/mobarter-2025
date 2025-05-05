@@ -1,20 +1,21 @@
-import { useMutation } from '@apollo/client';
-import { farcasterFrame } from "@farcaster/frame-wagmi-connector";
+import { useMutation } from '@apollo/client'
+import { farcasterFrame } from '@farcaster/frame-wagmi-connector'
 // import { sdk } from '@farcaster/frame-sdk'
 // import { farcasterFrame as miniAppConnector } from '@farcaster/frame-wagmi-connector'
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
-import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
-import { Auth_MinipayLoginDocument, MutationAuth_MinipayLoginArgs, MutationResponse } from '@repo/api';
-import { PropsWithChildren } from 'react';
-import { http } from 'viem';
-import { celo, celoAlfajores } from 'viem/chains';
-import { WagmiProvider, createConfig, useAccount } from 'wagmi';
-import { base } from 'wagmi/chains';
+import { connectorsForWallets } from '@rainbow-me/rainbowkit'
+import { injectedWallet } from '@rainbow-me/rainbowkit/wallets'
+import {
+  Auth_MinipayLoginDocument,
+  MutationAuth_MinipayLoginArgs,
+  MutationResponse,
+} from '@repo/api'
+import { PropsWithChildren } from 'react'
+import { http } from 'viem'
+import { celo, celoAlfajores } from 'viem/chains'
+import { WagmiProvider, createConfig, useAccount } from 'wagmi'
+import { base } from 'wagmi/chains'
 
-
-
-import { AppStores } from '@/src/lib/zustand';
-
+import { AppStores } from '@/src/lib/zustand'
 
 export function useInitMinipayUser() {
   const store = AppStores.useUser()
@@ -66,8 +67,8 @@ const connectors = connectorsForWallets(
   {
     appName: 'Mobarter',
     appDescription: 'One stop payment solution for Africans',
-    appUrl: 'www.mobarter.com',
-    appIcon: 'www.mobarter.com/logo.png',
+    appUrl: 'https://app.mobarter.com',
+    appIcon: 'https://app.mobarter.com/logo.png',
     projectId: process.env.WC_PROJECT_ID ?? '044601f65212332475a09bc14ceb3c34',
   }
 )

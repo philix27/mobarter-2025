@@ -1,7 +1,7 @@
 import { sdk } from '@farcaster/frame-sdk'
 import React, { useEffect, useState } from 'react'
 import Wrapper from 'src/components/wrapper/Wrapper'
-import { injected, useConnect } from 'wagmi'
+import { injected, useAccount, useConnect, useSignMessage } from 'wagmi'
 
 import { Tab } from '../components/Tab'
 import SelectCountryBtn from '../features/home/SelectCountry'
@@ -14,7 +14,7 @@ export default function Minipay() {
   const win = window as any
   const store = AppStores.useSettings()
   const { connect } = useConnect()
-  const {} = useState()
+  const [isMinipay, setIsMinipay] = useState<boolean>(false)
   // const [userAddress, setUserAddress] = useState('')
 
   // const { address, isConnected } = useAccount()
@@ -24,7 +24,7 @@ export default function Minipay() {
       //     // User is using MiniPay so hide connect wallet button.
 
       //     store.update({ appEnv: 'MINIPAY' })
-
+      setIsMinipay(true)
       connect({ connector: injected({ target: 'metaMask' }) })
     }
   }, [connect, win.ethereum])
@@ -37,7 +37,8 @@ export default function Minipay() {
     <Wrapper hideBottomNav>
       <div className="w-full flex items-center justify-center flex-col pt-4">
         <TopBar />
-        <ConnectMenu />
+        {isMinipay && <ConnectMenu />}
+
         {store.minipayTab === 'AIRTIME' && <Airtime />}
         {store.minipayTab === 'DATA' && <TopUpData isData />}
         {store.minipayTab === 'ELECTRICITY' && <ElectricityBill />}
@@ -64,6 +65,34 @@ function ConnectMenu() {
     <button type="button" onClick={() => connect({ connector: connectors[0] })}>
       Connect
     </button>
+  )
+}
+
+function SignButton() {
+  const { signMessage, isLoading, data, error } = useSignMessage()
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => signMessage({ message: 'hello world' })}
+        disabled={isLoading}
+      >
+        {isLoading ? 'Signing...' : 'Sign message'}
+      </button>
+      {data && (
+        <>
+          <div>Signature</div>
+          <div>{data}</div>
+        </>
+      )}
+      {error && (
+        <>
+          <div>Error</div>
+          <div>{error.message}</div>
+        </>
+      )}
+    </>
   )
 }
 export function TopBar() {
