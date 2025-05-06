@@ -12,7 +12,7 @@ export default function VerifyNin() {
   const store = AppStores.useSettings()
   const [phoneNo, setPhoneNo] = useState<string>('')
   return (
-    <div className="w-full">
+    <div className="w-full flex flex-col items-center">
       <Input
         label={`${mapCountryToIso[store.countryIso]} Phone number`}
         placeholder={`8101234567`}

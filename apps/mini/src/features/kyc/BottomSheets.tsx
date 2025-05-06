@@ -13,6 +13,7 @@ export default function KycBottomSheets() {
   return (
     <>
       <BottomModal
+        fullHeight
         showSheet={active === 'VERIFY_PHONE'}
         onClose={() => {
           store.update({ modals: 'NONE' })
@@ -21,6 +22,7 @@ export default function KycBottomSheets() {
         <VerifyPhone />
       </BottomModal>
       <BottomModal
+        fullHeight
         showSheet={active === 'VERIFY_NIN'}
         onClose={() => {
           store.update({ modals: 'NONE' })
@@ -29,6 +31,7 @@ export default function KycBottomSheets() {
         <VerifyNin />
       </BottomModal>
       <BottomModal
+        fullHeight
         showSheet={active === 'VERIFY_BVN'}
         onClose={() => {
           store.update({ modals: 'NONE' })
@@ -37,6 +40,7 @@ export default function KycBottomSheets() {
         <VerifyBvn />
       </BottomModal>
       <BottomModal
+        fullHeight
         showSheet={active === 'VERIFY_PERSONAL'}
         onClose={() => {
           store.update({ modals: 'NONE' })

@@ -18,7 +18,6 @@ const Forms: Record<CountriesIso, JSX.Element> = {
 }
 export default function Kyc() {
   const store = AppStores.useSettings()
-  store.countryIso
   return (
     <>
       <div className="w-full">{Forms[store.countryIso]}</div>

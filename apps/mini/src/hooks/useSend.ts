@@ -1,4 +1,4 @@
-import { getDataSuffix, submitReferral } from '@divvi/referral-sdk'
+import {  submitReferral } from '@divvi/referral-sdk'
 import { useEthereum } from '@particle-network/auth-core-modal'
 import { ethers, parseEther } from 'ethers'
 import { toast } from 'sonner'
@@ -108,14 +108,7 @@ export function useSendTokenWeb() {
         abi: StableTokenABI.abi,
         functionName: 'transfer',
         account: address,
-        args: [
-          props.recipient,
-          amountInWei,
-          getDataSuffix({
-            consumer: '0x20F50b8832f87104853df3FdDA47Dd464f885a49',
-            providers: ['0x5f0a55FaD9424ac99429f635dfb9bF20c3360Ab8'],
-          }),
-        ],
+        args: [props.recipient, amountInWei],
       })
 
       // const txnReceipt =
