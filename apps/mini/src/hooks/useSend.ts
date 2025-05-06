@@ -1,3 +1,4 @@
+import { getDataSuffix, submitReferral } from '@divvi/referral-sdk'
 import { useEthereum } from '@particle-network/auth-core-modal'
 import { ethers, parseEther } from 'ethers'
 import { toast } from 'sonner'
@@ -73,15 +74,6 @@ export function useSendTokenWeb() {
   const { data: hash, sendTransaction } = useSendTransaction()
 
   const sendErc20 = async (props: { recipient: string; amount: string; token: TokenId }) => {
-    // const provider = new ethers.BrowserProvider(window.ethereum)
-    // const signer = await provider.getSigner()
-
-    // const contract = new ethers.Contract(tokenAddress[props.token], ERC20_ABI, signer)
-
-    // const tx = await contract.transfer(props.recipient, ethers.parseUnits(props.amount, 18)) // cUSD has 18 decimals
-    // await tx.wait() // Wait for transaction to be mined
-    // toast.success(`Transaction successful: ${tx.hash}`)
-
     if (!window.ethereum) {
       throw new Error('No eth connection')
       // return { success: false, transactionHash: null }
@@ -110,21 +102,36 @@ export function useSendTokenWeb() {
       // })
 
       const amountInWei = parseEther(props.amount)
-      const txnHash = await privateClient.writeContract({
+      const txHash = await privateClient.writeContract({
         // rqst,
         address: tokenAddress[props.token] as `0x${string}`,
         abi: StableTokenABI.abi,
         functionName: 'transfer',
         account: address,
-        args: [props.recipient, amountInWei],
+        args: [
+          props.recipient,
+          amountInWei,
+          getDataSuffix({
+            consumer: '0x20F50b8832f87104853df3FdDA47Dd464f885a49',
+            providers: ['0x5f0a55FaD9424ac99429f635dfb9bF20c3360Ab8'],
+          }),
+        ],
       })
 
       // const txnReceipt =
       //   await publicClient.waitForTransactionReceipt({
-      //     hash: txnHash,
+      //     hash: txHash,
       //   })
+      // Step 3: Get the chain ID of the chain that the transaction was sent to
+      const chainId = await privateClient.getChainId()
 
-      return txnHash as string
+      // Step 4: Report the transaction to the attribution tracking API
+      await submitReferral({
+        txHash,
+        chainId,
+      })
+
+      return txHash as string
     } catch (err: any) {
       throw new Error(err.message.toString())
       // return { success: false, transactionHash: null }
@@ -141,28 +148,3 @@ export function useSendTokenWeb() {
 
   return { sendErc20, sendNative }
 }
-// export function useSendTokenWeb() {
-//   const { data: hash, sendTransaction } = useSendTransaction()
-
-//   const sendErc20 = async (props: { recipient: string; amount: string; token: TokenId }) => {
-//     const provider = new ethers.BrowserProvider(window.ethereum)
-//     const signer = await provider.getSigner()
-
-//     const contract = new ethers.Contract(tokenAddress[props.token], ERC20_ABI, signer)
-
-//     const tx = await contract.transfer(props.recipient, ethers.parseUnits(props.amount, 18)) // cUSD has 18 decimals
-//     await tx.wait() // Wait for transaction to be mined
-//     toast.success(`Transaction successful: ${tx.hash}`)
-//     return JSON.stringify(tx.hash)
-//   }
-
-//   const sendNative = async (props: { recipient: string; amount: string }) => {
-//     sendTransaction({
-//       to: props.recipient as `0x${string}`,
-//       value: parseEther(props.amount),
-//     })
-//     toast.success(`Send Native Success! Hash: ${shortString(hash)}`)
-//   }
-
-//   return { sendErc20, sendNative }
-// }

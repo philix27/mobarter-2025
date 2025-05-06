@@ -1,11 +1,11 @@
 import Wrapper from 'src/components/wrapper/Wrapper'
 
-import ElectricityBill from '@/src/features/others/ElectricityBill'
+import Kyc from '../features/kyc'
 
 export default function Page() {
   return (
     <Wrapper hideBottomNav>
-      <ElectricityBill />
+      <Kyc />
     </Wrapper>
   )
 }

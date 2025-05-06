@@ -24,6 +24,7 @@ export type IData = {
   callingCodes: string[]
 }
 
+export const countryCode = (iso: CountriesIso) => mapCountryToData[iso].callingCodes[0]
 export const mapCountryToData: Record<CountriesIso, IData> = {
   NG: {
     isoName: 'NG',

@@ -37,17 +37,17 @@ export interface IOperators {
   status: string
 }
 
-export interface Country {
+interface Country {
   isoName: string
   name: string
 }
 
-export interface Fx {
+interface Fx {
   rate: number
   currencyCode: string
 }
 
-export interface Fees {
+interface Fees {
   international: number
   local: number
   localPercentage: number

@@ -19,7 +19,7 @@ import { AppStores } from 'src/lib/zustand'
 
 import BalCard from './BalCard'
 import { usePrice } from '@/src/hooks/usePrice'
-import { isDev, mapCountryToData, mapCountryToIso } from '@/src/lib'
+import { countryCode, isDev, mapCountryToData, mapCountryToIso } from '@/src/lib'
 import { COLLECTOR } from '@/src/lib/config'
 
 export default function Airtime() {
@@ -46,7 +46,6 @@ function AirtimeComps(props: {
   const [selectedOperator, setOperator] = useState<Operator>()
   const Copy = FaCopy as any
   const store = AppStores.useSettings()
-  const countryCode = mapCountryToData[store.countryIso].callingCodes[0]
   const { sendErc20 } = props
   const { amountToPay, handleOnChange } = usePrice()
 
@@ -84,7 +83,7 @@ function AirtimeComps(props: {
               countryCode: mapCountryToIso[store.countryIso],
               operator: selectedOperator!,
               transaction_hash: txHash || `${Date.now()}`,
-              phoneNo: `${countryCode.slice(1)}${phoneNo}`,
+              phoneNo: `${countryCode(store.countryIso).slice(1)}${phoneNo}`,
             },
           },
           onCompleted() {
@@ -104,12 +103,12 @@ function AirtimeComps(props: {
       <Input
         label={`${mapCountryToIso[store.countryIso]} Phone number`}
         placeholder={`8101234567`}
-        preText={countryCode}
+        preText={countryCode(store.countryIso)}
         value={phoneNo}
         type="number"
         onChange={(e) => {
           const num = e.target.value
-          if (num.length > 13) {
+          if (num.length > 11) {
             toast.error('11 characters max')
             return
           }

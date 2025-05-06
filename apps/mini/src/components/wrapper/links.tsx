@@ -32,6 +32,11 @@ export const navLinks: { title: string; link: string; Icon: IconType }[] = [
     link: '/orders',
     Icon: MdNotes,
   },
+  {
+    title: 'KYC',
+    link: '/kyc',
+    Icon: MdNotes,
+  },
   // {
   //   title: 'P2P',
   //   link: '/ads',

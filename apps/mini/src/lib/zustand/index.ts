@@ -1,4 +1,5 @@
 import { useAdvert } from './adverts';
+import { useKyc } from './kyc';
 import { useOrder } from './orders';
 import { useView } from './screens';
 import { useSendToBank } from './sendToBank';
@@ -15,4 +16,5 @@ export const AppStores = {
   useUser,
   useSwap,
   useSendToBank,
+  useKyc,
 }
