@@ -1,4 +1,4 @@
-import { Copy } from 'lucide-react'
+import {  Copy } from 'lucide-react'
 import React, { useState } from 'react'
 import { toast } from 'sonner'
 
@@ -7,6 +7,7 @@ import Input from '@/src/components/Input'
 import { countryCode } from '@/src/lib'
 import { pasteTextFromClipboard } from '@/src/lib/utils'
 import { AppStores } from '@/src/lib/zustand'
+import Container from './Container'
 
 type ISteps = 'ENTER_DETAILS' | 'ENTER_OTP' | 'SUCCESS'
 export default function VerifyEmail() {
@@ -24,7 +25,7 @@ function EnterDetails(props: { setSteps: React.Dispatch<React.SetStateAction<ISt
     props.setSteps('ENTER_OTP')
   }
   return (
-    <div className="w-full flex flex-col items-center">
+    <Container>
       <Input
         label={`Email Address`}
         placeholder={`mobarter1@gmail.com`}
@@ -41,7 +42,7 @@ function EnterDetails(props: { setSteps: React.Dispatch<React.SetStateAction<ISt
       <Button onClick={handleSubmit} type="button">
         Send OTP
       </Button>
-    </div>
+    </Container>
   )
 }
 
@@ -52,7 +53,7 @@ function EnterOTP(props: { setSteps: React.Dispatch<React.SetStateAction<ISteps>
     props.setSteps('SUCCESS')
   }
   return (
-    <div className="w-full flex flex-col items-center">
+    <Container>
       <Input
         label={`OTP Code`}
         placeholder={`eg: 123456`}
@@ -80,7 +81,7 @@ function EnterOTP(props: { setSteps: React.Dispatch<React.SetStateAction<ISteps>
       <Button onClick={handleSubmit} type="button">
         Verify OTP
       </Button>
-    </div>
+    </Container>
   )
 }
 
@@ -88,7 +89,7 @@ function Success() {
   const store = AppStores.useKyc()
 
   return (
-    <div className="w-full flex flex-col items-center">
+    <Container>
       Success Lotiefile
       <Button
         type="button"
@@ -98,6 +99,6 @@ function Success() {
       >
         Continue
       </Button>
-    </div>
+    </Container>
   )
 }

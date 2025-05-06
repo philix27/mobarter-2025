@@ -1,4 +1,4 @@
-import { Copy } from 'lucide-react'
+import {  Copy } from 'lucide-react'
 import React, { useState } from 'react'
 import { toast } from 'sonner'
 
@@ -7,12 +7,13 @@ import Input from '@/src/components/Input'
 import { countryCode, mapCountryToIso } from '@/src/lib'
 import { pasteTextFromClipboard } from '@/src/lib/utils'
 import { AppStores } from '@/src/lib/zustand'
+import Container from './Container'
 
 export default function VerifyNin() {
   const store = AppStores.useSettings()
   const [phoneNo, setPhoneNo] = useState<string>('')
   return (
-    <div className="w-full flex flex-col items-center">
+     <Container>
       <Input
         label={`${mapCountryToIso[store.countryIso]} Phone number`}
         placeholder={`8101234567`}
@@ -38,6 +39,6 @@ export default function VerifyNin() {
         }
       />
       <Button>Send OTP</Button>
-    </div>
+    </Container>
   )
 }

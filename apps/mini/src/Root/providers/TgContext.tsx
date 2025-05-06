@@ -30,8 +30,6 @@ import { erc4337Config } from 'src/lib/config/erc4337'
 import { logger } from 'src/lib/utils/logger'
 import { AppStores } from 'src/lib/zustand'
 
-import { useTgUi } from '@/src/hooks/useTgUI'
-
 // import { isDev } from '../lib'
 
 type ContextValue = {
@@ -48,8 +46,7 @@ type ContextValue = {
   provider?: EVMProvider
 }
 
-export function useInitUserToken(hideBottomNav?: boolean) {
-  useTgUi(hideBottomNav)
+export function useInitUserToken() {
   const store = AppStores.useUser()
   const initDataState = useSignal(initData.state)
   const { address } = useEthereum()

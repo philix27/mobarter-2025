@@ -33,11 +33,11 @@ export default function BottomModal({
       setActiveSnapPoint={setSnap}
     >
       <DOverlay
-        className="fixed inset-0  bg-[#0000008c]"
+        className="fixed inset-0  bg-[#00000095]"
         onClick={() => {
           return
         }}
-        onDoubleClick={props.onClose}
+        // onDoubleClick={props.onClose}
       />
       <DPortal>
         <DContent

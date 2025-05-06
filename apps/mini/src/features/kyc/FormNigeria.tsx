@@ -25,13 +25,6 @@ export default function FormNigeria() {
           store.update({ modals: 'VERIFY_PHONE' })
         }}
       />
-      <TileSimple
-        title={'DOB'}
-        desc="Date of Birth"
-        onClick={() => {
-          store.update({ modals: 'VERIFY_PERSONAL' })
-        }}
-      />
 
       <TileSimple
         title={'BVN'}

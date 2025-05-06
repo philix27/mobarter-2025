@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { toast } from 'sonner'
 
+import Container from './Container'
 import { Button } from '@/src/components/Button'
 import Input from '@/src/components/Input'
 import { countryCode, mapCountryToIso } from '@/src/lib'
@@ -23,7 +24,7 @@ function EnterDetails(props: { setSteps: React.Dispatch<React.SetStateAction<ISt
     props.setSteps('ENTER_OTP')
   }
   return (
-    <div className="w-full flex flex-col items-center">
+    <Container>
       <Input
         label={`${mapCountryToIso[store.countryIso]} Phone number`}
         placeholder={`8101234567`}
@@ -42,7 +43,7 @@ function EnterDetails(props: { setSteps: React.Dispatch<React.SetStateAction<ISt
       <Button onClick={handleSubmit} type="button">
         Send OTP
       </Button>
-    </div>
+    </Container>
   )
 }
 
@@ -52,7 +53,7 @@ function EnterOTP(props: { setSteps: React.Dispatch<React.SetStateAction<ISteps>
     props.setSteps('SUCCESS')
   }
   return (
-    <div className="w-full flex flex-col items-center">
+    <Container>
       <Input
         label={`OTP Code`}
         placeholder={`eg: 123456`}
@@ -70,7 +71,7 @@ function EnterOTP(props: { setSteps: React.Dispatch<React.SetStateAction<ISteps>
       <Button onClick={handleSubmit} type="button">
         Verify OTP
       </Button>
-    </div>
+    </Container>
   )
 }
 
@@ -78,7 +79,7 @@ function Success() {
   const store = AppStores.useKyc()
 
   return (
-    <div className="w-full flex flex-col items-center">
+    <Container>
       Success Lotiefile
       <Button
         type="button"
@@ -88,6 +89,6 @@ function Success() {
       >
         Continue
       </Button>
-    </div>
+    </Container>
   )
 }
