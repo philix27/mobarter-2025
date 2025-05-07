@@ -3,10 +3,9 @@
   "version": "0.0.1",
   "description": "Exchange services",
   "keywords": [
-    "Mobarter",
-    "P2P",
-    "Mento",
-    "Exchange"
+    "mobarter",
+    "payments",
+    "off-ramping"
   ],
   "scripts": {
     "dev": "NODE_ENV=development next -p 3233",
