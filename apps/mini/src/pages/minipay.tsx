@@ -66,16 +66,16 @@ function ConnectMenu() {
 }
 
 function SignButton() {
-  const { signMessage, isLoading, data, error } = useSignMessage()
+  const { signMessage, data, error, isPending } = useSignMessage()
 
   return (
     <>
       <button
         type="button"
         onClick={() => signMessage({ message: 'hello world' })}
-        disabled={isLoading}
+        disabled={isPending}
       >
-        {isLoading ? 'Signing...' : 'Sign message'}
+        {isPending ? 'Signing...' : 'Sign message'}
       </button>
       {data && (
         <>

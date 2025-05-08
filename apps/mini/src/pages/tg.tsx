@@ -1,10 +1,10 @@
-import { useAddFrame, useMiniKit } from '@coinbase/onchainkit/src/minikit'
+// import { useAddFrame, useMiniKit } from '@coinbase/onchainkit/dist/minikit'
 import { Metadata } from 'next'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+// import { useCallback, useEffect, useMemo, useState } from 'react'
+import Wrapper from 'src/components/wrapper/Wrapper'
+import Home from 'src/features/home'
 
-// import Wrapper from 'src/components/wrapper/Wrapper'
-// import Home from 'src/features/home'
-import { Button } from '../components/Button'
+// import { Button } from '../components/Button'
 
 export async function generateMetadata(): Promise<Metadata> {
   const URL = process.env.NEXT_PUBLIC_URL
@@ -31,48 +31,48 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function HomePage() {
-  const { setFrameReady, isFrameReady, context } = useMiniKit()
-  const [frameAdded, setFrameAdded] = useState(false)
+  // const { setFrameReady, isFrameReady, context } = useMiniKit()
+  // const [frameAdded, setFrameAdded] = useState(false)
   // const [activeTab, setActiveTab] = useState('home')
 
-  const addFrame = useAddFrame()
+  // const addFrame = useAddFrame()
   // const openUrl = useOpenUrl()
 
-  useEffect(() => {
-    if (!isFrameReady) {
-      setFrameReady()
-    }
-  }, [setFrameReady, isFrameReady])
+  // useEffect(() => {
+  //   if (!isFrameReady) {
+  //     void setFrameReady()
+  //   }
+  // }, [setFrameReady, isFrameReady])
 
-  const handleAddFrame = useCallback(async () => {
-    const frameAdded = await addFrame()
-    setFrameAdded(Boolean(frameAdded))
-  }, [addFrame])
+  // const handleAddFrame = useCallback(async () => {
+  //   const frameAdded = await addFrame()
+  //   setFrameAdded(Boolean(frameAdded))
+  // }, [addFrame])
 
-  const saveFrameButton = useMemo(() => {
-    if (context && !context.client.added) {
-      return (
-        <Button onClick={handleAddFrame} className="text-[var(--app-accent)] p-4">
-          Save Frame
-        </Button>
-      )
-    }
+  // const saveFrameButton = useMemo(() => {
+  //   if (context && !context.client.added) {
+  //     return (
+  //       <Button onClick={handleAddFrame} className="text-[var(--app-accent)] p-4">
+  //         Save Frame
+  //       </Button>
+  //     )
+  //   }
 
-    if (frameAdded) {
-      return (
-        <div className="flex items-center space-x-1 text-sm font-medium text-[#0052FF] animate-fade-out">
-          <span>Saved</span>
-        </div>
-      )
-    }
+  //   if (frameAdded) {
+  //     return (
+  //       <div className="flex items-center space-x-1 text-sm font-medium text-[#0052FF] animate-fade-out">
+  //         <span>Saved</span>
+  //       </div>
+  //     )
+  //   }
 
-    return null
-  }, [context, frameAdded, handleAddFrame])
+  //   return null
+  // }, [context, frameAdded, handleAddFrame])
 
   return (
-    <div>
-      {/* <Home /> */}
-      <div>{saveFrameButton}</div>
-    </div>
+    <Wrapper>
+      <Home />
+      {/* <div>{saveFrameButton}</div> */}
+    </Wrapper>
   )
 }
