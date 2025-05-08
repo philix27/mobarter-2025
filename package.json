@@ -13,6 +13,7 @@
   "workspaces": [
     "apps/mini",
     "apps/admin",
+    "apps/farcaster",
     "packages/*"
   ],
   "engines": {

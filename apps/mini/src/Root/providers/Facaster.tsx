@@ -1,14 +1,16 @@
-// import { MiniKitProvider } from '@coinbase/onchainkit/src/minikit'
+// import { MiniKitProvider } from '@coinbase/onchainkit'
+// import { MiniKitProvider } from '@coinbase/onchainkit/dist/minikit'
 import { PropsWithChildren } from 'react'
 
 // import { base } from 'wagmi/chains'
 
 export function FarcasterProvider(props: PropsWithChildren) {
+  // const chain = base as any
   return (
     <>
       {/* <MiniKitProvider
         apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
-        chain={base}
+        chain={chain}
         config={{
           appearance: {
             mode: 'auto',
