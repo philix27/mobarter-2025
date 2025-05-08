@@ -26,8 +26,9 @@
   },
   "dependencies": {
     "@apollo/client": "^3.13.4",
+    "@coinbase/onchainkit": "^0.38.13",
     "@divvi/referral-sdk": "^1.0.0",
-    "@farcaster/frame-sdk": "^0.0.37",
+    "@farcaster/frame-sdk": "^0.0.35",
     "@farcaster/frame-wagmi-connector": "^0.0.25",
     "@headlessui-float/react": "^0.11.2",
     "@headlessui/react": "^1.7.13",
@@ -42,6 +43,7 @@
     "@tanstack/react-query": "^4.29.14",
     "@telegram-apps/analytics": "^1.4.0",
     "@telegram-apps/sdk-react": "^2.0.22",
+    "@upstash/redis": "^1.34.4",
     "@vercel/analytics": "^1.0.1",
     "@wagmi/connectors": "^5.7.12",
     "axios": "^1.8.4",
