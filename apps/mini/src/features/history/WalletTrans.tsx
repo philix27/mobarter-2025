@@ -86,7 +86,7 @@ export default function WalletTransactions() {
                 text2={shortenAddress(isSender ? val.to : val.from)}
               />
               <Row
-                text1={showMore!.data.txreceipt_status === '1' ? 'SUCCESS' : 'FAILED'}
+                text1={dayjs.unix(parseInt(val.timeStamp)).format('MMMM D, YYYY h:mm A')}
                 text2={`${formatEtherBalance(BigInt(val.value), 18, 2)} ${getTokenId(
                   showMore!.data.to
                 )}`}
