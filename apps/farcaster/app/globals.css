@@ -6,35 +6,37 @@
 
 @layer base {
   :root {
-    /* Tailwind */
-    --background: #cbe2e5;
-    --foreground: #494a4a;
+    --background: #18222e;
+    /* --background: #272727; */
+    --foreground: #ffffff;
 
-    --muted: #8f8f8f;
-    --muted-foreground: #cecece;
+    --muted: #717171;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 47.4% 11.2%;
 
-    --card: #fefefe;
-    --card-foreground: #0e151d;
+    --card: #1c2937;
+    /* --card: #1f1f1f; */
+    --card-foreground: #ffff;
 
     --primary: #ff6719;
+    /* --primary: #ff6719; */
     --primary-foreground: #fff;
 
-    --secondary: #c1d0d5;
-    --secondary-foreground: #19232f;
+    --secondary: #282828;
+    --secondary-foreground: #f8f8f8;
 
-    --accent: #ffffff;
+    --accent: #222525;
     --accent-foreground: #f8f8f8;
 
     --destructive: #d00000;
     --destructive-foreground: #ffffff;
 
-    --ring: #4c4847;
-    --border: #3b3b3b;
-    --input: #ff3300;
-
+    --ring: #2a333c;
+    --border: #2a333c;
+    --input: #151718;
+    --tw-shadow: #545353;
     --radius: 0.5rem;
   }
 
