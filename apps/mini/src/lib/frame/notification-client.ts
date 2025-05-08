@@ -3,7 +3,7 @@ import {
   type SendNotificationRequest,
   sendNotificationResponseSchema,
 } from "@farcaster/frame-sdk";
-import { getUserNotificationDetails } from "@/lib/notification";
+import { getUserNotificationDetails } from "./notification";
 
 const appUrl = process.env.NEXT_PUBLIC_URL || "";
 
