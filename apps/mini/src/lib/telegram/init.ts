@@ -7,6 +7,7 @@ import {
   themeParams,
   viewport,
 } from '@telegram-apps/sdk-react'
+
 import { logger } from '../utils/logger'
 
 /**
@@ -39,5 +40,5 @@ export function init(debug: boolean): void {
   // themeParams.bindCssVars();
 
   // Add Eruda if needed.
-  debug && import('eruda').then((lib) => lib.default.init()).catch(console.error)
+  debug && import('eruda').then((lib) => lib.default.init()).catch(logger.error)
 }

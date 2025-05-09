@@ -1,16 +1,27 @@
-// import { MiniKitProvider } from '@coinbase/onchainkit'
-// import { MiniKitProvider } from '@coinbase/onchainkit/dist/minikit'
+// import * as onchain from '@coinbase/onchainkit';
+import * as minikit from '@coinbase/onchainkit/minikit'
 import { PropsWithChildren } from 'react'
-
-// import { base } from 'wagmi/chains'
+import { base } from 'wagmi/chains'
 
 export function FarcasterProvider(props: PropsWithChildren) {
-  // const chain = base as any
   return (
     <>
-      {/* <MiniKitProvider
+      <minikit.MiniKitProvider
         apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
-        chain={chain}
+        chain={{
+          blockExplorers: base.blockExplorers,
+          id: base.id,
+          name: base.name,
+          nativeCurrency: base.nativeCurrency,
+          rpcUrls: base.rpcUrls,
+          contracts: base.contracts,
+          custom: base.custom,
+          ensTlds: base.ensTlds,
+          formatters: base.formatters,
+          serializers: base.serializers,
+          sourceId: base.sourceId,
+          testnet: base.testnet,
+        }}
         config={{
           appearance: {
             mode: 'auto',
@@ -19,9 +30,9 @@ export function FarcasterProvider(props: PropsWithChildren) {
             logo: process.env.NEXT_PUBLIC_ICON_URL,
           },
         }}
-      > */}
-      {props.children}
-      {/* </MiniKitProvider> */}
+      >
+        {props.children}
+      </minikit.MiniKitProvider>
     </>
   )
 }

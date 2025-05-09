@@ -1,3 +1,4 @@
+import { logger } from '@/src/lib/utils'
 import axios from 'axios'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -20,7 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       res.status(200).json(response.data)
     } catch (error) {
-      console.error(error)
+      logger.error(error)
     }
   } else {
     res.status(404)
