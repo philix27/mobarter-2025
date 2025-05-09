@@ -1,4 +1,4 @@
-import {  submitReferral } from '@divvi/referral-sdk'
+import { submitReferral } from '@divvi/referral-sdk'
 import { useEthereum } from '@particle-network/auth-core-modal'
 import { ethers, parseEther } from 'ethers'
 import { toast } from 'sonner'
