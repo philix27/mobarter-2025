@@ -1,8 +1,7 @@
 import React, { forwardRef, ReactNode } from 'react';
 import RBSheet, { RBSheetRef } from 'react-native-raw-bottom-sheet';
 import { useColor } from '@/lib/color';
-import { TText } from './TText';
-import { TView } from './TView';
+import { TText, TView } from '@/components';
 
 type IProps = {
   children: ReactNode;
@@ -14,27 +13,8 @@ type IProps = {
   ref: React.LegacyRef<RBSheetRef>;
 };
 
-/// Usage
-/// const refRBSheet = useRef<RBSheetRef>();
-/**
- * Usage
- *
- * ```ts
- * const refRBSheet = useRef<RBSheetRef>();
- * 
- * refRBSheet.current!.open();
- * refRBSheet.current!.close();
- *  
- * //Component
- * <BottomSheet ref={refRBSheet!} height={600}>
-      <ThemedView>
-        <ThemedText type="default">Hello</ThemedText>
-      </ThemedView>
-    </BottomSheet>
- * ```
- */
 export const BottomSheet = forwardRef<any, IProps>(
-  ({ maxHeight = 600, ...props }, ref) => {
+  ({ minHeight = 600, maxHeight, ...props }, ref) => {
     const color = useColor();
     return (
       <RBSheet
@@ -46,15 +26,15 @@ export const BottomSheet = forwardRef<any, IProps>(
           container: {
             borderTopRightRadius: 20,
             borderTopLeftRadius: 20,
-            padding: 20,
+            padding: 0,
             height: props.height,
-            maxHeight: maxHeight,
+            // maxHeight: maxHeight,
+            // minHeight: minHeight,
             backgroundColor: color.background,
           },
           wrapper: {
             backgroundColor: '#00000075',
             // backgroundColor: "transparent",
-            // height: 500,
           },
           draggableIcon: {
             backgroundColor: '#000',
@@ -68,11 +48,32 @@ export const BottomSheet = forwardRef<any, IProps>(
           enabled: false,
         }}
       >
-        {props.title && (
-          <TView style={{ marginBottom: 4 }}>
-            <TText type="defaultSemiBold">{props.title}:</TText>
+        <TView
+          style={{
+            margin: 0,
+            paddingHorizontal: 10,
+            paddingVertical: 8,
+            flexDirection: 'row',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <TView style={{ margin: 0, padding: 0 }}>
+            <TText type="defaultSemiBold" onPress={props.onClose}>
+              close
+            </TText>
           </TView>
-        )}
+          {props.title && (
+            <TView style={{ margin: 0, padding: 0 }}>
+              <TText type="defaultSemiBold">{props.title}</TText>
+            </TView>
+          )}
+          <TView style={{ margin: 0, padding: 0 }}>
+            <TText type="defaultSemiBold">more</TText>
+          </TView>
+        </TView>
+
         {props.children}
       </RBSheet>
     );

@@ -1,20 +1,20 @@
-import { LoadingIndicator } from "@/components/Loading";
-import { TText } from "@/components/TText";
-import { AppStores } from "@/lib";
-import { Link, router } from "expo-router";
-import { useEffect } from "react";
-import { SafeAreaView, View } from "react-native";
+import { LoadingIndicator } from '@/components/Loading';
+import { TText } from '@/components/TText';
+import { AppStores } from '@/lib';
+import { Link, router } from 'expo-router';
+import { useEffect } from 'react';
+import { SafeAreaView, View } from 'react-native';
 
 export default function Page() {
   const store = AppStores.useUserInfo();
   useEffect(() => {
     if (!store.email) {
       setTimeout(() => {
-        router.push("/auth/sign-in");
+        router.push('/auth/sign-in');
       }, 100);
     } else {
       setTimeout(() => {
-        router.push("/(tabs)/home");
+        router.push('/(tabs)/home');
       }, 100);
     }
   });
@@ -31,13 +31,17 @@ export default function Page() {
   return (
     <SafeAreaView
       style={{
-        height: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#000',
       }}
     >
       <View style={{ gap: 20 }}>
+        <Link href="/">
+          <TText type="subtitle">Home</TText>
+        </Link>
         <Link href="/auth/verify-otp">
           <TText type="subtitle">Verify OTP</TText>
         </Link>
