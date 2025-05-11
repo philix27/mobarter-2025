@@ -40,7 +40,7 @@ export interface GiftCards {
   additionalRequirements: AdditionalRequirements
 }
 
-export interface FixedRecipientToSenderDenominationsMap {
+interface FixedRecipientToSenderDenominationsMap {
   '1.0'?: number
   '10.0'?: number
   '20.0'?: number
@@ -53,39 +53,39 @@ export interface FixedRecipientToSenderDenominationsMap {
   '100.0'?: number
 }
 
-export interface Metadata {
+interface Metadata {
   '94.99'?: string
   '41.99'?: string
   '26.99'?: string
   '11.99'?: string
 }
 
-export interface Brand {
+interface Brand {
   brandId: number
   brandName: string
 }
 
-export interface Category {
+interface Category {
   id: number
   name: string
 }
 
-export interface Country {
+interface Country {
   isoName: string
   name: string
   flagUrl: string
 }
 
-export interface RedeemInstruction {
+interface RedeemInstruction {
   concise: string
   verbose: string
 }
 
-export interface AdditionalRequirements {
+interface AdditionalRequirements {
   userIdRequired: boolean
 }
 
-export interface Pageable {
+interface Pageable {
   sort: Sort
   pageNumber: number
   pageSize: number
@@ -94,13 +94,13 @@ export interface Pageable {
   paged: boolean
 }
 
-export interface Sort {
+interface Sort {
   sorted: boolean
   unsorted: boolean
   empty: boolean
 }
 
-export interface Sort2 {
+interface Sort2 {
   sorted: boolean
   unsorted: boolean
   empty: boolean

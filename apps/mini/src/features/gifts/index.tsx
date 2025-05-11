@@ -1,15 +1,30 @@
-import { useQuery } from '@tanstack/react-query'
-import React from 'react'
+import { useQuery } from '@tanstack/react-query';
+import React from 'react';
 
-import { Spinner } from '@/src/components/Spinner'
-import { TileSimple } from '@/src/components/TileSimple'
-import { getGiftCardProducts } from '@/src/lib/server'
+
+
+import { GCcategories } from './Categories';
+import { Spinner } from '@/src/components/Spinner';
+import { TileSimple } from '@/src/components/TileSimple';
+import { getGiftCardProducts } from '@/src/lib/server';
+import { AppStores } from '@/src/lib/zustand';
+
 
 export default function GiftCards() {
+  return (
+    <div className="w-full">
+      <GCcategories />
+      <ProductsList />
+    </div>
+  )
+}
+
+export function ProductsList() {
+  const store = AppStores.useGiftCard()
   const { data, isLoading } = useQuery({
-    queryKey: ['getGiftCardProducts'],
+    queryKey: ['getGiftCardProducts_' + store.selectedCategory],
     queryFn: async () => {
-      const res = await getGiftCardProducts('NG')
+      const res = await getGiftCardProducts(store.selectedCategory)
       return res
     },
   })

@@ -6,13 +6,14 @@ import { GiftCardsResult } from '@/src/lib/server'
 export default async function handler(req: NextApiRequest, res: NextApiResponse<GiftCardsResult>) {
   const url = ` https://giftcards.reloadly.com/products`
   const token = process.env.GIFT_CARD_TOKEN
-
+  const { productCategoryId } = req.query
   if (req.method === 'GET') {
     try {
       const response = await axios.get(url, {
         params: {
           countryCode: 'NG',
-          size: 20,
+          size: 40,
+          productCategoryId: productCategoryId,
         },
         headers: {
           'Content-Type': 'application/json',
