@@ -33,7 +33,7 @@ export default class MyDocument extends Document {
           <meta property="og:url" content="https://mobarter.com" />
           <meta property="og:title" content="Mobarter P2P Exchange" />
           <meta property="og:type" content="website" />
-          <meta property="og:image" content="https://mento.finance/logo-color.png" />
+          <meta property="og:image" content="https://mobarter.com/logo.png" />
           <meta
             property="og:description"
             content="P2P crypto exchanges on stable coins (cUSD cEUR cREAL)"
@@ -44,7 +44,7 @@ export default class MyDocument extends Document {
             name="twitter:description"
             content="P2P crypto exchanges on stable coins (cUSD cEUR cREAL)"
           />
-          <meta name="twitter:image" content="https://mobarter.app/logo.png" />
+          <meta name="twitter:image" content="https://mobarter.com/logo.png" />
 
           {/* <meta
             name="viewport"

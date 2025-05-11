@@ -1,5 +1,4 @@
 import { useMutation } from '@apollo/client'
-// import { farcasterFrame } from '@farcaster/frame-wagmi-connector'
 import { connectorsForWallets } from '@rainbow-me/rainbowkit'
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets'
 import {
