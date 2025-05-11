@@ -27,14 +27,7 @@ export function Root(props: PropsWithChildren) {
     )
   }
 
-  // if (appEnv === 'FARCASTER') {
-  //   return (
-  //     <ErrorBoundary fallback={ErrorPage}>
-  //       <FarcasterProvider {...props} />
-  //       <Toaster richColors position="bottom-center" expand={false} closeButton duration={2000} />
-  //     </ErrorBoundary>
-  //   )
-  // }
+ 
   if (appEnv === 'TELEGRAM') {
     return (
       <ErrorBoundary fallback={ErrorPage}>
