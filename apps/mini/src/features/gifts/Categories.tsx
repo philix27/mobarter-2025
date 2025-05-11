@@ -26,7 +26,7 @@ export function GCcategories() {
       </div>
     )
   return (
-    <div className="w-full mb-2">
+    <div className="w-full mb-3">
       {data && (
         <AppSelect
           label="Categories"
