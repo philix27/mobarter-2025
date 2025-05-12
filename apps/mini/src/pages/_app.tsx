@@ -24,10 +24,9 @@ function SafeHydrate({ children }: PropsWithChildren<any>) {
   }
 }
 
-const queryClient = new QueryClient()
 const apollo = (token: string) => {
   try {
-    const client =  new ApolloClient({
+    const client = new ApolloClient({
       uri: process.env.NEXT_PUBLIC_BACKEND_SERVER,
       headers: {
         Authorization: `Bearer ${token}`,
@@ -41,13 +40,13 @@ const apollo = (token: string) => {
   }
 }
 export default function App({ Component, pageProps }: AppProps) {
+  const queryClient = new QueryClient()
   const store = AppStores.useUser()
 
   return (
     <ErrorBoundary>
       <SafeHydrate>
         <QueryClientProvider client={queryClient}>
-          {/* <RainbowKitProvider> */}
           <ApolloProvider client={apollo(store.token)!}>
             <PreventZoom>
               <Root>
@@ -55,7 +54,6 @@ export default function App({ Component, pageProps }: AppProps) {
               </Root>
             </PreventZoom>
           </ApolloProvider>
-          {/* </RainbowKitProvider> */}
         </QueryClientProvider>
       </SafeHydrate>
       {process.env.NODE_ENV !== 'development' && <Analytics />}
