@@ -2443,7 +2443,17 @@
   resolved "https://registry.yarnpkg.com/@particle-network/chains/-/chains-1.8.3.tgz#76d90cb36bf4e1fa72418dfaac6a46abcc1dea9a"
   integrity sha512-WgzY2Hp3tpQYBKXF0pOFdCyJ4yekTTOCzBvBt2tvt7Wbzti2bLyRlfGZAoP57TvIMiy1S1oUfasVfM0Dqd6k5w==
 
-"@particle-network/rn-auth-core@^2.0.6":
+"@particle-network/rn-aa@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@particle-network/rn-aa/-/rn-aa-2.0.6.tgz#c5688ca0d0c8409674e585066fb5fef00921665a"
+  integrity sha512-A8P4Q7qKnPegKYIpzOjVugdtHOc70qFYOHYA+wg1AeLhDBt5YAaQX1PgsmO7yguWx3vxhl6fkjuhWRB0wcf11w==
+  dependencies:
+    "@particle-network/rn-auth-core" "2.0.6"
+    "@particle-network/rn-base" "2.0.6"
+    axios "^1.3.4"
+    events "^3.3.0"
+
+"@particle-network/rn-auth-core@2.0.6", "@particle-network/rn-auth-core@^2.0.6":
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/@particle-network/rn-auth-core/-/rn-auth-core-2.0.6.tgz#af08000b8218a750f4c36dc83db76ca1e3b48512"
   integrity sha512-HE4xjfuFJJ1slD9tTGvqNVcSh1y//9+cEuBsiZLseb4N2seS9D/Vvy+z4yS015amC+W8PoBpsSEe7SXRYl1Jzg==
@@ -2458,6 +2468,27 @@
     "@particle-network/chains" "^1.7.7"
     axios "^1.6.2"
     bignumber.js "^9.1.0"
+    events "^3.3.0"
+
+"@particle-network/rn-connect@2.0.6", "@particle-network/rn-connect@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@particle-network/rn-connect/-/rn-connect-2.0.6.tgz#0a2821e9286108971acbbe8e5aa2a682525f1dec"
+  integrity sha512-kHLNiKcts6GYWCekjM/LauHP68F3bDHr/7mP5cEsXApWiPADek+hLYXcrDhcOoV3l+//NJX0fWbvpubgbLli2A==
+  dependencies:
+    "@particle-network/rn-auth-core" "2.0.6"
+    "@particle-network/rn-base" "2.0.6"
+    axios "^1.3.4"
+    events "^3.3.0"
+
+"@particle-network/rn-wallet@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@particle-network/rn-wallet/-/rn-wallet-2.0.6.tgz#a90a7c349cbdb92b91bc46d1391565fde60e91be"
+  integrity sha512-4C9lAcOiMTTBZdaUwKWY3I4EQi3c3dyOdpHo641TB1ZlU0lBN3D8NOz541gJRbzTLoteJ1xxfW3pH4XaYKnOMw==
+  dependencies:
+    "@particle-network/rn-auth-core" "2.0.6"
+    "@particle-network/rn-base" "2.0.6"
+    "@particle-network/rn-connect" "2.0.6"
+    axios "^1.3.4"
     events "^3.3.0"
 
 "@pkgjs/parseargs@^0.11.0":
@@ -3579,7 +3610,7 @@ available-typed-arrays@^1.0.7:
   dependencies:
     possible-typed-array-names "^1.0.0"
 
-axios@^1.6.2:
+axios@^1.3.4, axios@^1.6.2:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.9.0.tgz#25534e3b72b54540077d33046f77e3b8d7081901"
   integrity sha512-re4CqKTJaURpzbLHtIi6XpDv20/CnpXOtjRY5/CU32L8gU8ek9UIivcfvSWvmKEngmVbrUtPpdDwWDWL7DNHvg==

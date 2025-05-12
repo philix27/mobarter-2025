@@ -1,13 +1,13 @@
-import { ScrollView } from "react-native";
-import { TView } from "@/components/TView";
-import React from "react";
-import { AssetsRow } from "./AssetsRow";
-import { coinsList } from "@/constants";
+import { ScrollView } from 'react-native';
+import { TView } from '@/components/TView';
+import React from 'react';
+import { AssetsRow } from './AssetsRow';
+import { coinsList } from '@/constants';
 
 export default function AssetsCrypto() {
   return (
     <ScrollView>
-      <TView style={{ marginBottom: 50 }}>
+      <TView style={{ paddingBottom: 200 }}>
         {coinsList.map((val, i) => (
           <AssetsRow
             key={i}
@@ -15,7 +15,7 @@ export default function AssetsCrypto() {
             currency={val.symbol}
             balance={0.5}
             dollarBalance={5000}
-            performance={"+2.3%"}
+            performance={'+2.3%'}
             onPress={() => {
               // router.push({
               //   pathname: `/coin/[id]`,

@@ -22,7 +22,7 @@ export function AssetsRow(params: {
         marginBottom: 4,
         backgroundColor: bgColor,
         paddingHorizontal: 10,
-        borderRadius: 15,
+        borderRadius: 10,
       }}
     >
       <TView

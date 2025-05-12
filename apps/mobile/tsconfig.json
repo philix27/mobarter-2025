@@ -11,6 +11,6 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "screens/advert/3ConfrimPayment.tsx"
+    ".trash/advert/3ConfrimPayment.tsx"
   ]
 }

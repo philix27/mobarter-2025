@@ -1,14 +1,12 @@
-import { HeaderTabs } from "@/components/BHeaderTab";
-import HeaderBar from "@/components/Header";
-import { AppStores } from "@/lib";
-import P2PScreen from "@/screens/p2p";
-import React from "react";
-import { useColor } from "@/lib/color";
-import { Feather } from "@expo/vector-icons";
-import { TView } from "@/components/TView";
-import { useDrawer } from "@/components/DrawerContent";
-import { TouchableOpacity } from "react-native";
-import MiniAppsScreen from "@/screens/mini";
+import HeaderBar from '@/components/Header';
+import { AppStores } from '@/lib';
+import React from 'react';
+import { useColor } from '@/lib/color';
+import { Feather } from '@expo/vector-icons';
+import { TView } from '@/components/TView';
+import { useDrawer } from '@/components/DrawerContent';
+import { TouchableOpacity } from 'react-native';
+import ServicesScreen from '@/screens/services';
 
 export default function HomeScreen() {
   const store = AppStores.useAdvert();
@@ -17,30 +15,7 @@ export default function HomeScreen() {
   return (
     <>
       <HeaderBar
-        title="P2P"
-        headerTitle={props => (
-          <HeaderTabs
-            data={[
-              {
-                title: 'Buy',
-                key: 'buy',
-                isActive: store.tradeType === 'BUY',
-                onPress: () => {
-                  store.update({ tradeType: 'BUY' });
-                },
-              },
-              {
-                title: 'Sell',
-                key: 'sell',
-                isActive: store.tradeType === 'SELL',
-                onPress: () => {
-                  store.update({ tradeType: 'SELL' });
-                },
-              },
-            ]}
-            {...props}
-          />
-        )}
+        title="Services"
         headerLeft={(props: any) => {
           return (
             <TouchableOpacity
@@ -68,7 +43,7 @@ export default function HomeScreen() {
           );
         }}
       />
-      <MiniAppsScreen />
+      <ServicesScreen />
     </>
   );
 }
