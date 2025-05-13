@@ -25,19 +25,19 @@ function SafeHydrate({ children }: PropsWithChildren<any>) {
 }
 
 const apollo = (token: string) => {
-  try {
-    const client = new ApolloClient({
-      uri: process.env.NEXT_PUBLIC_BACKEND_SERVER,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      cache: new InMemoryCache(),
-    })
-    return client
-  } catch (e) {
-    // logger.error('Initialization err' + e)
-    return undefined
-  }
+  // try {
+  const client = new ApolloClient({
+    uri: process.env.NEXT_PUBLIC_BACKEND_SERVER,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    cache: new InMemoryCache(),
+  })
+  return client
+  // } catch (e) {
+  //   // logger.error('Initialization err' + e)
+  //   return undefined
+  // }
 }
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient()
