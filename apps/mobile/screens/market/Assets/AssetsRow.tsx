@@ -1,11 +1,12 @@
-import { Image, ImageSourcePropType, TouchableOpacity } from "react-native";
-import { TText } from "@/components/TText";
-import { TView } from "@/components/TView";
-import React from "react";
-import { useColor } from "@/lib/color";
+import { Image, ImageSourcePropType, TouchableOpacity } from 'react-native';
+import { TText } from '@/components/TText';
+import { TView } from '@/components/TView';
+import React from 'react';
+import { useColor } from '@/lib/color';
 
 export function AssetsRow(params: {
-  imgUrl: ImageSourcePropType | undefined;
+  imgUrl?: ImageSourcePropType | undefined;
+  icon?: JSX.Element;
   currency: string;
   balance: number;
   dollarBalance: number;
@@ -18,7 +19,7 @@ export function AssetsRow(params: {
     <TouchableOpacity
       onPress={params.onPress}
       style={{
-        paddingVertical: 10,
+        paddingVertical: 5,
         marginBottom: 4,
         backgroundColor: bgColor,
         paddingHorizontal: 10,
@@ -27,16 +28,16 @@ export function AssetsRow(params: {
     >
       <TView
         style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
           backgroundColor: bgColor,
         }}
       >
         <TView
           style={{
-            display: "flex",
-            flexDirection: "row",
+            display: 'flex',
+            flexDirection: 'row',
             backgroundColor: bgColor,
           }}
         >
@@ -44,16 +45,17 @@ export function AssetsRow(params: {
             style={{
               backgroundColor: bgColor,
               marginRight: 10,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
-            <Image
+            {params.icon}
+            {/* <Image
               source={params.imgUrl}
               style={{ height: 40, width: 40, borderRadius: 20 }}
-            />
+            /> */}
           </TView>
           <TView style={{ backgroundColor: bgColor }}>
             <TText type="defaultSemiBold">{params.currency}</TText>

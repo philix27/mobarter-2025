@@ -3,13 +3,26 @@ import { Color } from './colors';
 
 import { areAddressesEqual } from './addresses';
 import { ChainId } from './chains';
-
+import LogoCELO from './CELO';
+import LogoPUSO from './PUSO';
+import LogoUSDC from './USDC';
+import LogoUSDT from './USDT';
+import LogoaxlEUROC from './axlEUROC';
+import LogoaxlUSDC from './axlUSDC';
+import LogocCOP from './cCOP';
+import LogocEUR from './cEUR';
+import LogocGHS from './cGHS';
+import LogocKES from './cKES';
+import LogocREAL from './cREAL';
+import LogocUSD from './cUSD';
+import { SvgProps } from 'react-native-svg';
 export interface Token {
   id: TokenId;
   symbol: TokenId; // The same as id for now
   name: string;
   color: string;
   decimals: number;
+  logo: React.MemoExoticComponent<(props: SvgProps) => React.JSX.Element>;
 }
 
 export interface TokenWithAddress {
@@ -42,6 +55,7 @@ export const CELO: Token = Object.freeze({
   name: 'Celo Native',
   color: Color.celoGold,
   decimals: 18,
+  logo: LogoCELO,
 });
 export const cUSD: Token = Object.freeze({
   id: TokenId.cUSD,
@@ -49,6 +63,7 @@ export const cUSD: Token = Object.freeze({
   name: 'Celo Dollar',
   color: Color.celoGreen,
   decimals: 18,
+  logo: LogocUSD,
 });
 export const cEUR: Token = Object.freeze({
   id: TokenId.cEUR,
@@ -56,6 +71,7 @@ export const cEUR: Token = Object.freeze({
   name: 'Celo Euro',
   color: Color.celoGreen,
   decimals: 18,
+  logo: LogocEUR,
 });
 export const cREAL: Token = Object.freeze({
   id: TokenId.cREAL,
@@ -63,6 +79,7 @@ export const cREAL: Token = Object.freeze({
   name: 'Celo Real',
   color: Color.celoGreen,
   decimals: 18,
+  logo: LogocREAL,
 });
 export const USDC: Token = Object.freeze({
   id: TokenId.USDC,
@@ -70,6 +87,7 @@ export const USDC: Token = Object.freeze({
   name: 'USDC',
   color: Color.usdcBlue,
   decimals: 6,
+  logo: LogoUSDC,
 });
 export const USDT: Token = Object.freeze({
   id: TokenId.USDT,
@@ -77,6 +95,7 @@ export const USDT: Token = Object.freeze({
   name: 'USDT',
   color: Color.usdcBlue,
   decimals: 6,
+  logo: LogoUSDT,
 });
 export const axlUSDC: Token = Object.freeze({
   id: TokenId.axlUSDC,
@@ -84,6 +103,7 @@ export const axlUSDC: Token = Object.freeze({
   name: 'Axelar USDC',
   color: Color.usdcBlue,
   decimals: 6,
+  logo: LogoaxlUSDC,
 });
 
 export const axlEUROC: Token = Object.freeze({
@@ -92,6 +112,7 @@ export const axlEUROC: Token = Object.freeze({
   name: 'Axelar EUROC',
   color: Color.usdcBlue, // TODO: Change to EUROC
   decimals: 6,
+  logo: LogoaxlEUROC,
 });
 export const eXOF: Token = Object.freeze({
   id: TokenId.eXOF,
@@ -99,6 +120,7 @@ export const eXOF: Token = Object.freeze({
   name: 'eXOF',
   color: Color.usdcBlue,
   decimals: 18,
+  logo: LogoCELO,
 });
 export const cKES: Token = Object.freeze({
   id: TokenId.cKES,
@@ -106,6 +128,7 @@ export const cKES: Token = Object.freeze({
   name: 'cKES',
   color: Color.usdcBlue,
   decimals: 18,
+  logo: LogocKES,
 });
 
 export const PUSO: Token = Object.freeze({
@@ -114,6 +137,7 @@ export const PUSO: Token = Object.freeze({
   name: 'PUSO',
   color: Color.usdcBlue,
   decimals: 18,
+  logo: LogoPUSO,
 });
 
 export const cCOP: Token = Object.freeze({
@@ -122,6 +146,7 @@ export const cCOP: Token = Object.freeze({
   name: 'cCOP',
   color: Color.usdcBlue,
   decimals: 18,
+  logo: LogocCOP,
 });
 
 export const cGHS: Token = Object.freeze({
@@ -130,6 +155,7 @@ export const cGHS: Token = Object.freeze({
   name: 'cGHS',
   color: Color.usdcBlue,
   decimals: 18,
+  logo: LogocGHS,
 });
 
 export const Tokens: Record<TokenId, Token> = {

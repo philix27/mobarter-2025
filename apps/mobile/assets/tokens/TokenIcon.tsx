@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { memo } from 'react';
 import CeloIcon from './CELO.svg';
 import PUSOIcon from './PUSO.svg';
@@ -14,6 +13,8 @@ import cREALIcon from './cREAL.svg';
 import cUSDIcon from './cUSD.svg';
 import eXOFIcon from './eXOF.svg';
 import { Token, TokenId } from './tokens';
+import { Image, ImageSourcePropType } from 'react-native';
+import { TText, TView } from '@/components';
 
 export const TokenIcons = {
   CeloIcon,
@@ -69,52 +70,59 @@ function _TokenIcon({ token, size = 'm' }: Props) {
   if (imgSrc) {
     return (
       <Image
-        src={imgSrc}
-        alt="" // Not using real alt because it looks strange while loading
-        width={actualSize}
-        height={actualSize}
-        priority={true}
+        source={imgSrc}
+        style={{ height: 40, width: 40, borderRadius: 20 }}
       />
+      // <Image
+      //   src={imgSrc}
+      //   alt="" // Not using real alt because it looks strange while loading
+      //   width={actualSize}
+      //   height={actualSize}
+      //   priority={true}
+      // />
     );
   }
 
   return (
-    <div
-      className="flex items-center justify-center rounded-full"
+    <TView
       style={{
         width: actualSize,
         height: actualSize,
         backgroundColor: token.color || '#9CA4A9',
+        borderRadius: 100,
+        justifyContent: 'center',
+        alignItems: 'center',
+        display: 'flex',
       }}
     >
-      <div
-        className="font-semibold text-white"
+      <TText
         style={{
           fontSize,
+          fontWeight: 600,
         }}
       >
         {token.symbol[0].toUpperCase()}
-      </div>
-    </div>
+      </TText>
+    </TView>
   );
 }
 
 const sizeValues = {
   xs: {
     actualSize: 22,
-    fontSize: '13px',
+    fontSize: 13,
   },
   s: {
     actualSize: 30,
-    fontSize: '15px',
+    fontSize: 15,
   },
   m: {
     actualSize: 40,
-    fontSize: '18px',
+    fontSize: 18,
   },
   l: {
     actualSize: 46,
-    fontSize: '20px',
+    fontSize: 20,
   },
 };
 
