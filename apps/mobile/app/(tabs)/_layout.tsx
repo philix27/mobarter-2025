@@ -7,6 +7,7 @@ export default function TabLayout() {
     <Tabs tabBar={(props) => <AppTabBar {...props} />}>
       <Tabs.Screen name="home" />
       <Tabs.Screen name="p2p" />
+      <Tabs.Screen name="pay" />
     </Tabs>
   );
 }

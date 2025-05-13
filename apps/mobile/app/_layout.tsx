@@ -58,12 +58,12 @@ import { useColor } from '@/lib/color';
 // particleWallet.initWallet(metaData);
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-// Set the animation options. This is optional.
-SplashScreen.setOptions({
-  duration: 1000,
-  fade: true,
-});
+// SplashScreen.preventAutoHideAsync();
+// // Set the animation options. This is optional.
+// SplashScreen.setOptions({
+//   duration: 1000,
+//   fade: true,
+// });
 
 export default function RootLayout() {
   const appColor = useColor();
@@ -80,23 +80,24 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
+
   return (
-    <Drawer
-      screenOptions={{
-        headerShown: false,
-        drawerLabelStyle: {
-          // marginLeft: -20,
-          color: appColor.text,
-        },
-        drawerActiveBackgroundColor: appColor.background,
-        drawerStyle: {
-          width: Dimensions.get('window').width / 1.5,
-          backgroundColor: appColor.background,
-        },
-      }}
-      drawerContent={CustomDrawerContent}
-    >
-      <RootProviders>
+    <RootProviders>
+      <Drawer
+        screenOptions={{
+          headerShown: false,
+          drawerLabelStyle: {
+            // marginLeft: -20,
+            color: appColor.text,
+          },
+          drawerActiveBackgroundColor: appColor.background,
+          drawerStyle: {
+            width: Dimensions.get('window').width / 1.5,
+            backgroundColor: appColor.background,
+          },
+        }}
+        drawerContent={CustomDrawerContent}
+      >
         <Drawer.Screen
           name="(tabs)"
           options={{
@@ -105,7 +106,7 @@ export default function RootLayout() {
           }}
         />
         <StatusBar style="auto" />
-      </RootProviders>
-    </Drawer>
+      </Drawer>
+    </RootProviders>
   );
 }

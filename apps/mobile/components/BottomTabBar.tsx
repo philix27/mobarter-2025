@@ -19,13 +19,16 @@ function TabBarButton(props: {
   label: string;
   routeName: string;
 }) {
-  const appColor = useColor();
+  const color = useColor();
   const icons = {
     home: (props: typeof Feather) => (
-      <FontAwesome name="home" size={18} {...props} />
+      <FontAwesome name="home" size={18.5} {...props} />
     ),
     p2p: (props: typeof Feather) => (
-      <MaterialIcons name="currency-exchange" size={18} {...props} />
+      <MaterialIcons name="currency-exchange" size={18.5} {...props} />
+    ),
+    pay: (props: typeof Feather) => (
+      <MaterialIcons name="payments" size={18.5} {...props} />
     ),
   };
   const scale = useSharedValue(0);
@@ -40,14 +43,14 @@ function TabBarButton(props: {
 
   const animatedIconStyle = useAnimatedStyle(() => {
     const scaleValue = interpolate(scale.value, [0, 1], [1, 1.2]);
-    const top = interpolate(scale.value, [0, 1], [0, 9]);
+    // const top = interpolate(scale.value, [0, 1], [0, 9]);
     return {
       transform: [
         {
           scale: scaleValue,
         },
       ],
-      top,
+      // top,
     };
   });
 
@@ -59,10 +62,10 @@ function TabBarButton(props: {
     >
       <Animated.View style={animatedIconStyle}>
         {icons[props.routeName]({
-          color: props.color,
+          color: props.isFocused ? props.color : color.muted,
         })}
       </Animated.View>
-      <Animated.Text
+      {/* <Animated.Text
         style={[
           {
             color: props.color,
@@ -74,7 +77,7 @@ function TabBarButton(props: {
         ]}
       >
         {props.label}
-      </Animated.Text>
+      </Animated.Text> */}
     </PlatformPressable>
   );
 }
@@ -200,7 +203,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 10,
+    paddingVertical: 20,
     // backgroundColor: "teal",
   },
 });

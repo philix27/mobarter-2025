@@ -1,10 +1,13 @@
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, StyleProp, ViewStyle } from 'react-native';
 import { ReactNode } from 'react';
 import { TView } from './TView';
 import { useColor } from '@/lib/color';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-export default function Wrapper(props: { children: ReactNode }) {
+export default function Wrapper(props: {
+  children: ReactNode;
+  style?: StyleProp<ViewStyle>;
+}) {
   const appColor = useColor();
   return (
     <SafeAreaView
@@ -27,15 +30,18 @@ export default function Wrapper(props: { children: ReactNode }) {
         bounces={false}
       >
         <TView
-          style={{
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            width: '100%',
-            paddingHorizontal: 20,
-            paddingVertical: 20,
-            minHeight: '100%',
-          }}
+          style={[
+            {
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              width: '100%',
+              paddingHorizontal: 20,
+              paddingVertical: 20,
+              minHeight: '100%',
+            },
+            props.style,
+          ]}
         >
           {props.children}
         </TView>
