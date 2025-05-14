@@ -1,5 +1,5 @@
 import HeaderBar from '@/components/Header';
-import UtilityComp from '@/screens/others/Utilities';
+import UtilityComp from '@/features/others/Utilities';
 import React from 'react';
 
 export default function Page() {

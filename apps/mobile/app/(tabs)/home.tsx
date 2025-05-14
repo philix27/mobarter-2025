@@ -1,5 +1,5 @@
 import HeaderBar from '@/components/Header';
-import MarketScreen from '@/screens/market';
+import MarketScreen from '@/features/market';
 import { router } from 'expo-router';
 import React, { useContext, useEffect, useRef } from 'react';
 import { useColor } from '@/lib/color';
@@ -12,10 +12,9 @@ import { TView } from '@/components/TView';
 import { ThemeContext } from '@/lib/providers';
 import { TouchableOpacity } from 'react-native';
 import { BottomSheet } from '@/components/BottomSheet';
-import WalletQRCode from '@/screens/wallets/WalletQRCode';
+import WalletQRCode from '@/features/wallets/WalletQRCode';
 import { RBSheetRef } from 'react-native-raw-bottom-sheet';
 import { AppStores } from '@/lib';
-import Toast from 'react-native-toast-message';
 import { useDrawer } from '@/components/DrawerContent';
 
 export default function MarketPage() {

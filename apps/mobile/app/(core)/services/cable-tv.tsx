@@ -1,5 +1,5 @@
 import HeaderBar from '@/components/Header';
-import CableTvComp from '@/screens/others/CableTv';
+import CableTvComp from '@/features/others/CableTv';
 import React from 'react';
 
 export default function Page() {

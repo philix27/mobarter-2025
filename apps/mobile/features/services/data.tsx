@@ -68,13 +68,6 @@ export const servicesList: {
     icon: <MaterialCommunityIcons name="safe" size={24} color={'#fff'} />,
   },
   {
-    title: 'Good Dollar',
-    desc: 'Provide liquidity to Mobarter Swap',
-    route: '/services/cable-tv',
-    icon: <Feather name="settings" size={24} color={'#fff'} />,
-    bgColor: '#03c4b1',
-  },
-  {
     title: 'Stream',
     desc: 'Provide liquidity to Mobarter Swap',
     route: '/services/cable-tv',

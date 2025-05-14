@@ -1,5 +1,5 @@
 import HeaderBar from '@/components/Header';
-import StreamFundsComp from '@/screens/others/StreamFunds';
+import StreamFundsComp from '@/features/others/StreamFunds';
 import React from 'react';
 
 export default function Page() {

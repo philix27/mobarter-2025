@@ -6,7 +6,7 @@ import { Feather } from '@expo/vector-icons';
 import { TView } from '@/components/TView';
 import { useDrawer } from '@/components/DrawerContent';
 import { TouchableOpacity } from 'react-native';
-import ServicesScreen from '@/screens/services';
+import ServicesScreen from '@/features/services';
 
 export default function HomeScreen() {
   const store = AppStores.useAdvert();

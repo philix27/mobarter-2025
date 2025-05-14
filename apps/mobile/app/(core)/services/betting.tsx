@@ -1,5 +1,5 @@
 import HeaderBar from '@/components/Header';
-import BettingComp from '@/screens/others/Betting';
+import BettingComp from '@/features/others/Betting';
 import React from 'react';
 
 export default function Page() {

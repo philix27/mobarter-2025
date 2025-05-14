@@ -1,13 +1,14 @@
 import { TText, TView } from '@/components';
 import InputText from '@/components/forms/InputText';
 import Wrapper from '@/components/Wrapper';
-import React from 'react';
+import React, { useState } from 'react';
 import AuthWrapper from '@/components/WrapperAuth';
 import { Link, router } from 'expo-router';
 import { z } from 'zod';
 import { useAppForm, ApiHooks, log, IEvents } from '@/lib';
 import { AppStores } from '@/lib/zustand';
-import Toast from 'react-native-toast-message';
+
+import { Picker } from '@react-native-picker/picker';
 
 const event: IEvents = 'AUTH_LOGIN';
 
@@ -18,53 +19,17 @@ const formSchema = z.object({
 
 export default function AirtimeComp() {
   const store = AppStores.useUserInfo();
-  const [login, { loading: isLoading }] = ApiHooks.useAuthLogin();
+  // const [login, { loading: isLoading }] = ApiHooks.useAuthLogin();
   const { formData, setFormData, errors, handleChange, setErrors } = useAppForm(
     {
       email: '',
       password: '',
     },
   );
+  const [selectedLanguage, setSelectedLanguage] = useState();
+  // const handleSubmit = () => {
 
-  const handleSubmit = () => {
-    const validation = formSchema.safeParse(formData);
-
-    if (!validation.success) {
-      const errorMessages = validation.error.format();
-      setErrors({
-        email: errorMessages.email?._errors[0] || '',
-        password: errorMessages.password?._errors[0] || '',
-      });
-    } else {
-      console.log('DataBefore of login: ', formData);
-      login({
-        variables: {
-          input: {
-            email: formData.email.toLowerCase(),
-            password: formData.password,
-          },
-        },
-        onCompleted: res => {
-          store.update({
-            ...res.auth_login,
-          });
-          setFormData({ email: '', password: '' });
-          setErrors({ email: '', password: '' });
-          log.info(event, res.auth_login.email);
-          router.push('/home');
-        },
-        onError: (error, clientOptions) => {
-          console.log('ResultErr of login: ', JSON.stringify(error));
-          log.error(event, error.message);
-          Toast.show({
-            type: 'error',
-            text1: error.message,
-            text2: 'Oops, an error occurred!',
-          });
-        },
-      });
-    }
-  };
+  // };
   return (
     <Wrapper style={{ rowGap: 10 }}>
       <InputText
@@ -104,6 +69,17 @@ export default function AirtimeComp() {
         placeholder={'Enter password'}
         error={errors!.password === undefined ? undefined : errors!.password}
       />
+      <Picker
+        selectedValue={selectedLanguage}
+        onValueChange={(itemValue, itemIndex) => setSelectedLanguage(itemValue)}
+      >
+        <Picker.Item label="Java" value="java" />
+        <Picker.Item label="JavaScript" value="js" />
+      </Picker>
+      {/* <RNPickerSelect>
+        <TText>Vape</TText>
+        <TText>Mape</TText>
+      </RNPickerSelect> */}
     </Wrapper>
   );
 }

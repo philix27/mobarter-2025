@@ -1,5 +1,5 @@
 import HeaderBar from '@/components/Header';
-import DataBundlesComp from '@/screens/others/DataBundles';
+import DataBundlesComp from '@/features/others/DataBundles';
 import React from 'react';
 
 export default function Page() {

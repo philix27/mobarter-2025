@@ -1,5 +1,5 @@
 import HeaderBar from '@/components/Header';
-import AirtimeComp from '@/screens/others/Airtime';
+import AirtimeComp from '@/features/others/Airtime';
 import React from 'react';
 
 export default function Page() {

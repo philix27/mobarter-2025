@@ -82,22 +82,22 @@ export default function RootLayout() {
   }
 
   return (
-    <RootProviders>
-      <Drawer
-        screenOptions={{
-          headerShown: false,
-          drawerLabelStyle: {
-            // marginLeft: -20,
-            color: appColor.text,
-          },
-          drawerActiveBackgroundColor: appColor.background,
-          drawerStyle: {
-            width: Dimensions.get('window').width / 1.5,
-            backgroundColor: appColor.background,
-          },
-        }}
-        drawerContent={CustomDrawerContent}
-      >
+    <Drawer
+      screenOptions={{
+        headerShown: false,
+        drawerLabelStyle: {
+          // marginLeft: -20,
+          color: appColor.text,
+        },
+        drawerActiveBackgroundColor: appColor.background,
+        drawerStyle: {
+          width: Dimensions.get('window').width / 1.5,
+          backgroundColor: appColor.background,
+        },
+      }}
+      drawerContent={CustomDrawerContent}
+    >
+      <RootProviders>
         <Drawer.Screen
           name="(tabs)"
           options={{
@@ -106,7 +106,7 @@ export default function RootLayout() {
           }}
         />
         <StatusBar style="auto" />
-      </Drawer>
-    </RootProviders>
+      </RootProviders>
+    </Drawer>
   );
 }

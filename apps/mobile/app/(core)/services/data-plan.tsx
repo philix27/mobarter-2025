@@ -1,6 +1,6 @@
 import HeaderBar from '@/components/Header';
-import AirtimeComp from '@/screens/others/Airtime';
-import DataPlanComp from '@/screens/others/DataPlan';
+import AirtimeComp from '@/features/others/Airtime';
+import DataPlanComp from '@/features/others/DataPlan';
 import React from 'react';
 
 export default function Page() {
