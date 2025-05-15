@@ -3,21 +3,23 @@ import Row from '../../components/Row';
 import Wrapper from '@/components/Wrapper';
 import { router } from 'expo-router';
 import { TView } from '@/components';
+import { FlatList } from 'react-native';
 
 export default function ServicesScreen() {
   return (
     <Wrapper>
-      {servicesList.map((val, i) => {
-        return (
+      <FlatList
+        style={{ width: '100%' }}
+        data={servicesList}
+        renderItem={({ item }) => (
           <Row
-            key={i}
-            {...val}
+            {...item}
             onClick={() => {
-              router.push(val.route as any);
+              router.push(item.route as any);
             }}
           />
-        );
-      })}
+        )}
+      />
       <TView style={{ marginVertical: 100 }} />
     </Wrapper>
   );

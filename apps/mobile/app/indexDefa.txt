@@ -30,6 +30,18 @@ import * as particleConnect from '@particle-network/rn-connect';
 import * as particleWallet from '@particle-network/rn-wallet';
 import * as particleAuthCore from '@particle-network/rn-auth-core';
 import Toast from 'react-native-toast-message';
+import Web3Auth, { LOGIN_PROVIDER } from '@web3auth/react-native-sdk';
+import * as WebBrowser from 'expo-web-browser';
+import * as SecureStore from 'expo-secure-store';
+
+//* Implement Web3Auth
+const web3auth = new Web3Auth(WebBrowser, SecureStore, {
+  clientId: '',
+  network: 'sapphire_devnet',
+  redirectUrl: '',
+  privateKeyProvider: '',
+});
+
 //* Implement Particle Network Account
 export class PNAccount {
   static walletType: WalletType = WalletType.AuthCore;
@@ -145,7 +157,12 @@ const data = [
 ];
 export default function Page() {
   const store = AppStores.useUserInfo();
-
+  async function loginM() {
+    const web3authResponse = await web3auth.login({
+      mfaLevel: 'default', // Pass on the mfa level of your choice: default, optional, mandatory, none
+      loginProvider: 'google', // Pass on the login provider of your choice: google, facebook, discord, twitch, twitter, github, linkedin, apple, etc.
+    });
+  }
   // const { sendCode, loginWithCode } = useLoginWithEmail();
   // useEffect(() => {
   //   if (!store.email) {
@@ -188,6 +205,14 @@ export default function Page() {
           </TouchableOpacity>
         ))}
 
+        <TouchableOpacity
+          style={styles.buttonStyle}
+          onPress={async () => {
+            loginM();
+          }}
+        >
+          <TText style={styles.textStyle}>Login in web3auth</TText>
+        </TouchableOpacity>
         <Link href="/">
           <TText type="subtitle">Home</TText>
         </Link>

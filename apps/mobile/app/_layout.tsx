@@ -1,8 +1,8 @@
 //! Privy Auth
 //! Import required polyfills first
-// import "fast-text-encoding";
-// import "react-native-get-random-values";
-// import "@ethersproject/shims";
+import 'fast-text-encoding';
+import 'react-native-get-random-values';
+import '@ethersproject/shims';
 // Then import the expo router
 import 'expo-router/entry';
 import 'react-native-reanimated';
@@ -17,11 +17,6 @@ import { Drawer } from 'expo-router/drawer';
 import CustomDrawerContent from '@/components/DrawerContent';
 import { useColor } from '@/lib/color';
 
-// import * as particleWallet from '@particle-network/rn-wallet';
-// import * as particleConnect from '@particle-network/rn-connect';
-// import * as particleAuthCore from '@particle-network/rn-auth-core';
-// import { Env } from '@particle-network/rn-base';
-
 // const chainInfo = Ethereum;
 // const env = Env.Dev;
 // const env = Env.Dev;
@@ -34,6 +29,7 @@ import { useColor } from '@/lib/color';
 //   url: 'https://mobarter.com',
 //   description: 'Crypto Payment Solutions',
 // };
+
 // particleConnect.init(
 //   {
 //     id: 0,

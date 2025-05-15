@@ -1,3 +1,4 @@
+
 require File.join(File.dirname(`node --print "require.resolve('expo/package.json')"`), "scripts/autolinking")
 require File.join(File.dirname(`node --print "require.resolve('react-native/package.json')"`), "scripts/react_native_pods")
 source 'https://github.com/CocoaPods/Specs.git'
@@ -13,38 +14,36 @@ install! 'cocoapods',
 
 prepare_react_native_project!
 
-target 'mobarter' do
+target 'newexpoapp' do
   use_expo_modules!
   config = use_native_modules!
 
   use_frameworks! :linkage => podfile_properties['ios.useFrameworks'].to_sym if podfile_properties['ios.useFrameworks']
   use_frameworks! :linkage => ENV['USE_FRAMEWORKS'].to_sym if ENV['USE_FRAMEWORKS']
 
-  pod "Thresh", '2.0.7'
-  pod "ParticleMPCCore", '2.0.7'
-  pod "ParticleAuthCore", '2.0.7'
-  pod "AuthCoreAdapter", '2.0.7'
+  pod "Thresh", '2.0.3'
+  pod "ParticleMPCCore", '2.0.3'
+  pod "ParticleAuthCore", '2.0.3'
+  pod "AuthCoreAdapter", '2.0.3'
 
-  pod 'ParticleWalletGUI', '2.0.6'
-  pod 'ParticleWalletAPI', '2.0.6'
-  pod 'ParticleNetworkBase', '2.0.6'
-  pod 'ParticleNetworkChains', '2.0.6'
-  pod 'ParticleWalletConnect', '2.0.6'
+  pod 'ParticleWalletGUI', '2.0.3'
+  pod 'ParticleWalletAPI', '2.0.3'
+  pod 'ParticleNetworkBase', '2.0.3'
+  pod 'ParticleNetworkChains', '2.0.3'
+  pod 'ParticleWalletConnect', '2.0.3'
   
-  pod 'ParticleConnect', '2.0.6'
-  pod 'ConnectWalletConnectAdapter', '2.0.6'
-  pod 'ConnectEVMAdapter', '2.0.6'
-  pod 'ConnectSolanaAdapter', '2.0.6'
-  pod 'ConnectPhantomAdapter', '2.0.6'
-  pod 'ConnectCommon', '2.0.6'
+  pod 'ParticleConnect', '2.0.3'
+  pod 'ConnectWalletConnectAdapter', '2.0.3'
+  pod 'ConnectEVMAdapter', '2.0.3'
+  pod 'ConnectSolanaAdapter', '2.0.3'
+  pod 'ConnectPhantomAdapter', '2.0.3'
+  pod 'ConnectCommon', '2.0.3'
 
-  pod 'ParticleConnectKit', '2.0.7'
+  pod 'ParticleConnectKit', '2.0.3'
   
   pod 'SkeletonView', :git => 'https://github.com/SunZhiC/SkeletonView.git', :branch => 'main'
   pod 'SwiftyUserDefaults', :git => 'https://github.com/SunZhiC/SwiftyUserDefaults.git', :branch => 'master'
   pod 'WalletConnectSwiftV2', :git => 'https://github.com/SunZhiC/WalletConnectSwiftV2.git', :branch => 'particle'
-  # pod 'WalletConnectSwiftV2', '1.19.6'
-  # pod 'WalletConnectSwiftV2', :git => 'https://github.com/SunZhiC/WalletConnectSwiftV2.git', :branch => 'particle'
 
   use_react_native!(
     :path => config[:reactNativePath],
@@ -119,6 +118,7 @@ target 'mobarter' do
         end
       end
     end
+    
   end
 
   post_integrate do |installer|

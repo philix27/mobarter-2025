@@ -1,14 +1,11 @@
-import { TText, TView } from '@/components';
 import InputText from '@/components/forms/InputText';
 import Wrapper from '@/components/Wrapper';
 import React, { useState } from 'react';
-import AuthWrapper from '@/components/WrapperAuth';
-import { Link, router } from 'expo-router';
 import { z } from 'zod';
-import { useAppForm, ApiHooks, log, IEvents } from '@/lib';
+import { useAppForm, IEvents } from '@/lib';
 import { AppStores } from '@/lib/zustand';
 
-import { Picker } from '@react-native-picker/picker';
+import { InputSelect } from '@/components/forms/InputSelect';
 
 const event: IEvents = 'AUTH_LOGIN';
 
@@ -69,17 +66,24 @@ export default function AirtimeComp() {
         placeholder={'Enter password'}
         error={errors!.password === undefined ? undefined : errors!.password}
       />
-      <Picker
-        selectedValue={selectedLanguage}
-        onValueChange={(itemValue, itemIndex) => setSelectedLanguage(itemValue)}
-      >
-        <Picker.Item label="Java" value="java" />
-        <Picker.Item label="JavaScript" value="js" />
-      </Picker>
-      {/* <RNPickerSelect>
-        <TText>Vape</TText>
-        <TText>Mape</TText>
-      </RNPickerSelect> */}
+      <InputSelect
+        label="Network"
+        placeholder={'...'}
+        items={[
+          {
+            label: 'MTN',
+            value: 'MTN',
+          },
+          {
+            label: 'Airtel',
+            value: 'Airtel',
+          },
+          {
+            label: 'GLO',
+            value: 'GLO',
+          },
+        ]}
+      />
     </Wrapper>
   );
 }

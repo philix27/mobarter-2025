@@ -1,6 +1,5 @@
 import HeaderBar from '@/components/Header';
 import MarketScreen from '@/features/market';
-import { router } from 'expo-router';
 import React, { useContext, useEffect, useRef } from 'react';
 import { useColor } from '@/lib/color';
 import {
@@ -24,17 +23,6 @@ export default function MarketPage() {
   const store = AppStores.useUserInfo();
   const drawer = useDrawer();
 
-  // useEffect(() => {
-  //   if (store.email.length < 5) {
-  //     router.push("/");
-  //     Toast.show({
-  //       type: "info",
-  //       text1: "Please login",
-  //       text2: "No user found",
-  //     });
-  //     return;
-  //   }
-  // });
   return (
     <>
       <HeaderBar
