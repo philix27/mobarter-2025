@@ -40,7 +40,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@repo/api": "*",
     "@selfxyz/qrcode": "^0.0.19",
-    "@tanstack/react-query": "^4.29.14",
+    "@tanstack/react-query": "^5.76.1",
     "@telegram-apps/analytics": "^1.4.0",
     "@telegram-apps/sdk-react": "^2.0.22",
     "@upstash/redis": "^1.34.4",

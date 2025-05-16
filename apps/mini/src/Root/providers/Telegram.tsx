@@ -1,37 +1,18 @@
 import { AuthType } from '@particle-network/auth-core'
 import { AuthCoreContextProvider } from '@particle-network/auth-core-modal'
-import { Celo } from '@particle-network/chains'
+import { Base, Celo } from '@particle-network/chains'
 import TelegramAnalytics from '@telegram-apps/analytics'
 import { useLaunchParams } from '@telegram-apps/sdk-react'
 import { type PropsWithChildren, useEffect } from 'react'
 import { useClientOnce } from 'src/hooks/useClientOnce'
 import { useTelegramMock } from 'src/hooks/useTelegramMock'
 import { init } from 'src/lib/telegram/init'
-import { WagmiProvider, createConfig, http } from 'wagmi'
-import { celo, celoAlfajores } from 'wagmi/chains'
+
 
 import { TgAppProvider } from './TgContext'
 
-const config = createConfig({
-  chains: [celo, celoAlfajores],
-  transports: {
-    [celo.id]: http(),
-    [celoAlfajores.id]: http(),
-  },
-})
 
-if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_PARTICLE_ENV === 'development') {
-  window.__PARTICLE_ENVIRONMENT__ = 'development'
-}
-
-export function TgProvider({ children }: PropsWithChildren) {
-  return (
-    <WagmiProvider config={config}>
-      <Setup>{children}</Setup>
-    </WagmiProvider>
-  )
-}
-export function Setup({ children }: PropsWithChildren) {
+export function TgSetup({ children }: PropsWithChildren) {
   // Mock Telegram environment in development mode if needed.
   if (process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -87,14 +68,13 @@ export function Setup({ children }: PropsWithChildren) {
           // Optional, streamlines the wallet modal popup
           visible: false, // Displays an embedded wallet popup on the bottom right of the screen after login
           customStyle: {
-            supportChains: [Celo],
+            supportChains: [Celo, Base],
           },
         },
       }}
     >
       <TgAppProvider>
         {children}
-        {/* <FarcasterProvider>{children}</FarcasterProvider> */}
       </TgAppProvider>
     </AuthCoreContextProvider>
   )

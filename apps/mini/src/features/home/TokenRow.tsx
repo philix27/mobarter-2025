@@ -15,6 +15,11 @@ export function TokenRow(props: IToken & { className?: string; onClick?: VoidFun
     chainId: ChainId.Celo,
     token: getTokenAddress(props.symbol as TokenId, ChainId.Celo) as `0x${string}`,
   })
+  
+  if (isLoading) {
+    return null
+  }
+
   return (
     <div
       onClick={props.onClick}

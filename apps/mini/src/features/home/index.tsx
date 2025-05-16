@@ -15,12 +15,14 @@ export default function Home() {
       <HomeTabs />
       <Balance />
 
-      <div className="h-8" />
+      {/* <div className="h-8" /> */}
 
       <div className="flex flex-col rounded-md w-full gap-y-[0.1px] px-1 py-1">
-        {tokensList.map((val, i) => (
-          <TokenRow key={i} {...val} className="bg-card" />
-        ))}
+        {tokensList.map((val, i) => {
+          const tokenId = val.symbol as TokenId
+          if (tokenId === undefined) return
+          return <TokenRow key={i} {...val} className="bg-card" />
+        })}
       </div>
       <HomePopups />
     </div>
@@ -32,7 +34,8 @@ function Balance() {
 
   const { data, isLoading } = useBalance({
     address: evmAddress as `0x${string}`,
-    chainId: ChainId.Celo,
+    chainId: 42220,
+    // chainId: ChainId.Celo,
     token: getTokenAddress(TokenId.cUSD, ChainId.Celo) as `0x${string}`,
   })
 
