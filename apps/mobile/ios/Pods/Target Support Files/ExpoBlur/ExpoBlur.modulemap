@@ -1,6 +1,0 @@
-framework module ExpoBlur {
-  umbrella header "ExpoBlur-umbrella.h"
-
-  export *
-  module * { export * }
-}

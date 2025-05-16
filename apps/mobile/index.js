@@ -1,11 +1,11 @@
 import '@ethersproject/shims';
 import '@expo/metro-runtime';
+import 'react-native-reanimated';
+import 'expo-router/entry';
 import 'react-native-get-random-values';
-import './globals';
 
-import { App } from 'expo-router/build/qualified-entry';
-import { renderRootComponent } from 'expo-router/build/renderRootComponent';
+import { Platform } from 'react-native';
 
-// This file should only import and register the root. No components or exports
-// should be added here.
-renderRootComponent(App);
+if (Platform.OS !== 'web') {
+  import('@thirdweb-dev/react-native-adapter');
+}

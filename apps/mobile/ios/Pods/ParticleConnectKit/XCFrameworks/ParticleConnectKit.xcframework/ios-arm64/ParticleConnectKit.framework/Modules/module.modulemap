@@ -1,6 +1,0 @@
-framework module ParticleConnectKit {
-  umbrella header "ParticleConnectKit.h"
-  export *
-
-  module * { export * }
-}

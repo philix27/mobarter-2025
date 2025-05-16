@@ -1,6 +1,0 @@
-framework module ExpoNativeExtensions {
-  umbrella header "ExpoNativeExtensions-umbrella.h"
-
-  export *
-  module * { export * }
-}

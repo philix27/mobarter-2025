@@ -1,170 +1,50 @@
-import { LoadingIndicator } from '@/components/Loading';
 import { TText } from '@/components/TText';
-import { AppStores } from '@/lib';
-import { Link, router } from 'expo-router';
-import { useEffect } from 'react';
+import { client } from '@/constants/thirdweb';
+import { Link } from 'expo-router';
 import React from 'react';
+import { SafeAreaView, View, StyleSheet } from 'react-native';
+import { createAuth } from 'thirdweb/auth';
+import { baseSepolia, ethereum } from 'thirdweb/chains';
 import {
-  SafeAreaView,
-  Button,
-  View,
-  Alert,
-  TouchableOpacity,
-  FlatList,
-  StyleSheet,
-} from 'react-native';
-import { ChainInfo, Ethereum } from '@particle-network/chains';
-
+  ConnectButton,
+  ConnectEmbed,
+  lightTheme,
+  useActiveAccount,
+  useActiveWallet,
+  useConnect,
+  useDisconnect,
+} from 'thirdweb/react';
+import { shortenAddress } from 'thirdweb/utils';
+import { createWallet } from 'thirdweb/wallets';
 import {
-  Env,
-  LoginType,
-  ParticleInfo,
-  SocialLoginPrompt,
-  SupportAuthType,
-  WalletDisplay,
-  CommonError,
-} from '@particle-network/rn-base';
+  getUserEmail,
+  hasStoredPasskey,
+  inAppWallet,
+} from 'thirdweb/wallets/in-app';
 
-import { WalletType } from '@particle-network/rn-connect';
-import * as particleConnect from '@particle-network/rn-connect';
-import * as particleWallet from '@particle-network/rn-wallet';
-import * as particleAuthCore from '@particle-network/rn-auth-core';
-import Toast from 'react-native-toast-message';
-//* Implement Particle Network Account
-export class PNAccount {
-  static walletType: WalletType = WalletType.AuthCore;
-
-  icons: string[];
-  name: string;
-  publicAddress: string;
-  url: string;
-
-  constructor(
-    icons: string[],
-    name: string,
-    publicAddress: string,
-    url: string,
-  ) {
-    this.icons = icons;
-    this.name = name;
-    this.publicAddress = publicAddress;
-    this.url = url;
-  }
-
-  static parseFrom(params: string): PNAccount {
-    return JSON.parse(params) as PNAccount;
-  }
-}
-
-export async function init() {
-  // Get your project id and client from dashboard,
-  // https://dashboard.particle.network/
-
-  ParticleInfo.projectId = 'f0a0ce51-b133-4e74-8c4c-464376e60ff3';
-  ParticleInfo.clientKey = 'clydzHypxl2weS1aA3BVGUKdtZunaIwoXNm14IW1';
-
-  if (ParticleInfo.projectId == '' || ParticleInfo.clientKey == '') {
-    throw new Error(
-      'You need set project info, Get your project id and client from dashboard, https://dashboard.particle.network',
-    );
-  }
-
-  const chainInfo: ChainInfo = Ethereum;
-  const env = Env.Dev;
-  const metaData = {
-    name: 'Particle Connect',
-    icon: 'https://connect.particle.network/icons/512.png',
-    url: 'https://connect.particle.network',
-    description: 'Particle Wallet',
-  };
-
-  particleConnect.init(chainInfo, env, metaData);
-  particleWallet.initWallet(metaData);
-  particleAuthCore.init();
-}
-
-export async function connectParticle() {
-  const connectConfig = {
-    account: '',
-    loginType: LoginType.Email,
-    supportAuthType: [
-      SupportAuthType.Email,
-      SupportAuthType.Phone,
-      SupportAuthType.Apple,
-      SupportAuthType.Google,
-    ],
-    socialLoginPrompt: SocialLoginPrompt.SelectAccount,
-    loginPageConifg: {
-      projectName: 'React Native Example',
-      description: 'Welcome to login',
-      imagePath: 'https://connect.particle.network/icons/512.png',
+const wallets = [
+  inAppWallet({
+    auth: {
+      options: ['google'],
+      passkeyDomain: 'thirdweb.com',
     },
-  };
-
-  try {
-    console.log('About to connect');
-    const account = await particleConnect.connect(
-      WalletType.AuthCore,
-      connectConfig,
-    );
-    console.log('connect success', account);
-
-    Toast.show({
-      type: 'success',
-      text1: 'Successfully connected',
-    });
-  } catch (e) {
-    const error = e as CommonError;
-    console.log(error);
-    Toast.show({
-      type: 'error',
-      text1: error.message,
-    });
-  }
-}
-
-export async function openWallet() {
-  particleWallet.navigatorWallet(WalletDisplay.Token);
-}
-
-// import { AuthCore } from '@particle-network/rn-auth';
-// import { ParticleAuth } from '@particle-network/rn-auth';
-
-// AuthCore.init({
-//   projectId: 'YOUR_PROJECT_ID',
-//   clientKey: 'YOUR_CLIENT_KEY',
-//   appId: 'YOUR_APP_ID',
-//   chainName: 'Ethereum', // Or 'Polygon', 'BSC', etc.
-//   chainId: 1, // Chain ID for Ethereum mainnet
-// });
-
-const data = [
-  { key: 'Init', function: init },
-  { key: 'Connect particle', function: connectParticle },
-  { key: 'Open Wallet', function: openWallet },
+    smartAccount: {
+      chain: baseSepolia,
+      sponsorGas: true,
+    },
+  }),
 ];
+
+const thirdwebAuth = createAuth({
+  domain: 'localhost:3000',
+  client,
+});
+
+// fake login state, this should be returned from the backend
+let isLoggedIn = false;
+
 export default function Page() {
-  const store = AppStores.useUserInfo();
-
-  // const { sendCode, loginWithCode } = useLoginWithEmail();
-  // useEffect(() => {
-  //   if (!store.email) {
-  //     setTimeout(() => {
-  //       router.push('/auth/sign-in');
-  //     }, 100);
-  //   } else {
-  //     setTimeout(() => {
-  //       router.push('/(tabs)/home');
-  //     }, 100);
-  //   }
-  // });
-
-  // const { isReady } = usePrivy();
-
-  // if (!isReady) {
-  //   return <TText type="subtitle">Loading...</TText>;
-  // }
-
+  const account = useActiveAccount();
   return (
     <SafeAreaView
       style={{
@@ -176,18 +56,6 @@ export default function Page() {
       }}
     >
       <View style={{ gap: 20 }}>
-        {data.map((item, i) => (
-          <TouchableOpacity
-            key={i}
-            style={styles.buttonStyle}
-            onPress={async () => {
-              await item.function();
-            }}
-          >
-            <TText style={styles.textStyle}>{item.key}</TText>
-          </TouchableOpacity>
-        ))}
-
         <Link href="/">
           <TText type="subtitle">Home</TText>
         </Link>

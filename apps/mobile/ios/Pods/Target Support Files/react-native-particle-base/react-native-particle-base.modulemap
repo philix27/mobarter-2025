@@ -1,6 +1,0 @@
-framework module react_native_particle_base {
-  umbrella header "react-native-particle-base-umbrella.h"
-
-  export *
-  module * { export * }
-}

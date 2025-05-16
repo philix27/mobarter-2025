@@ -8,7 +8,7 @@ const {
 // const config = getDefaultConfig(__dirname);
 
 // module.exports = wrapWithReanimatedMetroConfig(config);
-//! somethng
+//! something
 // const { getDefaultConfig } = require('metro-config');
 module.exports = (async () => {
   const config = getDefaultConfig(__dirname);
