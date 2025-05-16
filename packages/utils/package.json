@@ -13,9 +13,12 @@
   "devDependencies": {
     "@repo/typescript-config": "*",
     "@tanstack/react-query": "^5.67.2",
-    "@types/react": "^18.2.14",
+    "@types/react": "^19.1.4",
+    "@types/react-dom": "^19.1.5",
     "axios": "^1.8.4",
     "graphql": "^16.10.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "tsup": "^8.0.1",
     "typescript": "5.5.4"
   },

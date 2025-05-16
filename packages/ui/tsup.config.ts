@@ -14,7 +14,8 @@ export default defineConfig((options: Options) => ({
   minify: true,
   external: ['react'],
   splitting: false,
-  dts: true,
+  // dts: true,
+  target: 'es2020',
   // bundle: false,
   ...options,
 }));
