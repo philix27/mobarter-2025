@@ -1,0 +1,11 @@
+framework module ParticleNetworkChains {
+  umbrella header "ParticleNetworkChains.h"
+  export *
+
+  module * { export * }
+}
+
+module ParticleNetworkChains.Swift {
+  header "ParticleNetworkChains-Swift.h"
+  requires objc
+}

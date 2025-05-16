@@ -1,0 +1,136 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -enable-bare-slash-regex -module-name ParticleWalletConnect
+import Combine
+import Foundation
+import ParticleNetworkBase
+@_exported import ParticleWalletConnect
+import RxSwift
+import Starscream
+import Swift
+import SwiftyUserDefaults
+import UIKit
+import WalletConnectSwiftV2
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public enum ParticleMethod : Swift.String {
+  case eth_sendTransaction
+  case eth_signTypedData
+  case eth_signTypedData_v1
+  case eth_signTypedData_v3
+  case eth_signTypedData_v4
+  case personal_sign
+  case eth_chainId
+  case eth_requestAccounts
+  case eth_accounts
+  case wallet_switchEthereumChain
+  case wallet_addEthereumChain
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct Transaction : Swift.Codable {
+  public var from: Swift.String
+  public var to: Swift.String?
+  public var data: Swift.String
+  public var gas: Swift.String?
+  public var gasLimit: Swift.String?
+  public var gasPrice: Swift.String?
+  public var value: Swift.String?
+  public var nonce: Swift.String?
+  public var type: Swift.String?
+  public var accessList: [Transaction.AccessListItem]?
+  public var chainId: Swift.String?
+  public var maxPriorityFeePerGas: Swift.String?
+  public var maxFeePerGas: Swift.String?
+  public struct AccessListItem : Swift.Codable {
+    public var address: Swift.String
+    public var storageKeys: [Swift.String]
+    public init(address: Swift.String, storageKeys: [Swift.String])
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public init(from: Swift.String, to: Swift.String?, data: Swift.String, gas: Swift.String?, gasLimit: Swift.String?, gasPrice: Swift.String?, value: Swift.String?, nonce: Swift.String?, type: Swift.String?, accessList: [Transaction.AccessListItem]?, chainId: Swift.String?, maxPriorityFeePerGas: Swift.String?, maxFeePerGas: Swift.String?)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public enum WCResult<Encodable> {
+  case success(Encodable)
+  case failure(ParticleNetworkBase.ParticleNetwork.ResponseError)
+  public init(value: Encodable)
+  public init(error: ParticleNetworkBase.ParticleNetwork.ResponseError)
+}
+public protocol ParticleWalletConnectDelegate : AnyObject {
+  func shouldConnectDapp(_ dappMetaData: DappMetaData, completion: @escaping (Swift.String, Swift.Int) -> Swift.Void)
+  func request(topic: Swift.String, method: Swift.String, params: [any Swift.Encodable], completion: @escaping (WCResult<Foundation.Data?>) -> Swift.Void)
+  func didConnectDapp(_ topic: Swift.String)
+  func didDisconnectDapp(_ topic: Swift.String)
+}
+extension ParticleWalletConnect {
+  public func getDapp(by topic: Swift.String) -> DappMetaData?
+  public func getAllDapps(publicAddress: Swift.String) -> [DappMetaData]
+  #if compiler(>=5.3) && $AsyncAwait
+  public func clearAllSessions() async throws
+  #endif
+}
+public enum ValueType : Swift.Hashable, Swift.Codable {
+  case object([Swift.String : ValueType])
+  case array([ValueType])
+  case string(Swift.String)
+  case int(Swift.Int)
+  case double(Swift.Double)
+  case bool(Swift.Bool)
+  case null
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: ValueType, b: ValueType) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public class ParticleWalletConnect : ParticleWalletConnectDelegate {
+  public func didConnectDapp(_ topic: Swift.String)
+  public func didDisconnectDapp(_ topic: Swift.String)
+  public func request(topic: Swift.String, method: Swift.String, params: [any Swift.Encodable], completion: @escaping (WCResult<Foundation.Data?>) -> Swift.Void)
+  public func shouldConnectDapp(_ dappMetaData: DappMetaData, completion: @escaping (Swift.String, Swift.Int) -> Swift.Void)
+  weak public var delegate: (any ParticleWalletConnectDelegate)?
+  public static func initialize(_ walletMeta: WalletMetaData)
+  public static func setWalletConnectV2ProjectId(_ id: Swift.String)
+  public init(nodeService: any ParticleNetworkBase.NodeServiceProtocol)
+  #if compiler(>=5.3) && $AsyncAwait
+  public func connect(code: Swift.String) async throws
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  public func disconnect(topic: Swift.String) async throws
+  #endif
+  public func markJumpFromApp(code: Swift.String)
+  #if compiler(>=5.3) && $AsyncAwait
+  public func updateWalletConnect(_ topic: Swift.String, publicAddress: Swift.String, chainId: Swift.Int) async throws
+  #endif
+  @objc deinit
+}
+extension Starscream.WebSocket : WalletConnectSwiftV2.WebSocketConnecting {
+}
+public struct WalletMetaData {
+  public let name: Swift.String
+  public let icon: Foundation.URL
+  public let url: Foundation.URL
+  public let description: Swift.String?
+  public let redirectUniversalLink: Swift.String?
+  public init(name: Swift.String, icon: Foundation.URL, url: Foundation.URL, description: Swift.String?, redirectUniversalLink: Swift.String?)
+}
+public struct DappMetaData {
+  public var topic: Swift.String
+  public var name: Swift.String
+  public var icons: [Swift.String]
+  public var url: Swift.String
+  public var description: Swift.String?
+  public init(topic: Swift.String, name: Swift.String, icons: [Swift.String], url: Swift.String, description: Swift.String? = nil)
+}
+extension ParticleMethod : Swift.Equatable {}
+extension ParticleMethod : Swift.Hashable {}
+extension ParticleMethod : Swift.RawRepresentable {}

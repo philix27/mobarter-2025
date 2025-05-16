@@ -1,0 +1,6 @@
+framework module ExpoAppleAuthentication {
+  umbrella header "ExpoAppleAuthentication-umbrella.h"
+
+  export *
+  module * { export * }
+}

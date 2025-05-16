@@ -1,10 +1,7 @@
 import { useQuery } from '@apollo/client'
 import { QueryResponse, Transactions_GetAllDocument } from '@repo/api'
+import { NotFound, Spinner, TileSimple } from '@repo/ui'
 import React from 'react'
-
-import { NotFound } from '@/src/components/ComingSoon'
-import { TileSimple } from '@/src/components/TileSimple'
-import { Spinner } from '@/src/components/Spinner'
 
 export default function FiatTxn() {
   const { data, loading, error } = useQuery<QueryResponse<'transactions_getAll'>>(

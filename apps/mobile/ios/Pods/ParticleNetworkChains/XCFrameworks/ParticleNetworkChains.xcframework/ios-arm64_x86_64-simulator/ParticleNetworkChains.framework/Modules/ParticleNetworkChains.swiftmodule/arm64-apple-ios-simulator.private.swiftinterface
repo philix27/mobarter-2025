@@ -1,0 +1,265 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target arm64-apple-ios17.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -enable-bare-slash-regex -module-name ParticleNetworkChains
+import Foundation
+@_exported import ParticleNetworkChains
+import Swift
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc(NativeCurrency) public class NativeCurrency : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let name: Swift.String
+  @objc final public let symbol: Swift.String
+  @objc final public let decimals: Swift.Int
+  @objc public init(name: Swift.String, symbol: Swift.String, decimals: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@objc(Feature) public class Feature : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let name: Swift.String
+  @objc public init(name: Swift.String)
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public enum AASupportChains {
+  public static let chains: [Swift.String : Swift.Set<Swift.Int>]
+}
+extension ChainInfo {
+  @objc public static func getChainInfo(chainId: Swift.Int, chainName: Swift.String) -> ChainInfo?
+  @objc public static func getEvmChain(chainId: Swift.Int) -> ChainInfo?
+  @objc public static func getSolanaChain(chainId: Swift.Int) -> ChainInfo?
+  @objc public static func getAllChains(comparator: ((ChainInfo, ChainInfo) -> Swift.Bool)? = nil) -> [ChainInfo]
+  @objc public static let defaultComparator: (_ a: ChainInfo, _ b: ChainInfo) -> Swift.Bool
+  @objc public static var allNetworks: [ChainInfo] {
+    @objc get
+  }
+  @objc public static var bridgeableNetworks: [ChainInfo]
+  @objc public static var fusionableNetworks: [ChainInfo]
+  @objc public static var didableNetworks: [ChainInfo]
+  public var isEvmChain: Swift.Bool {
+    get
+  }
+  public var isSolanaChain: Swift.Bool {
+    get
+  }
+  public var isMainnet: Swift.Bool {
+    get
+  }
+  public var isSupportEIP1559: Swift.Bool {
+    get
+  }
+  public var path: Swift.String {
+    get
+  }
+  @objc dynamic public func getParticleNode(projectId: Swift.String, projectClientKey: Swift.String) -> Swift.String
+  public var isSupportWalletConnect: Swift.Bool {
+    get
+  }
+  public var isSupportBridge: Swift.Bool {
+    get
+  }
+  public var isSupportSwap: Swift.Bool {
+    get
+  }
+  public var isSupportFusion: Swift.Bool {
+    get
+  }
+  public var isSupportDid: Swift.Bool {
+    get
+  }
+  public var isTron: Swift.Bool {
+    get
+  }
+  public var buyNetwork: Swift.String? {
+    get
+  }
+}
+@objc @frozen public enum ChainType : Swift.Int, Swift.RawRepresentable, Swift.Codable {
+  case solana
+  case evm
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc(ChainInfo) public class ChainInfo : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let chainId: Swift.Int
+  @objc final public let name: Swift.String
+  @objc final public let chainType: ChainType
+  @objc final public let chainIcon: Swift.String
+  @objc final public let nativeTokenIcon: Swift.String
+  @objc final public let uiName: Swift.String
+  @objc final public let network: Swift.String
+  @objc final public let nativeCurrency: NativeCurrency
+  @objc final public let explorePath: Swift.String
+  public init(chainId: Swift.Int, name: Swift.String, chainType: ChainType, chainIcon: Swift.String, nativeTokenIcon: Swift.String, uiName: Swift.String, network: Swift.String, website: Swift.String, nativeCurrency: NativeCurrency, defaultRpcUrl: Swift.String, explorePath: Swift.String, features: [Feature], faucetUrl: Swift.String?)
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc override dynamic public var hash: Swift.Int {
+    @objc get
+  }
+  @objc public static let ethereum: ChainInfo
+  @objc public static let optimism: ChainInfo
+  @objc public static let thunderCoreTestnet: ChainInfo
+  @objc public static let elastos: ChainInfo
+  @objc public static let cronos: ChainInfo
+  @objc public static let bnbChain: ChainInfo
+  @objc public static let oktcTestnet: ChainInfo
+  @objc public static let oktc: ChainInfo
+  @objc public static let confluxeSpaceTestnet: ChainInfo
+  @objc public static let viction: ChainInfo
+  @objc public static let victionTestnet: ChainInfo
+  @objc public static let bnbChainTestnet: ChainInfo
+  @objc public static let gnosis: ChainInfo
+  @objc public static let solana: ChainInfo
+  @objc public static let solanaTestnet: ChainInfo
+  @objc public static let solanaDevnet: ChainInfo
+  @objc public static let thunderCore: ChainInfo
+  @objc public static let bobTestnet: ChainInfo
+  @objc public static let fuse: ChainInfo
+  @objc public static let fuseTestnet: ChainInfo
+  @objc public static let polygon: ChainInfo
+  @objc public static let manta: ChainInfo
+  @objc public static let xLayerTestnet: ChainInfo
+  @objc public static let xLayer: ChainInfo
+  @objc public static let opBNB: ChainInfo
+  @objc public static let mapProtocolTestnet: ChainInfo
+  @objc public static let bSquared: ChainInfo
+  @objc public static let fantom: ChainInfo
+  @objc public static let zkSyncEraSepolia: ChainInfo
+  @objc public static let kcc: ChainInfo
+  @objc public static let kccTestnet: ChainInfo
+  @objc public static let zkSyncEra: ChainInfo
+  @objc public static let cronosTestnet: ChainInfo
+  @objc public static let modeTestnet: ChainInfo
+  @objc public static let fiveire: ChainInfo
+  @objc public static let fiveireTestnet: ChainInfo
+  @objc public static let klaytnTestnet: ChainInfo
+  @objc public static let confluxeSpace: ChainInfo
+  @objc public static let metis: ChainInfo
+  @objc public static let polygonzkEVM: ChainInfo
+  @objc public static let coreTestnet: ChainInfo
+  @objc public static let core: ChainInfo
+  @objc public static let bSquaredTestnet: ChainInfo
+  @objc public static let hybridTestnet: ChainInfo
+  @objc public static let moonbeam: ChainInfo
+  @objc public static let moonriver: ChainInfo
+  @objc public static let moonbeamTestnet: ChainInfo
+  @objc public static let seiTestnet: ChainInfo
+  @objc public static let sei: ChainInfo
+  @objc public static let bevmCanary: ChainInfo
+  @objc public static let bevmCanaryTestnet: ChainInfo
+  @objc public static let storyNetworkTestnet: ChainInfo
+  @objc public static let gravity: ChainInfo
+  @objc public static let comboTestnet: ChainInfo
+  @objc public static let soneiumMinatoTestnet: ChainInfo
+  @objc public static let kavaTestnet: ChainInfo
+  @objc public static let kava: ChainInfo
+  @objc public static let peaqKrest: ChainInfo
+  @objc public static let polygonzkEVMCardona: ChainInfo
+  @objc public static let aiLayerTestnet: ChainInfo
+  @objc public static let aiLayer: ChainInfo
+  @objc public static let gmNetwork: ChainInfo
+  @objc public static let satoshiVMAlpha: ChainInfo
+  @objc public static let satoshiVMTestnet: ChainInfo
+  @objc public static let peaq: ChainInfo
+  @objc public static let botanixTestnet: ChainInfo
+  @objc public static let astarzkEVMMainet: ChainInfo
+  @objc public static let fantomTestnet: ChainInfo
+  @objc public static let merlin: ChainInfo
+  @objc public static let ioTeX: ChainInfo
+  @objc public static let ioTeXTestnet: ChainInfo
+  @objc public static let mantle: ChainInfo
+  @objc public static let mantleSepoliaTestnet: ChainInfo
+  @objc public static let duckchain: ChainInfo
+  @objc public static let opBNBTestnet: ChainInfo
+  @objc public static let auraTestnet: ChainInfo
+  @objc public static let aura: ChainInfo
+  @objc public static let zetaChain: ChainInfo
+  @objc public static let zetaChainTestnet: ChainInfo
+  @objc public static let cyber: ChainInfo
+  @objc public static let klaytn: ChainInfo
+  @objc public static let lorenzo: ChainInfo
+  @objc public static let base: ChainInfo
+  @objc public static let combo: ChainInfo
+  @objc public static let peaqAgungTestnet: ChainInfo
+  @objc public static let gnosisTestnet: ChainInfo
+  @objc public static let bevm: ChainInfo
+  @objc public static let bevmTestnet: ChainInfo
+  @objc public static let readONTestnet: ChainInfo
+  @objc public static let immutablezkEVMTestnet: ChainInfo
+  @objc public static let gravityTestnet: ChainInfo
+  @objc public static let eosevmTestnet: ChainInfo
+  @objc public static let ethereumHolesky: ChainInfo
+  @objc public static let eosevm: ChainInfo
+  @objc public static let mapProtocol: ChainInfo
+  @objc public static let zeroone: ChainInfo
+  @objc public static let movementDevnet: ChainInfo
+  @objc public static let mode: ChainInfo
+  @objc public static let arbitrumOne: ChainInfo
+  @objc public static let arbitrumNova: ChainInfo
+  @objc public static let celo: ChainInfo
+  @objc public static let oasisEmeraldTestnet: ChainInfo
+  @objc public static let oasisEmerald: ChainInfo
+  @objc public static let zkFair: ChainInfo
+  @objc public static let avalancheTestnet: ChainInfo
+  @objc public static let avalanche: ChainInfo
+  @objc public static let zkFairTestnet: ChainInfo
+  @objc public static let celoTestnet: ChainInfo
+  @objc public static let zircuitTestnet: ChainInfo
+  @objc public static let dodoChainTestnet: ChainInfo
+  @objc public static let zerooneTestnet: ChainInfo
+  @objc public static let lineaSepolia: ChainInfo
+  @objc public static let linea: ChainInfo
+  @objc public static let bob: ChainInfo
+  @objc public static let polygonAmoy: ChainInfo
+  @objc public static let berachainbArtio: ChainInfo
+  @objc public static let blast: ChainInfo
+  @objc public static let lorenzoTestnet: ChainInfo
+  @objc public static let baseSepolia: ChainInfo
+  @objc public static let tunaTestnet: ChainInfo
+  @objc public static let xterioBNB: ChainInfo
+  @objc public static let taiko: ChainInfo
+  @objc public static let taikoHekla: ChainInfo
+  @objc public static let bitlayerTestnet: ChainInfo
+  @objc public static let bitlayer: ChainInfo
+  @objc public static let duckchainTestnet: ChainInfo
+  @objc public static let platON: ChainInfo
+  @objc public static let arbitrumSepolia: ChainInfo
+  @objc public static let scrollSepolia: ChainInfo
+  @objc public static let scroll: ChainInfo
+  @objc public static let merlinTestnet: ChainInfo
+  @objc public static let seiDevnet: ChainInfo
+  @objc public static let zkLinkNova: ChainInfo
+  @objc public static let xterioBNBTestnet: ChainInfo
+  @objc public static let platONTestnet: ChainInfo
+  @objc public static let xterioETH: ChainInfo
+  @objc public static let mantaSepolia: ChainInfo
+  @objc public static let astarzkEVMTestnet: ChainInfo
+  @objc public static let zora: ChainInfo
+  @objc public static let ethereumSepolia: ChainInfo
+  @objc public static let optimismSepolia: ChainInfo
+  @objc public static let ancient8Testnet: ChainInfo
+  @objc public static let cyberTestnet: ChainInfo
+  @objc public static let plumeTestnet: ChainInfo
+  @objc public static let blastSepolia: ChainInfo
+  @objc public static let tron: ChainInfo
+  @objc public static let ancient8: ChainInfo
+  @objc public static let aurora: ChainInfo
+  @objc public static let auroraTestnet: ChainInfo
+  @objc public static let skaleNebula: ChainInfo
+  @objc public static let harmony: ChainInfo
+  @objc public static let harmonyTestnet: ChainInfo
+  @objc public static let kakarotSepolia: ChainInfo
+  @objc public static let lumiaTestnet: ChainInfo
+  @objc public static let tronShasta: ChainInfo
+  @objc public static let tronNile: ChainInfo
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+extension ChainType : Swift.Equatable {}
+extension ChainType : Swift.Hashable {}
+extension ChainType : Swift.Sendable {}

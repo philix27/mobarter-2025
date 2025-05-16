@@ -1,0 +1,26 @@
+{
+  "name": "ReactNativePasskeys",
+  "version": "0.3.3",
+  "summary": "A library for using (webauthn) passkeys on iOS, Android & web with a single api",
+  "description": "A library for using (webauthn) passkeys on iOS, Android & web with a single api",
+  "license": "MIT",
+  "authors": "Peter Ferguson <peterferguson95@gmail.com> (https://github.com/peterferguson)",
+  "homepage": "https://github.com/peterferguson/react-native-passkeys#readme",
+  "platforms": {
+    "ios": "15.0"
+  },
+  "swift_versions": "5.4",
+  "source": {
+    "git": "https://github.com/peterferguson/react-native-passkeys"
+  },
+  "static_framework": true,
+  "dependencies": {
+    "ExpoModulesCore": []
+  },
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES",
+    "SWIFT_COMPILATION_MODE": "wholemodule"
+  },
+  "source_files": "**/*.{h,m,swift}",
+  "swift_version": "5.4"
+}

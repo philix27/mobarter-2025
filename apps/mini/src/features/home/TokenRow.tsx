@@ -1,9 +1,9 @@
 import { ChainId, IToken, TokenId, cn, formatEtherBalance, getTokenAddress } from '@repo/utils'
 import Image from 'next/image'
-import { TokenIcons } from 'src/images/tokens/TokenIcon'
 import { useBalance } from 'wagmi'
 
 import { useAppContext } from '@/src/Root/providers/TgContext'
+import { TokenIcons } from '@/src/tokens/TokenIcon'
 
 export function TokenRow(props: IToken & { className?: string; onClick?: VoidFunction }) {
   const { evmAddress } = useAppContext()

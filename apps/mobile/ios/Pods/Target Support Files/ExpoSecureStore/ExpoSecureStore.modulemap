@@ -1,0 +1,6 @@
+framework module ExpoSecureStore {
+  umbrella header "ExpoSecureStore-umbrella.h"
+
+  export *
+  module * { export * }
+}

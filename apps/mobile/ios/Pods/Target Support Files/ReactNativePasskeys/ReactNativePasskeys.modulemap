@@ -1,0 +1,6 @@
+framework module ReactNativePasskeys {
+  umbrella header "ReactNativePasskeys-umbrella.h"
+
+  export *
+  module * { export * }
+}

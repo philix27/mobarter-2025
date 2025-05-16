@@ -1,0 +1,156 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -enable-bare-slash-regex -module-name ParticleConnectKit
+import AuthCoreAdapter
+import ConnectCommon
+import ConnectWalletConnectAdapter
+import Foundation
+import ParticleAuthCore
+import ParticleConnect
+@_exported import ParticleConnectKit
+import ParticleNetworkBase
+import ParticleNetworkChains
+import RxCocoa
+import RxSwift
+import SDWebImage
+import SkeletonView
+import SnapKit
+import Swift
+import SwiftMessages
+import SwiftyJSON
+import SwiftyUserDefaults
+import Then
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public struct ConnectKitConfig {
+  public var connectOptions: [ConnectOption]
+  public var socialProviders: [EnableSocialProvider]
+  public var walletProviders: [EnableWalletProvider]
+  public var additionalLayoutOptions: AdditionalLayoutOptions
+  public var designOptions: DesignOptions
+  public init(connectOptions: [ConnectOption], socialProviders: [EnableSocialProvider], walletProviders: [EnableWalletProvider], additionalLayoutOptions: AdditionalLayoutOptions, designOptions: DesignOptions)
+}
+public enum ConnectOption : Swift.String {
+  case email
+  case phone
+  case social
+  case wallet
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum EnableSocialProvider : Swift.String {
+  case google
+  case facebook
+  case apple
+  case twitter
+  case discord
+  case github
+  case twitch
+  case microsoft
+  case linkedin
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct EnableWalletProvider {
+  public let name: Swift.String
+  public let state: EnableWalletState
+  public init(name: Swift.String, state: EnableWalletState)
+}
+public enum EnableWalletState : Swift.String {
+  case recommended
+  case popular
+  case none
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct AdditionalLayoutOptions {
+  public var isCollapseWalletList: Swift.Bool
+  public var isSplitEmailAndSocial: Swift.Bool
+  public var isSplitEmailAndPhone: Swift.Bool
+  public var isHideContinueButton: Swift.Bool
+  public init(isCollapseWalletList: Swift.Bool, isSplitEmailAndSocial: Swift.Bool, isSplitEmailAndPhone: Swift.Bool, isHideContinueButton: Swift.Bool)
+}
+public struct DesignOptions {
+  public var icon: ParticleNetworkBase.ImagePath?
+  public init(icon: ParticleNetworkBase.ImagePath?)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class OneTimeCodeTextField : UIKit.UITextField {
+  @_Concurrency.MainActor(unsafe) public var digitLabels: [UIKit.UILabel]
+  @_Concurrency.MainActor(unsafe) public var oneTimeCodeDelegate: OneTimeCodeTextFieldDelegate {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var didReceiveCode: ((Swift.String) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) public var codeBackgroundColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var codeTextColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var codeFont: UIKit.UIFont {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var codeMinimumScaleFactor: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var codeCornerRadius: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var codeCornerCurve: QuartzCore.CALayerCornerCurve {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var codeBorderWidth: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var codeBorderColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public func configure(withSlotCount slotCount: Swift.Int = 6, andSpacing spacing: CoreFoundation.CGFloat = 8, firstResponder: Swift.Bool = true)
+  @_Concurrency.MainActor(unsafe) public func clear()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OneTimeCodeTextFieldDelegate : ObjectiveC.NSObject, UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor(unsafe) public var allowedCharacters: Foundation.CharacterSet
+  @_Concurrency.MainActor(unsafe) @objc public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+extension OneTimeCodeTextField {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func canPerformAction(_ action: ObjectiveC.Selector, withSender sender: Any?) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func caretRect(for position: UIKit.UITextPosition) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func selectionRects(for range: UIKit.UITextRange) -> [UIKit.UITextSelectionRect]
+}
+@objc @_inheritsConvenienceInitializers public class ParticleConnectUI : ObjectiveC.NSObject {
+  public static func connect(config: ConnectKitConfig) -> RxSwift.Single<ConnectCommon.Account>
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension ConnectOption : Swift.Equatable {}
+extension ConnectOption : Swift.Hashable {}
+extension ConnectOption : Swift.RawRepresentable {}
+extension EnableSocialProvider : Swift.Equatable {}
+extension EnableSocialProvider : Swift.Hashable {}
+extension EnableSocialProvider : Swift.RawRepresentable {}
+extension EnableWalletState : Swift.Equatable {}
+extension EnableWalletState : Swift.Hashable {}
+extension EnableWalletState : Swift.RawRepresentable {}

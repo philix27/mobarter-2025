@@ -1,0 +1,6 @@
+framework module ExpoSystemUI {
+  umbrella header "ExpoSystemUI-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,4 +1,4 @@
-import BottomModal from 'src/components/BottomModal'
+import { BottomModal } from '@repo/ui'
 import { AppStores } from 'src/lib/zustand'
 
 import SelectNetwork from '../others/SelectNetwork'

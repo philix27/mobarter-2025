@@ -1,0 +1,46 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -enable-bare-slash-regex -module-name ConnectPhantomAdapter
+import Base58_swift
+import ConnectCommon
+@_exported import ConnectPhantomAdapter
+import Foundation
+import ParticleNetworkBase
+import ParticleNetworkChains
+import RxSwift
+import Swift
+import SwiftyJSON
+import SwiftyUserDefaults
+import TweetNacl
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+extension ConnectCommon.Crypto {
+  public static func sharedSecretDapp(theirPublicKey: Swift.String, privateKey: Swift.String) throws -> Swift.String
+}
+public class PhantomConnectAdapter : ConnectCommon.ConnectAdapter {
+  public init()
+  public var walletType: ConnectCommon.WalletType {
+    get
+  }
+  public var readyState: ConnectCommon.WalletReadyState {
+    get
+  }
+  public func getAccounts() -> [ConnectCommon.Account]
+  public var supportChains: [ParticleNetworkChains.ChainType] {
+    get
+  }
+  public func connect<T>(_: T? = nil) -> RxSwift.Single<ConnectCommon.Account> where T : ConnectCommon.ConnectConfig
+  public func isConnected(publicAddress: Swift.String) -> Swift.Bool
+  public func disconnect(publicAddress: Swift.String) -> RxSwift.Single<Swift.String>
+  public func signAndSendTransaction(publicAddress: Swift.String, transaction: Swift.String, feeMode _: ParticleNetworkBase.AA.FeeMode, chainInfo _: ParticleNetworkChains.ChainInfo?) -> RxSwift.Single<Swift.String>
+  public func signAllTransactions(publicAddress: Swift.String, transactions: [Swift.String], chainInfo _: ParticleNetworkChains.ChainInfo?) -> RxSwift.Single<[Swift.String]>
+  public func signTransaction(publicAddress: Swift.String, transaction: Swift.String, chainInfo _: ParticleNetworkChains.ChainInfo?) -> RxSwift.Single<Swift.String>
+  public func signMessage(publicAddress: Swift.String, message: Swift.String, chainInfo _: ParticleNetworkChains.ChainInfo?) -> RxSwift.Single<Swift.String>
+  public func signTypedData(publicAddress _: Swift.String, data _: Swift.String, chainInfo _: ParticleNetworkChains.ChainInfo?) -> RxSwift.Single<Swift.String>
+  public func request(publicAddress _: Swift.String, method _: Swift.String, parameters _: [any Swift.Encodable]) -> RxSwift.Single<SwiftyJSON.JSON>
+  @objc deinit
+}
+extension ConnectPhantomAdapter.PhantomConnectAdapter {
+  public func handleUrl(_ url: Foundation.URL) -> Swift.Bool
+}

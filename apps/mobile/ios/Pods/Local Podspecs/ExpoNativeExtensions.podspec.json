@@ -1,0 +1,27 @@
+{
+  "name": "ExpoNativeExtensions",
+  "version": "0.0.5",
+  "summary": "Privy's native extensions for the @privy-io/expo SDK.",
+  "description": "Privy's native extensions for the @privy-io/expo SDK.",
+  "license": "Apache-2.0",
+  "authors": "privy.io",
+  "homepage": "https://docs.privy.io",
+  "platforms": {
+    "ios": "13.4",
+    "tvos": "13.4"
+  },
+  "swift_versions": "5.4",
+  "source": {
+    "git": "https://github.com/bredfield/expo-native-extensions"
+  },
+  "static_framework": true,
+  "dependencies": {
+    "ExpoModulesCore": []
+  },
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES",
+    "SWIFT_COMPILATION_MODE": "wholemodule"
+  },
+  "source_files": "**/*.{h,m,swift}",
+  "swift_version": "5.4"
+}

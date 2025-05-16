@@ -1,0 +1,6 @@
+framework module react_native_particle_wallet {
+  umbrella header "react-native-particle-wallet-umbrella.h"
+
+  export *
+  module * { export * }
+}

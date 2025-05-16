@@ -1,7 +1,6 @@
-import { TokenIcons } from 'src/images/tokens/TokenIcon'
-
 import * as t from './tokens'
 import { Token, cUSD } from './tokens'
+import { TokenIcons } from '@/src/tokens/TokenIcon'
 
 export interface IToken extends Token {
   fullName: string

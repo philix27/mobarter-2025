@@ -1,0 +1,265 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target x86_64-apple-ios17.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -enable-bare-slash-regex -module-name ParticleNetworkChains
+import Foundation
+@_exported import ParticleNetworkChains
+import Swift
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc(NativeCurrency) public class NativeCurrency : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let name: Swift.String
+  @objc final public let symbol: Swift.String
+  @objc final public let decimals: Swift.Int
+  @objc public init(name: Swift.String, symbol: Swift.String, decimals: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@objc(Feature) public class Feature : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let name: Swift.String
+  @objc public init(name: Swift.String)
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public enum AASupportChains {
+  public static let chains: [Swift.String : Swift.Set<Swift.Int>]
+}
+extension ParticleNetworkChains.ChainInfo {
+  @objc public static func getChainInfo(chainId: Swift.Int, chainName: Swift.String) -> ParticleNetworkChains.ChainInfo?
+  @objc public static func getEvmChain(chainId: Swift.Int) -> ParticleNetworkChains.ChainInfo?
+  @objc public static func getSolanaChain(chainId: Swift.Int) -> ParticleNetworkChains.ChainInfo?
+  @objc public static func getAllChains(comparator: ((ParticleNetworkChains.ChainInfo, ParticleNetworkChains.ChainInfo) -> Swift.Bool)? = nil) -> [ParticleNetworkChains.ChainInfo]
+  @objc public static let defaultComparator: (_ a: ParticleNetworkChains.ChainInfo, _ b: ParticleNetworkChains.ChainInfo) -> Swift.Bool
+  @objc public static var allNetworks: [ParticleNetworkChains.ChainInfo] {
+    @objc get
+  }
+  @objc public static var bridgeableNetworks: [ParticleNetworkChains.ChainInfo]
+  @objc public static var fusionableNetworks: [ParticleNetworkChains.ChainInfo]
+  @objc public static var didableNetworks: [ParticleNetworkChains.ChainInfo]
+  public var isEvmChain: Swift.Bool {
+    get
+  }
+  public var isSolanaChain: Swift.Bool {
+    get
+  }
+  public var isMainnet: Swift.Bool {
+    get
+  }
+  public var isSupportEIP1559: Swift.Bool {
+    get
+  }
+  public var path: Swift.String {
+    get
+  }
+  @objc dynamic public func getParticleNode(projectId: Swift.String, projectClientKey: Swift.String) -> Swift.String
+  public var isSupportWalletConnect: Swift.Bool {
+    get
+  }
+  public var isSupportBridge: Swift.Bool {
+    get
+  }
+  public var isSupportSwap: Swift.Bool {
+    get
+  }
+  public var isSupportFusion: Swift.Bool {
+    get
+  }
+  public var isSupportDid: Swift.Bool {
+    get
+  }
+  public var isTron: Swift.Bool {
+    get
+  }
+  public var buyNetwork: Swift.String? {
+    get
+  }
+}
+@objc @frozen public enum ChainType : Swift.Int, Swift.RawRepresentable, Swift.Codable {
+  case solana
+  case evm
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc(ChainInfo) public class ChainInfo : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let chainId: Swift.Int
+  @objc final public let name: Swift.String
+  @objc final public let chainType: ParticleNetworkChains.ChainType
+  @objc final public let chainIcon: Swift.String
+  @objc final public let nativeTokenIcon: Swift.String
+  @objc final public let uiName: Swift.String
+  @objc final public let network: Swift.String
+  @objc final public let nativeCurrency: ParticleNetworkChains.NativeCurrency
+  @objc final public let explorePath: Swift.String
+  public init(chainId: Swift.Int, name: Swift.String, chainType: ParticleNetworkChains.ChainType, chainIcon: Swift.String, nativeTokenIcon: Swift.String, uiName: Swift.String, network: Swift.String, website: Swift.String, nativeCurrency: ParticleNetworkChains.NativeCurrency, defaultRpcUrl: Swift.String, explorePath: Swift.String, features: [ParticleNetworkChains.Feature], faucetUrl: Swift.String?)
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc override dynamic public var hash: Swift.Int {
+    @objc get
+  }
+  @objc public static let ethereum: ParticleNetworkChains.ChainInfo
+  @objc public static let optimism: ParticleNetworkChains.ChainInfo
+  @objc public static let thunderCoreTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let elastos: ParticleNetworkChains.ChainInfo
+  @objc public static let cronos: ParticleNetworkChains.ChainInfo
+  @objc public static let bnbChain: ParticleNetworkChains.ChainInfo
+  @objc public static let oktcTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let oktc: ParticleNetworkChains.ChainInfo
+  @objc public static let confluxeSpaceTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let viction: ParticleNetworkChains.ChainInfo
+  @objc public static let victionTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let bnbChainTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let gnosis: ParticleNetworkChains.ChainInfo
+  @objc public static let solana: ParticleNetworkChains.ChainInfo
+  @objc public static let solanaTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let solanaDevnet: ParticleNetworkChains.ChainInfo
+  @objc public static let thunderCore: ParticleNetworkChains.ChainInfo
+  @objc public static let bobTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let fuse: ParticleNetworkChains.ChainInfo
+  @objc public static let fuseTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let polygon: ParticleNetworkChains.ChainInfo
+  @objc public static let manta: ParticleNetworkChains.ChainInfo
+  @objc public static let xLayerTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let xLayer: ParticleNetworkChains.ChainInfo
+  @objc public static let opBNB: ParticleNetworkChains.ChainInfo
+  @objc public static let mapProtocolTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let bSquared: ParticleNetworkChains.ChainInfo
+  @objc public static let fantom: ParticleNetworkChains.ChainInfo
+  @objc public static let zkSyncEraSepolia: ParticleNetworkChains.ChainInfo
+  @objc public static let kcc: ParticleNetworkChains.ChainInfo
+  @objc public static let kccTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let zkSyncEra: ParticleNetworkChains.ChainInfo
+  @objc public static let cronosTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let modeTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let fiveire: ParticleNetworkChains.ChainInfo
+  @objc public static let fiveireTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let klaytnTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let confluxeSpace: ParticleNetworkChains.ChainInfo
+  @objc public static let metis: ParticleNetworkChains.ChainInfo
+  @objc public static let polygonzkEVM: ParticleNetworkChains.ChainInfo
+  @objc public static let coreTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let core: ParticleNetworkChains.ChainInfo
+  @objc public static let bSquaredTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let hybridTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let moonbeam: ParticleNetworkChains.ChainInfo
+  @objc public static let moonriver: ParticleNetworkChains.ChainInfo
+  @objc public static let moonbeamTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let seiTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let sei: ParticleNetworkChains.ChainInfo
+  @objc public static let bevmCanary: ParticleNetworkChains.ChainInfo
+  @objc public static let bevmCanaryTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let storyNetworkTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let gravity: ParticleNetworkChains.ChainInfo
+  @objc public static let comboTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let soneiumMinatoTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let kavaTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let kava: ParticleNetworkChains.ChainInfo
+  @objc public static let peaqKrest: ParticleNetworkChains.ChainInfo
+  @objc public static let polygonzkEVMCardona: ParticleNetworkChains.ChainInfo
+  @objc public static let aiLayerTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let aiLayer: ParticleNetworkChains.ChainInfo
+  @objc public static let gmNetwork: ParticleNetworkChains.ChainInfo
+  @objc public static let satoshiVMAlpha: ParticleNetworkChains.ChainInfo
+  @objc public static let satoshiVMTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let peaq: ParticleNetworkChains.ChainInfo
+  @objc public static let botanixTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let astarzkEVMMainet: ParticleNetworkChains.ChainInfo
+  @objc public static let fantomTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let merlin: ParticleNetworkChains.ChainInfo
+  @objc public static let ioTeX: ParticleNetworkChains.ChainInfo
+  @objc public static let ioTeXTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let mantle: ParticleNetworkChains.ChainInfo
+  @objc public static let mantleSepoliaTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let duckchain: ParticleNetworkChains.ChainInfo
+  @objc public static let opBNBTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let auraTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let aura: ParticleNetworkChains.ChainInfo
+  @objc public static let zetaChain: ParticleNetworkChains.ChainInfo
+  @objc public static let zetaChainTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let cyber: ParticleNetworkChains.ChainInfo
+  @objc public static let klaytn: ParticleNetworkChains.ChainInfo
+  @objc public static let lorenzo: ParticleNetworkChains.ChainInfo
+  @objc public static let base: ParticleNetworkChains.ChainInfo
+  @objc public static let combo: ParticleNetworkChains.ChainInfo
+  @objc public static let peaqAgungTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let gnosisTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let bevm: ParticleNetworkChains.ChainInfo
+  @objc public static let bevmTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let readONTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let immutablezkEVMTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let gravityTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let eosevmTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let ethereumHolesky: ParticleNetworkChains.ChainInfo
+  @objc public static let eosevm: ParticleNetworkChains.ChainInfo
+  @objc public static let mapProtocol: ParticleNetworkChains.ChainInfo
+  @objc public static let zeroone: ParticleNetworkChains.ChainInfo
+  @objc public static let movementDevnet: ParticleNetworkChains.ChainInfo
+  @objc public static let mode: ParticleNetworkChains.ChainInfo
+  @objc public static let arbitrumOne: ParticleNetworkChains.ChainInfo
+  @objc public static let arbitrumNova: ParticleNetworkChains.ChainInfo
+  @objc public static let celo: ParticleNetworkChains.ChainInfo
+  @objc public static let oasisEmeraldTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let oasisEmerald: ParticleNetworkChains.ChainInfo
+  @objc public static let zkFair: ParticleNetworkChains.ChainInfo
+  @objc public static let avalancheTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let avalanche: ParticleNetworkChains.ChainInfo
+  @objc public static let zkFairTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let celoTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let zircuitTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let dodoChainTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let zerooneTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let lineaSepolia: ParticleNetworkChains.ChainInfo
+  @objc public static let linea: ParticleNetworkChains.ChainInfo
+  @objc public static let bob: ParticleNetworkChains.ChainInfo
+  @objc public static let polygonAmoy: ParticleNetworkChains.ChainInfo
+  @objc public static let berachainbArtio: ParticleNetworkChains.ChainInfo
+  @objc public static let blast: ParticleNetworkChains.ChainInfo
+  @objc public static let lorenzoTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let baseSepolia: ParticleNetworkChains.ChainInfo
+  @objc public static let tunaTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let xterioBNB: ParticleNetworkChains.ChainInfo
+  @objc public static let taiko: ParticleNetworkChains.ChainInfo
+  @objc public static let taikoHekla: ParticleNetworkChains.ChainInfo
+  @objc public static let bitlayerTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let bitlayer: ParticleNetworkChains.ChainInfo
+  @objc public static let duckchainTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let platON: ParticleNetworkChains.ChainInfo
+  @objc public static let arbitrumSepolia: ParticleNetworkChains.ChainInfo
+  @objc public static let scrollSepolia: ParticleNetworkChains.ChainInfo
+  @objc public static let scroll: ParticleNetworkChains.ChainInfo
+  @objc public static let merlinTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let seiDevnet: ParticleNetworkChains.ChainInfo
+  @objc public static let zkLinkNova: ParticleNetworkChains.ChainInfo
+  @objc public static let xterioBNBTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let platONTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let xterioETH: ParticleNetworkChains.ChainInfo
+  @objc public static let mantaSepolia: ParticleNetworkChains.ChainInfo
+  @objc public static let astarzkEVMTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let zora: ParticleNetworkChains.ChainInfo
+  @objc public static let ethereumSepolia: ParticleNetworkChains.ChainInfo
+  @objc public static let optimismSepolia: ParticleNetworkChains.ChainInfo
+  @objc public static let ancient8Testnet: ParticleNetworkChains.ChainInfo
+  @objc public static let cyberTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let plumeTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let blastSepolia: ParticleNetworkChains.ChainInfo
+  @objc public static let tron: ParticleNetworkChains.ChainInfo
+  @objc public static let ancient8: ParticleNetworkChains.ChainInfo
+  @objc public static let aurora: ParticleNetworkChains.ChainInfo
+  @objc public static let auroraTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let skaleNebula: ParticleNetworkChains.ChainInfo
+  @objc public static let harmony: ParticleNetworkChains.ChainInfo
+  @objc public static let harmonyTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let kakarotSepolia: ParticleNetworkChains.ChainInfo
+  @objc public static let lumiaTestnet: ParticleNetworkChains.ChainInfo
+  @objc public static let tronShasta: ParticleNetworkChains.ChainInfo
+  @objc public static let tronNile: ParticleNetworkChains.ChainInfo
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+extension ParticleNetworkChains.ChainType : Swift.Equatable {}
+extension ParticleNetworkChains.ChainType : Swift.Hashable {}
+extension ParticleNetworkChains.ChainType : Swift.Sendable {}
