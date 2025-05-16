@@ -1,6 +1,8 @@
 // import { getMentoSdk } from 'src/features/sdk';
 import { Color } from 'src/styles/Color'
 
+import { logger } from '../utils'
+
 import { areAddressesEqual } from './addresses'
 import { ChainId } from './chains'
 
@@ -258,7 +260,10 @@ export function getTokenById(id: TokenId | string): Token {
 
 export function getTokenAddress(id: TokenId, chainId: ChainId): Address {
   const addr = TokenAddresses[chainId][id]
-  if (!addr) throw new Error(`No address found for token ${id} on chain ${chainId}`)
+  if (!addr) {
+    logger.error(`No address found for token ${id} on chain ${chainId}`)
+    throw new Error(`No address found for token ${id} on chain ${chainId}`)
+  }
   return addr
 }
 

@@ -1,16 +1,19 @@
-import { useQuery } from '@apollo/client';
-import { OrderStatus, Order_Response, Orders_GetAllDocument, QueryOrders_GetAllArgs, QueryResponse } from '@repo/api';
-import { formatCurrency as fc, Constants, cn } from '@repo/utils';
-
-import Link from 'next/link';
+import { useQuery } from '@apollo/client'
+import {
+  OrderStatus,
+  Order_Response,
+  Orders_GetAllDocument,
+  QueryOrders_GetAllArgs,
+  QueryResponse,
+} from '@repo/api'
+import Link from 'next/link'
 import React from 'react'
 import { AppStores } from 'src/lib/zustand'
 
-
-
-import { NotFound } from '@/src/components/ComingSoon';
-import { Spinner } from '@/src/components/Spinner';
-
+import { NotFound } from '@/src/components/ComingSoon'
+import { Spinner } from '@/src/components/Spinner'
+import { Constants } from '@/src/lib'
+import { cn, formatCurrency as fc } from '@/src/lib/utils'
 
 const DLink = Link as any
 

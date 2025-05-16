@@ -1,23 +1,10 @@
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 import Wrapper from 'src/components/wrapper/Wrapper'
-
-import { AppStores } from '../lib/zustand'
+import Home from 'src/features/home'
 
 export default function HomePage() {
-  const router = useRouter()
-  const store = AppStores.useSettings()
-  useEffect(() => {
-    if (store.appEnv === 'MINIPAY') {
-      void router.push('/minipay')
-    } else {
-      void router.push('/tg')
-    }
-  }, [router, store.appEnv])
-
   return (
     <Wrapper>
-      <p>Welcome</p>
+      <Home />
     </Wrapper>
   )
 }

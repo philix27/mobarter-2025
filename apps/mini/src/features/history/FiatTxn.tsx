@@ -1,6 +1,8 @@
+import { NotFound } from '@/src/components/ComingSoon'
+import { Spinner } from '@/src/components/Spinner'
+import { TileSimple } from '@/src/components/TileSimple'
 import { useQuery } from '@apollo/client'
 import { QueryResponse, Transactions_GetAllDocument } from '@repo/api'
-import { NotFound, Spinner, TileSimple } from '@repo/ui'
 import React from 'react'
 
 export default function FiatTxn() {

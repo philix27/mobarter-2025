@@ -1,15 +1,15 @@
-import { View, StyleSheet, LayoutChangeEvent } from "react-native";
-import { PlatformPressable } from "@react-navigation/elements";
-import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import { useColor } from "@/lib/color";
-import { Feather, FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { View, StyleSheet, LayoutChangeEvent } from 'react-native';
+import { PlatformPressable } from '@react-navigation/elements';
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { useColor } from '@/lib/color';
+import { Feather, FontAwesome, MaterialIcons } from '@expo/vector-icons';
 import Animated, {
   interpolate,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
-} from "react-native-reanimated";
-import { useEffect, useState } from "react";
+} from 'react-native-reanimated';
+import { useEffect, useState } from 'react';
 
 function TabBarButton(props: {
   onPress: VoidFunction;
@@ -19,13 +19,16 @@ function TabBarButton(props: {
   label: string;
   routeName: string;
 }) {
-  const appColor = useColor();
+  const color = useColor();
   const icons = {
     home: (props: typeof Feather) => (
-      <FontAwesome name="home" size={24} {...props} />
+      <FontAwesome name="home" size={18.5} {...props} />
     ),
     p2p: (props: typeof Feather) => (
-      <MaterialIcons name="currency-exchange" size={20} {...props} />
+      <MaterialIcons name="currency-exchange" size={18.5} {...props} />
+    ),
+    pay: (props: typeof Feather) => (
+      <MaterialIcons name="payments" size={18.5} {...props} />
     ),
   };
   const scale = useSharedValue(0);
@@ -40,14 +43,14 @@ function TabBarButton(props: {
 
   const animatedIconStyle = useAnimatedStyle(() => {
     const scaleValue = interpolate(scale.value, [0, 1], [1, 1.2]);
-    const top = interpolate(scale.value, [0, 1], [0, 9]);
+    // const top = interpolate(scale.value, [0, 1], [0, 9]);
     return {
       transform: [
         {
           scale: scaleValue,
         },
       ],
-      top,
+      // top,
     };
   });
 
@@ -59,10 +62,10 @@ function TabBarButton(props: {
     >
       <Animated.View style={animatedIconStyle}>
         {icons[props.routeName]({
-          color: props.color,
+          color: props.isFocused ? props.color : color.muted,
         })}
       </Animated.View>
-      <Animated.Text
+      {/* <Animated.Text
         style={[
           {
             color: props.color,
@@ -74,7 +77,7 @@ function TabBarButton(props: {
         ]}
       >
         {props.label}
-      </Animated.Text>
+      </Animated.Text> */}
     </PlatformPressable>
   );
 }
@@ -118,7 +121,7 @@ export function AppTabBar({
         style={[
           animatedStyle,
           {
-            position: "absolute",
+            position: 'absolute',
             backgroundColor: colors.primary,
             borderRadius: 30,
             marginHorizontal: 12,
@@ -134,8 +137,8 @@ export function AppTabBar({
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
             : options.title !== undefined
-            ? options.title
-            : route.name;
+              ? options.title
+              : route.name;
 
         const isFocused = state.index === index;
 
@@ -144,7 +147,7 @@ export function AppTabBar({
             duration: 1500,
           });
           const event = navigation.emit({
-            type: "tabPress",
+            type: 'tabPress',
             target: route.key,
             canPreventDefault: true,
           });
@@ -156,7 +159,7 @@ export function AppTabBar({
 
         const onLongPress = () => {
           navigation.emit({
-            type: "tabLongPress",
+            type: 'tabLongPress',
             target: route.key,
           });
         };
@@ -167,7 +170,7 @@ export function AppTabBar({
             onLongPress={onLongPress}
             onPress={onPress}
             isFocused={isFocused}
-            color={isFocused ? "#fff" : colors.text}
+            color={isFocused ? '#fff' : colors.text}
             label={label.toString()}
             routeName={route.name}
           />
@@ -179,28 +182,28 @@ export function AppTabBar({
 
 const styles = StyleSheet.create({
   tabar: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 50,
-    flexDirection: "row",
+    flexDirection: 'row',
     borderWidth: 1.5,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     marginHorizontal: 100,
     // width: "auto",
     // paddingVertical: 10,
     borderRadius: 100,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.1,
     shadowRadius: 10,
   },
   tabBarItem: {
     flex: 1,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 10,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 20,
     // backgroundColor: "teal",
   },
 });

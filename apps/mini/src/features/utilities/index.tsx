@@ -109,6 +109,20 @@ export default function Utilities() {
         toast.info('Coming soon!')
       },
     },
+    {
+      title: 'Recurring',
+      icon: GrNotification,
+      onClick: () => {
+        toast.info('Coming soon!')
+      },
+    },
+    {
+      title: 'Stream',
+      icon: GrNotification,
+      onClick: () => {
+        toast.info('Coming soon!')
+      },
+    },
   ]
 
   const getUtils = () => {

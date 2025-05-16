@@ -1,11 +1,11 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
-export type IViews = "INBOX" | "BOTS" | "GROUPS" | "MARKET";
-export type IAssets = "Crypto" | "Fiat" | "Services";
-export type IWalletQrCode = "Ethereum" | "Fiat" | "Services";
-export type IBots = "General" | "DeFi" | "WEB3";
+export type IViews = 'INBOX' | 'BOTS' | 'GROUPS' | 'MARKET';
+export type IAssets = 'Crypto' | 'Fiat';
+export type IWalletQrCode = 'Ethereum' | 'Fiat' | 'Services';
+export type IBots = 'General' | 'DeFi' | 'WEB3';
 
 export interface ISlice {
   activeScreen?: IViews;
@@ -20,27 +20,27 @@ export interface ISliceUpdate extends Required<ISlice> {
 }
 
 export const defaultValues: Required<ISlice> = {
-  activeScreen: "INBOX",
-  activeBot: "General",
-  activePersonalChat: "",
-  activeViewAsset: "Services",
+  activeScreen: 'INBOX',
+  activeBot: 'General',
+  activePersonalChat: '',
+  activeViewAsset: 'Crypto',
 };
 export const useView = create(
   persist<ISliceUpdate>(
-    (set) => ({
+    set => ({
       ...defaultValues,
-      update: (data) =>
-        set((state) => {
+      update: data =>
+        set(state => {
           return { ...state, ...data };
         }),
       clear: () =>
-        set((state) => {
+        set(state => {
           return { ...state, ...defaultValues };
         }),
     }),
     {
-      name: "screens",
+      name: 'screens',
       storage: createJSONStorage(() => AsyncStorage),
-    }
-  )
+    },
+  ),
 );

@@ -1,13 +1,14 @@
-import React, { forwardRef, ReactNode } from "react";
-import RBSheet, { RBSheetRef } from "react-native-raw-bottom-sheet";
-import { useColor } from "@/lib/color";
-import { TText } from "./TText";
-import { TView } from "./TView";
+import React, { forwardRef, ReactNode } from 'react';
+import RBSheet, { RBSheetRef } from 'react-native-raw-bottom-sheet';
+import { useColor } from '@/lib/color';
+import { TText } from './TText';
+import { TView } from './TView';
 
 type IProps = {
   children: ReactNode;
   height?: number;
   maxHeight?: number;
+  minHeight?: number;
   title?: string;
   onClose?: VoidFunction;
   ref: React.LegacyRef<RBSheetRef>;
@@ -51,16 +52,16 @@ export const BottomSheet = forwardRef<any, IProps>(
             backgroundColor: color.background,
           },
           wrapper: {
-            backgroundColor: "#00000075",
+            backgroundColor: '#00000075',
             // backgroundColor: "transparent",
             // height: 500,
           },
           draggableIcon: {
-            backgroundColor: "#000",
+            backgroundColor: '#000',
           },
         }}
         customModalProps={{
-          animationType: "slide",
+          animationType: 'slide',
           statusBarTranslucent: true,
         }}
         customAvoidingViewProps={{
@@ -75,5 +76,5 @@ export const BottomSheet = forwardRef<any, IProps>(
         {props.children}
       </RBSheet>
     );
-  }
+  },
 );

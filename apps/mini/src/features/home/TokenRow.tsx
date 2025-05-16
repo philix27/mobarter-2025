@@ -1,9 +1,11 @@
-import { ChainId, IToken, TokenId, cn, formatEtherBalance, getTokenAddress } from '@repo/utils'
+// import { ChainId, IToken, TokenId, cn, formatEtherBalance, getTokenAddress } from '@repo/utils'
 import Image from 'next/image'
 import { useBalance } from 'wagmi'
 
-import { useAppContext } from '@/src/Root/providers/TgContext'
+import { useAppContext } from '@/src/root/TgContext'
 import { TokenIcons } from '@/src/tokens/TokenIcon'
+import { IToken, ChainId, getTokenAddress, TokenId } from '@/src/lib/config';
+import { cn, formatEtherBalance } from '@/src/lib/utils';
 
 export function TokenRow(props: IToken & { className?: string; onClick?: VoidFunction }) {
   const { evmAddress } = useAppContext()
@@ -12,6 +14,11 @@ export function TokenRow(props: IToken & { className?: string; onClick?: VoidFun
     chainId: ChainId.Celo,
     token: getTokenAddress(props.symbol as TokenId, ChainId.Celo) as `0x${string}`,
   })
+
+  if (isLoading) {
+    return null
+  }
+
   return (
     <div
       onClick={props.onClick}

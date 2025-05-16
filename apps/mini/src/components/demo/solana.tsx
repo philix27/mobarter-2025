@@ -9,7 +9,7 @@ import { shortString } from 'src/lib/utils/string'
 
 import { Button } from '../Button'
 
-import { useAppContext } from '@/src/Root/providers/TgContext'
+import { useAppContext } from '@/src/root/TgContext'
 
 const SolanaDemo = () => {
   const { address, signMessage, signAndSendTransaction } = useSolana()

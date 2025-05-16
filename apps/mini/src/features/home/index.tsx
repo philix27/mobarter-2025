@@ -1,24 +1,25 @@
-import { ChainId, TokenId, formatEtherBalance, getTokenAddress, tokensList } from '@repo/utils'
 import { useBalance } from 'wagmi'
 
 import HomePopups from './HomePopups'
 import { TokenRow } from './TokenRow'
 import { HomeTabs } from './TopTabs'
-import { useAppContext } from '@/src/Root/providers/TgContext'
+import { ChainId, TokenId, getTokenAddress, tokensList } from '@/src/lib/config'
+import { formatEtherBalance } from '@/src/lib/utils'
+import { useAppContext } from '@/src/root/TgContext'
 
 export default function Home() {
   return (
     <div className="w-full items-center justify-center flex flex-col">
       <HomeTabs />
-      <Balance />
+      {/* <Balance /> */}
 
-      <div className="h-8" />
-
-      <div className="flex flex-col rounded-md w-full gap-y-[0.1px] px-1 py-1">
-        {tokensList.map((val, i) => (
-          <TokenRow key={i} {...val} className="bg-card" />
-        ))}
-      </div>
+      {/* <div className="flex flex-col rounded-md w-full gap-y-[0.1px] px-1 py-1">
+        {tokensList.map((val, i) => {
+          const tokenId = val.symbol as TokenId
+          if (tokenId === undefined) return
+          return <TokenRow key={i} {...val} className="bg-card" />
+        })}
+      </div> */}
       <HomePopups />
     </div>
   )

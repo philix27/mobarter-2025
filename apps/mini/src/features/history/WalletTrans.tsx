@@ -1,4 +1,3 @@
-import { TokenAddresses, TokenId, cn, formatEtherBalance, shortString } from '@repo/utils'
 import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 import React, { useState } from 'react'
@@ -6,8 +5,10 @@ import BottomModal from 'src/components/BottomModal'
 import { Spinner } from 'src/components/Spinner'
 import { shortenAddress } from 'src/lib/config/addresses'
 
-import { useAppContext } from '@/src/Root/providers/TgContext'
 import { ITransactionsResult, getTxHistory } from '@/src/lib/server'
+import { useAppContext } from '@/src/root/TgContext'
+import { cn, formatEtherBalance, shortString } from '@/src/lib/utils'
+import { TokenAddresses, TokenId } from '@/src/lib/config'
 
 export default function WalletTransactions() {
   // const store = AppStores.useUser()

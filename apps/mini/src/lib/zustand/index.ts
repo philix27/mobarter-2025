@@ -1,4 +1,5 @@
 import { useAdvert } from './adverts';
+import { useGiftCard } from './giftcard';
 import { useKyc } from './kyc';
 import { useOrder } from './orders';
 import { useView } from './screens';
@@ -17,4 +18,5 @@ export const AppStores = {
   useSwap,
   useSendToBank,
   useKyc,
+  useGiftCard,
 }

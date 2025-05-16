@@ -33,7 +33,7 @@ export class ErrorBoundary extends Component<any, ErrorBoundaryState> {
 function FailScreen({ details }: { details?: string }) {
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen bg-gradient-linear">
-      <div className="hidden sm:block fixed top-5 left-5">img</div>
+      <div className="hidden sm:block fixed top-5 left-5">Error img</div>
       <FailContent details={details} />
     </div>
   )

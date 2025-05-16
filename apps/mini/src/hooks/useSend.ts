@@ -7,8 +7,8 @@ import { createWalletClient, custom } from 'viem'
 import { celo } from 'viem/chains'
 import { useSendTransaction } from 'wagmi'
 
-import { useAppContext } from '../Root/providers/TgContext'
 import { logger, shortString } from '../lib/utils'
+import { useAppContext } from '../root/TgContext'
 
 import StableTokenABI from './cusdAbi.json'
 import { useProvider } from './useProvider'

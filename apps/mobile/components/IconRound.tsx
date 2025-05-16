@@ -1,7 +1,7 @@
-import React, { ReactNode } from "react";
-import { TouchableOpacity, View, ViewStyle } from "react-native";
-import { useColor } from "@/lib/color";
-import { TText } from "./TText";
+import React, { ReactNode } from 'react';
+import { TouchableOpacity, View, ViewStyle } from 'react-native';
+import { useColor } from '@/lib/color';
+import { TText } from './TText';
 
 export default function IconRound(props: {
   children: ReactNode;
@@ -14,9 +14,9 @@ export default function IconRound(props: {
     <View
       style={[
         {
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
         },
         props.style,
       ]}
@@ -25,13 +25,13 @@ export default function IconRound(props: {
         <View
           style={{
             borderRadius: 25,
-            height: 50,
-            width: 50,
+            height: 40,
+            width: 40,
             backgroundColor: appColor.secondary,
             // padding: 20,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
           {props.children}

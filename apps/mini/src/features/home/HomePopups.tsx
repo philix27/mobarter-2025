@@ -1,7 +1,8 @@
-import { BottomModal } from '@repo/ui'
+
 import { AppStores } from 'src/lib/zustand'
 
 import SelectNetwork from '../others/SelectNetwork'
+import BottomModal from '@/src/components/BottomModal'
 
 export default function HomePopups() {
   const store = AppStores.useSettings()

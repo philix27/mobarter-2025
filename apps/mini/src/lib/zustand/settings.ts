@@ -62,7 +62,7 @@ export const defaultValues: Required<ISlice> = {
   token: false,
   countryIso: 'NG',
   chainIcon: '',
-  appEnv: 'MINIPAY',
+  appEnv: process.env.NEXT_PUBLIC_APP_ENV as IAppEnv,
   minipayTab: 'AIRTIME',
 }
 

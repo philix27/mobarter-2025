@@ -21,7 +21,6 @@ import { TokenId } from 'src/lib/config/tokens'
 import { pasteTextFromClipboard } from 'src/lib/utils'
 
 import BalCard from './BalCard'
-import { useAppContext } from '@/src/Root/providers/TgContext'
 import { Card, Label } from '@/src/components/comps'
 import { usePrice } from '@/src/hooks/usePrice'
 import { useSendToken } from '@/src/hooks/useSend'
@@ -31,6 +30,7 @@ import { BANKS_LIST } from '@/src/lib/banks'
 import { COLLECTOR } from '@/src/lib/config'
 import { getAccountInfo } from '@/src/lib/server'
 import { AppStores } from '@/src/lib/zustand'
+import { useAppContext } from '@/src/root/TgContext'
 
 const Copy = FaCopy as any
 export default function SendToBank() {

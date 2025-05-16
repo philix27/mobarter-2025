@@ -19,6 +19,7 @@ export default function Minipay() {
   // const { address, isConnected } = useAccount()
 
   useEffect(() => {
+    
     if (win.ethereum && win.ethereum.isMiniPay) {
       //     // User is using MiniPay so hide connect wallet button.
 

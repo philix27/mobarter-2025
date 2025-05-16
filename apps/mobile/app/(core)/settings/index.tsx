@@ -1,5 +1,5 @@
-import HeaderBar from "@/components/Header";
-import SettingsScreen from "@/screens/settings";
+import HeaderBar from '@/components/Header';
+import SettingsScreen from '@/features/settings';
 
 export default function Page() {
   return (

@@ -1,17 +1,12 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Analytics } from '@vercel/analytics/react'
 import type { AppProps } from 'next/app'
 import { PropsWithChildren } from 'react'
-import { Root } from 'src/Root'
 import { ErrorBoundary } from 'src/components/Errors'
 import { PreventZoom } from 'src/lib/telegram'
 import { useIsSsr } from 'src/lib/utils/ssr'
-import { AppStores } from 'src/lib/zustand'
 import 'src/styles/globals.css'
 
-// requires a loader
-// import { logger } from '../lib/utils'
+import { Root } from '@/src/root'
 
 function SafeHydrate({ children }: PropsWithChildren<any>) {
   // Disable app SSR for now as it's not needed and
@@ -24,41 +19,17 @@ function SafeHydrate({ children }: PropsWithChildren<any>) {
   }
 }
 
-const queryClient = new QueryClient()
-const apollo = (token: string) => {
-  try {
-    const client =  new ApolloClient({
-      uri: process.env.NEXT_PUBLIC_BACKEND_SERVER,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      cache: new InMemoryCache(),
-    })
-    return client
-  } catch (e) {
-    // logger.error('Initialization err' + e)
-    return undefined
-  }
-}
 export default function App({ Component, pageProps }: AppProps) {
-  const store = AppStores.useUser()
-
   return (
     <ErrorBoundary>
       <SafeHydrate>
-        <QueryClientProvider client={queryClient}>
-          {/* <RainbowKitProvider> */}
-          <ApolloProvider client={apollo(store.token)!}>
-            <PreventZoom>
-              <Root>
-                <Component {...pageProps} />
-              </Root>
-            </PreventZoom>
-          </ApolloProvider>
-          {/* </RainbowKitProvider> */}
-        </QueryClientProvider>
+        <Root>
+          <PreventZoom>
+            <Component {...pageProps} />
+          </PreventZoom>
+        </Root>
+        {process.env.NODE_ENV !== 'development' && <Analytics />}
       </SafeHydrate>
-      {process.env.NODE_ENV !== 'development' && <Analytics />}
     </ErrorBoundary>
   )
 }
