@@ -30,6 +30,8 @@
     "@tabler/icons-react": "^3.31.0",
     "@tanstack/react-table": "^8.21.3",
     "@repo/api": "*",
+    "@repo/ui": "*",
+    "@repo/utils": "*",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.503.0",
