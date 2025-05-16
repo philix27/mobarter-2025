@@ -17,7 +17,7 @@
     "packages/*"
   ],
   "engines": {
-    "node": "^22.6.0"
+    "node": "^23.7.0"
   },
   "scripts": {
     "dev": "turbo run dev",
