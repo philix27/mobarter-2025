@@ -1,9 +1,10 @@
+import { mapCountryToData } from '@repo/utils'
 import React from 'react'
 
-import BottomModal from '@/src/components/BottomModal'
-import { mapCountryToData } from '@/src/lib'
-import { AppStores } from '@/src/lib/zustand'
 import SelectCountry from '../others/SelectCountry'
+
+import BottomModal from '@/src/components/BottomModal'
+import { AppStores } from '@/src/lib/zustand'
 
 export default function SelectCountryBtn() {
   const store = AppStores.useSettings()

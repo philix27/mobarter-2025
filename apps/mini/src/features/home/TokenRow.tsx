@@ -1,9 +1,6 @@
+import { ChainId, IToken, TokenId, cn, formatEtherBalance, getTokenAddress } from '@repo/utils'
 import Image from 'next/image'
 import { TokenIcons } from 'src/images/tokens/TokenIcon'
-import { ChainId } from 'src/lib/config/chains'
-import { IToken } from 'src/lib/config/tokenData'
-import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
-import { cn, formatEtherBalance } from 'src/lib/utils'
 import { useBalance } from 'wagmi'
 
 import { useAppContext } from '@/src/Root/providers/TgContext'

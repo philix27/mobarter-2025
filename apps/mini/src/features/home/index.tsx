@@ -1,7 +1,4 @@
-import { ChainId } from 'src/lib/config/chains'
-import { tokensList } from 'src/lib/config/tokenData'
-import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
-import { formatEtherBalance } from 'src/lib/utils'
+import { ChainId, TokenId, formatEtherBalance, getTokenAddress, tokensList } from '@repo/utils'
 import { useBalance } from 'wagmi'
 
 import HomePopups from './HomePopups'

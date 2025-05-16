@@ -10,7 +10,6 @@ import { init } from 'src/lib/telegram/init'
 import { WagmiProvider, createConfig, http } from 'wagmi'
 import { celo, celoAlfajores } from 'wagmi/chains'
 
-import { FarcasterProvider } from './Facaster'
 import { TgAppProvider } from './TgContext'
 
 const config = createConfig({
@@ -93,9 +92,7 @@ export function Setup({ children }: PropsWithChildren) {
         },
       }}
     >
-      <TgAppProvider>
-        <FarcasterProvider>{children}</FarcasterProvider>
-      </TgAppProvider>
+      <TgAppProvider>{children}</TgAppProvider>
     </AuthCoreContextProvider>
   )
 }

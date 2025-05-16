@@ -1,13 +1,12 @@
+import { TokenAddresses, TokenId, cn, formatEtherBalance, shortString } from '@repo/utils'
 import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 import React, { useState } from 'react'
 import BottomModal from 'src/components/BottomModal'
 import { Spinner } from 'src/components/Spinner'
 import { shortenAddress } from 'src/lib/config/addresses'
-import { cn, formatEtherBalance, shortString } from 'src/lib/utils'
 
 import { useAppContext } from '@/src/Root/providers/TgContext'
-import { TokenAddresses, TokenId } from '@/src/lib/config'
 import { ITransactionsResult, getTxHistory } from '@/src/lib/server'
 
 export default function WalletTransactions() {
