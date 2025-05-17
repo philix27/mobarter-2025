@@ -1,9 +1,9 @@
 // app/api/hello/route.ts (or .js)
 import { NextResponse } from "next/server";
-import { allChains } from "./chains";
+import { socialLinks } from "./data";
 
 export async function GET() {
-  return NextResponse.json(allChains);
+  return NextResponse.json(socialLinks);
 }
 
 // export async function POST(request: Request) {
