@@ -1,0 +1,31 @@
+{
+  "name": "@repo/hooks",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^19.1.5",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "@repo/typescript-config": "*",
+    "@repo/utils": "*",
+    "@tanstack/react-query": "^5.67.2",
+    "@types/react": "^18.2.14",
+    "axios": "^1.8.4",
+    "graphql": "^16.10.0",
+    "tsup": "^8.0.1",
+    "typescript": "5.5.4"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.3.0",
+    "toformat": "^2.0.0"
+  }
+}
