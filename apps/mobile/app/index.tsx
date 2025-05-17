@@ -1,26 +1,12 @@
 import { TText } from '@/components/TText';
-import { client } from '@/constants/thirdweb';
+import { chain, client } from '@/constants/thirdweb';
 import { Link } from 'expo-router';
 import React from 'react';
-import { SafeAreaView, View, StyleSheet } from 'react-native';
+import { Button, SafeAreaView, View } from 'react-native';
 import { createAuth } from 'thirdweb/auth';
-import { baseSepolia, ethereum } from 'thirdweb/chains';
-import {
-  ConnectButton,
-  ConnectEmbed,
-  lightTheme,
-  useActiveAccount,
-  useActiveWallet,
-  useConnect,
-  useDisconnect,
-} from 'thirdweb/react';
-import { shortenAddress } from 'thirdweb/utils';
-import { createWallet } from 'thirdweb/wallets';
-import {
-  getUserEmail,
-  hasStoredPasskey,
-  inAppWallet,
-} from 'thirdweb/wallets/in-app';
+import { baseSepolia } from 'thirdweb/chains';
+import { useActiveAccount, useConnect } from 'thirdweb/react';
+import { inAppWallet } from 'thirdweb/wallets/in-app';
 
 const wallets = [
   inAppWallet({
@@ -55,6 +41,13 @@ export default function Page() {
         backgroundColor: '#000',
       }}
     >
+      <ConnectWithGoogle />
+      {account && (
+        <TText>
+          ConnectEmbed does not render when connected, use the `onConnect` prop
+          to navigate to a new screen instead.
+        </TText>
+      )}
       <View style={{ gap: 20 }}>
         <Link href="/">
           <TText type="subtitle">Home</TText>
@@ -71,23 +64,27 @@ export default function Page() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
-  buttonStyle: {
-    backgroundColor: 'rgba(78, 116, 289, 1)',
-    borderRadius: 3,
-    margin: 10,
-    height: 30,
-    width: 300,
-    justifyContent: 'center',
-  },
-  textStyle: {
-    color: 'white',
-    textAlign: 'center',
-  },
-});
+const ConnectWithGoogle = () => {
+  const { connect, isConnecting } = useConnect();
+  return (
+    <Button
+      title="Connect with Google"
+      disabled={isConnecting}
+      onPress={() => {
+        connect(async () => {
+          const w = inAppWallet({
+            smartAccount: {
+              chain,
+              sponsorGas: true,
+            },
+          });
+          await w.connect({
+            client,
+            strategy: 'google',
+          });
+          return w;
+        });
+      }}
+    />
+  );
+};

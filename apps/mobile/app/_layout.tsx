@@ -51,7 +51,7 @@ export default function RootLayout() {
         }}
         drawerContent={CustomDrawerContent}
       >
-        <RootProviders>
+      <RootProviders>
           <Drawer.Screen
             name="(tabs)"
             options={{
