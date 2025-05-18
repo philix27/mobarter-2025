@@ -1,45 +1,34 @@
+import { publicPath } from "@/app/publicPath";
+
 export enum ChainId {
-  Alfajores = 44787,
-  Baklava = 62320,
   Celo = 42220,
+  Base = 8453,
 }
 
 export interface ChainMetadata {
-  chainId: ChainId
-  name: string
-  rpcUrl: string
-  explorerUrl: string
-  explorerApiUrl: string
-}
-
-export const Alfajores: ChainMetadata = {
-  chainId: ChainId.Alfajores,
-  name: 'Alfajores',
-  rpcUrl: 'https://alfajores-forno.celo-testnet.org',
-  explorerUrl: 'https://alfajores.celoscan.io',
-  explorerApiUrl: 'https://api-alfajores.celoscan.io/api',
-}
-
-export const Baklava: ChainMetadata = {
-  chainId: ChainId.Baklava,
-  name: 'Baklava',
-  rpcUrl: 'https://baklava-forno.celo-testnet.org',
-  explorerUrl: 'https://explorer.celo.org/baklava',
-  explorerApiUrl: 'https://explorer.celo.org/baklava/api',
+  chainId: ChainId;
+  name: string;
+  rpcUrl: string;
+  explorerUrl: string;
+  explorerApiUrl: string;
+  logoUrl: string;
 }
 
 export const Celo: ChainMetadata = {
   chainId: ChainId.Celo,
-  name: 'Celo',
-  rpcUrl: 'https://forno.celo.org',
-  explorerUrl: 'https://celoscan.io',
-  explorerApiUrl: 'https://api.celoscan.io/api',
-}
+  name: "CELO",
+  rpcUrl: "https://forno.celo.org",
+  explorerUrl: "https://celoscan.io",
+  explorerApiUrl: "https://api.celoscan.io/api",
+  logoUrl: publicPath("chain/celo.png"),
+};
+export const Base: ChainMetadata = {
+  chainId: ChainId.Base,
+  name: "BASE",
+  rpcUrl: "https://forno.celo.org",
+  explorerUrl: "https://celoscan.io",
+  explorerApiUrl: "https://api.celoscan.io/api",
+  logoUrl: publicPath("chain/base.png"),
+};
 
-export const chainIdToChain: Record<number, ChainMetadata> = {
-  [ChainId.Alfajores]: Alfajores,
-  [ChainId.Baklava]: Baklava,
-  [ChainId.Celo]: Celo,
-}
-
-export const allChains = [Celo, Alfajores, Baklava]
+export const allChains = [Celo, Base];

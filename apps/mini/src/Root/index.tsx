@@ -1,6 +1,4 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
-// import { RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit'
-// import { injectedWallet } from '@rainbow-me/rainbowkit/wallets'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { type PropsWithChildren } from 'react'
 import { Toaster } from 'sonner'

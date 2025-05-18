@@ -1,4 +1,4 @@
-export const NG_BANKS_LIST: {
+export type IBank = {
   id: number;
   name: string;
   code: string;
@@ -13,7 +13,8 @@ export const NG_BANKS_LIST: {
   currency: string;
   type: string;
   is_deleted: number;
-}[] = [
+};
+export const NG_BANKS_LIST: IBank[] = [
   {
     id: 149,
     name: "UBA MONI",

@@ -1,13 +1,11 @@
-import { TText } from "@/components/TText";
-import { TView } from "@/components/TView";
-import React from "react";
-import QRCode from "react-native-qrcode-svg";
-import InputButton from "@/components/forms/Button";
-import { ApiHooks, AppStores, ClipboardSet } from "@/lib";
-import { LoadingIndicator } from "@/components/Loading";
-import { ScrollView } from "react-native";
-import Toast from "react-native-toast-message";
-import * as Clipboard from "expo-clipboard";
+import { TText } from '@/components/TText';
+import { TView } from '@/components/TView';
+import React from 'react';
+import QRCode from 'react-native-qrcode-svg';
+import InputButton from '@/components/forms/Button';
+import { ApiHooks, AppStores, ClipboardSet } from '@/lib';
+import { LoadingIndicator } from '@/components/Loading';
+import { ScrollView } from 'react-native';
 
 export default function WalletQRCode() {
   const store = AppStores.useView();
@@ -20,8 +18,8 @@ export default function WalletQRCode() {
       <TView
         style={{
           paddingBottom: 50,
-          flexDirection: "column",
-          alignItems: "center",
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
       >
         <RemoteWallet />
@@ -40,7 +38,7 @@ function RemoteWallet() {
         <TView key={i} style={{ marginBottom: 50 }}>
           <TText
             type="subtitle"
-            style={{ textAlign: "center", marginBottom: 20 }}
+            style={{ textAlign: 'center', marginBottom: 20 }}
           >
             {val.chainType}
           </TText>
@@ -49,7 +47,7 @@ function RemoteWallet() {
             logoBackgroundColor="transparent"
             size={310}
           />
-          <TText style={{ textAlign: "center", marginVertical: 10 }}>
+          <TText style={{ textAlign: 'center', marginVertical: 10 }}>
             {shortenAddress(val.address)}
           </TText>
 
@@ -67,7 +65,7 @@ function RemoteWallet() {
 
 function shortenAddress(address: string, chars = 10): string {
   if (!address || address.length < chars * 2) {
-    throw new Error("Invalid address");
+    throw new Error('Invalid address');
   }
   return `${address.slice(0, chars)}...${address.slice(-chars)}`;
 }

@@ -3,6 +3,7 @@ export * from './OperatorsData';
 export * from './getAccountInfo';
 export * from './getTxn';
 export * from './GiftCards';
+export * from './bank';
 
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
@@ -11,9 +12,11 @@ import axios from 'axios';
 import { IUtilityBillData } from './ElectricityBill';
 import { GiftCardsResult } from './GiftCards';
 import { GiftCardCategoryData } from './GiftCategories';
+import { IBank } from './bank';
 
 const api = axios.create({
-  baseURL: 'https://api.example.com',
+  baseURL: 'http://localhost:4000',
+  // baseURL: 'https://api.example.com',
 });
 
 export const useGiftCardProviders = (productCategoryId: string) =>
@@ -80,5 +83,13 @@ export const useGetGiftCardCategories = () =>
       const res = await api.get(`/api/gift-cards/categories`);
       const fmtResult = res.data as GiftCardCategoryData;
       return fmtResult;
+    },
+  });
+export const useGetBanks = () =>
+  useQuery({
+    queryKey: ['useGetBanks'],
+    queryFn: async () => {
+      const res = await api.get(`/api/banks`);
+      return res.data as IBank[];
     },
   });

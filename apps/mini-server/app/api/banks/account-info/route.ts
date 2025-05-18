@@ -1,11 +1,11 @@
+import { NextRequest, NextResponse } from "next/server";
 import { logger } from "@/app/logger";
 import axios from "axios";
-import type { NextApiRequest, NextApiResponse } from "next";
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
-  const { account_number, bank_code } = req.query;
-  const acctNo = account_number as string;
-  const code = bank_code as string;
+export async function GET(req: NextRequest, res: NextResponse) {
+  const searchParams = req.nextUrl.searchParams;
+  const acctNo = searchParams.get("bank_code");
+  const code = searchParams.get("account_number");
 
   try {
     const response = await axios.get(
@@ -18,7 +18,7 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
       },
     );
 
-    res.status(200).json(response.data);
+    return NextResponse.json(response.data);
   } catch (error) {
     logger.error(error);
   }

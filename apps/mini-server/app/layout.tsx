@@ -1,12 +1,13 @@
 import "./theme.css";
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
-
+import AppProviders from "./providers";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
 };
 
+const Providers = AppProviders as any;
 export async function generateMetadata(): Promise<Metadata> {
   const URL = process.env.NEXT_PUBLIC_URL;
   return {
@@ -30,7 +31,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-background">{children}</body>
+      <body className="bg-background">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
