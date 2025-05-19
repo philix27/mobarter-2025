@@ -17,7 +17,7 @@ export function AssetsRow(params: {
   onPress?: VoidFunction;
 }) {
   const appColor = useColor();
-  const bgColor = appColor.accent;
+  const bgColor = appColor.card;
   return (
     <TouchableOpacity
       onPress={params.onPress}

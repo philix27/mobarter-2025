@@ -1,27 +1,27 @@
-import { Image, StyleSheet, View, useColorScheme } from "react-native";
-import { ParallaxScrollView } from "@/components/ParallaxScrollView";
-import { ThemedButton } from "@/components/ThemedButton";
-import { ThemedText } from "@/components/ThemedText";
-import { chain, client } from "@/constants/thirdweb";
-import { useEffect, useState } from "react";
+import { Image, StyleSheet, View, useColorScheme } from 'react-native';
+import { ParallaxScrollView } from '@/components/ParallaxScrollView';
+import { ThemedButton } from '@/components/ThemedButton';
+import { ThemedText } from '@/components/ThemedText';
+import { chain, client } from '@/constants/thirdweb';
+import { useEffect, useState } from 'react';
 import {
   ConnectEmbed,
   useActiveAccount,
   useActiveWallet,
   useConnect,
   useDisconnect,
-} from "thirdweb/react";
-import { shortenAddress } from "thirdweb/utils";
-import { getUserEmail, inAppWallet } from "thirdweb/wallets/in-app";
-import { router } from "expo-router";
-import { baseSepolia, ethereum } from "thirdweb/chains";
-import { createAuth } from "thirdweb/auth";
+} from 'thirdweb/react';
+import { shortenAddress } from 'thirdweb/utils';
+import { getUserEmail, inAppWallet } from 'thirdweb/wallets/in-app';
+import { router } from 'expo-router';
+import { baseSepolia, ethereum } from 'thirdweb/chains';
+import { createAuth } from 'thirdweb/auth';
 
 const wallets = [
   inAppWallet({
     auth: {
-      options: ["google"],
-      passkeyDomain: "thirdweb.com",
+      options: ['google'],
+      passkeyDomain: 'thirdweb.com',
     },
     smartAccount: {
       chain: baseSepolia,
@@ -31,7 +31,7 @@ const wallets = [
 ];
 
 const thirdwebAuth = createAuth({
-  domain: "localhost:3000",
+  domain: 'localhost:3000',
   client,
 });
 
@@ -44,28 +44,28 @@ export default function HomeScreen() {
 
   //  router.replace("/(tabs)/home");
   if (account) {
-    router.replace("/(tabs)/home");
+    router.replace('/(tabs)/home');
   }
 
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
+      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
         <Image
-          source={require("@/assets/images/title.png")}
+          source={require('@/assets/images/title.png')}
           style={styles.reactLogo}
         />
       }
     >
       <ConnectEmbed
         client={client}
-        theme={theme || "dark"}
+        theme={theme || 'dark'}
         chain={ethereum}
         wallets={wallets}
         auth={{
           async doLogin(params) {
             // fake delay
-            await new Promise((resolve) => setTimeout(resolve, 2000));
+            await new Promise(resolve => setTimeout(resolve, 2000));
             const verifiedPayload = await thirdwebAuth.verifyPayload(params);
             isLoggedIn = verifiedPayload.valid;
           },
@@ -92,7 +92,7 @@ const CustomConnectUI = () => {
   const [email, setEmail] = useState<string | undefined>();
   const { disconnect } = useDisconnect();
   useEffect(() => {
-    if (wallet && wallet.id === "inApp") {
+    if (wallet && wallet.id === 'inApp') {
       getUserEmail({ client }).then(setEmail);
     }
   }, [wallet]);
@@ -128,7 +128,7 @@ const ConnectWithGoogle = () => {
           });
           await w.connect({
             client,
-            strategy: "google",
+            strategy: 'google',
           });
           return w;
         });
@@ -139,8 +139,8 @@ const ConnectWithGoogle = () => {
 
 const styles = StyleSheet.create({
   titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 8,
   },
   stepContainer: {
@@ -148,32 +148,32 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   reactLogo: {
-    height: "100%",
-    width: "100%",
+    height: '100%',
+    width: '100%',
     bottom: 0,
     left: 0,
-    position: "absolute",
+    position: 'absolute',
   },
   rowContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: 24,
-    justifyContent: "space-evenly",
+    justifyContent: 'space-evenly',
   },
   tableContainer: {
-    width: "100%",
+    width: '100%',
   },
   tableRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginBottom: 4,
   },
   leftColumn: {
     flex: 1,
-    textAlign: "left",
+    textAlign: 'left',
   },
   rightColumn: {
     flex: 1,
-    textAlign: "right",
+    textAlign: 'right',
   },
 });

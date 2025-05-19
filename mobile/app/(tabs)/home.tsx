@@ -1,5 +1,11 @@
-import MarketScreen from "@/features/market";
+import HeaderBar from '@/components/Header';
+import MarketScreen from '@/features/market';
 
 export default function HomeScreen() {
-  return <MarketScreen />;
+  return (
+    <>
+      <HeaderBar title="Wallet" />
+      <MarketScreen />
+    </>
+  );
 }

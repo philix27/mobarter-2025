@@ -5,11 +5,9 @@ import { IUtilityBillData } from "./ElectricityBill";
 import { GiftCardsResult } from "./GiftCards";
 import { GiftCardCategoryData } from "./GiftCategories";
 import { IBank, IChainMetadata, IToken } from "./bank";
+import { api } from "./instance";
 
-const api = axios.create({
-  baseURL: process.env.EXPO_PUBLIC_MINI_SERVER || "http://172.20.10.4:4000",
-  // baseURL: 'https://api.example.com',
-});
+
 
 export const useGiftCardProviders = (productCategoryId: string) =>
   useQuery({

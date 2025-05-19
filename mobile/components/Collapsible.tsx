@@ -1,45 +1,60 @@
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { type PropsWithChildren, useState } from "react";
-import { StyleSheet, TouchableOpacity, useColorScheme } from "react-native";
-
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { Colors } from "@/constants/Colors";
+import { PropsWithChildren, useState } from 'react';
+import { TouchableOpacity } from 'react-native';
+import { TText } from '@/components/TText';
+import { TView } from '@/components/TView';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import { useColor } from '@/lib/color';
 
 export function Collapsible({
-	children,
-	title,
-}: PropsWithChildren & { title: string }) {
-	const [isOpen, setIsOpen] = useState(false);
-	const theme = useColorScheme() ?? "light";
+  children,
+  title,
+  icon,
+}: PropsWithChildren & { title: string; icon?: JSX.Element }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const theme = useColor();
 
-	return (
-		<ThemedView>
-			<TouchableOpacity
-				style={styles.heading}
-				onPress={() => setIsOpen((value) => !value)}
-				activeOpacity={0.8}
-			>
-				<Ionicons
-					name={isOpen ? "chevron-down" : "chevron-forward-outline"}
-					size={18}
-					color={theme === "light" ? Colors.light.icon : Colors.dark.icon}
-				/>
-				<ThemedText type="defaultSemiBold">{title}</ThemedText>
-			</TouchableOpacity>
-			{isOpen && <ThemedView style={styles.content}>{children}</ThemedView>}
-		</ThemedView>
-	);
+  return (
+    <TView
+      style={{
+        width: '100%',
+        backgroundColor: theme.card,
+        borderRadius: 10,
+        padding: 4,
+      }}
+    >
+      <TouchableOpacity
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          paddingVertical: 8,
+          paddingHorizontal: 10,
+          backgroundColor: theme.card,
+        }}
+        onPress={() => setIsOpen(value => !value)}
+        activeOpacity={0.8}
+      >
+        <TText type="defaultSemiBold">{title}</TText>
+        <IconSymbol
+          name="chevron.right"
+          size={18}
+          weight="medium"
+          color={theme.text}
+          style={{ transform: [{ rotate: isOpen ? '90deg' : '0deg' }] }}
+        />
+      </TouchableOpacity>
+      {isOpen && (
+        <TView
+          style={{
+            marginTop: 6,
+            backgroundColor: theme.background,
+            padding: 10,
+            borderRadius: 10,
+          }}
+        >
+          {children}
+        </TView>
+      )}
+    </TView>
+  );
 }
-
-const styles = StyleSheet.create({
-	heading: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 6,
-	},
-	content: {
-		marginTop: 6,
-		marginLeft: 24,
-	},
-});

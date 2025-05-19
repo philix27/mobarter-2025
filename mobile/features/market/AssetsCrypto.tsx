@@ -25,7 +25,7 @@ export default function AssetsCrypto() {
 
   return (
     <ScrollView>
-      <TView style={{ paddingBottom: 200 }}>
+      <TView style={{ paddingBottom: 50 }}>
         <FlatList
           data={getData()}
           renderItem={({ item }) => {
