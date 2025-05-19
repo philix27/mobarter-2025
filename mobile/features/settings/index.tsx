@@ -1,17 +1,11 @@
-import { Linking } from 'react-native';
 import { TText } from '@/components/TText';
 import { TView } from '@/components/TView';
 import { useColor } from '@/lib/color';
 
 import Wrapper from '@/components/Wrapper';
 import Row from '@/components/Row';
-import { ReactNode, useContext } from 'react';
-import {
-  FontAwesome,
-  FontAwesome5,
-  Ionicons,
-  MaterialIcons,
-} from '@expo/vector-icons';
+import { useContext } from 'react';
+import { FontAwesome5, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { AppStores } from '@/lib/zustand';
 import { Collapsible } from '@/components';
 import InputButton from '@/components/forms/Button';

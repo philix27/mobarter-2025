@@ -34,6 +34,7 @@ export function SectionTitle(props: { title: string }) {
     </TView>
   );
 }
+
 export function InfoRow(props: { title: string; title2: string }) {
   return (
     <TView

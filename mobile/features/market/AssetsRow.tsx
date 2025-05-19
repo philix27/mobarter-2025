@@ -1,17 +1,16 @@
-import { Image, ImageSourcePropType, TouchableOpacity } from "react-native";
-import { TText } from "@/components/TText";
-import { TView } from "@/components/TView";
-import React, { JSX } from "react";
-import { useColor } from "@/lib/color";
-import SvgImage from "react-native-remote-svg";
+import { Image, TouchableOpacity } from 'react-native';
+import { TText } from '@/components/TText';
+import { TView } from '@/components/TView';
+import React, { JSX } from 'react';
+import { useColor } from '@/lib/color';
 
 export function AssetsRow(params: {
-  imgUrl?: ImageSourcePropType | undefined;
+  imgUrl?: string;
   svgUrl?: string | undefined;
   icon?: JSX.Element;
   currency: string;
-  balance: number;
-  dollarBalance: string;
+  balance: string;
+  tokenPrice: string;
   performance: string;
   tokenAddr: string;
   onPress?: VoidFunction;
@@ -31,16 +30,16 @@ export function AssetsRow(params: {
     >
       <TView
         style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
           backgroundColor: bgColor,
         }}
       >
         <TView
           style={{
-            display: "flex",
-            flexDirection: "row",
+            display: 'flex',
+            flexDirection: 'row',
             backgroundColor: bgColor,
           }}
         >
@@ -48,23 +47,16 @@ export function AssetsRow(params: {
             style={{
               backgroundColor: bgColor,
               marginRight: 10,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
             {params.icon}
             {params.imgUrl && (
               <Image
-                source={params.imgUrl}
-                style={{ height: 40, width: 40, borderRadius: 20 }}
-              />
-            )}
-
-            {params.svgUrl && (
-              <SvgImage
-                source={{ uri: params.svgUrl }}
+                source={{ uri: params.imgUrl }}
                 style={{ height: 40, width: 40, borderRadius: 20 }}
               />
             )}
@@ -78,7 +70,7 @@ export function AssetsRow(params: {
         </TView>
 
         <TView style={{ backgroundColor: bgColor }}>
-          <TText>{params.dollarBalance}</TText>
+          <TText>{params.tokenPrice}</TText>
           <TText>{params.balance}</TText>
         </TView>
       </TView>

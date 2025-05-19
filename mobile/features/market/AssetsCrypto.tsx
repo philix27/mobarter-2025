@@ -1,15 +1,15 @@
-import { FlatList, ScrollView } from "react-native";
-import { TView } from "@/components/TView";
-import React from "react";
-import { AssetsRow } from "./AssetsRow";
-import { TokenId, Tokens } from "@/assets/tokens/tokens";
-import { useGetTokens } from "@/hooks";
-import { AppStores } from "@/lib/zustand";
-import { useActiveAccount } from "thirdweb/react";
+import { FlatList, ScrollView } from 'react-native';
+import { TView } from '@/components/TView';
+import React from 'react';
+import { AssetsRow } from './AssetsRow';
+import { TokenId, Tokens } from '@/assets/tokens/tokens';
+import { useGetTokens } from '@/hooks';
+import { AppStores } from '@/lib/zustand';
+import { useActiveAccount } from 'thirdweb/react';
 
 export default function AssetsCrypto() {
   const account = useActiveAccount();
-  const { data, isLoading } = useGetTokens(account!.address);
+  const { data, isLoading } = useGetTokens(account!.address, "NG");
   const store = AppStores.useView();
 
   if (isLoading) {
@@ -17,9 +17,9 @@ export default function AssetsCrypto() {
   }
 
   const getData = () => {
-    if (store.activeViewAsset === "ALL") return data;
+    if (store.activeViewAsset === 'ALL') return data;
     return data?.filter(
-      (val) => val.chianId.toString() === store.activeViewAsset
+      val => val.chianId.toString() === store.activeViewAsset,
     );
   };
 
@@ -35,11 +35,11 @@ export default function AssetsCrypto() {
             return (
               <AssetsRow
                 // icon={<Logo height={30} width={30} />}
-                svgUrl={item.logoUrl as any}
+                imgUrl={item.logoUrl as any}
                 currency={item.symbol}
                 tokenAddr={item.address}
-                balance={0.5}
-                dollarBalance={item.balance}
+                balance={item.balance}
+                tokenPrice={item.tokenPrice}
                 performance={item.name}
                 onPress={() => {
                   return;

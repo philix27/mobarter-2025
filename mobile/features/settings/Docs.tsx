@@ -4,13 +4,14 @@ import React from 'react';
 import { ActivityIndicator, Linking } from 'react-native';
 import { Card, SectionTitle } from './Card';
 import { useGetLinksDocs } from '@/hooks';
+import { TView } from '@/components';
 
 export default function Docs() {
   const store = AppStores.useUserInfo();
   const { data, isLoading } = useGetLinksDocs();
 
   if (isLoading) {
-    return <ActivityIndicator />;
+    return <TView />;
   }
 
   return (

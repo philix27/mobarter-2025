@@ -35,4 +35,5 @@ export type IToken = {
   decimals: number;
   logoUrl: string;
   balance: string;
+  tokenPrice: string;
 };
