@@ -1,12 +1,12 @@
-import { PropsWithChildren, useState } from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
-import { TText } from "@/components/TText";
-import { TView } from "@/components/TView";
-import { IconSymbol } from "@/components/ui/IconSymbol";
-import { Colors } from "@/constants/Colors";
-import { useColorScheme } from "@/hooks/useColorScheme";
-import { useColor } from "@/lib/color";
-import IconRound from "./IconRound";
+import { PropsWithChildren, useState } from 'react';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import { TText } from '@/components/TText';
+import { TView } from '@/components/TView';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import { Colors } from '@/constants/Colors';
+import { useColorScheme } from '@/hooks/useColorScheme';
+import { useColor } from '@/lib/color';
+import IconRound from './IconRound';
 
 export function Collapsible({
   children,
@@ -19,7 +19,7 @@ export function Collapsible({
   return (
     <TView
       style={{
-        width: "100%",
+        width: '100%',
         backgroundColor: theme.card,
         borderRadius: 10,
         padding: 10,
@@ -27,20 +27,20 @@ export function Collapsible({
     >
       <TouchableOpacity
         style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
           gap: 10,
           height: 40,
         }}
-        onPress={() => setIsOpen((value) => !value)}
+        onPress={() => setIsOpen(value => !value)}
         activeOpacity={0.8}
       >
         <TView
           style={{
-            flexDirection: "row",
+            flexDirection: 'row',
             gap: 10,
-            alignItems: "center",
+            alignItems: 'center',
             backgroundColor: theme.card,
           }}
         >
@@ -49,7 +49,7 @@ export function Collapsible({
             size={18}
             weight="medium"
             color={theme.text}
-            style={{ transform: [{ rotate: isOpen ? "90deg" : "0deg" }] }}
+            style={{ transform: [{ rotate: isOpen ? '90deg' : '0deg' }] }}
           />
           <TText type="defaultSemiBold">{title}</TText>
         </TView>
