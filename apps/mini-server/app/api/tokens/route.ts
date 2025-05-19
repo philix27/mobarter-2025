@@ -1,10 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
 import { CeloTokens } from "./celoTokens";
 import { getBalance } from "./getBalance";
-import { NextApiResponse } from "next/types";
 import { isAddress } from "viem";
 
-export async function GET(req: NextRequest, res: NextApiResponse) {
+export type IToken = {
+  chianId: number;
+  id: string;
+  symbol: string;
+  name: string;
+  color: string;
+  address: string;
+  decimals: number;
+  logoUrl: string;
+  balance: string;
+  tokenPrice: string;
+};
+
+export async function GET(
+  req: NextRequest,
+  res: NextResponse,
+): Promise<NextResponse<IToken[]>> {
   const searchParams = req.nextUrl.searchParams;
   const address = searchParams.get("address");
 
@@ -26,7 +41,7 @@ export async function GET(req: NextRequest, res: NextApiResponse) {
       chianId: token.chianId.toString(),
       tokenAddress: token.address,
     }); // getBalance is async
-    list.push({ ...token, balance });
+    list.push({ ...token, balance, tokenPrice: balance });
   }
 
   return NextResponse.json(list);

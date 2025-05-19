@@ -1,56 +1,56 @@
-export interface socialLinks {
+export interface ILinksLearn {
   title: string;
-  videoLink: string;
-  category: "BILL" | "STAKE" | "UTILITY" | "FARM" | "PAYMENTS";
+  url: string;
+  category?: "BILL" | "STAKE" | "UTILITY" | "FARM" | "PAYMENTS";
   desc: string;
 }
 
-export const socialLinks: socialLinks[] = [
+export const dataLinks: ILinksLearn[] = [
   {
     title: "How to recharge airtime",
-    videoLink: "",
+    url: "https://youtube.com/shorts/7sLSbCcwYMY?feature=share",
     category: "BILL",
     desc: "",
   },
   {
     title: "How to recharge data plan",
-    videoLink: "",
+    url: "https://youtube.com/shorts/7sLSbCcwYMY?feature=share",
     category: "BILL",
     desc: "",
   },
   {
     title: "How to pay electricity bill",
-    videoLink: "",
+    url: "",
     category: "BILL",
     desc: "",
   },
   {
     title: "How to buy gift cards",
-    videoLink: "",
+    url: "",
     category: "BILL",
     desc: "",
   },
   {
     title: "How to lock tokens",
-    videoLink: "",
+    url: "",
     category: "STAKE",
     desc: "",
   },
   {
     title: "How to stake tokens",
-    videoLink: "",
+    url: "",
     category: "STAKE",
     desc: "",
   },
   {
     title: "How to setup recurring payments",
-    videoLink: "",
+    url: "",
     category: "PAYMENTS",
     desc: "",
   },
   {
     title: "How to stream funds",
-    videoLink: "",
+    url: "",
     category: "PAYMENTS",
     desc: "",
   },

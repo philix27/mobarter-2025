@@ -1,5 +1,6 @@
 import { publicPath } from "@/app/publicPath";
 import { Color } from "./color";
+import { Assets } from "@/app/Assets";
 
 export interface Token {
   id: TokenId;
@@ -35,7 +36,7 @@ export const CeloTokens: Token[] = [
     color: Color.celoGold,
     decimals: 18,
     address: "0x471EcE3750Da237f93B8E339c536989b8978a438",
-    logoUrl: publicPath("tokens/CELO.svg"),
+    logoUrl: publicPath(Assets.tokens.CELO),
   },
   {
     id: TokenId.cUSD,
@@ -44,7 +45,7 @@ export const CeloTokens: Token[] = [
     color: Color.celoGreen,
     decimals: 18,
     address: "0x765DE816845861e75A25fCA122bb6898B8B1282a",
-    logoUrl: publicPath("tokens/cUSD.svg"),
+    logoUrl: publicPath(Assets.tokens.cUSD),
   },
   {
     id: TokenId.cEUR,
@@ -53,7 +54,7 @@ export const CeloTokens: Token[] = [
     color: Color.celoGreen,
     decimals: 18,
     address: "0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73",
-    logoUrl: publicPath("tokens/cEUR.svg"),
+    logoUrl: publicPath(Assets.tokens.cEUR),
   },
   {
     id: TokenId.cREAL,
@@ -62,7 +63,7 @@ export const CeloTokens: Token[] = [
     color: Color.celoGreen,
     decimals: 18,
     address: "0xe8537a3d056DA446677B9E9d6c5dB704EaAb4787",
-    logoUrl: publicPath("tokens/cREAL.svg"),
+    logoUrl: publicPath(Assets.tokens.cREAL),
   },
   {
     id: TokenId.USDC,
@@ -71,7 +72,7 @@ export const CeloTokens: Token[] = [
     color: Color.usdcBlue,
     decimals: 6,
     address: "0xcebA9300f2b948710d2653dD7B07f33A8B32118C",
-    logoUrl: publicPath("tokens/USDC.svg"),
+    logoUrl: publicPath(Assets.tokens.USDC),
   },
   {
     id: TokenId.USDT,
@@ -80,7 +81,7 @@ export const CeloTokens: Token[] = [
     color: Color.usdcBlue,
     decimals: 6,
     address: "0x48065fbBE25f71C9282ddf5e1cD6D6A887483D5e",
-    logoUrl: publicPath("tokens/USDT.svg"),
+    logoUrl: publicPath(Assets.tokens.USDT),
   },
   {
     id: TokenId.axlUSDC,
@@ -89,7 +90,7 @@ export const CeloTokens: Token[] = [
     color: Color.usdcBlue,
     decimals: 6,
     address: "0xEB466342C4d449BC9f53A865D5Cb90586f405215",
-    logoUrl: publicPath("tokens/axlUSDC.svg"),
+    logoUrl: publicPath(Assets.tokens.axIUSDC),
   },
 
   {
@@ -99,7 +100,7 @@ export const CeloTokens: Token[] = [
     color: Color.usdcBlue, // TODO: Change to EUROC
     decimals: 6,
     address: "0x061cc5a2C863E0C1Cb404006D559dB18A34C762d",
-    logoUrl: publicPath("tokens/axlEUROC.svg"),
+    logoUrl: publicPath(Assets.tokens.axIEUROC),
   },
   {
     id: TokenId.eXOF,
@@ -108,7 +109,7 @@ export const CeloTokens: Token[] = [
     color: Color.usdcBlue,
     decimals: 18,
     address: "0x73F93dcc49cB8A239e2032663e9475dd5ef29A08",
-    logoUrl: publicPath("tokens/eXOF.svg"),
+    logoUrl: publicPath(Assets.tokens.eXOF),
   },
   {
     id: TokenId.cKES,
@@ -117,7 +118,7 @@ export const CeloTokens: Token[] = [
     color: Color.usdcBlue,
     decimals: 18,
     address: "0x456a3D042C0DbD3db53D5489e98dFb038553B0d0",
-    logoUrl: publicPath("tokens/usdcBlue.svg"),
+    logoUrl: publicPath(Assets.tokens.cKES),
   },
 
   {
@@ -127,7 +128,7 @@ export const CeloTokens: Token[] = [
     color: Color.usdcBlue,
     decimals: 18,
     address: "0x105d4A9306D2E55a71d2Eb95B81553AE1dC20d7B",
-    logoUrl: publicPath("tokens/PUSO.svg"),
+    logoUrl: publicPath(Assets.tokens.PUSO),
   },
 
   {
@@ -137,7 +138,7 @@ export const CeloTokens: Token[] = [
     color: Color.usdcBlue,
     decimals: 18,
     address: "0x8A567e2aE79CA692Bd748aB832081C45de4041eA",
-    logoUrl: publicPath("tokens/cCOP.svg"),
+    logoUrl: publicPath(Assets.tokens.cCOP),
   },
 
   {
@@ -147,6 +148,6 @@ export const CeloTokens: Token[] = [
     color: Color.usdcBlue,
     decimals: 18,
     address: "0xfAeA5F3404bbA20D3cc2f8C4B0A888F55a3c7313",
-    logoUrl: publicPath("tokens/cGHS.svg"),
+    logoUrl: publicPath(Assets.tokens.cGHS),
   },
 ];

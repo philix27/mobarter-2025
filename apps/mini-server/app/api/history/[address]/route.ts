@@ -1,11 +1,11 @@
 import { ITransactions } from "@/app/types/getTxn";
 import axios from "axios";
-import type { NextApiRequest, NextApiResponse } from "next";
 import { isAddress } from "ethers";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
-  req: NextApiRequest,
-  res: NextApiResponse<ITransactions>,
+  req: NextRequest,
+  res: NextResponse<ITransactions>,
 ) {
   const { address } = req.query;
   const add = address as string;
