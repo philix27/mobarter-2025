@@ -14,6 +14,7 @@ import { Card, InfoRow, SectionTitle } from './Card';
 import Socials from './Socials';
 import Docs from './Docs';
 import SelectCountry from './SelectCountry';
+import SelectPaymentToken from './SelectPaymentToken';
 import Personal from './Personal';
 import { useColor } from '@/lib/color';
 
@@ -68,6 +69,7 @@ export default function SettingsScreen() {
 
       <Collapsible title={'Application'}>
         <SelectCountry />
+        <SelectPaymentToken />
         <Row
           title={'Support'}
           desc={'Contact customer support'}

@@ -6,6 +6,7 @@ import { createJSONStorage, persist } from 'zustand/middleware';
 export interface ISlice {
   countries?: ICountriesData[];
   activeIso?: string;
+  activeTokenSymbol?: string;
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
@@ -16,6 +17,7 @@ export interface ISliceUpdate extends Required<ISlice> {
 export const defaultValues: Required<ISlice> = {
   countries: [],
   activeIso: 'NG',
+  activeTokenSymbol: 'cUSD',
 };
 
 export const useCountries = create(

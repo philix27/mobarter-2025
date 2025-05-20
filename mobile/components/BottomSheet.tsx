@@ -34,7 +34,7 @@ type IProps = {
  * ```
  */
 export const BottomSheet = forwardRef<any, IProps>(
-  ({ maxHeight = 600, ...props }, ref) => {
+  ({ maxHeight = 700, ...props }, ref) => {
     const color = useColor();
     return (
       <RBSheet
