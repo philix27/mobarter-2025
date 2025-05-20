@@ -10,12 +10,11 @@ import { RBSheetRef } from 'react-native-raw-bottom-sheet';
 
 export function InputSelect(params: {
   label?: string;
-  placeholder: string;
+  placeholder?: string;
   style?: ViewStyle;
   items: { label: string; value: string }[];
   onValueChange?: (itemValue: string) => void;
 }) {
-  
   const theme = useColor();
   const refRBSheet = useRef<RBSheetRef>();
   const [selectedValue, setSelectedValue] = useState<string | undefined>(

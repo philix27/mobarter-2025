@@ -4,11 +4,13 @@ import { TView } from '@/components/TView';
 import { useColor } from '@/lib/color';
 import { JSX } from 'react';
 import { TouchableOpacity, Image } from 'react-native';
+import { SvgUri } from 'react-native-svg';
 
 export default function Row(props: {
   title: string;
   desc?: string;
   imgUrl?: string;
+  svgUrl?: string;
   bgColor?: string;
   icon?: JSX.Element;
   onClick?: VoidFunction;
@@ -31,9 +33,21 @@ export default function Row(props: {
         style={{
           backgroundColor: bgColor,
           flexDirection: 'row',
-          alignItems: "center"
+          alignItems: 'center',
         }}
       >
+        {props.svgUrl && (
+          <SvgUri
+            uri={props.svgUrl}
+            style={{
+              height: 40,
+              width: 40,
+              marginRight: 12,
+              borderRadius: 20,
+            }}
+          />
+        )}
+
         {props.imgUrl && (
           <Image
             source={{ uri: props.imgUrl }}

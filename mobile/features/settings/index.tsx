@@ -1,10 +1,9 @@
 import { TText } from '@/components/TText';
 import { TView } from '@/components/TView';
-import { useColor } from '@/lib/color';
 
 import Wrapper from '@/components/Wrapper';
 import Row from '@/components/Row';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { FontAwesome5, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { AppStores } from '@/lib/zustand';
 import { Collapsible } from '@/components';
@@ -14,11 +13,12 @@ import { ThemeContext } from '@/lib/providers';
 import { Card, InfoRow, SectionTitle } from './Card';
 import Socials from './Socials';
 import Docs from './Docs';
+import SelectCountry from './SelectCountry';
 
 export default function SettingsScreen() {
-  const appColor = useColor();
   const store = AppStores.useUserInfo();
   const { toggleTheme } = useContext(ThemeContext);
+
   return (
     <Wrapper>
       <TView
@@ -74,13 +74,7 @@ export default function SettingsScreen() {
 
       <SectionTitle title={'Application'} />
       <Card>
-        <Row
-          title={'Currency'}
-          desc={'Manage Bank Account Information'}
-          icon={
-            <MaterialIcons name="currency-exchange" size={24} color="#fff" />
-          }
-        />
+        <SelectCountry />
         <Row
           title={'Support'}
           desc={'Contact customer support'}

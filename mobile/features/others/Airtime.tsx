@@ -1,74 +1,55 @@
+import { BottomSheet } from '@/components/BottomSheet';
 import InputText from '@/components/forms/InputText';
 import Wrapper from '@/components/Wrapper';
 import React, { useState } from 'react';
 import { z } from 'zod';
 import { useAppForm, IEvents } from '@/lib';
-import { AppStores } from '@/lib/zustand';
-
+import { useRef } from 'react';
 import { InputSelect } from '@/components/forms/InputSelect';
+import InputButton from '@/components/forms/Button';
+import { TText, TView } from '@/components';
+import { useCountries } from '@/lib/zustand/countries';
+import { useGetCountries } from '@/hooks/api';
 
 const event: IEvents = 'AUTH_LOGIN';
 
 const formSchema = z.object({
-  email: z.string().email('Invalid email format'),
+  amount: z.number().min(1),
   password: z.string().min(6, 'Password must be at least 6 characters'),
+  operator: z.string(),
+  phone: z.string().min(10, 'At least 10 numbers').max(12),
 });
 
 export default function AirtimeComp() {
-  const store = AppStores.useUserInfo();
-  // const [login, { loading: isLoading }] = ApiHooks.useAuthLogin();
-  const { formData, setFormData, errors, handleChange, setErrors } = useAppForm(
-    {
-      email: '',
-      password: '',
-    },
-  );
-  const [selectedLanguage, setSelectedLanguage] = useState();
-  // const handleSubmit = () => {
+  const [amountPay, setPayAmount] = useState<number>();
+  const countryStore = useCountries();
+  const { data: countriesData } = useGetCountries();
+  const countrySheet = useRef<RBSheetRef>(null);
+  const getCallCode = () => {
+    if (!countriesData || countriesData.length === 0) return '234';
+    return countriesData.filter(
+      val => val.isoName === countryStore.activeIso,
+    )[0].callingCodes;
+  };
 
-  // };
+  // const [login, { loading: isLoading }] = ApiHooks.useAuthLogin();
+  const { formData, setFormData, errors, handleChange, setErrors } = useAppForm<
+    typeof formSchema._type
+  >({
+    amount: 0,
+    password: '',
+    operator: '',
+    phone: '',
+  });
+
+  const handleSubmit = () => {
+    countrySheet.current.open();
+  };
   return (
     <Wrapper style={{ rowGap: 10 }}>
-      <InputText
-        label={'Balance'}
-        value={formData.email}
-        keyboardType="email-address"
-        onChangeText={text => handleChange('email', text.toLowerCase())}
-        placeholder={'Enter email'}
-        error={errors!.email === undefined ? undefined : errors!.email}
-      />
-
-      <InputText
-        label={'Phone'}
-        value={formData.password}
-        onChangeText={text => handleChange('password', text)}
-        placeholder={'Enter password'}
-        error={errors!.password === undefined ? undefined : errors!.password}
-      />
-      <InputText
-        label={'Network'}
-        value={formData.password}
-        onChangeText={text => handleChange('password', text)}
-        placeholder={'Enter password'}
-        error={errors!.password === undefined ? undefined : errors!.password}
-      />
-      <InputText
-        label={'Amount'}
-        value={formData.password}
-        onChangeText={text => handleChange('password', text)}
-        placeholder={'Enter password'}
-        error={errors!.password === undefined ? undefined : errors!.password}
-      />
-      <InputText
-        label={'To Pay'}
-        value={formData.password}
-        onChangeText={text => handleChange('password', text)}
-        placeholder={'Enter password'}
-        error={errors!.password === undefined ? undefined : errors!.password}
-      />
       <InputSelect
         label="Network"
-        placeholder={'...'}
+        placeholder="Select operator"
         items={[
           {
             label: 'MTN',
@@ -84,6 +65,55 @@ export default function AirtimeComp() {
           },
         ]}
       />
+
+      <InputText
+        label={'Phone'}
+        leadingText={getCallCode()}
+        value={formData.phone}
+        onChangeText={text => {
+          if (text.length > 10) return;
+          handleChange('phone', text);
+        }}
+        placeholder={'Enter phone'}
+        error={errors!.phone === undefined ? undefined : errors!.phone}
+        keyboardType="number-pad"
+      />
+      <InputText
+        label={'Amount'}
+        keyboardType="numeric"
+        value={formData.amount.toString()}
+        onChangeText={text => {
+          if (text.length > 10) return;
+          handleChange('amount', text);
+        }}
+        placeholder={'Enter amount'}
+        error={
+          errors!.amount === undefined
+            ? undefined
+            : (errors!.amount as unknown as string)
+        }
+      />
+      <TText>{amountPay}</TText>
+      <InputButton title={'Submit'} onPress={handleSubmit} />
+
+      <BottomSheet ref={countrySheet!}>
+        <TView
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: 50,
+            paddingHorizontal: 20,
+          }}
+        >
+          <TText>Confirm Details</TText>
+          <TText>{formData.operator}</TText>
+          <TText>{formData.password}</TText>
+          <TText>{formData.phone}</TText>
+          <TText>{formData.amount}</TText>
+
+          <InputButton title={'Submit'} onPress={handleSubmit} />
+        </TView>
+      </BottomSheet>
     </Wrapper>
   );
 }

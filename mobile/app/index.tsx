@@ -17,6 +17,8 @@ import { router } from 'expo-router';
 import { baseSepolia, ethereum } from 'thirdweb/chains';
 import { createAuth } from 'thirdweb/auth';
 import SavingsScreen from '@/features/savings';
+import AirtimeComp from '@/features/others/Airtime';
+import SettingsScreen from '@/features/settings';
 
 const wallets = [
   inAppWallet({
@@ -48,7 +50,7 @@ export default function HomeScreen() {
     router.replace('/(tabs)/home');
   }
 
-  // return <SavingsScreen />;
+  // return <SettingsScreen />;
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}

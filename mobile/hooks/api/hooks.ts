@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import { IOperators } from './OperatorsData';
-import axios from 'axios';
 import { IUtilityBillData } from './ElectricityBill';
 import { GiftCardsResult } from './GiftCards';
 import { GiftCardCategoryData } from './GiftCategories';

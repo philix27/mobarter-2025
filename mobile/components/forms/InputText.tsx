@@ -4,16 +4,18 @@ import {
   KeyboardTypeOptions,
   TouchableOpacity,
   ViewStyle,
-} from "react-native";
-import { TView } from "../TView";
-import { useColor } from "@/lib/color";
-import { JSX, useState } from "react";
-import { Feather } from "@expo/vector-icons";
-import Label from "./Label";
-import ErrMsg from "./ErrMsg";
+} from 'react-native';
+import { TView } from '../TView';
+import { useColor } from '@/lib/color';
+import { JSX, useState } from 'react';
+import { Feather } from '@expo/vector-icons';
+import Label from './Label';
+import ErrMsg from './ErrMsg';
+import { TText } from '../TText';
 
 export default function InputText(props: {
   label?: string;
+  leadingText?: string;
   style?: ViewStyle;
   value?: string | undefined;
   icon?: JSX.Element;
@@ -35,36 +37,52 @@ export default function InputText(props: {
           styles.container,
           {
             backgroundColor: theme.background,
-            position: "relative",
+            position: 'relative',
             // marginTop: 10,
           },
           props.style,
         ]}
       >
         {props.label && <Label label={props.label} />}
+        <TView
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            backgroundColor: theme.card,
+            borderColor: onFocus ? theme.muted : theme.background,
+            borderWidth: 1,
+            borderRadius: 5,
+          }}
+        >
+          {props.leadingText && (
+            <TView style={{ backgroundColor: theme.card, paddingLeft: 8 }}>
+              <TText>{props.leadingText}</TText>
+            </TView>
+          )}
 
-        <TextInput
-          style={[
-            styles.input,
-            {
-              backgroundColor: theme.card,
-              borderColor: onFocus ? theme.muted : theme.background,
-              color: theme.text,
-              // paddingLeft: 37.5,
-            },
-          ]}
-          keyboardType={props.keyboardType}
-          value={props.value}
-          onChangeText={props.onChangeText}
-          placeholder={props.placeholder}
-          secureTextEntry={HidePassword}
-          placeholderTextColor={theme.muted}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
-        />
+          <TextInput
+            style={[
+              styles.input,
+              {
+                backgroundColor: theme.card,
+
+                color: theme.text,
+                // paddingLeft: 37.5,
+              },
+            ]}
+            keyboardType={props.keyboardType}
+            value={props.value}
+            onChangeText={props.onChangeText}
+            placeholder={props.placeholder}
+            secureTextEntry={HidePassword}
+            placeholderTextColor={theme.muted}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+          />
+        </TView>
 
         {props.secureTextEntry && (
-          <TView style={{ position: "absolute", right: 10, top: 38 }}>
+          <TView style={{ position: 'absolute', right: 10, top: 38 }}>
             {HidePassword ? (
               <Feather
                 name="eye-off"
@@ -86,7 +104,7 @@ export default function InputText(props: {
         {props.trailingIcon && !onFocus && (
           <TouchableOpacity
             style={{
-              position: "absolute",
+              position: 'absolute',
               right: 14,
               top: 40,
               backgroundColor: theme.background,
@@ -105,19 +123,18 @@ export default function InputText(props: {
 const styles = StyleSheet.create({
   container: {
     // marginTop: 10,
-    width: "100%",
+    width: '100%',
     // minWidth: "100%",
     marginBottom: 6,
   },
   input: {
     // height: 50,
-    borderWidth: 1,
-    borderRadius: 5,
     paddingHorizontal: 10,
     paddingVertical: 12,
     fontSize: 16,
-    width: "100%",
-    minWidth: "90%",
+    borderRadius: 5,
+    // width: '100%',
+    // minWidth: '90%',
   },
 
   icon: {
