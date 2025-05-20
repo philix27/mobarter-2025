@@ -10,12 +10,12 @@ import InputButton from '@/components/forms/Button';
 import { TText, TView } from '@/components';
 import { useCountries } from '@/lib/zustand/countries';
 import { useGetCountries } from '@/hooks/api';
+import { useColor, formatCurrency } from '@/lib';
 
 const event: IEvents = 'AUTH_LOGIN';
 
 const formSchema = z.object({
   amount: z.number().min(1),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
   operator: z.string(),
   phone: z.string().min(10, 'At least 10 numbers').max(12),
 });
@@ -37,7 +37,6 @@ export default function AirtimeComp() {
     typeof formSchema._type
   >({
     amount: 0,
-    password: '',
     operator: '',
     phone: '',
   });
@@ -50,6 +49,7 @@ export default function AirtimeComp() {
       <InputSelect
         label="Network"
         placeholder="Select operator"
+        onValueChange={v => handleChange('operator', v)}
         items={[
           {
             label: 'MTN',
@@ -100,20 +100,44 @@ export default function AirtimeComp() {
         <TView
           style={{
             alignItems: 'center',
-            justifyContent: 'center',
-            marginBottom: 50,
-            paddingHorizontal: 20,
+            marginBottom: 60,
+            paddingTop: 10,
+            paddingHorizontal: 10,
+            width: '100%',
+            rowGap: 12,
           }}
         >
-          <TText>Confirm Details</TText>
-          <TText>{formData.operator}</TText>
-          <TText>{formData.password}</TText>
-          <TText>{formData.phone}</TText>
-          <TText>{formData.amount}</TText>
-
-          <InputButton title={'Submit'} onPress={handleSubmit} />
+          <TText type="subtitle">
+            {`${formatCurrency(formData.amount, 2)} ${countryStore.activeTokenSymbol}`}
+          </TText>
+          <TView style={{ height: 15 }} />
+          <SimpleRow text1="Operator" text2={formData.operator} />
+          <SimpleRow text1="Phone" text2={formData.phone} />
+          <SimpleRow text1="Amount" text2={formData.amount.toString()} />
+          <SimpleRow text1="Fee" text2={formData.amount.toString()} />
+          <TView style={{ height: 25 }} />
+          <InputButton title={'Pay'} onPress={handleSubmit} />
         </TView>
       </BottomSheet>
     </Wrapper>
+  );
+}
+
+function SimpleRow(params: { text1: string; text2: string }) {
+  const color = useColor();
+  return (
+    <TView
+      style={{
+        width: '100%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}
+    >
+      <TText style={{ color: color.muted }}>{params.text1}</TText>
+      <TText style={{ fontStyle: 'normal', fontWeight: '700' }}>
+        {params.text2}
+      </TText>
+    </TView>
   );
 }

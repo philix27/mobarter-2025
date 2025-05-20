@@ -1,27 +1,28 @@
-import { useColor } from "@/lib/color";
+import { useColor } from '@/lib/color';
 import {
   ActivityIndicator,
   StyleProp,
   TouchableOpacity,
   ViewStyle,
-} from "react-native";
-import { Text, StyleSheet } from "react-native";
+} from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 
 export default function InputButton(props: {
   title: string;
   style?: ViewStyle;
   isLoading?: boolean;
   onPress?: VoidFunction;
-  variant?: "secondary" | "outline";
+  variant?: 'secondary' | 'outline';
 }) {
   const appColor = useColor();
   return (
     <TouchableOpacity
       style={{
+        width: '75%',
         ...styles.button,
         ...props.style,
         backgroundColor:
-          props.variant === "secondary" ? "#282828" : appColor.primary,
+          props.variant === 'secondary' ? '#282828' : appColor.primary,
       }}
       onPress={props.onPress}
     >
@@ -38,14 +39,14 @@ const styles = StyleSheet.create({
   button: {
     paddingVertical: 10,
     paddingHorizontal: 16,
-    borderRadius: 10,
-    alignItems: "center",
+    borderRadius: 100,
+    alignItems: 'center',
     marginTop: 10,
     // width: "50%",
   },
   buttonText: {
-    color: "#fff",
+    color: '#fff',
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 });
