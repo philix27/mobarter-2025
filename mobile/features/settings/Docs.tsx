@@ -16,19 +16,16 @@ export default function Docs() {
 
   return (
     <>
-      <SectionTitle title={'Docs'} />
-      <Card>
-        {data?.map((val, i) => (
-          <Row
-            key={i}
-            title={val.title}
-            desc={val.desc}
-            onClick={() => {
-              Linking.openURL(val.url);
-            }}
-          />
-        ))}
-      </Card>
+      {data?.map((val, i) => (
+        <Row
+          key={i}
+          title={val.title}
+          desc={val.desc}
+          onClick={() => {
+            Linking.openURL(val.url);
+          }}
+        />
+      ))}
     </>
   );
 }

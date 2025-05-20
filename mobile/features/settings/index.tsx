@@ -3,7 +3,7 @@ import { TView } from '@/components/TView';
 
 import Wrapper from '@/components/Wrapper';
 import Row from '@/components/Row';
-import { useContext, useRef } from 'react';
+import { useContext } from 'react';
 import { FontAwesome5, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { AppStores } from '@/lib/zustand';
 import { Collapsible } from '@/components';
@@ -14,10 +14,18 @@ import { Card, InfoRow, SectionTitle } from './Card';
 import Socials from './Socials';
 import Docs from './Docs';
 import SelectCountry from './SelectCountry';
+import Personal from './Personal';
+import { useColor } from '@/lib/color';
 
 export default function SettingsScreen() {
+  const color = useColor();
   const store = AppStores.useUserInfo();
   const { toggleTheme } = useContext(ThemeContext);
+  let activeSections: [] = [];
+
+  // const _updateSections = activeSections => {
+  //   this.setState({ activeSections });
+  // };
 
   return (
     <Wrapper>
@@ -26,16 +34,13 @@ export default function SettingsScreen() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          width: '100%',
+          // width: '100%',
           marginTop: 20,
           marginBottom: 30,
           gap: 8,
+          backgroundColor: color.background,
         }}
       >
-        {/* <Image
-          source={AppAssets.logo.bitcoin}
-          style={{ height: 80, width: 80, borderRadius: 50, marginBottom: 20 }}
-        /> */}
         {store.firstname && (
           <TText>
             {store.firstname} {store.lastname}
@@ -44,27 +49,16 @@ export default function SettingsScreen() {
 
         {/* <UserLevel /> */}
       </TView>
+      {/* <CollapsibleRN collapsed={true}>
+        <Socials />
+      </CollapsibleRN> */}
 
       <Collapsible title={'Personal Info'}>
-        <InfoRow title="First name:" title2={store.firstname} />
-        <InfoRow title="Last name:" title2={store.lastname} />
-        <InfoRow title="Middle name:" title2={store.middlename!} />
-        <InfoRow title="Email:" title2={store.email} />
-        {/* <InfoRow title="Country" title2={store.country!} /> */}
-        <InfoRow title="Phone" title2={''} />
-        <InputButton title="Manage" />
+        <Personal />
       </Collapsible>
-      <TView style={{ marginVertical: 2 }} />
       <Collapsible title={'KYC'}>
-        <InfoRow title="First name:" title2={store.firstname} />
-        <InfoRow title="Last name:" title2={store.lastname} />
-        <InfoRow title="Middle name:" title2={store.middlename!} />
-        <InfoRow title="Email:" title2={store.email} />
-        {/* <InfoRow title="Country" title2={store.country!} /> */}
-        <InfoRow title="Phone" title2={''} />
-        <InputButton title="Manage" />
+        <Personal />
       </Collapsible>
-      <TView style={{ marginVertical: 2 }} />
       <Collapsible title={'Bank'}>
         <InfoRow title="Opay:" title2={'0123456789'} />
         <InfoRow title="GTB" title2={'0123456789'} />
@@ -72,8 +66,7 @@ export default function SettingsScreen() {
         <InputButton title="Manage" />
       </Collapsible>
 
-      <SectionTitle title={'Application'} />
-      <Card>
+      <Collapsible title={'Application'}>
         <SelectCountry />
         <Row
           title={'Support'}
@@ -90,9 +83,15 @@ export default function SettingsScreen() {
             toggleTheme();
           }}
         />
-      </Card>
-      <Socials />
-      <Docs />
+      </Collapsible>
+
+      <Collapsible title={'Socials'}>
+        <Socials />
+      </Collapsible>
+      <Collapsible title={'Links'}>
+        <Docs />
+      </Collapsible>
+
       <SectionTitle title={'Others'} />
       <Card>
         <Row

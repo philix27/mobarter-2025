@@ -50,7 +50,7 @@ export default function HomeScreen() {
     router.replace('/(tabs)/home');
   }
 
-  // return <SettingsScreen />;
+  return <SettingsScreen />;
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}

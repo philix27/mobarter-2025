@@ -18,8 +18,9 @@ export function Collapsible({
       style={{
         width: '100%',
         backgroundColor: theme.card,
-        borderRadius: 10,
+        borderRadius: 8,
         padding: 4,
+        marginBottom: 5,
       }}
     >
       <TouchableOpacity
@@ -46,9 +47,9 @@ export function Collapsible({
       {isOpen && (
         <TView
           style={{
-            marginTop: 6,
             backgroundColor: theme.background,
-            padding: 10,
+            paddingVertical: 5,
+            paddingHorizontal: 5,
             borderRadius: 10,
           }}
         >

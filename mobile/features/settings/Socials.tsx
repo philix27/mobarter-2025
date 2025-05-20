@@ -16,20 +16,17 @@ export default function Socials() {
 
   return (
     <>
-      <SectionTitle title={'Socials'} />
-      <Card>
-        {data?.map((val, i) => (
-          <Row
-            key={i}
-            title={val.title}
-            desc={val.desc}
-            imgUrl={val.logo}
-            onClick={() => {
-              Linking.openURL(val.link);
-            }}
-          />
-        ))}
-      </Card>
+      {data?.map((val, i) => (
+        <Row
+          key={i}
+          title={val.title}
+          desc={val.desc}
+          imgUrl={val.logo}
+          onClick={() => {
+            Linking.openURL(val.link);
+          }}
+        />
+      ))}
     </>
   );
 }

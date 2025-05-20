@@ -42,7 +42,6 @@ export default function SelectCountry() {
                   store.update({
                     activeIso: item.isoName,
                   });
-                  console.log('Country Item: ', JSON.stringify(item));
                   countrySheet.current?.close();
                 }}
               />
