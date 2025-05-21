@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import { TText } from '@/components/TText';
 import { TView } from '@/components/TView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
-import { useColor } from '@/lib/color';
+import { useColor } from '@/hooks/useColor';
 
 export function Collapsible({
   children,
@@ -19,7 +19,7 @@ export function Collapsible({
         width: '100%',
         backgroundColor: theme.card,
         borderRadius: 8,
-        padding: 4,
+        padding: 2,
         marginBottom: 5,
       }}
     >

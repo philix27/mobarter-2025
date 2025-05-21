@@ -1,6 +1,6 @@
 import Row from '@/components/Row';
 import { TView } from '@/components/TView';
-import { useColor } from '@/lib/color';
+import { useColor } from '@/hooks/useColor';
 import { AntDesign } from '@expo/vector-icons';
 import React from 'react';
 

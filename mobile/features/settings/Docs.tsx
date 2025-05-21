@@ -1,8 +1,7 @@
 import Row from '@/components/Row';
 import { AppStores } from '@/lib';
 import React from 'react';
-import { ActivityIndicator, Linking } from 'react-native';
-import { Card, SectionTitle } from './Card';
+import { Linking } from 'react-native';
 import { useGetLinksDocs } from '@/hooks';
 import { TView } from '@/components';
 

@@ -1,5 +1,5 @@
 import { TView } from '@/components/TView';
-import { useColor } from '@/lib/color';
+import { useColor } from '@/hooks/useColor';
 import React from 'react';
 import { Text } from 'react-native';
 import { useActiveAccount } from 'thirdweb/react';
@@ -30,7 +30,14 @@ export default function Balance() {
       <Text style={{ fontSize: 34, color: appColor.text, fontWeight: 600 }}>
         {data} USD
       </Text>
-      <Text style={{ fontSize: 17, color: appColor.muted, fontWeight: 400, marginTop: 5 }}>
+      <Text
+        style={{
+          fontSize: 17,
+          color: appColor.muted,
+          fontWeight: 400,
+          marginTop: 5,
+        }}
+      >
         ~ {data! * 1600} NGN
       </Text>
     </TView>

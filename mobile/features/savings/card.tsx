@@ -1,6 +1,6 @@
 import { TView } from '@/components/TView';
 import { TText } from '@/components';
-import { useColor } from '@/lib/color';
+import { useColor } from '@/hooks/useColor';
 import { TouchableOpacity } from 'react-native';
 
 export function SavingsCard(params: {

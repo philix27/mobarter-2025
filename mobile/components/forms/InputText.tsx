@@ -6,7 +6,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import { TView } from '../TView';
-import { useColor } from '@/lib/color';
+import { useColor } from '@/hooks/useColor';
 import { JSX, useState } from 'react';
 import { Feather } from '@expo/vector-icons';
 import Label from './Label';
@@ -16,6 +16,7 @@ import { TText } from '../TText';
 export default function InputText(props: {
   label?: string;
   leadingText?: string;
+  desc?: string;
   style?: ViewStyle;
   value?: string | undefined;
   icon?: JSX.Element;
@@ -36,6 +37,7 @@ export default function InputText(props: {
         style={[
           styles.container,
           {
+            // backgroundColor: theme.primary,
             backgroundColor: theme.background,
             position: 'relative',
             // marginTop: 10,
@@ -55,8 +57,16 @@ export default function InputText(props: {
           }}
         >
           {props.leadingText && (
-            <TView style={{ backgroundColor: theme.card, paddingLeft: 8 }}>
-              <TText>{props.leadingText}</TText>
+            <TView
+              style={{
+                backgroundColor: theme.card,
+                paddingLeft: 8,
+                paddingRight: 0,
+              }}
+            >
+              <TText style={{ fontSize: 16, color: theme.muted }}>
+                {props.leadingText}
+              </TText>
             </TView>
           )}
 
@@ -65,9 +75,8 @@ export default function InputText(props: {
               styles.input,
               {
                 backgroundColor: theme.card,
-
                 color: theme.text,
-                // paddingLeft: 37.5,
+                paddingLeft: props.leadingText ? 4 : 10,
               },
             ]}
             keyboardType={props.keyboardType}
@@ -114,8 +123,10 @@ export default function InputText(props: {
             {props.trailingIcon}
           </TouchableOpacity>
         )}
+
+        {props.error && <ErrMsg msg={props.error} />}
       </TView>
-      {props.error && <ErrMsg msg={props.error} />}
+      {/* {props.desc && <ErrMsg msg={props.desc} />} */}
     </>
   );
 }
@@ -125,7 +136,7 @@ const styles = StyleSheet.create({
     // marginTop: 10,
     width: '100%',
     // minWidth: "100%",
-    marginBottom: 6,
+    marginBottom: 0,
   },
   input: {
     // height: 50,

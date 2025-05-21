@@ -1,4 +1,4 @@
-import { useColor } from '@/lib/color';
+import { useColor } from '@/hooks/useColor';
 import { Ionicons } from '@expo/vector-icons';
 import { router, Stack } from 'expo-router';
 import React from 'react';

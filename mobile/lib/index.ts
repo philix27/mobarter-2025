@@ -3,4 +3,5 @@ export * from './log';
 export * from './zustand';
 export * from './clipboard';
 export * from './helpers';
-export * from './color';
+export * from '../hooks/useColor';
+export * from './constants';

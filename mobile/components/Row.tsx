@@ -1,7 +1,7 @@
 import IconRound from '@/components/IconRound';
 import { TText } from '@/components/TText';
 import { TView } from '@/components/TView';
-import { useColor } from '@/lib/color';
+import { useColor } from '@/hooks/useColor';
 import { JSX } from 'react';
 import { TouchableOpacity, Image } from 'react-native';
 import { SvgUri } from 'react-native-svg';

@@ -2,7 +2,7 @@ import { Image, TouchableOpacity } from 'react-native';
 import { TText } from '@/components/TText';
 import { TView } from '@/components/TView';
 import React, { JSX } from 'react';
-import { useColor } from '@/lib/color';
+import { useColor } from '@/hooks/useColor';
 
 export function AssetsRow(params: {
   imgUrl?: string;

@@ -1,6 +1,6 @@
 import React, { forwardRef, ReactNode } from 'react';
 import RBSheet, { RBSheetRef } from 'react-native-raw-bottom-sheet';
-import { useColor } from '@/lib/color';
+import { useColor } from '@/hooks/useColor';
 import { TText } from './TText';
 import { TView } from './TView';
 

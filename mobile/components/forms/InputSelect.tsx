@@ -2,7 +2,7 @@ import { TText, TView } from '@/components';
 import React, { useRef, useState } from 'react';
 
 import { Picker } from '@react-native-picker/picker';
-import { useColor } from '@/lib/color';
+import { useColor } from '@/hooks/useColor';
 import { TouchableOpacity, ViewStyle } from 'react-native';
 import Label from '@/components/forms/Label';
 import { BottomSheet } from '@/components/BottomSheet';

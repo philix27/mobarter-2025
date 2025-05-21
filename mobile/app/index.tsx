@@ -2,7 +2,7 @@ import { Image, StyleSheet, View, useColorScheme } from 'react-native';
 import { ParallaxScrollView } from '@/components/ParallaxScrollView';
 import { ThemedButton } from '@/components/ThemedButton';
 import { ThemedText } from '@/components/ThemedText';
-import { chain, client } from '@/constants/thirdweb';
+import { chain, client } from '@/lib/constants';
 import { useEffect, useState } from 'react';
 import {
   ConnectEmbed,
@@ -17,8 +17,8 @@ import { router } from 'expo-router';
 import { baseSepolia, ethereum } from 'thirdweb/chains';
 import { createAuth } from 'thirdweb/auth';
 import SavingsScreen from '@/features/savings';
-import AirtimeComp from '@/features/others/Airtime';
 import SettingsScreen from '@/features/settings';
+import AirtimeComp from '@/features/others/Airtime';
 
 const wallets = [
   inAppWallet({

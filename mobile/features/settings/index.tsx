@@ -1,70 +1,34 @@
-import { TText } from '@/components/TText';
-import { TView } from '@/components/TView';
-
 import Wrapper from '@/components/Wrapper';
 import Row from '@/components/Row';
 import { useContext } from 'react';
 import { FontAwesome5, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { AppStores } from '@/lib/zustand';
 import { Collapsible } from '@/components';
-import InputButton from '@/components/forms/Button';
 import { router } from 'expo-router';
 import { ThemeContext } from '@/lib/providers';
-import { Card, InfoRow, SectionTitle } from './Card';
+import { InfoRow, SectionTitle } from './Card';
 import Socials from './Socials';
 import Docs from './Docs';
 import SelectCountry from './SelectCountry';
 import SelectPaymentToken from './SelectPaymentToken';
 import Personal from './Personal';
-import { useColor } from '@/lib/color';
+import TWInfo from './TWInfo';
+import BankInfo from './BankInfo';
 
 export default function SettingsScreen() {
-  const color = useColor();
   const store = AppStores.useUserInfo();
   const { toggleTheme } = useContext(ThemeContext);
-  let activeSections: [] = [];
-
-  // const _updateSections = activeSections => {
-  //   this.setState({ activeSections });
-  // };
 
   return (
     <Wrapper>
-      <TView
-        style={{
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          // width: '100%',
-          marginTop: 20,
-          marginBottom: 30,
-          gap: 8,
-          backgroundColor: color.background,
-        }}
-      >
-        {store.firstname && (
-          <TText>
-            {store.firstname} {store.lastname}
-          </TText>
-        )}
-
-        {/* <UserLevel /> */}
-      </TView>
-      {/* <CollapsibleRN collapsed={true}>
-        <Socials />
-      </CollapsibleRN> */}
-
       <Collapsible title={'Personal Info'}>
-        <Personal />
+        <TWInfo />
       </Collapsible>
       <Collapsible title={'KYC'}>
         <Personal />
       </Collapsible>
       <Collapsible title={'Bank'}>
-        <InfoRow title="Opay:" title2={'0123456789'} />
-        <InfoRow title="GTB" title2={'0123456789'} />
-        <InfoRow title="Zenith" title2={'0123456789'!} />
-        <InputButton title="Manage" />
+        <BankInfo />
       </Collapsible>
 
       <Collapsible title={'Application'}>
@@ -95,25 +59,23 @@ export default function SettingsScreen() {
       </Collapsible>
 
       <SectionTitle title={'Others'} />
-      <Card>
-        <Row
-          title={'Learn'}
-          desc={'Tutorials and Guide on Mobarter'}
-          icon={<FontAwesome5 name="readme" size={20} color="#fff" />}
-          onClick={() => {
-            router.push('/learn');
-          }}
-        />
-        <Row
-          title={'Logout'}
-          desc={'Close app'}
-          icon={<MaterialIcons name="logout" size={24} color="#fff" />}
-          onClick={() => {
-            store.clear();
-            router.push('/');
-          }}
-        />
-      </Card>
+      <Row
+        title={'Learn'}
+        desc={'Tutorials and Guide on Mobarter'}
+        icon={<FontAwesome5 name="readme" size={20} color="#fff" />}
+        onClick={() => {
+          router.push('/learn');
+        }}
+      />
+      <Row
+        title={'Logout'}
+        desc={'Close app'}
+        icon={<MaterialIcons name="logout" size={24} color="#fff" />}
+        onClick={() => {
+          store.clear();
+          router.push('/');
+        }}
+      />
     </Wrapper>
   );
 }

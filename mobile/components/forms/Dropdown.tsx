@@ -1,12 +1,12 @@
-import React from "react";
-import { StyleSheet } from "react-native";
-import { Dropdown } from "react-native-element-dropdown";
-import AntDesign from "@expo/vector-icons/AntDesign";
-import { useColor } from "@/lib/color";
-import { TView } from "../TView";
-import { TText } from "../TText";
-import Label from "./Label";
-import ErrMsg from "./ErrMsg";
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { Dropdown } from 'react-native-element-dropdown';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import { useColor } from '@/hooks/useColor';
+import { TView } from '../TView';
+import { TText } from '../TText';
+import Label from './Label';
+import ErrMsg from './ErrMsg';
 
 type IProps = {
   label?: string;
@@ -129,9 +129,9 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 10,
     marginBottom: 2,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   textItem: {
     flex: 1,

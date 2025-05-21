@@ -1,4 +1,4 @@
-import { useColor } from '@/lib/color';
+import { useColor } from '@/hooks/useColor';
 import {
   ActivityIndicator,
   StyleProp,

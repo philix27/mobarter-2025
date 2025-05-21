@@ -1,5 +1,5 @@
 import { TView } from '@/components/TView';
-import { useColor } from '@/lib/color';
+import { useColor } from '@/hooks/useColor';
 import React, { useRef } from 'react';
 import { Feather, Ionicons } from '@expo/vector-icons';
 import { BottomSheet } from '@/components/BottomSheet';

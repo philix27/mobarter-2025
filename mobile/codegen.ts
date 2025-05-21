@@ -1,32 +1,21 @@
-import type { CodegenConfig } from "@graphql-codegen/cli";
+import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
-  schema: "http://localhost:4545/graphql",
-  documents: ["./src/**/*.{ts,tsx}", "./src/**/*.gql", "./src/graphql/*.gql"],
+  schema: 'http://localhost:4545/graphql',
+  documents: [
+    './graphql/**/*.{ts,tsx}',
+    './graphql/**/*.gql',
+    './graphql/schema/*.gql',
+  ],
   generates: {
-    "./src/__generated__/": {
+    './graphql/__generated__/': {
       // './src/graphql/': {
-      preset: "client",
+      preset: 'client',
       presetConfig: {
-        // gqlTagName: "gql",
+        // gqlTagName: 'gql',
         fragmentMasking: false,
       },
-      // plugins: [
-      // 	'typescript',
-      // 	'typescript-operations',
-      // 	'typed-document-node',
-      // 	'graphql-codegen-svelte-apollo'
-      // ]
-      plugins: [
-        // "typescript",
-        // "typescript-operations",
-        // !
-        // "typed-document-node",
-        // "typescript-document-nodes",
-        // !
-        // "typescript-react-apollo",
-        // "typescript-resolvers",
-      ],
+      // plugins: ['typescript-document-nodes'],
     },
   },
   ignoreNoDocuments: true,

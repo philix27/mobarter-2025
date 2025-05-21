@@ -1,10 +1,10 @@
-import { TText } from "@/components/TText";
-import { TView } from "@/components/TView";
-import { useGetChains } from "@/hooks";
-import { useColor } from "@/lib/color";
-import { AppStores } from "@/lib/zustand";
-import React from "react";
-import { TouchableOpacity } from "react-native";
+import { TText } from '@/components/TText';
+import { TView } from '@/components/TView';
+import { useGetChains } from '@/hooks';
+import { useColor } from '@/hooks/useColor';
+import { AppStores } from '@/lib/zustand';
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
 
 export default function AssetsTab() {
   const store = AppStores.useView();
@@ -17,17 +17,17 @@ export default function AssetsTab() {
     <TView>
       <TView
         style={{
-          display: "flex",
-          flexDirection: "row",
+          display: 'flex',
+          flexDirection: 'row',
           padding: 2,
           borderRadius: 7,
         }}
       >
         <TabIem
-          title={"ALL"}
-          isActive={store.activeViewAsset === "ALL"}
+          title={'ALL'}
+          isActive={store.activeViewAsset === 'ALL'}
           onPress={() => {
-            store.update({ activeViewAsset: "ALL" });
+            store.update({ activeViewAsset: 'ALL' });
           }}
         />
         {data?.map((item, i) => (

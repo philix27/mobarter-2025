@@ -3,7 +3,7 @@ import InputButton from '@/components/forms/Button';
 import InputText from '@/components/forms/InputText';
 import { ClipboardGet } from '@/lib';
 import { FontAwesome6 } from '@expo/vector-icons';
-import { useColor } from '@/lib/color';
+import { useColor } from '@/hooks/useColor';
 import React, { useState } from 'react';
 import { useActiveAccount } from 'thirdweb/react';
 

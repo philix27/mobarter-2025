@@ -1,5 +1,5 @@
 import { TText, TView } from '@/components';
-import { useColor } from '@/lib/color';
+import { useColor } from '@/hooks/useColor';
 import React, { useState } from 'react';
 import Wrapper from '@/components/Wrapper';
 

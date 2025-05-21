@@ -1,10 +1,10 @@
-import { TView } from "@/components/TView";
-import React from "react";
-import { OtpInput } from "react-native-otp-entry";
-import { useColor } from "@/lib/color";
-import Label from "./Label";
-import ErrMsg from "./ErrMsg";
-import { ViewStyle } from "react-native";
+import { TView } from '@/components/TView';
+import React from 'react';
+import { OtpInput } from 'react-native-otp-entry';
+import { useColor } from '@/hooks/useColor';
+import Label from './Label';
+import ErrMsg from './ErrMsg';
+import { ViewStyle } from 'react-native';
 
 type IProps = {
   label?: string;
@@ -37,7 +37,7 @@ export default function InputOtp({ onFilled, onTextChange, ...props }: IProps) {
         onTextChange={onTextChange}
         onFilled={onFilled}
         textInputProps={{
-          accessibilityLabel: "One-Time Password",
+          accessibilityLabel: 'One-Time Password',
         }}
         theme={{
           containerStyle: { backgroundColor: theme.background },

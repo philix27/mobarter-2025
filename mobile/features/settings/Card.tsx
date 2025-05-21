@@ -1,5 +1,5 @@
 import { TText, TView } from '@/components';
-import { useColor } from '@/lib/color';
+import { useColor } from '@/hooks/useColor';
 import { ReactNode } from 'react';
 
 export function Card(props: { children: ReactNode }) {
@@ -45,7 +45,7 @@ export function InfoRow(props: { title: string; title2: string }) {
         justifyContent: 'space-between',
       }}
     >
-      <TText type="defaultSemiBold">{props.title}</TText>
+      <TText>{props.title}</TText>
       <TText type="defaultSemiBold">{props.title2}</TText>
     </TView>
   );

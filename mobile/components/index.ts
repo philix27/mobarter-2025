@@ -10,3 +10,4 @@ export * from "./Row";
 export * from "./Wrapper";
 export * from "./TText";
 export * from "./TView";
+export * from "./Toast";

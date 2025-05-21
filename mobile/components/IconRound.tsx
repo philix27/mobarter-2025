@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { TouchableOpacity, View, ViewStyle } from 'react-native';
-import { useColor } from '@/lib/color';
+import { useColor } from '@/hooks/useColor';
 import { TText } from './TText';
 
 export default function IconRound(props: {
