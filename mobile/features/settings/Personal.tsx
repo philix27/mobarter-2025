@@ -1,9 +1,9 @@
-import { AppStores } from '@/lib/zustand';
-import InputButton from '@/components/forms/Button';
-import { Card, InfoRow, SectionTitle } from './Card';
+import { AppStores } from '@/lib/zustand'
+import { InputButton } from '@/components/forms'
+import { Card, InfoRow, SectionTitle } from './Card'
 
 export default function Personal() {
-  const store = AppStores.useUserInfo();
+  const store = AppStores.useUserInfo()
   return (
     <>
       <InfoRow title="First name:" title2={store.firstname} />
@@ -14,5 +14,5 @@ export default function Personal() {
       <InfoRow title="Phone" title2={''} />
       <InputButton title="Manage" />
     </>
-  );
+  )
 }

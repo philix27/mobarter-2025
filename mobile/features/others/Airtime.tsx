@@ -1,22 +1,36 @@
-import { BottomSheet } from '@/components/layout/BottomSheet'
-import { Wrapper } from '@/components/layout/Wrapper'
+import { Wrapper, BottomSheet } from '@/components/layout'
 import { z } from 'zod'
 import { useRef } from 'react'
 import { InputSelect, InputButton, InputText } from '@/components/forms'
-import { toast, TView } from '@/components'
 import { useCountries } from '@/lib/zustand/countries'
-import { useGetCountries } from '@/hooks/api'
-import { useColor, formatCurrency, useAppForm } from '@/lib'
+import { useGetCountries } from '@/api'
+import { useColor, formatCurrency, useAppForm, client, AppStores } from '@/lib'
 import { usePrice } from '@/hooks/usePrice'
 import { isDev } from '@/lib/constants/env'
+import { TText, TView } from '@/components/ui'
+import { createThirdwebClient, getContract, resolveMethod, toWei } from 'thirdweb'
+import { defineChain } from 'thirdweb/chains'
+import { prepareContractCall } from 'thirdweb'
+import { useSendTransaction } from 'thirdweb/react'
+import Big from 'big.js'
 
 const formSchema = z.object({
-  amount: z.number().min(1),
+  amount: z.string().min(1),
   operator: z.string(),
   phone: z.string().min(10, 'At least 10 numbers').max(12),
 })
 
+// connect to your contract
+export const contract = getContract({
+  client,
+  chain: defineChain(42220),
+  address: '0xfe6e11223afeC4D329f82382F575e26082c2a340',
+})
+
 export default function AirtimeComp() {
+  const store = AppStores.useCountries()
+
+  const { mutate: sendTransaction } = useSendTransaction()
   // const [amountPay, setPayAmount] = useState<number>();
   const countryStore = useCountries()
   const { data: countriesData } = useGetCountries()
@@ -31,13 +45,19 @@ export default function AirtimeComp() {
     if (!countriesData || countriesData.length === 0) return 'NGN'
     return countriesData.filter((val) => val.isoName === countryStore.activeIso)[0].currencySymbol
   }
+  const getTokenAddress = () => {
+    const addr = countryStore.tokens.filter(
+      (val) => val.symbol === countryStore.activeTokenSymbol
+    )[0].address
+    return addr
+  }
 
   // const [login, { loading: isLoading }] = ApiHooks.useAuthLogin();
   const { formData, setFormData, errors, handleChange, setErrors } = useAppForm<
     typeof formSchema._type
   >({
     // Omit<typeof formSchema._type, 'amount'> & { amount: string }
-    amount: 0,
+    amount: '0',
     operator: '',
     phone: '',
   })
@@ -71,15 +91,38 @@ export default function AirtimeComp() {
 
     const leastAmount = isDev ? 50 : 50
 
-    const amt = parseFloat(formData.amount.toString())
-    if (amt == undefined || amt < leastAmount) {
-      console.log('Error in amount value')
-      setErrors('amount', `amount must be above ${leastAmount}`)
-      return
-    }
+    // const amt = parseFloat(formData.amount.toString())
+    // if (amt == undefined || amt < leastAmount) {
+    //   console.log('Error in amount value')
+    //   setErrors('amount', `amount must be above ${leastAmount}`)
+    //   return
+    // }
 
     countrySheet.current.open()
   }
+
+  const onPay = () => {
+    const transaction = prepareContractCall({
+      contract,
+      maxFeePerGas: 30n,
+      maxPriorityFeePerGas: 1n,
+      method:
+        'function requestAirtime(address token,uint256 amountPaid,uint256 amountOfAirtime,uint256 operatorId,uint256 fee)',
+      params: [
+        '0x765DE816845861e75A25fCA122bb6898B8B1282a',
+        toWei('1'),
+        toWei('1600'),
+        toWei('460'),
+        toWei('0.1'),
+      ],
+      erc20Value: {
+        tokenAddress: '0x765DE816845861e75A25fCA122bb6898B8B1282a', // the address of the ERC20 token
+        amountWei: toWei('1'), // the amount of tokens to transfer in wei
+      },
+    })
+    sendTransaction(transaction)
+  }
+
   return (
     <Wrapper style={{ rowGap: 10 }}>
       <InputSelect
@@ -148,7 +191,8 @@ export default function AirtimeComp() {
           }}
         >
           <TText type="subtitle">
-            {`${formatCurrency(formData.amount)} ${countryStore.activeTokenSymbol}`}
+            {`${amountToPay} ${countryStore.activeTokenSymbol}`}
+            {/* {`${formatCurrency(parseFloat(amountToPay!.toString()))} ${countryStore.activeTokenSymbol}`} */}
           </TText>
           <TView style={{ height: 15 }} />
           <SimpleRow text1="Operator" text2={formData.operator} />
@@ -156,7 +200,7 @@ export default function AirtimeComp() {
           <SimpleRow text1="Amount" text2={formData.amount.toString()} />
           <SimpleRow text1="Fee" text2={formData.amount.toString()} />
           <TView style={{ height: 25 }} />
-          <InputButton title={'Pay'} onPress={handleSubmit} />
+          <InputButton title={'Pay'} onPress={onPay} />
         </TView>
       </BottomSheet>
     </Wrapper>

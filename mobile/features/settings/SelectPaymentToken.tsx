@@ -1,32 +1,30 @@
-import { TView } from '@/components/ui/TView'
-
-import Row from '@/components/ui/Row'
+import { Row, TView } from '@/components/ui'
 import { useRef } from 'react'
-
 import { AppStores } from '@/lib/zustand'
-
-import { BottomSheet } from '@/components/layout/BottomSheet'
+import { BottomSheet } from '@/components/layout'
 import { RBSheetRef } from 'react-native-raw-bottom-sheet'
-import { useGetTokens } from '@/hooks'
+
 import { useActiveAccount } from 'thirdweb/react'
 import { AssetsRow } from '../market/AssetsRow'
 import { ScrollView } from 'react-native'
+import { useGetTokens } from '@/api'
 
 export default function SelectPaymentToken() {
-  const store = AppStores.useCountries()
+  const store = AppStores.useTokens()
+  // const store = AppStores.useCountries()
   const countrySheet = useRef<RBSheetRef>(undefined)
   const account = useActiveAccount()
   const { data } = useGetTokens(account!.address, 'NG')
 
   if (!data) return <TView />
-  const aToken = data!.filter((val) => val.symbol === store.activeTokenSymbol)[0]
+  // const store.activeToken = data!.filter((val) => val.symbol === store.activeToken)[0]
   return (
     <>
-      {aToken && (
+      {store.activeToken && (
         <Row
-          title={`${aToken.name}`}
+          title={`${store.activeToken.name}`}
           desc={'Select your preferred token for Payments'}
-          imgUrl={aToken.logoUrl}
+          imgUrl={store.activeToken.logoUrl}
           onClick={() => {
             countrySheet.current?.open()
           }}
@@ -48,7 +46,7 @@ export default function SelectPaymentToken() {
                   performance={item.name}
                   onPress={() => {
                     store.update({
-                      activeTokenSymbol: item.symbol,
+                      activeToken: item,
                     })
                     countrySheet.current?.close()
                   }}

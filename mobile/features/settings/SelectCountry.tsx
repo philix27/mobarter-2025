@@ -1,13 +1,13 @@
 import { TView } from '@/components/ui/TView'
 
-import Row from '@/components/ui/Row'
+import {Row} from '@/components/ui/Row'
 import { useRef } from 'react'
 
 import { AppStores } from '@/lib/zustand'
 
 import { BottomSheet } from '@/components/layout/BottomSheet'
 import { RBSheetRef } from 'react-native-raw-bottom-sheet'
-import { useGetCountries } from '@/hooks/api/countries'
+import { useGetCountries } from '@/api/countries'
 
 export default function SelectCountry() {
   const store = AppStores.useCountries()
