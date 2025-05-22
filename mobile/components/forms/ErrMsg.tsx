@@ -1,5 +1,6 @@
 import React from "react";
-import { TText } from "../TText";
+import { TText } from "../ui";
+
 
 export default function ErrMsg(props: { msg: string }) {
   return (

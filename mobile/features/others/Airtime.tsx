@@ -1,44 +1,36 @@
-import { BottomSheet } from '@/components/BottomSheet';
-import InputText from '@/components/forms/InputText';
-import Wrapper from '@/components/Wrapper';
-import React from 'react';
-import { z } from 'zod';
-import { useAppForm } from '@/lib';
-import { useRef } from 'react';
-import { InputSelect } from '@/components/forms/InputSelect';
-import InputButton from '@/components/forms/Button';
-import { toast, TText, TView } from '@/components';
-import { useCountries } from '@/lib/zustand/countries';
-import { useGetCountries } from '@/hooks/api';
-import { useColor, formatCurrency } from '@/lib';
-import { usePrice } from '@/hooks/usePrice';
-import { isDev } from '@/lib/constants/env';
+import { BottomSheet } from '@/components/layout/BottomSheet'
+import { Wrapper } from '@/components/layout/Wrapper'
+import { z } from 'zod'
+import { useRef } from 'react'
+import { InputSelect, InputButton, InputText } from '@/components/forms'
+import { toast, TView } from '@/components'
+import { useCountries } from '@/lib/zustand/countries'
+import { useGetCountries } from '@/hooks/api'
+import { useColor, formatCurrency, useAppForm } from '@/lib'
+import { usePrice } from '@/hooks/usePrice'
+import { isDev } from '@/lib/constants/env'
 
 const formSchema = z.object({
   amount: z.number().min(1),
   operator: z.string(),
   phone: z.string().min(10, 'At least 10 numbers').max(12),
-});
+})
 
 export default function AirtimeComp() {
   // const [amountPay, setPayAmount] = useState<number>();
-  const countryStore = useCountries();
-  const { data: countriesData } = useGetCountries();
-  const countrySheet = useRef<RBSheetRef>(null);
-  const { handleOnChange: handlePriceChange, amountToPay } = usePrice();
+  const countryStore = useCountries()
+  const { data: countriesData } = useGetCountries()
+  const countrySheet = useRef<RBSheetRef>(null)
+  const { handleOnChange: handlePriceChange, amountToPay } = usePrice()
 
   const getCallCode = () => {
-    if (!countriesData || countriesData.length === 0) return '234';
-    return countriesData.filter(
-      val => val.isoName === countryStore.activeIso,
-    )[0].callingCodes;
-  };
+    if (!countriesData || countriesData.length === 0) return '234'
+    return countriesData.filter((val) => val.isoName === countryStore.activeIso)[0].callingCodes
+  }
   const getCurrencySymbol = () => {
-    if (!countriesData || countriesData.length === 0) return 'NGN';
-    return countriesData.filter(
-      val => val.isoName === countryStore.activeIso,
-    )[0].currencySymbol;
-  };
+    if (!countriesData || countriesData.length === 0) return 'NGN'
+    return countriesData.filter((val) => val.isoName === countryStore.activeIso)[0].currencySymbol
+  }
 
   // const [login, { loading: isLoading }] = ApiHooks.useAuthLogin();
   const { formData, setFormData, errors, handleChange, setErrors } = useAppForm<
@@ -48,52 +40,55 @@ export default function AirtimeComp() {
     amount: 0,
     operator: '',
     phone: '',
-  });
+  })
 
   const clearErr = () => {
-    setErrors('amount', '');
-    setErrors('operator', '');
-    setErrors('phone', '');
-  };
+    setErrors('amount', '')
+    setErrors('operator', '')
+    setErrors('phone', '')
+  }
 
   const showErr = () => {
-    const validation = formSchema.safeParse(formData);
+    const validation = formSchema.safeParse(formData)
     if (validation.success) {
-      return;
+      return
     }
     // clearErr(validation.error);
-    const errorMessages = validation.error.format();
-    setErrors('amount', errorMessages.amount?._errors[0] || '');
-    setErrors('operator', errorMessages.operator?._errors[0] || '');
-    setErrors('phone', errorMessages.phone?._errors[0] || '');
-  };
+    const errorMessages = validation.error.format()
+    setErrors('amount', errorMessages.amount?._errors[0] || '')
+    setErrors('operator', errorMessages.operator?._errors[0] || '')
+    setErrors('phone', errorMessages.phone?._errors[0] || '')
+  }
 
   const handleSubmit = () => {
-    const validation = formSchema.safeParse(formData);
+    const validation = formSchema.safeParse(formData)
 
     if (!validation.success) {
-      clearErr();
-      return;
+      showErr()
+      console.log('Error in validation ' + validation.error.message)
+      return
     }
 
-    const leastAmount = isDev ? 50 : 50;
+    const leastAmount = isDev ? 50 : 50
 
-    const amt = parseFloat(formData.amount.toString());
+    const amt = parseFloat(formData.amount.toString())
     if (amt == undefined || amt < leastAmount) {
-      setErrors('amount', `amount must be above ${leastAmount}`);
-      return;
+      console.log('Error in amount value')
+      setErrors('amount', `amount must be above ${leastAmount}`)
+      return
     }
 
-    countrySheet.current.open();
-  };
+    countrySheet.current.open()
+  }
   return (
     <Wrapper style={{ rowGap: 10 }}>
       <InputSelect
         label="Network"
         placeholder="Select operator"
-        onValueChange={v => {
-          handleChange('operator', v);
-          clearErr();
+        error={errors && errors?.operator && errors!.operator}
+        onValueChange={(v) => {
+          handleChange('operator', v)
+          clearErr()
         }}
         items={[
           {
@@ -115,13 +110,13 @@ export default function AirtimeComp() {
         label={'Phone'}
         leadingText={getCallCode()}
         value={formData.phone}
-        onChangeText={text => {
-          if (text.length > 10) return;
-          handleChange('phone', text);
-          clearErr();
+        onChangeText={(text) => {
+          if (text.length > 10) return
+          handleChange('phone', text)
+          clearErr()
         }}
         placeholder={'Enter phone'}
-        error={errors!.phone === undefined ? undefined : errors!.phone}
+        error={errors && errors?.phone && errors!.phone}
         keyboardType="number-pad"
       />
       <InputText
@@ -130,17 +125,13 @@ export default function AirtimeComp() {
         leadingText={getCurrencySymbol()}
         placeholder={'Enter amount'}
         value={formData.amount.toString()}
-        onChangeText={text => {
-          if (text.length > 10) return;
-          handleChange('amount', text);
-          handlePriceChange(parseFloat(text));
-          clearErr();
+        onChangeText={(text) => {
+          if (text.length > 10) return
+          handleChange('amount', text)
+          handlePriceChange(parseFloat(text))
+          clearErr()
         }}
-        // error={
-        //   errors!.amount === undefined
-        //     ? undefined
-        //     : (errors!.amount as unknown as string)
-        // }
+        error={errors && errors?.amount && errors!.amount}
       />
       <TText>{amountToPay}</TText>
       <InputButton title={'Submit'} onPress={handleSubmit} />
@@ -169,11 +160,11 @@ export default function AirtimeComp() {
         </TView>
       </BottomSheet>
     </Wrapper>
-  );
+  )
 }
 
 function SimpleRow(params: { text1: string; text2: string }) {
-  const color = useColor();
+  const color = useColor()
   return (
     <TView
       style={{
@@ -184,9 +175,7 @@ function SimpleRow(params: { text1: string; text2: string }) {
       }}
     >
       <TText style={{ color: color.muted }}>{params.text1}</TText>
-      <TText style={{ fontStyle: 'normal', fontWeight: '700' }}>
-        {params.text2}
-      </TText>
+      <TText style={{ fontStyle: 'normal', fontWeight: '700' }}>{params.text2}</TText>
     </TView>
-  );
+  )
 }

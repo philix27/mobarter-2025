@@ -1,6 +1,6 @@
-import HeaderBar from '@/components/Header';
-import DataBundlesComp from '@/features/others/DataBundles';
-import React from 'react';
+import { HeaderBar } from '@/components/layout'
+import DataBundlesComp from '@/features/others/DataBundles'
+import React from 'react'
 
 export default function Page() {
   return (
@@ -8,5 +8,5 @@ export default function Page() {
       <HeaderBar title="Data Bundles" showBackBtn backTo="/p2p" />
       <DataBundlesComp />
     </>
-  );
+  )
 }

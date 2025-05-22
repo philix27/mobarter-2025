@@ -1,25 +1,25 @@
-import { TView } from '@/components/TView';
+import { TView } from '@/components/ui/TView'
 
-import Row from '@/components/Row';
-import { useRef } from 'react';
+import Row from '@/components/ui/Row'
+import { useRef } from 'react'
 
-import { AppStores } from '@/lib/zustand';
+import { AppStores } from '@/lib/zustand'
 
-import { BottomSheet } from '@/components/BottomSheet';
-import { RBSheetRef } from 'react-native-raw-bottom-sheet';
-import { useGetTokens } from '@/hooks';
-import { useActiveAccount } from 'thirdweb/react';
-import { AssetsRow } from '../market/AssetsRow';
-import { ScrollView } from 'react-native';
+import { BottomSheet } from '@/components/layout/BottomSheet'
+import { RBSheetRef } from 'react-native-raw-bottom-sheet'
+import { useGetTokens } from '@/hooks'
+import { useActiveAccount } from 'thirdweb/react'
+import { AssetsRow } from '../market/AssetsRow'
+import { ScrollView } from 'react-native'
 
 export default function SelectPaymentToken() {
-  const store = AppStores.useCountries();
-  const countrySheet = useRef<RBSheetRef>(undefined);
-  const account = useActiveAccount();
-  const { data } = useGetTokens(account!.address, 'NG');
+  const store = AppStores.useCountries()
+  const countrySheet = useRef<RBSheetRef>(undefined)
+  const account = useActiveAccount()
+  const { data } = useGetTokens(account!.address, 'NG')
 
-  if (!data) return <TView />;
-  const aToken = data!.filter(val => val.symbol === store.activeTokenSymbol)[0];
+  if (!data) return <TView />
+  const aToken = data!.filter((val) => val.symbol === store.activeTokenSymbol)[0]
   return (
     <>
       {aToken && (
@@ -28,7 +28,7 @@ export default function SelectPaymentToken() {
           desc={'Select your preferred token for Payments'}
           imgUrl={aToken.logoUrl}
           onClick={() => {
-            countrySheet.current?.open();
+            countrySheet.current?.open()
           }}
         />
       )}
@@ -49,15 +49,15 @@ export default function SelectPaymentToken() {
                   onPress={() => {
                     store.update({
                       activeTokenSymbol: item.symbol,
-                    });
-                    countrySheet.current?.close();
+                    })
+                    countrySheet.current?.close()
                   }}
                 />
-              );
+              )
             })}
           <TView style={{ height: 40 }} />
         </ScrollView>
       </BottomSheet>
     </>
-  );
+  )
 }

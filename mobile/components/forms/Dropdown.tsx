@@ -1,48 +1,38 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Dropdown } from 'react-native-element-dropdown';
-import AntDesign from '@expo/vector-icons/AntDesign';
-import { useColor } from '@/hooks/useColor';
-import { TView } from '../TView';
-import { TText } from '../TText';
-import Label from './Label';
-import ErrMsg from './ErrMsg';
+import React from 'react'
+import { StyleSheet } from 'react-native'
+import { Dropdown } from 'react-native-element-dropdown'
+import AntDesign from '@expo/vector-icons/AntDesign'
+import { useColor } from '@/hooks/useColor'
+
+import { Label } from './Label'
+import ErrMsg from './ErrMsg'
+import { TText, TView } from '../ui'
 
 type IProps = {
-  label?: string;
-  value?: string | undefined;
-  placeholder?: string | undefined;
-  error?: string | undefined;
-  search?: boolean | undefined;
-  onChange: (item: { _index: 0; label: string; value: string }) => void;
+  label?: string
+  value?: string | undefined
+  placeholder?: string | undefined
+  error?: string | undefined
+  search?: boolean | undefined
+  onChange: (item: { _index: 0; label: string; value: string }) => void
   data: {
-    label: string;
-    value: string;
-  }[];
-};
+    label: string
+    value: string
+  }[]
+}
 
-export default function InputDropdown({
-  search,
-  data,
-  value,
-  ...props
-}: IProps) {
-  const theme = useColor();
+export default function InputDropdown({ search, data, value, ...props }: IProps) {
+  const theme = useColor()
   const renderItem = (item: { label: string; value: null }) => {
     return (
       <TView style={[styles.item, { backgroundColor: theme.accent }]}>
         <TText style={styles.textItem}>{item.label}</TText>
         {item.value === value && (
-          <AntDesign
-            style={styles.icon}
-            color={theme.muted}
-            name="Safety"
-            size={20}
-          />
+          <AntDesign style={styles.icon} color={theme.muted} name="Safety" size={20} />
         )}
       </TView>
-    );
-  };
+    )
+  }
 
   return (
     <TView style={{ marginVertical: 8 }}>
@@ -64,10 +54,7 @@ export default function InputDropdown({
           styles.selectedTextStyle,
           { backgroundColor: theme.background, color: theme.text },
         ]}
-        inputSearchStyle={[
-          styles.inputSearchStyle,
-          { color: theme.text, borderRadius: 8 },
-        ]}
+        inputSearchStyle={[styles.inputSearchStyle, { color: theme.text, borderRadius: 8 }]}
         iconStyle={[
           styles.iconStyle,
           {
@@ -91,18 +78,13 @@ export default function InputDropdown({
         value={value}
         onChange={props.onChange}
         renderLeftIcon={() => (
-          <AntDesign
-            style={styles.icon}
-            color={theme.muted}
-            name="Safety"
-            size={20}
-          />
+          <AntDesign style={styles.icon} color={theme.muted} name="Safety" size={20} />
         )}
         renderItem={renderItem}
       />
       {props.error && <ErrMsg msg={props.error} />}
     </TView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -151,4 +133,4 @@ const styles = StyleSheet.create({
     height: 40,
     fontSize: 16,
   },
-});
+})

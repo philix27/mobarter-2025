@@ -1,13 +1,8 @@
 import { useColor } from '@/hooks/useColor';
-import {
-  ActivityIndicator,
-  StyleProp,
-  TouchableOpacity,
-  ViewStyle,
-} from 'react-native';
+import { ActivityIndicator, TouchableOpacity, ViewStyle } from 'react-native';
 import { Text, StyleSheet } from 'react-native';
 
-export default function InputButton(props: {
+export function InputButton(props: {
   title: string;
   style?: ViewStyle;
   isLoading?: boolean;

@@ -7,11 +7,11 @@ export function useAppForm<FormData>(defaultValues: FormData) {
   const [_err, _setErrors] = useState<Record<keyof FormData, string>>();
   // const [_err, _setErrors] = useState<object>();
   const setErr = (key: keyof FormData, msg: string) => {
-    _setErrors({ ..._err, [key]: msg });
+    // _setErrors({ ..._err, [key]: msg });
     // _setErrors({ ..._err, [key]: msg });
   };
 
-  const handleChange = (field: keyof typeof formData, value: string) => {
+  const handleChange = (field: keyof typeof formData, value: string | number) => {
     setFormData({ ...formData!, [field]: value });
     // setErrors({ ...errors!, [field]: '' }); // Clear error when typing
     setErr(field, '');

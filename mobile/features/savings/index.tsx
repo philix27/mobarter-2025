@@ -1,5 +1,5 @@
-import Wrapper from '@/components/Wrapper';
-import { SavingsCard } from './card';
+import { Wrapper } from '@/components/layout'
+import { SavingsCard } from './card'
 
 export default function SavingsScreen() {
   return (
@@ -41,5 +41,5 @@ export default function SavingsScreen() {
         desc={'Lock up funds and Earn interest on a set period of time'}
       />
     </Wrapper>
-  );
+  )
 }

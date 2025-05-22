@@ -4,33 +4,34 @@ import {
   KeyboardTypeOptions,
   TouchableOpacity,
   ViewStyle,
-} from 'react-native';
-import { TView } from '../TView';
-import { useColor } from '@/hooks/useColor';
-import { JSX, useState } from 'react';
-import { Feather } from '@expo/vector-icons';
-import Label from './Label';
-import ErrMsg from './ErrMsg';
-import { TText } from '../TText';
+} from 'react-native'
+import { TView } from '../ui/TView'
+import { useColor } from '@/hooks/useColor'
+import { JSX, useState } from 'react'
+import { Feather } from '@expo/vector-icons'
 
-export default function InputText(props: {
-  label?: string;
-  leadingText?: string;
-  desc?: string;
-  style?: ViewStyle;
-  value?: string | undefined;
-  icon?: JSX.Element;
-  trailingIcon?: JSX.Element;
-  onTrailingIconPress?: VoidFunction;
-  error?: string | undefined;
-  onChangeText?: ((text: string) => void) | undefined;
-  placeholder?: string | undefined;
-  secureTextEntry?: boolean | undefined;
-  keyboardType?: KeyboardTypeOptions | undefined;
+import ErrMsg from './ErrMsg'
+import { TText } from '../ui/TText'
+import { Label } from './Label'
+
+export function InputText(props: {
+  label?: string
+  leadingText?: string
+  desc?: string
+  style?: ViewStyle
+  value?: string | undefined
+  icon?: JSX.Element
+  trailingIcon?: JSX.Element
+  onTrailingIconPress?: VoidFunction
+  error?: string | undefined
+  onChangeText?: ((text: string) => void) | undefined
+  placeholder?: string | undefined
+  secureTextEntry?: boolean | undefined
+  keyboardType?: KeyboardTypeOptions | undefined
 }) {
-  const theme = useColor();
-  const [HidePassword, setHidePassword] = useState(props.secureTextEntry);
-  const [onFocus, setFocus] = useState(false);
+  const theme = useColor()
+  const [HidePassword, setHidePassword] = useState(props.secureTextEntry)
+  const [onFocus, setFocus] = useState(false)
   return (
     <>
       <TView
@@ -64,9 +65,7 @@ export default function InputText(props: {
                 paddingRight: 0,
               }}
             >
-              <TText style={{ fontSize: 16, color: theme.muted }}>
-                {props.leadingText}
-              </TText>
+              <TText style={{ fontSize: 16, color: theme.muted }}>{props.leadingText}</TText>
             </TView>
           )}
 
@@ -128,7 +127,7 @@ export default function InputText(props: {
       </TView>
       {/* {props.desc && <ErrMsg msg={props.desc} />} */}
     </>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -151,4 +150,4 @@ const styles = StyleSheet.create({
   icon: {
     marginLeft: 10,
   },
-});
+})

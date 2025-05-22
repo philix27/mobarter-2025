@@ -1,5 +1,5 @@
-import HeaderBar from '@/components/Header';
-import MarketScreen from '@/features/market';
+import { HeaderBar } from '@/components/layout'
+import MarketScreen from '@/features/market'
 
 export default function HomeScreen() {
   return (
@@ -7,5 +7,5 @@ export default function HomeScreen() {
       <HeaderBar title="Wallet" />
       <MarketScreen />
     </>
-  );
+  )
 }

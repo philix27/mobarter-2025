@@ -1,23 +1,23 @@
-import Wrapper from '@/components/Wrapper';
-import Row from '@/components/Row';
-import { useContext } from 'react';
-import { FontAwesome5, Ionicons, MaterialIcons } from '@expo/vector-icons';
-import { AppStores } from '@/lib/zustand';
-import { Collapsible } from '@/components';
-import { router } from 'expo-router';
-import { ThemeContext } from '@/lib/providers';
-import { InfoRow, SectionTitle } from './Card';
-import Socials from './Socials';
-import Docs from './Docs';
-import SelectCountry from './SelectCountry';
-import SelectPaymentToken from './SelectPaymentToken';
-import Personal from './Personal';
-import TWInfo from './TWInfo';
-import BankInfo from './BankInfo';
+import Wrapper from '@/components/layout/Wrapper'
+import Row from '@/components/ui/Row'
+import { useContext } from 'react'
+import { FontAwesome5, Ionicons, MaterialIcons } from '@expo/vector-icons'
+import { AppStores } from '@/lib/zustand'
+import { Collapsible } from '@/components'
+import { router } from 'expo-router'
+import { ThemeContext } from '@/lib/providers'
+import { InfoRow, SectionTitle } from './Card'
+import Socials from './Socials'
+import Docs from './Docs'
+import SelectCountry from './SelectCountry'
+import SelectPaymentToken from './SelectPaymentToken'
+import Personal from './Personal'
+import TWInfo from './TWInfo'
+import BankInfo from './BankInfo'
 
 export default function SettingsScreen() {
-  const store = AppStores.useUserInfo();
-  const { toggleTheme } = useContext(ThemeContext);
+  const store = AppStores.useUserInfo()
+  const { toggleTheme } = useContext(ThemeContext)
 
   return (
     <Wrapper>
@@ -42,11 +42,9 @@ export default function SettingsScreen() {
         <Row
           title={'Theme'}
           desc={'Manage appearance'}
-          icon={
-            <Ionicons name="color-palette-outline" size={24} color="#fff" />
-          }
+          icon={<Ionicons name="color-palette-outline" size={24} color="#fff" />}
           onClick={() => {
-            toggleTheme();
+            toggleTheme()
           }}
         />
       </Collapsible>
@@ -64,7 +62,7 @@ export default function SettingsScreen() {
         desc={'Tutorials and Guide on Mobarter'}
         icon={<FontAwesome5 name="readme" size={20} color="#fff" />}
         onClick={() => {
-          router.push('/learn');
+          router.push('/learn')
         }}
       />
       <Row
@@ -72,10 +70,10 @@ export default function SettingsScreen() {
         desc={'Close app'}
         icon={<MaterialIcons name="logout" size={24} color="#fff" />}
         onClick={() => {
-          store.clear();
-          router.push('/');
+          store.clear()
+          router.push('/')
         }}
       />
     </Wrapper>
-  );
+  )
 }

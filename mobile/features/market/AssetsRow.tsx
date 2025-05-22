@@ -1,22 +1,21 @@
-import { Image, TouchableOpacity } from 'react-native';
-import { TText } from '@/components/TText';
-import { TView } from '@/components/TView';
-import React, { JSX } from 'react';
-import { useColor } from '@/hooks/useColor';
+import { Image, TouchableOpacity } from 'react-native'
+import { TText, TView } from '@/components/ui'
+import React, { JSX } from 'react'
+import { useColor } from '@/hooks/useColor'
 
 export function AssetsRow(params: {
-  imgUrl?: string;
-  svgUrl?: string | undefined;
-  icon?: JSX.Element;
-  currency: string;
-  balance: string;
-  tokenPrice: string;
-  performance: string;
-  tokenAddr: string;
-  onPress?: VoidFunction;
+  imgUrl?: string
+  svgUrl?: string | undefined
+  icon?: JSX.Element
+  currency: string
+  balance: string
+  tokenPrice: string
+  performance: string
+  tokenAddr: string
+  onPress?: VoidFunction
 }) {
-  const appColor = useColor();
-  const bgColor = appColor.card;
+  const appColor = useColor()
+  const bgColor = appColor.card
   return (
     <TouchableOpacity
       onPress={params.onPress}
@@ -75,5 +74,5 @@ export function AssetsRow(params: {
         </TView>
       </TView>
     </TouchableOpacity>
-  );
+  )
 }

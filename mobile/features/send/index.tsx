@@ -1,16 +1,15 @@
-import { TView } from '@/components';
-import InputButton from '@/components/forms/Button';
-import InputText from '@/components/forms/InputText';
-import { ClipboardGet } from '@/lib';
-import { FontAwesome6 } from '@expo/vector-icons';
-import { useColor } from '@/hooks/useColor';
-import React, { useState } from 'react';
-import { useActiveAccount } from 'thirdweb/react';
+import { TView } from '@/components'
+import { InputButton, InputText } from '@/components/forms'
+import { ClipboardGet } from '@/lib'
+import { FontAwesome6 } from '@expo/vector-icons'
+import { useColor } from '@/hooks/useColor'
+import React, { useState } from 'react'
+import { useActiveAccount } from 'thirdweb/react'
 
 export default function SendCryptoScreen() {
-  const account = useActiveAccount();
-  const theme = useColor();
-  const [walletAddress, setWalletAddress] = useState('');
+  const account = useActiveAccount()
+  const theme = useColor()
+  const [walletAddress, setWalletAddress] = useState('')
 
   // const transaction = transfer({
   //   contract: {
@@ -27,9 +26,9 @@ export default function SendCryptoScreen() {
       chainId: 0,
       data: '0x232',
       value: BigInt(21),
-    });
+    })
     // await sendTransaction({ transaction, account: '0x3231' });
-  };
+  }
   return (
     <TView style={{ width: '100%' }}>
       <InputText
@@ -41,14 +40,12 @@ export default function SendCryptoScreen() {
         // onChangeText={(text) => handleChange("email", text.toLowerCase())}
         // error={errors!.email === undefined ? undefined : errors!.email}
         onTrailingIconPress={async () => {
-          const text = await ClipboardGet();
-          setWalletAddress(text);
+          const text = await ClipboardGet()
+          setWalletAddress(text)
 
-          console.log(text);
+          console.log(text)
         }}
-        trailingIcon={
-          <FontAwesome6 name="paste" size={20} color={theme.muted} />
-        }
+        trailingIcon={<FontAwesome6 name="paste" size={20} color={theme.muted} />}
       />
       <InputText
         label={'Amount'}
@@ -62,5 +59,5 @@ export default function SendCryptoScreen() {
         <InputButton title="Send" onPress={() => {}} style={{ width: '50%' }} />
       </TView>
     </TView>
-  );
+  )
 }

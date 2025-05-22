@@ -1,17 +1,17 @@
-import { PropsWithChildren, useState } from 'react';
-import { TouchableOpacity } from 'react-native';
-import { TText } from '@/components/TText';
-import { TView } from '@/components/TView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import { useColor } from '@/hooks/useColor';
+import { PropsWithChildren, useState } from 'react'
+import { TouchableOpacity } from 'react-native'
+import { TView } from '@/components/ui/TView'
+import { IconSymbol } from '@/components/tab/IconSymbol'
+import { useColor } from '@/hooks/useColor'
+import { TText } from './TText'
 
 export function Collapsible({
   children,
   title,
   icon,
 }: PropsWithChildren & { title: string; icon?: JSX.Element }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const theme = useColor();
+  const [isOpen, setIsOpen] = useState(false)
+  const theme = useColor()
 
   return (
     <TView
@@ -32,7 +32,7 @@ export function Collapsible({
           paddingHorizontal: 10,
           backgroundColor: theme.card,
         }}
-        onPress={() => setIsOpen(value => !value)}
+        onPress={() => setIsOpen((value) => !value)}
         activeOpacity={0.8}
       >
         <TText type="defaultSemiBold">{title}</TText>
@@ -57,5 +57,5 @@ export function Collapsible({
         </TView>
       )}
     </TView>
-  );
+  )
 }

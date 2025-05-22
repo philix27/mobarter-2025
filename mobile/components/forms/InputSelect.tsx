@@ -1,32 +1,30 @@
-import { TText, TView } from '@/components';
-import React, { useRef, useState } from 'react';
+import { TText, TView } from '@/components/ui'
+import React, { useRef, useState } from 'react'
 
-import { Picker } from '@react-native-picker/picker';
-import { useColor } from '@/hooks/useColor';
-import { TouchableOpacity, ViewStyle } from 'react-native';
-import Label from '@/components/forms/Label';
-import { BottomSheet } from '@/components/BottomSheet';
-import { RBSheetRef } from 'react-native-raw-bottom-sheet';
+import { Picker } from '@react-native-picker/picker'
+import { useColor } from '@/hooks/useColor'
+import { TouchableOpacity, ViewStyle } from 'react-native'
+import { Label } from './Label'
+import { BottomSheet } from '@/components/layout'
+import { RBSheetRef } from 'react-native-raw-bottom-sheet'
+import ErrMsg from './ErrMsg'
 
 export function InputSelect(params: {
-  label?: string;
-  placeholder?: string;
-  style?: ViewStyle;
-  items: { label: string; value: string }[];
-  onValueChange?: (itemValue: string) => void;
+  label?: string
+  placeholder?: string
+  style?: ViewStyle
+  error?: string | undefined
+  items: { label: string; value: string }[]
+  onValueChange?: (itemValue: string) => void
 }) {
-  const theme = useColor();
-  const refRBSheet = useRef<RBSheetRef>();
-  const [selectedValue, setSelectedValue] = useState<string | undefined>(
-    undefined,
-  );
+  const theme = useColor()
+  const refRBSheet = useRef<RBSheetRef>()
+  const [selectedValue, setSelectedValue] = useState<string | undefined>(undefined)
 
   const getLabel = () => {
-    const active = params.items.filter(
-      (val, i) => val.value === selectedValue,
-    )[0];
-    return active.label;
-  };
+    const active = params.items.filter((val, i) => val.value === selectedValue)[0]
+    return active.label
+  }
   return (
     <>
       {params.label && (
@@ -43,7 +41,7 @@ export function InputSelect(params: {
       <TouchableOpacity
         style={{ width: '100%', margin: 0, padding: 0 }}
         onPress={() => {
-          refRBSheet.current!.open();
+          refRBSheet.current!.open()
         }}
       >
         <TView
@@ -62,11 +60,10 @@ export function InputSelect(params: {
             params.style,
           ]}
         >
-          <TText>
-            {selectedValue === undefined ? params.placeholder : getLabel()}
-          </TText>
+          <TText>{selectedValue === undefined ? params.placeholder : getLabel()}</TText>
         </TView>
       </TouchableOpacity>
+      {params.error && <ErrMsg msg={params.error} />}
       <BottomSheet ref={refRBSheet!}>
         <Picker
           style={{
@@ -75,10 +72,10 @@ export function InputSelect(params: {
             height: 'auto',
           }}
           selectedValue={selectedValue}
-          onValueChange={value => {
-            setSelectedValue(value);
+          onValueChange={(value) => {
+            setSelectedValue(value)
             if (params.onValueChange) {
-              params.onValueChange(value);
+              params.onValueChange(value)
             }
           }}
           collapsable
@@ -90,5 +87,5 @@ export function InputSelect(params: {
         </Picker>
       </BottomSheet>
     </>
-  );
+  )
 }

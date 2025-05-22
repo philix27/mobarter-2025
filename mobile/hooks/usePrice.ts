@@ -24,15 +24,13 @@ export function usePrice() {
   // console.log('Fx-90', fxData);
   const iso = store.activeIso;
   const fx = fxData.data.fxRate_GetAll as any;
-  console.log('Before Rate', fx);
+
   const rate = fx[iso];
 
   const handleOnChange = (amountInFiatCurrency: number) => {
     const c = amountInFiatCurrency / rate;
     const plusFee = c + 0.1;
     // console.log('Rate', rate);
-    console.log('Iso', iso);
-    console.log('amountInFiatCurrency', amountInFiatCurrency);
     setAmtToPay(plusFee);
   };
 

@@ -1,5 +1,5 @@
-import HeaderBar from '@/components/Header';
-import SavingsScreen from '@/features/savings';
+import {HeaderBar} from '@/components/layout/Header'
+import SavingsScreen from '@/features/savings'
 
 export default function WriteScreen() {
   return (
@@ -7,5 +7,5 @@ export default function WriteScreen() {
       <HeaderBar title="Savings" />
       <SavingsScreen />;
     </>
-  );
+  )
 }

@@ -1,11 +1,11 @@
-import Row from '@/components/Row';
-import { TView } from '@/components/TView';
-import { useColor } from '@/hooks/useColor';
-import { AntDesign } from '@expo/vector-icons';
-import React from 'react';
+import { Row } from '@/components/ui'
+import { TView } from '@/components/ui/TView'
+import { useColor } from '@/hooks/useColor'
+import { AntDesign } from '@expo/vector-icons'
+import React from 'react'
 
 export default function WithdrawModal() {
-  const theme = useColor();
+  const theme = useColor()
   return (
     <TView>
       <Row
@@ -25,5 +25,5 @@ export default function WithdrawModal() {
         }}
       />
     </TView>
-  );
+  )
 }

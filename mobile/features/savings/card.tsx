@@ -1,18 +1,17 @@
-import { TView } from '@/components/TView';
-import { TText } from '@/components';
-import { useColor } from '@/hooks/useColor';
-import { TouchableOpacity } from 'react-native';
+import { TText, TView } from '@/components/ui'
+import { useColor } from '@/hooks/useColor'
+import { TouchableOpacity } from 'react-native'
 
 export function SavingsCard(params: {
-  title: string;
-  balance: string;
-  percentage: string;
-  amountAdded: string;
-  desc: string;
-  onView: VoidFunction;
-  onCreate: VoidFunction;
+  title: string
+  balance: string
+  percentage: string
+  amountAdded: string
+  desc: string
+  onView: VoidFunction
+  onCreate: VoidFunction
 }) {
-  const theme = useColor();
+  const theme = useColor()
   return (
     <TView
       style={{
@@ -43,9 +42,7 @@ export function SavingsCard(params: {
           }}
         >
           <TView style={{ backgroundColor: theme.card, width: '55%' }}>
-            <TText
-              style={{ fontSize: 18, fontWeight: '700', color: theme.muted }}
-            >
+            <TText style={{ fontSize: 18, fontWeight: '700', color: theme.muted }}>
               {params.title}
             </TText>
             <TText
@@ -127,7 +124,7 @@ export function SavingsCard(params: {
         <TextButton title="Create Plans" />
       </TView>
     </TView>
-  );
+  )
 }
 
 function TextButton(params: { title: string; onClick?: VoidFunction }) {
@@ -135,5 +132,5 @@ function TextButton(params: { title: string; onClick?: VoidFunction }) {
     <TouchableOpacity onPress={params.onClick}>
       <TText style={{ fontWeight: 700, fontSize: 14 }}>{params.title}</TText>
     </TouchableOpacity>
-  );
+  )
 }

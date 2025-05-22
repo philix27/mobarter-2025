@@ -1,19 +1,19 @@
-import { TView } from '@/components/TView';
-import { useColor } from '@/hooks/useColor';
-import React, { useRef } from 'react';
-import { Feather, Ionicons } from '@expo/vector-icons';
-import { BottomSheet } from '@/components/BottomSheet';
-import IconRound from '@/components/IconRound';
-import { RBSheetRef } from 'react-native-raw-bottom-sheet';
-import WithdrawModal from './WithdrawModal';
-import WalletQRCode from './WalletQRCode';
-import { router } from 'expo-router';
+import { TView } from '@/components/ui/TView'
+import { useColor } from '@/hooks/useColor'
+import React, { useRef } from 'react'
+import { Feather, Ionicons } from '@expo/vector-icons'
+import { BottomSheet } from '@/components/layout/BottomSheet'
+import IconRound from '@/components/ui/IconRound'
+import { RBSheetRef } from 'react-native-raw-bottom-sheet'
+import WithdrawModal from './WithdrawModal'
+import WalletQRCode from './WalletQRCode'
+import { router } from 'expo-router'
 
 export default function QuickActions() {
-  const appColor = useColor();
+  const appColor = useColor()
 
-  const withdrawalSheet = useRef<RBSheetRef>();
-  const walletSheet = useRef<RBSheetRef>();
+  const withdrawalSheet = useRef<RBSheetRef>()
+  const walletSheet = useRef<RBSheetRef>()
 
   return (
     <>
@@ -30,7 +30,7 @@ export default function QuickActions() {
         <IconRound
           title="Send"
           onPress={() => {
-            router.push('/send-crypto');
+            router.push('/send-crypto')
           }}
         >
           <Feather name="send" size={22} color={'#fff'} />
@@ -38,7 +38,7 @@ export default function QuickActions() {
         <IconRound
           title="Buy/Sell"
           onPress={() => {
-            withdrawalSheet.current?.open();
+            withdrawalSheet.current?.open()
           }}
         >
           <Ionicons name="swap-vertical" size={22} color="#fff" />
@@ -46,7 +46,7 @@ export default function QuickActions() {
         <IconRound
           title="Receive"
           onPress={() => {
-            walletSheet.current?.open();
+            walletSheet.current?.open()
           }}
         >
           <Ionicons name="wallet-outline" size={22} color={'#fff'} />
@@ -61,7 +61,7 @@ export default function QuickActions() {
         </BottomSheet>
       </TView>
     </>
-  );
+  )
 }
 {
   /* <ReceiveWallet /> */

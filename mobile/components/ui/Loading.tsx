@@ -1,9 +1,9 @@
-import { ActivityIndicator } from 'react-native';
-import { useColor } from '@/hooks/useColor';
-import { TView } from './TView';
+import { ActivityIndicator } from 'react-native'
+import { useColor } from '@/hooks/useColor'
+import { TView } from './TView'
 
 export const LoadingIndicator = () => {
-  const color = useColor();
+  const color = useColor()
   return (
     <TView
       style={{
@@ -15,5 +15,5 @@ export const LoadingIndicator = () => {
     >
       <ActivityIndicator color={color.primary} />
     </TView>
-  );
-};
+  )
+}

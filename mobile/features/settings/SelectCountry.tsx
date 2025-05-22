@@ -1,21 +1,21 @@
-import { TView } from '@/components/TView';
+import { TView } from '@/components/ui/TView'
 
-import Row from '@/components/Row';
-import { useRef } from 'react';
+import Row from '@/components/ui/Row'
+import { useRef } from 'react'
 
-import { AppStores } from '@/lib/zustand';
+import { AppStores } from '@/lib/zustand'
 
-import { BottomSheet } from '@/components/BottomSheet';
-import { RBSheetRef } from 'react-native-raw-bottom-sheet';
-import { useGetCountries } from '@/hooks/api/countries';
+import { BottomSheet } from '@/components/layout/BottomSheet'
+import { RBSheetRef } from 'react-native-raw-bottom-sheet'
+import { useGetCountries } from '@/hooks/api/countries'
 
 export default function SelectCountry() {
-  const store = AppStores.useCountries();
-  const countrySheet = useRef<RBSheetRef>(undefined);
-  const { data } = useGetCountries();
+  const store = AppStores.useCountries()
+  const countrySheet = useRef<RBSheetRef>(undefined)
+  const { data } = useGetCountries()
 
-  if (!data) return <TView />;
-  const aCountry = data!.filter(val => val.isoName === store.activeIso)[0];
+  if (!data) return <TView />
+  const aCountry = data!.filter((val) => val.isoName === store.activeIso)[0]
   return (
     <>
       {aCountry && (
@@ -24,7 +24,7 @@ export default function SelectCountry() {
           desc={'Select your preferred country'}
           imgUrl={aCountry.flag}
           onClick={() => {
-            countrySheet.current?.open();
+            countrySheet.current?.open()
           }}
         />
       )}
@@ -41,13 +41,13 @@ export default function SelectCountry() {
                 onClick={() => {
                   store.update({
                     activeIso: item.isoName,
-                  });
-                  countrySheet.current?.close();
+                  })
+                  countrySheet.current?.close()
                 }}
               />
-            );
+            )
           })}
       </BottomSheet>
     </>
-  );
+  )
 }

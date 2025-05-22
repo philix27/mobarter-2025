@@ -1,24 +1,24 @@
-import { Image, StyleSheet, View, useColorScheme } from 'react-native';
-import { ParallaxScrollView } from '@/components/ParallaxScrollView';
-import { ThemedButton } from '@/components/ThemedButton';
-import { ThemedText } from '@/components/ThemedText';
-import { chain, client } from '@/lib/constants';
-import { useEffect, useState } from 'react';
+import { Image, StyleSheet, View, useColorScheme } from 'react-native'
+import { ParallaxScrollView } from '@/components/layout/ParallaxScrollView'
+import { ThemedButton } from '@/components/ThemedButton'
+import { ThemedText } from '@/components/ThemedText'
+import { chain, client } from '@/lib/constants'
+import { useEffect, useState } from 'react'
 import {
   ConnectEmbed,
   useActiveAccount,
   useActiveWallet,
   useConnect,
   useDisconnect,
-} from 'thirdweb/react';
-import { shortenAddress } from 'thirdweb/utils';
-import { getUserEmail, inAppWallet } from 'thirdweb/wallets/in-app';
-import { router } from 'expo-router';
-import { baseSepolia, ethereum } from 'thirdweb/chains';
-import { createAuth } from 'thirdweb/auth';
-import SavingsScreen from '@/features/savings';
-import SettingsScreen from '@/features/settings';
-import AirtimeComp from '@/features/others/Airtime';
+} from 'thirdweb/react'
+import { shortenAddress } from 'thirdweb/utils'
+import { getUserEmail, inAppWallet } from 'thirdweb/wallets/in-app'
+import { router } from 'expo-router'
+import { baseSepolia, ethereum } from 'thirdweb/chains'
+import { createAuth } from 'thirdweb/auth'
+import SavingsScreen from '@/features/savings'
+import SettingsScreen from '@/features/settings'
+import AirtimeComp from '@/features/others/Airtime'
 
 const wallets = [
   inAppWallet({
@@ -31,35 +31,30 @@ const wallets = [
       sponsorGas: true,
     },
   }),
-];
+]
 
 const thirdwebAuth = createAuth({
   domain: 'localhost:3000',
   client,
-});
+})
 
 // fake login state, this should be returned from the backend
-let isLoggedIn = false;
+let isLoggedIn = false
 
 export default function HomeScreen() {
-  const account = useActiveAccount();
-  const theme = useColorScheme();
+  const account = useActiveAccount()
+  const theme = useColorScheme()
 
   //  router.replace("/(tabs)/home");
   if (account) {
-    router.replace('/(tabs)/home');
+    router.replace('/(tabs)/home')
   }
 
-  return <AirtimeComp />;
+  return <AirtimeComp />
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/title.png')}
-          style={styles.reactLogo}
-        />
-      }
+      headerImage={<Image source={require('@/assets/images/title.png')} style={styles.reactLogo} />}
     >
       <ConnectEmbed
         client={client}
@@ -69,37 +64,37 @@ export default function HomeScreen() {
         auth={{
           async doLogin(params) {
             // fake delay
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            const verifiedPayload = await thirdwebAuth.verifyPayload(params);
-            isLoggedIn = verifiedPayload.valid;
+            await new Promise((resolve) => setTimeout(resolve, 2000))
+            const verifiedPayload = await thirdwebAuth.verifyPayload(params)
+            isLoggedIn = verifiedPayload.valid
           },
           async doLogout() {
-            isLoggedIn = false;
+            isLoggedIn = false
           },
           async getLoginPayload(params) {
-            return thirdwebAuth.generatePayload(params);
+            return thirdwebAuth.generatePayload(params)
           },
           async isLoggedIn(address) {
-            return isLoggedIn;
+            return isLoggedIn
           },
         }}
       />
 
       <CustomConnectUI />
     </ParallaxScrollView>
-  );
+  )
 }
 
 const CustomConnectUI = () => {
-  const wallet = useActiveWallet();
-  const account = useActiveAccount();
-  const [email, setEmail] = useState<string | undefined>();
-  const { disconnect } = useDisconnect();
+  const wallet = useActiveWallet()
+  const account = useActiveAccount()
+  const [email, setEmail] = useState<string | undefined>()
+  const { disconnect } = useDisconnect()
   useEffect(() => {
     if (wallet && wallet.id === 'inApp') {
-      getUserEmail({ client }).then(setEmail);
+      getUserEmail({ client }).then(setEmail)
     }
-  }, [wallet]);
+  }, [wallet])
 
   return wallet && account ? (
     <View>
@@ -112,11 +107,11 @@ const CustomConnectUI = () => {
     <>
       <ConnectWithGoogle />
     </>
-  );
-};
+  )
+}
 
 const ConnectWithGoogle = () => {
-  const { connect, isConnecting } = useConnect();
+  const { connect, isConnecting } = useConnect()
   return (
     <ThemedButton
       title="Connect with Google"
@@ -129,17 +124,17 @@ const ConnectWithGoogle = () => {
               chain,
               sponsorGas: true,
             },
-          });
+          })
           await w.connect({
             client,
             strategy: 'google',
-          });
-          return w;
-        });
+          })
+          return w
+        })
       }}
     />
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   titleContainer: {
@@ -180,4 +175,4 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'right',
   },
-});
+})

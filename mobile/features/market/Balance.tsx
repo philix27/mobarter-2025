@@ -1,18 +1,18 @@
-import { TView } from '@/components/TView';
-import { useColor } from '@/hooks/useColor';
-import React from 'react';
-import { Text } from 'react-native';
-import { useActiveAccount } from 'thirdweb/react';
-import { useGetTokenBalance } from '@/hooks';
+import { TView } from '@/components/ui'
+import { useColor } from '@/hooks/useColor'
+import React from 'react'
+import { Text } from 'react-native'
+import { useActiveAccount } from 'thirdweb/react'
+import { useGetTokenBalance } from '@/hooks'
 
 export default function Balance() {
-  const appColor = useColor();
-  const account = useActiveAccount();
+  const appColor = useColor()
+  const account = useActiveAccount()
 
-  const { data, isLoading } = useGetTokenBalance(account!.address, 'NG');
+  const { data, isLoading } = useGetTokenBalance(account!.address, 'NG')
 
   if (isLoading) {
-    return <TView />;
+    return <TView />
   }
   return (
     <TView
@@ -27,9 +27,7 @@ export default function Balance() {
         justifyContent: 'center',
       }}
     >
-      <Text style={{ fontSize: 34, color: appColor.text, fontWeight: 600 }}>
-        {data} USD
-      </Text>
+      <Text style={{ fontSize: 34, color: appColor.text, fontWeight: 600 }}>{data} USD</Text>
       <Text
         style={{
           fontSize: 17,
@@ -41,5 +39,5 @@ export default function Balance() {
         ~ {data! * 1600} NGN
       </Text>
     </TView>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import HeaderBar from '@/components/Header';
-import BettingComp from '@/features/others/Betting';
-import React from 'react';
+import { HeaderBar } from '@/components/layout'
+import BettingComp from '@/features/others/Betting'
+import React from 'react'
 
 export default function Page() {
   return (
@@ -8,5 +8,5 @@ export default function Page() {
       <HeaderBar title="Fund Betting Wallets" showBackBtn backTo="/p2p" />
       <BettingComp />
     </>
-  );
+  )
 }

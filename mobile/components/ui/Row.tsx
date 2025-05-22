@@ -1,22 +1,22 @@
-import IconRound from '@/components/IconRound';
-import { TText } from '@/components/TText';
-import { TView } from '@/components/TView';
-import { useColor } from '@/hooks/useColor';
-import { JSX } from 'react';
-import { TouchableOpacity, Image } from 'react-native';
-import { SvgUri } from 'react-native-svg';
+import IconRound from '@/components/ui/IconRound'
+import { TView } from '@/components/ui/TView'
+import { useColor } from '@/hooks/useColor'
+import { JSX } from 'react'
+import { TouchableOpacity, Image } from 'react-native'
+import { SvgUri } from 'react-native-svg'
+import { TText } from './TText'
 
-export default function Row(props: {
-  title: string;
-  desc?: string;
-  imgUrl?: string;
-  svgUrl?: string;
-  bgColor?: string;
-  icon?: JSX.Element;
-  onClick?: VoidFunction;
+export function Row(props: {
+  title: string
+  desc?: string
+  imgUrl?: string
+  svgUrl?: string
+  bgColor?: string
+  icon?: JSX.Element
+  onClick?: VoidFunction
 }) {
-  const appColor = useColor();
-  const bgColor = props.bgColor ? props.bgColor : appColor.card;
+  const appColor = useColor()
+  const bgColor = props.bgColor ? props.bgColor : appColor.card
   return (
     <TouchableOpacity
       style={{
@@ -55,9 +55,7 @@ export default function Row(props: {
           />
         )}
 
-        {props.icon && (
-          <IconRound style={{ marginRight: 12 }}>{props.icon}</IconRound>
-        )}
+        {props.icon && <IconRound style={{ marginRight: 12 }}>{props.icon}</IconRound>}
 
         <TView style={{ backgroundColor: bgColor }}>
           <TText type="defaultSemiBold">{props.title}</TText>
@@ -79,5 +77,5 @@ export default function Row(props: {
         </TView>
       </TView>
     </TouchableOpacity>
-  );
+  )
 }

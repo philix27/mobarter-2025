@@ -1,28 +1,26 @@
-import { ActivityIndicator, FlatList, ScrollView } from 'react-native';
-import { TView } from '@/components/TView';
-import React from 'react';
-import { AssetsRow } from './AssetsRow';
-import { TokenId, Tokens } from '@/assets/tokens/tokens';
-import { useGetTokens } from '@/hooks';
-import { AppStores } from '@/lib/zustand';
-import { useActiveAccount } from 'thirdweb/react';
+import { ActivityIndicator, FlatList, ScrollView } from 'react-native'
+import { TView } from '@/components/ui'
+import React from 'react'
+import { AssetsRow } from './AssetsRow'
+import { TokenId, Tokens } from '@/assets/tokens/tokens'
+import { useGetTokens } from '@/hooks'
+import { AppStores } from '@/lib/zustand'
+import { useActiveAccount } from 'thirdweb/react'
 
 export default function AssetsCrypto() {
-  const account = useActiveAccount();
-  const { data, isLoading } = useGetTokens(account!.address, 'NG');
-  const store = AppStores.useView();
+  const account = useActiveAccount()
+  const { data, isLoading } = useGetTokens(account!.address, 'NG')
+  const store = AppStores.useView()
 
   if (isLoading) {
-    return <ActivityIndicator />;
+    return <ActivityIndicator />
   }
 
   const getData = () => {
-    if (!data) return [];
-    if (store.activeViewAsset === 'ALL') return data;
-    return data?.filter(
-      val => val.chianId.toString() === store.activeViewAsset,
-    );
-  };
+    if (!data) return []
+    if (store.activeViewAsset === 'ALL') return data
+    return data?.filter((val) => val.chianId.toString() === store.activeViewAsset)
+  }
 
   return (
     <ScrollView>
@@ -31,9 +29,9 @@ export default function AssetsCrypto() {
           <FlatList
             data={getData()}
             renderItem={({ item }) => {
-              const s = item.symbol as TokenId;
-              const token = Tokens[s];
-              const Logo = token.logo;
+              const s = item.symbol as TokenId
+              const token = Tokens[s]
+              const Logo = token.logo
               return (
                 <AssetsRow
                   // icon={<Logo height={30} width={30} />}
@@ -44,7 +42,7 @@ export default function AssetsCrypto() {
                   tokenPrice={item.tokenPrice}
                   performance={item.name}
                   onPress={() => {
-                    return;
+                    return
                     // router.push({
                     //   pathname: `/coin/[id]`,
                     // pathname: `/coin/[id]`,
@@ -53,11 +51,11 @@ export default function AssetsCrypto() {
                     // });
                   }}
                 />
-              );
+              )
             }}
           />
         )}
       </TView>
     </ScrollView>
-  );
+  )
 }

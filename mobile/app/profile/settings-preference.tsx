@@ -1,7 +1,6 @@
-import { Image, SafeAreaView, StyleSheet } from "react-native";
-import { TText } from "@/components/TText";
-import { TView } from "@/components/TView";
-import HeaderBar from "@/components/Header";
+import { Image, SafeAreaView, StyleSheet } from 'react-native'
+import { TView, TText } from '@/components/ui'
+import { HeaderBar } from '@/components/layout'
 
 export default function MinisafeScreen() {
   return (
@@ -11,13 +10,13 @@ export default function MinisafeScreen() {
         <TText type="title">Welcome!</TText>
       </TView>
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 8,
   },
   stepContainer: {
@@ -29,6 +28,6 @@ const styles = StyleSheet.create({
     width: 290,
     bottom: 0,
     left: 0,
-    position: "absolute",
+    position: 'absolute',
   },
-});
+})

@@ -1,7 +1,6 @@
-import { TText, TView } from '@/components';
-import { useColor } from '@/hooks/useColor';
-import React, { useState } from 'react';
-import Wrapper from '@/components/Wrapper';
+import { TText, TView } from '@/components/ui'
+import React, { useState } from 'react'
+import { Wrapper } from '@/components/layout'
 
 export default function PaymentsScreen() {
   return (
@@ -13,5 +12,5 @@ export default function PaymentsScreen() {
         <TText>Auto Pay</TText>
       </TView>
     </Wrapper>
-  );
+  )
 }

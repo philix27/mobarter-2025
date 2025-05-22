@@ -1,17 +1,16 @@
-import { TText } from '@/components/TText';
-import { TView } from '@/components/TView';
-import { useGetChains } from '@/hooks';
-import { useColor } from '@/hooks/useColor';
-import { AppStores } from '@/lib/zustand';
-import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TText, TView } from '@/components/ui'
+import { useGetChains } from '@/hooks'
+import { useColor } from '@/hooks/useColor'
+import { AppStores } from '@/lib/zustand'
+import React from 'react'
+import { TouchableOpacity } from 'react-native'
 
 export default function AssetsTab() {
-  const store = AppStores.useView();
-  const { data, isLoading } = useGetChains();
+  const store = AppStores.useView()
+  const { data, isLoading } = useGetChains()
 
   if (isLoading) {
-    return <TView />;
+    return <TView />
   }
   return (
     <TView>
@@ -27,7 +26,7 @@ export default function AssetsTab() {
           title={'ALL'}
           isActive={store.activeViewAsset === 'ALL'}
           onPress={() => {
-            store.update({ activeViewAsset: 'ALL' });
+            store.update({ activeViewAsset: 'ALL' })
           }}
         />
         {data?.map((item, i) => (
@@ -36,21 +35,17 @@ export default function AssetsTab() {
             title={item.name}
             isActive={store.activeViewAsset === item.chainId.toString()}
             onPress={() => {
-              store.update({ activeViewAsset: item.chainId.toString() });
+              store.update({ activeViewAsset: item.chainId.toString() })
             }}
           />
         ))}
       </TView>
     </TView>
-  );
+  )
 }
 
-function TabIem(params: {
-  title: string;
-  isActive: boolean;
-  onPress: VoidFunction;
-}) {
-  const appColor = useColor();
+function TabIem(params: { title: string; isActive: boolean; onPress: VoidFunction }) {
+  const appColor = useColor()
   return (
     <TouchableOpacity onPress={params.onPress}>
       <TView
@@ -72,5 +67,5 @@ function TabIem(params: {
         </TText>
       </TView>
     </TouchableOpacity>
-  );
+  )
 }

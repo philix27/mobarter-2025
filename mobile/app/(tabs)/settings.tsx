@@ -1,5 +1,5 @@
-import HeaderBar from '@/components/Header';
-import SettingsScreen from '@/features/settings';
+import { HeaderBar } from '@/components/layout/Header'
+import SettingsScreen from '@/features/settings'
 
 export default function BuyScreen() {
   return (
@@ -7,5 +7,5 @@ export default function BuyScreen() {
       <HeaderBar title="Settings" />
       <SettingsScreen />
     </>
-  );
+  )
 }

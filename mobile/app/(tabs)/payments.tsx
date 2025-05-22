@@ -1,5 +1,5 @@
-import HeaderBar from '@/components/Header';
-import ServicesScreen from '@/features/services';
+import { HeaderBar } from '@/components/layout'
+import ServicesScreen from '@/features/services'
 
 export default function ReadScreen() {
   return (
@@ -7,5 +7,5 @@ export default function ReadScreen() {
       <HeaderBar title="Payments" />
       <ServicesScreen />;
     </>
-  );
+  )
 }
