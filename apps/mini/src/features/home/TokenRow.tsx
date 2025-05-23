@@ -16,7 +16,7 @@ export function TokenRow(props: IToken & { className?: string; onClick?: VoidFun
   })
 
   if (isLoading) {
-    return null
+    return  <div />
   }
 
   return (

@@ -15,8 +15,9 @@ export default function Home() {
 
       <div className="flex flex-col rounded-md w-full gap-y-[0.1px] px-1 py-1">
         {tokensList.map((val, i) => {
+            if (val === undefined) return <div key={i} />
           const tokenId = val.symbol as TokenId
-          if (tokenId === undefined) return
+          if (tokenId === undefined) return  <div key={i}/>
           return <TokenRow key={i} {...val} className="bg-card" />
         })}
       </div>

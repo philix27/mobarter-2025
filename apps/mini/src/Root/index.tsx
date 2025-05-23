@@ -2,12 +2,11 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { type PropsWithChildren } from 'react'
 import { Toaster } from 'sonner'
-import { WagmiProvider, createConfig, http, useBalance } from 'wagmi'
+import { WagmiProvider, createConfig, http } from 'wagmi'
 import { base, celo, celoAlfajores } from 'wagmi/chains'
 
 import { Spinner } from '../components/Spinner'
 import { useDidMount } from '../hooks/useDidMount'
-import { COLLECTOR, ChainId, TokenId, getTokenAddress } from '../lib/config'
 import { AppStores } from '../lib/zustand'
 
 import { TgSetup } from './Telegram'
@@ -79,18 +78,9 @@ export function Root(props: PropsWithChildren) {
 }
 
 function Others(props: PropsWithChildren) {
-  const { data } = useBalance({
-    address: COLLECTOR as `0x${string}`,
-    chainId: ChainId.Celo,
-    token: getTokenAddress(TokenId.cUSD, ChainId.Celo) as `0x${string}`,
-  })
-
   return (
     <>
-      <TgSetup>
-        {props.children}
-        <p>{JSON.stringify(data?.value)}</p>
-      </TgSetup>
+      <TgSetup>{props.children}</TgSetup>
       <Toaster richColors position="bottom-center" expand={false} closeButton duration={2000} />
     </>
   )
