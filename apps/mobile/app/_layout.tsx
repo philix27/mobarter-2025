@@ -4,7 +4,6 @@ import '@ethersproject/shims';
 import 'expo-router/entry';
 import 'react-native-reanimated';
 import { useFonts } from 'expo-font';
-import { ThirdwebProvider } from 'thirdweb/react';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
@@ -35,33 +34,31 @@ export default function RootLayout() {
   }
 
   return (
-    <ThirdwebProvider>
-      <Drawer
-        screenOptions={{
-          headerShown: false,
-          drawerLabelStyle: {
-            // marginLeft: -20,
-            color: appColor.text,
-          },
-          drawerActiveBackgroundColor: appColor.background,
-          drawerStyle: {
-            width: Dimensions.get('window').width / 1.5,
-            backgroundColor: appColor.background,
-          },
-        }}
-        drawerContent={CustomDrawerContent}
-      >
+    <Drawer
+      screenOptions={{
+        headerShown: false,
+        drawerLabelStyle: {
+          // marginLeft: -20,
+          color: appColor.text,
+        },
+        drawerActiveBackgroundColor: appColor.background,
+        drawerStyle: {
+          width: Dimensions.get('window').width / 1.5,
+          backgroundColor: appColor.background,
+        },
+      }}
+      drawerContent={CustomDrawerContent}
+    >
       <RootProviders>
-          <Drawer.Screen
-            name="(tabs)"
-            options={{
-              drawerLabel: 'Home',
-              title: 'Home',
-            }}
-          />
-          <StatusBar style="auto" />
-        </RootProviders>
-      </Drawer>
-    </ThirdwebProvider>
+        <Drawer.Screen
+          name="(tabs)"
+          options={{
+            drawerLabel: 'Home',
+            title: 'Home',
+          }}
+        />
+        <StatusBar style="auto" />
+      </RootProviders>
+    </Drawer>
   );
 }

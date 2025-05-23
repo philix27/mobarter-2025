@@ -87,26 +87,26 @@ export default function AirtimeComp() {
 
     confirmModal.current.open()
   }
-
+  const transaction = prepareContractCall({
+    contract,
+    maxFeePerGas: 30n,
+    maxPriorityFeePerGas: 1n,
+    method:
+      'function requestAirtime(address token,uint256 amountPaid,uint256 amountOfAirtime,uint256 operatorId,uint256 fee)',
+    params: [
+      '0x765DE816845861e75A25fCA122bb6898B8B1282a',
+      toWei('1'),
+      toWei('1600'),
+      toWei('460'),
+      toWei('0.1'),
+    ],
+    erc20Value: {
+      tokenAddress: '0x765DE816845861e75A25fCA122bb6898B8B1282a', // the address of the ERC20 token
+      amountWei: toWei('1'), // the amount of tokens to transfer in wei
+    },
+  })
   const onPay = () => {
-    const transaction = prepareContractCall({
-      contract,
-      maxFeePerGas: 30n,
-      maxPriorityFeePerGas: 1n,
-      method:
-        'function requestAirtime(address token,uint256 amountPaid,uint256 amountOfAirtime,uint256 operatorId,uint256 fee)',
-      params: [
-        '0x765DE816845861e75A25fCA122bb6898B8B1282a',
-        toWei('1'),
-        toWei('1600'),
-        toWei('460'),
-        toWei('0.1'),
-      ],
-      erc20Value: {
-        tokenAddress: '0x765DE816845861e75A25fCA122bb6898B8B1282a', // the address of the ERC20 token
-        amountWei: toWei('1'), // the amount of tokens to transfer in wei
-      },
-    })
+
     sendTransaction(transaction)
   }
 
