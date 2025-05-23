@@ -1,3 +1,5 @@
+import { toast } from 'sonner'
+
 export function toTitleCase(str: string) {
   return str.replace(/\w\S*/g, (txt) => {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
@@ -11,9 +13,6 @@ export const escapeRegExp = (string: string) => string.replace(/[.*+?^${}()|[\]\
 export const truncateTextByLength = (length: number, text: string): string => {
   return text.length > length ? text.slice(0, length) + '...' : text
 }
-
-import { toast } from 'sonner';
-
 
 export function shortString(str: any, len = 5): string {
   if (Array.isArray(str)) {
@@ -46,8 +45,8 @@ export const pasteTextFromClipboard = async () => {
   return val
 }
 
-
 export function formatEtherBalance(balance: bigint, decimals = 18, precision = 4) {
+  if (balance === undefined) return 0
   const divisor = 10 ** decimals
   const ether = Number(balance) / divisor
   return ether.toFixed(precision) // returns a string like "0.1234"

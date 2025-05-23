@@ -16,9 +16,16 @@ export function TokenRow(props: IToken & { className?: string; onClick?: VoidFun
   })
 
   if (isLoading) {
-    return  <div />
+    return <div />
   }
 
+  const getVal = () => {
+    if (data === undefined) return 0
+    if (data.value === undefined) return 0
+    if (data.value === BigInt(0)) return 0
+    if (data.value < BigInt(0)) return 0
+    return formatEtherBalance(data.value, data.decimals, 3)
+  }
   return (
     <div
       onClick={props.onClick}
@@ -38,9 +45,7 @@ export function TokenRow(props: IToken & { className?: string; onClick?: VoidFun
           <p className="text-[14px]">{props.symbol}</p>
           <p className="text-muted text-[12px]">{props.fullName}</p>
         </div>
-        <p className="text-[14px] font-medium">
-          {isLoading ? '*.**' : data && data.value ? formatEtherBalance(data.value, props.decimals, 3) : '0'}
-        </p>
+        <p className="text-[14px] font-medium">{isLoading ? '*.**' : getVal()}</p>
       </div>
     </div>
   )

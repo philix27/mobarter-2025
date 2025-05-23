@@ -15,9 +15,9 @@ export default function Home() {
 
       <div className="flex flex-col rounded-md w-full gap-y-[0.1px] px-1 py-1">
         {tokensList.map((val, i) => {
-            if (val === undefined) return <div key={i} />
+          if (val === undefined) return <div key={i} />
           const tokenId = val.symbol as TokenId
-          if (tokenId === undefined) return  <div key={i}/>
+          if (tokenId === undefined) return <div key={i} />
           return <TokenRow key={i} {...val} className="bg-card" />
         })}
       </div>
@@ -42,9 +42,17 @@ function Balance() {
       </div>
     )
 
+  const getVal = () => {
+    if (data === undefined) return 0
+    if (data.value === undefined) return 0
+    if (data.value === BigInt(0)) return 0
+    if (data.value < BigInt(0)) return 0
+    return formatEtherBalance(data.value, data.decimals, 3)
+  }
+
   return (
     <div className="h-full flex items-center justify-center mt-5">
-      <p className="text-[25px]">{formatEtherBalance(data!.value, data!.decimals, 3)} cUSD</p>
+      <p className="text-[25px]">{getVal()} cUSD</p>
     </div>
   )
 }
