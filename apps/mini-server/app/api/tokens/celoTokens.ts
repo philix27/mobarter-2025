@@ -1,6 +1,6 @@
 import { publicPath } from "@/app/publicPath";
 import { Color } from "./color";
-import { Assets } from "@/app/Assets";
+import { Assets } from "@/app/utils/Assets";
 
 export interface Token {
   id: TokenId;

@@ -6,7 +6,7 @@ export async function GET(
   req: NextApiRequest,
   res: NextApiResponse<GiftCardsResult>,
 ) {
-  const url = ` https://giftcards.reloadly.com/products`;
+  const url = `https://giftcards.reloadly.com/products`;
   const token = process.env.GIFT_CARD_TOKEN;
   // const { productCategoryId } = req.query
 

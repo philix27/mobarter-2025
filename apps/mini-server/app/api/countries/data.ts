@@ -1,4 +1,4 @@
-import { Assets } from "@/app/Assets";
+import { Assets } from "@/app/utils/Assets";
 import { publicPath } from "@/app/publicPath";
 
 export type CountriesIso =

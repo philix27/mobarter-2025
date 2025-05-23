@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { logger } from "@/app/logger";
+import { logger } from "@/app/utils/logger";
 import axios from "axios";
 
 export async function GET(req: NextRequest, res: NextResponse) {

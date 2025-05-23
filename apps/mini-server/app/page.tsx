@@ -1,4 +1,4 @@
-import DisplayBank from "./DisplayBank";
+import DisplayBank from "./comps/DisplayBank";
 const Bank = DisplayBank as any;
 export default function App() {
   return (
