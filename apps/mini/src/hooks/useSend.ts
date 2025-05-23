@@ -13,6 +13,7 @@ import { useAppContext } from '../root/TgContext'
 import StableTokenABI from './cusdAbi.json'
 import { useProvider } from './useProvider'
 
+const w = window as any
 const tokenAddress: Record<TokenId, string> = {
   [TokenId.CELO]: '0x471EcE3750Da237f93B8E339c536989b8978a438',
   [TokenId.cUSD]: '0x765DE816845861e75A25fCA122bb6898B8B1282a',
@@ -74,7 +75,7 @@ export function useSendTokenWeb() {
   const { data: hash, sendTransaction } = useSendTransaction()
 
   const sendErc20 = async (props: { recipient: string; amount: string; token: TokenId }) => {
-    if (!window.ethereum) {
+    if (!w.ethereum) {
       throw new Error('No eth connection')
       // return { success: false, transactionHash: null }
     }
@@ -82,12 +83,12 @@ export function useSendTokenWeb() {
     const privateClient = createWalletClient({
       chain: celo,
       // chain: _chainId === celo.id ? celo : celoAlfajores,
-      transport: custom(window.ethereum),
+      transport: custom(w.ethereum),
     })
 
     // const publicClient = createPublicClient({
     //   chain: _chainId === celo.id ? celo : celoAlfajores,
-    //   transport: custom(window.ethereum),
+    //   transport: custom(w.ethereum),
     // })
 
     try {

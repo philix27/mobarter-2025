@@ -11,15 +11,15 @@ export default function Home() {
   return (
     <div className="w-full items-center justify-center flex flex-col">
       <HomeTabs />
-      {/* <Balance /> */}
+      <Balance />
 
-      {/* <div className="flex flex-col rounded-md w-full gap-y-[0.1px] px-1 py-1">
+      <div className="flex flex-col rounded-md w-full gap-y-[0.1px] px-1 py-1">
         {tokensList.map((val, i) => {
           const tokenId = val.symbol as TokenId
           if (tokenId === undefined) return
           return <TokenRow key={i} {...val} className="bg-card" />
         })}
-      </div> */}
+      </div>
       <HomePopups />
     </div>
   )
