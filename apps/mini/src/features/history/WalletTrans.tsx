@@ -5,10 +5,10 @@ import BottomModal from 'src/components/BottomModal'
 import { Spinner } from 'src/components/Spinner'
 import { shortenAddress } from 'src/lib/config/addresses'
 
-import { ITransactionsResult, getTxHistory } from '@/src/lib/server'
-import { useAppContext } from '@/src/root/TgContext'
-import { cn, formatEtherBalance, shortString } from '@/src/lib/utils'
+import { useAppContext } from '@/src/Root/TgContext'
 import { TokenAddresses, TokenId } from '@/src/lib/config'
+import { ITransactionsResult, getTxHistory } from '@/src/lib/server'
+import { cn, formatEtherBalance, shortString } from '@/src/lib/utils'
 
 export default function WalletTransactions() {
   // const store = AppStores.useUser()

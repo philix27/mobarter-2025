@@ -6,7 +6,7 @@ import { PreventZoom } from 'src/lib/telegram'
 import { useIsSsr } from 'src/lib/utils/ssr'
 import 'src/styles/globals.css'
 
-import { Root } from '@/src/root'
+import { Root } from '@/src/Root'
 
 function SafeHydrate({ children }: PropsWithChildren<any>) {
   // Disable app SSR for now as it's not needed and

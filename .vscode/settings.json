@@ -3,28 +3,5 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit"
   },
-  "cSpell.words": [
-    "AIRTEL",
-    "Chidiebele",
-    "codegen",
-    "Eligbue",
-    "ETISALAT",
-    "farcaster",
-    "firstname",
-    "greengray",
-    "lastname",
-    "mento",
-    "Minipay",
-    "mobarter",
-    "qrcode",
-    "Reloadly",
-    "reown",
-    "SIGNUP",
-    "Solana",
-    "sonner",
-    "sveltestack",
-    "tailwindcss",
-    "thirdweb",
-    "wagmi"
-  ]
+  "cSpell.words": ["Mobarter", "stablecoins"]
 }

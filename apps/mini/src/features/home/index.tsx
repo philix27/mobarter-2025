@@ -3,9 +3,9 @@ import { useBalance } from 'wagmi'
 import HomePopups from './HomePopups'
 import { TokenRow } from './TokenRow'
 import { HomeTabs } from './TopTabs'
+import { useAppContext } from '@/src/Root/TgContext'
 import { ChainId, TokenId, getTokenAddress, tokensList } from '@/src/lib/config'
 import { formatEtherBalance } from '@/src/lib/utils'
-import { useAppContext } from '@/src/root/TgContext'
 
 export default function Home() {
   return (

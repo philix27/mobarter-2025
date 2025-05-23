@@ -14,8 +14,8 @@ import { formatEtherBalance, pasteTextFromClipboard, shortString } from 'src/lib
 import { logger } from 'src/lib/utils/logger'
 import { useBalance } from 'wagmi'
 
+import { useAppContext } from '@/src/Root/TgContext'
 import { useSendToken } from '@/src/hooks/useSend'
-import { useAppContext } from '@/src/root/TgContext'
 
 export default function SendCrypto() {
   const [selectedToken, setToken] = useState('CELO')

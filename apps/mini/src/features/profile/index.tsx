@@ -11,8 +11,8 @@ import { copyTextToClipboard, shortString } from 'src/lib/utils'
 
 import { Container, MoreFeat } from './More'
 import { Row } from './comps'
-import { useAppContext } from '@/src/root/TgContext'
-import LiveLoader from '@/src/root/live-loader'
+import { useAppContext } from '@/src/Root/TgContext'
+import LiveLoader from '@/src/Root/live-loader'
 
 const DImage = Image as any
 function useInitData() {

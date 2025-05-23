@@ -2,10 +2,10 @@
 import Image from 'next/image'
 import { useBalance } from 'wagmi'
 
-import { useAppContext } from '@/src/root/TgContext'
+import { useAppContext } from '@/src/Root/TgContext'
+import { ChainId, IToken, TokenId, getTokenAddress } from '@/src/lib/config'
+import { cn, formatEtherBalance } from '@/src/lib/utils'
 import { TokenIcons } from '@/src/tokens/TokenIcon'
-import { IToken, ChainId, getTokenAddress, TokenId } from '@/src/lib/config';
-import { cn, formatEtherBalance } from '@/src/lib/utils';
 
 export function TokenRow(props: IToken & { className?: string; onClick?: VoidFunction }) {
   const { evmAddress } = useAppContext()

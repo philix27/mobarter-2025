@@ -1,40 +1,34 @@
 # Mobarter
 
-### A Decentralized P2P Trading & Payment Platform*
+### A payment solution for Africans
 ## Overview
-Mobarter is a P2P trading platform enabling users to buy, sell cryptocurrencies, and supports on/off ramping for fiat conversion. It also integrates crypto payments for easier transactions, focusing on security, decentralization, and user-friendliness. Mobarter aims to empower Africans with cross-border payment solutions using blockchain technology.
+Mobarter is a one stop shop to helps users manage their daily payments using cryptocurrencies. From payment of bills to 
+scheduling of payments to friends and loved ones. We also help you save towards your goals, and earn as you save.
 
 ## Features
 
-- **P2P Exchange:**  
-  Onchain agents can help you carryout onchain actions such as buying a token, creating an NFT and lauching a smart contract.
+- **Purchase Airtime and Data Plan:** Easily purchase internet credits and airtime with ease
 
-- **Cryptocurrency Swap:**  
-  Create wallets for various specific use case with ease. Powered by Privy Server Wallets
+- **Fund Betting Wallets:** Credit your betting wallets ranging from OneXBet, to BetNaija using stablecoins
 
-- **Locked Savings:**  
-  Tweets can also be created and published
+- **Pay utility bills:** Pay your electricity and water bill using stablecoins
 
-- **Settle local bills:**  
-  Tweets can also be created and published
+- **Schedule Payments to friends and family:**  Make periodic payments in fiat currencies to friends and family
 
-## Architecture
-
-1. **Frontend Stack:**
-
-   - **React Native:** A mobile app with a friendly interface.
+- **On/Off Ramping service:** We facilitate ramping services. Fast and reliable exchanges
   
+## Architecture
+Currently we have:
 
-2. **Backend Stack:**
+1. **Mobile App:** React native
 
-   - **Privy Auth:** Used for issue wallet to users.
-   - **APIs:** Provides Graphql endpoints for frontend communication
-   - **Viem:** Used to manage onchain transactions on the backend
+2. **Telegram Mini App:** Next.js
+  
+3. **Backend Stack:** Nest.js
 
-3. **Smart Contract**
-   - An escrow smart contract to manage p2p exchange
+   - Nest.js
+   - Graphql API 
 
+4. **Mini Server**
+   - A Next.js support server for fast queries and remote files
 
-## How It Works
-
-Mobarter is built with **React Native** for a smooth mobile experience, **Privy Auth** for secure wallet issuance, **GraphQL APIs** for efficient communication, and **Viem** for on-chain transaction management. It leverages blockchain technology to provide a decentralized and user-friendly financial solution for Africa.
