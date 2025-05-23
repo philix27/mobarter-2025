@@ -2,20 +2,27 @@
 
 ### A payment solution for Africans
 ## Overview
-Mobarter is a one stop shop to helps users manage their daily payments using cryptocurrencies. From payment of bills to 
-scheduling of payments to friends and loved ones. We also help you save towards your goals, and earn as you save.
+Mobarter is your all-in-one platform for managing everyday payments using cryptocurrency. From paying bills to sending scheduled payments to friends and family, Mobarter makes crypto practical for daily life. Plus, you can save towards your financial goals and earn rewards as you do.
 
 ## Features
 
-- **Purchase Airtime and Data Plan:** Easily purchase internet credits and airtime with ease
+- 🔌 Buy Airtime & Data
+Instantly purchase mobile airtime and internet data using stablecoins.
 
-- **Fund Betting Wallets:** Credit your betting wallets ranging from OneXBet, to BetNaija using stablecoins
+- 🎲 Fund Betting Wallets
+Seamlessly top up betting platforms like OneXBet, Bet9ja, and more with crypto.
 
-- **Pay utility bills:** Pay your electricity and water bill using stablecoins
+- 🎁 Buy Gift Cards
+Use your crypto assets to purchase gift cards for loved ones.
 
-- **Schedule Payments to friends and family:**  Make periodic payments in fiat currencies to friends and family
+- 💡 Pay Utility Bills
+Pay electricity and water bills directly with stablecoins.
 
-- **On/Off Ramping service:** We facilitate ramping services. Fast and reliable exchanges
+- 🔁 Schedule Payments
+Automate recurring fiat payments to friends and family.
+
+- 🔄 On/Off Ramping Services
+Fast, reliable crypto-to-fiat and fiat-to-crypto exchange services.
   
 ## Architecture
 Currently we have:
