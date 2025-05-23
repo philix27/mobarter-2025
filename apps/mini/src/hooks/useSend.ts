@@ -1,19 +1,15 @@
-import { submitReferral } from '@divvi/referral-sdk'
 import { useEthereum } from '@particle-network/auth-core-modal'
-import { ethers, parseEther } from 'ethers'
+import { ethers } from 'ethers'
 import { toast } from 'sonner'
 import { TokenId } from 'src/lib/config/tokens'
-import { createWalletClient, custom } from 'viem'
-import { celo } from 'viem/chains'
-import { useSendTransaction } from 'wagmi'
 
 import { logger, shortString } from '../lib/utils'
 import { useAppContext } from '../root/TgContext'
 
-import StableTokenABI from './cusdAbi.json'
 import { useProvider } from './useProvider'
 
-const w = window 
+// const w = window as any
+
 const tokenAddress: Record<TokenId, string> = {
   [TokenId.CELO]: '0x471EcE3750Da237f93B8E339c536989b8978a438',
   [TokenId.cUSD]: '0x765DE816845861e75A25fCA122bb6898B8B1282a',
@@ -67,77 +63,6 @@ export function useSendToken() {
       logger.error('sendNative error', error)
       handleError(error)
     }
-  }
-
-  return { sendErc20, sendNative }
-}
-export function useSendTokenWeb() {
-  const { data: hash, sendTransaction } = useSendTransaction()
-
-  const sendErc20 = async (props: { recipient: string; amount: string; token: TokenId }) => {
-    if (w ||  !w.ethereum) {
-      throw new Error('No eth connection')
-      // return { success: false, transactionHash: null }
-    }
-    // const _chainId = 42220
-    const privateClient = createWalletClient({
-      chain: celo,
-      // chain: _chainId === celo.id ? celo : celoAlfajores,
-      transport: custom(w.ethereum),
-    })
-
-    // const publicClient = createPublicClient({
-    //   chain: _chainId === celo.id ? celo : celoAlfajores,
-    //   transport: custom(w.ethereum),
-    // })
-
-    try {
-      const [address] = await privateClient.getAddresses()
-
-      // const { request: rqst } = await publicClient.simulateContract({
-      //   account: address,
-      //   address: tokenAddress[props.token] as `0x${string}`,
-      //   abi: ERC20_ABI,
-      //   functionName: 'transfer',
-      //   args: [props.recipient, parseEther(props.amount)],
-      // })
-
-      const amountInWei = parseEther(props.amount)
-      const txHash = await privateClient.writeContract({
-        // rqst,
-        address: tokenAddress[props.token] as `0x${string}`,
-        abi: StableTokenABI.abi,
-        functionName: 'transfer',
-        account: address,
-        args: [props.recipient, amountInWei],
-      })
-
-      // const txnReceipt =
-      //   await publicClient.waitForTransactionReceipt({
-      //     hash: txHash,
-      //   })
-      // Step 3: Get the chain ID of the chain that the transaction was sent to
-      const chainId = await privateClient.getChainId()
-
-      // Step 4: Report the transaction to the attribution tracking API
-      await submitReferral({
-        txHash,
-        chainId,
-      })
-
-      return txHash as string
-    } catch (err: any) {
-      throw new Error(err.message.toString())
-      // return { success: false, transactionHash: null }
-    }
-  }
-
-  const sendNative = async (props: { recipient: string; amount: string }) => {
-    sendTransaction({
-      to: props.recipient as `0x${string}`,
-      value: parseEther(props.amount),
-    })
-    toast.success(`Send Native Success! Hash: ${shortString(hash)}`)
   }
 
   return { sendErc20, sendNative }

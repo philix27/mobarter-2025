@@ -12,7 +12,7 @@ import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
 import { AppSelect } from 'src/components/Select'
 import { Card, Label } from 'src/components/comps'
-import { useSendToken, useSendTokenWeb } from 'src/hooks/useSend'
+import { useSendToken } from 'src/hooks/useSend'
 import { TokenId } from 'src/lib/config/tokens'
 import { cn, pasteTextFromClipboard } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
@@ -26,14 +26,7 @@ import { COLLECTOR } from '@/src/lib/config'
 import { getBundlesOperator, getDataOperator } from '@/src/lib/server'
 
 export default function TopUpData(props: { isData?: boolean }) {
-  const store = AppStores.useSettings()
-  if (store.appEnv === 'MINIPAY') return <MinipayTopUp {...props} />
   return <TgTopUp {...props} />
-}
-
-export function MinipayTopUp(props: { isData?: boolean }) {
-  const { sendErc20 } = useSendTokenWeb()
-  return <TopUpDataComps sendErc20={sendErc20} isData={props.isData} />
 }
 
 export function TgTopUp(props: { isData?: boolean }) {

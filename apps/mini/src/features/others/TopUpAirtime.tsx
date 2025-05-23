@@ -12,7 +12,7 @@ import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
 import { AppSelect } from 'src/components/Select'
 import { Card, Label } from 'src/components/comps'
-import { useSendToken, useSendTokenWeb } from 'src/hooks/useSend'
+import { useSendToken } from 'src/hooks/useSend'
 import { TokenId } from 'src/lib/config/tokens'
 import { pasteTextFromClipboard } from 'src/lib/utils'
 import { AppStores } from 'src/lib/zustand'
@@ -23,14 +23,7 @@ import { countryCode, isDev, mapCountryToData, mapCountryToIso } from '@/src/lib
 import { COLLECTOR } from '@/src/lib/config'
 
 export default function Airtime() {
-  const store = AppStores.useSettings()
-  if (store.appEnv === 'MINIPAY') return <Minipay />
   return <Tg />
-}
-
-function Minipay() {
-  const { sendErc20 } = useSendTokenWeb()
-  return <AirtimeComps sendErc20={sendErc20} />
 }
 
 function Tg() {
