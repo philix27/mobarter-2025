@@ -87,13 +87,14 @@ export const useGetTokens = (address: string, country: string) => {
   return useQuery({
     queryKey: ['useGetTokens'],
     queryFn: async () => {
-      if (store.tokens.length > 0) {
+      if (store.activeToken) {
         return store.tokens
       }
 
       const res = await api.get(`/api/tokens`, {
         params: { address, country },
       })
+
       store.update({ tokens: res.data })
 
       return res.data as IToken[]

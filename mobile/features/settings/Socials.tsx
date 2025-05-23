@@ -1,9 +1,8 @@
-import Row from '@/components/ui/Row'
+import {Row} from '@/components/ui'
 import { AppStores } from '@/lib'
 import React from 'react'
 import { Linking } from 'react-native'
-import { Card, SectionTitle } from './Card'
-import { useGetLinksSocial } from '@/hooks'
+import { useGetLinksSocial } from '@/api'
 import { TView } from '@/components'
 
 export default function Socials() {

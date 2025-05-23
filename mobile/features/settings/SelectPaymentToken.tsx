@@ -20,11 +20,20 @@ export default function SelectPaymentToken() {
   // const store.activeToken = data!.filter((val) => val.symbol === store.activeToken)[0]
   return (
     <>
-      {store.activeToken && (
+      {store.activeToken ? (
         <Row
           title={`${store.activeToken.name}`}
           desc={'Select your preferred token for Payments'}
           imgUrl={store.activeToken.logoUrl}
+          onClick={() => {
+            countrySheet.current?.open()
+          }}
+        />
+      ) : (
+        <Row
+          title={`Select Payment token`}
+          desc={'Select your preferred token for Payments'}
+          // imgUrl={store.activeToken!.logoUrl}
           onClick={() => {
             countrySheet.current?.open()
           }}

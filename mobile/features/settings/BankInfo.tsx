@@ -1,6 +1,5 @@
-import { AppStores } from '@/lib/zustand';
-import InputButton from '@/components/forms/Button';
-import { InfoRow } from './Card';
+import { InputButton } from '@/components/forms'
+import { InfoRow } from './Card'
 
 export default function BankInfo() {
   return (
@@ -10,5 +9,5 @@ export default function BankInfo() {
       <InfoRow title="Zenith" title2={'0123456789'!} />
       <InputButton title="Manage" />
     </>
-  );
+  )
 }

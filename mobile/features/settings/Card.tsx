@@ -1,4 +1,4 @@
-import { TText, TView } from '@/components';
+import { TText, TView } from '@/components/ui';
 import { useColor } from '@/hooks/useColor';
 import { ReactNode } from 'react';
 

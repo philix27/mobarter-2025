@@ -3,7 +3,7 @@ import { TView } from '@/components/ui'
 import React from 'react'
 import { AssetsRow } from './AssetsRow'
 import { TokenId, Tokens } from '@/assets/tokens/tokens'
-import { useGetTokens } from '@/hooks'
+import { useGetTokens } from '@/api'
 import { AppStores } from '@/lib/zustand'
 import { useActiveAccount } from 'thirdweb/react'
 

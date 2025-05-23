@@ -1,8 +1,8 @@
-import Row from '@/components/ui/Row'
+import {Row} from '@/components/ui'
 import { AppStores } from '@/lib'
 import React from 'react'
 import { Linking } from 'react-native'
-import { useGetLinksDocs } from '@/hooks'
+import { useGetLinksDocs } from '@/api'
 import { TView } from '@/components'
 
 export default function Docs() {

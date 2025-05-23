@@ -4,7 +4,7 @@ import { useSocialProfiles } from 'thirdweb/react';
 import { ThirdwebClient } from 'thirdweb';
 import { resolveScheme } from 'thirdweb/storage';
 import { SocialProfile } from 'thirdweb/social';
-import { TText, TView } from '@/components';
+import { TText, TView } from '@/components/ui';
 
 interface SocialProfileCardProps {
   address: string | undefined;

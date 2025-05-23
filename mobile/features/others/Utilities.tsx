@@ -1,9 +1,8 @@
-import {InputText} from '@/components/forms/InputText'
-import {Wrapper} from '@/components/layout/Wrapper'
+import { InputText } from '@/components/forms'
+import { Wrapper } from '@/components/layout'
 import React from 'react'
 import { z } from 'zod'
-import { useAppForm, IEvents } from '@/lib'
-import { AppStores } from '@/lib/zustand'
+import { AppStores, useAppForm, IEvents } from '@/lib'
 
 const event: IEvents = 'AUTH_LOGIN'
 

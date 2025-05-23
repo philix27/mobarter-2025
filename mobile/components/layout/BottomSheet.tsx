@@ -3,9 +3,11 @@ import RBSheet, { RBSheetRef } from 'react-native-raw-bottom-sheet'
 import { useColor } from '@/hooks/useColor'
 
 import { TText, TView } from '../ui'
+import { ViewStyle } from 'react-native'
 
 type IProps = {
   children: ReactNode
+  style?: ViewStyle
   height?: number
   maxHeight?: number
   minHeight?: number
@@ -49,6 +51,7 @@ export const BottomSheet = forwardRef<any, IProps>(({ maxHeight = 700, ...props 
           height: props.height,
           maxHeight: maxHeight,
           backgroundColor: color.background,
+          ...props.style,
         },
         wrapper: {
           backgroundColor: '#00000075',
@@ -76,3 +79,23 @@ export const BottomSheet = forwardRef<any, IProps>(({ maxHeight = 700, ...props 
     </RBSheet>
   )
 })
+
+function Row(params: { text1: string; text2: string }) {
+  const color = useColor()
+  return (
+    <TView
+      style={{
+        width: '100%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: 15,
+      }}
+    >
+      <TText style={{ color: color.muted }}>{params.text1}</TText>
+      <TText style={{ fontStyle: 'normal', fontWeight: '700' }}>{params.text2}</TText>
+    </TView>
+  )
+}
+
+export const BtmSheet = { Row, Modal: BottomSheet }

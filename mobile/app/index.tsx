@@ -19,6 +19,7 @@ import { createAuth } from 'thirdweb/auth'
 import SavingsScreen from '@/features/savings'
 import SettingsScreen from '@/features/settings'
 import AirtimeComp from '@/features/others/Airtime'
+import ServicesScreen from '@/features/services'
 
 const wallets = [
   inAppWallet({
@@ -50,7 +51,7 @@ export default function HomeScreen() {
     router.replace('/(tabs)/home')
   }
 
-  // return <AirtimeComp />
+  // return <ServicesScreen />
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}

@@ -1,5 +1,5 @@
 import { TText, TView } from '@/components/ui'
-import { useGetChains } from '@/hooks'
+import { useGetChains } from '@/api'
 import { useColor } from '@/hooks/useColor'
 import { AppStores } from '@/lib/zustand'
 import React from 'react'

@@ -1,9 +1,9 @@
+import { useGetTokenBalance } from '@/api'
 import { TView } from '@/components/ui'
 import { useColor } from '@/hooks/useColor'
 import React from 'react'
 import { Text } from 'react-native'
 import { useActiveAccount } from 'thirdweb/react'
-import { useGetTokenBalance } from '@/hooks'
 
 export default function Balance() {
   const appColor = useColor()

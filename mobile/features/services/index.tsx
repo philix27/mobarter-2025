@@ -8,6 +8,7 @@ export default function ServicesScreen() {
     <Wrapper>
       {servicesList.map((item, i) => (
         <Row
+        key={i}
           {...item}
           onClick={() => {
             router.push(item.route as any)

@@ -5,7 +5,7 @@ export default function ReadScreen() {
   return (
     <>
       <HeaderBar title="Payments" />
-      <ServicesScreen />;
+      <ServicesScreen />
     </>
   )
 }

@@ -1,4 +1,4 @@
-import { Wrapper } from '@/components/layout/Wrapper'
+import { Wrapper } from '@/components/layout'
 import { TText } from '@/components/ui'
 import React from 'react'
 

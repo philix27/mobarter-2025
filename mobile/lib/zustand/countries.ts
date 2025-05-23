@@ -1,4 +1,3 @@
-import { IToken } from '@/api'
 import { ICountriesData } from '@/api/countries'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
@@ -6,15 +5,11 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 
 export interface ISlice {
   countries?: ICountriesData[]
-  tokens?: IToken[]
   activeIso?: string
-  activeTokenSymbol?: string
 }
 export const defaultValues: Required<ISlice> = {
   countries: [],
-  tokens: [],
   activeIso: 'NG',
-  activeTokenSymbol: 'cUSD',
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
