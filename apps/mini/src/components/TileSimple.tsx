@@ -19,7 +19,6 @@ export function TileSimple(params: {
       {params.imgUrl && (
         // eslint-disable-next-line react/jsx-no-comment-textnodes
         <div className="mr-3 size-[35px] rounded-full bg-background flex items-center justify-center">
-          // eslint-disable-next-line @next/next/no-img-element
           <img src={params.imgUrl} alt="flag" className="rounded-full h-full object-cover" />
         </div>
       )}

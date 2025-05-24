@@ -1,6 +1,7 @@
 import { useBalance } from 'wagmi'
 
 import HomePopups from './HomePopups'
+import QuickActions from './QuickActions'
 import { TokenRow } from './TokenRow'
 import { HomeTabs } from './TopTabs'
 import { useAppContext } from '@/src/Root/TgContext'
@@ -12,8 +13,8 @@ export default function Home() {
     <div className="w-full items-center justify-center flex flex-col">
       <HomeTabs />
       <Balance />
-
-      <div className="flex flex-col rounded-md w-full gap-y-[0.1px] px-1 py-1">
+      <QuickActions />
+      <div className="flex flex-col rounded-md w-full gap-y-[0.1px] px-1 py-1 mt-4">
         {tokensList.map((val, i) => {
           if (val === undefined) return <div key={i} />
           const tokenId = val.symbol as TokenId

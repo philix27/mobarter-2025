@@ -186,10 +186,10 @@ export default function Utilities() {
   )
 }
 
-function GridContainer(params: { children: ReactNode; className?: string; title: string }) {
+export function GridContainer(params: { children: ReactNode; className?: string; title?: string }) {
   return (
     <div className="mb-2">
-      <Label className="mb-[3px] ml-1">{params.title}</Label>
+      {params.title && <Label className="mb-[3px] ml-1">{params.title}</Label>}
       <div className="grid grid-cols-4 gap-y-4 w-full items-center justify-around  bg-card py-2 rounded-md">
         {params.children}
       </div>

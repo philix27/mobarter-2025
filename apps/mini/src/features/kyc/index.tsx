@@ -30,7 +30,7 @@ export default function Kyc() {
         onClick={() => {
           void pay({
             token: TokenId.cUSD,
-            amount: '1.2',
+            amount: '1',
             txName: 'AIRTIME',
             payload: {
               operatorId: 230
