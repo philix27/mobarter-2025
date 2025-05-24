@@ -2,9 +2,11 @@
 import Image from 'next/image'
 import { useBalance } from 'wagmi'
 
+import { getBal } from '../utilities/getBalance'
+
 import { useAppContext } from '@/src/Root/TgContext'
 import { ChainId, IToken, TokenId, getTokenAddress } from '@/src/lib/config'
-import { cn, formatEtherBalance } from '@/src/lib/utils'
+import { cn } from '@/src/lib/utils'
 import { TokenIcons } from '@/src/tokens/TokenIcon'
 
 export function TokenRow(props: IToken & { className?: string; onClick?: VoidFunction }) {
@@ -19,13 +21,6 @@ export function TokenRow(props: IToken & { className?: string; onClick?: VoidFun
     return <div />
   }
 
-  const getVal = () => {
-    if (data === undefined) return 0
-    if (data.value === undefined) return 0
-    if (data.value === BigInt(0)) return 0
-    if (data.value < BigInt(0)) return 0
-    return formatEtherBalance(data.value, data.decimals, 3)
-  }
   return (
     <div
       onClick={props.onClick}
@@ -45,7 +40,7 @@ export function TokenRow(props: IToken & { className?: string; onClick?: VoidFun
           <p className="text-[14px]">{props.symbol}</p>
           <p className="text-muted text-[12px]">{props.fullName}</p>
         </div>
-        <p className="text-[14px] font-medium">{isLoading ? '*.**' : getVal()}</p>
+        <p className="text-[14px] font-medium">{isLoading ? '*.**' : getBal(data)}</p>
       </div>
     </div>
   )

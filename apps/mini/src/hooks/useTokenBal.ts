@@ -1,7 +1,8 @@
 import { ChainId } from 'src/lib/config/chains'
 import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
-import { formatEtherBalance } from 'src/lib/utils'
 import { useAccount, useBalance } from 'wagmi'
+
+import { getBal } from '../features/utilities/getBalance'
 
 import { useAppContext } from '@/src/Root/TgContext'
 
@@ -15,7 +16,7 @@ export const useTokenBalance = (id: TokenId) => {
     token: getTokenAddress(id, ChainId.Celo) as `0x${string}`,
   })
 
-  return isLoading ? '...' : `${formatEtherBalance(data!.value, data!.decimals, 3)} ${id}`
+  return isLoading ? '...' : `${getBal(data)} ${id}`
 }
 
 export const useTokenBalanceWeb = (id: TokenId) => {
@@ -28,5 +29,5 @@ export const useTokenBalanceWeb = (id: TokenId) => {
     token: getTokenAddress(id, ChainId.Celo) as `0x${string}`,
   })
 
-  return isLoading ? '...' : `${formatEtherBalance(data!.value, data!.decimals, 3)} ${id}`
+  return isLoading ? '...' : `${getBal(data)} ${id}`
 }

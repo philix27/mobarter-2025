@@ -11,6 +11,7 @@ import {
   TradeType,
 } from '@repo/api'
 import { useState } from 'react'
+import { FaArrowDownShortWide } from 'react-icons/fa6'
 import { toast } from 'sonner'
 import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
@@ -34,6 +35,7 @@ export const convertBankCodeToBankName = (bankCode: string) => {
   return BankName.NgOpay
 }
 
+const TrailIcon = FaArrowDownShortWide as any
 export default function SellCrypto() {
   const store = AppStores.useSendToBank()
   const storeBank = AppStores.useBankAccount()
@@ -130,7 +132,7 @@ export default function SellCrypto() {
     <div className="w-full items-center justify-center flex flex-col px-1 gap-y-2">
       <BalCard />
 
-      <div className="w-full">
+      {/* <div className="w-full">
         <Label>Send to:</Label>
         <Card
           onClick={() => {
@@ -139,14 +141,22 @@ export default function SellCrypto() {
         >
           {storeBank.accountName} {storeBank.accountNo}
         </Card>
-      </div>
+      </div> */}
 
       <Input
-        label="Selected Account Number*"
+        label="SELECT Account*"
         placeholder="Enter account no."
         value={`${store.accountName}`}
         disabled
         desc={`${storeBank.bankName} ${store.accountNumber}`}
+        trailingIcon={
+          <TrailIcon
+            className="text-primary"
+            onClick={async () => {
+              setShowBanks(true)
+            }}
+          />
+        }
       />
       <Input
         label="NGN Amount*"

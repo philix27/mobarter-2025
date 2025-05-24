@@ -1,12 +1,13 @@
 import { useBalance } from 'wagmi'
 
+import { getBal } from '../utilities/getBalance'
+
 import HomePopups from './HomePopups'
 import QuickActions from './QuickActions'
 import { TokenRow } from './TokenRow'
 import { HomeTabs } from './TopTabs'
 import { useAppContext } from '@/src/Root/TgContext'
 import { ChainId, TokenId, getTokenAddress, tokensList } from '@/src/lib/config'
-import { formatEtherBalance } from '@/src/lib/utils'
 
 export default function Home() {
   return (
@@ -43,17 +44,9 @@ function Balance() {
       </div>
     )
 
-  const getVal = () => {
-    if (data === undefined) return 0
-    if (data.value === undefined) return 0
-    if (data.value === BigInt(0)) return 0
-    if (data.value < BigInt(0)) return 0
-    return formatEtherBalance(data.value, data.decimals, 3)
-  }
-
   return (
     <div className="h-full flex items-center justify-center mt-5">
-      <p className="text-[25px]">{getVal()} cUSD</p>
+      <p className="text-[25px]">{getBal(data)} cUSD</p>
     </div>
   )
 }
