@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import { v4 as uuidv4 } from 'uuid'
 
+import { logoBase64ToString } from './logoBase64'
+
 // import { useAppContext } from '@/src/Root/TgContext'
 
 const rootUrl = process.env.NEXT_PUBLIC_ROOT_URL
@@ -23,6 +25,8 @@ export default function SelfVerification() {
     scope: 'telegram-mini-app',
     endpoint: `${rootUrl}/auth-self`,
     userId,
+    header: 'A payment solution for Africans',
+    logoBase64: logoBase64ToString,
     // userId: evmAddress,
   }).build()
 
@@ -38,9 +42,6 @@ export default function SelfVerification() {
           selfApp={selfApp}
           onSuccess={() => {
             toast.success('Verification Successful')
-            // Handle successful verification
-            console.log('Verification successful!')
-            // Redirect or update UI
           }}
           size={350}
         />
