@@ -1,15 +1,11 @@
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
 import { IconType } from 'react-icons'
-import { BsSend } from 'react-icons/bs'
 import { FaTv } from 'react-icons/fa'
 import { GoGift } from 'react-icons/go'
 import { GrNotification } from 'react-icons/gr'
 import { LiaPhoneVolumeSolid } from 'react-icons/lia'
-import { LuSquareArrowOutUpRight } from 'react-icons/lu'
 import { MdElectricalServices, MdNotes, MdPermDataSetting } from 'react-icons/md'
-import { SiExpress } from 'react-icons/si'
-import { SlWallet } from 'react-icons/sl'
 import { TbMobiledata } from 'react-icons/tb'
 import { toast } from 'sonner'
 
@@ -24,44 +20,6 @@ export default function Utilities() {
   const store = AppStores.useSettings()
   const router = useRouter()
 
-  const icons: IconItem[] = [
-    {
-      title: 'Send',
-      icon: BsSend,
-      onClick: () => {
-        store.update({ homeBtmSheet: 'SEND_CRYPTO' })
-      },
-    },
-
-    {
-      title: 'Receive',
-      icon: SlWallet,
-      onClick: () => {
-        store.update({ homeBtmSheet: 'WALLET' })
-      },
-    },
-    {
-      title: 'Withdraw',
-      icon: LuSquareArrowOutUpRight,
-      onClick: () => {
-        toast.info('Coming soon!')
-      },
-    },
-    // {
-    //   title: 'Buy',
-    //   icon: IoArrowDownOutline,
-    //   onClick: () => {
-    //     toast.info('Coming soon!')
-    //   },
-    // },
-    // {
-    //   title: 'Sell',
-    //   icon: IoArrowUpOutline,
-    //   onClick: () => {
-    //     toast.info('Coming soon!')
-    //   },
-    // },
-  ]
   const utilitiesBtn: IconItem[] = [
     {
       title: 'Airtime',
@@ -148,30 +106,11 @@ export default function Utilities() {
     }
     return list
   }
-  const getUIcons = () => {
-    const list = icons
-    if (store.countryIso === 'NG') {
-      list.push({
-        title: 'Xpay',
-        icon: SiExpress,
-        onClick: () => {
-          void router.push('/pay')
-        },
-      })
-      return list
-    }
-    return list
-  }
 
   return (
     <div className="w-full">
       <CarouselComp />
       <GridContainer title="Payments">
-        {getUIcons().map((val, i) => {
-          return <RoundIcon key={i} Icon={val.icon} title={val.title} onClick={val.onClick} />
-        })}
-      </GridContainer>
-      <GridContainer title="Utilities">
         {getUtils().map((val, i) => {
           return <RoundIcon key={i} Icon={val.icon} title={val.title} onClick={val.onClick} />
         })}

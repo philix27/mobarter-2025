@@ -5,7 +5,7 @@ import { Button } from 'src/components/Button'
 import { AddBankAccount } from './AddAccount'
 import ListAccounts from './ListAccounts'
 
-export default function BankAccount() {
+export default function BankAccountComp() {
   const [showBankAccount, setShowBankAccount] = useState(false)
   return (
     <div className="w-full flex flex-col items-center justify-center">

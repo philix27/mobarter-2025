@@ -1,4 +1,5 @@
 import type { IconType } from 'react-icons'
+import { BsBank } from 'react-icons/bs'
 import { CiWallet } from 'react-icons/ci'
 import { FaRegUser } from 'react-icons/fa6'
 import { GoHistory } from 'react-icons/go'
@@ -33,33 +34,18 @@ export const navLinks: { title: string; link: string; Icon: IconType }[] = [
     Icon: MdNotes,
   },
   {
-    title: 'KYC',
+    title: 'KYC Verification',
     link: '/kyc',
     Icon: MdNotes,
   },
-  // {
-  //   title: 'P2P',
-  //   link: '/ads',
-  //   Icon: RiExchange2Fill,
-  // },
   // {
   //   title: 'Swap',
   //   link: '/swap',
   //   Icon: IoSwapHorizontalOutline,
   // },
-  // {
-  //   title: 'KYC',
-  //   link: '/profile',
-  //   Icon: FaRegUser,
-  // },
-  // {
-  //   title: 'Manage Ads',
-  //   link: '/ads/manage',
-  //   Icon: MdOutlineNoteAlt,
-  // },
-  // {
-  //   title: 'Bank Account',
-  //   link: '/bank',
-  //   Icon: BsBank,
-  // },
+  {
+    title: 'Bank Accounts',
+    link: '/bank-accounts',
+    Icon: BsBank,
+  },
 ]
