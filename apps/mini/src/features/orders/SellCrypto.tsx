@@ -132,17 +132,6 @@ export default function SellCrypto() {
     <div className="w-full items-center justify-center flex flex-col px-1 gap-y-2">
       <BalCard />
 
-      {/* <div className="w-full">
-        <Label>Send to:</Label>
-        <Card
-          onClick={() => {
-            setShowBanks(true)
-          }}
-        >
-          {storeBank.accountName} {storeBank.accountNo}
-        </Card>
-      </div> */}
-
       <Input
         label="SELECT Account*"
         placeholder="Enter account no."
