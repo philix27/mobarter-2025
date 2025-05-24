@@ -19,7 +19,7 @@ export default function BottomModal({
   className?: string
   showSheet?: boolean
   fullHeight?: boolean
-  onClose: VoidFunction
+  onClose?: VoidFunction
   children: ReactNode
 }) {
   const [snap, setSnap] = useState<number | string | null>(snapPoints[0])

@@ -10,36 +10,38 @@ import {
   Orders_CreateSellDocument,
   TradeType,
 } from '@repo/api'
-import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
-import { FaCopy } from 'react-icons/fa6'
 import { toast } from 'sonner'
 import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
-import { AppSelect } from 'src/components/Select'
 import { TokenId } from 'src/lib/config/tokens'
-import { pasteTextFromClipboard } from 'src/lib/utils'
 
+import ListBankAccounts from '../bankAccount/ListAccounts'
 import BalCard from '../others/BalCard'
 
 import { useAppContext } from '@/src/Root/TgContext'
+import BottomModal from '@/src/components/BottomModal'
 import { Card, Label } from '@/src/components/comps'
 import { usePrice } from '@/src/hooks/usePrice'
 import { useSendToken } from '@/src/hooks/useSend'
 import { useTokenBalance } from '@/src/hooks/useTokenBal'
 import { isDev, mapCountryToIso } from '@/src/lib'
-import { BANKS_LIST } from '@/src/lib/banks'
 import { COLLECTOR } from '@/src/lib/config'
-import { getAccountInfo } from '@/src/lib/server'
 import { AppStores } from '@/src/lib/zustand'
 
-const Copy = FaCopy as any
+export const convertBankCodeToBankName = (bankCode: string) => {
+  bankCode
+  return BankName.NgOpay
+}
+
 export default function SellCrypto() {
   const store = AppStores.useSendToBank()
+  const storeBank = AppStores.useBankAccount()
   const storeSettings = AppStores.useSettings()
+  const [showBanks, setShowBanks] = useState(false)
   // const [selectedToken, setToken] = useState('cUSD')
-  const [bankCode, setBankCode] = useState('0')
-  const [bankAccountNo, setBankAccountNo] = useState('')
+  // const [bankCode, setBankCode] = useState('0')
+  // const [bankAccountNo, setBankAccountNo] = useState('')
   const [amountFiat, setAmount] = useState(0)
   const { evmAddress } = useAppContext()
   const { sendErc20 } = useSendToken()
@@ -95,12 +97,12 @@ export default function SellCrypto() {
             merchant_id: 1,
             wallet_customer: evmAddress!,
             wallet_merchant: COLLECTOR,
-            mode: OrderMode.Express,
-            bank_account_no: bankAccountNo,
-            bank_code: bankCode,
             txn_hash: txn_hash,
-            bank_name: BankName.NgOpay,
-            bank_account_name: store.accountName,
+            mode: OrderMode.Express,
+            bank_account_no: storeBank.accountNo,
+            bank_name: convertBankCodeToBankName(store.bankCode),
+            bank_code: storeBank.bankCode,
+            bank_account_name: storeBank.accountName,
           },
         },
         onCompleted() {
@@ -127,49 +129,25 @@ export default function SellCrypto() {
   return (
     <div className="w-full items-center justify-center flex flex-col px-1 gap-y-2">
       <BalCard />
-      <AppSelect
-        label="Bank*"
-        onChange={(data) => {
-          setBankCode(data)
-        }}
-        data={BANKS_LIST.map((val) => {
-          return { label: val.name, value: val.code }
-        })}
-      />
+
+      <div className="w-full">
+        <Label>Send to:</Label>
+        <Card
+          onClick={() => {
+            setShowBanks(true)
+          }}
+        >
+          {storeBank.accountName} {storeBank.accountNo}
+        </Card>
+      </div>
+
       <Input
-        label="Bank Account Number*"
+        label="Selected Account Number*"
         placeholder="Enter account no."
-        value={bankAccountNo}
-        type="number"
-        onChange={(e) => {
-          if (e.target.value.length > 12) {
-            return
-          }
-          setBankAccountNo(e.target.value)
-        }}
-        trailingIcon={
-          <Copy
-            className="text-muted"
-            onClick={async () => {
-              const text = await pasteTextFromClipboard()
-              const n = parseInt(text)
-              if (n > 0) {
-                setBankAccountNo(text)
-              }
-            }}
-          />
-        }
+        value={`${store.accountName}`}
+        disabled
+        desc={`${storeBank.bankName} ${store.accountNumber}`}
       />
-
-      {bankCode.length > 2 && bankAccountNo.length > 9 && (
-        <div className="w-full">
-          <Label>Account Name</Label>
-          <Card className="text-primary">
-            <GetAccountName accountNumber={bankAccountNo} bankCode={bankCode} />
-          </Card>
-        </div>
-      )}
-
       <Input
         label="NGN Amount*"
         placeholder="Amount to send"
@@ -195,28 +173,14 @@ export default function SellCrypto() {
       <Button className="mt-5" onClick={handleSend}>
         Send
       </Button>
+      <BottomModal
+        onClose={() => {
+          setShowBanks(false)
+        }}
+        showSheet={showBanks}
+      >
+        <ListBankAccounts />
+      </BottomModal>
     </div>
   )
-}
-
-function GetAccountName(props: { accountNumber: string; bankCode: string }) {
-  const store = AppStores.useSendToBank()
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['getAccountName-' + props.accountNumber + '-' + props.bankCode],
-    queryFn: async () => {
-      const res = await getAccountInfo(props.accountNumber, props.bankCode)
-      store.update({ accountName: res.account_name })
-      return res
-    },
-  })
-  if (isLoading) return <>...</>
-  if (error) {
-    // store.update({ accountName: undefined })
-    return <>Not found</>
-  }
-  if (data) {
-    // store.update({ accountName: data.account_name })
-    return <>{data.account_name}</>
-  }
-  return <>{''}</>
 }

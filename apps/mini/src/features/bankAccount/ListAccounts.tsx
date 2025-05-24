@@ -7,8 +7,8 @@ import { AppStores } from 'src/lib/zustand'
 import { NotFound } from '@/src/components/ComingSoon'
 import { Spinner } from '@/src/components/Spinner'
 
-export default function ListAccounts() {
-  const store = AppStores.useAdvert()
+export default function ListBankAccounts() {
+  const store = AppStores.useBankAccount()
   const { data, loading, error } = useQuery<QueryResponse<'bankAccount_getAll'>>(
     BankAccount_GetAllDocument,
     {
@@ -24,7 +24,7 @@ export default function ListAccounts() {
     )
   if (error) return <NotFound text="No Back Account record found" />
   return (
-    <div className="w-full  no-scrollbar">
+    <div className="w-full no-scrollbar">
       {data && data.bankAccount_getAll.length > 0 ? (
         data.bankAccount_getAll.map((bank, i) => (
           <div
@@ -32,8 +32,8 @@ export default function ListAccounts() {
             className={cn(
               `w-full mb-2 flex 
             items-center justify-between
-            bg-background px-4 py-2 rounded-md border
-            border-background
+            px-4 py-2 rounded-md border
+            border-background bg-card
             `,
               bank.account_no === store.accountNo && 'border-primary '
             )}

@@ -1,4 +1,5 @@
 import { useAdvert } from './adverts';
+import { useBankAccount } from './bank';
 import { useGiftCard } from './giftcard';
 import { useKyc } from './kyc';
 import { useOrder } from './orders';
@@ -19,4 +20,5 @@ export const AppStores = {
   useSendToBank,
   useKyc,
   useGiftCard,
+  useBankAccount,
 }
