@@ -1,5 +1,6 @@
 import React from 'react'
 
+import SelfVerification from './comps/Self'
 import VerifyBvn from './comps/VerifyBvn'
 import VerifyNin from './comps/VerifyNin'
 import VerifyPersonal from './comps/VerifyPersonal'
@@ -12,6 +13,15 @@ export default function KycBottomSheets() {
   const active = store.modals
   return (
     <>
+      <BottomModal
+        fullHeight
+        showSheet={active === 'VERIFY_SELF_PROTOCOL'}
+        onClose={() => {
+          store.update({ modals: 'NONE' })
+        }}
+      >
+        <SelfVerification />
+      </BottomModal>
       <BottomModal
         fullHeight
         showSheet={active === 'VERIFY_PHONE'}

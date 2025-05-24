@@ -1,6 +1,6 @@
 import React from 'react'
 
-import KycBottomSheets from './BottomSheets'
+import KycBottomSheets from './ModalList'
 import FormGhana from './FormGhana'
 import FormNigeria from './FormNigeria'
 import { CountriesIso } from '@/src/lib'

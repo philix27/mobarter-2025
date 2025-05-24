@@ -7,17 +7,19 @@ export default function FormNigeria() {
   return (
     <div className="w-full gap-y-2">
       <TileSimple
+        title={'Self Protocol'}
+        desc="Scan this QR code with the Self app to verify your identity"
+        onClick={() => {
+          store.update({ modals: 'VERIFY_SELF_PROTOCOL' })
+        }}
+      />
+      <TileSimple
         title={'Email'}
         onClick={() => {
           store.update({ modals: 'VERIFY_EMAIL' })
         }}
       />
-      <TileSimple
-        title={'Self Protocol'}
-        onClick={() => {
-          store.update({ modals: 'VERIFY_SELF_PROTOCOL' })
-        }}
-      />
+
       <TileSimple
         title={'Phone'}
         desc="Phone number"
