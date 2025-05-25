@@ -49,6 +49,8 @@ export function usePay<T>() {
     const dataSuffix = getDataSuffix({
       consumer: '0x20F50b8832f87104853df3FdDA47Dd464f885a49',
       providers: [
+        "0xE2bEdafB063e0B7f12607ebcf4636e2690A427a3",
+        // 
         '0x0423189886d7966f0dd7e7d256898daeee625dca',
         '0x5f0a55fad9424ac99429f635dfb9bf20c3360ab8',
       ],

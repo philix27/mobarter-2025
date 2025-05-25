@@ -7,7 +7,6 @@ import { getBal } from '../utilities/getBalance'
 import { useAppContext } from '@/src/Root/TgContext'
 import { ChainId, IToken, TokenId, getTokenAddress } from '@/src/lib/config'
 import { cn } from '@/src/lib/utils'
-import { TokenIcons } from '@/src/tokens/TokenIcon'
 
 export function TokenRow(props: IToken & { className?: string; onClick?: VoidFunction }) {
   const { evmAddress } = useAppContext()
@@ -30,15 +29,15 @@ export function TokenRow(props: IToken & { className?: string; onClick?: VoidFun
       )}
     >
       <Image
-        src={props.imgUrl}
-        alt={TokenIcons.cUSDIcon.name}
+        src={props.logo}
+        alt={props.name}
         className="h-[35px] w-[35px] bg-background rounded-[25px] mr-3"
       />
 
       <div className="flex justify-between w-full items-center">
         <div className="flex flex-col justify-between">
           <p className="text-[14px]">{props.symbol}</p>
-          <p className="text-muted text-[12px]">{props.fullName}</p>
+          <p className="text-muted text-[12px]">{props.name}</p>
         </div>
         <p className="text-[14px] font-medium">{isLoading ? '*.**' : getBal(data)}</p>
       </div>
