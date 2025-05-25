@@ -31,7 +31,7 @@ export function TileSimple(params: {
 
       <div>
         <p className="font-semibold text-[14px]"> {params.title}</p>
-        {params.desc && <p className="text-muted text-[11px] font-light">{params.desc}</p>}
+        {params.desc && <p className="text-muted text-[12px] font-light">{params.desc}</p>}
       </div>
     </div>
   )

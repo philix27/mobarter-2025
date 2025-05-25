@@ -1,28 +1,23 @@
 // import { getMentoSdk } from 'src/features/sdk';
-import { Color } from 'src/styles/Color';
+import { Color } from 'src/styles/Color'
 
+import { logger } from '../utils'
 
-
-import { logger } from '../utils';
-
-
-
-import { areAddressesEqual } from './addresses';
-import { ChainId } from './chains';
-
+import { areAddressesEqual } from './addresses'
+import { ChainId } from './chains'
 
 export const TokenIcons: Record<TokenId, string> = {
   CELO: '/tokens/CELO.svg',
   cUSD: '/tokens/cUSD.svg',
   USDC: '/tokens/USDC.svg',
-  eXOF: '/tokens/eXOF.svg',
   cREAL: '/tokens/cREAL.svg',
   cKES: '/tokens/cKES.svg',
   cGHS: '/tokens/cGHS.svg',
   cEUR: '/tokens/cEUR.svg',
   cCOP: '/tokens/cCOP.svg',
-  axlUSDC: '/tokens/axlUSDC.svg',
-  axlEUROC: '/tokens/axlEUROC.svg',
+  // eXOF: '/tokens/eXOF.svg',
+  // axlUSDC: '/tokens/axlUSDC.svg',
+  // axlEUROC: '/tokens/axlEUROC.svg',
   USDT: '/tokens/USDT.svg',
   PUSO: '/tokens/PUSO.svg',
   cGBP: '/tokens/cGBP.svg',
@@ -54,9 +49,9 @@ export enum TokenId {
   cREAL = 'cREAL',
   USDC = 'USDC',
   USDT = 'USDT',
-  axlUSDC = 'axlUSDC',
-  axlEUROC = 'axlEUROC',
-  eXOF = 'eXOF',
+  // axlUSDC = 'axlUSDC',
+  // axlEUROC = 'axlEUROC',
+  // eXOF = 'eXOF',
   cKES = 'cKES',
   PUSO = 'PUSO',
   cCOP = 'cCOP',
@@ -72,7 +67,7 @@ export enum TokenId {
 
 export const NativeStableTokenIds = [TokenId.cUSD, TokenId.cEUR, TokenId.cREAL]
 
-export const USDCVariantIds = [TokenId.axlUSDC]
+// export const USDCVariantIds = [TokenId.axlUSDC]
 
 export const CELO: Token = Object.freeze({
   id: TokenId.CELO,
@@ -122,31 +117,31 @@ export const USDT: Token = Object.freeze({
   decimals: 6,
   logo: TokenIcons['USDT'],
 })
-export const axlUSDC: Token = Object.freeze({
-  id: TokenId.axlUSDC,
-  symbol: TokenId.axlUSDC,
-  name: 'Axelar USDC',
-  color: Color.usdcBlue,
-  decimals: 6,
-  logo: TokenIcons['axlUSDC'],
-})
+// export const axlUSDC: Token = Object.freeze({
+//   id: TokenId.axlUSDC,
+//   symbol: TokenId.axlUSDC,
+//   name: 'Axelar USDC',
+//   color: Color.usdcBlue,
+//   decimals: 6,
+//   logo: TokenIcons['axlUSDC'],
+// })
 
-export const axlEUROC: Token = Object.freeze({
-  id: TokenId.axlEUROC,
-  symbol: TokenId.axlEUROC,
-  name: 'Axelar EUROC',
-  color: Color.usdcBlue, // TODO: Change to EUROC
-  decimals: 6,
-  logo: TokenIcons['axlEUROC'],
-})
-export const eXOF: Token = Object.freeze({
-  id: TokenId.eXOF,
-  symbol: TokenId.eXOF,
-  name: 'eXOF',
-  color: Color.usdcBlue,
-  decimals: 18,
-  logo: TokenIcons['eXOF'],
-})
+// export const axlEUROC: Token = Object.freeze({
+//   id: TokenId.axlEUROC,
+//   symbol: TokenId.axlEUROC,
+//   name: 'Axelar EUROC',
+//   color: Color.usdcBlue, // TODO: Change to EUROC
+//   decimals: 6,
+//   logo: TokenIcons['axlEUROC'],
+// })
+// export const eXOF: Token = Object.freeze({
+//   id: TokenId.eXOF,
+//   symbol: TokenId.eXOF,
+//   name: 'eXOF',
+//   color: Color.usdcBlue,
+//   decimals: 18,
+//   logo: TokenIcons['eXOF'],
+// })
 export const cKES: Token = Object.freeze({
   id: TokenId.cKES,
   symbol: TokenId.cKES,
@@ -263,9 +258,9 @@ export const Tokens: Record<TokenId, Token> = {
   cCHF,
   cJPY,
   PUSO,
-  eXOF,
-  axlUSDC,
-  axlEUROC,
+  // eXOF,
+  // axlUSDC,
+  // axlEUROC,
 }
 
 export const TokenAddresses: Record<ChainId, Record<TokenId, Address>> = Object.freeze({
@@ -276,9 +271,9 @@ export const TokenAddresses: Record<ChainId, Record<TokenId, Address>> = Object.
     [TokenId.cREAL]: '0xE4D517785D091D3c54818832dB6094bcc2744545',
     [TokenId.USDC]: '0x2F25deB3848C207fc8E0c34035B3Ba7fC157602B',
     [TokenId.USDT]: '0xBba91F588d031469ABCCA566FE80fB1Ad8Ee3287',
-    [TokenId.axlUSDC]: '0x87D61dA3d668797786D73BC674F053f87111570d',
-    [TokenId.axlEUROC]: '0x6e673502c5b55F3169657C004e5797fFE5be6653',
-    [TokenId.eXOF]: '0xB0FA15e002516d0301884059c0aaC0F0C72b019D',
+    // [TokenId.axlUSDC]: '0x87D61dA3d668797786D73BC674F053f87111570d',
+    // [TokenId.axlEUROC]: '0x6e673502c5b55F3169657C004e5797fFE5be6653',
+    // [TokenId.eXOF]: '0xB0FA15e002516d0301884059c0aaC0F0C72b019D',
     [TokenId.cKES]: '0x1E0433C1769271ECcF4CFF9FDdD515eefE6CdF92',
     [TokenId.PUSO]: '0x5E0E3c9419C42a1B04e2525991FB1A2C467AB8bF',
     [TokenId.cCOP]: '0xe6A57340f0df6E020c1c0a80bC6E13048601f0d4',
@@ -298,9 +293,9 @@ export const TokenAddresses: Record<ChainId, Record<TokenId, Address>> = Object.
     [TokenId.cREAL]: '0x6a0EEf2bed4C30Dc2CB42fe6c5f01F80f7EF16d1',
     [TokenId.USDC]: '0xB407D37d76c417B6343310D42611FCA106B2abB8',
     [TokenId.USDT]: '0x27c586469038A1749B27BF5914DAff7A14227AfB',
-    [TokenId.axlUSDC]: '0xD4079B322c392D6b196f90AA4c439fC2C16d6770',
-    [TokenId.axlEUROC]: '0x6f90ac394b1F45290d3023e4Ba0203005cAF2A4B',
-    [TokenId.eXOF]: '0x64c1D812673E93Bc036AdC3D547d9950696DA5Af',
+    // [TokenId.axlUSDC]: '0xD4079B322c392D6b196f90AA4c439fC2C16d6770',
+    // [TokenId.axlEUROC]: '0x6f90ac394b1F45290d3023e4Ba0203005cAF2A4B',
+    // [TokenId.eXOF]: '0x64c1D812673E93Bc036AdC3D547d9950696DA5Af',
     [TokenId.cKES]: '0x8813Ae180017057d0Cf98C930cED1E7101B97370',
     [TokenId.PUSO]: '',
     [TokenId.cCOP]: '',
@@ -320,9 +315,9 @@ export const TokenAddresses: Record<ChainId, Record<TokenId, Address>> = Object.
     [TokenId.cREAL]: '0xe8537a3d056DA446677B9E9d6c5dB704EaAb4787',
     [TokenId.USDC]: '0xcebA9300f2b948710d2653dD7B07f33A8B32118C',
     [TokenId.USDT]: '0x48065fbBE25f71C9282ddf5e1cD6D6A887483D5e',
-    [TokenId.axlUSDC]: '0xEB466342C4d449BC9f53A865D5Cb90586f405215',
-    [TokenId.axlEUROC]: '0x061cc5a2C863E0C1Cb404006D559dB18A34C762d',
-    [TokenId.eXOF]: '0x73F93dcc49cB8A239e2032663e9475dd5ef29A08',
+    // [TokenId.axlUSDC]: '0xEB466342C4d449BC9f53A865D5Cb90586f405215',
+    // [TokenId.axlEUROC]: '0x061cc5a2C863E0C1Cb404006D559dB18A34C762d',
+    // [TokenId.eXOF]: '0x73F93dcc49cB8A239e2032663e9475dd5ef29A08',
     [TokenId.cKES]: '0x456a3D042C0DbD3db53D5489e98dFb038553B0d0',
     [TokenId.PUSO]: '0x105d4A9306D2E55a71d2Eb95B81553AE1dC20d7B',
     [TokenId.cCOP]: '0x8A567e2aE79CA692Bd748aB832081C45de4041eA',
