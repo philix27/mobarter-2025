@@ -13,8 +13,8 @@ type IconItem = {
   onClick2?: VoidFunction
   icon: IconType
   desc?: string
-  text1?: string
-  text2?: string
+  text1: string
+  text2: string
 }
 export default function SaveComp() {
   const router = useRouter()
@@ -77,8 +77,11 @@ export default function SaveComp() {
             key={i}
             title={val.title}
             onClick={val.onClick}
+            onClick2={val.onClick2}
             icon={val.icon}
             desc={val.desc}
+            text1={val.text1}
+            text2={val.text2}
           />
         )
       })}

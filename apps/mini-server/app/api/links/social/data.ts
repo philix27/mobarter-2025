@@ -11,7 +11,7 @@ export interface socialLinks {
 export const socialLinks: socialLinks[] = [
   {
     title: "Youtube",
-    link: "",
+    link: "https://www.youtube.com/@mobarter",
     logo: publicPath(Assets.socials.Youtube),
     desc: "",
   },
