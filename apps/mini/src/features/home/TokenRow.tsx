@@ -28,7 +28,7 @@ export function TokenRow(props: IToken & { className?: string; onClick?: VoidFun
         props.className
       )}
     >
-      <Image
+      <img
         src={props.logo}
         alt={props.name}
         className="h-[35px] w-[35px] bg-background rounded-[25px] mr-3"

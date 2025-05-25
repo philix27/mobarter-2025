@@ -1,10 +1,15 @@
 // import { getMentoSdk } from 'src/features/sdk';
-import { Color } from 'src/styles/Color'
+import { Color } from 'src/styles/Color';
 
-import { logger } from '../utils'
 
-import { areAddressesEqual } from './addresses'
-import { ChainId } from './chains'
+
+import { logger } from '../utils';
+
+
+
+import { areAddressesEqual } from './addresses';
+import { ChainId } from './chains';
+
 
 export const TokenIcons: Record<TokenId, string> = {
   CELO: '/tokens/CELO.svg',
@@ -243,24 +248,24 @@ export const cNGN: Token = Object.freeze({
 export const Tokens: Record<TokenId, Token> = {
   CELO,
   cUSD,
+  cNGN,
+  cZAR,
+  cGHS,
+  cKES,
+  cGBP,
   cEUR,
   cREAL,
   USDC,
   USDT,
-  axlUSDC,
-  axlEUROC,
-  eXOF,
-  cKES,
-  PUSO,
   cCOP,
-  cGHS,
-  cGBP,
-  cZAR,
   cCAD,
   cAUD,
   cCHF,
   cJPY,
-  cNGN,
+  PUSO,
+  eXOF,
+  axlUSDC,
+  axlEUROC,
 }
 
 export const TokenAddresses: Record<ChainId, Record<TokenId, Address>> = Object.freeze({
