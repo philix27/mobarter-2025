@@ -1,28 +1,38 @@
 import { useBalance } from 'wagmi'
 
+import WalletTransactions from '../history/WalletTrans'
 import { getBal } from '../utilities/getBalance'
 
 import HomePopups from './HomePopups'
 import QuickActions from './QuickActions'
+import { Tabs } from './Tabs'
 import { TokenRow } from './TokenRow'
-import { HomeTabs } from './TopTabs'
+import { TopBar } from './TopBar'
 import { useAppContext } from '@/src/Root/TgContext'
 import { ChainId, TokenId, getTokenAddress, tokensList } from '@/src/lib/config'
+import { AppStores } from '@/src/lib/zustand'
 
 export default function Home() {
+  const store = AppStores.useSettings()
   return (
     <div className="w-full items-center justify-center flex flex-col">
-      <HomeTabs />
+      <TopBar />
       <Balance />
       <QuickActions />
-      <div className="flex flex-col rounded-md w-full gap-y-[0.1px] px-1 py-1 mt-2">
-        {tokensList.map((val, i) => {
-          if (val === undefined) return <div key={i} />
-          const tokenId = val.symbol as TokenId
-          if (tokenId === undefined) return <div key={i} />
-          return <TokenRow key={i} {...val} className="bg-card" />
-        })}
-      </div>
+      <div className="h-5" />
+      <Tabs />
+      {store.homeTab === 'TX_HISTORY' && <WalletTransactions />}
+      {store.homeTab === 'BALANCE' && (
+        <div className="flex flex-col rounded-md w-full gap-y-[0.1px] px-1 py-1">
+          {tokensList.map((val, i) => {
+            if (val === undefined) return <div key={i} />
+            const tokenId = val.symbol as TokenId
+            if (tokenId === undefined) return <div key={i} />
+            return <TokenRow key={i} {...val} className="bg-card" />
+          })}
+        </div>
+      )}
+
       <HomePopups />
     </div>
   )

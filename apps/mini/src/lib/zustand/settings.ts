@@ -3,11 +3,8 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 
 import { CountriesIso } from '../countries'
 
-export type IMinipayTab = 'AIRTIME' | 'DATA' | 'ELECTRICITY'
-export type IHomeTab = 'Balances' | 'Services'
+export type IHomeTab = 'BALANCE' | 'TX_HISTORY'
 export type IManageAdsTab = 'OPEN' | 'CLOSED' | 'ADD'
-export type IAppEnv = 'MINIPAY' | 'FARCASTER' | 'TELEGRAM'
-export type IP2PTabs = 'BUY' | 'SELL'
 export type IOrdersTabs = 'PENDING' | 'COMPLETED' | 'CANCELED' | 'APPEAL'
 export type IHomeBottomSheet =
   | 'WALLET'
@@ -30,7 +27,6 @@ export interface ISlice {
   showSupportModal?: boolean
   searchValue?: string
   manageAdsTab?: IManageAdsTab
-  p2pTab?: IP2PTabs
   ordersTab?: IOrdersTabs
   homeTab?: IHomeTab
   homeBtmSheet?: IHomeBottomSheet
@@ -38,8 +34,6 @@ export interface ISlice {
   token?: boolean
   countryIso?: CountriesIso
   chainIcon?: string
-  appEnv?: IAppEnv
-  minipayTab?: IMinipayTab
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
@@ -53,17 +47,14 @@ export const defaultValues: Required<ISlice> = {
   infoTabOpen: false,
   searchValue: '',
   manageAdsTab: 'OPEN',
-  p2pTab: 'BUY',
   ordersTab: 'PENDING',
-  homeTab: 'Balances',
+  homeTab: 'BALANCE',
   homeBtmSheet: 'NULL',
   historyTab: 'ALL',
   showSupportModal: false,
   token: false,
   countryIso: 'NG',
   chainIcon: '',
-  appEnv: process.env.NEXT_PUBLIC_APP_ENV as IAppEnv,
-  minipayTab: 'AIRTIME',
 }
 
 export const useSettings = create(

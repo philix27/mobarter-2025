@@ -6,7 +6,7 @@ import { AppStores } from 'src/lib/zustand'
 
 import SelectCountryBtn from './SelectCountry'
 
-export function HomeTabs() {
+export function TopBar() {
   const store = AppStores.useSettings()
 
   const supportChains = useMemo((): ChainInfo[] => {

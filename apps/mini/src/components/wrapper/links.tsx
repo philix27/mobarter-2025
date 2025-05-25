@@ -2,7 +2,7 @@ import type { IconType } from 'react-icons'
 import { BsBank } from 'react-icons/bs'
 import { CiWallet } from 'react-icons/ci'
 import { FaRegUser } from 'react-icons/fa6'
-import { GoHistory } from 'react-icons/go'
+import { GiTwoCoins } from 'react-icons/gi'
 import { MdNotes } from 'react-icons/md'
 import { RiAppsFill } from 'react-icons/ri'
 
@@ -13,14 +13,14 @@ export const navLinks: { title: string; link: string; Icon: IconType }[] = [
     Icon: CiWallet,
   },
   {
-    title: 'Apps',
+    title: 'Payments',
     link: '/apps',
     Icon: RiAppsFill,
   },
   {
-    title: 'History',
-    link: '/history',
-    Icon: GoHistory,
+    title: 'Savings',
+    link: '/savings',
+    Icon: GiTwoCoins,
   },
 
   {
