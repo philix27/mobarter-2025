@@ -1,14 +1,12 @@
-// import { ChainId, IToken, TokenId, cn, formatEtherBalance, getTokenAddress } from '@repo/utils'
-import Image from 'next/image'
 import { useBalance } from 'wagmi'
 
 import { getBal } from '../utilities/getBalance'
 
 import { useAppContext } from '@/src/Root/TgContext'
-import { ChainId, IToken, TokenId, getTokenAddress } from '@/src/lib/config'
+import { ChainId, Token, TokenId, getTokenAddress } from '@/src/lib/config'
 import { cn } from '@/src/lib/utils'
 
-export function TokenRow(props: IToken & { className?: string; onClick?: VoidFunction }) {
+export function TokenRow(props: Token & { className?: string; onClick?: VoidFunction }) {
   const { evmAddress } = useAppContext()
   const { data, isLoading } = useBalance({
     address: evmAddress as `0x${string}`,
