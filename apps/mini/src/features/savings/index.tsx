@@ -98,10 +98,9 @@ export function TileCard(
   return (
     <div
       className={cn(
-        'flex flex-col items-center w-full bg-card px-0 mb-1 rounded-[15px] mb-3 p-1',
+        'flex flex-col items-center w-full bg-card px-0 rounded-[15px] mb-3 p-1',
         params.className
       )}
-      onClick={params.onClick}
     >
       <div className="px-2 w-full py-2">
         <div className="w-full flex items-center mb-1">
