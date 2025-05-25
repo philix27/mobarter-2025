@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { useBalance } from 'wagmi'
 
 import WalletTransactions from '../history/WalletTrans'
@@ -21,22 +22,24 @@ export default function Home() {
       <QuickActions />
       <div className="h-5" />
       <Tabs />
-      {store.homeTab === 'TX_HISTORY' && <WalletTransactions />}
-      {store.homeTab === 'BALANCE' && (
-        <div className="flex flex-col rounded-md w-full gap-y-[0.1px] px-1 py-1">
-          {tokensList.map((val, i) => {
-            if (val === undefined) return <div key={i} />
-            const tokenId = val.symbol as TokenId
-            if (tokenId === undefined) return <div key={i} />
-            return <TokenRow key={i} {...val} className="bg-card" />
-          })}
-        </div>
-      )}
-
+      {store.homeTab === 'TX_HISTORY' ? <WalletTransactions /> : <TokensList />}
       <HomePopups />
     </div>
   )
 }
+
+const TokensList = memo(function Comp() {
+  return (
+    <div className="flex flex-col rounded-md w-full gap-y-[0.1px] px-1 py-1">
+      {tokensList.map((val, i) => {
+        if (val === undefined) return <div key={i} />
+        const tokenId = val.symbol as TokenId
+        if (tokenId === undefined) return <div key={i} />
+        return <TokenRow key={i} {...val} className="bg-card" />
+      })}
+    </div>
+  )
+})
 
 function Balance() {
   const { evmAddress } = useAppContext()

@@ -3,19 +3,23 @@ import { ReactNode } from 'react'
 import { IconType } from 'react-icons'
 import { FaTv } from 'react-icons/fa'
 import { GoGift } from 'react-icons/go'
-import { GrNotification } from 'react-icons/gr'
 import { LiaPhoneVolumeSolid } from 'react-icons/lia'
-import { MdElectricalServices, MdNotes, MdPermDataSetting } from 'react-icons/md'
+import { MdElectricalServices, MdPermDataSetting } from 'react-icons/md'
 import { TbMobiledata } from 'react-icons/tb'
-import { toast } from 'sonner'
 
 import { CarouselComp } from './Carousel'
-import RoundIcon from './RoundIcon'
 import UtilityBottomPopups from './UtilityPopups'
+import { TileSimple } from '@/src/components/TileSimple'
 import { Label } from '@/src/components/comps'
 import { AppStores } from '@/src/lib/zustand'
 
-type IconItem = { title: string; onClick: VoidFunction; icon: IconType }
+type IconItem = {
+  title: string
+  onClick: VoidFunction
+  icon: IconType
+  desc?: string
+  imgUrl?: string
+}
 export default function Utilities() {
   const store = AppStores.useSettings()
   const router = useRouter()
@@ -23,6 +27,7 @@ export default function Utilities() {
   const utilitiesBtn: IconItem[] = [
     {
       title: 'Airtime',
+      desc: 'Topup and buy airtime',
       icon: LiaPhoneVolumeSolid,
       onClick: () => {
         void router.push('/topup/airtime')
@@ -30,6 +35,7 @@ export default function Utilities() {
     },
     {
       title: 'Data',
+      desc: 'Purchase data plans',
       icon: TbMobiledata,
       onClick: () => {
         void router.push('/topup/data')
@@ -37,6 +43,7 @@ export default function Utilities() {
     },
     {
       title: 'Bundles',
+      desc: 'Data Bundles at cheap rate',
       icon: MdPermDataSetting,
       onClick: () => {
         void router.push('/topup/bundles')
@@ -48,37 +55,6 @@ export default function Utilities() {
       icon: GoGift,
       onClick: () => {
         void router.push('/gifts')
-      },
-    },
-  ]
-
-  const othersBtn: IconItem[] = [
-    {
-      title: 'Orders',
-      icon: MdNotes,
-      onClick: () => {
-        void router.push('/orders')
-      },
-    },
-    {
-      title: 'Notifications',
-      icon: GrNotification,
-      onClick: () => {
-        toast.info('Coming soon!')
-      },
-    },
-    {
-      title: 'Recurring',
-      icon: GrNotification,
-      onClick: () => {
-        toast.info('Coming soon!')
-      },
-    },
-    {
-      title: 'Stream',
-      icon: GrNotification,
-      onClick: () => {
-        toast.info('Coming soon!')
       },
     },
   ]
@@ -95,10 +71,11 @@ export default function Utilities() {
           },
         },
         {
-          title: 'TV',
+          title: 'Cable TV',
+          desc: 'Starnet, GoTv and MyTV',
           icon: FaTv,
           onClick: () => {
-            toast.info('Coming soon!')
+            void router.push('/bills/cable')
           },
         }
       )
@@ -110,16 +87,18 @@ export default function Utilities() {
   return (
     <div className="w-full">
       <CarouselComp />
-      <GridContainer title="Payments">
-        {getUtils().map((val, i) => {
-          return <RoundIcon key={i} Icon={val.icon} title={val.title} onClick={val.onClick} />
-        })}
-      </GridContainer>
-      <GridContainer title="Others">
-        {othersBtn.map((val, i) => {
-          return <RoundIcon key={i} Icon={val.icon} title={val.title} onClick={val.onClick} />
-        })}
-      </GridContainer>
+      {getUtils().map((val, i) => {
+        return (
+          <TileSimple
+            key={i}
+            title={val.title}
+            onClick={val.onClick}
+            icon={val.icon}
+            desc={val.desc}
+          />
+        )
+      })}
+
       <UtilityBottomPopups />
     </div>
   )

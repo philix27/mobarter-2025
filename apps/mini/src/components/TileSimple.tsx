@@ -25,7 +25,7 @@ export function TileSimple(params: {
 
       {params.icon && (
         <div className="mr-3 size-[35px] rounded-full bg-background flex items-center justify-center">
-          <Icon className="text-muted" />
+          <Icon className="text-muted" size={20} />
         </div>
       )}
 

@@ -1,13 +1,13 @@
 import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import BottomModal from 'src/components/BottomModal'
 import { Spinner } from 'src/components/Spinner'
 import { shortenAddress } from 'src/lib/config/addresses'
 
 import { useAppContext } from '@/src/Root/TgContext'
 import { TokenAddresses, TokenId } from '@/src/lib/config'
-import { ITransactionsResult, getTxHistory } from '@/src/lib/server'
+import { ITransactions, ITransactionsResult, getTxHistory } from '@/src/lib/server'
 import { cn, formatEtherBalance, shortString } from '@/src/lib/utils'
 
 export default function WalletTransactions() {
@@ -65,6 +65,30 @@ export default function WalletTransactions() {
       </div>
     )
 
+  return (
+    <Content
+      data={data}
+      evmAddress={evmAddress}
+      setShowMore={setShowMore}
+      getTokenId={getTokenId}
+      showMore={showMore}
+    />
+  )
+}
+
+const Content = memo(function Comp({
+  data,
+  evmAddress,
+  setShowMore,
+  getTokenId,
+  showMore,
+}: {
+  data: ITransactions | undefined
+  evmAddress: string | undefined
+  setShowMore: React.Dispatch<React.SetStateAction<{ data: ITransactionsResult; show: boolean }>>
+  getTokenId: (address: string) => string
+  showMore: { data: ITransactionsResult; show: boolean }
+}) {
   return (
     <div className="w-full">
       {data &&
@@ -163,7 +187,7 @@ export default function WalletTransactions() {
       </BottomModal>
     </div>
   )
-}
+})
 
 function Row(params: {
   text1: string
