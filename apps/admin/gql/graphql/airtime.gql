@@ -1,6 +1,0 @@
-mutation Utility_purchaseAirtime($input: Utilities_PurchaseAirtimeInput!) {
-  utility_purchaseAirtime(input: $input) {
-    message
-  }
-}
-

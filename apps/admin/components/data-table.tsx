@@ -660,7 +660,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="gap-1">
-          <DrawerTitle>{item.header}</DrawerTitle>
+          {/* <DrawerTitle>{item.header}</DrawerTitle> */}
           <DrawerDescription>
             Showing total visitors for the last 6 months
           </DrawerDescription>

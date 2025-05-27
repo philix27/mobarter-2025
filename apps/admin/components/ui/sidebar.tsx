@@ -401,7 +401,7 @@ function SidebarGroupLabel({
   const Comp = asChild ? Slot : 'div';
 
   return (
-    <Comp
+    <div
       data-slot="sidebar-group-label"
       data-sidebar="group-label"
       className={cn(
@@ -422,7 +422,7 @@ function SidebarGroupAction({
   const Comp = asChild ? Slot : 'button';
 
   return (
-    <Comp
+    <button
       data-slot="sidebar-group-action"
       data-sidebar="group-action"
       className={cn(
@@ -511,8 +511,8 @@ function SidebarMenuButton({
   const Comp = asChild ? Slot : 'button';
   const { isMobile, state } = useSidebar();
 
-  const button = (
-    <Comp
+  const ButtonX = (
+    <button
       data-slot="sidebar-menu-button"
       data-sidebar="menu-button"
       data-size={size}
@@ -523,7 +523,7 @@ function SidebarMenuButton({
   );
 
   if (!tooltip) {
-    return button;
+    return ButtonX;
   }
 
   if (typeof tooltip === 'string') {
@@ -534,7 +534,7 @@ function SidebarMenuButton({
 
   return (
     <Tooltip>
-      <TooltipTrigger asChild>{button}</TooltipTrigger>
+      <TooltipTrigger asChild>{ButtonX}</TooltipTrigger>
       <TooltipContent
         side="right"
         align="center"
@@ -557,7 +557,7 @@ function SidebarMenuAction({
   const Comp = asChild ? Slot : 'button';
 
   return (
-    <Comp
+    <button
       data-slot="sidebar-menu-action"
       data-sidebar="menu-action"
       className={cn(
@@ -680,7 +680,7 @@ function SidebarMenuSubButton({
   const Comp = asChild ? Slot : 'a';
 
   return (
-    <Comp
+    <a
       data-slot="sidebar-menu-sub-button"
       data-sidebar="menu-sub-button"
       data-size={size}

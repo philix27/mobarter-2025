@@ -34,7 +34,6 @@ export default function TabLayout() {
       <Tabs.Screen
         name="home"
         options={{
-          title: 'Home',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? 'wallet' : 'wallet-outline'}
@@ -46,7 +45,6 @@ export default function TabLayout() {
       <Tabs.Screen
         name="payments"
         options={{
-          title: 'Payments',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? 'reader' : 'reader-outline'}
@@ -58,7 +56,6 @@ export default function TabLayout() {
       <Tabs.Screen
         name="savings"
         options={{
-          title: 'Savings',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? 'save' : 'save-outline'}
@@ -70,7 +67,6 @@ export default function TabLayout() {
       <Tabs.Screen
         name="settings"
         options={{
-          title: 'Settings',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? 'settings' : 'settings-outline'}

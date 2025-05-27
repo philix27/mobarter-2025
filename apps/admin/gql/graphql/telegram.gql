@@ -1,8 +1,0 @@
-mutation Auth_TelegramLogin($input: Auth_TelegramLoginInput!) {
-  auth_loginTelegram(input: $input) {
-    token
-    email
-    firstname
-    lastname
-  }
-}

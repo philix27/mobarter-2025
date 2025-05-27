@@ -146,7 +146,7 @@ export default function AirtimeComp() {
           clearErr()
         }}
         placeholder={'Enter phone'}
-        error={errors && errors?.phone && errors!.phone}
+        // error={errors && errors?.phone && errors!.phone}
         keyboardType="number-pad"
       />
       <InputText
@@ -161,7 +161,7 @@ export default function AirtimeComp() {
           handlePriceChange(parseFloat(text))
           clearErr()
         }}
-        error={errors && errors?.amount && errors!.amount}
+        // error={errors && errors?.amount && errors!.amount}
       />
       <TText>{amountToPay}</TText>
       <InputButton title={'Submit'} onPress={handleSubmit} />

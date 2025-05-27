@@ -33,6 +33,11 @@ export const sidebarLinks = {
       icon: IconListDetails,
     },
     {
+      title: 'Orders',
+      url: '/orders',
+      icon: IconListDetails,
+    },
+    {
       title: 'Payments',
       url: '/payments',
       icon: IconChartBar,
