@@ -1,11 +1,17 @@
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+import { TabBarIcon } from '@/components/navigation/TabBarIcon'
 
-import { useColor } from '@/hooks/useColor';
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { useColor } from '@/hooks/useColor'
+import { useAuth } from '@clerk/clerk-expo'
+import { Redirect, Tabs } from 'expo-router'
+import React from 'react'
 
 export default function TabLayout() {
-  const colorScheme = useColor();
+  const colorScheme = useColor()
+  const { isSignedIn } = useAuth()
+
+  if (!isSignedIn) {
+    return <Redirect href={'/sign-in'} />
+  }
 
   return (
     <Tabs
@@ -32,13 +38,10 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="home"
+        name="index"
         options={{
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? 'wallet' : 'wallet-outline'}
-              color={color}
-            />
+            <TabBarIcon name={focused ? 'wallet' : 'wallet-outline'} color={color} />
           ),
         }}
       />
@@ -46,10 +49,7 @@ export default function TabLayout() {
         name="payments"
         options={{
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? 'reader' : 'reader-outline'}
-              color={color}
-            />
+            <TabBarIcon name={focused ? 'reader' : 'reader-outline'} color={color} />
           ),
         }}
       />
@@ -57,10 +57,7 @@ export default function TabLayout() {
         name="savings"
         options={{
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? 'save' : 'save-outline'}
-              color={color}
-            />
+            <TabBarIcon name={focused ? 'save' : 'save-outline'} color={color} />
           ),
         }}
       />
@@ -68,13 +65,10 @@ export default function TabLayout() {
         name="settings"
         options={{
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? 'settings' : 'settings-outline'}
-              color={color}
-            />
+            <TabBarIcon name={focused ? 'settings' : 'settings-outline'} color={color} />
           ),
         }}
       />
     </Tabs>
-  );
+  )
 }

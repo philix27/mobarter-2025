@@ -5,17 +5,19 @@ import AssetsCrypto from './AssetsCrypto'
 import { TView } from '@/components/ui/TView'
 import { Wrapper } from '@/components/layout'
 import AssetsTab from './AssetsTab'
+import { TText } from '@/components/ui'
 
 export default function MarketScreen() {
   return (
     <Wrapper>
       <TView style={{ width: '100%' }}>
-        <Balance />
+        <TText>Home</TText>
+        {/* <Balance />
         <QuickActions />
         <TView style={{ height: 15 }} />
         <AssetsTab />
 
-        <AssetsCrypto />
+        <AssetsCrypto /> */}
       </TView>
     </Wrapper>
   )

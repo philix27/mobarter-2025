@@ -4,6 +4,7 @@ import { useSettings } from "./settings";
 import { useUserInfo } from "./user";
 import { useCountries } from './countries';
 import { useTokens } from "./tokens";
+import { useAuth } from "./auth";
 
 export const AppStores = {
   useSettings,
@@ -11,5 +12,5 @@ export const AppStores = {
   useUserInfo,
   useAdvert,
   useCountries,
-  useTokens
+  useTokens,useAuth
 };
