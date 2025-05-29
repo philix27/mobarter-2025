@@ -74,7 +74,6 @@
     "react-native-toast-message": "^2.3.0",
     "react-native-web": "0.20.0",
     "react-native-webview": "^13.13.5",
-    "stream": "^0.0.3",
     "thirdweb": "5.96.7",
     "victory-native": "^41.17.1",
     "viem": "^2.29.4",

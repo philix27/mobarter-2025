@@ -8,7 +8,7 @@ import { useOAuth } from '@clerk/clerk-expo'
 import { Wrapper } from '@/components'
 import { InputText } from '@/components/forms'
 import { AppStores } from '@/lib'
-import { generateWallet, uploadEncryptedKey, useUserGoogleToken } from './wallet'
+import { generateWallet } from './wallet'
 import { TText } from '@/components/ui'
 
 export default function SignIn() {
@@ -81,7 +81,7 @@ function SetupPassword() {
 }
 function SaveWallet() {
   const store = AppStores.useAuth()
-  const drive = useUserGoogleToken()
+  // const drive = useUserGoogleToken()
   const [wallet, setWallet] = useState<{
     seedPhrase: string
     privateKey: string
@@ -100,9 +100,9 @@ function SaveWallet() {
   //   todo: store wallet info in store
   const onSubmit = React.useCallback(async () => {
     //   todo: using the generated wallet, encrypt the data with password
-    const fileId = await uploadEncryptedKey(await drive, store.password!)
+    // const fileId = await uploadEncryptedKey(await drive, store.password!)
     //   todo: send password to google drive
-    store.update({ fileId: fileId! })
+    // store.update({ fileId: fileId! })
   }, [])
 
   return (

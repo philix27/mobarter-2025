@@ -1,0 +1,85 @@
+import { ethers } from 'ethers'
+import { useWallet } from './wallet'
+import { createPublicClient, createWalletClient, http } from 'viem'
+import { privateKeyToAccount } from 'viem/accounts'
+import { supportedChains } from './type'
+import { toast } from '@/components'
+import { abi as ERC20_ABI } from './erc20Abi.json'
+
+export function shortString(str: any, len = 5): string {
+  if (Array.isArray(str)) {
+    str = '[' + str.toString() + ']'
+  }
+  if (str) {
+    if (typeof str.toString === 'function') {
+      str = str.toString()
+    }
+    if (str.length <= 10) {
+      return str
+    }
+    return `${str.slice(0, len)}...${str.slice(str.length - len, str.length)}`
+  }
+  return ''
+}
+
+export const useChain = () => {
+  const store = useWallet()
+  return supportedChains[store.chain]
+}
+export const usePublicClient = () => {
+  const chain = useChain()
+  const client = createPublicClient({
+    chain: chain,
+    transport: http(),
+  })
+
+  return client
+}
+export const useWalletClient = () => {
+  const store = useWallet()
+  const chain = useChain()
+  const account = privateKeyToAccount(store.walletKey as `0x${string}`)
+  const client = createWalletClient({
+    account,
+    chain: chain,
+    transport: http(),
+  })
+  return client
+}
+
+export const useAddress = () => {
+  const c = useWalletClient()
+  return c.account.address
+}
+
+export function useSendToken() {
+  const wc = useWalletClient()
+
+  const sendERC20 = async (props: { recipient: string; amount: string; token: string }) => {
+    const amt = ethers.parseUnits(props.amount, 18)
+    const txHash = await wc.writeContract({
+      address: props.token,
+      abi: ERC20_ABI,
+      functionName: 'transfer',
+      args: [props.recipient, amt],
+    })
+
+    toast.success(`Transaction successful: ${txHash}`)
+    return JSON.stringify(txHash)
+  }
+
+  const sendNative = async (props: { recipient: string; amount: string }) => {
+    try {
+      const txHash = await wc.sendTransaction({
+        to: props.recipient,
+        value: ethers.parseUnits(props.amount, 18),
+      })
+
+      toast.success(`Send Native Success! Hash: ${shortString(txHash)}`)
+    } catch (error: any) {
+      console.error('sendNative error', error)
+    }
+  }
+
+  return { sendERC20, sendNative }
+}
