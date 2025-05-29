@@ -1,15 +1,15 @@
 import { useGetTokenBalance } from '@/api'
 import { TView } from '@/components/ui'
 import { useColor } from '@/hooks/useColor'
+import { useAddress } from '@/lib/zustand/web3/hooks'
 import React from 'react'
 import { Text } from 'react-native'
-import { useActiveAccount } from 'thirdweb/react'
 
 export default function Balance() {
   const appColor = useColor()
-  const account = useActiveAccount()
+  const addr = useAddress()
 
-  const { data, isLoading } = useGetTokenBalance(account!.address, 'NG')
+  const { data, isLoading } = useGetTokenBalance(addr, 'NG')
 
   if (isLoading) {
     return <TView />

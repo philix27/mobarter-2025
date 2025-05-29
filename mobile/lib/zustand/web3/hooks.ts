@@ -1,4 +1,5 @@
-import { ethers } from 'ethers'
+import { useQuery } from '@tanstack/react-query'
+import { ethers, formatEther } from 'ethers'
 import { useWallet } from './wallet'
 import { createPublicClient, createWalletClient, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
@@ -10,6 +11,7 @@ export function shortString(str: any, len = 5): string {
   if (Array.isArray(str)) {
     str = '[' + str.toString() + ']'
   }
+
   if (str) {
     if (typeof str.toString === 'function') {
       str = str.toString()
@@ -26,6 +28,7 @@ export const useChain = () => {
   const store = useWallet()
   return supportedChains[store.chain]
 }
+
 export const usePublicClient = () => {
   const chain = useChain()
   const client = createPublicClient({
@@ -35,6 +38,7 @@ export const usePublicClient = () => {
 
   return client
 }
+
 export const useWalletClient = () => {
   const store = useWallet()
   const chain = useChain()
@@ -52,10 +56,10 @@ export const useAddress = () => {
   return c.account.address
 }
 
-export function useSendToken() {
+export function useTransferToken() {
   const wc = useWalletClient()
 
-  const sendERC20 = async (props: { recipient: string; amount: string; token: string }) => {
+  const transferERC20 = async (props: { recipient: string; amount: string; token: string }) => {
     const amt = ethers.parseUnits(props.amount, 18)
     const txHash = await wc.writeContract({
       address: props.token,
@@ -68,7 +72,7 @@ export function useSendToken() {
     return JSON.stringify(txHash)
   }
 
-  const sendNative = async (props: { recipient: string; amount: string }) => {
+  const transferNative = async (props: { recipient: string; amount: string }) => {
     try {
       const txHash = await wc.sendTransaction({
         to: props.recipient,
@@ -81,5 +85,22 @@ export function useSendToken() {
     }
   }
 
-  return { sendERC20, sendNative }
+  return { transferERC20, transferNative }
+}
+
+export const useBalance = () => {
+  const pc = usePublicClient()
+  const address = useAddress()
+
+  return useQuery({
+    queryKey: ['balance-' + pc.chain.name],
+    queryFn: async () => {
+      const balance = await pc.getBalance({
+        address,
+        blockTag: 'safe',
+      })
+
+      return formatEther(balance)
+    },
+  })
 }

@@ -4,12 +4,13 @@ import { ClipboardGet } from '@/lib'
 import { FontAwesome6 } from '@expo/vector-icons'
 import { useColor } from '@/hooks/useColor'
 import React, { useState } from 'react'
-import { useActiveAccount } from 'thirdweb/react'
+import { useTransferToken } from '@/lib/zustand/web3/hooks'
 
 export default function SendCryptoScreen() {
-  const account = useActiveAccount()
+  const { transferNative } = useTransferToken()
   const theme = useColor()
-  const [walletAddress, setWalletAddress] = useState('')
+  const [recipient, setWalletAddress] = useState('')
+  const [amount, setAmount] = useState('')
 
   // const transaction = transfer({
   //   contract: {
@@ -22,11 +23,11 @@ export default function SendCryptoScreen() {
   // });
 
   const handleSend = async () => {
-    account?.sendTransaction({
-      chainId: 0,
-      data: '0x232',
-      value: BigInt(21),
+    transferNative({
+      recipient,
+      amount,
     })
+
     // await sendTransaction({ transaction, account: '0x3231' });
   }
   return (
@@ -35,7 +36,7 @@ export default function SendCryptoScreen() {
         label={'Wallet Address'}
         keyboardType="default"
         placeholder={'Enter wallet address'}
-        value={walletAddress}
+        value={recipient}
         // value={formData.email}
         // onChangeText={(text) => handleChange("email", text.toLowerCase())}
         // error={errors!.email === undefined ? undefined : errors!.email}
@@ -51,8 +52,8 @@ export default function SendCryptoScreen() {
         label={'Amount'}
         keyboardType="numeric"
         placeholder={'Enter amount'}
-        // value={formData.email}
-        // onChangeText={(text) => handleChange("email", text.toLowerCase())}
+        value={amount}
+        onChangeText={(text) => setAmount(text)}
         // error={errors!.email === undefined ? undefined : errors!.email}
       />
       <TView style={{ alignItems: 'center', justifyContent: 'center' }}>

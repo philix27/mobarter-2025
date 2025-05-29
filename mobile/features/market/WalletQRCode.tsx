@@ -4,10 +4,10 @@ import QRCode from 'react-native-qrcode-svg'
 import { InputButton } from '@/components/forms'
 import { ClipboardSet } from '@/lib'
 import { ScrollView } from 'react-native'
-import { useActiveAccount } from 'thirdweb/react'
+import { useAddress } from '@/lib/zustand/web3/hooks'
 
 export default function WalletQRCode() {
-  const account = useActiveAccount()
+  const address = useAddress()
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -21,15 +21,13 @@ export default function WalletQRCode() {
           alignItems: 'center',
         }}
       >
-        <QRCode value={account!.address} logoBackgroundColor="transparent" size={310} />
-        <TText style={{ textAlign: 'center', marginVertical: 10 }}>
-          {shortenAddress(account!.address)}
-        </TText>
+        <QRCode value={address} logoBackgroundColor="transparent" size={310} />
+        <TText style={{ textAlign: 'center', marginVertical: 10 }}>{shortenAddress(address)}</TText>
 
         <InputButton
           title="Copy"
           onPress={async () => {
-            await ClipboardSet(account!.address)
+            await ClipboardSet(address)
           }}
         />
       </TView>

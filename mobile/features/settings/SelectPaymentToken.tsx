@@ -4,17 +4,18 @@ import { AppStores } from '@/lib/zustand'
 import { BottomSheet } from '@/components/layout'
 import { RBSheetRef } from 'react-native-raw-bottom-sheet'
 
-import { useActiveAccount } from 'thirdweb/react'
 import { AssetsRow } from '../market/AssetsRow'
 import { ScrollView } from 'react-native'
 import { useGetTokens } from '@/api'
+import { useAddress } from '@/lib/zustand/web3/hooks'
 
 export default function SelectPaymentToken() {
   const store = AppStores.useTokens()
+  const addr = useAddress()
   // const store = AppStores.useCountries()
   const countrySheet = useRef<RBSheetRef>(undefined)
-  const account = useActiveAccount()
-  const { data } = useGetTokens(account!.address, 'NG')
+  // const account = useActiveAccount()
+  const { data } = useGetTokens(addr, 'NG')
 
   if (!data) return <TView />
   // const store.activeToken = data!.filter((val) => val.symbol === store.activeToken)[0]

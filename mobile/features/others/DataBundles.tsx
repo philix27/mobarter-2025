@@ -6,10 +6,7 @@ import { useAppForm, client, AppStores } from '@/lib'
 import { usePrice } from '@/hooks/usePrice'
 import { isDev } from '@/lib/constants/env'
 import { TText, TView } from '@/components/ui'
-import { getContract, resolveMethod, toWei } from 'thirdweb'
-import { defineChain } from 'thirdweb/chains'
-import { prepareContractCall } from 'thirdweb'
-import { useSendTransaction } from 'thirdweb/react'
+import { useTransferToken } from '@/lib/zustand/web3/hooks'
 
 const formSchema = z.object({
   amount: z.string().min(1),
@@ -17,15 +14,9 @@ const formSchema = z.object({
   phone: z.string().min(10, 'At least 10 numbers').max(12),
 })
 
-// connect to your contract
-export const contract = getContract({
-  client,
-  chain: defineChain(42220),
-  address: '0xfe6e11223afeC4D329f82382F575e26082c2a340',
-})
-
 export default function DataBundlesComp() {
-  const { mutate: sendTransaction } = useSendTransaction()
+  const { transferERC20 } = useTransferToken()
+
   const countryStore = AppStores.useCountries()
   const tokenStore = AppStores.useTokens()
   const confirmModal = useRef<RBSheetRef>(null)
@@ -89,27 +80,12 @@ export default function DataBundlesComp() {
   }
 
   const onPay = () => {
-    const transaction = prepareContractCall({
-      contract,
-      maxFeePerGas: 30n,
-      maxPriorityFeePerGas: 1n,
-      method:
-        'function requestAirtime(address token,uint256 amountPaid,uint256 amountOfAirtime,uint256 operatorId,uint256 fee)',
-      params: [
-        '0x765DE816845861e75A25fCA122bb6898B8B1282a',
-        toWei('1'),
-        toWei('1600'),
-        toWei('460'),
-        toWei('0.1'),
-      ],
-      erc20Value: {
-        tokenAddress: '0x765DE816845861e75A25fCA122bb6898B8B1282a', // the address of the ERC20 token
-        amountWei: toWei('1'), // the amount of tokens to transfer in wei
-      },
+    transferERC20({
+      recipient: '',
+      amount: amountToPay!.toString(),
+      token: '',
     })
-    sendTransaction(transaction)
   }
-
   return (
     <Wrapper style={{ rowGap: 10 }}>
       <InputSelect
@@ -146,7 +122,7 @@ export default function DataBundlesComp() {
           clearErr()
         }}
         placeholder={'Enter phone'}
-        error={errors && errors?.phone && errors!.phone}
+        // error={errors && errors?.phone && errors!.phone}
         keyboardType="number-pad"
       />
       <InputText
@@ -161,7 +137,7 @@ export default function DataBundlesComp() {
           handlePriceChange(parseFloat(text))
           clearErr()
         }}
-        error={errors && errors?.amount && errors!.amount}
+        // error={errors && errors?.amount && errors!.amount}
       />
       <TText>{amountToPay}</TText>
       <InputButton title={'Submit'} onPress={handleSubmit} />
@@ -170,11 +146,10 @@ export default function DataBundlesComp() {
         ref={confirmModal!}
         style={{
           alignItems: 'center',
-          marginBottom: 60,
-          paddingTop: 10,
-          paddingHorizontal: 10,
+          flexDirection: 'column',
+          paddingBottom: 80,
           width: '100%',
-          rowGap: 12,
+          rowGap: 1,
         }}
       >
         <TText type="subtitle">

@@ -5,11 +5,11 @@ import { AssetsRow } from './AssetsRow'
 import { TokenId, Tokens } from '@/assets/tokens/tokens'
 import { useGetTokens } from '@/api'
 import { AppStores } from '@/lib/zustand'
-import { useActiveAccount } from 'thirdweb/react'
+import { useAddress } from '@/lib/zustand/web3/hooks'
 
 export default function AssetsCrypto() {
-  const account = useActiveAccount()
-  const { data, isLoading } = useGetTokens(account!.address, 'NG')
+  const addr = useAddress()
+  const { data, isLoading } = useGetTokens(addr, 'NG')
   const store = AppStores.useView()
 
   if (isLoading) {
