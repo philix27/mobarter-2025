@@ -3,17 +3,25 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
 export type ITabs = 'CREATE' | 'VIEW'
-
+export type IFixedDepositItem = {
+  title: string
+  amount: string
+  currency: string
+  duration: string
+  interestRate: string
+}
 export interface ISlice {
   fixedDepositTab?: ITabs
   lockedSavingsTab?: ITabs
   flexibleDepositTab?: ITabs
+  fixedDepositList?: IFixedDepositItem[]
 }
 
 export const defaultValues: Required<ISlice> = {
   fixedDepositTab: 'CREATE',
   lockedSavingsTab: 'CREATE',
-  flexibleDepositTab: 'CREATE'
+  flexibleDepositTab: 'CREATE',
+  fixedDepositList: []
 }
 
 export interface ISliceUpdate extends Required<ISlice> {

@@ -13,6 +13,7 @@ export function Row(props: {
   svgUrl?: string
   bgColor?: string
   icon?: JSX.Element
+  trailing?: JSX.Element
   onClick?: VoidFunction
 }) {
   const appColor = useColor()
@@ -26,6 +27,9 @@ export function Row(props: {
         paddingVertical: 8,
         paddingHorizontal: 10,
         borderRadius: 8,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
       }}
       onPress={props.onClick}
     >
@@ -76,6 +80,7 @@ export function Row(props: {
           )}
         </TView>
       </TView>
+      {props.trailing && props.trailing}
     </TouchableOpacity>
   )
 }

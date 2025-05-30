@@ -20,7 +20,7 @@ export default function FixedDepositPage() {
             onPress: () => {
               store.update({ fixedDepositTab: 'CREATE' })
             },
-            isActive: store.fixedDepositTab === 'CREATE',
+            isActive: store.fixedDepositTab !== 'VIEW',
           },
           {
             title: 'View',
@@ -32,7 +32,7 @@ export default function FixedDepositPage() {
           },
         ]}
       />
-      <Wrapper>{store.fixedDepositTab === 'VIEW' ? <ViewComp /> : <Create />}</Wrapper>
+      <Wrapper>{store.fixedDepositTab !== 'VIEW' ? <Create /> : <ViewComp />}</Wrapper>
     </TView>
   )
 }

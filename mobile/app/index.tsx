@@ -7,7 +7,7 @@ import { Link } from 'expo-router'
 export default function HomeScreen() {
   return (
     <Wrapper>
-      <Link href={'/home'}>
+      <Link href={'/wallet'}>
         <TText>Home Page</TText>
       </Link>
       <ViewFixed />

@@ -38,7 +38,7 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="wallet"
         options={{
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'wallet' : 'wallet-outline'} color={color} />

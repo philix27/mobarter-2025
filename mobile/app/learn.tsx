@@ -2,7 +2,7 @@ import { Wrapper, HeaderBar } from '@/components/layout'
 import React from 'react'
 import { Row, TView } from '@/components/ui'
 import { ActivityIndicator, Linking } from 'react-native'
-import { useGetLinksLearn } from '@/hooks'
+import { useGetLinksLearn } from '@/api'
 
 export default function Page() {
   const { data, isLoading } = useGetLinksLearn()
