@@ -9,6 +9,7 @@ export function SavingsCard(params: {
   amountAdded: string
   desc: string
   onView: VoidFunction
+  onPress?: VoidFunction
   onCreate: VoidFunction
 }) {
   const theme = useColor()
@@ -120,8 +121,8 @@ export function SavingsCard(params: {
           borderRadius: 15,
         }}
       >
-        <TextButton title="View Plans" />
-        <TextButton title="Create Plans" />
+        <TextButton title="View Plans" onClick={params.onView} />
+        <TextButton title="Create Plans" onClick={params.onCreate} />
       </TView>
     </TView>
   )

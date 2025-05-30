@@ -4,7 +4,7 @@ import LockedSavingsPage from '@/features/savings/locked'
 export default function Page() {
   return (
     <>
-      <HeaderBar title="Time Lock" />
+      <HeaderBar title="Time Lock" showBackBtn backTo="/savings" />
       <LockedSavingsPage />
     </>
   )

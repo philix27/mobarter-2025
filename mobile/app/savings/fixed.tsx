@@ -4,7 +4,7 @@ import FixedDepositPage from '@/features/savings/fixed'
 export default function Page() {
   return (
     <>
-      <HeaderBar title="Fixed Deposit" />
+      <HeaderBar title="Fixed Deposit" showBackBtn backTo="/savings" />
       <FixedDepositPage />
     </>
   )

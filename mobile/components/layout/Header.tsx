@@ -38,8 +38,8 @@ export function HeaderBar({
         title: props.title,
         headerShown: headerShown,
         headerTitleStyle: {
-          fontWeight: '600',
-          fontSize: 15,
+          fontWeight: '700',
+          fontSize: 16,
           color: appColor.text,
         },
         contentStyle: {
@@ -67,7 +67,9 @@ export function HeaderBar({
                       router.back()
                       return
                     } else {
-                      router.replace(props.backTo as any)
+                      router.back()
+                      return
+                      // router.replace(props.backTo as any)
                     }
                   }}
                 />

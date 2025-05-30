@@ -51,6 +51,7 @@ function Welcome() {
   return (
     <Wrapper>
       <Text>Welcome</Text>
+      <Link href={'/(tabs)'}>Go to Home page</Link>
       <Button title="Sign in with Google" onPress={onPress} />
     </Wrapper>
   )

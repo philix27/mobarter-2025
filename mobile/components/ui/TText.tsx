@@ -1,32 +1,27 @@
-import { Text, type TextProps, StyleSheet } from 'react-native';
+import { Text, type TextProps, StyleSheet } from 'react-native'
 
-import { useColor } from '@/hooks/useColor';
+import { useColor } from '@/hooks/useColor'
 
 export type ThemedTextProps = TextProps & {
-  lightColor?: string;
-  darkColor?: string;
-  type?:
-    | 'default'
-    | 'title'
-    | 'defaultSemiBold'
-    | 'subtitle'
-    | 'link'
-    | 'sm'
-    | 'md';
-};
+  lightColor?: string
+  darkColor?: string
+  muted?: boolean
+  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'sm' | 'md' | "xs"
+}
 
 export function TText({
   style,
   lightColor,
   darkColor,
+  muted,
   type = 'default',
   ...rest
 }: ThemedTextProps) {
-  const color = useColor();
+  const color = useColor()
   return (
     <Text
       style={[
-        { color: color.text },
+        { color: muted ? color.muted : color.text },
         type === 'default' ? styles.default : undefined,
         type === 'title' ? styles.title : undefined,
         type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
@@ -34,11 +29,12 @@ export function TText({
         type === 'link' ? styles.link : undefined,
         type === 'md' ? styles.md : undefined,
         type === 'sm' ? styles.sm : undefined,
+        type === 'xs' ? styles.xs : undefined,
         style,
       ]}
       {...rest}
     />
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -61,16 +57,20 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   link: {
-    lineHeight: 30,
     fontSize: 16,
+    lineHeight: 30,
     color: '#0a7ea4',
   },
-  sm: {
-    lineHeight: 20,
-    fontSize: 12,
-  },
   md: {
-    fontSize: 14.5,
+    fontSize: 14,
     lineHeight: 20,
   },
-});
+  sm: {
+    fontSize: 12,
+    lineHeight: 20,
+  },
+  xs: {
+    fontSize: 10,
+    lineHeight: 18,
+  },
+})
