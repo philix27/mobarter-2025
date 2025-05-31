@@ -8,7 +8,7 @@ import { ethers } from 'ethers'
 export default function HomeScreen() {
   return (
     <Wrapper>
-      <Link href={'/wallet'}>
+      <Link href={'/home'}>
         <TText>Home Page</TText>
       </Link>
 

@@ -71,8 +71,8 @@ export const BottomSheet = forwardRef<any, IProps>(({ maxHeight = 700, ...props 
       }}
     >
       {props.title && (
-        <TView style={{ marginBottom: 4 }}>
-          <TText type="defaultSemiBold">{props.title}:</TText>
+        <TView style={{ marginBottom: 10 }}>
+          <TText style={{ fontSize: 20, fontWeight: '700' }}>{props.title}</TText>
         </TView>
       )}
       {props.children}

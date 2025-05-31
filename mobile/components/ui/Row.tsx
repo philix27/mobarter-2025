@@ -2,7 +2,7 @@ import IconRound from '@/components/ui/IconRound'
 import { TView } from '@/components/ui/TView'
 import { useColor } from '@/hooks/useColor'
 import { JSX } from 'react'
-import { TouchableOpacity, Image } from 'react-native'
+import { TouchableOpacity, Image, ViewStyle } from 'react-native'
 import { SvgUri } from 'react-native-svg'
 import { TText } from './TText'
 
@@ -12,6 +12,7 @@ export function Row(props: {
   imgUrl?: string
   svgUrl?: string
   bgColor?: string
+  style?: ViewStyle
   icon?: JSX.Element
   trailing?: JSX.Element
   onClick?: VoidFunction
@@ -20,17 +21,20 @@ export function Row(props: {
   const bgColor = props.bgColor ? props.bgColor : appColor.card
   return (
     <TouchableOpacity
-      style={{
-        backgroundColor: bgColor,
-        width: '100%',
-        marginBottom: 5,
-        paddingVertical: 8,
-        paddingHorizontal: 10,
-        borderRadius: 8,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}
+      style={[
+        {
+          backgroundColor: bgColor,
+          width: '100%',
+          marginBottom: 5,
+          paddingVertical: 8,
+          paddingHorizontal: 10,
+          borderRadius: 8,
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        },
+        props.style,
+      ]}
       onPress={props.onClick}
     >
       <TView

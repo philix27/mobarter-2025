@@ -1,17 +1,11 @@
 import { TabBarIcon } from '@/components/navigation/TabBarIcon'
 
 import { useColor } from '@/hooks/useColor'
-import { useAuth } from '@clerk/clerk-expo'
-import { Redirect, Tabs } from 'expo-router'
+import { Tabs } from 'expo-router'
 import React from 'react'
 
 export default function TabLayout() {
   const colorScheme = useColor()
-  const { isSignedIn } = useAuth()
-
-  // if (isSignedIn) {
-  //   return <Redirect href={'/sign-in'} />
-  // }
 
   return (
     <Tabs
@@ -38,7 +32,7 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="wallet"
+        name="home"
         options={{
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'wallet' : 'wallet-outline'} color={color} />

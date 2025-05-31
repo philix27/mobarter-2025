@@ -4,6 +4,7 @@ import {
   KeyboardTypeOptions,
   TouchableOpacity,
   ViewStyle,
+  TextStyle,
 } from 'react-native'
 import { TView } from '../ui/TView'
 import { useColor } from '@/hooks/useColor'
@@ -19,6 +20,7 @@ export function InputText(props: {
   leadingText?: string
   desc?: string
   style?: ViewStyle
+  inputStyle?: TextStyle
   value?: string | undefined
   icon?: JSX.Element
   trailingIcon?: JSX.Element
@@ -52,9 +54,10 @@ export function InputText(props: {
             flexDirection: 'row',
             alignItems: 'center',
             backgroundColor: theme.card,
-            borderColor: onFocus ? theme.muted : theme.background,
+            borderColor: onFocus ? theme.primary : theme.background,
             borderWidth: 1,
             borderRadius: 5,
+            width: '100%',
           }}
         >
           {props.leadingText && (
@@ -76,7 +79,9 @@ export function InputText(props: {
                 backgroundColor: theme.card,
                 color: theme.text,
                 paddingLeft: props.leadingText ? 4 : 10,
+                width: '91%',
               },
+              props.inputStyle,
             ]}
             keyboardType={props.keyboardType}
             value={props.value}
@@ -87,41 +92,40 @@ export function InputText(props: {
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
           />
+          {props.secureTextEntry && (
+            <TView style={{ position: 'absolute', right: 10, top: 38 }}>
+              {HidePassword ? (
+                <Feather
+                  name="eye-off"
+                  size={20}
+                  color={theme.muted}
+                  onPress={() => setHidePassword(false)}
+                />
+              ) : (
+                <Feather
+                  name="eye"
+                  size={20}
+                  color={theme.muted}
+                  onPress={() => setHidePassword(true)}
+                />
+              )}
+            </TView>
+          )}
+
+          {props.trailingIcon && (
+            <TouchableOpacity
+              style={{
+                right: 0,
+                // position: 'absolute',
+                // top: 40,
+                // backgroundColor: theme.primary,
+              }}
+              onPress={props.onTrailingIconPress}
+            >
+              {props.trailingIcon}
+            </TouchableOpacity>
+          )}
         </TView>
-
-        {props.secureTextEntry && (
-          <TView style={{ position: 'absolute', right: 10, top: 38 }}>
-            {HidePassword ? (
-              <Feather
-                name="eye-off"
-                size={20}
-                color={theme.muted}
-                onPress={() => setHidePassword(false)}
-              />
-            ) : (
-              <Feather
-                name="eye"
-                size={20}
-                color={theme.muted}
-                onPress={() => setHidePassword(true)}
-              />
-            )}
-          </TView>
-        )}
-
-        {props.trailingIcon && !onFocus && (
-          <TouchableOpacity
-            style={{
-              position: 'absolute',
-              right: 14,
-              top: 40,
-              backgroundColor: theme.background,
-            }}
-            onPress={props.onTrailingIconPress}
-          >
-            {props.trailingIcon}
-          </TouchableOpacity>
-        )}
 
         {props.error && <ErrMsg msg={props.error} />}
       </TView>

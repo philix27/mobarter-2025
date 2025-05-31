@@ -1,25 +1,31 @@
-import { useColor } from '@/hooks/useColor';
-import { ActivityIndicator, TouchableOpacity, ViewStyle } from 'react-native';
-import { Text, StyleSheet } from 'react-native';
+import { useColor } from '@/hooks/useColor'
+import { ActivityIndicator, TouchableOpacity, ViewStyle } from 'react-native'
+import { Text, StyleSheet } from 'react-native'
 
 export function InputButton(props: {
-  title: string;
-  style?: ViewStyle;
-  isLoading?: boolean;
-  onPress?: VoidFunction;
-  variant?: 'secondary' | 'outline';
+  title: string
+  style?: ViewStyle
+  isLoading?: boolean
+  disabled?: boolean
+  onPress?: VoidFunction
+  variant?: 'secondary' | 'outline'
 }) {
-  const appColor = useColor();
+  const appColor = useColor()
+  const getColor = () => {
+    if (props.variant === 'secondary') return '#282828'
+    if (props.disabled) return appColor.accent
+
+    return appColor.primary
+  }
   return (
     <TouchableOpacity
       style={{
         width: '75%',
         ...styles.button,
         ...props.style,
-        backgroundColor:
-          props.variant === 'secondary' ? '#282828' : appColor.primary,
+        backgroundColor: getColor(),
       }}
-      onPress={props.onPress}
+      onPress={props.disabled ? undefined : props.onPress}
     >
       {props.isLoading ? (
         <ActivityIndicator size="small" color="#fff" />
@@ -27,7 +33,7 @@ export function InputButton(props: {
         <Text style={styles.buttonText}>{props.title}</Text>
       )}
     </TouchableOpacity>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -44,4 +50,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-});
+})
