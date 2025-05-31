@@ -87,9 +87,9 @@ export const useGetTokens = (address: string, country: string) => {
   return useQuery({
     queryKey: ['useGetTokens'],
     queryFn: async () => {
-      if (store.activeToken) {
-        return store.tokens
-      }
+      // if (store.activeToken) {
+      //   return store.tokens
+      // }
 
       const res = await api.get(`/api/tokens`, {
         params: { address, country },
