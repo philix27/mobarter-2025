@@ -59,7 +59,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "ethers": "^6.13.5",
-    "fastify": "^4.25.2",
+    "fastify": "^4.29.1",
     "graphql-redis-subscriptions": "^2.7.0",
     "graphql-subscriptions": "^3.0.0",
     "ioredis": "^5.5.0",
