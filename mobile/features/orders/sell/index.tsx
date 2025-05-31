@@ -1,29 +1,19 @@
 import { TView } from '@/components'
 import { InputButton, InputText } from '@/components/forms'
-import { AppStores, ClipboardGet } from '@/lib'
-import { FontAwesome6 } from '@expo/vector-icons'
-import { useColor } from '@/hooks/useColor'
+import { AppStores } from '@/lib'
 import React, { useState } from 'react'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
-import { SelectTokenCard } from '../tokens/SelectTokenCard'
+import { SelectTokenCard } from '@/features/tokens'
 
 type IData = { value: string | undefined; error: string | undefined }
-export default function SendCryptoScreen() {
-  const { transferNative, transferERC20 } = useTransferToken()
-  const theme = useColor()
-  const [recipient, setRecipient] = useState<IData>()
+export default function SellCryptoOrder() {
+  const { transferERC20 } = useTransferToken()
   const [amount, setAmount] = useState<IData>()
   const [tokenErr, setTokenErr] = useState<string>()
   const storeTokens = AppStores.useTokens()
   const token = storeTokens.activeToken
 
   const handleSend = async () => {
-    if (recipient === undefined || recipient.value === undefined) {
-      setRecipient((prev) => {
-        return { error: 'Enter a wallet address', value: prev?.value }
-      })
-      return
-    }
     if (amount === undefined || amount.value === undefined) {
       setAmount((prev) => {
         return { error: 'Enter a valid amount', value: prev?.value }
@@ -35,16 +25,8 @@ export default function SendCryptoScreen() {
       return
     }
 
-    if (token?.symbol === 'CELO') {
-      transferNative({
-        recipient: recipient.value,
-        amount: amount.value,
-      })
-      return
-    }
-
     transferERC20({
-      recipient: recipient.value,
+      recipient: 'Collector',
       amount: amount.value,
       token: token!.address,
     })
@@ -52,23 +34,6 @@ export default function SendCryptoScreen() {
   }
   return (
     <TView style={{ width: '100%', rowGap: 20 }}>
-      <InputText
-        label={'Wallet Address'}
-        keyboardType="default"
-        placeholder={'Enter wallet address'}
-        value={recipient?.value || ''}
-        error={recipient?.error}
-        // value={formData.email}
-        onChangeText={(t) => setRecipient({ value: t, error: undefined })}
-        // error={errors!.email === undefined ? undefined : errors!.email}
-        onTrailingIconPress={async () => {
-          const text = await ClipboardGet()
-
-          setRecipient({ value: text, error: undefined })
-          console.log(text)
-        }}
-        trailingIcon={<FontAwesome6 name="paste" size={20} color={theme.muted} />}
-      />
       <SelectTokenCard tokenErr={tokenErr} />
       <InputText
         label={'Amount'}

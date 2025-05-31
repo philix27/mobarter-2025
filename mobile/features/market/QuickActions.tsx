@@ -12,8 +12,8 @@ import { router } from 'expo-router'
 export default function QuickActions() {
   const appColor = useColor()
 
-  const withdrawalSheet = useRef<RBSheetRef>()
-  const walletSheet = useRef<RBSheetRef>()
+  const withdrawalSheet = useRef<RBSheetRef>(null)
+  const walletSheet = useRef<RBSheetRef>(null)
 
   return (
     <>
