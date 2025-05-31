@@ -18,7 +18,7 @@ export function InputSelect(params: {
   onValueChange?: (itemValue: string) => void
 }) {
   const theme = useColor()
-  const refRBSheet = useRef<RBSheetRef>()
+  const refRBSheet = useRef<RBSheetRef>(null)
   const [selectedValue, setSelectedValue] = useState<string | undefined>(undefined)
 
   const getLabel = () => {

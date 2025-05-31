@@ -4,7 +4,7 @@ import React from 'react'
 import { useSavings } from '../zustand'
 import { Ionicons } from '@expo/vector-icons'
 
-export default function ViewComp() {
+export default function ViewFixedDeposit() {
   const store = useSavings()
   return (
     <TView style={{ width: '100%' }}>

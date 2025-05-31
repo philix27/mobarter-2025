@@ -6,7 +6,10 @@ import { BatchHttpLink } from '@apollo/client/link/batch-http'
 import { ThemeProvider } from './ThemeContext'
 import Toast from 'react-native-toast-message'
 import { AppStores } from '../zustand'
+import { tokenCache } from '@clerk/clerk-expo/token-cache'
+import { ClerkProvider } from '@clerk/clerk-expo'
 
+const CP = ClerkProvider as any
 const token = process.env.EXPO_PUBLIC_SERVER_TEST_TOKEN!
 const httpLink = new BatchHttpLink({
   // uri: 'http://172.20.10.4:4545/graphql',
@@ -29,15 +32,17 @@ export function RootProviders(props: { children: ReactNode }) {
   const store = AppStores.useUserInfo()
 
   return (
-    // <WagmiProvider config={config}>
     <QueryClientProvider client={queryClient}>
-      <ApolloProvider client={apollo}>
+      {/* <WagmiProvider config={config}> */}
+      <CP tokenCache={tokenCache}>
+        {/* <ApolloProvider client={apollo}> */}
         <ThemeProvider>
           <Slot />
           <Toast position="top" />
         </ThemeProvider>
-      </ApolloProvider>
+        {/* </ApolloProvider> */}
+      </CP>
+      {/* </WagmiProvider> */}
     </QueryClientProvider>
-    // </WagmiProvider>
   )
 }

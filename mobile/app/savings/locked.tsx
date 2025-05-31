@@ -1,11 +1,11 @@
 import { HeaderBar } from '@/components/layout/Header'
-import LockedSavingsPage from '@/features/savings/locked'
+import FixedDepositPage from '@/features/savings/fixed'
 
 export default function Page() {
   return (
     <>
-      <HeaderBar title="Time Lock" showBackBtn backTo="/savings" />
-      <LockedSavingsPage />
+      <HeaderBar title="Fixed Deposit" showBackBtn backTo="/savings" />
+      <FixedDepositPage />
     </>
   )
 }

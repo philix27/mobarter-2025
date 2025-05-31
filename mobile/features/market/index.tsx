@@ -11,13 +11,12 @@ export default function MarketScreen() {
   return (
     <Wrapper>
       <TView style={{ width: '100%' }}>
-        <TText>Home</TText>
-        {/* <Balance />
+        <Balance />
         <QuickActions />
         <TView style={{ height: 15 }} />
         <AssetsTab />
 
-        <AssetsCrypto /> */}
+        <AssetsCrypto />
       </TView>
     </Wrapper>
   )

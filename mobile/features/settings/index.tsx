@@ -21,9 +21,9 @@ export default function SettingsScreen() {
 
   return (
     <Wrapper>
-      <Collapsible title={'Personal Info'}>
+      {/* <Collapsible title={'Personal Info'}>
         <TWInfo />
-      </Collapsible>
+      </Collapsible> */}
       <Collapsible title={'KYC'}>
         <Personal />
       </Collapsible>

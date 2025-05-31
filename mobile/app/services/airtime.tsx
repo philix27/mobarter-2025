@@ -1,4 +1,4 @@
-import { HeaderBar } from '@/components/layout'
+import { HeaderBar } from '@/components/layout/Header'
 import AirtimeComp from '@/features/others/Airtime'
 import React from 'react'
 
