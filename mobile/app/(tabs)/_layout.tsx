@@ -1,11 +1,15 @@
+import { useDrawer } from '@/components/layout'
 import { TabBarIcon } from '@/components/navigation/TabBarIcon'
 
 import { useColor } from '@/hooks/useColor'
+import { Feather } from '@expo/vector-icons'
 import { Tabs } from 'expo-router'
 import React from 'react'
+import { TouchableOpacity } from 'react-native'
 
 export default function TabLayout() {
   const theme = useColor()
+  const drawer = useDrawer()
 
   return (
     <Tabs
@@ -38,6 +42,20 @@ export default function TabLayout() {
             <TabBarIcon name={focused ? 'wallet' : 'wallet-outline'} color={color} />
           ),
           title: 'Home',
+          headerLeft: (props: any) => {
+            return (
+              <TouchableOpacity style={{ marginLeft: 20, flexDirection: 'row', columnGap: 20 }}>
+                <Feather
+                  name="menu"
+                  size={24}
+                  color={theme.text}
+                  onPress={() => {
+                    drawer.open()
+                  }}
+                />
+              </TouchableOpacity>
+            )
+          },
         }}
       />
       <Tabs.Screen
