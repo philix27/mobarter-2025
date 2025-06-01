@@ -24,6 +24,7 @@ export default function QuickActions() {
           flexDirection: 'row',
           justifyContent: 'space-around',
           alignItems: 'center',
+          width: '100%',
           backgroundColor: appColor.background,
         }}
       >

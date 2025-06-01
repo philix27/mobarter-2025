@@ -1,7 +1,7 @@
 import { ParallaxScrollView, Wrapper } from '@/components'
 import { TText } from '@/components/ui'
-import ViewFixed from '@/features/savings/fixed/View'
 import { Link } from 'expo-router'
+import ViewFixed from '@/features/savings/fixed/View'
 import Create from '@/features/savings/fixed/Create'
 import { ethers } from 'ethers'
 import { Image, StyleSheet, View, useColorScheme } from 'react-native'

@@ -6,6 +6,7 @@ import { privateKeyToAccount } from 'viem/accounts'
 import { supportedChains } from './type'
 import { toast } from '@/components'
 import { abi as ERC20_ABI } from './erc20Abi.json'
+import * as t from "thirdweb"
 
 export function shortString(str: any, len = 5): string {
   if (Array.isArray(str)) {

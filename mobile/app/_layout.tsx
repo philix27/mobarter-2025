@@ -34,22 +34,22 @@ export default function RootLayout() {
   }
 
   return (
-    <Drawer
-      screenOptions={{
-        headerShown: false,
-        drawerLabelStyle: {
-          // marginLeft: -20,
-          color: appColor.text,
-        },
-        drawerActiveBackgroundColor: appColor.background,
-        drawerStyle: {
-          width: Dimensions.get('window').width / 1.5,
-          backgroundColor: appColor.background,
-        },
-      }}
-      drawerContent={DrawerContent}
-    >
-      <RootProviders>
+    <RootProviders>
+      <Drawer
+        screenOptions={{
+          headerShown: false,
+          drawerLabelStyle: {
+            // marginLeft: -20,
+            color: appColor.text,
+          },
+          drawerActiveBackgroundColor: appColor.background,
+          drawerStyle: {
+            width: Dimensions.get('window').width / 1.5,
+            backgroundColor: appColor.background,
+          },
+        }}
+        drawerContent={DrawerContent}
+      >
         <Drawer.Screen
           name="(tabs)"
           options={{
@@ -62,7 +62,7 @@ export default function RootLayout() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack> */}
-      </RootProviders>
-    </Drawer>
+      </Drawer>
+    </RootProviders>
   )
 }

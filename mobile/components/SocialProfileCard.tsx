@@ -7,6 +7,28 @@ import { resolveScheme } from "thirdweb/storage";
 import { SocialProfile, FarcasterProfile, getSocialProfiles } from "thirdweb/social";
 import { ThemedView } from "./ThemedView";
 
+
+import { createThirdwebClient,  } from 'thirdweb'
+
+// Create the client (do this once and reuse it)
+const client = createThirdwebClient({
+  clientId: 'YOUR_CLIENT_ID',
+})
+
+// Initialize embedded wallet
+const wallet = embeddedWallet({
+  client,
+})
+ 
+
+async function con() {
+  // Connect with social login
+  const googleWallet = await wallet.connect({
+    strategy: 'google',
+  })
+
+  googleWallet
+}
 interface SocialProfileCardProps {
   address: string | undefined;
   client: ThirdwebClient;

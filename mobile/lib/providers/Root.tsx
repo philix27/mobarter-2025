@@ -1,5 +1,4 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+// import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import { Slot } from 'expo-router'
 import { ReactNode } from 'react'
 import { BatchHttpLink } from '@apollo/client/link/batch-http'
@@ -9,6 +8,7 @@ import { AppStores } from '../zustand'
 import { tokenCache } from '@clerk/clerk-expo/token-cache'
 import { ClerkProvider } from '@clerk/clerk-expo'
 import React from 'react'
+import ReactQueryProvider from './Tanstack'
 
 const CP = ClerkProvider as any
 const token = process.env.EXPO_PUBLIC_SERVER_TEST_TOKEN!
@@ -18,33 +18,32 @@ const httpLink = new BatchHttpLink({
   batchInterval: 10,
 })
 
-const queryClient = new QueryClient()
-const apollo = new ApolloClient({
-  // link: httpLink,
-  uri: process.env.EXPO_PUBLIC_SERVER_GQL,
-  headers: {
-    Authorization: `Bearer ${token}`,
-    // Authorization: `Bearer ${store.token}`,
-  },
-  cache: new InMemoryCache(),
-})
+// const apollo = new ApolloClient({
+//   // link: httpLink,
+//   uri: process.env.EXPO_PUBLIC_SERVER_GQL,
+//   headers: {
+//     Authorization: `Bearer ${token}`,
+// Authorization: `Bearer ${store.token}`,
+//   },
+//   cache: new InMemoryCache(),
+// })
 
 export function RootProviders(props: { children: ReactNode }) {
   const store = AppStores.useUserInfo()
 
   return (
-    <QueryClientProvider client={queryClient}>
-      {/* <ApolloProvider client={apollo}> */}
-      {/* <WagmiProvider config={config}> */}
+    <ReactQueryProvider>
       <CP tokenCache={tokenCache}>
+        {/* <ApolloProvider client={apollo}> */}
+        {/* <WagmiProvider config={config}> */}
         <ThemeProvider>
           {/* <Slot /> */}
           {props.children}
           <Toast position="top" />
         </ThemeProvider>
+        {/* </WagmiProvider> */}
+        {/* </ApolloProvider> */}
       </CP>
-      {/* </WagmiProvider> */}
-      {/* </ApolloProvider> */}
-    </QueryClientProvider>
+    </ReactQueryProvider>
   )
 }
