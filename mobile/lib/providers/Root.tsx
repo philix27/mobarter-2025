@@ -8,6 +8,7 @@ import Toast from 'react-native-toast-message'
 import { AppStores } from '../zustand'
 import { tokenCache } from '@clerk/clerk-expo/token-cache'
 import { ClerkProvider } from '@clerk/clerk-expo'
+import React from 'react'
 
 const CP = ClerkProvider as any
 const token = process.env.EXPO_PUBLIC_SERVER_TEST_TOKEN!
@@ -33,16 +34,17 @@ export function RootProviders(props: { children: ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
+      {/* <ApolloProvider client={apollo}> */}
       {/* <WagmiProvider config={config}> */}
       <CP tokenCache={tokenCache}>
-        {/* <ApolloProvider client={apollo}> */}
         <ThemeProvider>
-          <Slot />
+          {/* <Slot /> */}
+          {props.children}
           <Toast position="top" />
         </ThemeProvider>
-        {/* </ApolloProvider> */}
       </CP>
       {/* </WagmiProvider> */}
+      {/* </ApolloProvider> */}
     </QueryClientProvider>
   )
 }

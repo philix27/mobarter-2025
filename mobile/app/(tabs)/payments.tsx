@@ -4,7 +4,7 @@ import ServicesScreen from '@/features/services'
 export default function Page() {
   return (
     <>
-      <HeaderBar title="Payments" />
+      {/* <HeaderBar title="Payments" /> */}
       <ServicesScreen />
     </>
   )

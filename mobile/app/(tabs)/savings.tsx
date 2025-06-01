@@ -4,7 +4,7 @@ import SavingsScreen from '@/features/savings'
 export default function Page() {
   return (
     <>
-      <HeaderBar title="Savings" />
+      {/* <HeaderBar title="Savings" /> */}
       <SavingsScreen />;
     </>
   )

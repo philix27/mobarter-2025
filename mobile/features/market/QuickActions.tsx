@@ -30,7 +30,7 @@ export default function QuickActions() {
         <IconRound
           title="Send"
           onPress={() => {
-            router.push('/send-crypto')
+            router.push('/services/send-crypto')
           }}
         >
           <Feather name="send" size={22} color={'#fff'} />

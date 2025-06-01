@@ -1,3 +1,4 @@
+import { useColor } from '@/hooks/useColor'
 import { Ionicons } from '@expo/vector-icons'
 import { router, Stack } from 'expo-router'
 import React from 'react'
@@ -6,7 +7,6 @@ import {
   NativeStackHeaderLeftProps,
   NativeStackHeaderRightProps,
 } from '@react-navigation/native-stack'
-import { useColor } from '@/lib'
 
 type IRoutes = 'Home'
 export function HeaderBar({
@@ -38,8 +38,8 @@ export function HeaderBar({
         title: props.title,
         headerShown: headerShown,
         headerTitleStyle: {
-          fontWeight: '600',
-          fontSize: 15,
+          fontWeight: '700',
+          fontSize: 16,
           color: appColor.text,
         },
         contentStyle: {

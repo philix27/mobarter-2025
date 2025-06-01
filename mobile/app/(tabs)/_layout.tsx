@@ -5,30 +5,30 @@ import { Tabs } from 'expo-router'
 import React from 'react'
 
 export default function TabLayout() {
-  const colorScheme = useColor()
+  const theme = useColor()
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: colorScheme.primary,
-        headerShown: false,
+        tabBarActiveTintColor: theme.primary,
+        headerShown: true,
         headerShadowVisible: false,
-        tabBarInactiveBackgroundColor: colorScheme.background,
-        tabBarActiveBackgroundColor: colorScheme.background,
+        tabBarInactiveBackgroundColor: theme.background,
+        tabBarActiveBackgroundColor: theme.background,
         tabBarStyle: {
-          backgroundColor: colorScheme.background,
-          borderColor: colorScheme.background,
+          backgroundColor: theme.background,
+          borderColor: theme.background,
         },
         sceneStyle: {
-          borderColor: colorScheme.background,
-          backgroundColor: colorScheme.background,
+          borderColor: theme.background,
+          backgroundColor: theme.background,
         },
-        // headerBackgroundContainerStyle: {
-        //   // backgroundColor: colorScheme.background,
-        // },
-        // headerStyle: {
-        //   // backgroundColor: colorScheme.background,
-        // },
+        headerStyle: { backgroundColor: theme.background },
+        headerTitleStyle: {
+          color: theme.text,
+          fontSize: 15,
+          fontWeight: '600',
+        },
       }}
     >
       <Tabs.Screen
@@ -37,6 +37,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'wallet' : 'wallet-outline'} color={color} />
           ),
+          title: 'Home',
         }}
       />
       <Tabs.Screen
@@ -45,6 +46,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'reader' : 'reader-outline'} color={color} />
           ),
+          title: 'Payments',
         }}
       />
       <Tabs.Screen
@@ -53,14 +55,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'save' : 'save-outline'} color={color} />
           ),
-        }}
-      />
-      <Tabs.Screen
-        name="settings"
-        options={{
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'settings' : 'settings-outline'} color={color} />
-          ),
+          title: 'Savings',
         }}
       />
     </Tabs>
