@@ -1,5 +1,5 @@
 import { ActivityIndicator, FlatList, ScrollView } from 'react-native'
-import { TView } from '@/components/ui'
+import { TText, TView } from '@/components/ui'
 import React from 'react'
 import { AssetsRow } from './AssetsRow'
 import { TokenId, Tokens } from '@/assets/tokens/tokens'
@@ -40,10 +40,26 @@ export function CryptoTokensList(props: { variant?: 'ALL' | 'CELO' }) {
           renderItem={({ item }) => {
             const s = item.symbol as TokenId
             const token = Tokens[s]
-            const Logo = token.logo
+
+            if (token === undefined) {
+              return (
+                <AssetsRow
+                  imgUrl={item.logoUrl as any}
+                  currency={item.symbol}
+                  tokenAddr={item.address}
+                  balance={item.balance}
+                  tokenPrice={item.tokenPrice}
+                  performance={item.name}
+                  onPress={() => {
+                    storeTokens.update({ activeToken: item })
+                    return
+                  }}
+                />
+              )
+            }
+
             return (
               <AssetsRow
-                // icon={<Logo height={30} width={30} />}
                 imgUrl={item.logoUrl as any}
                 currency={item.symbol}
                 tokenAddr={item.address}

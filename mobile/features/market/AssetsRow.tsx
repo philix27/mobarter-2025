@@ -20,11 +20,11 @@ export function AssetsRow(params: {
     <TouchableOpacity
       onPress={params.onPress}
       style={{
-        paddingVertical: 5,
-        marginBottom: 4,
+        paddingVertical: 4,
+        marginBottom: 1,
         backgroundColor: bgColor,
         paddingHorizontal: 10,
-        borderRadius: 10,
+        borderRadius: 5,
       }}
     >
       <TView
@@ -62,7 +62,7 @@ export function AssetsRow(params: {
           </TView>
           <TView style={{ backgroundColor: bgColor }}>
             <TText type="defaultSemiBold">{params.currency}</TText>
-            <TText type="default" style={{ fontSize: 13 }}>
+            <TText type="default" style={{ fontSize: 13, color: appColor.muted }}>
               {params.performance}
             </TText>
           </TView>

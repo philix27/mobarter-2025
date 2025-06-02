@@ -35,6 +35,14 @@ export const Assets = {
     LinkedIn: "socials/LinkedIn.png",
   },
   tokens: {
+    cZAR: "tokens/cZAR.png",
+    cCAD: "tokens/cCAD.png",
+    cAUD: "tokens/cAUD.png",
+    cCHF: "tokens/cCHF.png",
+    cJPY: "tokens/cJPY.png",
+    cNGN: "tokens/cNGN.png",
+    cGBP: "tokens/cGBP.png",
+    //
     USDT: "tokens/USDT.png",
     USDC: "tokens/USDC.png",
     PUSO: "tokens/PUSO.png",

@@ -26,14 +26,17 @@ export interface IChainMetadata {
 }
 
 export type IToken = {
-  chianId: number;
-  id: string;
-  symbol: string;
-  name: string;
-  color: string;
-  address: string;
-  decimals: number;
-  logoUrl: string;
-  balance: string;
-  tokenPrice: string;
-};
+  chianId: number
+  id: string
+  symbol: string
+  name: string
+  color: string
+  address: string
+  decimals: number
+  logoUrl: string
+  balance: string
+  tokenPrice: string
+  isPayable?: boolean
+  isBuyable?: boolean
+  isSellable?: boolean
+}

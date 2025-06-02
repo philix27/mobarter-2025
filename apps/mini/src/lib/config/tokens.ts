@@ -177,6 +177,7 @@ export const cGHS: Token = Object.freeze({
   decimals: 18,
   logo: TokenIcons['cGHS'],
 })
+
 export const cGBP: Token = Object.freeze({
   id: TokenId.cGBP,
   symbol: TokenId.cGBP,

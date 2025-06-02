@@ -25,10 +25,10 @@ export function Row(props: {
         {
           backgroundColor: bgColor,
           width: '100%',
-          marginBottom: 5,
-          paddingVertical: 8,
+          marginBottom: 2,
+          paddingVertical: 4,
           paddingHorizontal: 10,
-          borderRadius: 8,
+          borderRadius: 5,
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'space-between',
