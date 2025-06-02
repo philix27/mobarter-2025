@@ -19,7 +19,7 @@ const httpLink = new BatchHttpLink({
 })
 
 const apollo = new ApolloClient({
-  link: httpLink,
+  // link: httpLink,
   uri: process.env.EXPO_PUBLIC_SERVER_GQL,
   headers: {
     Authorization: `Bearer ${token}`,

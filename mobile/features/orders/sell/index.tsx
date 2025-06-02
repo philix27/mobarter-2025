@@ -4,6 +4,7 @@ import { AppStores } from '@/lib'
 import React, { useState } from 'react'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
 import { PayableTokenCard } from '@/features/tokens'
+import { SelectBankAccountCard } from '@/features/bankAccount'
 
 type IData = { value: string | undefined; error: string | undefined }
 export default function SellCryptoOrder() {
@@ -35,6 +36,7 @@ export default function SellCryptoOrder() {
   return (
     <TView style={{ width: '100%', rowGap: 20 }}>
       <PayableTokenCard tokenErr={tokenErr} />
+      <SelectBankAccountCard tokenErr={tokenErr} />
       <InputText
         label={'Amount'}
         keyboardType="numeric"

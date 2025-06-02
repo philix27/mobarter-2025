@@ -35,7 +35,7 @@ export function InputSelect(params: {
             padding: 0,
           }}
         >
-          <Label label={params.label} />
+          <Label label={params.label}  />
         </TView>
       )}
       <TouchableOpacity
