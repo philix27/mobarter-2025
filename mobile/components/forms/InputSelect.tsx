@@ -27,43 +27,45 @@ export function InputSelect(params: {
   }
   return (
     <>
-      {params.label && (
-        <TView
-          style={{
-            width: '100%',
-            margin: 0,
-            padding: 0,
-          }}
-        >
-          <Label label={params.label}  />
-        </TView>
-      )}
-      <TouchableOpacity
-        style={{ width: '100%', margin: 0, padding: 0 }}
-        onPress={() => {
-          refRBSheet.current!.open()
-        }}
-      >
-        <TView
-          style={[
-            {
-              backgroundColor: theme.card,
+      <TView style={{ width: '100%' }}>
+        {params.label && (
+          <TView
+            style={{
               width: '100%',
-              borderWidth: 1,
-              borderRadius: 5,
-              paddingHorizontal: 10,
-              paddingVertical: 10,
-              minWidth: '90%',
               margin: 0,
               padding: 0,
-            },
-            params.style,
-          ]}
+            }}
+          >
+            <Label label={params.label} />
+          </TView>
+        )}
+        <TouchableOpacity
+          style={{ width: '100%', margin: 0, padding: 0 }}
+          onPress={() => {
+            refRBSheet.current!.open()
+          }}
         >
-          <TText>{selectedValue === undefined ? params.placeholder : getLabel()}</TText>
-        </TView>
-      </TouchableOpacity>
-      {params.error && <ErrMsg msg={params.error} />}
+          <TView
+            style={[
+              {
+                backgroundColor: theme.card,
+                width: '100%',
+                borderWidth: 1,
+                borderRadius: 5,
+                paddingHorizontal: 10,
+                paddingVertical: 10,
+                minWidth: '90%',
+                margin: 0,
+                padding: 0,
+              },
+              params.style,
+            ]}
+          >
+            <TText>{selectedValue === undefined ? params.placeholder : getLabel()}</TText>
+          </TView>
+        </TouchableOpacity>
+        {params.error && <ErrMsg msg={params.error} />}
+      </TView>
       <BottomSheet ref={refRBSheet!}>
         <Picker
           style={{

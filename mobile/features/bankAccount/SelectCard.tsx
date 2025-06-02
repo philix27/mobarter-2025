@@ -10,6 +10,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { useBankAccountList } from '@/graphql/endpoints/api.bankAccount'
 import { TText } from '@/components/ui'
 import { useBankAccount } from './zustand.bank'
+import { router } from 'expo-router'
 
 export function SelectBankAccountCard({
   tokenErr,
@@ -46,7 +47,7 @@ export function SelectBankAccountCard({
           width: '100%',
         }}
       >
-        {data!.bankAccount_getAll.length > 0 ? (
+        {data && data.bankAccount_getAll.length > 0 ? (
           data?.bankAccount_getAll.map((act, i) => (
             <Row
               key={i}
@@ -69,7 +70,14 @@ export function SelectBankAccountCard({
             }}
           >
             <TText muted>No account found</TText>
-            <InputButton title="Add an account" style={{ width: '50%' }} />
+            <InputButton
+              title="Add an account"
+              style={{ width: '50%' }}
+              onPress={() => {
+                confirmModal.current.close()
+                router.push('/bank/add')
+              }}
+            />
           </TView>
         )}
       </BtmSheet.Modal>
