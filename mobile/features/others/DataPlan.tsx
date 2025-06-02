@@ -1,13 +1,14 @@
 
   import { Wrapper, BtmSheet } from '@/components/layout'
 import { z } from 'zod'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { InputSelect, InputButton, InputText } from '@/components/forms'
 import { useAppForm, client, AppStores } from '@/lib'
 import { usePrice } from '@/hooks/usePrice'
 import { isDev } from '@/lib/constants/env'
 import { TText, TView } from '@/components/ui'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
+import { SelectTokenCard } from '../tokens'
 
 const formSchema = z.object({
   amount: z.string().min(1),
@@ -17,7 +18,7 @@ const formSchema = z.object({
 
 export default function DataPlanComp() {
   const { transferERC20 } = useTransferToken()
-
+  const [tokenErr, setTokenErr] = useState<string>()
   const countryStore = AppStores.useCountries()
   const tokenStore = AppStores.useTokens()
   const confirmModal = useRef<RBSheetRef>(null)
@@ -140,8 +141,9 @@ export default function DataPlanComp() {
         }}
         // error={errors && errors?.amount && errors!.amount}
       />
+      <SelectTokenCard tokenErr={tokenErr} />
       <TText>{amountToPay}</TText>
-      <InputButton title={'Submit'} onPress={handleSubmit} />
+      <InputButton title={'Submit'} style={{ width: '50%' }} onPress={handleSubmit} />
 
       <BtmSheet.Modal
         ref={confirmModal!}

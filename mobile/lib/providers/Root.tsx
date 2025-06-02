@@ -1,4 +1,4 @@
-// import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import { Slot } from 'expo-router'
 import { ReactNode } from 'react'
 import { BatchHttpLink } from '@apollo/client/link/batch-http'
@@ -18,32 +18,32 @@ const httpLink = new BatchHttpLink({
   batchInterval: 10,
 })
 
-// const apollo = new ApolloClient({
-//   // link: httpLink,
-//   uri: process.env.EXPO_PUBLIC_SERVER_GQL,
-//   headers: {
-//     Authorization: `Bearer ${token}`,
-// Authorization: `Bearer ${store.token}`,
-//   },
-//   cache: new InMemoryCache(),
-// })
+const apollo = new ApolloClient({
+  link: httpLink,
+  uri: process.env.EXPO_PUBLIC_SERVER_GQL,
+  headers: {
+    Authorization: `Bearer ${token}`,
+    // Authorization: `Bearer ${store.token}`,
+  },
+  cache: new InMemoryCache(),
+})
 
 export function RootProviders(props: { children: ReactNode }) {
   const store = AppStores.useUserInfo()
 
   return (
     <ReactQueryProvider>
-      <CP tokenCache={tokenCache}>
-        {/* <ApolloProvider client={apollo}> */}
-        {/* <WagmiProvider config={config}> */}
-        <ThemeProvider>
-          {/* <Slot /> */}
-          {props.children}
-          <Toast position="top" />
-        </ThemeProvider>
-        {/* </WagmiProvider> */}
-        {/* </ApolloProvider> */}
-      </CP>
+      <ApolloProvider client={apollo}>
+        <CP tokenCache={tokenCache}>
+          {/* <WagmiProvider config={config}> */}
+          <ThemeProvider>
+            {/* <Slot /> */}
+            {props.children}
+            <Toast position="top" />
+          </ThemeProvider>
+          {/* </WagmiProvider> */}
+        </CP>
+      </ApolloProvider>
     </ReactQueryProvider>
   )
 }

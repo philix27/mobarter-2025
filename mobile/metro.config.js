@@ -16,14 +16,15 @@ const { wrapWithReanimatedMetroConfig } = require('react-native-reanimated/metro
 module.exports = (async () => {
   const config = getDefaultConfig(__dirname)
   config.resolver.unstable_conditionNames = ['browser', 'require', 'react-native']
-  const animatedConfig = wrapWithReanimatedMetroConfig(config)
+  // const animatedConfig = wrapWithReanimatedMetroConfig(config)
+  const animatedConfig = config
 
   const sourceExts = animatedConfig.resolver.sourceExts
   const assetExts = animatedConfig.resolver.assetExts
 
   return {
     transformer: {
-    //   babelTransformerPath: require.resolve('react-native-svg-transformer'),
+      //   babelTransformerPath: require.resolve('react-native-svg-transformer'),
       experimentalImportSupport: false,
       inlineRequires: true,
     },
