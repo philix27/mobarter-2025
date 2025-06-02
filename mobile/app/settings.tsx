@@ -1,11 +1,11 @@
 import { HeaderBar } from '@/components/layout/Header'
-import ProfileScreen from '@/features/settings/Profile'
+import SettingsScreen from '@/features/settings'
 
 export default function Page() {
   return (
     <>
       <HeaderBar title="Settings" showBackBtn backTo="/" />
-      <ProfileScreen />
+      <SettingsScreen />
     </>
   )
 }

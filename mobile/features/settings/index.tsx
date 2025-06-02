@@ -11,9 +11,6 @@ import Socials from './Socials'
 import Docs from './Docs'
 import SelectCountry from './SelectCountry'
 import SelectPaymentToken from './SelectPaymentToken'
-import Personal from './Personal'
-import TWInfo from './TWInfo'
-import BankInfo from './BankInfo'
 
 export default function SettingsScreen() {
   const store = AppStores.useUserInfo()
@@ -21,16 +18,6 @@ export default function SettingsScreen() {
 
   return (
     <Wrapper>
-      {/* <Collapsible title={'Personal Info'}>
-        <TWInfo />
-      </Collapsible> */}
-      <Collapsible title={'KYC'}>
-        <Personal />
-      </Collapsible>
-      <Collapsible title={'Bank'}>
-        <BankInfo />
-      </Collapsible>
-
       <Collapsible title={'Application'}>
         <SelectCountry />
         <SelectPaymentToken />
