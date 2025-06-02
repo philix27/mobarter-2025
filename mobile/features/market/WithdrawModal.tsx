@@ -16,6 +16,7 @@ export default function WithdrawModal() {
         onClick={() => {
           router.push('/orders/sell')
         }}
+        style={{ paddingVertical: 14 }}
       />
       <Row
         title={'Buy'}
@@ -24,6 +25,7 @@ export default function WithdrawModal() {
         onClick={() => {
           router.push('/orders/buy')
         }}
+        style={{ paddingVertical: 14 }}
       />
     </TView>
   )

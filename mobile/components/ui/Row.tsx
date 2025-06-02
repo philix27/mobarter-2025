@@ -66,7 +66,9 @@ export function Row(props: {
         {props.icon && <IconRound style={{ marginRight: 12 }}>{props.icon}</IconRound>}
 
         <TView style={{ backgroundColor: bgColor }}>
-          <TText type="defaultSemiBold">{props.title}</TText>
+          <TText type="defaultSemiBold" style={{ lineHeight: 0 }}>
+            {props.title}
+          </TText>
           {props.desc && (
             <TText
               style={{
@@ -77,6 +79,7 @@ export function Row(props: {
                 flex: 1,
                 flexWrap: 'wrap',
                 paddingVertical: 0,
+                // lineHeight: 20,
               }}
             >
               {props.desc}

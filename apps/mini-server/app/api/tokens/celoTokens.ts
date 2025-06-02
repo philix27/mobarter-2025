@@ -42,7 +42,7 @@ const tokensObj: Record<TokenId, Token> = {
   [TokenId.CELO]: {
     id: TokenId.CELO,
     symbol: TokenId.CELO,
-    name: "Celo Native - bbooe",
+    name: "Celo Native",
     color: Color.celoGold,
     decimals: 18,
     address: "0x471EcE3750Da237f93B8E339c536989b8978a438",

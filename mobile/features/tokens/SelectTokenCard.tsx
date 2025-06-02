@@ -1,6 +1,6 @@
 import { RBSheetRef } from 'react-native-raw-bottom-sheet'
 import { BtmSheet } from '@/components/layout'
-import { CryptoTokensList } from '../market/AssetsCrypto'
+import { CryptoTokensList, ITokenCategory } from '../market/AssetsCrypto'
 import ErrMsg from '@/components/forms/ErrMsg'
 import React, { useRef } from 'react'
 import { TView, Row } from '@/components'
@@ -8,7 +8,13 @@ import { Label } from '@/components/forms'
 import { useColor, AppStores } from '@/lib'
 import { Ionicons } from '@expo/vector-icons'
 
-export function SelectTokenCard({ tokenErr }: { tokenErr: string | undefined }) {
+export function SelectTokenCard({
+  tokenErr,
+  ...props
+}: {
+  tokenErr: string | undefined
+  group?: ITokenCategory
+}) {
   const theme = useColor()
   const storeTokens = AppStores.useTokens()
   const token = storeTokens.activeToken
@@ -35,8 +41,11 @@ export function SelectTokenCard({ tokenErr }: { tokenErr: string | undefined }) 
           width: '100%',
         }}
       >
-        <CryptoTokensList />
+        <CryptoTokensList variant={props.group} />
       </BtmSheet.Modal>
     </>
   )
+}
+export function PayableTokenCard({ tokenErr }: { tokenErr: string | undefined }) {
+  return <SelectTokenCard tokenErr={tokenErr} group="PAYABLE" />
 }

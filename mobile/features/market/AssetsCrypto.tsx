@@ -15,7 +15,10 @@ export default function AssetsCrypto() {
   )
 }
 
-export function CryptoTokensList(props: { variant?: 'ALL' | 'CELO' }) {
+export type ITokenCategory = 'ALL' | 'CELO' | 'PAYABLE' | 'SELLABLE' | 'BUYABLE'
+export function CryptoTokensList(props: {
+  variant?: 'ALL' | 'CELO' | 'PAYABLE' | 'SELLABLE' | 'BUYABLE'
+}) {
   const addr = useAddress()
   const { data, isLoading } = useGetTokens(addr, 'NG')
   const store = AppStores.useView()
@@ -27,6 +30,7 @@ export function CryptoTokensList(props: { variant?: 'ALL' | 'CELO' }) {
 
   const getData = () => {
     if (!data) return []
+    if (props.variant === 'PAYABLE') return data.filter((item) => item.isPayable)
     if (props.variant === 'ALL') return data
     if (store.activeViewAsset === 'ALL') return data
     return data?.filter((val) => val.chianId.toString() === store.activeViewAsset)

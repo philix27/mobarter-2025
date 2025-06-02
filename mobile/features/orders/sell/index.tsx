@@ -3,7 +3,7 @@ import { InputButton, InputText } from '@/components/forms'
 import { AppStores } from '@/lib'
 import React, { useState } from 'react'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
-import { SelectTokenCard } from '@/features/tokens'
+import { PayableTokenCard } from '@/features/tokens'
 
 type IData = { value: string | undefined; error: string | undefined }
 export default function SellCryptoOrder() {
@@ -34,7 +34,7 @@ export default function SellCryptoOrder() {
   }
   return (
     <TView style={{ width: '100%', rowGap: 20 }}>
-      <SelectTokenCard tokenErr={tokenErr} />
+      <PayableTokenCard tokenErr={tokenErr} />
       <InputText
         label={'Amount'}
         keyboardType="numeric"
