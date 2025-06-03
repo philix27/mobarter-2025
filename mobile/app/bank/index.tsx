@@ -5,7 +5,7 @@ import { BankAccounts } from '@/features/bankAccount'
 export default function Page() {
   return (
     <>
-      <HeaderBar title="Add a bank account" showBackBtn />
+      <HeaderBar title="Bank Accounts" showBackBtn />
       <Wrapper>
         <BankAccounts />
       </Wrapper>

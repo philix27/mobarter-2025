@@ -1,16 +1,16 @@
 import { TText, TView } from '@/components/ui'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 
 import { Picker } from '@react-native-picker/picker'
 import { useColor } from '@/hooks/useColor'
 import { TouchableOpacity, ViewStyle } from 'react-native'
 import { Label } from './Label'
-import { BottomSheet } from '@/components/layout'
-import { RBSheetRef } from 'react-native-raw-bottom-sheet'
+import { BtmSheet } from '@/components/layout'
 import ErrMsg from './ErrMsg'
 
 export function InputSelect(params: {
   label?: string
+  value?: string
   placeholder?: string
   style?: ViewStyle
   error?: string | undefined
@@ -18,8 +18,9 @@ export function InputSelect(params: {
   onValueChange?: (itemValue: string) => void
 }) {
   const theme = useColor()
-  const refRBSheet = useRef<RBSheetRef>(null)
-  const [selectedValue, setSelectedValue] = useState<string | undefined>(undefined)
+
+  const refRBSheet = BtmSheet.useRef()
+  const [selectedValue, setSelectedValue] = useState(params.value)
 
   const getLabel = () => {
     const active = params.items.filter((val, i) => val.value === selectedValue)[0]
@@ -66,7 +67,7 @@ export function InputSelect(params: {
         </TouchableOpacity>
         {params.error && <ErrMsg msg={params.error} />}
       </TView>
-      <BottomSheet ref={refRBSheet!}>
+      <BtmSheet.Modal ref={refRBSheet!}>
         <Picker
           style={{
             width: '100%',
@@ -87,7 +88,7 @@ export function InputSelect(params: {
             <Picker.Item key={i} label={item.label} value={item.value} />
           ))}
         </Picker>
-      </BottomSheet>
+      </BtmSheet.Modal>
     </>
   )
 }

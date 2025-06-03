@@ -5,6 +5,8 @@ import { z } from 'zod'
 import { useAddAcct } from './api.bank'
 import { BankName } from '@/graphql'
 import { toast, TView } from '@/components'
+import { useRef } from 'react'
+import { BtmSheet } from '@/components/layout'
 
 const enumToList = (_enum: any) => {
   const list = Object.keys(_enum).map((key) => {
@@ -24,27 +26,33 @@ const formSchema = z.object({
 type IFormData = z.infer<typeof formSchema>
 
 export function AddBankAccount() {
+  const confirmModal = BtmSheet.useRef()
   const [mutate] = useAddAcct()
-
   const f = useForm<IFormData>({
     resolver: zodResolver(formSchema),
   })
 
   const onSubmit = async (formData: IFormData) => {
+    confirmModal.current.open()
+  }
+
+  const onConfirm = async () => {
     await mutate({
       variables: {
         input: {
-          accountName: formData.accountName,
-          accountNo: formData.accountNo,
-          bankName: formData.bank as BankName,
+          accountName: f.getValues('accountName'),
+          accountNo: f.getValues('accountNo'),
+          bankName: f.getValues('bank') as BankName,
         },
       },
       onCompleted() {
         toast.success('Success! Account Added')
         f.setValue('accountName', '')
         f.setValue('accountNo', '')
+        confirmModal.current.close()
       },
-      onError() {
+      onError(e) {
+        console.log('Err from account: ' + e)
         toast.error('Could not add your account')
       },
       refetchQueries: [],
@@ -58,6 +66,7 @@ export function AddBankAccount() {
         onValueChange={(value: string) => {
           f.setValue('bank', value)
         }}
+        value={f.getValues('bank')}
         // data={[{ value: BankName.NgAccess, label: BankName.NgAccess }]}
         items={enumToList(BankName).map((v) => {
           return {
@@ -71,6 +80,10 @@ export function AddBankAccount() {
         keyboardType="number-pad"
         placeholder="Enter account number"
         label="Account number"
+        onChangeText={(e) => {
+          f.setValue('accountNo', e)
+        }}
+        value={f.getValues('accountNo')}
         // maxLength={10}
         // minLength={10}
         error={f.formState.errors.accountNo && f.formState.errors.accountNo.message}
@@ -79,10 +92,33 @@ export function AddBankAccount() {
       <InputText
         placeholder="Enter account name"
         label="Account Name"
+        value={f.getValues('accountName')}
         error={f.formState.errors.accountName && f.formState.errors.accountName.message}
+        onChangeText={(e) => {
+          f.setValue('accountName', e)
+        }}
         // control={f.register('accountName')}
       />
       <InputButton title="Add" style={{ width: '50%' }} onPress={f.handleSubmit(onSubmit)} />
+
+      <BtmSheet.Modal
+        title="Confirm Bank Details"
+        ref={confirmModal!}
+        // style={{
+        //   alignItems: 'center',
+        //   flexDirection: 'column',
+        //   paddingBottom: 80,
+        //   width: '100%',
+        //   rowGap: 1,
+        // }}
+      >
+        <TView style={{ height: 15 }} />
+        <BtmSheet.Row text1="Bank" text2={f.getValues('bank')} />
+        <BtmSheet.Row text1="Account No" text2={f.getValues('accountNo')} />
+        <BtmSheet.Row text1="Account Name" text2={f.getValues('accountName')} />
+        <TView style={{ height: 25 }} />
+        <InputButton title={'Confirm'} style={{ width: '50%' }} onPress={onConfirm} />
+      </BtmSheet.Modal>
     </TView>
   )
 }

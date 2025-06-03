@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from 'react'
+import React, { forwardRef, ReactNode, useRef } from 'react'
 import RBSheet, { RBSheetRef } from 'react-native-raw-bottom-sheet'
 import { useColor } from '@/hooks/useColor'
 
@@ -75,7 +75,19 @@ export const BottomSheet = forwardRef<any, IProps>(({ maxHeight = 700, ...props 
           <TText style={{ fontSize: 20, fontWeight: '700' }}>{props.title}</TText>
         </TView>
       )}
-      {props.children}
+      <TView
+        style={{
+          paddingBottom: 50,
+          width: '100%',
+          rowGap: 1,
+          // display: 'flex',
+          // flexDirection: 'column',
+          // alignItems: 'center',
+          // justifyContent: 'space-between',
+        }}
+      >
+        {props.children}
+      </TView>
     </RBSheet>
   )
 })
@@ -98,4 +110,4 @@ function Row(params: { text1: string; text2: string }) {
   )
 }
 
-export const BtmSheet = { Row, Modal: BottomSheet }
+export const BtmSheet = { Row, Modal: BottomSheet, useRef: () => useRef<RBSheetRef>(null) }

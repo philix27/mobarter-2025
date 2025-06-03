@@ -2,9 +2,8 @@ import { TView } from '@/components/ui/TView'
 import { useColor } from '@/hooks/useColor'
 import React, { useRef } from 'react'
 import { Feather, Ionicons } from '@expo/vector-icons'
-import { BottomSheet } from '@/components/layout/BottomSheet'
+import { BtmSheet } from '@/components/layout/BottomSheet'
 import IconRound from '@/components/ui/IconRound'
-import { RBSheetRef } from 'react-native-raw-bottom-sheet'
 import WithdrawModal from './WithdrawModal'
 import WalletQRCode from './WalletQRCode'
 import { router } from 'expo-router'
@@ -12,8 +11,8 @@ import { router } from 'expo-router'
 export default function QuickActions() {
   const appColor = useColor()
 
-  const withdrawalSheet = useRef<RBSheetRef>(null)
-  const walletSheet = useRef<RBSheetRef>(null)
+  const withdrawalSheet = BtmSheet.useRef()
+  const walletSheet = BtmSheet.useRef()
 
   return (
     <>
@@ -53,13 +52,17 @@ export default function QuickActions() {
           <Ionicons name="wallet-outline" size={22} color={'#fff'} />
         </IconRound>
 
-        <BottomSheet ref={withdrawalSheet!} height={350}>
-          <WithdrawModal />
-        </BottomSheet>
+        <BtmSheet.Modal ref={withdrawalSheet!} height={350}>
+          <WithdrawModal
+            onClick={() => {
+              withdrawalSheet.current?.close()
+            }}
+          />
+        </BtmSheet.Modal>
 
-        <BottomSheet ref={walletSheet!}>
+        <BtmSheet.Modal ref={walletSheet!}>
           <WalletQRCode />
-        </BottomSheet>
+        </BtmSheet.Modal>
       </TView>
     </>
   )

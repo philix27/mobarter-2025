@@ -1,10 +1,10 @@
 import { TView, Row } from '@/components'
 import { InputButton } from '@/components/forms'
-import { useBankAccountList } from '@/graphql/endpoints/api.bankAccount'
 import { TText } from '@/components/ui'
 import { useBankAccount } from './zustand.bank'
 import { router } from 'expo-router'
 import { ActivityIndicator } from 'react-native'
+import { useBankAccountList } from './api.bank'
 
 export function BankAccounts() {
   const { data, loading } = useBankAccountList()
@@ -12,6 +12,7 @@ export function BankAccounts() {
 
   if (loading) return <ActivityIndicator />
   
+  console.log('Account Details: ' + data!.bankAccount_getAll)
   return (
     <>
       {data && data.bankAccount_getAll.length > 0 ? (

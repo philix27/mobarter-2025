@@ -5,7 +5,7 @@ import { AntDesign } from '@expo/vector-icons'
 import { router } from 'expo-router'
 import React from 'react'
 
-export default function WithdrawModal() {
+export default function WithdrawModal(props: { onClick: VoidFunction }) {
   const theme = useColor()
   return (
     <TView>
@@ -15,6 +15,7 @@ export default function WithdrawModal() {
         icon={<AntDesign name="arrowup" size={24} color="#fff" />}
         onClick={() => {
           router.push('/orders/sell')
+          props.onClick()
         }}
         style={{ paddingVertical: 14 }}
       />
@@ -24,6 +25,7 @@ export default function WithdrawModal() {
         icon={<AntDesign name="arrowdown" size={24} color="#fff" />}
         onClick={() => {
           router.push('/orders/buy')
+          props.onClick()
         }}
         style={{ paddingVertical: 14 }}
       />

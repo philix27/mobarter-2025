@@ -7,8 +7,7 @@ import { usePrice } from '@/hooks/usePrice'
 import { isDev } from '@/lib/constants/env'
 import { TText, TView } from '@/components/ui'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
-import { RBSheetRef } from 'react-native-raw-bottom-sheet'
-import { PayableTokenCard, } from '../tokens'
+import { PayableTokenCard } from '../tokens'
 const formSchema = z.object({
   amount: z.string().min(1),
   operator: z.string(),
@@ -16,11 +15,12 @@ const formSchema = z.object({
 })
 
 export default function AirtimeComp() {
+  const confirmModal = BtmSheet.useRef()
   const { transferERC20 } = useTransferToken()
   const [tokenErr, setTokenErr] = useState<string>()
   const countryStore = AppStores.useCountries()
   const tokenStore = AppStores.useTokens()
-  const confirmModal = useRef<RBSheetRef>(null)
+
   const { handleOnChange: handlePriceChange, amountToPay } = usePrice()
 
   const getCallCode = () => {
@@ -141,7 +141,7 @@ export default function AirtimeComp() {
         }}
         // error={errors && errors?.amount && errors!.amount}
       />
-      <PayableTokenCard tokenErr={tokenErr}  />
+      <PayableTokenCard tokenErr={tokenErr} />
       <TText>{amountToPay}</TText>
       <InputButton title={'Submit'} style={{ width: '50%' }} onPress={handleSubmit} />
 

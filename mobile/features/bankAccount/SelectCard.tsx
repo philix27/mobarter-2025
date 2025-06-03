@@ -1,14 +1,13 @@
-import { RBSheetRef } from 'react-native-raw-bottom-sheet'
 import { BtmSheet } from '@/components/layout'
 import { ITokenCategory } from '../market/AssetsCrypto'
 import React, { useRef } from 'react'
 import { TView, Row } from '@/components'
 import { InputButton, Label, ErrMsg } from '@/components/forms'
 import { useColor, AppStores } from '@/lib'
-import { useBankAccountList } from '@/graphql/endpoints/api.bankAccount'
 import { TText } from '@/components/ui'
 import { useBankAccount } from './zustand.bank'
 import { router } from 'expo-router'
+import { useBankAccountList } from './api.bank'
 
 export function SelectBankAccountCard({
   tokenErr,
@@ -17,11 +16,12 @@ export function SelectBankAccountCard({
   tokenErr: string | undefined
   group?: ITokenCategory
 }) {
+  const confirmModal = BtmSheet.useRef()
   const { data, loading } = useBankAccountList()
   const theme = useColor()
   const storeTokens = AppStores.useTokens()
   const token = storeTokens.activeToken
-  const confirmModal = useRef<RBSheetRef>(null)
+
   const account = useBankAccount()
 
   return (

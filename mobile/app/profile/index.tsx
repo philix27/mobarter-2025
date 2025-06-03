@@ -4,7 +4,7 @@ import ProfileScreen from '@/features/settings/Profile'
 export default function Page() {
   return (
     <>
-      <HeaderBar title="Settings" showBackBtn backTo="/" />
+      <HeaderBar title="Profile" showBackBtn backTo="/" />
       <ProfileScreen />
     </>
   )
