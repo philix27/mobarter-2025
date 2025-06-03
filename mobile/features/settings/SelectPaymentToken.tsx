@@ -1,8 +1,6 @@
 import { Row, TView } from '@/components/ui'
-import { useRef } from 'react'
 import { AppStores } from '@/lib/zustand'
-import { BottomSheet } from '@/components/layout'
-import { RBSheetRef } from 'react-native-raw-bottom-sheet'
+import { BtmSheet } from '@/components/layout'
 
 import { AssetsRow } from '../market/AssetsRow'
 import { ScrollView } from 'react-native'
@@ -13,7 +11,7 @@ export default function SelectPaymentToken() {
   const store = AppStores.useTokens()
   const addr = useAddress()
   // const store = AppStores.useCountries()
-  const countrySheet = useRef<RBSheetRef>(undefined)
+  const countrySheet = BtmSheet.useRef()
   // const account = useActiveAccount()
   const { data } = useGetTokens(addr, 'NG')
 
@@ -41,7 +39,7 @@ export default function SelectPaymentToken() {
         />
       )}
 
-      <BottomSheet ref={countrySheet!}>
+      <BtmSheet.Modal ref={countrySheet!}>
         <ScrollView>
           {data &&
             data.map((item, i) => {
@@ -65,7 +63,7 @@ export default function SelectPaymentToken() {
             })}
           <TView style={{ height: 40 }} />
         </ScrollView>
-      </BottomSheet>
+      </BtmSheet.Modal>
     </>
   )
 }

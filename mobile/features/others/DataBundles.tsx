@@ -1,6 +1,6 @@
 import { Wrapper, BtmSheet } from '@/components/layout'
 import { z } from 'zod'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { InputSelect, InputButton, InputText } from '@/components/forms'
 import { useAppForm, client, AppStores } from '@/lib'
 import { usePrice } from '@/hooks/usePrice'
@@ -20,7 +20,7 @@ export default function DataBundlesComp() {
   const [tokenErr, setTokenErr] = useState<string>()
   const countryStore = AppStores.useCountries()
   const tokenStore = AppStores.useTokens()
-  const confirmModal = useRef<RBSheetRef>(null)
+  const confirmModal = BtmSheet.useRef()
   const { handleOnChange: handlePriceChange, amountToPay } = usePrice()
 
   const getCallCode = () => {

@@ -1,17 +1,16 @@
 import { TView } from '@/components/ui/TView'
 
-import {Row} from '@/components/ui/Row'
-import { useRef } from 'react'
+import { Row } from '@/components/ui/Row'
+import React, { useRef } from 'react'
 
 import { AppStores } from '@/lib/zustand'
 
-import { BottomSheet } from '@/components/layout/BottomSheet'
-import { RBSheetRef } from 'react-native-raw-bottom-sheet'
 import { useGetCountries } from '@/api/countries'
+import { BtmSheet } from '@/components/layout'
 
 export default function SelectCountry() {
   const store = AppStores.useCountries()
-  const countrySheet = useRef<RBSheetRef>(undefined)
+  const countrySheet = BtmSheet.useRef()
   const { data } = useGetCountries()
 
   if (!data) return <TView />
@@ -29,7 +28,7 @@ export default function SelectCountry() {
         />
       )}
 
-      <BottomSheet ref={countrySheet!}>
+      <BtmSheet.Modal ref={countrySheet!}>
         {data &&
           data.map((item, i) => {
             return (
@@ -47,7 +46,7 @@ export default function SelectCountry() {
               />
             )
           })}
-      </BottomSheet>
+      </BtmSheet.Modal>
     </>
   )
 }

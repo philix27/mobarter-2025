@@ -71,8 +71,15 @@ export const BottomSheet = forwardRef<any, IProps>(({ maxHeight = 700, ...props 
       }}
     >
       {props.title && (
-        <TView style={{ marginBottom: 10 }}>
-          <TText style={{ fontSize: 20, fontWeight: '700' }}>{props.title}</TText>
+        <TView
+          style={{
+            marginBottom: 10,
+            paddingBottom: 10,
+            borderColor: color.muted,
+            borderBottomWidth: 0.5,
+          }}
+        >
+          <TText style={{ fontSize: 18, fontWeight: '700' }}>{props.title}</TText>
         </TView>
       )}
       <TView
@@ -80,10 +87,6 @@ export const BottomSheet = forwardRef<any, IProps>(({ maxHeight = 700, ...props 
           paddingBottom: 50,
           width: '100%',
           rowGap: 1,
-          // display: 'flex',
-          // flexDirection: 'column',
-          // alignItems: 'center',
-          // justifyContent: 'space-between',
         }}
       >
         {props.children}

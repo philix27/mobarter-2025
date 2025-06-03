@@ -79,7 +79,7 @@ export function InputText(props: {
                 backgroundColor: theme.card,
                 color: theme.text,
                 paddingLeft: props.leadingText ? 4 : 10,
-                width: '91%',
+                width: '90%',
               },
               props.inputStyle,
             ]}

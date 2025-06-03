@@ -1,11 +1,10 @@
 import { BtmSheet, Wrapper } from '@/components/layout'
 import { SavingsCard } from './card'
 import { router } from 'expo-router'
-import { useRef } from 'react'
 import ViewFixedDeposit from './fixed/View'
 
 export default function SavingsScreen() {
-  const modalRef = useRef<RBSheetRef>(null)
+  const modalRef = BtmSheet.useRef()
   return (
     <Wrapper>
       <SavingsCard

@@ -1,4 +1,3 @@
-import { RBSheetRef } from 'react-native-raw-bottom-sheet'
 import { BtmSheet } from '@/components/layout'
 import { CryptoTokensList, ITokenCategory } from '../market/AssetsCrypto'
 import ErrMsg from '@/components/forms/ErrMsg'
@@ -18,7 +17,7 @@ export function SelectTokenCard({
   const theme = useColor()
   const storeTokens = AppStores.useTokens()
   const token = storeTokens.activeToken
-  const confirmModal = useRef<RBSheetRef>(null)
+  const confirmModal = BtmSheet.useRef()
   return (
     <>
       <TView>

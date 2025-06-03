@@ -1,13 +1,14 @@
 import { Wrapper, BtmSheet } from '@/components/layout'
 import { z } from 'zod'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { InputSelect, InputButton, InputText } from '@/components/forms'
-import { useAppForm, client, AppStores } from '@/lib'
+import { useAppForm, AppStores } from '@/lib'
 import { usePrice } from '@/hooks/usePrice'
 import { isDev } from '@/lib/constants/env'
 import { TText, TView } from '@/components/ui'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
 import { PayableTokenCard } from '../tokens'
+import { useCountry } from '@/hooks'
 const formSchema = z.object({
   amount: z.string().min(1),
   operator: z.string(),
@@ -18,21 +19,11 @@ export default function AirtimeComp() {
   const confirmModal = BtmSheet.useRef()
   const { transferERC20 } = useTransferToken()
   const [tokenErr, setTokenErr] = useState<string>()
-  const countryStore = AppStores.useCountries()
   const tokenStore = AppStores.useTokens()
 
   const { handleOnChange: handlePriceChange, amountToPay } = usePrice()
 
-  const getCallCode = () => {
-    if (!countryStore.countries || countryStore.countries.length === 0) return '234'
-    return countryStore.countries.filter((val) => val.isoName === countryStore.activeIso)[0]
-      .callingCodes
-  }
-  const getCurrencySymbol = () => {
-    if (!countryStore.countries || countryStore.countries.length === 0) return 'NGN'
-    return countryStore.countries.filter((val) => val.isoName === countryStore.activeIso)[0]
-      .currencySymbol
-  }
+  const { currencySymbol, phoneCode } = useCountry()
 
   const { formData, errors, handleChange, setErrors } = useAppForm<typeof formSchema._type>({
     // Omit<typeof formSchema._type, 'amount'> & { amount: string }
@@ -115,7 +106,7 @@ export default function AirtimeComp() {
 
       <InputText
         label={'Phone'}
-        leadingText={getCallCode()}
+        leadingText={phoneCode}
         value={formData.phone}
         onChangeText={(text) => {
           if (text.length > 10) return
@@ -130,7 +121,7 @@ export default function AirtimeComp() {
       <InputText
         label={'Amount'}
         keyboardType="numeric"
-        leadingText={getCurrencySymbol()}
+        leadingText={currencySymbol}
         placeholder={'Enter amount'}
         value={formData.amount.toString()}
         onChangeText={(text) => {

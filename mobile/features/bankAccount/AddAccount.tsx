@@ -101,18 +101,7 @@ export function AddBankAccount() {
       />
       <InputButton title="Add" style={{ width: '50%' }} onPress={f.handleSubmit(onSubmit)} />
 
-      <BtmSheet.Modal
-        title="Confirm Bank Details"
-        ref={confirmModal!}
-        // style={{
-        //   alignItems: 'center',
-        //   flexDirection: 'column',
-        //   paddingBottom: 80,
-        //   width: '100%',
-        //   rowGap: 1,
-        // }}
-      >
-        <TView style={{ height: 15 }} />
+      <BtmSheet.Modal title="Confirm Bank Details" ref={confirmModal!}>
         <BtmSheet.Row text1="Bank" text2={f.getValues('bank')} />
         <BtmSheet.Row text1="Account No" text2={f.getValues('accountNo')} />
         <BtmSheet.Row text1="Account Name" text2={f.getValues('accountName')} />

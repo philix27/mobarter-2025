@@ -11,8 +11,7 @@ export function BankAccounts() {
   const account = useBankAccount()
 
   if (loading) return <ActivityIndicator />
-  
-  console.log('Account Details: ' + data!.bankAccount_getAll)
+
   return (
     <>
       {data && data.bankAccount_getAll.length > 0 ? (
