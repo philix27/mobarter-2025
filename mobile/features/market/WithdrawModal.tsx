@@ -1,12 +1,10 @@
-import { Row } from '@/components/ui'
+import { Row, toast } from '@/components/ui'
 import { TView } from '@/components/ui/TView'
-import { useColor } from '@/hooks/useColor'
 import { AntDesign } from '@expo/vector-icons'
 import { router } from 'expo-router'
 import React from 'react'
 
 export default function WithdrawModal(props: { onClick: VoidFunction }) {
-  const theme = useColor()
   return (
     <TView>
       <Row
@@ -24,7 +22,8 @@ export default function WithdrawModal(props: { onClick: VoidFunction }) {
         desc={'Buy cryptocurrency'}
         icon={<AntDesign name="arrowdown" size={24} color="#fff" />}
         onClick={() => {
-          router.push('/orders/buy')
+          toast.info('Coming soon!')
+          // router.push('/orders/buy')
           props.onClick()
         }}
         style={{ paddingVertical: 14 }}

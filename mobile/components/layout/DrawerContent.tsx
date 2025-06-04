@@ -46,7 +46,6 @@ export const useDrawer = () => {
 }
 const links: { title: string; link: string }[] = [
   { title: 'Profile', link: '/profile' },
-  { title: 'Orders', link: '/orders/all' },
-  { title: 'Transactions', link: '/others/transactions' },
+  { title: 'Transactions', link: '/transactions' },
   { title: 'Settings', link: '/settings' },
 ]

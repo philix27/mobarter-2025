@@ -10,7 +10,7 @@ import { TText } from '@/components/ui'
 import { useCountry } from '@/hooks'
 import { BtmSheet } from '@/components/layout'
 import { useBankAccount } from '@/features/bankAccount/zustand.bank'
-import { formatEtherBalance } from '@/lib/string'
+import { SelectCountryCard } from '@/features/country'
 
 type IData = { value: string | undefined; error: string | undefined }
 export default function SellCryptoOrder() {
@@ -69,8 +69,9 @@ export default function SellCryptoOrder() {
     <TView style={{ width: '100%', rowGap: 20 }}>
       <PayableTokenCard tokenErr={tokenErr} />
       <SelectBankAccountCard tokenErr={tokenErr} />
+      <SelectCountryCard />
       <InputText
-        label={'Amount'}
+        label={'You receive'}
         keyboardType="numeric"
         placeholder={'0.00'}
         leadingText={currencySymbol}
@@ -86,12 +87,18 @@ export default function SellCryptoOrder() {
         inputStyle={{ fontWeight: '700' }}
       />
       <TView style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <TText style={{ marginBottom: 20 }}>{amountToPay}</TText>
+        <TText style={{ marginBottom: 0 }}>You pay</TText>
+        <TText style={{ marginBottom: 20, fontWeight: '800' }}>
+          {roundUp(amountToPay as number)} {storeTokens.activeToken?.symbol}
+        </TText>
         <InputButton title="Send" onPress={handleSend} style={{ width: '50%' }} />
       </TView>
       <BtmSheet.Modal title="Confirm Transaction" ref={confirmModal!}>
-        <BtmSheet.Row text1="You receive" text2={`${currencySymbol} ${amount?.value}` || ''} />
-        <BtmSheet.Row text1="You pay" text2={`${amountToPay} ${storeTokens.activeToken?.symbol}`} />
+        <BtmSheet.Row text1="You receive" text2={`${currencySymbol} ${amount?.value}`} />
+        <BtmSheet.Row
+          text1="You pay"
+          text2={`${roundUp(amountToPay as number)} ${storeTokens.activeToken?.symbol}`}
+        />
         <BtmSheet.Row text1="Account Number" text2={account.activeAccount?.account_no || ''} />
         <BtmSheet.Row text1="Account Name" text2={account.activeAccount?.account_name || ''} />
         <BtmSheet.Row text1="Bank" text2={account.activeAccount?.bank_name || ''} />
@@ -102,4 +109,19 @@ export default function SellCryptoOrder() {
       </BtmSheet.Modal>
     </TView>
   )
+}
+
+function roundUp(number: number) {
+  const decimal = Math.round((number + Number.EPSILON) * 1000) / 1000
+  return formatCurrency(decimal)
+}
+
+function formatCurrency(number: number) {
+  if (isNaN(number)) {
+    return 'Invalid Input'
+  }
+  const numString = Number(number).toFixed(2)
+  const [integerPart, decimalPart] = numString.split('.')
+  const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  return `${formattedInteger}.${decimalPart}`
 }

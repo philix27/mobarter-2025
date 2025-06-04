@@ -9,7 +9,7 @@ import { ThemeContext } from '@/lib/providers'
 import { SectionTitle } from './Card'
 import Socials from './Socials'
 import Docs from './Docs'
-import SelectCountry from './SelectCountry'
+import SelectCountry from '../country/Comp'
 import SelectPaymentToken from './SelectPaymentToken'
 
 export default function SettingsScreen() {
