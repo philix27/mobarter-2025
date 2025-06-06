@@ -8,7 +8,6 @@ import { isDev } from '@/lib/constants/env'
 import { TText, TView } from '@/components/ui'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
 import { PayableTokenCard } from '../tokens'
-import { useCountry } from '@/hooks'
 const formSchema = z.object({
   amount: z.string().min(1),
   operator: z.string(),
@@ -22,8 +21,8 @@ export default function AirtimeComp() {
   const tokenStore = AppStores.useTokens()
 
   const { handleOnChange: handlePriceChange, amountToPay } = usePrice()
-
-  const { currencySymbol, phoneCode } = useCountry()
+  const countryStore = AppStores.useCountries()
+  const country = countryStore.activeCountry
 
   const { formData, errors, handleChange, setErrors } = useAppForm<typeof formSchema._type>({
     // Omit<typeof formSchema._type, 'amount'> & { amount: string }
@@ -106,7 +105,7 @@ export default function AirtimeComp() {
 
       <InputText
         label={'Phone'}
-        leadingText={phoneCode}
+        leadingText={country?.callingCodes}
         value={formData.phone}
         onChangeText={(text) => {
           if (text.length > 10) return
@@ -121,7 +120,7 @@ export default function AirtimeComp() {
       <InputText
         label={'Amount'}
         keyboardType="numeric"
-        leadingText={currencySymbol}
+        leadingText={country?.currencySymbol}
         placeholder={'Enter amount'}
         value={formData.amount.toString()}
         onChangeText={(text) => {

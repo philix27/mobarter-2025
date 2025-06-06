@@ -46,6 +46,7 @@ export default function SelectCountryCard() {
                 onClick={() => {
                   store.update({
                     activeIso: item.isoName,
+                    activeCountry: item,
                   })
                   countrySheet.current?.close()
                 }}

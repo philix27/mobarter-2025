@@ -5,11 +5,13 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 
 export interface ISlice {
   countries?: ICountriesData[]
+  activeCountry?: ICountriesData | null
   activeIso?: string
 }
 export const defaultValues: Required<ISlice> = {
   countries: [],
   activeIso: 'NG',
+  activeCountry: null,
 }
 
 export interface ISliceUpdate extends Required<ISlice> {

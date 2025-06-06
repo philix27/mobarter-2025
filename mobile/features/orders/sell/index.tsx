@@ -2,30 +2,44 @@ import { toast, TView } from '@/components'
 import { InputButton, InputText } from '@/components/forms'
 import { AppStores } from '@/lib'
 import React, { useState } from 'react'
-import { useTransferToken } from '@/lib/zustand/web3/hooks'
+import { useAddress, useTransferToken } from '@/lib/zustand/web3/hooks'
 import { PayableTokenCard } from '@/features/tokens'
 import { SelectBankAccountCard } from '@/features/bankAccount'
-import { usePrice } from '@/hooks/usePrice'
 import { TText } from '@/components/ui'
-import { useCountry } from '@/hooks'
+import { useCollectors, usePrice } from '@/hooks'
 import { BtmSheet } from '@/components/layout'
 import { useBankAccount } from '@/features/bankAccount/zustand.bank'
 import { SelectCountryCard } from '@/features/country'
+import { useSellCrypto } from './useSellCrypto'
+import {
+  CurrencyCrypto,
+  CurrencyFiat,
+  OrderActions,
+  OrderMode,
+  OrderStatus,
+  TradeType,
+} from '@/graphql'
 
 type IData = { value: string | undefined; error: string | undefined }
 export default function SellCryptoOrder() {
   const confirmModal = BtmSheet.useRef()
   const { transferERC20 } = useTransferToken()
-  const [amount, setAmount] = useState<IData>()
+  const [amountFiat, setAmount] = useState<IData>()
   const [tokenErr, setTokenErr] = useState<string>()
   const storeTokens = AppStores.useTokens()
+  const storeCountries = AppStores.useCountries()
+  const country = storeCountries.activeCountry
+  const address = useAddress()
+  // const balance = useTokenBalance(TokenId.cUSD)
   const token = storeTokens.activeToken
   const { handleOnChange: handlePriceChange, amountToPay } = usePrice()
-  const { currencySymbol } = useCountry()
   const account = useBankAccount()
+  const { offRamp } = useCollectors()
+
+  const [mutate] = useSellCrypto()
 
   const handleSend = async () => {
-    if (amount === undefined || amount.value === undefined) {
+    if (amountFiat === undefined || amountFiat.value === undefined) {
       setAmount((prev) => {
         return { error: 'Enter a valid amount', value: prev?.value }
       })
@@ -43,7 +57,7 @@ export default function SellCryptoOrder() {
   }
 
   const onConfirm = () => {
-    if (amount === undefined || amount.value === undefined) {
+    if (amountFiat === undefined || amountFiat.value === undefined) {
       setAmount((prev) => {
         return { error: 'Enter a valid amount', value: prev?.value }
       })
@@ -54,17 +68,63 @@ export default function SellCryptoOrder() {
       return
     }
     transferERC20({
-      recipient: 'Collector',
-      amount: amount.value,
+      recipient: offRamp,
+      amount: amountFiat.value,
       token: token!.address,
     })
-      .then((e) => {
+      .then(async (txn_hash) => {
         toast.success('Sent successfully')
+
+        // send to bank account
+        // todo: lock funds in escrow first.
+        await mutate({
+          variables: {
+            input: {
+              amount_fiat: parseInt(amountFiat.value!),
+              amount_crypto: amountToPay!,
+              currency_fiat: CurrencyFiat.Ng,
+              // currency_fiat: country?.isoName,
+              currency_crypto: CurrencyCrypto.Cusd,
+              // currency_crypto: storeTokens.activeToken!.name,
+              estimated_duration: `EXPRESS`,
+              trade_type: TradeType.Sell!,
+              status: OrderStatus.Pending,
+              action_user: OrderActions.LockCrypto,
+              merchant_id: 1,
+              wallet_customer: address,
+              wallet_merchant: offRamp,
+              txn_hash: txn_hash,
+              mode: OrderMode.Express,
+              bank_account_no: account.activeAccount!.account_no,
+              bank_name: account.activeAccount!.bank_name,
+              bank_code: account.activeAccount!.bank_name,
+              bank_account_name: account.activeAccount!.bank_name,
+            },
+          },
+          onCompleted() {
+            toast.success('Success! Order created')
+          },
+          onError() {
+            toast.error('Could not create order')
+          },
+          refetchQueries: [],
+        })
       })
       .catch(() => {
         toast.error('Could not transfer funds')
       })
   }
+
+  const validateAmount = () => {
+    if (!storeTokens.activeToken) return undefined
+    const _tokenBal = parseFloat(storeTokens.activeToken.balance)
+    if (_tokenBal <= 0) return undefined
+    if (amountToPay === undefined) return undefined
+
+    if (_tokenBal < amountToPay) return 'Amount is less than your balance'
+    return undefined
+  }
+
   return (
     <TView style={{ width: '100%', rowGap: 20 }}>
       <PayableTokenCard tokenErr={tokenErr} />
@@ -74,9 +134,9 @@ export default function SellCryptoOrder() {
         label={'You receive'}
         keyboardType="numeric"
         placeholder={'0.00'}
-        leadingText={currencySymbol}
-        value={amount?.value || ''}
-        error={amount?.error}
+        leadingText={country?.currencySymbol}
+        value={amountFiat?.value || ''}
+        error={amountFiat?.error || validateAmount()}
         onChangeText={(text) => {
           if (text.length > 12) {
             return
@@ -94,7 +154,10 @@ export default function SellCryptoOrder() {
         <InputButton title="Send" onPress={handleSend} style={{ width: '50%' }} />
       </TView>
       <BtmSheet.Modal title="Confirm Transaction" ref={confirmModal!}>
-        <BtmSheet.Row text1="You receive" text2={`${currencySymbol} ${amount?.value}`} />
+        <BtmSheet.Row
+          text1="You receive"
+          text2={`${country?.currencySymbol} ${amountFiat?.value}`}
+        />
         <BtmSheet.Row
           text1="You pay"
           text2={`${roundUp(amountToPay as number)} ${storeTokens.activeToken?.symbol}`}
