@@ -13,3 +13,14 @@ export function formatCurrency(amount: number, decimals = 2): string {
     maximumFractionDigits: decimals,
   });
 }
+
+
+export const enumToList = (_enum: any) => {
+  const list = Object.keys(_enum).map((key) => {
+    return {
+      key,
+      value: _enum[key],
+    }
+  })
+  return list
+}

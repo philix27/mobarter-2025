@@ -5,18 +5,9 @@ import { z } from 'zod'
 import { useAddAcct } from './api.bank'
 import { BankName } from '@/graphql'
 import { toast, TView } from '@/components'
-import { useRef } from 'react'
 import { BtmSheet } from '@/components/layout'
+import { enumToList } from '@/lib'
 
-const enumToList = (_enum: any) => {
-  const list = Object.keys(_enum).map((key) => {
-    return {
-      key,
-      value: _enum[key],
-    }
-  })
-  return list
-}
 const formSchema = z.object({
   bank: z.string().min(3, 'Required'),
   accountName: z.string().min(4, 'Required'),
@@ -84,9 +75,9 @@ export function AddBankAccount() {
           f.setValue('accountNo', e)
         }}
         value={f.getValues('accountNo')}
+        error={f.formState.errors.accountNo && f.formState.errors.accountNo.message}
         // maxLength={10}
         // minLength={10}
-        error={f.formState.errors.accountNo && f.formState.errors.accountNo.message}
         // control={f.register('accountNo')}
       />
       <InputText

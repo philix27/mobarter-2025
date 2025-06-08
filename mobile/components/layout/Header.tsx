@@ -7,6 +7,7 @@ import {
   NativeStackHeaderRightProps,
 } from '@react-navigation/native-stack'
 import { device, useColor } from '@/lib'
+import Drawer from 'expo-router/drawer'
 
 type IRoutes = 'Home'
 export function HeaderBar({
@@ -71,10 +72,10 @@ export function HeaderBar({
           fontSize: 15,
           color: appColor.text,
         },
-        contentStyle: {
-          backgroundColor: appColor.background,
-          borderColor: appColor.background,
-        },
+        // contentStyle: {
+        //   backgroundColor: appColor.background,
+        //   borderColor: appColor.background,
+        // },
         headerStyle: {
           backgroundColor: appColor.background,
         },

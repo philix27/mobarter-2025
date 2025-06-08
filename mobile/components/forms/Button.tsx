@@ -1,4 +1,5 @@
 import { useColor } from '@/hooks/useColor'
+import { device } from '@/lib'
 import { ActivityIndicator, TouchableOpacity, ViewStyle } from 'react-native'
 import { Text, StyleSheet } from 'react-native'
 
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
   button: {
     paddingVertical: 10,
     paddingHorizontal: 16,
-    borderRadius: 100,
+    borderRadius: device.isiOS ? 100 : 20,
     alignItems: 'center',
     marginTop: 10,
     // width: "50%",

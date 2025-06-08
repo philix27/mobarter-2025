@@ -67,7 +67,7 @@ export function InputSelect(params: {
         </TouchableOpacity>
         {params.error && <ErrMsg msg={params.error} />}
       </TView>
-      <BtmSheet.Modal ref={refRBSheet!}>
+      <BtmSheet.Modal ref={refRBSheet!}>z
         <Picker
           style={{
             width: '100%',
