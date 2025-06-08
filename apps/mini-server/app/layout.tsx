@@ -2,6 +2,7 @@ import "./comps/theme.css";
 import "./comps/globals.css";
 import type { Metadata, Viewport } from "next";
 import AppProviders from "./comps/providers";
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,

@@ -1,4 +1,4 @@
-import { Dimensions, PixelRatio, Platform, StatusBar } from 'react-native'
+import { Dimensions, PixelRatio, Platform, PlatformIOSStatic, StatusBar } from 'react-native'
 
 const { height, width } = Dimensions.get('window')
 const status = StatusBar.currentHeight as number
@@ -12,4 +12,21 @@ export default {
   footerHeight: 60,
   fontSizeBase: 15,
   iconHitslop,
+}
+
+
+
+
+function isPad () {
+  if (Platform.OS === 'ios') {
+  const platformIOS = Platform as PlatformIOSStatic
+  return platformIOS.isPad
+
+}
+return false
+}
+export const device = {
+  isAndroid :  Platform.OS === "android",
+  isPad : isPad(),
+  isiOS: Platform.OS === 'ios'
 }

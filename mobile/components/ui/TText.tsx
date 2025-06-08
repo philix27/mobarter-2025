@@ -1,12 +1,13 @@
 import { Text, type TextProps, StyleSheet } from 'react-native'
 
 import { useColor } from '@/hooks/useColor'
+import { device } from '@/lib'
 
 export type ThemedTextProps = TextProps & {
   lightColor?: string
   darkColor?: string
   muted?: boolean
-  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'sm' | 'md' | "xs"
+  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'sm' | 'md' | 'xs'
 }
 
 export function TText({
@@ -43,9 +44,9 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
   defaultSemiBold: {
-    fontSize: 16,
+    fontSize: device.isiOS ? 16 : 14,
     lineHeight: 24,
-    fontWeight: '600',
+    fontWeight: device.isiOS ? '600' : '500',
   },
   title: {
     fontSize: 30,

@@ -2,16 +2,17 @@ import { useDrawer } from '@/components/layout'
 import { TabBarIcon } from '@/components/navigation/TabBarIcon'
 
 import { useColor } from '@/hooks/useColor'
+import { device } from '@/lib'
 import { Feather, FontAwesome, Ionicons } from '@expo/vector-icons'
-import { router, Tabs } from 'expo-router'
+import { router, Tabs, usePathname } from 'expo-router'
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
-
 
 export default function TabLayout() {
   const theme = useColor()
   const drawer = useDrawer()
-
+  const pathname = usePathname()
+  const isHomePage = pathname === '/home'
   return (
     <Tabs
       screenOptions={{
@@ -42,7 +43,8 @@ export default function TabLayout() {
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'wallet' : 'wallet-outline'} color={color} />
           ),
-          title: 'Home',
+          title: 'Wallet',
+          // headerShown: false,
           headerRight: (props: any) => {
             return (
               <TouchableOpacity style={{ marginRight: 20, flexDirection: 'row', columnGap: 20 }}>
@@ -57,20 +59,24 @@ export default function TabLayout() {
               </TouchableOpacity>
             )
           },
-          headerLeft: (props: any) => {
-            return (
-              <TouchableOpacity style={{ marginLeft: 20, flexDirection: 'row', columnGap: 20 }}>
-                <Feather
-                  name="menu"
-                  size={24}
-                  color={theme.text}
-                  onPress={() => {
-                    drawer.open()
-                  }}
-                />
-              </TouchableOpacity>
-            )
-          },
+          headerLeft: !isHomePage
+            ? undefined
+            : (props: any) => {
+                return (
+                  <TouchableOpacity
+                    style={{ marginLeft: 20, marginRight: 20, flexDirection: 'row', columnGap: 20 }}
+                  >
+                    <Feather
+                      name="menu"
+                      size={24}
+                      color={theme.text}
+                      onPress={() => {
+                        drawer.open()
+                      }}
+                    />
+                  </TouchableOpacity>
+                )
+              },
         }}
       />
       <Tabs.Screen

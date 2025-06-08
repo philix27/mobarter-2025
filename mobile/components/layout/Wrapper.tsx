@@ -3,9 +3,11 @@ import { ReactNode } from 'react'
 import { TView } from '../ui/TView'
 import { useColor } from '@/hooks/useColor'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { device } from '@/lib'
 
 export function Wrapper(props: { children: ReactNode; style?: StyleProp<ViewStyle> }) {
   const appColor = useColor()
+  // return  props.children
   return (
     <SafeAreaView
       style={{
@@ -33,8 +35,8 @@ export function Wrapper(props: { children: ReactNode; style?: StyleProp<ViewStyl
               display: 'flex',
               alignItems: 'center',
               width: '100%',
-              paddingHorizontal: 20,
-              paddingVertical: 20,
+              paddingHorizontal: device.isiOS ? 20 : 15,
+              paddingVertical: device.isiOS ? 20 : 0,
               minHeight: '100%',
             },
             props.style,

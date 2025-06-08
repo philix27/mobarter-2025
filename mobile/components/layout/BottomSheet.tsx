@@ -4,6 +4,7 @@ import { useColor } from '@/hooks/useColor'
 
 import { TText, TView } from '../ui'
 import { ViewStyle } from 'react-native'
+import { device } from '@/lib'
 
 type IProps = {
   children: ReactNode
@@ -47,7 +48,7 @@ export const BottomSheet = forwardRef<any, IProps>(({ maxHeight = 700, ...props 
         container: {
           borderTopRightRadius: 20,
           borderTopLeftRadius: 20,
-          padding: 20,
+          padding: device.isiOS ? 20 : 12,
           height: props.height,
           maxHeight: maxHeight,
           backgroundColor: color.background,
@@ -75,8 +76,8 @@ export const BottomSheet = forwardRef<any, IProps>(({ maxHeight = 700, ...props 
           style={{
             marginBottom: 10,
             paddingBottom: 10,
-            borderColor: color.muted,
-            borderBottomWidth: 0.5,
+            borderColor: device.isiOS ? color.muted : undefined,
+            borderBottomWidth: device.isiOS ? 0.5 : undefined,
           }}
         >
           <TText style={{ fontSize: 18, fontWeight: '700' }}>{props.title}</TText>
@@ -84,7 +85,7 @@ export const BottomSheet = forwardRef<any, IProps>(({ maxHeight = 700, ...props 
       )}
       <TView
         style={{
-          paddingBottom: 50,
+          paddingBottom: device.isiOS ? 50 : 20,
           width: '100%',
           rowGap: 1,
         }}

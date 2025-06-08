@@ -6,7 +6,7 @@ import {
   NativeStackHeaderLeftProps,
   NativeStackHeaderRightProps,
 } from '@react-navigation/native-stack'
-import { useColor } from '@/lib'
+import { device, useColor } from '@/lib'
 
 type IRoutes = 'Home'
 export function HeaderBar({
@@ -32,6 +32,35 @@ export function HeaderBar({
 }) {
   const appColor = useColor()
   const backIcon = Platform.OS === 'ios' ? 'chevron-back' : 'arrow-back-sharp'
+  const getLeftIcon = () => {
+    if (!headerLeft) return undefined
+    if (!showBackBtn) return undefined
+    if (showBackBtn && device.isAndroid) return undefined
+
+    if (!device.isAndroid) {
+      return () => (
+        <Ionicons
+          name={backIcon}
+          size={25}
+          color={appColor.text}
+          // style={{margin: 40}}
+          onPress={() => {
+            // if (props.backTo === "Home") router.push("/(tabs)/home");
+            // if (!props.backTo) router.back();
+            if (props.backTo === 'Home') {
+              router.back
+              return
+            } else {
+              router.back()
+              return
+              // router.replace(props.backTo as any)
+            }
+          }}
+        />
+      )
+    }
+    return headerLeft
+  }
   return (
     <Stack.Screen
       options={{
@@ -52,30 +81,7 @@ export function HeaderBar({
         headerShadowVisible: false,
         headerTintColor: appColor.background,
         headerTitle: headerTitle,
-        headerLeft: headerLeft
-          ? headerLeft
-          : showBackBtn
-            ? () => (
-                <Ionicons
-                  name={backIcon}
-                  size={25}
-                  color={appColor.text}
-                  onPress={() => {
-                    // if (props.backTo === "Home") router.push("/(tabs)/home");
-                    // if (!props.backTo) router.back();
-                    if (props.backTo === 'Home') {
-                      router.back()
-                      return
-                    } else {
-                      router.back()
-                      return
-                      // router.replace(props.backTo as any)
-                    }
-                  }}
-                />
-              )
-            : undefined,
-
+        headerLeft: getLeftIcon(),
         headerRight: headerRight,
       }}
     />

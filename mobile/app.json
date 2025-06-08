@@ -1,7 +1,7 @@
 {
 	"expo": {
-		"name": "thirdweb playground",
-		"slug": "thirdweb-playground",
+		"name": "mobarter",
+		"slug": "mobarter",
 		"version": "1.0.0",
 		"orientation": "portrait",
 		"icon": "./assets/images/icon.png",
@@ -10,7 +10,7 @@
 		"splash": {
 			"image": "./assets/images/splash.png",
 			"resizeMode": "contain",
-			"backgroundColor": "#ffffff"
+			"backgroundColor": "#18222e"
 		},
 		"ios": {
 			"supportsTablet": true,
@@ -23,7 +23,7 @@
 		"android": {
 			"adaptiveIcon": {
 				"foregroundImage": "./assets/images/adaptive-icon.png",
-				"backgroundColor": "#ffffff"
+				"backgroundColor": "#18222e"
 			},
 			"package": "com.thirdweb.demo",
 			"intentFilters": [
