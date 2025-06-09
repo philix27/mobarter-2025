@@ -5,9 +5,9 @@ import { InputButton, InputText } from '@/components/forms'
 export default function Page() {
   return (
     <>
-      <HeaderBar title="Verify NIN" />
+      <HeaderBar title="Upload proof of Address" />
       <Wrapper>
-        <InputText label="NIN" />
+        <InputText label="Proof" />
         <InputButton title="Submit" />
       </Wrapper>
     </>

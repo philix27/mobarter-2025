@@ -1,10 +1,12 @@
 import { HeaderBar } from '@/components/layout/Header'
-import { Wrapper } from '@/components'
+import { toast, Wrapper } from '@/components'
 import { InputButton, InputText } from '@/components/forms'
 import { SelectCountryCard } from '@/features/country'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { Api, Country } from '@/graphql'
+import { useCountries } from '@/lib/zustand/countries'
 
 const formSchema = z.object({
   state: z.string().min(2, 'Required').max(100),
@@ -14,12 +16,29 @@ const formSchema = z.object({
 
 type IFormData = z.infer<typeof formSchema>
 export default function Page() {
+  const [mutate] = Api.useKyc_addAddressInfo()
+  const countryStore = useCountries()
   const f = useForm<IFormData>({
     resolver: zodResolver(formSchema),
   })
 
   const onSubmit = async (formData: IFormData) => {
-    // confirmModal.current.open()
+    await mutate({
+      variables: {
+        input: {
+          country: countryStore.activeCountry!.isoName as Country,
+          houseAddress: formData.homeAddress,
+          state: formData.state,
+          street: formData.street,
+        },
+      },
+      onCompleted: () => {
+        toast.success('Submitted Successfully')
+      },
+      onError: () => {
+        toast.error('Not sumitted', 'Check your network connection')
+      },
+    })
   }
   return (
     <>
