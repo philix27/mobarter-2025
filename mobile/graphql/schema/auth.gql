@@ -54,3 +54,13 @@ mutation Auth_CreateAccount($input: Auth_CreateAccountInput!) {
   }
 }
 
+mutation Auth_thirdwebLogin($input: Auth_ThirdwebLoginInput!) {
+  auth_thirdwebLogin(input: $input) {
+    firstname
+    lastname
+    middlename
+    email
+    token
+  }
+}
+

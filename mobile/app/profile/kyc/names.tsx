@@ -25,7 +25,7 @@ export default function Page() {
   return (
     <>
       <HeaderBar title="Names" />
-      <Wrapper>
+      <Wrapper style={{rowGap: 20}}>
         <InputText
           label="First name"
           onChangeText={(e) => {
@@ -43,7 +43,7 @@ export default function Page() {
           error={f.formState.errors.lastName && f.formState.errors.lastName.message}
         />
         <InputText
-          label="Middle name"
+          label="Middle name (optional)"
           onChangeText={(e) => {
             f.setValue('middleName', e)
           }}

@@ -1,5 +1,5 @@
 import { HeaderBar } from '@/components/layout/Header'
-import ProfileScreen from '@/features/settings/Profile'
+import ProfileScreen from '@/features/profile/Profile'
 
 export default function Page() {
   return (

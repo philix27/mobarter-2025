@@ -7,9 +7,9 @@ mutation BankAccount_delete($input: BankAccount_DeleteInput!) {
 mutation BankAccount_create($input: BankAccount_CreateInput!) {
   bankAccount_create(input: $input) {
     id
-    bank_name
-    account_name
     account_no
+    account_name
+    bank_name
   }
 }
 

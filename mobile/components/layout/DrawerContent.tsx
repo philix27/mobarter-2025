@@ -19,7 +19,9 @@ export function DrawerContent(props: DrawerContentComponentProps) {
                 router.push(val.link as any)
               }}
             >
-              <TText type="subtitle">{val.title}</TText>
+              <TText type="subtitle" style={{ fontSize: 20 }}>
+                {val.title}
+              </TText>
             </TouchableOpacity>
           </TView>
         ))}
