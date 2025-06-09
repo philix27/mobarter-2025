@@ -15,6 +15,7 @@ const { wrapWithReanimatedMetroConfig } = require('react-native-reanimated/metro
 // const { getDefaultConfig } = require('metro-config');
 module.exports = (async () => {
   const config = getDefaultConfig(__dirname)
+  config.resolver.unstable_enablePackageExports = true
   config.resolver.unstable_conditionNames = ['browser', 'require', 'react-native']
   // const animatedConfig = wrapWithReanimatedMetroConfig(config)
   const animatedConfig = config

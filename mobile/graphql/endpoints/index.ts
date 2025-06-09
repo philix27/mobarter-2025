@@ -4,6 +4,7 @@ import * as wallet from './wallet'
 import * as advert from './adverts'
 import * as utilities from './utilities'
 import * as orders from './orders'
+import * as kyc from './kyc'
 export * from './types'
 export * from './fx'
 
@@ -14,4 +15,5 @@ export const Api = {
   ...advert,
   ...utilities,
   ...orders,
+  ...kyc,
 }

@@ -1,8 +1,6 @@
 // import 'react-native-get-random-values'
 // import '@ethersproject/shims' //for ethers.js
 // import { ContractFactory, ethers } from 'ethers'
-import 'expo-router/entry'
-import 'react-native-reanimated'
 import { useFonts } from 'expo-font'
 import { Stack } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
@@ -13,13 +11,13 @@ import { RootProviders } from '@/lib/providers'
 import { Drawer } from 'expo-router/drawer'
 import { useColor } from '@/lib'
 import { DrawerContent } from '@/components/layout'
-import NavigationBar from "expo-navigation-bar"
+import NavigationBar from 'expo-navigation-bar'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
 // NavigationBar.setPositionAsync("absolute");
 
-// NavigationBar.setVisibilityAsync("hidden");   
+// NavigationBar.setVisibilityAsync("hidden");
 // NavigationBar.setBackgroundColorAsync("#ffffff00");
 // NavigationBar.setBehaviorAsync("inset-swipe");
 export default function RootLayout() {
