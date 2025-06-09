@@ -60,6 +60,13 @@ export default function RootLayout() {
             title: 'Home',
           }}
         />
+        {/* <Drawer.Screen
+          name="index"
+          options={{
+            drawerLabel: 'index',
+            title: 'index',
+          }}
+        /> */}
         <StatusBar backgroundColor={Colors.dark.background} barStyle="light-content" />
         {/* <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />

@@ -115,8 +115,8 @@ export function InputText(props: {
           {props.trailingIcon && (
             <TouchableOpacity
               style={{
-                right: 0,
-                // position: 'absolute',
+                right: 10,
+                position: 'absolute',
                 // top: 40,
                 // backgroundColor: theme.primary,
               }}

@@ -1,127 +1,103 @@
-import { useAuth, useClerk, useUser } from '@clerk/clerk-expo'
-import * as Linking from 'expo-linking'
-import React, { useEffect, useState } from 'react'
-import { Button, Text } from 'react-native'
-import { Link } from 'expo-router'
-import { useOAuth } from '@clerk/clerk-expo'
-
-import { Wrapper } from '@/components'
-import { InputText } from '@/components/forms'
-import { AppStores } from '@/lib'
-import { generateWallet } from './wallet'
+import { ParallaxScrollView, Wrapper } from '@/components'
 import { TText } from '@/components/ui'
+import { Link } from 'expo-router'
+import { Image, StyleSheet, View, useColorScheme } from 'react-native'
+import { useActiveAccount, useConnect } from 'thirdweb/react'
+import { ThemedButton } from '@/components/ThemedButton'
+import { inAppWallet } from 'thirdweb/wallets/in-app'
+import { chain, client } from '@/lib'
+import { baseSepolia, ethereum } from 'thirdweb/chains'
+import { ThirdwebClient } from 'thirdweb'
+
+const wallets = [
+  inAppWallet({
+    auth: {
+      options: ['google'],
+    },
+    smartAccount: {
+      chain: baseSepolia,
+      sponsorGas: true,
+    },
+  }),
+]
 
 export default function SignIn() {
-  const store = AppStores.useAuth()
-
-  if (store.steps === 'WELCOME') return <Welcome />
-  if (store.steps === 'SET_PASSWORD') return <SetupPassword />
-  if (store.steps === 'SAVE_WALLET') return <SaveWallet />
-  if (store.steps === 'CONGRATS') return <Congrats />
-  return <Welcome />
-}
-
-function Welcome() {
-  const { startOAuthFlow } = useOAuth({ strategy: 'oauth_google' })
-  const { isLoaded, isSignedIn, userId, sessionId, getToken } = useAuth()
-  const store = AppStores.useAuth()
-
-  const onPress = React.useCallback(async () => {
-    try {
-      const { createdSessionId, signIn, signUp, setActive, authSessionResult } =
-        await startOAuthFlow({
-          redirectUrl: Linking.createURL('/home', { scheme: 'myapp' }),
-        })
-
-      // If sign in was successful, set the active session
-      if (createdSessionId) {
-        setActive!({ session: createdSessionId })
-
-        store.update({ steps: 'SAVE_WALLET' })
-      } else {
-        // Use signIn or signUp returned from startOAuthFlow
-        // for next steps, such as MFA
-      }
-    } catch (err) {
-      // See https://clerk.com/docs/custom-flows/error-handling
-      // for more info on error handling
-      console.error(JSON.stringify(err, null, 2))
-    }
-  }, [])
-  return (
-    <Wrapper>
-      <Text>Welcome</Text>
-      <Link href={'/(tabs)'}>Go to Home page</Link>
-      <Button title="Sign in with Google" onPress={onPress} />
-    </Wrapper>
-  )
-}
-
-function SetupPassword() {
-  const store = AppStores.useAuth()
-  const [pass, setPass] = useState('')
-
-  const onSubmit = React.useCallback(async () => {
-    store.update({
-      password: pass,
-      steps: 'SAVE_WALLET',
-    })
-  }, [])
-  return (
-    <Wrapper>
-      <Text>Setup Password</Text>
-      <InputText
-        label="Enter your 6 digits password"
-        placeholder="924706"
-        value={pass}
-        onChangeText={setPass}
-      />
-      <Button title="Setup password" onPress={onSubmit} />
-    </Wrapper>
-  )
-}
-function SaveWallet() {
-  const store = AppStores.useAuth()
-  // const drive = useUserGoogleToken()
-  const [wallet, setWallet] = useState<{
-    seedPhrase: string
-    privateKey: string
-    address: string
-  }>()
-
-  useEffect(() => {
-    async function gen() {
-      const r = generateWallet()
-      setWallet(r)
-    }
-    gen()
-  }, [])
-
-  //   todo: useEffect or onClick generate user wallet
-  //   todo: store wallet info in store
-  const onSubmit = React.useCallback(async () => {
-    //   todo: using the generated wallet, encrypt the data with password
-    // const fileId = await uploadEncryptedKey(await drive, store.password!)
-    //   todo: send password to google drive
-    // store.update({ fileId: fileId! })
-  }, [])
+  const account = useActiveAccount()
+  const theme = useColorScheme()
+  const conn = useConnect()
 
   return (
-    <Wrapper>
-      <TText>Setup Password</TText>
-      <TText>Wallet Info: {JSON.stringify(wallet)}</TText>
-      <Button title="Generate Wallet" onPress={onSubmit} />
-    </Wrapper>
-  )
-}
-
-function Congrats() {
-  const store = AppStores.useAuth()
-  return (
-    <Wrapper>
-      <Link href="/">
-        <Text>Congrats, your account setup</Text>
+    <ParallaxScrollView
+      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+      headerImage={<Image source={require('@/assets/images/title.png')} style={styles.reactLogo} />}
+    >
+      <Link href={'/home'}>
+        {account ? <TText>Connected </TText> : <TText>Not connected X</TText>}
       </Link>
-    </Wrapper>
+      <TText>Home Page</TText>
+      <ConnectWithGoogle />
+      {/* <ConnectEmbed
+        client={client}
+        theme={theme || 'dark'}
+        chain={ethereum}
+        wallets={wallets}
+        auth={{
+          async doLogin(params) {
+            // fake delay
+            await new Promise((resolve) => setTimeout(resolve, 2000))
+            const verifiedPayload = await thirdwebAuth.verifyPayload(params)
+            isLoggedIn = verifiedPayload.valid
+          },
+          async doLogout() {
+            isLoggedIn = false
+          },
+          async getLoginPayload(params) {
+            return thirdwebAuth.generatePayload(params)
+          },
+          async isLoggedIn(address) {
+            return isLoggedIn
+          },
+        }}
+      /> */}
+    </ParallaxScrollView>
   )
+}
+
+const ConnectWithGoogle = () => {
+  const { connect, isConnecting } = useConnect()
+  return (
+    <ThemedButton
+      title="Connect with Google"
+      loading={isConnecting}
+      loadingTitle="Connecting..."
+      onPress={() => {
+        connect(async () => {
+          const w = inAppWallet({
+            smartAccount: {
+              chain,
+              sponsorGas: true,
+            },
+          })
+          await w.connect({
+            client,
+            strategy: 'google',
+          })
+          return w
+        })
+      }}
+    />
+  )
+}
+
+const styles = StyleSheet.create({
+  reactLogo: {
+    height: '100%',
+    width: '100%',
+    bottom: 0,
+    left: 0,
+    position: 'absolute',
+  },
+})
+function createAuth(arg0: { domain: string; client: ThirdwebClient }) {
+  throw new Error('Function not implemented.')
 }

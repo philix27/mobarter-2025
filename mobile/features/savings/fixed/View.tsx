@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons'
 export default function ViewFixedDeposit() {
   const store = useSavings()
   return (
-    <TView style={{ width: '100%' }}>
+    <TView style={{ width: '100%', paddingTop: 10 }}>
       {store.fixedDepositList.map((val, i) => (
         <Row
           key={i}

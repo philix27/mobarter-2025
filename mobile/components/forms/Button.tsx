@@ -21,7 +21,7 @@ export function InputButton(props: {
   return (
     <TouchableOpacity
       style={{
-        width: '75%',
+        width: '50%',
         ...styles.button,
         ...props.style,
         backgroundColor: getColor(),
@@ -39,7 +39,7 @@ export function InputButton(props: {
 
 const styles = StyleSheet.create({
   button: {
-    paddingVertical: 10,
+    paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: device.isiOS ? 100 : 20,
     alignItems: 'center',
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 14,
+    fontWeight: device.isPad ? 'bold' : "600",
   },
 })

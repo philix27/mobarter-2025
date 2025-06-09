@@ -36,7 +36,7 @@ type IProps = {
     </BottomSheet>
  * ```
  */
-export const BottomSheet = forwardRef<any, IProps>(({ maxHeight = 700, ...props }, ref) => {
+export const BottomSheet = forwardRef<any, IProps>(({ maxHeight = 550, ...props }, ref) => {
   const color = useColor()
   return (
     <RBSheet
