@@ -2,7 +2,7 @@ import { ParallaxScrollView, Wrapper } from '@/components'
 import { TText } from '@/components/ui'
 import { Link } from 'expo-router'
 import { Image, StyleSheet, View, useColorScheme } from 'react-native'
-import { useActiveAccount, useConnect } from 'thirdweb/react'
+import { ConnectEmbed, useActiveAccount, useConnect } from 'thirdweb/react'
 import { ThemedButton } from '@/components/ThemedButton'
 import { inAppWallet } from 'thirdweb/wallets/in-app'
 import { chain, client } from '@/lib'
@@ -20,6 +20,12 @@ const wallets = [
     },
   }),
 ]
+let isLoggedIn = false
+
+const thirdwebAuth = createAuth({
+  domain: 'localhost:3000',
+  client,
+})
 
 export default function SignIn() {
   const account = useActiveAccount()
@@ -78,10 +84,11 @@ const ConnectWithGoogle = () => {
               sponsorGas: true,
             },
           })
-          await w.connect({
+          const res = await w.connect({
             client,
             strategy: 'google',
           })
+
           return w
         })
       }}

@@ -2,8 +2,7 @@ import { useDrawer } from '@/components/layout'
 import { TabBarIcon } from '@/components/navigation/TabBarIcon'
 
 import { useColor } from '@/hooks/useColor'
-import { device } from '@/lib'
-import { Feather, FontAwesome, Ionicons } from '@expo/vector-icons'
+import { Feather, Ionicons } from '@expo/vector-icons'
 import { router, Tabs, usePathname } from 'expo-router'
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
@@ -13,6 +12,7 @@ export default function TabLayout() {
   const drawer = useDrawer()
   const pathname = usePathname()
   const isHomePage = pathname === '/home'
+
   return (
     <Tabs
       screenOptions={{
