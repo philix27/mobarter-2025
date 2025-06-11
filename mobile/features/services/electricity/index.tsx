@@ -7,14 +7,15 @@ import { usePrice } from '@/hooks/usePrice'
 import { isDev } from '@/lib/constants/env'
 import { TText, TView } from '@/components/ui'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
-import { PayableTokenCard } from '../tokens'
+import { PayableTokenCard } from '@/features/tokens'
+// import { PayableTokenCard } from '../tokens'
 const formSchema = z.object({
   amount: z.string().min(1),
   operator: z.string(),
   phone: z.string().min(10, 'At least 10 numbers').max(12),
 })
 
-export default function AirtimeComp() {
+export default function ElectricityBill() {
   const confirmModal = BtmSheet.useRef()
   const { transferERC20 } = useTransferToken()
   const [tokenErr, setTokenErr] = useState<string>()

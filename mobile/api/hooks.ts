@@ -102,16 +102,7 @@ export const useGetTokens = (address: string, country: string) => {
   })
 }
 
-export const useGetTokenBalance = (address: string, country: string) =>
-  useQuery({
-    queryKey: ['useGetTokenBalance'],
-    queryFn: async () => {
-      const res = await api.get(`/api/tokens/total-balance`, {
-        params: { address, country },
-      })
-      return res.data as number
-    },
-  })
+
 
 export const useGetChains = () =>
   useQuery({

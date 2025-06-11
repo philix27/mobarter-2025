@@ -49,9 +49,9 @@ export function CryptoTokensList(props: {
               return (
                 <AssetsRow
                   imgUrl={item.logoUrl as any}
+                  chainId={item.chianId.toString()}
                   currency={item.symbol}
                   tokenAddr={item.address}
-                  balance={item.balance}
                   tokenPrice={item.tokenPrice}
                   performance={item.name}
                   onPress={() => {
@@ -65,9 +65,9 @@ export function CryptoTokensList(props: {
             return (
               <AssetsRow
                 imgUrl={item.logoUrl as any}
+                chainId={item.chianId.toString()}
                 currency={item.symbol}
                 tokenAddr={item.address}
-                balance={item.balance}
                 tokenPrice={item.tokenPrice}
                 performance={item.name}
                 onPress={() => {

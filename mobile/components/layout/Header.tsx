@@ -63,7 +63,7 @@ export function HeaderBar({
     return headerLeft
   }
   return (
-    <Stack.Screen
+    <Drawer.Screen
       options={{
         title: props.title,
         headerShown: headerShown,
@@ -72,6 +72,10 @@ export function HeaderBar({
           fontSize: 15,
           color: appColor.text,
         },
+        drawerIcon: undefined,
+        drawerType: 'back',
+
+        // headerBackButtonDisplayMode: "default",
         // contentStyle: {
         //   backgroundColor: appColor.background,
         //   borderColor: appColor.background,
@@ -87,4 +91,30 @@ export function HeaderBar({
       }}
     />
   )
+
+  // return (
+  //   <Stack.Screen
+  //     options={{
+  //       title: props.title,
+  //       headerShown: headerShown,
+  //       headerTitleStyle: {
+  //         fontWeight: '600',
+  //         fontSize: 15,
+  //         color: appColor.text,
+  //       },
+  //       // contentStyle: {
+  //       //   backgroundColor: appColor.background,
+  //       //   borderColor: appColor.background,
+  //       // },
+  //       headerStyle: {
+  //         backgroundColor: appColor.background,
+  //       },
+  //       headerShadowVisible: false,
+  //       headerTintColor: appColor.background,
+  //       headerTitle: headerTitle,
+  //       headerLeft: getLeftIcon(),
+  //       headerRight: headerRight,
+  //     }}
+  //   />
+  // )
 }

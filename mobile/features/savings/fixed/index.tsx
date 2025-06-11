@@ -1,18 +1,16 @@
 import { TView, Wrapper } from '@/components'
-import { HeaderTabs } from '@/components/BHeaderTab'
-import { TText } from '@/components/ui'
 import variables from '@/lib/constants/variables'
 import React from 'react'
 import { useSavings } from '../zustand'
 import ViewComp from './View'
 import Create from './Create'
+import { FlatTabs } from '@/components/FlatTabs'
 
 export default function FixedDepositPage() {
   const store = useSavings()
   return (
-    <TView style={{ alignItems: 'center' }}>
-      <HeaderTabs
-        style={{ width: variables.width / 1.5 }}
+    <Wrapper>
+      <FlatTabs
         data={[
           {
             title: 'Create',
@@ -32,7 +30,9 @@ export default function FixedDepositPage() {
           },
         ]}
       />
-      <Wrapper>{store.fixedDepositTab !== 'VIEW' ? <Create /> : <ViewComp />}</Wrapper>
-    </TView>
+      <TView style={{ width: '100%', paddingVertical: 10 }}>
+        {store.fixedDepositTab !== 'VIEW' ? <Create /> : <ViewComp />}
+      </TView>
+    </Wrapper>
   )
 }

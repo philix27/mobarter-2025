@@ -2,13 +2,16 @@ import { Image, TouchableOpacity } from 'react-native'
 import { TText, TView } from '@/components/ui'
 import React, { JSX } from 'react'
 import { useColor } from '@/hooks/useColor'
+import { useQuery } from '@tanstack/react-query'
+import { getBalance } from './Balance/getBalance'
+import { useAddress } from '@/lib/zustand/web3/hooks'
 
 export function AssetsRow(params: {
   imgUrl?: string
+  chainId: string
   svgUrl?: string | undefined
   icon?: JSX.Element
   currency: string
-  balance: string
   tokenPrice: string
   performance: string
   tokenAddr: string
@@ -16,6 +19,20 @@ export function AssetsRow(params: {
 }) {
   const appColor = useColor()
   const bgColor = appColor.card
+  const address = useAddress()
+  const { data: balance, isLoading } = useQuery({
+    queryKey: ['token-' + params.currency],
+    queryFn: async () => {
+      const res = await getBalance({
+        address,
+        tokenAddress: params.tokenAddr,
+        chianId: params.chainId,
+      })
+
+      return res
+    },
+  })
+
   return (
     <TouchableOpacity
       onPress={params.onPress}
@@ -70,7 +87,7 @@ export function AssetsRow(params: {
 
         <TView style={{ backgroundColor: bgColor }}>
           <TText>{params.tokenPrice}</TText>
-          <TText>{params.balance}</TText>
+          <TText> {isLoading ? '*.**' : balance}</TText>
         </TView>
       </TView>
     </TouchableOpacity>

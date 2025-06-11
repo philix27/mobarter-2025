@@ -12,7 +12,6 @@ import { useColor } from '@/lib'
 import { DrawerContent } from '@/components/layout'
 import NavigationBar from 'expo-navigation-bar'
 
-
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
 // NavigationBar.setPositionAsync("absolute");
@@ -21,7 +20,6 @@ SplashScreen.preventAutoHideAsync()
 // NavigationBar.setBackgroundColorAsync("#ffffff00");
 // NavigationBar.setBehaviorAsync("inset-swipe");
 export default function RootLayout() {
-
   const appColor = useColor()
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
@@ -36,7 +34,7 @@ export default function RootLayout() {
   if (!loaded) {
     return null
   }
-0
+  0
 
   return (
     <RootProviders>
@@ -62,13 +60,22 @@ export default function RootLayout() {
             title: 'Home',
           }}
         />
-        {/* <Drawer.Screen
+        <Drawer.Screen
+          name="transactions"
+          options={{
+            drawerLabel: 'Transactions',
+            title: 'Transactions',
+            headerBackButtonDisplayMode: 'minimal',
+            drawerType: 'slide',
+          }}
+        />
+        <Drawer.Screen
           name="index"
           options={{
             drawerLabel: 'index',
             title: 'index',
           }}
-        /> */}
+        />
         <StatusBar backgroundColor={Colors.dark.background} barStyle="light-content" />
         {/* <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />

@@ -1,11 +1,11 @@
-import { AntDesign, Feather, MaterialIcons } from '@expo/vector-icons';
-import { JSX } from 'react';
+import { AntDesign, Feather, MaterialIcons } from '@expo/vector-icons'
+import { JSX } from 'react'
 
 export const servicesList: {
-  title: string;
-  route: string;
-  desc: string;
-  icon: JSX.Element;
+  title: string
+  route: string
+  desc: string
+  icon: JSX.Element
 }[] = [
   {
     title: 'Airtime',
@@ -43,12 +43,12 @@ export const servicesList: {
     route: '/services/betting',
     icon: <Feather name="send" size={24} color={'#fff'} />,
   },
-  {
-    title: 'Schedule Payments',
-    desc: 'Provide liquidity to Mobarter Swap',
-    route: '/services/schedule-payments',
-    icon: <Feather name="settings" size={24} color={'#fff'} />,
-  },
+  // {
+  //   title: 'Schedule Payments',
+  //   desc: 'Provide liquidity to Mobarter Swap',
+  //   route: '/services/schedule-payments',
+  //   icon: <Feather name="settings" size={24} color={'#fff'} />,
+  // },
   // {
   //   title: 'Stream',
   //   desc: 'Provide liquidity to Mobarter Swap',
@@ -56,7 +56,7 @@ export const servicesList: {
   //   icon: <Feather name="settings" size={24} color={'#fff'} />,
   //   bgColor: '#03c4b1',
   // },
-];
+]
 
 // {
 //   title: "Trade Analysis",
