@@ -1,5 +1,5 @@
 import { HeaderBar } from '@/components/layout'
-import DataBundlesComp from '@/features/topUps/DataBundles'
+import DataBundlesComp from '@/features/services/topUps/DataBundles'
 import React from 'react'
 
 export default function Page() {

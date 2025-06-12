@@ -12,7 +12,7 @@ export type IToken = {
   address: string;
   decimals: number;
   logoUrl: string;
-  balance: string;
+  // balance: string;
   tokenPrice: string;
 };
 
@@ -33,15 +33,15 @@ export async function GET(
   const celoItems = CeloTokens.map((val) => {
     return { ...val, chianId: 42220 };
   });
-  const list = [];
+  const list: IToken[] = [];
 
   for (const token of celoItems) {
-    const balance = await getBalance({
-      address: addr,
-      chianId: token.chianId.toString(),
-      tokenAddress: token.address,
-    }); // getBalance is async
-    list.push({ ...token, balance, tokenPrice: balance });
+    //   const balance = await getBalance({
+    //     address: addr,
+    //     chianId: token.chianId.toString(),
+    //     tokenAddress: token.address,
+    //   }); // getBalance is async
+    list.push({ ...token, tokenPrice: "0.39" });
   }
 
   return NextResponse.json(list);

@@ -9,7 +9,7 @@ import { FlatTabs } from '@/components/FlatTabs'
 export default function FixedDepositPage() {
   const store = useSavings()
   return (
-    <Wrapper>
+    <TView style={{ alignItems: 'center', width: '100%' }}>
       <FlatTabs
         data={[
           {
@@ -30,9 +30,9 @@ export default function FixedDepositPage() {
           },
         ]}
       />
-      <TView style={{ width: '100%', paddingVertical: 10 }}>
+      <Wrapper style={{ paddingVertical: 10 }}>
         {store.fixedDepositTab !== 'VIEW' ? <Create /> : <ViewComp />}
-      </TView>
-    </Wrapper>
+      </Wrapper>
+    </TView>
   )
 }

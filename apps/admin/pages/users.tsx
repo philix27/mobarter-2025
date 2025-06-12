@@ -1,5 +1,5 @@
 import Wrapper from '@/components/wrapper';
-import UsersComp from '@/features/users';
+import UsersComp from '@/features/orders';
 
 export default function Page() {
   return (

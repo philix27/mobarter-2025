@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useColor } from '@/hooks/useColor'
 import { ViewStyle } from 'react-native'
 import { BtmSheet } from '@/components/layout'
-import ErrMsg from '../../components/forms/ErrMsg'
+import { ErrMsg } from '@/components/forms'
 
 export function InputSelect(params: {
   label?: string

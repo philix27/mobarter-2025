@@ -28,3 +28,15 @@ export const useGetCountries = () => {
     },
   })
 }
+
+export const useGetUi = () => {
+  return useQuery({
+    queryKey: ['ui'],
+    queryFn: async () => {
+      const res = await api.get(`/api/ui`)
+
+      return res.data
+    },
+    refetchInterval: 5000,
+  })
+}

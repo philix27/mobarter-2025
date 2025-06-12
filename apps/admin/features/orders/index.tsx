@@ -1,6 +1,5 @@
 import React from 'react'
-import { DataTable } from '@/components/data-table';
-import Wrapper from '@/components/wrapper';
+import { DataTable } from './data-table';
 
 // import data from "./data.json"
 const data: {
@@ -15,6 +14,15 @@ const data: {
   {
     header: 'header',
     id: 0,
+    target: 'som',
+    type: 'type',
+    status: 'Pending',
+    limit: '23',
+    reviewer: 'John',
+  },
+  {
+    header: 'header',
+    id: 2,
     target: 'som',
     type: 'type',
     status: 'Pending',

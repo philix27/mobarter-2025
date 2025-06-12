@@ -1,5 +1,5 @@
 import { HeaderBar } from '@/components/layout/Header'
-import AirtimeComp from '@/features/topUps/Airtime'
+import AirtimeComp from '@/features/services/topUps/Airtime'
 import React from 'react'
 
 export default function Page() {
