@@ -86,8 +86,8 @@ export function AssetsRow(params: {
         </TView>
 
         <TView style={{ backgroundColor: bgColor }}>
-          <TText>{params.tokenPrice}</TText>
-          <TText> {isLoading ? '*.**' : balance}</TText>
+          <TText type="md"> {isLoading ? '*.**' : balance}</TText>
+          <TText type="sm">{params.tokenPrice}</TText>
         </TView>
       </TView>
     </TouchableOpacity>

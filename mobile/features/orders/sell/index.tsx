@@ -11,14 +11,7 @@ import { BtmSheet } from '@/components/layout'
 import { useBankAccount } from '@/features/bankAccount/zustand.bank'
 import { SelectCountryCard } from '@/features/country'
 import { useSellCrypto } from './useSellCrypto'
-import {
-  CurrencyCrypto,
-  CurrencyFiat,
-  OrderActions,
-  OrderMode,
-  OrderStatus,
-  TradeType,
-} from '@/graphql'
+import { Country, OrderActions, OrderMode, OrderStatus, TradeType } from '@/graphql'
 
 type IData = { value: string | undefined; error: string | undefined }
 export default function SellCryptoOrder() {
@@ -82,9 +75,9 @@ export default function SellCryptoOrder() {
             input: {
               amount_fiat: parseInt(amountFiat.value!),
               amount_crypto: amountToPay!,
-              currency_fiat: CurrencyFiat.Ng,
+              currency_fiat: Country.Ng,
               // currency_fiat: country?.isoName,
-              currency_crypto: CurrencyCrypto.Cusd,
+              currency_crypto: '',
               // currency_crypto: storeTokens.activeToken!.name,
               estimated_duration: `EXPRESS`,
               trade_type: TradeType.Sell!,
@@ -95,10 +88,8 @@ export default function SellCryptoOrder() {
               wallet_merchant: offRamp,
               txn_hash: txn_hash,
               mode: OrderMode.Express,
-              bank_account_no: account.activeAccount!.account_no,
-              bank_name: account.activeAccount!.bank_name,
-              bank_code: account.activeAccount!.bank_name,
-              bank_account_name: account.activeAccount!.bank_name,
+              bank_id: 1,
+              currency_network: '42221'
             },
           },
           onCompleted() {

@@ -3,7 +3,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { useAddAcct } from './api.bank'
-import { BankName } from '@/graphql'
 import { toast, TView } from '@/components'
 import { BtmSheet } from '@/components/layout'
 import { enumToList } from '@/lib'
@@ -33,7 +32,8 @@ export function AddBankAccount() {
         input: {
           accountName: f.getValues('accountName'),
           accountNo: f.getValues('accountNo'),
-          bankName: f.getValues('bank') as BankName,
+          bankName: f.getValues('bank'),
+          nubanId: '67372',
         },
       },
       onCompleted() {

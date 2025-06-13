@@ -19,6 +19,15 @@ export function SelectBankAccountCard({
   const storeTokens = AppStores.useTokens()
 
   const account = useBankAccount()
+  let desc = () => {
+    let _desc = `${account.activeAccount?.bank_name} | ${account.activeAccount?.account_no}`
+
+    if (_desc === 'undefined | undefined' || _desc === undefined) {
+      _desc = 'Please select an account'
+    }
+
+    return _desc
+  }
 
   return (
     <>
@@ -26,7 +35,7 @@ export function SelectBankAccountCard({
         <Label label="Destination Account" />
         <Row
           title={account.activeAccount?.account_name || 'Select an account'}
-          desc={`${account.activeAccount?.bank_name} | ${account.activeAccount?.account_no}`}
+          desc={desc()}
           trailing={<Ionicons name="caret-down" size={20} color={theme.muted} />}
           onClick={() => {
             confirmModal.current.open()

@@ -50,6 +50,7 @@ export default function RootLayout() {
             width: Dimensions.get('window').width / 1.5,
             backgroundColor: appColor.background,
           },
+          drawerLabel: () => null,
         }}
         drawerContent={DrawerContent}
       >

@@ -106,7 +106,7 @@ export const useGetTokens = (address: string, country: string) => {
 
 export const useGetChains = () =>
   useQuery({
-    queryKey: ['useGetChains'],
+    queryKey: ['useGetChain'],
     queryFn: async () => {
       const res = await api.get(`/api/chains`)
       return res.data as IChainMetadata[]

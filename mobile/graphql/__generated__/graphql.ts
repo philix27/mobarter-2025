@@ -202,6 +202,7 @@ export type BankAccount_CreateInput = {
   accountName: Scalars['String']['input'];
   accountNo: Scalars['String']['input'];
   bankName: Scalars['String']['input'];
+  nubanId?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type BankAccount_DeleteInput = {
@@ -219,6 +220,7 @@ export type BankAccount_Response = {
   account_no: Scalars['String']['output'];
   bank_name: Scalars['String']['output'];
   id: Scalars['Float']['output'];
+  nubanId?: Maybe<Scalars['String']['output']>;
 };
 
 export enum ChainType {
