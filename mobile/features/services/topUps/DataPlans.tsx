@@ -1,7 +1,7 @@
 import { BtmSheet } from '@/components/layout'
 import { z } from 'zod'
 import { useState } from 'react'
-import { InputButton, InputText } from '@/components/forms'
+import { InputButton, InputSelect, InputText } from '@/components/forms'
 import { useAppForm, AppStores } from '@/lib'
 import { usePrice } from '@/hooks/usePrice'
 import { isDev } from '@/lib/constants/env'
@@ -15,7 +15,7 @@ const formSchema = z.object({
   phone: z.string().min(10, 'At least 10 numbers').max(12),
 })
 
-export default function Airtime() {
+export default function DataPlanComp() {
   const confirmModal = BtmSheet.useRef()
   const { transferERC20 } = useTransferToken()
   const [tokenErr, setTokenErr] = useState<string>()
@@ -80,21 +80,29 @@ export default function Airtime() {
   }
   return (
     <>
-      <InputText
-        label={'Amount'}
-        keyboardType="numeric"
-        leadingText={country?.currencySymbol}
-        placeholder={'Enter amount'}
-        value={formData.amount.toString()}
-        onChangeText={(text) => {
-          if (text.length > 10) return
-          handleChange('amount', text)
-          handlePriceChange(parseFloat(text))
+      <InputSelect
+        label="Select Plan"
+        placeholder="None"
+        error={errors && errors?.operator && errors!.operator}
+        onValueChange={(v) => {
+          handleChange('operator', v)
           clearErr()
         }}
-        // error={errors && errors?.amount && errors!.amount}
+        items={[
+          {
+            label: 'MTN',
+            value: 'MTN',
+          },
+          {
+            label: 'Airtel',
+            value: 'Airtel',
+          },
+          {
+            label: 'GLO',
+            value: 'GLO',
+          },
+        ]}
       />
-
       <TText>{amountToPay}</TText>
       <InputButton title={'Submit'} onPress={handleSubmit} />
 

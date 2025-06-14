@@ -1,13 +1,15 @@
-import { BtmSheet } from '@/components/layout'
+import { Wrapper, BtmSheet } from '@/components/layout'
 import { z } from 'zod'
 import { useState } from 'react'
-import { InputButton, InputText } from '@/components/forms'
+import { InputSelect, InputButton, InputText } from '@/components/forms'
 import { useAppForm, AppStores } from '@/lib'
 import { usePrice } from '@/hooks/usePrice'
 import { isDev } from '@/lib/constants/env'
 import { TText, TView } from '@/components/ui'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
+import { PayableTokenCard } from '@/features/tokens'
 import { useTopUps } from './zustand'
+import { TopUpTabs } from './tab'
 
 const formSchema = z.object({
   amount: z.string().min(1),
@@ -15,7 +17,7 @@ const formSchema = z.object({
   phone: z.string().min(10, 'At least 10 numbers').max(12),
 })
 
-export default function Airtime() {
+export default function AirtimeComp() {
   const confirmModal = BtmSheet.useRef()
   const { transferERC20 } = useTransferToken()
   const [tokenErr, setTokenErr] = useState<string>()
@@ -79,7 +81,47 @@ export default function Airtime() {
     })
   }
   return (
-    <>
+    <Wrapper style={{ rowGap: 10 }}>
+      <InputSelect
+        label="Network"
+        placeholder="Select operator"
+        error={errors && errors?.operator && errors!.operator}
+        onValueChange={(v) => {
+          handleChange('operator', v)
+          clearErr()
+        }}
+        items={[
+          {
+            label: 'MTN',
+            value: 'MTN',
+          },
+          {
+            label: 'Airtel',
+            value: 'Airtel',
+          },
+          {
+            label: 'GLO',
+            value: 'GLO',
+          },
+        ]}
+      />
+
+      <InputText
+        label={'Phone'}
+        leadingText={country?.callingCodes}
+        value={formData.phone}
+        onChangeText={(text) => {
+          if (text.length > 10) return
+          handleChange('phone', text)
+          clearErr()
+        }}
+        placeholder={'Enter phone'}
+        // error={errors && errors?.phone && errors!.phone}
+        keyboardType="number-pad"
+      />
+      <PayableTokenCard tokenErr={tokenErr} />
+      <TView style={{ height: 10 }} />
+      <TopUpTabs />
       <InputText
         label={'Amount'}
         keyboardType="numeric"
@@ -109,6 +151,6 @@ export default function Airtime() {
         <TView style={{ height: 25 }} />
         <InputButton title={'Pay'} onPress={onPay} />
       </BtmSheet.Modal>
-    </>
+    </Wrapper>
   )
 }

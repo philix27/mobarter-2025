@@ -1,12 +1,12 @@
 import { HeaderBar } from '@/components/layout/Header'
-import AirtimeComp from '@/features/services/topUps/Airtime'
+import TopUpComp from '@/features/services/topUps'
 import React from 'react'
 
 export default function Page() {
   return (
     <>
       <HeaderBar title="Airtime" showBackBtn backTo="/payments" />
-      <AirtimeComp />
+      <TopUpComp />
     </>
   )
 }

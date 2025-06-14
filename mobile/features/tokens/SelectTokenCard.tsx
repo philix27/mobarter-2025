@@ -21,7 +21,7 @@ export function SelectTokenCard({
   return (
     <>
       <TView>
-        <Label label="Currency" />
+        <Label label="Pay with" />
         <Row
           title={token?.name ? token.name : 'Select token'}
           imgUrl={token?.logoUrl}

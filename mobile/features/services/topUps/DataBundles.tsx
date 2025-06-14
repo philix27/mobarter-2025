@@ -1,14 +1,13 @@
-import { Wrapper, BtmSheet } from '@/components/layout'
+import { BtmSheet } from '@/components/layout'
 import { z } from 'zod'
 import { useState } from 'react'
-import { InputSelect, InputButton, InputText } from '@/components/forms'
-import { useAppForm, client, AppStores } from '@/lib'
+import { InputButton, InputSelect } from '@/components/forms'
+import { useAppForm, AppStores } from '@/lib'
 import { usePrice } from '@/hooks/usePrice'
 import { isDev } from '@/lib/constants/env'
 import { TText, TView } from '@/components/ui'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
-import { SelectTokenCard } from '@/features/tokens'
-
+import { useTopUps } from './zustand'
 
 const formSchema = z.object({
   amount: z.string().min(1),
@@ -17,23 +16,14 @@ const formSchema = z.object({
 })
 
 export default function DataBundlesComp() {
+  const confirmModal = BtmSheet.useRef()
   const { transferERC20 } = useTransferToken()
   const [tokenErr, setTokenErr] = useState<string>()
-  const countryStore = AppStores.useCountries()
   const tokenStore = AppStores.useTokens()
-  const confirmModal = BtmSheet.useRef()
+  const store = useTopUps()
   const { handleOnChange: handlePriceChange, amountToPay } = usePrice()
-
-  const getCallCode = () => {
-    if (!countryStore.countries || countryStore.countries.length === 0) return '234'
-    return countryStore.countries.filter((val) => val.isoName === countryStore.activeIso)[0]
-      .callingCodes
-  }
-  const getCurrencySymbol = () => {
-    if (!countryStore.countries || countryStore.countries.length === 0) return 'NGN'
-    return countryStore.countries.filter((val) => val.isoName === countryStore.activeIso)[0]
-      .currencySymbol
-  }
+  const countryStore = AppStores.useCountries()
+  const country = countryStore.activeCountry
 
   const { formData, errors, handleChange, setErrors } = useAppForm<typeof formSchema._type>({
     // Omit<typeof formSchema._type, 'amount'> & { amount: string }
@@ -89,10 +79,10 @@ export default function DataBundlesComp() {
     })
   }
   return (
-    <Wrapper style={{ rowGap: 10 }}>
+    <>
       <InputSelect
-        label="Network"
-        placeholder="Select operator"
+        label="Select Bundles"
+        placeholder="None"
         error={errors && errors?.operator && errors!.operator}
         onValueChange={(v) => {
           handleChange('operator', v)
@@ -113,60 +103,20 @@ export default function DataBundlesComp() {
           },
         ]}
       />
-
-      <InputText
-        label={'Phone'}
-        leadingText={getCallCode()}
-        value={formData.phone}
-        onChangeText={(text) => {
-          if (text.length > 10) return
-          handleChange('phone', text)
-          clearErr()
-        }}
-        placeholder={'Enter phone'}
-        // error={errors && errors?.phone && errors!.phone}
-        keyboardType="number-pad"
-      />
-      <InputText
-        label={'Amount'}
-        keyboardType="numeric"
-        leadingText={getCurrencySymbol()}
-        placeholder={'Enter amount'}
-        value={formData.amount.toString()}
-        onChangeText={(text) => {
-          if (text.length > 10) return
-          handleChange('amount', text)
-          handlePriceChange(parseFloat(text))
-          clearErr()
-        }}
-        // error={errors && errors?.amount && errors!.amount}
-      />
-      <SelectTokenCard tokenErr={tokenErr} />
       <TText>{amountToPay}</TText>
-      <InputButton title={'Submit'} style={{ width: '50%' }} onPress={handleSubmit} />
+      <InputButton title={'Submit'} onPress={handleSubmit} />
 
-      <BtmSheet.Modal
-        ref={confirmModal!}
-        style={{
-          alignItems: 'center',
-          flexDirection: 'column',
-          paddingBottom: 80,
-          width: '100%',
-          rowGap: 1,
-        }}
-      >
-        <TText type="subtitle">
-          {`${amountToPay} ${tokenStore.activeToken!.symbol}`}
-          {/* {`${formatCurrency(parseFloat(amountToPay!.toString()))} ${countryStore.activeTokenSymbol}`} */}
-        </TText>
-        <TView style={{ height: 15 }} />
+      <BtmSheet.Modal title="Confirm" ref={confirmModal!}>
         <BtmSheet.Row text1="Operator" text2={formData.operator} />
-        <BtmSheet.Row text1="Phone" text2={formData.phone} />
-        <BtmSheet.Row text1="Amount" text2={formData.amount.toString()} />
-        <BtmSheet.Row text1="Fee" text2={formData.amount.toString()} />
+        <BtmSheet.Row text1="Phone" text2={`${country?.callingCodes}${formData.phone}`} />
+        <BtmSheet.Row
+          text1="Amount"
+          text2={`${country?.currencySymbol}${formData.amount.toString()}`}
+        />
+        <BtmSheet.Row text1="You pay" text2={`${amountToPay} ${tokenStore.activeToken?.symbol}`} />
         <TView style={{ height: 25 }} />
         <InputButton title={'Pay'} onPress={onPay} />
       </BtmSheet.Modal>
-    </Wrapper>
+    </>
   )
 }

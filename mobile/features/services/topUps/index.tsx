@@ -1,13 +1,18 @@
-import { BtmSheet } from '@/components/layout'
+import { Wrapper, BtmSheet } from '@/components/layout'
 import { z } from 'zod'
 import { useState } from 'react'
-import { InputButton, InputText } from '@/components/forms'
+import { InputSelect, InputButton, InputText } from '@/components/forms'
 import { useAppForm, AppStores } from '@/lib'
 import { usePrice } from '@/hooks/usePrice'
 import { isDev } from '@/lib/constants/env'
 import { TText, TView } from '@/components/ui'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
+import { PayableTokenCard } from '@/features/tokens'
 import { useTopUps } from './zustand'
+import { TopUpTabs } from './tab'
+import Airtime from './Airtime'
+import DataBundlesComp from './DataBundles'
+import DataPlanComp from './DataPlans'
 
 const formSchema = z.object({
   amount: z.string().min(1),
@@ -15,7 +20,7 @@ const formSchema = z.object({
   phone: z.string().min(10, 'At least 10 numbers').max(12),
 })
 
-export default function Airtime() {
+export default function TopUpComp() {
   const confirmModal = BtmSheet.useRef()
   const { transferERC20 } = useTransferToken()
   const [tokenErr, setTokenErr] = useState<string>()
@@ -79,36 +84,49 @@ export default function Airtime() {
     })
   }
   return (
-    <>
-      <InputText
-        label={'Amount'}
-        keyboardType="numeric"
-        leadingText={country?.currencySymbol}
-        placeholder={'Enter amount'}
-        value={formData.amount.toString()}
-        onChangeText={(text) => {
-          if (text.length > 10) return
-          handleChange('amount', text)
-          handlePriceChange(parseFloat(text))
+    <Wrapper style={{ rowGap: 10 }}>
+      <InputSelect
+        label="Network"
+        placeholder="Select operator"
+        error={errors && errors?.operator && errors!.operator}
+        onValueChange={(v) => {
+          handleChange('operator', v)
           clearErr()
         }}
-        // error={errors && errors?.amount && errors!.amount}
+        items={[
+          {
+            label: 'MTN',
+            value: 'MTN',
+          },
+          {
+            label: 'Airtel',
+            value: 'Airtel',
+          },
+          {
+            label: 'GLO',
+            value: 'GLO',
+          },
+        ]}
       />
-
-      <TText>{amountToPay}</TText>
-      <InputButton title={'Submit'} onPress={handleSubmit} />
-
-      <BtmSheet.Modal title="Confirm" ref={confirmModal!}>
-        <BtmSheet.Row text1="Operator" text2={formData.operator} />
-        <BtmSheet.Row text1="Phone" text2={`${country?.callingCodes}${formData.phone}`} />
-        <BtmSheet.Row
-          text1="Amount"
-          text2={`${country?.currencySymbol}${formData.amount.toString()}`}
-        />
-        <BtmSheet.Row text1="You pay" text2={`${amountToPay} ${tokenStore.activeToken?.symbol}`} />
-        <TView style={{ height: 25 }} />
-        <InputButton title={'Pay'} onPress={onPay} />
-      </BtmSheet.Modal>
-    </>
+      <InputText
+        label={'Phone'}
+        leadingText={country?.callingCodes}
+        value={formData.phone}
+        onChangeText={(text) => {
+          if (text.length > 10) return
+          handleChange('phone', text)
+          clearErr()
+        }}
+        placeholder={'Enter phone'}
+        // error={errors && errors?.phone && errors!.phone}
+        keyboardType="number-pad"
+      />
+      <PayableTokenCard tokenErr={tokenErr} />
+      <TView style={{ height: 10 }} />
+      <TopUpTabs />
+      {store.activeTab === 'AIRTIME' && <Airtime />}
+      {store.activeTab === 'BUNDLE' && <DataBundlesComp />}
+      {store.activeTab === 'DATA_PLAN' && <DataPlanComp />}
+    </Wrapper>
   )
 }
