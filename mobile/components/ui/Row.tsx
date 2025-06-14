@@ -32,6 +32,7 @@ export function Row(props: {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'space-between',
+          minHeight: 45,
         },
         props.style,
       ]}
@@ -79,7 +80,7 @@ export function Row(props: {
                 flex: 1,
                 flexWrap: 'wrap',
                 paddingVertical: 0,
-                // lineHeight: 20,
+                lineHeight: 18,
               }}
             >
               {props.desc}

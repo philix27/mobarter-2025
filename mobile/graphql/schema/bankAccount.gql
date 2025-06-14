@@ -21,3 +21,18 @@ query BankAccount_getAll {
     bank_name
   }
 }
+
+
+query BankList {
+  bankList {
+    bankCode
+    bankName
+  }
+}
+
+query Bank_verifyAccountNo($input: BankGetAccountName_Input!) {
+  bank_verifyAccountNo(input: $input) {
+    account_name
+    account_number
+  }
+}

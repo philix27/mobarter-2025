@@ -14,6 +14,7 @@ import { useSellCrypto } from './useSellCrypto'
 import { Country, OrderActions, OrderMode, OrderStatus, TradeType } from '@/graphql'
 
 type IData = { value: string | undefined; error: string | undefined }
+
 export default function SellCryptoOrder() {
   const confirmModal = BtmSheet.useRef()
   const { transferERC20 } = useTransferToken()
@@ -76,9 +77,7 @@ export default function SellCryptoOrder() {
               amount_fiat: parseInt(amountFiat.value!),
               amount_crypto: amountToPay!,
               currency_fiat: Country.Ng,
-              // currency_fiat: country?.isoName,
-              currency_crypto: '',
-              // currency_crypto: storeTokens.activeToken!.name,
+              currency_crypto: storeTokens.activeToken!.name,
               estimated_duration: `EXPRESS`,
               trade_type: TradeType.Sell!,
               status: OrderStatus.Pending,
@@ -89,7 +88,7 @@ export default function SellCryptoOrder() {
               txn_hash: txn_hash,
               mode: OrderMode.Express,
               bank_id: 1,
-              currency_network: '42221'
+              currency_network: '42221',
             },
           },
           onCompleted() {

@@ -78,6 +78,9 @@ export const BottomSheet = forwardRef<any, IProps>(({ maxHeight = 550, ...props 
             paddingBottom: 10,
             borderColor: device.isiOS ? color.muted : undefined,
             borderBottomWidth: device.isiOS ? 0.5 : undefined,
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           <TText style={{ fontSize: 18, fontWeight: '700' }}>{props.title}</TText>
@@ -88,6 +91,9 @@ export const BottomSheet = forwardRef<any, IProps>(({ maxHeight = 550, ...props 
           paddingBottom: device.isiOS ? 50 : 20,
           width: '100%',
           rowGap: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
         }}
       >
         {props.children}
@@ -108,8 +114,8 @@ function Row(params: { text1: string; text2: string }) {
         marginBottom: 15,
       }}
     >
-      <TText style={{ color: color.muted }}>{params.text1}</TText>
-      <TText style={{ fontStyle: 'normal', fontWeight: '700' }}>{params.text2}</TText>
+      <TText style={{ color: color.muted, fontSize: 14 }}>{params.text1}</TText>
+      <TText style={{ fontStyle: 'normal', fontSize: 14, fontWeight: '700' }}>{params.text2}</TText>
     </TView>
   )
 }

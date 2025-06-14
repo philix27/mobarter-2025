@@ -1,4 +1,4 @@
-import { TText, TView } from '@/components/ui'
+import { Row, TText, TView } from '@/components/ui'
 import React, { useState } from 'react'
 
 import { Picker } from '@react-native-picker/picker'
@@ -67,8 +67,21 @@ export function InputSelect(params: {
         </TouchableOpacity>
         {params.error && <ErrMsg msg={params.error} />}
       </TView>
-      <BtmSheet.Modal ref={refRBSheet!}>z
-        <Picker
+      <BtmSheet.Modal ref={refRBSheet!}>
+        {params.items.map((item, i) => (
+          <Row
+            key={i}
+            title={item.label}
+            desc={item.value}
+            onClick={() => {
+              setSelectedValue(item.value)
+              if (params.onValueChange) {
+                params.onValueChange(item.value)
+              }
+            }}
+          />
+        ))}
+        {/* <Picker
           style={{
             width: '100%',
             backgroundColor: theme.background,
@@ -87,7 +100,7 @@ export function InputSelect(params: {
           {params.items.map((item, i) => (
             <Picker.Item key={i} label={item.label} value={item.value} />
           ))}
-        </Picker>
+        </Picker> */}
       </BtmSheet.Modal>
     </>
   )

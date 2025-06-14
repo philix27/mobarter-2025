@@ -22,6 +22,7 @@ export function InputText(props: {
   style?: ViewStyle
   inputStyle?: TextStyle
   value?: string | undefined
+  disabled?: boolean | undefined
   icon?: JSX.Element
   trailingIcon?: JSX.Element
   onTrailingIconPress?: VoidFunction
@@ -91,6 +92,7 @@ export function InputText(props: {
             placeholderTextColor={theme.muted}
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
+            editable={props.disabled}
           />
           {props.secureTextEntry && (
             <TView style={{ position: 'absolute', right: 10, top: 38 }}>

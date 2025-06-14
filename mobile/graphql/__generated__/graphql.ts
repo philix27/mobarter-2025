@@ -201,8 +201,8 @@ export type Auth_VerifyOtpResponse = {
 export type BankAccount_CreateInput = {
   accountName: Scalars['String']['input'];
   accountNo: Scalars['String']['input'];
+  bankCode?: InputMaybe<Scalars['String']['input']>;
   bankName: Scalars['String']['input'];
-  nubanId?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type BankAccount_DeleteInput = {
@@ -218,9 +218,26 @@ export type BankAccount_Response = {
   __typename?: 'BankAccount_Response';
   account_name: Scalars['String']['output'];
   account_no: Scalars['String']['output'];
+  bankCode?: Maybe<Scalars['String']['output']>;
   bank_name: Scalars['String']['output'];
   id: Scalars['Float']['output'];
-  nubanId?: Maybe<Scalars['String']['output']>;
+};
+
+export type BankGetAccountName_Input = {
+  accountNo: Scalars['String']['input'];
+  bankCode?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type BankGetAccountName_Response = {
+  __typename?: 'BankGetAccountName_Response';
+  account_name: Scalars['String']['output'];
+  account_number: Scalars['String']['output'];
+};
+
+export type BankList_Response = {
+  __typename?: 'BankList_Response';
+  bankCode?: Maybe<Scalars['String']['output']>;
+  bankName: Scalars['String']['output'];
 };
 
 export enum ChainType {
@@ -655,6 +672,8 @@ export type Query = {
   adverts_getMerchantAdverts: Array<Advert_GetResponse>;
   adverts_getOne: Advert_GetResponse;
   bankAccount_getAll: Array<BankAccount_Response>;
+  bankList: Array<BankList_Response>;
+  bank_verifyAccountNo: BankGetAccountName_Response;
   fxRate_GetAll: ExchangeRate_Response;
   orders_GetAll: Array<Order_Response>;
   orders_GetAllAsMerchant: Array<Order_Response>;
@@ -677,6 +696,11 @@ export type QueryAdverts_GetMerchantAdvertsArgs = {
 
 export type QueryAdverts_GetOneArgs = {
   input: Advert_GetOneInput;
+};
+
+
+export type QueryBank_VerifyAccountNoArgs = {
+  input: BankGetAccountName_Input;
 };
 
 
@@ -938,6 +962,18 @@ export type BankAccount_GetAllQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type BankAccount_GetAllQuery = { __typename?: 'Query', bankAccount_getAll: Array<{ __typename?: 'BankAccount_Response', id: number, account_name: string, account_no: string, bank_name: string }> };
 
+export type BankListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type BankListQuery = { __typename?: 'Query', bankList: Array<{ __typename?: 'BankList_Response', bankCode?: string | null, bankName: string }> };
+
+export type Bank_VerifyAccountNoQueryVariables = Exact<{
+  input: BankGetAccountName_Input;
+}>;
+
+
+export type Bank_VerifyAccountNoQuery = { __typename?: 'Query', bank_verifyAccountNo: { __typename?: 'BankGetAccountName_Response', account_name: string, account_number: string } };
+
 export type FxRate_GetAllQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1079,6 +1115,8 @@ export const Auth_ThirdwebLoginDocument = {"kind":"Document","definitions":[{"ki
 export const BankAccount_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"BankAccount_delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BankAccount_DeleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"bankAccount_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<BankAccount_DeleteMutation, BankAccount_DeleteMutationVariables>;
 export const BankAccount_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"BankAccount_create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BankAccount_CreateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"bankAccount_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"account_no"}},{"kind":"Field","name":{"kind":"Name","value":"account_name"}},{"kind":"Field","name":{"kind":"Name","value":"bank_name"}}]}}]}}]} as unknown as DocumentNode<BankAccount_CreateMutation, BankAccount_CreateMutationVariables>;
 export const BankAccount_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"BankAccount_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"bankAccount_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"account_name"}},{"kind":"Field","name":{"kind":"Name","value":"account_no"}},{"kind":"Field","name":{"kind":"Name","value":"bank_name"}}]}}]}}]} as unknown as DocumentNode<BankAccount_GetAllQuery, BankAccount_GetAllQueryVariables>;
+export const BankListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"BankList"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"bankList"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"bankCode"}},{"kind":"Field","name":{"kind":"Name","value":"bankName"}}]}}]}}]} as unknown as DocumentNode<BankListQuery, BankListQueryVariables>;
+export const Bank_VerifyAccountNoDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Bank_verifyAccountNo"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BankGetAccountName_Input"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"bank_verifyAccountNo"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"account_name"}},{"kind":"Field","name":{"kind":"Name","value":"account_number"}}]}}]}}]} as unknown as DocumentNode<Bank_VerifyAccountNoQuery, Bank_VerifyAccountNoQueryVariables>;
 export const FxRate_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"FxRate_GetAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fxRate_GetAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"GH"}},{"kind":"Field","name":{"kind":"Name","value":"NG"}},{"kind":"Field","name":{"kind":"Name","value":"KE"}},{"kind":"Field","name":{"kind":"Name","value":"UG"}},{"kind":"Field","name":{"kind":"Name","value":"MW"}},{"kind":"Field","name":{"kind":"Name","value":"TZ"}},{"kind":"Field","name":{"kind":"Name","value":"ZA"}},{"kind":"Field","name":{"kind":"Name","value":"USD"}},{"kind":"Field","name":{"kind":"Name","value":"EUR"}}]}}]}}]} as unknown as DocumentNode<FxRate_GetAllQuery, FxRate_GetAllQueryVariables>;
 export const Kyc_AddAddressInfoDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Kyc_addAddressInfo"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Kyc_AddAddressInfoInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"kyc_addAddressInfo"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<Kyc_AddAddressInfoMutation, Kyc_AddAddressInfoMutationVariables>;
 export const Kyc_AddAddressProofDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"kyc_addAddressProof"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Kyc_AddAddressProofInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"kyc_addAddressProof"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<Kyc_AddAddressProofMutation, Kyc_AddAddressProofMutationVariables>;

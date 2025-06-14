@@ -134,27 +134,16 @@ export default function AirtimeComp() {
       />
       <PayableTokenCard tokenErr={tokenErr} />
       <TText>{amountToPay}</TText>
-      <InputButton title={'Submit'} style={{ width: '50%' }} onPress={handleSubmit} />
+      <InputButton title={'Submit'} onPress={handleSubmit} />
 
-      <BtmSheet.Modal
-        ref={confirmModal!}
-        style={{
-          alignItems: 'center',
-          flexDirection: 'column',
-          paddingBottom: 80,
-          width: '100%',
-          rowGap: 1,
-        }}
-      >
-        <TText type="subtitle">
-          {`${amountToPay} ${tokenStore.activeToken?.symbol}`}
-          {/* {`${formatCurrency(parseFloat(amountToPay!.toString()))} ${countryStore.activeTokenSymbol}`} */}
-        </TText>
-        <TView style={{ height: 15 }} />
+      <BtmSheet.Modal title="Confirm" ref={confirmModal!}>
         <BtmSheet.Row text1="Operator" text2={formData.operator} />
-        <BtmSheet.Row text1="Phone" text2={formData.phone} />
-        <BtmSheet.Row text1="Amount" text2={formData.amount.toString()} />
-        <BtmSheet.Row text1="Fee" text2={formData.amount.toString()} />
+        <BtmSheet.Row text1="Phone" text2={`${country?.callingCodes}${formData.phone}`} />
+        <BtmSheet.Row
+          text1="Amount"
+          text2={`${country?.currencySymbol}${formData.amount.toString()}`}
+        />
+        <BtmSheet.Row text1="You pay" text2={`${amountToPay} ${tokenStore.activeToken?.symbol}`} />
         <TView style={{ height: 25 }} />
         <InputButton title={'Pay'} onPress={onPay} />
       </BtmSheet.Modal>

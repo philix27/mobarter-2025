@@ -13,7 +13,15 @@ export function BankAccounts() {
   if (loading) return <ActivityIndicator />
 
   return (
-    <>
+    <TView
+      style={{
+        flexDirection: 'column',
+        alignItems: 'center',
+        height: '50%',
+        rowGap: 20,
+        paddingVertical: 10,
+      }}
+    >
       {data && data.bankAccount_getAll.length > 0 ? (
         data?.bankAccount_getAll.map((act, i) => (
           <Row
@@ -37,15 +45,15 @@ export function BankAccounts() {
           }}
         >
           <TText muted>No account found</TText>
-          <InputButton
-            title="Add an account"
-            style={{ width: '50%' }}
-            onPress={() => {
-              router.push('/bank/add')
-            }}
-          />
         </TView>
       )}
-    </>
+      <InputButton
+        title="Add an account"
+        style={{ width: '50%' }}
+        onPress={() => {
+          router.push('/bank/add')
+        }}
+      />
+    </TView>
   )
 }
