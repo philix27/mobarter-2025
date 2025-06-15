@@ -30,11 +30,13 @@ export default function ResponseProvider({ children }: PropsWithChildren) {
   // Function to show success overlay
   const showSuccess = (text?: string) => {
     setSuccess({ show: true, text: text || '' })
+    setLoading(false)
   }
 
   // Function to show success overlay
   const showError = (text?: string) => {
     setError({ show: true, text: text || '' })
+    setLoading(false)
   }
 
   // Function to hide success overlay

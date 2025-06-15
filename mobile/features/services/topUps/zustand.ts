@@ -8,6 +8,7 @@ export interface ISlice {
   activeTab?: ITabs
   phone?: string
   operatorName?: string
+  operatorId?: number
   dataPlan_amount?: string
   dataPlan_desc?: string
   dataPlan_operatorId?: string
@@ -20,6 +21,7 @@ export const defaultValues: Required<ISlice> = {
   dataPlan_amount: '',
   dataPlan_desc: '',
   dataPlan_operatorId: '',
+  operatorId: 0
 }
 
 export interface ISliceUpdate extends Required<ISlice> {

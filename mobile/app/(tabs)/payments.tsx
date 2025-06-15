@@ -1,11 +1,10 @@
-import { HeaderBar } from '@/components/layout'
+import { HeaderBar, Wrapper } from '@/components/layout'
 import ServicesScreen from '@/features/services'
 
 export default function Page() {
   return (
-    <>
-      {/* <HeaderBar title="Payments" /> */}
+    <Wrapper>
       <ServicesScreen />
-    </>
+    </Wrapper>
   )
 }

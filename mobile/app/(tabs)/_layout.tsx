@@ -89,12 +89,12 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="savings"
+        name="account"
         options={{
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'save' : 'save-outline'} color={color} />
+            <TabBarIcon name={focused ? 'person' : 'person-outline'} color={color} />
           ),
-          title: 'Savings',
+          title: 'Account',
         }}
       />
     </Tabs>

@@ -528,13 +528,6 @@ export type MutationUtility_PurchaseDataBundleArgs = {
   input: Utilities_PurchaseDataBundleInput;
 };
 
-export enum Operator {
-  Airtel = 'AIRTEL',
-  Etisalat = 'ETISALAT',
-  Glo = 'GLO',
-  Mtn = 'MTN'
-}
-
 export enum OrderActions {
   Appeal = 'Appeal',
   Cancel = 'Cancel',
@@ -834,7 +827,7 @@ export type Utilities_GetOperatorsInput = {
 export type Utilities_PurchaseAirtimeInput = {
   amount: Scalars['Float']['input'];
   countryCode: Country;
-  operator: Operator;
+  operatorId: Scalars['Int']['input'];
   phoneNo: Scalars['String']['input'];
   transaction_hash: Scalars['String']['input'];
 };
@@ -842,7 +835,7 @@ export type Utilities_PurchaseAirtimeInput = {
 export type Utilities_PurchaseDataBundleInput = {
   amount: Scalars['Float']['input'];
   countryCode: Country;
-  operator: Scalars['Int']['input'];
+  operatorId: Scalars['Int']['input'];
   phoneNo: Scalars['String']['input'];
   transaction_hash: Scalars['String']['input'];
 };

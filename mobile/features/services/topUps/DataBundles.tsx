@@ -5,7 +5,7 @@ import { InputButton, InputSelect } from '@/components/forms'
 import { useAppForm, AppStores } from '@/lib'
 import { usePrice } from '@/hooks/usePrice'
 import { isDev } from '@/lib/constants/env'
-import { TText, TView } from '@/components/ui'
+import { toast, TText, TView } from '@/components/ui'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
 import { useTopUps } from './zustand'
 import { SelectDataPlan } from './SelectDataPlan'
@@ -19,7 +19,6 @@ const formSchema = z.object({
 export default function DataBundlesComp() {
   const confirmModal = BtmSheet.useRef()
   const { transferERC20 } = useTransferToken()
-  const [tokenErr, setTokenErr] = useState<string>()
   const tokenStore = AppStores.useTokens()
   const store = useTopUps()
   const { handleOnChange: handlePriceChange, amountToPay } = usePrice()
@@ -57,6 +56,21 @@ export default function DataBundlesComp() {
     if (!validation.success) {
       showErr()
       console.log('Error in validation ' + validation.error.message)
+      return
+    }
+
+    if (!store.operatorName || store.operatorId === 0) {
+      toast.error('Please select an operator')
+      return
+    }
+
+    if (store.phone.length !== 10) {
+      toast.error('Please enter a valid phone number')
+      return
+    }
+
+    if (amountToPay == 0) {
+      toast.error('Cannot pay 0')
       return
     }
 

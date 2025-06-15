@@ -36,7 +36,7 @@ export default function QuickActions() {
         >
           <Feather name="send" size={22} color={'#fff'} />
         </IconRound>
-        <IconRound
+        {/* <IconRound
           title="Buy"
           onPress={() => {
             toast.info('Coming soon!')
@@ -44,14 +44,14 @@ export default function QuickActions() {
           }}
         >
           <Ionicons name="swap-vertical" size={22} color="#fff" />
-        </IconRound>
+        </IconRound> */}
         <IconRound
           title="Withdraw"
           onPress={() => {
             router.push('/orders/sell')
           }}
         >
-          <Ionicons name="swap-vertical" size={22} color="#fff" />
+          <Feather name="arrow-up-right" size={22} color="#fff" />
         </IconRound>
         <IconRound
           title="Receive"

@@ -6,7 +6,7 @@ import ViewFixedDeposit from './fixed/View'
 export default function SavingsScreen() {
   const modalRef = BtmSheet.useRef()
   return (
-    <Wrapper>
+    <>
       <SavingsCard
         title={'MoLock'}
         percentage={'Up to 10% APR'}
@@ -20,7 +20,7 @@ export default function SavingsScreen() {
         }}
         desc={'Lock up funds and Earn interest on a set period of time'}
       />
-      {/* <SavingsCard
+      <SavingsCard
         title={'MoSave'}
         percentage={'Up to 10% APR'}
         balance={'$206,000'}
@@ -42,7 +42,7 @@ export default function SavingsScreen() {
           router.push('/savings/locked')
         }}
         desc={'Lock up funds and Earn interest on a set period of time'}
-      /> */}
+      />
       <BtmSheet.Modal
         ref={modalRef!}
         style={{
@@ -55,6 +55,6 @@ export default function SavingsScreen() {
       >
         <ViewFixedDeposit />
       </BtmSheet.Modal>
-    </Wrapper>
+    </>
   )
 }

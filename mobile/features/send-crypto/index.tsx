@@ -6,6 +6,7 @@ import { useColor } from '@/hooks/useColor'
 import React, { useState } from 'react'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
 import { SelectTokenCard } from '../tokens/SelectTokenCard'
+import { useResponse } from '@/lib/providers'
 
 type IData = { value: string | undefined; error: string | undefined }
 export default function SendCryptoScreen() {
@@ -16,7 +17,7 @@ export default function SendCryptoScreen() {
   const [tokenErr, setTokenErr] = useState<string>()
   const storeTokens = AppStores.useTokens()
   const token = storeTokens.activeToken
-
+  const response = useResponse()
   const handleSend = async () => {
     if (recipient === undefined || recipient.value === undefined) {
       setRecipient((prev) => {
@@ -40,6 +41,13 @@ export default function SendCryptoScreen() {
         recipient: recipient.value,
         amount: amount.value,
       })
+        .then(() => {
+          response.showSuccess('Transaction Successful')
+        })
+        .catch(() => {
+          response.showError('Transaction Failed')
+        })
+
       return
     }
 
@@ -48,6 +56,17 @@ export default function SendCryptoScreen() {
       amount: amount.value,
       token: token!.address,
     })
+      .then(() => {
+        response.showLoading(false)
+        response.showSuccess('Transaction Successful')
+      })
+      .catch(() => {
+        response.showLoading(false)
+        response.showError('Transaction Failed')
+      })
+      .finally(() => {
+        response.showLoading(false)
+      })
     // await sendTransaction({ transaction, account: '0x3231' });
   }
   return (

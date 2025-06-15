@@ -12,6 +12,7 @@ import { useBankAccount } from '@/features/bankAccount/zustand.bank'
 import { SelectCountryCard } from '@/features/country'
 import { useSellCrypto } from './useSellCrypto'
 import { Country, OrderActions, OrderMode, OrderStatus, TradeType } from '@/graphql'
+import { useResponse } from '@/lib/providers'
 
 type IData = { value: string | undefined; error: string | undefined }
 
@@ -29,7 +30,7 @@ export default function SellCryptoOrder() {
   const { handleOnChange: handlePriceChange, amountToPay } = usePrice()
   const account = useBankAccount()
   const { offRamp } = useCollectors()
-
+  const response = useResponse()
   const [mutate] = useSellCrypto()
 
   const handleSend = async () => {
@@ -61,6 +62,9 @@ export default function SellCryptoOrder() {
       setTokenErr('Select a token')
       return
     }
+
+    confirmModal.current.close()
+    response.showLoading(true)
     transferERC20({
       recipient: offRamp,
       amount: amountFiat.value,
@@ -92,16 +96,17 @@ export default function SellCryptoOrder() {
             },
           },
           onCompleted() {
-            toast.success('Success! Order created')
+            toast.success('Order created')
           },
-          onError() {
-            toast.error('Could not create order')
-          },
+          onError() {},
           refetchQueries: [],
         })
       })
+      .then(() => {
+        response.showSuccess('Transaction Successful')
+      })
       .catch(() => {
-        toast.error('Could not transfer funds')
+        response.showError('Transaction Failed')
       })
   }
 

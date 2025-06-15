@@ -1,6 +1,5 @@
 import { BtmSheet } from '@/components/layout'
 import { z } from 'zod'
-import { useState } from 'react'
 import { InputButton, InputText } from '@/components/forms'
 import { useAppForm, AppStores } from '@/lib'
 import { usePrice } from '@/hooks/usePrice'
@@ -9,6 +8,8 @@ import { toast, TText, TView } from '@/components/ui'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
 import { useTopUps } from './zustand'
 import { useResponse } from '@/lib/providers'
+import { Api, Country } from '@/graphql'
+import { useCountries } from '../../../lib/zustand/countries'
 
 const formSchema = z.object({
   amount: z.string().min(1),
@@ -17,7 +18,7 @@ const formSchema = z.object({
 export default function Airtime() {
   const confirmModal = BtmSheet.useRef()
   const { transferERC20 } = useTransferToken()
-
+  const [mutate] = Api.usePurchaseAirtime()
   const tokenStore = AppStores.useTokens()
   const store = useTopUps()
   const { handleOnChange: handlePriceChange, amountToPay } = usePrice()
@@ -27,7 +28,7 @@ export default function Airtime() {
   const { formData, errors, handleChange, setErrors } = useAppForm<typeof formSchema._type>({
     amount: '0',
   })
-
+  const countrySTore = useCountries()
   const clearErr = () => {
     setErrors('amount', '')
   }
@@ -51,13 +52,18 @@ export default function Airtime() {
       return
     }
 
-    if (!store.operatorName) {
+    if (!store.operatorName || store.operatorId === 0) {
       toast.error('Please select an operator')
       return
     }
 
     if (store.phone.length !== 10) {
       toast.error('Please enter a valid phone number')
+      return
+    }
+
+    if (amountToPay == 0) {
+      toast.error('Cannot pay 0')
       return
     }
 
@@ -78,28 +84,39 @@ export default function Airtime() {
     confirmModal.current.open()
   }
 
-  const onPay = () => {
+  const onPay = async () => {
     response.showLoading(true)
     confirmModal.current.close()
-    setTimeout(() => {
-      transferERC20({
-        recipient: '',
-        amount: amountToPay!.toString(),
-        token: '',
+    transferERC20({
+      recipient: '',
+      amount: amountToPay!.toString(),
+      token: '',
+    })
+      .then(async (hash: string) => {
+        await mutate({
+          variables: {
+            input: {
+              amount: parseFloat(formData.amount),
+              countryCode: countrySTore.activeIso as Country,
+              operatorId: store.operatorId,
+              phoneNo: store.phone,
+              transaction_hash: hash,
+              // todo: use transaction hash
+              // transaction_hash: Date.now().toString(),
+            },
+          },
+        })
+          .then(() => {
+            response.showSuccess('Transaction Successful')
+          })
+          .catch((e) => {
+            response.showError('Transaction Failed')
+            console.log('Error: ', e)
+          })
       })
-        .then(() => {
-          response.showLoading(false)
-          response.showSuccess('Transaction Successful')
-        })
-        .catch(() => {
-          response.showLoading(false)
-          // response.showError('Transaction Failed')
-          response.showSuccess('Transaction Successful')
-        })
-        .finally(() => {
-          response.showLoading(false)
-        })
-    }, 3000)
+      .catch(() => {
+        response.showError('Transaction Failed')
+      })
   }
   return (
     <>

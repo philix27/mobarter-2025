@@ -13,18 +13,18 @@ export const servicesList: {
     route: '/services/airtime',
     icon: <AntDesign name="phone" size={24} color={'#ffffff'} />,
   },
-  {
-    title: 'Data Plans',
-    desc: 'Buy data with your crypto asset',
-    route: '/services/data-plan',
-    icon: <MaterialIcons name="browser-updated" size={24} color={'#fff'} />,
-  },
-  {
-    title: 'Data Bundles',
-    desc: 'Buy data with your crypto asset',
-    route: '/services/bundles',
-    icon: <MaterialIcons name="browser-updated" size={24} color={'#fff'} />,
-  },
+  // {
+  //   title: 'Data Plans',
+  //   desc: 'Buy data with your crypto asset',
+  //   route: '/services/data-plan',
+  //   icon: <MaterialIcons name="browser-updated" size={24} color={'#fff'} />,
+  // },
+  // {
+  //   title: 'Data Bundles',
+  //   desc: 'Buy data with your crypto asset',
+  //   route: '/services/bundles',
+  //   icon: <MaterialIcons name="browser-updated" size={24} color={'#fff'} />,
+  // },
   {
     title: 'Utilities',
     desc: 'Pay electricity and water bills',
@@ -38,7 +38,7 @@ export const servicesList: {
     icon: <Feather name="send" size={24} color={'#fff'} />,
   },
   {
-    title: 'Betting Wallets',
+    title: 'Betting',
     desc: 'Fund betting wallets',
     route: '/services/betting',
     icon: <Feather name="send" size={24} color={'#fff'} />,

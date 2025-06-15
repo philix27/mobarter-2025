@@ -31,12 +31,20 @@ export function SelectOperator(params: {
       }
 
     const active = topUpData?.utility_getTopUpOperators.airtime.filter(
-      (val, i) => val.name === store.operatorName
+      (val) => val.operatorId === store.operatorId
     )[0]
+
+    if (!active) {
+      return {
+        label: 'Select Operator',
+        value: undefined,
+        icon: '',
+      }
+    }
 
     return {
       label: active.name,
-      value: active.name,
+      value: active.operatorId,
       icon: active.logo,
     }
   }
@@ -70,6 +78,7 @@ export function SelectOperator(params: {
                 desc="Operator"
                 onClick={() => {
                   store.update({
+                    operatorId: item.operatorId,
                     operatorName: item.name,
                     dataPlan_amount: '',
                     dataPlan_desc: '',
