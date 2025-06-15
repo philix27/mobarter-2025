@@ -1,8 +1,8 @@
 import { ActivityIndicator, FlatList, ScrollView } from 'react-native'
-import { TText, TView } from '@/components/ui'
+import { TView } from '@/components/ui'
 import React from 'react'
 import { AssetsRow } from './AssetsRow'
-import { TokenId, Tokens } from '@/assets/tokens/tokens'
+// import { TokenId, Tokens } from '@/assets/tokens/tokens'
 import { useGetTokens } from '@/api'
 import { AppStores } from '@/lib/zustand'
 import { useAddress } from '@/lib/zustand/web3/hooks'
@@ -37,30 +37,30 @@ export function CryptoTokensList(props: {
   }
 
   return (
-    <TView style={{ paddingBottom: 50 }}>
+    <TView style={{ paddingBottom: 50, width: '100%' }}>
       {getData().length > 0 && (
         <FlatList
           data={getData()}
           renderItem={({ item }) => {
-            const s = item.symbol as TokenId
-            const token = Tokens[s]
+            // const s = item.symbol
+            // const token = Tokens[s]
 
-            if (token === undefined) {
-              return (
-                <AssetsRow
-                  imgUrl={item.logoUrl as any}
-                  chainId={item.chianId.toString()}
-                  currency={item.symbol}
-                  tokenAddr={item.address}
-                  tokenPrice={item.tokenPrice}
-                  performance={item.name}
-                  onPress={() => {
-                    storeTokens.update({ activeToken: item })
-                    return
-                  }}
-                />
-              )
-            }
+            // if (token === undefined) {
+            //   return (
+            //     <AssetsRow
+            //       imgUrl={item.logoUrl as any}
+            //       chainId={item.chianId.toString()}
+            //       currency={item.symbol}
+            //       tokenAddr={item.address}
+            //       tokenPrice={item.tokenPrice}
+            //       performance={item.name}
+            //       onPress={() => {
+            //         storeTokens.update({ activeToken: item })
+            //         return
+            //       }}
+            //     />
+            //   )
+            // }
 
             return (
               <AssetsRow

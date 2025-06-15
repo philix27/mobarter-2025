@@ -7,13 +7,19 @@ export type ITabs = 'AIRTIME' | 'BUNDLE' | 'DATA_PLAN'
 export interface ISlice {
   activeTab?: ITabs
   phone?: string
-  operator?: string
+  operatorName?: string
+  dataPlan_amount?: string
+  dataPlan_desc?: string
+  dataPlan_operatorId?: string
 }
 
 export const defaultValues: Required<ISlice> = {
   activeTab: 'AIRTIME',
   phone: '',
-  operator: '',
+  operatorName: '',
+  dataPlan_amount: '',
+  dataPlan_desc: '',
+  dataPlan_operatorId: '',
 }
 
 export interface ISliceUpdate extends Required<ISlice> {

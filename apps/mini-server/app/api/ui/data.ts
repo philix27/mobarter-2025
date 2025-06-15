@@ -1,5 +1,7 @@
 import { IComp } from "./types";
 import { Fn } from "./fn";
+import { TxnOrders } from "./TxnOrders";
+import { TxnWallet } from "./TxnWallet";
 
 export const uiData: Record<string, IComp> = {
   s: Fn.Text({
@@ -30,4 +32,6 @@ export const uiData: Record<string, IComp> = {
       }),
     ],
   }),
+  txnOrders: TxnOrders,
+  txnWallet: TxnWallet,
 };

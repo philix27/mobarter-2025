@@ -10,6 +10,7 @@ import { ClerkProvider } from '@clerk/clerk-expo'
 import React from 'react'
 import ReactQueryProvider from './Tanstack'
 import { ThirdwebProvider } from 'thirdweb/react'
+import ResponseProvider from './ResponseProvider'
 
 const CP = ClerkProvider as any
 const token = process.env.EXPO_PUBLIC_SERVER_TEST_TOKEN!
@@ -39,9 +40,11 @@ export function RootProviders(props: { children: ReactNode }) {
           <CP tokenCache={tokenCache}>
             {/* <WagmiProvider config={config}> */}
             <ThemeProvider>
-              {/* <Slot /> */}
-              {props.children}
-              <Toast position="top" />
+              <ResponseProvider>
+                {/* <Slot /> */}
+                {props.children}
+                <Toast position="top" />
+              </ResponseProvider>
             </ThemeProvider>
             {/* </WagmiProvider> */}
           </CP>

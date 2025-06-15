@@ -8,6 +8,7 @@ import { isDev } from '@/lib/constants/env'
 import { TText, TView } from '@/components/ui'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
 import { useTopUps } from './zustand'
+import { SelectDataPlan } from './SelectDataPlan'
 
 const formSchema = z.object({
   amount: z.string().min(1),
@@ -80,29 +81,7 @@ export default function DataBundlesComp() {
   }
   return (
     <>
-      <InputSelect
-        label="Select Bundles"
-        placeholder="None"
-        error={errors && errors?.operator && errors!.operator}
-        onValueChange={(v) => {
-          handleChange('operator', v)
-          clearErr()
-        }}
-        items={[
-          {
-            label: 'MTN',
-            value: 'MTN',
-          },
-          {
-            label: 'Airtel',
-            value: 'Airtel',
-          },
-          {
-            label: 'GLO',
-            value: 'GLO',
-          },
-        ]}
-      />
+      <SelectDataPlan />
       <TText>{amountToPay}</TText>
       <InputButton title={'Submit'} onPress={handleSubmit} />
 

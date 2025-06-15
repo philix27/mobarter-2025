@@ -33,13 +33,7 @@ export function SelectTokenCard({
         />
         {tokenErr && <ErrMsg msg={tokenErr} />}
       </TView>
-      <BtmSheet.Modal
-        title="Select a token"
-        ref={confirmModal!}
-        style={{
-          width: '100%',
-        }}
-      >
+      <BtmSheet.Modal title="Select a token" ref={confirmModal!}>
         <CryptoTokensList variant={props.group} />
       </BtmSheet.Modal>
     </>

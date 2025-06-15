@@ -2,12 +2,13 @@ import { InputButton, InputSelect, InputText } from '@/components/forms'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, UseFormReturn } from 'react-hook-form'
 import { z } from 'zod'
-import { useAddAcct, useBankAccountName, useBankList } from './api.bank'
+
 import { toast, TView } from '@/components'
 import { BtmSheet } from '@/components/layout'
 import { ActivityIndicator } from 'react-native'
 import { TText } from '@/components/ui'
 import { useState } from 'react'
+import { Api } from '@/graphql'
 
 const formSchema = z.object({
   bank: z.string().min(3, 'Required'),
@@ -20,13 +21,13 @@ type IFormData = z.infer<typeof formSchema>
 
 export function AddBankAccount() {
   const confirmModal = BtmSheet.useRef()
-  const [mutate] = useAddAcct()
-  const { loading, data: BankList } = useBankList()
+  const [mutate] = Api.useAddAcct()
+  const { loading, data: BankList } = Api.useBankList()
 
   const f = useForm<IFormData>({
     resolver: zodResolver(formSchema),
   })
-  const { data: nameData, loading: nameLoading } = useBankAccountName({
+  const { data: nameData, loading: nameLoading } = Api.useBankAccountName({
     accountNo: f.getValues('accountNo'),
     bankCode: f.getValues('bankCode'),
   })

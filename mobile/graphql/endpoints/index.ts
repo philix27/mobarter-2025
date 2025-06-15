@@ -5,6 +5,7 @@ import * as advert from './adverts'
 import * as utilities from './utilities'
 import * as orders from './orders'
 import * as kyc from './kyc'
+import * as topUp from './topUp'
 export * from './types'
 export * from './fx'
 
@@ -16,4 +17,5 @@ export const Api = {
   ...utilities,
   ...orders,
   ...kyc,
+  ...topUp,
 }

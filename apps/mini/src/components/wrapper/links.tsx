@@ -17,12 +17,11 @@ export const navLinks: { title: string; link: string; Icon: IconType }[] = [
     link: '/apps',
     Icon: RiAppsFill,
   },
-  {
-    title: 'Savings',
-    link: '/savings',
-    Icon: GiTwoCoins,
-  },
-
+  // {
+  //   title: 'Savings',
+  //   link: '/savings',
+  //   Icon: GiTwoCoins,
+  // },
   {
     title: 'Profile',
     link: '/profile',
@@ -38,11 +37,6 @@ export const navLinks: { title: string; link: string; Icon: IconType }[] = [
     link: '/kyc',
     Icon: MdNotes,
   },
-  // {
-  //   title: 'Swap',
-  //   link: '/swap',
-  //   Icon: IoSwapHorizontalOutline,
-  // },
   {
     title: 'Bank Accounts',
     link: '/bank-accounts',

@@ -57,7 +57,7 @@ export type InputText = {
     style?: ViewStyle;
     placeholder: string;
     name: string;
-    rules: {
+    rules?: {
       required: true;
       pattern: "^\\S+@\\S+\\.\\S+$";
     };

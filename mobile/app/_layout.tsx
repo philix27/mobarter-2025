@@ -34,7 +34,7 @@ export default function RootLayout() {
   if (!loaded) {
     return null
   }
-  0
+  
 
   return (
     <RootProviders>

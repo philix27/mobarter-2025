@@ -8,6 +8,8 @@ import { isDev } from '@/lib/constants/env'
 import { TText, TView } from '@/components/ui'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
 import { useTopUps } from './zustand'
+import { Api, Country } from '@/graphql'
+import { SelectDataPlan } from './SelectDataPlan'
 
 const formSchema = z.object({
   amount: z.string().min(1),
@@ -24,6 +26,10 @@ export default function DataPlanComp() {
   const { handleOnChange: handlePriceChange, amountToPay } = usePrice()
   const countryStore = AppStores.useCountries()
   const country = countryStore.activeCountry
+
+  const { data: topUpData } = Api.useATopUpOperators({
+    variables: { input: { countryCode: countryStore.activeIso as Country } },
+  })
 
   const { formData, errors, handleChange, setErrors } = useAppForm<typeof formSchema._type>({
     // Omit<typeof formSchema._type, 'amount'> & { amount: string }
@@ -80,30 +86,8 @@ export default function DataPlanComp() {
   }
   return (
     <>
-      <InputSelect
-        label="Select Plan"
-        placeholder="None"
-        error={errors && errors?.operator && errors!.operator}
-        onValueChange={(v) => {
-          handleChange('operator', v)
-          clearErr()
-        }}
-        items={[
-          {
-            label: 'MTN',
-            value: 'MTN',
-          },
-          {
-            label: 'Airtel',
-            value: 'Airtel',
-          },
-          {
-            label: 'GLO',
-            value: 'GLO',
-          },
-        ]}
-      />
-      <TText>{amountToPay}</TText>
+      <SelectDataPlan />
+
       <InputButton title={'Submit'} onPress={handleSubmit} />
 
       <BtmSheet.Modal title="Confirm" ref={confirmModal!}>

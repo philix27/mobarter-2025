@@ -32,7 +32,9 @@
     "db:deploy": "dotenv -- turbo db:deploy --filter=server",
     "db:push": "dotenv -- turbo db:push --filter=server",
     "db:pull": "dotenv -- turbo db:pull --filter=server",
-    "db:studio": "dotenv -- turbo db:studio --filter=server"
+    "db:studio": "dotenv -- turbo db:studio --filter=server",
+    "mi": "cd apps/mini-server && yarn dev",
+    "mo": "cd mobile && yarn dev"
   },
   "devDependencies": {
     "typescript": "^5.8.3",

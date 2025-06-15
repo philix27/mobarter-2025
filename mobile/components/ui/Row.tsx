@@ -60,7 +60,7 @@ export function Row(props: {
         {props.imgUrl && (
           <Image
             source={{ uri: props.imgUrl }}
-            style={{ height: 40, width: 40, marginRight: 12, borderRadius: 20 }}
+            style={{ height: 35, width: 35, marginRight: 12, borderRadius: 20 }}
           />
         )}
 

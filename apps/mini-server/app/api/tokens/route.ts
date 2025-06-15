@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { CeloTokens } from "./celoTokens";
 import { getBalance } from "./getBalance";
-import { isAddress } from "viem";
+import { isAddress } from "viem/utils";
+// import { isAddress } from "viem";
 
 export type IToken = {
   chianId: number;
@@ -24,7 +25,8 @@ export async function GET(
   const address = searchParams.get("address");
 
   console.log("Wallet Address X45: ", address);
-  if (address === undefined || !isAddress(address!)) {
+  // if (address === undefined || !isAddress(address!)) {
+  if (address === undefined) {
     console.log("User Wallet Address X45: ", address);
     throw new Error("User address needed");
   }
@@ -36,13 +38,15 @@ export async function GET(
   const list: IToken[] = [];
 
   for (const token of celoItems) {
-    //   const balance = await getBalance({
-    //     address: addr,
-    //     chianId: token.chianId.toString(),
-    //     tokenAddress: token.address,
-    //   }); // getBalance is async
-    list.push({ ...token, tokenPrice: "0.39" });
+    // const balance = await getBalance({
+    //   address: addr,
+    //   chianId: token.chianId.toString(),
+    //   tokenAddress: token.address,
+    // }); // getBalance is async
+    list.push({ ...token, tokenPrice: "0.00" });
   }
 
   return NextResponse.json(list);
+
+  // return NextResponse.json([]);
 }

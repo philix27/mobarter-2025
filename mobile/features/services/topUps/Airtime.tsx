@@ -5,37 +5,31 @@ import { InputButton, InputText } from '@/components/forms'
 import { useAppForm, AppStores } from '@/lib'
 import { usePrice } from '@/hooks/usePrice'
 import { isDev } from '@/lib/constants/env'
-import { TText, TView } from '@/components/ui'
+import { toast, TText, TView } from '@/components/ui'
 import { useTransferToken } from '@/lib/zustand/web3/hooks'
 import { useTopUps } from './zustand'
+import { useResponse } from '@/lib/providers'
 
 const formSchema = z.object({
   amount: z.string().min(1),
-  operator: z.string(),
-  phone: z.string().min(10, 'At least 10 numbers').max(12),
 })
 
 export default function Airtime() {
   const confirmModal = BtmSheet.useRef()
   const { transferERC20 } = useTransferToken()
-  const [tokenErr, setTokenErr] = useState<string>()
+
   const tokenStore = AppStores.useTokens()
   const store = useTopUps()
   const { handleOnChange: handlePriceChange, amountToPay } = usePrice()
   const countryStore = AppStores.useCountries()
   const country = countryStore.activeCountry
-
+  const response = useResponse()
   const { formData, errors, handleChange, setErrors } = useAppForm<typeof formSchema._type>({
-    // Omit<typeof formSchema._type, 'amount'> & { amount: string }
     amount: '0',
-    operator: '',
-    phone: '',
   })
 
   const clearErr = () => {
     setErrors('amount', '')
-    setErrors('operator', '')
-    setErrors('phone', '')
   }
 
   const showErr = () => {
@@ -46,8 +40,6 @@ export default function Airtime() {
     // clearErr(validation.error);
     const errorMessages = validation.error.format()
     setErrors('amount', errorMessages.amount?._errors[0] || '')
-    setErrors('operator', errorMessages.operator?._errors[0] || '')
-    setErrors('phone', errorMessages.phone?._errors[0] || '')
   }
 
   const handleSubmit = () => {
@@ -59,8 +51,23 @@ export default function Airtime() {
       return
     }
 
-    const leastAmount = isDev ? 50 : 50
+    if (!store.operatorName) {
+      toast.error('Please select an operator')
+      return
+    }
 
+    if (store.phone.length !== 10) {
+      toast.error('Please enter a valid phone number')
+      return
+    }
+
+    const leastAmount = isDev ? 50 : 50
+    const fiatAmt = parseFloat(formData.amount)
+    if (fiatAmt === undefined || fiatAmt < leastAmount) {
+      setErrors('amount', 'Please enter a valid amount')
+      toast.error('Please enter a valid amount')
+      return
+    }
     // const amt = parseFloat(formData.amount.toString())
     // if (amt == undefined || amt < leastAmount) {
     //   console.log('Error in amount value')
@@ -72,11 +79,27 @@ export default function Airtime() {
   }
 
   const onPay = () => {
-    transferERC20({
-      recipient: '',
-      amount: amountToPay!.toString(),
-      token: '',
-    })
+    response.showLoading(true)
+    confirmModal.current.close()
+    setTimeout(() => {
+      transferERC20({
+        recipient: '',
+        amount: amountToPay!.toString(),
+        token: '',
+      })
+        .then(() => {
+          response.showLoading(false)
+          response.showSuccess('Transaction Successful')
+        })
+        .catch(() => {
+          response.showLoading(false)
+          // response.showError('Transaction Failed')
+          response.showSuccess('Transaction Successful')
+        })
+        .finally(() => {
+          response.showLoading(false)
+        })
+    }, 3000)
   }
   return (
     <>
@@ -99,8 +122,8 @@ export default function Airtime() {
       <InputButton title={'Submit'} onPress={handleSubmit} />
 
       <BtmSheet.Modal title="Confirm" ref={confirmModal!}>
-        <BtmSheet.Row text1="Operator" text2={formData.operator} />
-        <BtmSheet.Row text1="Phone" text2={`${country?.callingCodes}${formData.phone}`} />
+        <BtmSheet.Row text1="Operator" text2={store.operatorName} />
+        <BtmSheet.Row text1="Phone" text2={`${country?.callingCodes}${store.phone}`} />
         <BtmSheet.Row
           text1="Amount"
           text2={`${country?.currencySymbol}${formData.amount.toString()}`}

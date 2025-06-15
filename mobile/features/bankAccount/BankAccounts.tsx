@@ -4,10 +4,10 @@ import { TText } from '@/components/ui'
 import { useBankAccount } from './zustand.bank'
 import { router } from 'expo-router'
 import { ActivityIndicator } from 'react-native'
-import { useBankAccountList } from './api.bank'
+import { Api } from '@/graphql'
 
 export function BankAccounts() {
-  const { data, loading } = useBankAccountList()
+  const { data, loading } = Api.useBankAccountList()
   const account = useBankAccount()
 
   if (loading) return <ActivityIndicator />
