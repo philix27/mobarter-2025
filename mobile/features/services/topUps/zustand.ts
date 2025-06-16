@@ -8,20 +8,28 @@ export interface ISlice {
   activeTab?: ITabs
   phone?: string
   operatorName?: string
-  operatorId?: number
+  dataPlan_operatorId?: number
+  dataBundles_operatorId?: number
   dataPlan_amount?: string
   dataPlan_desc?: string
-  dataPlan_operatorId?: string
+  dataBundle_amount?: string
+  dataBundle_desc?: string
+  airtime_amount?: string
+  airtime_operatorId?: number
 }
 
 export const defaultValues: Required<ISlice> = {
   activeTab: 'AIRTIME',
   phone: '',
   operatorName: '',
-  dataPlan_amount: '',
+  airtime_amount: '0',
   dataPlan_desc: '',
-  dataPlan_operatorId: '',
-  operatorId: 0
+  dataPlan_operatorId: 0,
+  dataPlan_amount: '',
+  dataBundle_amount: '',
+  dataBundle_desc: '',
+  airtime_operatorId: 0,
+  dataBundles_operatorId: 0,
 }
 
 export interface ISliceUpdate extends Required<ISlice> {

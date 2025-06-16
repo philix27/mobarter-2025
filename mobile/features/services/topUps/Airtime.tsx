@@ -9,7 +9,6 @@ import { useTransferToken } from '@/lib/zustand/web3/hooks'
 import { useTopUps } from './zustand'
 import { useResponse } from '@/lib/providers'
 import { Api, Country } from '@/graphql'
-import { useCountries } from '../../../lib/zustand/countries'
 
 const formSchema = z.object({
   amount: z.string().min(1),
@@ -21,14 +20,14 @@ export default function Airtime() {
   const [mutate] = Api.usePurchaseAirtime()
   const tokenStore = AppStores.useTokens()
   const store = useTopUps()
-  const { handleOnChange: handlePriceChange, amountToPay } = usePrice()
-  const countryStore = AppStores.useCountries()
-  const country = countryStore.activeCountry
-  const response = useResponse()
+
+  const country = AppStores.useCountries().activeCountry
+
   const { formData, errors, handleChange, setErrors } = useAppForm<typeof formSchema._type>({
     amount: '0',
   })
-  const countrySTore = useCountries()
+  const { amountToPay } = usePrice(store.airtime_amount)
+  const response = useResponse()
   const clearErr = () => {
     setErrors('amount', '')
   }
@@ -52,7 +51,7 @@ export default function Airtime() {
       return
     }
 
-    if (!store.operatorName || store.operatorId === 0) {
+    if (!store.operatorName || store.airtime_operatorId === 0) {
       toast.error('Please select an operator')
       return
     }
@@ -62,7 +61,7 @@ export default function Airtime() {
       return
     }
 
-    if (amountToPay == 0) {
+    if (amountToPay === 0 || parseFloat(store.airtime_amount) <= 0) {
       toast.error('Cannot pay 0')
       return
     }
@@ -97,8 +96,8 @@ export default function Airtime() {
           variables: {
             input: {
               amount: parseFloat(formData.amount),
-              countryCode: countrySTore.activeIso as Country,
-              operatorId: store.operatorId,
+              countryCode: country?.isoName as Country,
+              operatorId: store.airtime_operatorId,
               phoneNo: store.phone,
               transaction_hash: hash,
               // todo: use transaction hash
@@ -125,11 +124,11 @@ export default function Airtime() {
         keyboardType="numeric"
         leadingText={country?.currencySymbol}
         placeholder={'Enter amount'}
-        value={formData.amount.toString()}
+        value={store.airtime_amount}
         onChangeText={(text) => {
           if (text.length > 10) return
+          store.update({ airtime_amount: text })
           handleChange('amount', text)
-          handlePriceChange(parseFloat(text))
           clearErr()
         }}
         // error={errors && errors?.amount && errors!.amount}

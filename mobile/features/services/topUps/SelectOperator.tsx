@@ -31,7 +31,7 @@ export function SelectOperator(params: {
       }
 
     const active = topUpData?.utility_getTopUpOperators.airtime.filter(
-      (val) => val.operatorId === store.operatorId
+      (val) => val.operatorId === store.airtime_operatorId
     )[0]
 
     if (!active) {
@@ -77,12 +77,17 @@ export function SelectOperator(params: {
                 imgUrl={item.logo}
                 desc="Operator"
                 onClick={() => {
+                  const planOpsId = topUpData.utility_getTopUpOperators.dataPlan[0]?.operatorId
+                  const bundleOpsId = topUpData.utility_getTopUpOperators.dataBundles[0]?.operatorId
                   store.update({
-                    operatorId: item.operatorId,
+                    airtime_operatorId: item.operatorId,
                     operatorName: item.name,
                     dataPlan_amount: '',
                     dataPlan_desc: '',
-                    dataPlan_operatorId: '',
+                    dataBundle_desc: '',
+                    dataBundle_amount: '',
+                    dataPlan_operatorId: planOpsId || 0,
+                    dataBundles_operatorId: bundleOpsId || 0,
                   })
                   if (params.onValueChange) {
                     params.onValueChange(item.name)

@@ -11,7 +11,16 @@ export interface ISlice {
 export const defaultValues: Required<ISlice> = {
   countries: [],
   activeIso: 'NG',
-  activeCountry: null,
+  activeCountry: {
+    isoName: 'NG',
+    name: 'Nigeria',
+    continent: 'Africa',
+    currencyCode: '',
+    currencyName: 'Naira',
+    currencySymbol: '',
+    flag: '',
+    callingCodes: '+234',
+  },
 }
 
 export interface ISliceUpdate extends Required<ISlice> {

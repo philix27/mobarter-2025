@@ -9,7 +9,6 @@ import { useTopUps } from './zustand'
 import { TopUpTabs } from './tab'
 import Airtime from './Airtime'
 import DataBundlesComp from './DataBundles'
-import DataPlanComp from './DataPlans'
 import { SelectOperator } from './SelectOperator'
 
 const formSchema = z.object({
@@ -59,9 +58,9 @@ export default function TopUpComp() {
       <TView style={{ height: 10 }} />
       <TopUpTabs />
       {store.activeTab === 'AIRTIME' && <Airtime />}
-      {store.activeTab === 'BUNDLE' && <DataBundlesComp />}
-      {store.activeTab === 'DATA_PLAN' && <DataPlanComp />}
+      {store.activeTab === 'BUNDLE' && <DataBundlesComp isDataBundle />}
+      {store.activeTab === 'DATA_PLAN' && <DataBundlesComp />}
     </Wrapper>
   )
 }
-import { Api, Country } from '@/graphql'
+

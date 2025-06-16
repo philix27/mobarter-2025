@@ -1,8 +1,9 @@
-import { FlatTabs } from "@/components/FlatTabs"
-import { useTopUps } from "./zustand"
+import { FlatTabs } from '@/components/FlatTabs'
+import { useTopUps } from './zustand'
 
 export function TopUpTabs() {
   const store = useTopUps()
+
   return (
     <FlatTabs
       data={[
@@ -34,4 +35,3 @@ export function TopUpTabs() {
     />
   )
 }
-  
