@@ -23,6 +23,7 @@
     "@clerk/clerk-expo": "^2.11.9",
     "@coinbase/wallet-mobile-sdk": "^1.0.13",
     "@ethersproject/shims": "^5.8.0",
+    "@divvi/referral-sdk": "^1.0.0",
     "@expo/vector-icons": "^14.1.0",
     "@hookform/resolvers": "^5.0.1",
     "@react-native-async-storage/async-storage": "2.1.2",

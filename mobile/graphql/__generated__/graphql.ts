@@ -240,6 +240,39 @@ export type BankList_Response = {
   bankName: Scalars['String']['output'];
 };
 
+export type BettingPaymentInput = {
+  amount: Scalars['Int']['input'];
+  countryCode: Country;
+  customer_id: Scalars['String']['input'];
+  service_id: Scalars['String']['input'];
+  transaction_hash: Scalars['String']['input'];
+};
+
+export type BettingPaymentResponse = {
+  __typename?: 'BettingPaymentResponse';
+  amount: Scalars['Int']['output'];
+  customer_email_address: Scalars['String']['output'];
+  customer_id: Scalars['String']['output'];
+  customer_name: Scalars['String']['output'];
+  customer_phone_number: Scalars['String']['output'];
+  customer_username: Scalars['String']['output'];
+  order_id: Scalars['Int']['output'];
+  product_name: Scalars['String']['output'];
+  request_id: Scalars['String']['output'];
+  service_name: Scalars['String']['output'];
+  status: Scalars['String']['output'];
+};
+
+export type BettingProvidersInput = {
+  countryCode: Country;
+};
+
+export type BettingProvidersResponse = {
+  __typename?: 'BettingProvidersResponse';
+  logo: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+};
+
 export enum ChainType {
   Cosmos = 'Cosmos',
   Ethereum = 'Ethereum',
@@ -256,6 +289,62 @@ export enum Country {
   Ug = 'UG',
   Za = 'ZA'
 }
+
+export type ElectricityBill_PaymentInput = {
+  amount: Scalars['Int']['input'];
+  countryCode: Country;
+  customerAddress: Scalars['String']['input'];
+  customerName: Scalars['String']['input'];
+  meterNumber: Scalars['String']['input'];
+  meterType: Scalars['String']['input'];
+  reference: Scalars['String']['input'];
+  service: Scalars['String']['input'];
+  transaction_hash: Scalars['String']['input'];
+};
+
+export type ElectricityBill_PaymentResponse = {
+  __typename?: 'ElectricityBill_PaymentResponse';
+  amount: Scalars['String']['output'];
+  biller: Scalars['String']['output'];
+  bonusToken: Scalars['String']['output'];
+  chargedAmount: Scalars['Int']['output'];
+  commission: Scalars['Int']['output'];
+  customerId: Scalars['String']['output'];
+  reference: Scalars['String']['output'];
+  token: Scalars['String']['output'];
+  transactionDate: Scalars['String']['output'];
+  transactionId: Scalars['String']['output'];
+  unit: Scalars['String']['output'];
+};
+
+export type ElectricityBill_ProviderInput = {
+  countryCode: Country;
+};
+
+export type ElectricityBill_ProvidersResponse = {
+  __typename?: 'ElectricityBill_ProvidersResponse';
+  category: Scalars['String']['output'];
+  logo: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  slug: Scalars['String']['output'];
+  status: Scalars['Boolean']['output'];
+};
+
+export type ElectricityBill_ValidateAccountInput = {
+  countryCode: Country;
+  meterNumber: Scalars['String']['input'];
+  meterType: Scalars['String']['input'];
+  service: Scalars['String']['input'];
+};
+
+export type ElectricityBill_ValidateAccountResponse = {
+  __typename?: 'ElectricityBill_ValidateAccountResponse';
+  customerAddress: Scalars['String']['output'];
+  customerName: Scalars['String']['output'];
+  meterNumber: Scalars['String']['output'];
+  meterType: Scalars['String']['output'];
+  minimuVendAmount: Scalars['Int']['output'];
+};
 
 export type ExchangeRate_Response = {
   __typename?: 'ExchangeRate_Response';
@@ -360,6 +449,9 @@ export type Mutation = {
   auth_verifyEmailOtp: Auth_VerifyOtpResponse;
   bankAccount_create: BankAccount_Response;
   bankAccount_delete: BankAccount_DeleteResponse;
+  electricityBill_makePayment: ElectricityBill_PaymentResponse;
+  electricityBill_verifyAccount: ElectricityBill_ValidateAccountResponse;
+  fundBetting_makePayment: BettingPaymentResponse;
   kyc_addAddressInfo: Kyc_Response;
   kyc_addAddressProof: Kyc_Response;
   kyc_addBvn: Kyc_AddBvnResponse;
@@ -372,6 +464,8 @@ export type Mutation = {
   orders_CreateBuy: Order_CreteBuyResponse;
   orders_CreateSell: Order_CreteSellResponse;
   orders_MoveCryptoToEscrow: Order_Response;
+  tvBills_makePayment: TvBill_PaymentResponse;
+  tvBills_validateAccount: TvBill_ValidateAccountResponse;
   utility_payBill: Utilities_PurchaseTopUpResponse;
   utility_purchaseAirtime: Utilities_PurchaseTopUpResponse;
   utility_purchaseDataBundle: Utilities_PurchaseTopUpResponse;
@@ -454,6 +548,21 @@ export type MutationBankAccount_DeleteArgs = {
 };
 
 
+export type MutationElectricityBill_MakePaymentArgs = {
+  input: ElectricityBill_PaymentInput;
+};
+
+
+export type MutationElectricityBill_VerifyAccountArgs = {
+  input: ElectricityBill_ValidateAccountInput;
+};
+
+
+export type MutationFundBetting_MakePaymentArgs = {
+  input: BettingPaymentInput;
+};
+
+
 export type MutationKyc_AddAddressInfoArgs = {
   input: Kyc_AddAddressInfoInput;
 };
@@ -511,6 +620,16 @@ export type MutationOrders_CreateSellArgs = {
 
 export type MutationOrders_MoveCryptoToEscrowArgs = {
   input: Order_MoveCryptoToEscrowInput;
+};
+
+
+export type MutationTvBills_MakePaymentArgs = {
+  input: TvBill_PaymentInput;
+};
+
+
+export type MutationTvBills_ValidateAccountArgs = {
+  input: TvBill_ValidateAccountInput;
 };
 
 
@@ -691,6 +810,8 @@ export type Query = {
   bankAccount_getAll: Array<BankAccount_Response>;
   bankList: Array<BankList_Response>;
   bank_verifyAccountNo: BankGetAccountName_Response;
+  electricityBill_getProviders: Array<ElectricityBill_ProvidersResponse>;
+  fundBetting_getProviders: Array<BettingProvidersResponse>;
   fxRate_GetAll: ExchangeRate_Response;
   orders_GetAll: Array<Order_Response>;
   orders_GetAllAsMerchant: Array<Order_Response>;
@@ -698,6 +819,8 @@ export type Query = {
   orders_GetOne: Order_Response;
   transactions_getAll: Array<Transaction_GetResponse>;
   transactions_getOne: Transaction_GetResponse;
+  tvBills_getBouquet: Array<TvBill_GetBouquetPackageResponse>;
+  tvBills_getProviders: Array<TvBill_GetTvProvidersResponse>;
   user_getAll: Array<UserDto>;
   user_getOne: UserDto;
   utility_getTopUpOperators: Utilities_GetOperatorResponse;
@@ -718,6 +841,16 @@ export type QueryAdverts_GetOneArgs = {
 
 export type QueryBank_VerifyAccountNoArgs = {
   input: BankGetAccountName_Input;
+};
+
+
+export type QueryElectricityBill_GetProvidersArgs = {
+  input: ElectricityBill_ProviderInput;
+};
+
+
+export type QueryFundBetting_GetProvidersArgs = {
+  input: BettingProvidersInput;
 };
 
 
@@ -746,6 +879,16 @@ export type QueryTransactions_GetOneArgs = {
 };
 
 
+export type QueryTvBills_GetBouquetArgs = {
+  input: TvBill_GetTvBouquetInput;
+};
+
+
+export type QueryTvBills_GetProvidersArgs = {
+  input: TvBill_GetTvProvidersInput;
+};
+
+
 export type QueryUser_GetOneArgs = {
   input: UserGetInfo;
 };
@@ -762,12 +905,17 @@ export enum TradeType {
 
 export enum TransactionCategory {
   Airtime = 'AIRTIME',
+  BettingWallet = 'BETTING_WALLET',
   DataBundle = 'DATA_BUNDLE',
+  ElectricityBill = 'ELECTRICITY_BILL',
   ExpressExchange = 'EXPRESS_EXCHANGE',
   GiftCard = 'GIFT_CARD',
+  InternetBill = 'INTERNET_BILL',
   OffRamping = 'OFF_RAMPING',
   OnRamping = 'ON_RAMPING',
-  P2PExchange = 'P2P_EXCHANGE'
+  P2PExchange = 'P2P_EXCHANGE',
+  TvBill = 'TV_BILL',
+  WaterBill = 'WATER_BILL'
 }
 
 export enum TransactionStatus {
@@ -794,6 +942,65 @@ export enum TransactionsMode {
   Credit = 'CREDIT',
   Debit = 'DEBIT'
 }
+
+export type TvBill_GetBouquetPackageResponse = {
+  __typename?: 'TvBill_GetBouquetPackageResponse';
+  code: Scalars['String']['output'];
+  description: Scalars['String']['output'];
+  price: Scalars['String']['output'];
+};
+
+export type TvBill_GetTvBouquetInput = {
+  countryCode: Country;
+  service: Scalars['String']['input'];
+};
+
+export type TvBill_GetTvProvidersInput = {
+  countryCode: Country;
+};
+
+export type TvBill_GetTvProvidersResponse = {
+  __typename?: 'TvBill_GetTVProvidersResponse';
+  category: Scalars['String']['output'];
+  logo: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  slug: Scalars['String']['output'];
+  status: Scalars['Boolean']['output'];
+};
+
+export type TvBill_PaymentInput = {
+  amount: Scalars['String']['input'];
+  countryCode: Country;
+  customerName: Scalars['String']['input'];
+  packageCode: Scalars['String']['input'];
+  reference: Scalars['String']['input'];
+  service: Scalars['String']['input'];
+  smartCardNumber: Scalars['String']['input'];
+  txn_hash: Scalars['String']['input'];
+};
+
+export type TvBill_PaymentResponse = {
+  __typename?: 'TvBill_PaymentResponse';
+  amount: Scalars['Int']['output'];
+  biller: Scalars['String']['output'];
+  commission: Scalars['Int']['output'];
+  customerId: Scalars['String']['output'];
+  transactionDate: Scalars['String']['output'];
+  transactionId: Scalars['String']['output'];
+  unit: Scalars['String']['output'];
+};
+
+export type TvBill_ValidateAccountInput = {
+  service: Scalars['String']['input'];
+  smartCardNumber: Scalars['String']['input'];
+};
+
+export type TvBill_ValidateAccountResponse = {
+  __typename?: 'TvBill_ValidateAccountResponse';
+  customerName: Scalars['String']['output'];
+  service: Scalars['String']['output'];
+  smartCardNumber: Scalars['String']['output'];
+};
 
 export type UserDto = {
   __typename?: 'UserDto';
@@ -1109,6 +1316,69 @@ export type Utility_PurchaseDataBundleMutationVariables = Exact<{
 
 export type Utility_PurchaseDataBundleMutation = { __typename?: 'Mutation', utility_purchaseDataBundle: { __typename?: 'Utilities_PurchaseTopUpResponse', message: string } };
 
+export type ElectricityBill_GetProvidersQueryVariables = Exact<{
+  input: ElectricityBill_ProviderInput;
+}>;
+
+
+export type ElectricityBill_GetProvidersQuery = { __typename?: 'Query', electricityBill_getProviders: Array<{ __typename?: 'ElectricityBill_ProvidersResponse', name: string, logo: string, status: boolean, category: string }> };
+
+export type ElectricityBill_VerifyAccountMutationVariables = Exact<{
+  input: ElectricityBill_ValidateAccountInput;
+}>;
+
+
+export type ElectricityBill_VerifyAccountMutation = { __typename?: 'Mutation', electricityBill_verifyAccount: { __typename?: 'ElectricityBill_ValidateAccountResponse', customerAddress: string, customerName: string, meterNumber: string, meterType: string, minimuVendAmount: number } };
+
+export type ElectricityBill_MakePaymentMutationVariables = Exact<{
+  input: ElectricityBill_PaymentInput;
+}>;
+
+
+export type ElectricityBill_MakePaymentMutation = { __typename?: 'Mutation', electricityBill_makePayment: { __typename?: 'ElectricityBill_PaymentResponse', amount: string, biller: string, bonusToken: string, chargedAmount: number, commission: number, customerId: string, transactionDate: string, unit: string } };
+
+export type TvBills_GetProvidersQueryVariables = Exact<{
+  input: TvBill_GetTvProvidersInput;
+}>;
+
+
+export type TvBills_GetProvidersQuery = { __typename?: 'Query', tvBills_getProviders: Array<{ __typename?: 'TvBill_GetTVProvidersResponse', logo: string, category: string, name: string, slug: string, status: boolean }> };
+
+export type TvBills_GetBouquetQueryVariables = Exact<{
+  input: TvBill_GetTvBouquetInput;
+}>;
+
+
+export type TvBills_GetBouquetQuery = { __typename?: 'Query', tvBills_getBouquet: Array<{ __typename?: 'TvBill_GetBouquetPackageResponse', code: string, description: string, price: string }> };
+
+export type TvBills_ValidateAccountMutationVariables = Exact<{
+  input: TvBill_ValidateAccountInput;
+}>;
+
+
+export type TvBills_ValidateAccountMutation = { __typename?: 'Mutation', tvBills_validateAccount: { __typename?: 'TvBill_ValidateAccountResponse', customerName: string, service: string, smartCardNumber: string } };
+
+export type TvBills_MakePaymentMutationVariables = Exact<{
+  input: TvBill_PaymentInput;
+}>;
+
+
+export type TvBills_MakePaymentMutation = { __typename?: 'Mutation', tvBills_makePayment: { __typename?: 'TvBill_PaymentResponse', amount: number, biller: string, commission: number, customerId: string, transactionId: string, transactionDate: string } };
+
+export type FundBetting_GetProvidersQueryVariables = Exact<{
+  input: BettingProvidersInput;
+}>;
+
+
+export type FundBetting_GetProvidersQuery = { __typename?: 'Query', fundBetting_getProviders: Array<{ __typename?: 'BettingProvidersResponse', logo: string, name: string }> };
+
+export type FundBetting_MakePaymentMutationVariables = Exact<{
+  input: BettingPaymentInput;
+}>;
+
+
+export type FundBetting_MakePaymentMutation = { __typename?: 'Mutation', fundBetting_makePayment: { __typename?: 'BettingPaymentResponse', amount: number, customer_name: string, customer_username: string, customer_phone_number: string, customer_email_address: string, order_id: number, service_name: string, request_id: string } };
+
 export type WalletCrypto_CreateMutationVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1157,5 +1427,14 @@ export const Transactions_GetAllDocument = {"kind":"Document","definitions":[{"k
 export const User_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"User_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"telegram_id"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]} as unknown as DocumentNode<User_GetAllQuery, User_GetAllQueryVariables>;
 export const Utility_PurchaseAirtimeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Utility_purchaseAirtime"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Utilities_PurchaseAirtimeInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"utility_purchaseAirtime"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<Utility_PurchaseAirtimeMutation, Utility_PurchaseAirtimeMutationVariables>;
 export const Utility_PurchaseDataBundleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Utility_purchaseDataBundle"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Utilities_PurchaseDataBundleInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"utility_purchaseDataBundle"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<Utility_PurchaseDataBundleMutation, Utility_PurchaseDataBundleMutationVariables>;
+export const ElectricityBill_GetProvidersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ElectricityBill_getProviders"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ElectricityBill_ProviderInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"electricityBill_getProviders"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"category"}}]}}]}}]} as unknown as DocumentNode<ElectricityBill_GetProvidersQuery, ElectricityBill_GetProvidersQueryVariables>;
+export const ElectricityBill_VerifyAccountDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ElectricityBill_verifyAccount"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ElectricityBill_ValidateAccountInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"electricityBill_verifyAccount"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"customerAddress"}},{"kind":"Field","name":{"kind":"Name","value":"customerName"}},{"kind":"Field","name":{"kind":"Name","value":"meterNumber"}},{"kind":"Field","name":{"kind":"Name","value":"meterType"}},{"kind":"Field","name":{"kind":"Name","value":"minimuVendAmount"}}]}}]}}]} as unknown as DocumentNode<ElectricityBill_VerifyAccountMutation, ElectricityBill_VerifyAccountMutationVariables>;
+export const ElectricityBill_MakePaymentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ElectricityBill_makePayment"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ElectricityBill_PaymentInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"electricityBill_makePayment"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"biller"}},{"kind":"Field","name":{"kind":"Name","value":"bonusToken"}},{"kind":"Field","name":{"kind":"Name","value":"chargedAmount"}},{"kind":"Field","name":{"kind":"Name","value":"commission"}},{"kind":"Field","name":{"kind":"Name","value":"customerId"}},{"kind":"Field","name":{"kind":"Name","value":"transactionDate"}},{"kind":"Field","name":{"kind":"Name","value":"unit"}}]}}]}}]} as unknown as DocumentNode<ElectricityBill_MakePaymentMutation, ElectricityBill_MakePaymentMutationVariables>;
+export const TvBills_GetProvidersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"tvBills_getProviders"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TvBill_GetTVProvidersInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tvBills_getProviders"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"category"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"status"}}]}}]}}]} as unknown as DocumentNode<TvBills_GetProvidersQuery, TvBills_GetProvidersQueryVariables>;
+export const TvBills_GetBouquetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"tvBills_getBouquet"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TvBill_GetTVBouquetInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tvBills_getBouquet"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"code"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"price"}}]}}]}}]} as unknown as DocumentNode<TvBills_GetBouquetQuery, TvBills_GetBouquetQueryVariables>;
+export const TvBills_ValidateAccountDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"tvBills_validateAccount"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TvBill_ValidateAccountInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tvBills_validateAccount"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"customerName"}},{"kind":"Field","name":{"kind":"Name","value":"service"}},{"kind":"Field","name":{"kind":"Name","value":"smartCardNumber"}}]}}]}}]} as unknown as DocumentNode<TvBills_ValidateAccountMutation, TvBills_ValidateAccountMutationVariables>;
+export const TvBills_MakePaymentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"tvBills_makePayment"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TvBill_PaymentInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tvBills_makePayment"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"biller"}},{"kind":"Field","name":{"kind":"Name","value":"commission"}},{"kind":"Field","name":{"kind":"Name","value":"customerId"}},{"kind":"Field","name":{"kind":"Name","value":"transactionId"}},{"kind":"Field","name":{"kind":"Name","value":"transactionDate"}},{"kind":"Field","name":{"kind":"Name","value":"customerId"}}]}}]}}]} as unknown as DocumentNode<TvBills_MakePaymentMutation, TvBills_MakePaymentMutationVariables>;
+export const FundBetting_GetProvidersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"fundBetting_getProviders"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BettingProvidersInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fundBetting_getProviders"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<FundBetting_GetProvidersQuery, FundBetting_GetProvidersQueryVariables>;
+export const FundBetting_MakePaymentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"fundBetting_makePayment"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BettingPaymentInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fundBetting_makePayment"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"customer_name"}},{"kind":"Field","name":{"kind":"Name","value":"customer_username"}},{"kind":"Field","name":{"kind":"Name","value":"customer_phone_number"}},{"kind":"Field","name":{"kind":"Name","value":"customer_email_address"}},{"kind":"Field","name":{"kind":"Name","value":"order_id"}},{"kind":"Field","name":{"kind":"Name","value":"service_name"}},{"kind":"Field","name":{"kind":"Name","value":"request_id"}}]}}]}}]} as unknown as DocumentNode<FundBetting_MakePaymentMutation, FundBetting_MakePaymentMutationVariables>;
 export const WalletCrypto_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"WalletCrypto_create"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"walletCrypto_create"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"chainType"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_id"}}]}}]}}]} as unknown as DocumentNode<WalletCrypto_CreateMutation, WalletCrypto_CreateMutationVariables>;
 export const WalletCrypto_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"WalletCrypto_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"walletCrypto_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"chainType"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_id"}}]}}]}}]} as unknown as DocumentNode<WalletCrypto_GetAllQuery, WalletCrypto_GetAllQueryVariables>;
