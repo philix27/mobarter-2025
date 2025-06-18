@@ -34,7 +34,7 @@ export default function BuyCryptoOrder() {
   }
   return (
     <TView style={{ width: '100%', rowGap: 20 }}>
-      <PayableTokenCard tokenErr={tokenErr} />
+      <PayableTokenCard />
       <InputText
         label={'Amount'}
         keyboardType="numeric"

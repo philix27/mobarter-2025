@@ -9,13 +9,13 @@ export function InputButton(props: {
   isLoading?: boolean
   disabled?: boolean
   onPress?: VoidFunction
-  variant?: 'secondary' | 'outline'
+  variant?: 'secondary' | 'outline' | 'primary'
 }) {
   const appColor = useColor()
   const getColor = () => {
     if (props.variant === 'secondary') return '#282828'
     if (props.disabled) return appColor.accent
-
+    if (props.variant === 'primary') return appColor.primary
     return appColor.primary
   }
   return (
@@ -49,6 +49,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 14,
-    fontWeight: device.isPad ? 'bold' : "600",
+    fontWeight: device.isPad ? 'bold' : '600',
   },
 })

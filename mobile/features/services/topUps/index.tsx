@@ -54,7 +54,7 @@ export default function TopUpComp() {
         // error={errors && errors?.phone && errors!.phone}
         keyboardType="number-pad"
       />
-      <PayableTokenCard tokenErr={tokenErr} />
+      <PayableTokenCard />
       <TView style={{ height: 10 }} />
       <TopUpTabs />
       {store.activeTab === 'AIRTIME' && <Airtime />}
@@ -63,4 +63,3 @@ export default function TopUpComp() {
     </Wrapper>
   )
 }
-

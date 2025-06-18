@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import { api } from './instance'
 import { AppStores } from '@/lib'
+import { Country } from '@/graphql'
 
 export type ICountriesData = {
-  isoName: string
+  isoName: Country
   name: string
   continent: string
   currencyCode: string

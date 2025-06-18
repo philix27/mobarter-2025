@@ -1,6 +1,6 @@
 import { TView } from '@/components/ui'
 import { useColor } from '@/hooks/useColor'
-import { useAddress } from '@/lib/zustand/web3/hooks'
+import AppHooks from '@/hooks'
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import { Text } from 'react-native'
@@ -8,7 +8,7 @@ import { useCountries } from '@/lib/zustand/countries'
 import { api } from '@/api/instance'
 
 const useGetTokenBalance = () => {
-  const address = useAddress()
+  const address = AppHooks.useAddress()
   const country = useCountries()
 
   return useQuery({

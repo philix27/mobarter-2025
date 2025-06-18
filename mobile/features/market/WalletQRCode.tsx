@@ -4,10 +4,10 @@ import QRCode from 'react-native-qrcode-svg'
 import { InputButton } from '@/components/forms'
 import { ClipboardSet } from '@/lib'
 import { ScrollView } from 'react-native'
-import { useAddress } from '@/lib/zustand/web3/hooks'
+import AppHooks from '@/hooks'
 
 export default function WalletQRCode() {
-  const address = useAddress()
+  const address = AppHooks.useAddress()
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}

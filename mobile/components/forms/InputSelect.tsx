@@ -31,8 +31,8 @@ export function InputSelect(params: {
         {params.label && <Label label={params.label} />}
         <Row
           title={!selectedValue ? 'Select' : getActive().label}
-          desc={getActive().desc}
-          imgUrl={getActive().icon}
+          desc={getActive()?.desc}
+          imgUrl={getActive()?.icon}
           trailing={<Ionicons name="caret-down" size={20} color={theme.muted} />}
           onClick={() => {
             refRBSheet.current!.open()
@@ -47,6 +47,7 @@ export function InputSelect(params: {
             key={i}
             title={item.label}
             desc={item.value}
+            imgUrl={item.icon}
             onClick={() => {
               setSelectedValue(item.value)
               if (params.onValueChange) {

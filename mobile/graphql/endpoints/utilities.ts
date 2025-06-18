@@ -23,6 +23,7 @@ import {
   MutationElectricityBill_VerifyAccountArgs,
   ElectricityBill_GetProvidersDocument,
   ElectricityBill_ProviderInput,
+  QueryElectricityBill_GetProvidersArgs,
 } from '../__generated__/graphql'
 import { MutationResponse, QueryResponse } from './types'
 
@@ -42,10 +43,15 @@ export const usePurchaseDataBundle = () => {
 
 export const useFxRates = () => useQuery<QueryResponse<'fxRate_GetAll'>>(FxRate_GetAllDocument)
 // ! Electricity bill
-export const useElectricityBillProviders = () =>
-  useQuery<QueryResponse<'electricityBill_getProviders'>, ElectricityBill_ProviderInput>(
-    ElectricityBill_GetProvidersDocument
-  )
+export const useElectricityBillProviders = (variables: QueryElectricityBill_GetProvidersArgs) => {
+  const res = useQuery<
+    QueryResponse<'electricityBill_getProviders'>,
+    QueryElectricityBill_GetProvidersArgs
+  >(ElectricityBill_GetProvidersDocument, { variables })
+  console.log('Result X22', res.data?.electricityBill_getProviders)
+  console.log('Result X22', res.error)
+  return res
+}
 
 export const useElectricBillVerifyAccount = () => {
   return useMutation<
@@ -62,14 +68,16 @@ export const useElectricBillMakePayment = () => {
 }
 
 // ! TV bill
-export const useTV_GetProviders = () =>
+export const useTV_GetProviders = (variables: QueryTvBills_GetProvidersArgs) =>
   useQuery<QueryResponse<'tvBills_getProviders'>, QueryTvBills_GetProvidersArgs>(
-    TvBills_GetProvidersDocument
+    TvBills_GetProvidersDocument,
+    { variables }
   )
 
-export const useTV_GetBouquet = () =>
+export const useTV_GetBouquet = (variables: QueryTvBills_GetBouquetArgs) =>
   useQuery<QueryResponse<'tvBills_getBouquet'>, QueryTvBills_GetBouquetArgs>(
-    TvBills_GetBouquetDocument
+    TvBills_GetBouquetDocument,
+    { variables }
   )
 
 export const useTV_ValidateAccount = () => {
@@ -85,9 +93,10 @@ export const useTV_MakePayment = () => {
   )
 }
 // ! Fund Betting Wallet
-export const useFundBetting_getProviders = () =>
+export const useFundBetting_getProviders = (variables: QueryFundBetting_GetProvidersArgs) =>
   useQuery<QueryResponse<'fundBetting_getProviders'>, QueryFundBetting_GetProvidersArgs>(
-    FundBetting_GetProvidersDocument
+    FundBetting_GetProvidersDocument,
+    { variables }
   )
 
 export const useFundBetting_MakePayment = () => {

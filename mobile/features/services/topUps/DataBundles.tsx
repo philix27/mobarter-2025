@@ -1,7 +1,6 @@
 import { BtmSheet } from '@/components/layout'
 import { InputButton } from '@/components/forms'
 import { AppStores } from '@/lib'
-import { usePrice } from '@/hooks/usePrice'
 import { toast, TView } from '@/components/ui'
 import { useTopUps } from './zustand'
 import { SelectDataPlan } from './SelectDataPlan'
@@ -16,12 +15,17 @@ export default function DataBundlesComp(params: { isDataBundle?: boolean }) {
   const store = useTopUps()
   const [mutate] = Api.usePurchaseDataBundle()
   const country = AppStores.useCountries().activeCountry
-  const { amountToPay } = usePrice(store.dataBundle_amount)
+  const { amountToPay } = AppHooks.usePrice(store.dataBundle_amount)
   const response = useResponse()
   const _amount = params.isDataBundle ? store.dataBundle_amount : store.dataPlan_amount
   const _operatorId = params.isDataBundle ? store.dataBundles_operatorId : store.dataPlan_operatorId
 
   const handleSubmit = () => {
+    if (!tokenStore.activeToken) {
+      toast.error('Please select a token')
+      return
+    }
+
     if (!store.operatorName || _operatorId === 0) {
       toast.error('Please select an operator')
       return
@@ -44,18 +48,12 @@ export default function DataBundlesComp(params: { isDataBundle?: boolean }) {
   }
 
   const onPay = () => {
-    transferERC20({
-      recipient: '',
-      amount: amountToPay!.toString(),
-      token: '',
-    })
-
     response.showLoading(true)
     confirmModal.current.close()
     transferERC20({
       recipient: '',
       amount: amountToPay!.toString(),
-      token: '',
+      token: tokenStore.activeToken?.address!,
     })
       .then(async (hash: string) => {
         await mutate({

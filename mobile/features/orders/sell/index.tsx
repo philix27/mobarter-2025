@@ -123,7 +123,7 @@ export default function SellCryptoOrder() {
 
   return (
     <TView style={{ width: '100%', rowGap: 20 }}>
-      <PayableTokenCard tokenErr={tokenErr} />
+      <PayableTokenCard />
       <SelectBankAccountCard tokenErr={tokenErr} />
       <SelectCountryCard />
       <InputText

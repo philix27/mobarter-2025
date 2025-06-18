@@ -7,13 +7,7 @@ import { Label } from '@/components/forms'
 import { useColor, AppStores } from '@/lib'
 import { Ionicons } from '@expo/vector-icons'
 
-export function SelectTokenCard({
-  tokenErr,
-  ...props
-}: {
-  tokenErr: string | undefined
-  group?: ITokenCategory
-}) {
+export function SelectTokenCard({ ...props }: { group?: ITokenCategory }) {
   const theme = useColor()
   const storeTokens = AppStores.useTokens()
   const token = storeTokens.activeToken
@@ -31,7 +25,7 @@ export function SelectTokenCard({
             confirmModal.current.open()
           }}
         />
-        {tokenErr && <ErrMsg msg={tokenErr} />}
+        {token === null && <ErrMsg msg={'Please select a token'} />}
       </TView>
       <BtmSheet.Modal title="Select a token" ref={confirmModal!}>
         <CryptoTokensList variant={props.group} />
@@ -39,6 +33,6 @@ export function SelectTokenCard({
     </>
   )
 }
-export function PayableTokenCard({ tokenErr }: { tokenErr: string | undefined }) {
-  return <SelectTokenCard tokenErr={tokenErr} group="PAYABLE" />
+export function PayableTokenCard() {
+  return <SelectTokenCard group="PAYABLE" />
 }

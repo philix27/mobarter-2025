@@ -88,7 +88,7 @@ export default function SendCryptoScreen() {
         }}
         trailingIcon={<FontAwesome6 name="paste" size={20} color={theme.muted} />}
       />
-      <SelectTokenCard tokenErr={tokenErr} />
+      <SelectTokenCard />
       <InputText
         label={'Amount'}
         keyboardType="numeric"

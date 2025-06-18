@@ -1,41 +1,47 @@
 import { Wrapper, BtmSheet } from '@/components/layout'
 import { z } from 'zod'
-import { useState } from 'react'
-import { InputSelect, InputButton, InputText } from '@/components/forms'
+import { InputSelect, InputButton, InputText, Label } from '@/components/forms'
 import { useAppForm, AppStores } from '@/lib'
 import { isDev } from '@/lib/constants/env'
-import { TText, TView } from '@/components/ui'
+import { toast, TView } from '@/components/ui'
 
 import { PayableTokenCard } from '@/features/tokens'
-// import { PayableTokenCard } from '../tokens'
 import AppHooks from '@/hooks'
+import { Api } from '@/graphql'
+
 const formSchema = z.object({
   amount: z.string().min(1),
   operator: z.string(),
-  phone: z.string().min(10, 'At least 10 numbers').max(12),
+  isPrepaid: z.boolean(),
+  accountNo: z.string().min(10, 'At least 10 numbers').max(12),
 })
 
 export default function ElectricityBillScreen() {
   const confirmModal = BtmSheet.useRef()
   const { transferERC20 } = AppHooks.useTransferToken()
-  const [tokenErr, setTokenErr] = useState<string>()
+
   const tokenStore = AppStores.useTokens()
 
   const countryStore = AppStores.useCountries()
   const country = countryStore.activeCountry
-
-  const { formData, errors, handleChange, setErrors } = useAppForm<typeof formSchema._type>({
+  const { data, loading } = Api.useElectricityBillProviders({
+    input: { countryCode: country!.isoName },
+  })
+  const { formData, errors, handleChange, setErrors, setFormData } = useAppForm<
+    typeof formSchema._type
+  >({
     // Omit<typeof formSchema._type, 'amount'> & { amount: string }
     amount: '0',
     operator: '',
-    phone: '',
+    accountNo: '',
+    isPrepaid: true,
   })
-  const { amountToPay } = AppHooks.usePrice(parseFloat(formData.amount.toString()))
+  // const { amountToPay } = AppHooks.usePrice(parseFloat(formData.amount.toString()))
 
   const clearErr = () => {
     setErrors('amount', '')
     setErrors('operator', '')
-    setErrors('phone', '')
+    setErrors('accountNo', '')
   }
 
   const showErr = () => {
@@ -47,7 +53,7 @@ export default function ElectricityBillScreen() {
     const errorMessages = validation.error.format()
     setErrors('amount', errorMessages.amount?._errors[0] || '')
     setErrors('operator', errorMessages.operator?._errors[0] || '')
-    setErrors('phone', errorMessages.phone?._errors[0] || '')
+    setErrors('accountNo', errorMessages.accountNo?._errors[0] || '')
   }
 
   const handleSubmit = () => {
@@ -56,6 +62,11 @@ export default function ElectricityBillScreen() {
     if (!validation.success) {
       showErr()
       console.log('Error in validation ' + validation.error.message)
+      return
+    }
+
+    if (!tokenStore.activeToken) {
+      toast.error('Please select a token')
       return
     }
 
@@ -74,47 +85,71 @@ export default function ElectricityBillScreen() {
   const onPay = () => {
     transferERC20({
       recipient: '',
-      amount: amountToPay!.toString(),
-      token: '',
+      amount: '',
+      // amountToPay!.toString(),
+      token: tokenStore.activeToken?.address!,
     })
   }
+
   return (
-    <Wrapper style={{ rowGap: 10 }}>
-      <InputSelect
-        label="Network"
-        placeholder="Select operator"
-        error={errors && errors?.operator && errors!.operator}
-        onValueChange={(v) => {
-          handleChange('operator', v)
-          clearErr()
+    <Wrapper style={{ rowGap: 15 }}>
+      {data && (
+        <InputSelect
+          label="Providers"
+          placeholder="Provider"
+          error={errors && errors?.operator && errors!.operator}
+          onValueChange={(v) => {
+            handleChange('operator', v)
+            clearErr()
+          }}
+          items={data?.electricityBill_getProviders.map((val) => {
+            return {
+              label: val.name,
+              value: val.name,
+              icon: val.logo,
+            }
+          })}
+        />
+      )}
+
+      <TView
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-evenly',
+          width: '100%',
+          margin: 0,
+          padding: 0,
         }}
-        items={[
-          {
-            label: 'MTN',
-            value: 'MTN',
-          },
-          {
-            label: 'Airtel',
-            value: 'Airtel',
-          },
-          {
-            label: 'GLO',
-            value: 'GLO',
-          },
-        ]}
-      />
+      >
+        <InputButton
+          title="Prepaid"
+          variant={formData.isPrepaid ? 'primary' : 'secondary'}
+          style={{ width: '50%', borderRadius: 0 }}
+          onPress={() => {
+            setFormData({ ...formData, isPrepaid: true })
+          }}
+        />
+
+        <InputButton
+          title="Postpaid"
+          variant={!formData.isPrepaid ? 'primary' : 'secondary'}
+          style={{ width: '50%', borderRadius: 0 }}
+          onPress={() => {
+            setFormData({ ...formData, isPrepaid: false })
+          }}
+        />
+      </TView>
 
       <InputText
         label={'Meter/Account Number'}
-        leadingText={country?.callingCodes}
-        value={formData.phone}
+        value={formData.accountNo}
         onChangeText={(text) => {
           if (text.length > 10) return
-          handleChange('phone', text)
+          handleChange('accountNo', text)
           clearErr()
         }}
-        placeholder={'Enter phone'}
-        // error={errors && errors?.phone && errors!.phone}
+        placeholder={'Enter accountNo'}
+        error={errors && errors?.accountNo && errors!.accountNo}
         keyboardType="number-pad"
       />
 
@@ -130,14 +165,15 @@ export default function ElectricityBillScreen() {
 
           clearErr()
         }}
-        // error={errors && errors?.amount && errors!.amount}
+        error={errors && errors?.amount && errors!.amount}
       />
-      <PayableTokenCard tokenErr={tokenErr} />
-      <TText>{amountToPay}</TText>
+      <PayableTokenCard />
+      {/* <TText>{tokenStore.activeToken?.symbol} {amountToPay}</TText> */}
       <InputButton title={'Submit'} style={{ width: '50%' }} onPress={handleSubmit} />
 
       <BtmSheet.Modal
         ref={confirmModal!}
+        title="Confirm"
         style={{
           alignItems: 'center',
           flexDirection: 'column',
@@ -146,13 +182,8 @@ export default function ElectricityBillScreen() {
           rowGap: 1,
         }}
       >
-        <TText type="subtitle">
-          {`${amountToPay} ${tokenStore.activeToken?.symbol}`}
-          {/* {`${formatCurrency(parseFloat(amountToPay!.toString()))} ${countryStore.activeTokenSymbol}`} */}
-        </TText>
-        <TView style={{ height: 15 }} />
         <BtmSheet.Row text1="Operator" text2={formData.operator} />
-        <BtmSheet.Row text1="Phone" text2={formData.phone} />
+        <BtmSheet.Row text1="accountNo" text2={formData.accountNo} />
         <BtmSheet.Row text1="Amount" text2={formData.amount.toString()} />
         <BtmSheet.Row text1="Fee" text2={formData.amount.toString()} />
         <TView style={{ height: 25 }} />

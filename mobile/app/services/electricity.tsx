@@ -5,7 +5,7 @@ import React from 'react'
 export default function Page() {
   return (
     <>
-      <HeaderBar title="Fund Betting Wallets" showBackBtn backTo="/p2p" />
+      <HeaderBar title="Electricity Bill" showBackBtn backTo="/p2p" />
       <ElectricityBillScreen />
     </>
   )

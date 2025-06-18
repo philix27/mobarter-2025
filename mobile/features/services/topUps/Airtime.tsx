@@ -52,6 +52,11 @@ export default function Airtime() {
       return
     }
 
+    if (!tokenStore.activeToken) {
+      toast.error('Please select a token')
+      return
+    }
+
     if (!store.operatorName || store.airtime_operatorId === 0) {
       toast.error('Please select an operator')
       return
@@ -90,7 +95,7 @@ export default function Airtime() {
     transferERC20({
       recipient: '',
       amount: amountToPay!.toString(),
-      token: '',
+      token: tokenStore.activeToken?.address!,
     })
       .then(async (hash: string) => {
         await mutate({
