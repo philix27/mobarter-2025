@@ -5,10 +5,11 @@ import { useAppForm, AppStores } from '@/lib'
 import { usePrice } from '@/hooks/usePrice'
 import { isDev } from '@/lib/constants/env'
 import { toast, TText, TView } from '@/components/ui'
-import { useTransferToken } from '@/lib/zustand/web3/hooks'
+
 import { useTopUps } from './zustand'
 import { useResponse } from '@/lib/providers'
 import { Api, Country } from '@/graphql'
+import AppHooks from '@/hooks'
 
 const formSchema = z.object({
   amount: z.string().min(1),
@@ -16,7 +17,7 @@ const formSchema = z.object({
 
 export default function Airtime() {
   const confirmModal = BtmSheet.useRef()
-  const { transferERC20 } = useTransferToken()
+  const { transferERC20 } = AppHooks.useTransferToken()
   const [mutate] = Api.usePurchaseAirtime()
   const tokenStore = AppStores.useTokens()
   const store = useTopUps()

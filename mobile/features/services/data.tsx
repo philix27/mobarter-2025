@@ -26,15 +26,15 @@ export const servicesList: {
   //   icon: <MaterialIcons name="browser-updated" size={24} color={'#fff'} />,
   // },
   {
-    title: 'Utilities',
-    desc: 'Pay electricity and water bills',
-    route: '/services/utilities',
+    title: 'Electricity Bill',
+    desc: 'Pay your light bills',
+    route: '/services/electricity',
     icon: <Feather name="send" size={24} color={'#fff'} />,
   },
   {
-    title: 'Cable TV',
-    desc: 'Subscribe your GoTv and DSTv',
-    route: '/services/cable-tv',
+    title: 'TV',
+    desc: 'Subscribe your Cable TVs (GoTv and DSTv)',
+    route: '/services/tv',
     icon: <Feather name="send" size={24} color={'#fff'} />,
   },
   {

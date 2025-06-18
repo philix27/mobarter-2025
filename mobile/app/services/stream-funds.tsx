@@ -1,5 +1,5 @@
 import { HeaderBar } from '@/components/layout/Header'
-import StreamFundsComp from '@/features/others/StreamFunds'
+import StreamFundsComp from '@/features/services/StreamFunds'
 import React from 'react'
 
 export default function Page() {

@@ -1,5 +1,5 @@
 import { HeaderBar } from '@/components/layout'
-import BettingComp from '@/features/others/Betting'
+import BettingComp from '@/features/services/Betting'
 import React from 'react'
 
 export default function Page() {

@@ -3,25 +3,24 @@ import { z } from 'zod'
 import { useState } from 'react'
 import { InputSelect, InputButton, InputText } from '@/components/forms'
 import { useAppForm, AppStores } from '@/lib'
-import { usePrice } from '@/hooks/usePrice'
 import { isDev } from '@/lib/constants/env'
 import { TText, TView } from '@/components/ui'
-import { useTransferToken } from '@/lib/zustand/web3/hooks'
+
 import { PayableTokenCard } from '@/features/tokens'
 // import { PayableTokenCard } from '../tokens'
+import AppHooks from '@/hooks'
 const formSchema = z.object({
   amount: z.string().min(1),
   operator: z.string(),
   phone: z.string().min(10, 'At least 10 numbers').max(12),
 })
 
-export default function ElectricityBill() {
+export default function ElectricityBillScreen() {
   const confirmModal = BtmSheet.useRef()
-  const { transferERC20 } = useTransferToken()
+  const { transferERC20 } = AppHooks.useTransferToken()
   const [tokenErr, setTokenErr] = useState<string>()
   const tokenStore = AppStores.useTokens()
 
-  const { handleOnChange: handlePriceChange, amountToPay } = usePrice()
   const countryStore = AppStores.useCountries()
   const country = countryStore.activeCountry
 
@@ -31,6 +30,7 @@ export default function ElectricityBill() {
     operator: '',
     phone: '',
   })
+  const { amountToPay } = AppHooks.usePrice(parseFloat(formData.amount.toString()))
 
   const clearErr = () => {
     setErrors('amount', '')
@@ -105,7 +105,7 @@ export default function ElectricityBill() {
       />
 
       <InputText
-        label={'Phone'}
+        label={'Meter/Account Number'}
         leadingText={country?.callingCodes}
         value={formData.phone}
         onChangeText={(text) => {
@@ -127,7 +127,7 @@ export default function ElectricityBill() {
         onChangeText={(text) => {
           if (text.length > 10) return
           handleChange('amount', text)
-          handlePriceChange(parseFloat(text))
+
           clearErr()
         }}
         // error={errors && errors?.amount && errors!.amount}

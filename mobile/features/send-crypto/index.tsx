@@ -2,16 +2,16 @@ import { TView } from '@/components'
 import { InputButton, InputText } from '@/components/forms'
 import { AppStores, ClipboardGet } from '@/lib'
 import { FontAwesome6 } from '@expo/vector-icons'
-import { useColor } from '@/hooks/useColor'
 import React, { useState } from 'react'
-import { useTransferToken } from '@/lib/zustand/web3/hooks'
+
 import { SelectTokenCard } from '../tokens/SelectTokenCard'
 import { useResponse } from '@/lib/providers'
+import AppHooks from '@/hooks'
 
 type IData = { value: string | undefined; error: string | undefined }
 export default function SendCryptoScreen() {
-  const { transferNative, transferERC20 } = useTransferToken()
-  const theme = useColor()
+  const { transferNative, transferERC20 } = AppHooks.useTransferToken()
+  const theme = AppHooks.useColor()
   const [recipient, setRecipient] = useState<IData>()
   const [amount, setAmount] = useState<IData>()
   const [tokenErr, setTokenErr] = useState<string>()

@@ -1,5 +1,5 @@
 import { HeaderBar } from '@/components/layout'
-import SchedulePaymentsComp from '@/features/others/SchedulePayments'
+import SchedulePaymentsComp from '@/features/services/SchedulePayments'
 import React from 'react'
 
 export default function Page() {

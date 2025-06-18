@@ -4,7 +4,7 @@ import React, { JSX } from 'react'
 import { useColor } from '@/hooks/useColor'
 import { useQuery } from '@tanstack/react-query'
 import { getBalance } from './Balance/getBalance'
-import { useAddress } from '@/lib/zustand/web3/hooks'
+import Hooks from '@/hooks'
 
 export function AssetsRow(params: {
   imgUrl?: string
@@ -19,7 +19,7 @@ export function AssetsRow(params: {
 }) {
   const appColor = useColor()
   const bgColor = appColor.card
-  const address = useAddress()
+  const address = Hooks.useAddress()
   const { data: balance, isLoading } = useQuery({
     queryKey: ['token-' + params.currency],
     queryFn: async () => {

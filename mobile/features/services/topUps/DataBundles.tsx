@@ -2,16 +2,16 @@ import { BtmSheet } from '@/components/layout'
 import { InputButton } from '@/components/forms'
 import { AppStores } from '@/lib'
 import { usePrice } from '@/hooks/usePrice'
-import { toast, TText, TView } from '@/components/ui'
-import { useTransferToken } from '@/lib/zustand/web3/hooks'
+import { toast, TView } from '@/components/ui'
 import { useTopUps } from './zustand'
 import { SelectDataPlan } from './SelectDataPlan'
 import { Api, Country } from '@/graphql'
 import { useResponse } from '@/lib/providers'
+import AppHooks from '@/hooks'
 
 export default function DataBundlesComp(params: { isDataBundle?: boolean }) {
   const confirmModal = BtmSheet.useRef()
-  const { transferERC20 } = useTransferToken()
+  const { transferERC20 } = AppHooks.useTransferToken()
   const tokenStore = AppStores.useTokens()
   const store = useTopUps()
   const [mutate] = Api.usePurchaseDataBundle()

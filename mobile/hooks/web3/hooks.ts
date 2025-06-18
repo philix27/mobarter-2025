@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
 import { ethers, formatEther } from 'ethers'
-import { useWallet } from './wallet'
 import { createPublicClient, createWalletClient, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { supportedChains } from './type'
 import { toast } from '@/components'
 import { abi as ERC20_ABI } from './erc20Abi.json'
-import * as t from "thirdweb"
+import * as t from 'thirdweb'
+import { AppStores } from '@/lib'
 
 export function shortString(str: any, len = 5): string {
   if (Array.isArray(str)) {
@@ -26,7 +26,7 @@ export function shortString(str: any, len = 5): string {
 }
 
 export const useChain = () => {
-  const store = useWallet()
+  const store = AppStores.useWallet()
   return supportedChains[store.chain]
 }
 
@@ -41,7 +41,7 @@ export const usePublicClient = () => {
 }
 
 export const useWalletClient = () => {
-  const store = useWallet()
+  const store = AppStores.useWallet()
   const chain = useChain()
   const account = privateKeyToAccount(store.walletKey as `0x${string}`)
   const client = createWalletClient({

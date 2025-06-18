@@ -1,5 +1,4 @@
 import { Row, TView } from '@/components/ui'
-import React, { useState } from 'react'
 import { ActivityIndicator, ViewStyle } from 'react-native'
 import { BtmSheet } from '@/components/layout'
 import { ErrMsg, Label } from '@/components/forms'

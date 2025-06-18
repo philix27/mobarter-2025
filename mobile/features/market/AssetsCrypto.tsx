@@ -5,7 +5,7 @@ import { AssetsRow } from './AssetsRow'
 // import { TokenId, Tokens } from '@/assets/tokens/tokens'
 import { useGetTokens } from '@/api'
 import { AppStores } from '@/lib/zustand'
-import { useAddress } from '@/lib/zustand/web3/hooks'
+import Hooks from '@/hooks'
 
 export default function AssetsCrypto() {
   return (
@@ -19,7 +19,7 @@ export type ITokenCategory = 'ALL' | 'CELO' | 'PAYABLE' | 'SELLABLE' | 'BUYABLE'
 export function CryptoTokensList(props: {
   variant?: 'ALL' | 'CELO' | 'PAYABLE' | 'SELLABLE' | 'BUYABLE'
 }) {
-  const addr = useAddress()
+  const addr = Hooks.useAddress()
   const { data, isLoading } = useGetTokens(addr, 'NG')
   const store = AppStores.useView()
   const storeTokens = AppStores.useTokens()

@@ -3,10 +3,9 @@ import { z } from 'zod'
 import { useState } from 'react'
 import { InputSelect, InputButton, InputText } from '@/components/forms'
 import { useAppForm, AppStores } from '@/lib'
-import { usePrice } from '@/hooks/usePrice'
 import { isDev } from '@/lib/constants/env'
 import { TText, TView } from '@/components/ui'
-import { useTransferToken } from '@/lib/zustand/web3/hooks'
+import AppHooks from '@/hooks'
 import { PayableTokenCard } from '@/features/tokens'
 // import { PayableTokenCard } from '../tokens'
 const formSchema = z.object({
@@ -17,11 +16,10 @@ const formSchema = z.object({
 
 export default function BettingWallet() {
   const confirmModal = BtmSheet.useRef()
-  const { transferERC20 } = useTransferToken()
+  const { transferERC20 } = AppHooks.useTransferToken()
   const [tokenErr, setTokenErr] = useState<string>()
   const tokenStore = AppStores.useTokens()
 
-  const { handleOnChange: handlePriceChange, amountToPay } = usePrice()
   const countryStore = AppStores.useCountries()
   const country = countryStore.activeCountry
 
@@ -31,6 +29,7 @@ export default function BettingWallet() {
     operator: '',
     phone: '',
   })
+  const { amountToPay } = AppHooks.usePrice(parseFloat(formData.amount))
 
   const clearErr = () => {
     setErrors('amount', '')
@@ -127,7 +126,7 @@ export default function BettingWallet() {
         onChangeText={(text) => {
           if (text.length > 10) return
           handleChange('amount', text)
-          handlePriceChange(parseFloat(text))
+
           clearErr()
         }}
         // error={errors && errors?.amount && errors!.amount}

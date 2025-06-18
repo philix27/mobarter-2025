@@ -1,12 +1,11 @@
-import { Row, TText, TView } from '@/components/ui'
+import { Row, TView } from '@/components/ui'
 import React, { useState } from 'react'
-
-import { Picker } from '@react-native-picker/picker'
 import { useColor } from '@/hooks/useColor'
-import { TouchableOpacity, ViewStyle } from 'react-native'
+import { ViewStyle } from 'react-native'
 import { Label } from './Label'
 import { BtmSheet } from '@/components/layout'
 import ErrMsg from './ErrMsg'
+import { Ionicons } from '@expo/vector-icons'
 
 export function InputSelect(params: {
   label?: string
@@ -14,7 +13,7 @@ export function InputSelect(params: {
   placeholder?: string
   style?: ViewStyle
   error?: string | undefined
-  items: { label: string; value: string }[]
+  items: { label: string; value: string; icon?: string; desc?: string }[]
   onValueChange?: (itemValue: string) => void
 }) {
   const theme = useColor()
@@ -22,51 +21,26 @@ export function InputSelect(params: {
   const refRBSheet = BtmSheet.useRef()
   const [selectedValue, setSelectedValue] = useState(params.value)
 
-  const getLabel = () => {
+  const getActive = () => {
     const active = params.items.filter((val, i) => val.value === selectedValue)[0]
-    return active.label
+    return active
   }
   return (
     <>
       <TView style={{ width: '100%' }}>
-        {params.label && (
-          <TView
-            style={{
-              width: '100%',
-              margin: 0,
-              padding: 0,
-            }}
-          >
-            <Label label={params.label} />
-          </TView>
-        )}
-        <TouchableOpacity
-          style={{ width: '100%', margin: 0, padding: 0 }}
-          onPress={() => {
+        {params.label && <Label label={params.label} />}
+        <Row
+          title={!selectedValue ? 'Select' : getActive().label}
+          desc={getActive().desc}
+          imgUrl={getActive().icon}
+          trailing={<Ionicons name="caret-down" size={20} color={theme.muted} />}
+          onClick={() => {
             refRBSheet.current!.open()
           }}
-        >
-          <TView
-            style={[
-              {
-                backgroundColor: theme.card,
-                width: '100%',
-                borderWidth: 1,
-                borderRadius: 5,
-                paddingHorizontal: 10,
-                paddingVertical: 10,
-                minWidth: '90%',
-                margin: 0,
-                padding: 0,
-              },
-              params.style,
-            ]}
-          >
-            <TText>{selectedValue === undefined ? params.placeholder : getLabel()}</TText>
-          </TView>
-        </TouchableOpacity>
+        />
         {params.error && <ErrMsg msg={params.error} />}
       </TView>
+
       <BtmSheet.Modal ref={refRBSheet!}>
         {params.items.map((item, i) => (
           <Row

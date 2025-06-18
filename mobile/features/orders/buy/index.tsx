@@ -2,12 +2,12 @@ import { TView } from '@/components'
 import { InputButton, InputText } from '@/components/forms'
 import { AppStores } from '@/lib'
 import React, { useState } from 'react'
-import { useTransferToken } from '@/lib/zustand/web3/hooks'
+import AppHooks from '@/hooks'
 import { PayableTokenCard } from '@/features/tokens'
 
 type IData = { value: string | undefined; error: string | undefined }
 export default function BuyCryptoOrder() {
-  const { transferERC20 } = useTransferToken()
+  const { transferERC20 } = AppHooks.useTransferToken()
   const [amount, setAmount] = useState<IData>()
   const [tokenErr, setTokenErr] = useState<string>()
   const storeTokens = AppStores.useTokens()
@@ -34,7 +34,7 @@ export default function BuyCryptoOrder() {
   }
   return (
     <TView style={{ width: '100%', rowGap: 20 }}>
-      <PayableTokenCard tokenErr={tokenErr}  />
+      <PayableTokenCard tokenErr={tokenErr} />
       <InputText
         label={'Amount'}
         keyboardType="numeric"

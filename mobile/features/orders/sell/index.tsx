@@ -2,11 +2,10 @@ import { toast, TView } from '@/components'
 import { InputButton, InputText } from '@/components/forms'
 import { AppStores } from '@/lib'
 import React, { useState } from 'react'
-import { useAddress, useTransferToken } from '@/lib/zustand/web3/hooks'
+import AppHooks from '@/hooks'
 import { PayableTokenCard } from '@/features/tokens'
 import { SelectBankAccountCard } from '@/features/bankAccount'
 import { TText } from '@/components/ui'
-import { useCollectors, usePrice } from '@/hooks'
 import { BtmSheet } from '@/components/layout'
 import { useBankAccount } from '@/features/bankAccount/zustand.bank'
 import { SelectCountryCard } from '@/features/country'
@@ -18,18 +17,20 @@ type IData = { value: string | undefined; error: string | undefined }
 
 export default function SellCryptoOrder() {
   const confirmModal = BtmSheet.useRef()
-  const { transferERC20 } = useTransferToken()
+  const { transferERC20 } = AppHooks.useTransferToken()
   const [amountFiat, setAmount] = useState<IData>()
   const [tokenErr, setTokenErr] = useState<string>()
   const storeTokens = AppStores.useTokens()
   const storeCountries = AppStores.useCountries()
   const country = storeCountries.activeCountry
-  const address = useAddress()
+  const address = AppHooks.useAddress()
   // const balance = useTokenBalance(TokenId.cUSD)
   const token = storeTokens.activeToken
-  const { handleOnChange: handlePriceChange, amountToPay } = usePrice()
+  const { handleOnChange: handlePriceChange, amountToPay } = AppHooks.usePrice(
+    parseFloat(amountFiat?.value || '0')
+  )
   const account = useBankAccount()
-  const { offRamp } = useCollectors()
+  const { offRamp } = AppHooks.useCollectors()
   const response = useResponse()
   const [mutate] = useSellCrypto()
 

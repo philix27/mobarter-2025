@@ -5,11 +5,11 @@ import { BtmSheet } from '@/components/layout'
 import { AssetsRow } from '../market/AssetsRow'
 import { ScrollView } from 'react-native'
 import { useGetTokens } from '@/api'
-import { useAddress } from '@/lib/zustand/web3/hooks'
+import AppHooks from '@/hooks'
 
 export default function SelectPaymentToken() {
   const store = AppStores.useTokens()
-  const addr = useAddress()
+  const addr = AppHooks.useAddress()
   // const store = AppStores.useCountries()
   const countrySheet = BtmSheet.useRef()
   // const account = useActiveAccount()
@@ -49,7 +49,6 @@ export default function SelectPaymentToken() {
                   imgUrl={item.logoUrl as any}
                   currency={item.symbol}
                   tokenAddr={item.address}
-                  balance={item.balance}
                   tokenPrice={item.tokenPrice}
                   performance={item.name}
                   onPress={() => {
@@ -58,6 +57,7 @@ export default function SelectPaymentToken() {
                     })
                     countrySheet.current?.close()
                   }}
+                  chainId={item.chianId.toString()}
                 />
               )
             })}
