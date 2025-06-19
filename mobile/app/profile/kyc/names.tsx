@@ -5,6 +5,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Api } from '@/graphql'
+import { useResponse } from '@/lib/providers'
 
 const formSchema = z.object({
   firstName: z.string().min(1, 'Required').max(25),
@@ -16,12 +17,13 @@ type IFormData = z.infer<typeof formSchema>
 
 export default function Page() {
   const [mutate] = Api.useKyc_addNames()
-
+  const response = useResponse()
   const f = useForm<IFormData>({
     resolver: zodResolver(formSchema),
   })
 
   const onSubmit = async (formData: IFormData) => {
+    response.showLoading(true)
     await mutate({
       variables: {
         input: {
@@ -31,10 +33,10 @@ export default function Page() {
         },
       },
       onCompleted: () => {
-        toast.success('Submitted Successfully')
+        response.showSuccess('Name Saved')
       },
       onError: () => {
-        toast.error('Not sumitted', 'Check your network connection')
+        response.showError('Oops, could not save name')
       },
     })
   }
@@ -66,7 +68,7 @@ export default function Page() {
           value={f.getValues('middleName')}
           error={f.formState.errors.middleName && f.formState.errors.middleName.message}
         />
-        <InputButton title="Submit" style={{ width: '50%' }} onPress={f.handleSubmit(onSubmit)} />
+        <InputButton title="Submit" style={{ marginTop: 20 }} onPress={f.handleSubmit(onSubmit)} />
       </Wrapper>
     </>
   )

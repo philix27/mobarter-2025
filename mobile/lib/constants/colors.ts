@@ -33,7 +33,7 @@ type IColorStruct = {
 
 const lightColors: IColorStruct = {
   text: '#363738',
-  background: '#C3D1D4',
+  background: '#AFBCBEFF',
   // background: "#D4CDC3",
   tint: tintColorLight,
   icon: '#687076',
@@ -41,7 +41,7 @@ const lightColors: IColorStruct = {
   tabIconSelected: tintColorLight,
   card: '#FFFFFF',
   foreground: '',
-  muted: '#363738',
+  muted: '#969696FF',
   mutedForeground: '',
   cardForeground: '',
   primary: '#ff6719',

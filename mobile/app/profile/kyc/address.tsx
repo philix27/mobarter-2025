@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Api, Country } from '@/graphql'
 import { useCountries } from '@/lib/zustand/countries'
+import { useResponse } from '@/lib/providers'
 
 const formSchema = z.object({
   state: z.string().min(2, 'Required').max(100),
@@ -18,11 +19,13 @@ type IFormData = z.infer<typeof formSchema>
 export default function Page() {
   const [mutate] = Api.useKyc_addAddressInfo()
   const countryStore = useCountries()
+  const response = useResponse()
   const f = useForm<IFormData>({
     resolver: zodResolver(formSchema),
   })
 
   const onSubmit = async (formData: IFormData) => {
+    response.showLoading(true)
     await mutate({
       variables: {
         input: {
@@ -33,17 +36,17 @@ export default function Page() {
         },
       },
       onCompleted: () => {
-        toast.success('Submitted Successfully')
+        response.showSuccess('Submitted Successfully')
       },
       onError: () => {
-        toast.error('Not sumitted', 'Check your network connection')
+        response.showError('Could not submit info. Check your network connection')
       },
     })
   }
   return (
     <>
       <HeaderBar title="Address" />
-      <Wrapper>
+      <Wrapper style={{ rowGap: 15 }}>
         <SelectCountryCard />
         <InputText
           label="State"

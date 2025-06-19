@@ -17,41 +17,39 @@ export default function SettingsScreen() {
   const { toggleTheme } = useContext(ThemeContext)
 
   return (
-    <Wrapper>
-      <Collapsible title={'Application'}>
-        <SelectCountry />
-        <SelectPaymentToken />
-        <Row
-          title={'Support'}
-          desc={'Contact customer support'}
-          icon={<MaterialIcons name="support-agent" size={24} color="#fff" />}
-        />
-        <Row
-          title={'Theme'}
-          desc={'Manage appearance'}
-          icon={<Ionicons name="color-palette-outline" size={24} color="#fff" />}
-          onClick={() => {
-            toggleTheme()
-          }}
-        />
-      </Collapsible>
+    <>
+      <SelectCountry />
+      <SelectPaymentToken />
+      <Row
+        title={'Support'}
+        desc={'Contact customer support'}
+        icon={<MaterialIcons name="support-agent" size={24} color="#fff" />}
+      />
+      <Row
+        title={'Theme'}
+        desc={'Manage appearance'}
+        icon={<Ionicons name="color-palette-outline" size={24} color="#fff" />}
+        onClick={() => {
+          toggleTheme()
+        }}
+      />
 
+      <SectionTitle title={'Others'} />
       <Collapsible title={'Socials'}>
         <Socials />
       </Collapsible>
       <Collapsible title={'Links'}>
         <Docs />
       </Collapsible>
-
-      <SectionTitle title={'Others'} />
       <Row
         title={'Learn'}
         desc={'Tutorials and Guide on Mobarter'}
         icon={<FontAwesome5 name="readme" size={20} color="#fff" />}
         onClick={() => {
-          router.push('/learn')
+          router.push('/settings/learn')
         }}
       />
+      <SectionTitle title={'Danger'} />
       <Row
         title={'Logout'}
         desc={'Close app'}
@@ -61,6 +59,6 @@ export default function SettingsScreen() {
           router.push('/')
         }}
       />
-    </Wrapper>
+    </>
   )
 }

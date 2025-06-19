@@ -1,9 +1,10 @@
-import { TText, TView } from '@/components/ui';
-import { useColor } from '@/hooks/useColor';
-import { ReactNode } from 'react';
+import { Label } from '@/components/forms'
+import { TText, TView } from '@/components/ui'
+import { useColor } from '@/hooks/useColor'
+import { ReactNode } from 'react'
 
 export function Card(props: { children: ReactNode }) {
-  const appColor = useColor();
+  const appColor = useColor()
   return (
     <TView
       style={{
@@ -16,23 +17,15 @@ export function Card(props: { children: ReactNode }) {
     >
       {props.children}
     </TView>
-  );
+  )
 }
 
 export function SectionTitle(props: { title: string }) {
   return (
-    <TView
-      style={{
-        width: '100%',
-        marginLeft: 10,
-        marginTop: 10,
-      }}
-    >
-      <TText type="default" style={{}}>
-        {props.title}
-      </TText>
+    <TView style={{ marginTop: 20 }}>
+      <Label label={props.title} />
     </TView>
-  );
+  )
 }
 
 export function InfoRow(props: { title: string; title2: string }) {
@@ -48,5 +41,5 @@ export function InfoRow(props: { title: string; title2: string }) {
       <TText>{props.title}</TText>
       <TText type="defaultSemiBold">{props.title2}</TText>
     </TView>
-  );
+  )
 }

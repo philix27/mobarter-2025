@@ -290,6 +290,13 @@ export enum Country {
   Za = 'ZA'
 }
 
+export enum CredentialsStatus {
+  Failed = 'FAILED',
+  None = 'NONE',
+  Review = 'REVIEW',
+  Valid = 'VALID'
+}
+
 export type ElectricityBill_PaymentInput = {
   amount: Scalars['Int']['input'];
   countryCode: Country;
@@ -821,8 +828,8 @@ export type Query = {
   transactions_getOne: Transaction_GetResponse;
   tvBills_getBouquet: Array<TvBill_GetBouquetPackageResponse>;
   tvBills_getProviders: Array<TvBill_GetTvProvidersResponse>;
+  user_get: UserDto;
   user_getAll: Array<UserDto>;
-  user_getOne: UserDto;
   utility_getTopUpOperators: Utilities_GetOperatorResponse;
   walletCrypto_getAll: Array<WalletCryptoResponse>;
   walletFiat_getAll: WalletFiat;
@@ -886,11 +893,6 @@ export type QueryTvBills_GetBouquetArgs = {
 
 export type QueryTvBills_GetProvidersArgs = {
   input: TvBill_GetTvProvidersInput;
-};
-
-
-export type QueryUser_GetOneArgs = {
-  input: UserGetInfo;
 };
 
 
@@ -1004,20 +1006,23 @@ export type TvBill_ValidateAccountResponse = {
 
 export type UserDto = {
   __typename?: 'UserDto';
-  country?: Maybe<Country>;
+  bvn?: Maybe<Scalars['String']['output']>;
+  bvn_status?: Maybe<CredentialsStatus>;
+  country_code?: Maybe<Country>;
+  dob?: Maybe<Scalars['String']['output']>;
+  dob_status?: Maybe<CredentialsStatus>;
   email?: Maybe<Scalars['String']['output']>;
   firstname?: Maybe<Scalars['String']['output']>;
+  home_address?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   lastname?: Maybe<Scalars['String']['output']>;
   middlename?: Maybe<Scalars['String']['output']>;
-  password?: Maybe<Scalars['String']['output']>;
+  nin?: Maybe<Scalars['String']['output']>;
+  nin_status?: Maybe<CredentialsStatus>;
   phone?: Maybe<Scalars['String']['output']>;
   role?: Maybe<Scalars['String']['output']>;
+  state?: Maybe<Scalars['String']['output']>;
   telegram_id?: Maybe<Scalars['String']['output']>;
-};
-
-export type UserGetInfo = {
-  userId: Scalars['Float']['input'];
 };
 
 export type Utilities_GetOperatorResponse = {
@@ -1300,7 +1305,12 @@ export type Transactions_GetAllQuery = { __typename?: 'Query', transactions_getA
 export type User_GetAllQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type User_GetAllQuery = { __typename?: 'Query', user_getAll: Array<{ __typename?: 'UserDto', telegram_id?: string | null, id: string, country?: Country | null, phone?: string | null, firstname?: string | null, lastname?: string | null, middlename?: string | null, email?: string | null }> };
+export type User_GetAllQuery = { __typename?: 'Query', user_getAll: Array<{ __typename?: 'UserDto', telegram_id?: string | null, id: string, country_code?: Country | null, phone?: string | null, firstname?: string | null, lastname?: string | null, middlename?: string | null, email?: string | null }> };
+
+export type User_GetQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type User_GetQuery = { __typename?: 'Query', user_get: { __typename?: 'UserDto', firstname?: string | null, lastname?: string | null, middlename?: string | null, email?: string | null, country_code?: Country | null, phone?: string | null, bvn?: string | null, bvn_status?: CredentialsStatus | null, nin?: string | null, nin_status?: CredentialsStatus | null, state?: string | null, dob?: string | null, dob_status?: CredentialsStatus | null, home_address?: string | null } };
 
 export type Utility_PurchaseAirtimeMutationVariables = Exact<{
   input: Utilities_PurchaseAirtimeInput;
@@ -1424,7 +1434,8 @@ export const Orders_GetAllForAdminDocument = {"kind":"Document","definitions":[{
 export const Auth_TelegramLoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Auth_TelegramLogin"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Auth_TelegramLoginInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"auth_loginTelegram"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"token"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}}]}}]}}]} as unknown as DocumentNode<Auth_TelegramLoginMutation, Auth_TelegramLoginMutationVariables>;
 export const Utility_GetTopUpOperatorsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"utility_getTopUpOperators"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Utilities_GetOperatorsInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"utility_getTopUpOperators"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"airtime"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"suggestedAmounts"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"maxAmount"}},{"kind":"Field","name":{"kind":"Name","value":"minAmount"}},{"kind":"Field","name":{"kind":"Name","value":"operatorId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"dataPlan"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"operatorId"}},{"kind":"Field","name":{"kind":"Name","value":"plans"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"desc"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"dataBundles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"operatorId"}},{"kind":"Field","name":{"kind":"Name","value":"plans"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"desc"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Utility_GetTopUpOperatorsQuery, Utility_GetTopUpOperatorsQueryVariables>;
 export const Transactions_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Transactions_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"transactions_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"category"}},{"kind":"Field","name":{"kind":"Name","value":"mode"}},{"kind":"Field","name":{"kind":"Name","value":"note"}},{"kind":"Field","name":{"kind":"Name","value":"transaction_hash"}},{"kind":"Field","name":{"kind":"Name","value":"status"}}]}}]}}]} as unknown as DocumentNode<Transactions_GetAllQuery, Transactions_GetAllQueryVariables>;
-export const User_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"User_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"telegram_id"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]} as unknown as DocumentNode<User_GetAllQuery, User_GetAllQueryVariables>;
+export const User_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"User_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"telegram_id"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"country_code"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]} as unknown as DocumentNode<User_GetAllQuery, User_GetAllQueryVariables>;
+export const User_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"user_get"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user_get"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"country_code"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"bvn"}},{"kind":"Field","name":{"kind":"Name","value":"bvn_status"}},{"kind":"Field","name":{"kind":"Name","value":"nin"}},{"kind":"Field","name":{"kind":"Name","value":"nin_status"}},{"kind":"Field","name":{"kind":"Name","value":"state"}},{"kind":"Field","name":{"kind":"Name","value":"dob"}},{"kind":"Field","name":{"kind":"Name","value":"dob_status"}},{"kind":"Field","name":{"kind":"Name","value":"home_address"}}]}}]}}]} as unknown as DocumentNode<User_GetQuery, User_GetQueryVariables>;
 export const Utility_PurchaseAirtimeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Utility_purchaseAirtime"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Utilities_PurchaseAirtimeInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"utility_purchaseAirtime"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<Utility_PurchaseAirtimeMutation, Utility_PurchaseAirtimeMutationVariables>;
 export const Utility_PurchaseDataBundleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Utility_purchaseDataBundle"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Utilities_PurchaseDataBundleInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"utility_purchaseDataBundle"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<Utility_PurchaseDataBundleMutation, Utility_PurchaseDataBundleMutationVariables>;
 export const ElectricityBill_GetProvidersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ElectricityBill_getProviders"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ElectricityBill_ProviderInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"electricityBill_getProviders"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"category"}}]}}]}}]} as unknown as DocumentNode<ElectricityBill_GetProvidersQuery, ElectricityBill_GetProvidersQueryVariables>;

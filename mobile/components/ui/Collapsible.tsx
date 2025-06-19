@@ -18,9 +18,9 @@ export function Collapsible({
       style={{
         width: '100%',
         backgroundColor: theme.card,
-        borderRadius: 8,
+        borderRadius: 5,
         padding: 2,
-        marginBottom: 5,
+        marginBottom: 2,
       }}
     >
       <TouchableOpacity

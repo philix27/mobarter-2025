@@ -1,12 +1,14 @@
 import { HeaderBar } from '@/components/layout/Header'
-import { toast, Wrapper } from '@/components'
+import { Wrapper } from '@/components'
 import { InputButton, InputText } from '@/components/forms'
 import { useState } from 'react'
 import { Api } from '@/graphql'
+import { useResponse } from '@/lib/providers'
 
 export default function Page() {
   const [mutate] = Api.useKyc_addNin()
   const [data, setData] = useState<{ value: string; error?: string }>()
+  const response = useResponse()
 
   const onSubmit = async () => {
     if (data === undefined) {
@@ -16,7 +18,7 @@ export default function Page() {
       })
       return
     }
-
+    response.showLoading(true)
     await mutate({
       variables: {
         input: {
@@ -24,10 +26,10 @@ export default function Page() {
         },
       },
       onCompleted: () => {
-        toast.success('Submitted Successfully')
+        response.showSuccess('NIN Saved')
       },
       onError: () => {
-        toast.error('Not sumitted', 'Check your network connection')
+        response.showError('Oops, could not save')
       },
     })
   }
@@ -46,7 +48,7 @@ export default function Page() {
           value={data?.value}
           error={data?.error}
         />
-        <InputButton title="Submit" onPress={onSubmit} />
+        <InputButton title="Submit" style={{ marginTop: 20 }} onPress={onSubmit} />
       </Wrapper>
     </>
   )
