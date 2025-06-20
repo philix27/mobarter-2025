@@ -131,7 +131,6 @@ export function InputText(props: {
 
         {props.error && <ErrMsg msg={props.error} />}
       </TView>
-      {/* {props.desc && <ErrMsg msg={props.desc} />} */}
     </>
   )
 }

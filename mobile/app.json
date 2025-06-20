@@ -1,11 +1,11 @@
 {
 	"expo": {
-		"name": "mobarter",
+		"name": "Mobarter",
 		"slug": "mobarter",
 		"version": "1.0.0",
 		"orientation": "portrait",
 		"icon": "./assets/images/icon.png",
-		"scheme": "com.thirdweb.demo",
+		"scheme": "com.mobarter.app",
 		"userInterfaceStyle": "automatic",
 		"splash": {
 			"image": "./assets/images/splash.png",
@@ -14,10 +14,10 @@
 		},
 		"ios": {
 			"supportsTablet": true,
-			"bundleIdentifier": "com.thirdweb.demo",
+			"bundleIdentifier": "com.mobarter.app",
 			"associatedDomains": [
-				"webcredentials:thirdweb.com",
-				"applinks:thirdweb.com"
+				"webcredentials:mobarter.com",
+				"applinks:mobarter.com"
 			]
 		},
 		"android": {
@@ -25,14 +25,14 @@
 				"foregroundImage": "./assets/images/adaptive-icon.png",
 				"backgroundColor": "#18222e"
 			},
-			"package": "com.thirdweb.demo",
+			"package": "com.mobarter.app",
 			"intentFilters": [
 				{
 					"autoVerify": true,
 					"action": "VIEW",
 					"data": {
 						"scheme": "https",
-						"host": "thirdweb.com"
+						"host": "mobarter.com"
 					},
 					"category": ["BROWSABLE", "DEFAULT"]
 				}
@@ -75,6 +75,6 @@
 				"projectId": "d1d7acaf-b44a-4425-af35-620596448499"
 			}
 		},
-		"owner": "thirdweb"
+		"owner": "mobarter"
 	}
 }

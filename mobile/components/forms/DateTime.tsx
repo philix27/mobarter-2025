@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
-import RNDateTimePicker, {
-  DateTimePickerAndroid,
-  DateTimePickerEvent,
-} from '@react-native-community/datetimepicker'
+import RNDateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker'
 import { Label } from './Label'
 import { Row, TView } from '../ui'
 import { ViewStyle } from 'react-native'
@@ -23,8 +20,8 @@ export function InputDateTime(props: {
   onChange?: (text: string) => void
 }) {
   const [show, setShow] = useState(false)
-  const [dateSelected, setDateSelected] = useState<string>()
-
+  const [dateSelected, setDateSelected] = useState<Date>(new Date(2000, 6, 27))
+  const [dateFormatted, setFormatted] = useState<string>()
   const theme = useColor()
 
   const formatted = (date: Date) => dayjs(date).format('D MMMM, YYYY')
@@ -35,10 +32,11 @@ export function InputDateTime(props: {
     } = event
 
     if (!date) return
-    setDateSelected(formatted(date))
+    setDateSelected(date)
 
+    setFormatted(formatted(date))
     if (props.onChange) {
-      props.onChange(dateSelected!)
+      props.onChange(formatted(date))
     }
     console.log('Selected date', formatted(date))
   }
@@ -58,19 +56,23 @@ export function InputDateTime(props: {
     >
       {props.label && <Label label={props.label} />}
       <Row
-        title={dateSelected ? dateSelected : 'Pick date'}
+        title={dateFormatted ? dateFormatted : 'Pick a date'}
         icon={<Ionicons name="time" size={20} color={'#fff'} />}
         onClick={() => {
           setShow(!show)
         }}
       />
       {props.error && <ErrMsg msg={props.error} />}
-      {show && (
+      {!show && (
         <RNDateTimePicker
           maximumDate={props.maximumDate}
           minimumDate={props.minimumDate}
-          value={new Date(2000, 6, 27)}
-          collapsable={false}
+          themeVariant="dark"
+          mode="date"
+          display="spinner"
+          design="material"
+          value={dateSelected}
+          //   collapsable={false}
           onChange={setDate}
           style={{
             backgroundColor: theme.background,

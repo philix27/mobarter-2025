@@ -9,6 +9,13 @@ export default function ProfileTab() {
   return (
     <>
       <Row
+        title="Self Protocol"
+        desc=""
+        onClick={() => {
+          router.push('/profile/kyc/self')
+        }}
+      />
+      <Row
         title={
           data
             ? `${data.user_get.firstname} ${data.user_get.lastname} ${data.user_get.middlename}`

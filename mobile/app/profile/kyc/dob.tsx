@@ -18,7 +18,9 @@ export default function Page() {
       })
       return
     }
+    
     response.showLoading(true)
+
     await mutate({
       variables: {
         input: {
