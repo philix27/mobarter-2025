@@ -5,13 +5,14 @@ import { Image, StyleSheet } from 'react-native'
 import { useActiveAccount } from 'thirdweb/react'
 
 import { ThirdwebClient } from 'thirdweb'
+import SignIn from '@/features/signin'
 
 export default function HomeScreen() {
   const account = useActiveAccount()
 
-  if (!account) {
-    router.push('/(auth)/sign-in')
-  }
+  // if (!account) {
+  //   router.push('/(auth)/sign-in')
+  // }
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -21,6 +22,7 @@ export default function HomeScreen() {
         {account ? <TText>Connected </TText> : <TText>Not connected</TText>}
         <TText>Home Page</TText>
       </Link>
+      <SignIn />
     </ParallaxScrollView>
   )
 }
@@ -34,6 +36,3 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
 })
-function createAuth(arg0: { domain: string; client: ThirdwebClient }) {
-  throw new Error('Function not implemented.')
-}

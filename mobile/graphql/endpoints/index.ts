@@ -7,6 +7,7 @@ import * as orders from './orders'
 import * as kyc from './kyc'
 import * as topUp from './topUp'
 import * as user from './user'
+import * as staticFiles from './static'
 export * from './types'
 export * from './fx'
 
@@ -20,4 +21,5 @@ export const Api = {
   ...kyc,
   ...topUp,
   ...user,
+  ...staticFiles,
 }

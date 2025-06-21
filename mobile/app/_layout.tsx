@@ -7,10 +7,11 @@ import React, { useEffect } from 'react'
 import { Dimensions, StatusBar } from 'react-native'
 import { Colors } from '../lib/constants/colors'
 import { RootProviders } from '@/lib/providers'
-import { Drawer } from 'expo-router/drawer'
+// import { Drawer } from 'expo-router/drawer'
 import { useColor } from '@/lib'
-import { DrawerContent } from '@/components/layout'
+// import { DrawerContent } from '@/components/layout'
 import NavigationBar from 'expo-navigation-bar'
+import { Stack } from 'expo-router'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
@@ -34,15 +35,19 @@ export default function RootLayout() {
   if (!loaded) {
     return null
   }
-  
 
   return (
     <RootProviders>
-      <Drawer
+      <Stack>
+        <Stack.Screen name="index" />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="transactions" />
+        <Stack.Screen name="+not-found" />
+      </Stack>
+      {/* <Drawer
         screenOptions={{
           headerShown: false,
           drawerLabelStyle: {
-            // marginLeft: -20,
             color: appColor.text,
           },
           drawerActiveBackgroundColor: appColor.background,
@@ -78,11 +83,7 @@ export default function RootLayout() {
           }}
         />
         <StatusBar backgroundColor={Colors.dark.background} barStyle="light-content" />
-        {/* <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack> */}
-      </Drawer>
+      </Drawer> */}
     </RootProviders>
   )
 }

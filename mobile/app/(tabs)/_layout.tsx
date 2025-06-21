@@ -1,4 +1,4 @@
-import { useDrawer } from '@/components/layout'
+// import { useDrawer } from '@/components/layout'
 import { TabBarIcon } from '@/components/navigation/TabBarIcon'
 
 import { useColor } from '@/hooks/useColor'
@@ -9,7 +9,7 @@ import { TouchableOpacity } from 'react-native'
 
 export default function TabLayout() {
   const theme = useColor()
-  const drawer = useDrawer()
+  // const drawer = useDrawer()
   const pathname = usePathname()
   const isHomePage = pathname === '/home'
 
@@ -59,24 +59,24 @@ export default function TabLayout() {
               </TouchableOpacity>
             )
           },
-          headerLeft: !isHomePage
-            ? undefined
-            : (props: any) => {
-                return (
-                  <TouchableOpacity
-                    style={{ marginLeft: 20, marginRight: 20, flexDirection: 'row', columnGap: 20 }}
-                  >
-                    <Feather
-                      name="menu"
-                      size={24}
-                      color={theme.text}
-                      onPress={() => {
-                        drawer.open()
-                      }}
-                    />
-                  </TouchableOpacity>
-                )
-              },
+          // headerLeft: !isHomePage
+          //   ? undefined
+          //   : (props: any) => {
+          //       return (
+          //         <TouchableOpacity
+          //           style={{ marginLeft: 20, marginRight: 20, flexDirection: 'row', columnGap: 20 }}
+          //         >
+          //           <Feather
+          //             name="menu"
+          //             size={24}
+          //             color={theme.text}
+          //             onPress={() => {
+          //               drawer.open()
+          //             }}
+          //           />
+          //         </TouchableOpacity>
+          //       )
+          //     },
         }}
       />
       <Tabs.Screen

@@ -1,13 +1,12 @@
 import { memo, useMemo, useState } from 'react'
 import { AppStores } from '../lib/zustand'
 import { log } from '@/lib'
-import { ExchangeRate_Response, useFxRate } from '@/graphql'
-import { useFxRates } from '@/graphql/endpoints/fxx'
+import { Api, ExchangeRate_Response } from '@/graphql'
 
 export function usePrice(amountInFiatCurrency: number | string) {
   const store = AppStores.useCountries()
   const [amountToPay, setAmtToPay] = useState(0)
-  const { data: fxData, error } = useFxRates()
+  const { data: fxData, error } = Api.useFxRates()
 
   if (error) {
     // log.error('GET_RATES', error.message);
@@ -29,19 +28,19 @@ export function usePrice(amountInFiatCurrency: number | string) {
   // const rate = fx[iso];
   const rate = fxData!.fxRate_GetAll[iso] as number
 
-  const v = useMemo(() => {
+  useMemo(() => {
     if (typeof amountInFiatCurrency === 'string' && parseFloat(amountInFiatCurrency) < 0) {
       setAmtToPay(0)
       return
     } else if (typeof amountInFiatCurrency === 'number' && amountInFiatCurrency < 0) {
       setAmtToPay(0)
       return
+    } else {
+      const c = parseFloat(amountInFiatCurrency as string) / rate
+      const plusFee = c + 0.1
+      // console.log('Rate', rate);
+      setAmtToPay(plusFee)
     }
-
-    const c = parseFloat(amountInFiatCurrency as string) / rate
-    const plusFee = c + 0.1
-    // console.log('Rate', rate);
-    setAmtToPay(plusFee)
   }, [amountInFiatCurrency])
 
   const handleOnChange = (amountInFiatCurrency: number) => {
@@ -51,5 +50,5 @@ export function usePrice(amountInFiatCurrency: number | string) {
     setAmtToPay(plusFee)
   }
 
-  return { amountToPay, handleOnChange }
+  return { amountToPay: amountToPay, handleOnChange }
 }

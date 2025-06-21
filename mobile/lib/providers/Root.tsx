@@ -1,5 +1,4 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
-import { Slot } from 'expo-router'
 import { ReactNode } from 'react'
 import { BatchHttpLink } from '@apollo/client/link/batch-http'
 import { ThemeProvider } from './ThemeContext'

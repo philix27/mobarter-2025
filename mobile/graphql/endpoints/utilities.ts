@@ -48,8 +48,8 @@ export const useElectricityBillProviders = (variables: QueryElectricityBill_GetP
     QueryResponse<'electricityBill_getProviders'>,
     QueryElectricityBill_GetProvidersArgs
   >(ElectricityBill_GetProvidersDocument, { variables })
-  console.log('Result X22', res.data?.electricityBill_getProviders)
-  console.log('Result X22', res.error)
+  // console.log('Result X22', res.data?.electricityBill_getProviders)
+  // console.log('Result X22', res.error)
   return res
 }
 

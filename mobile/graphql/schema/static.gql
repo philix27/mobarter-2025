@@ -1,0 +1,12 @@
+query static_getTokens {
+  static_getTokens {
+    name
+    address
+    decimals
+    isBuyable
+    isPayable
+    symbol
+    logoUrl
+    chainId
+  }
+}

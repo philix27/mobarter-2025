@@ -8,7 +8,7 @@ export const servicesList: {
   icon: JSX.Element
 }[] = [
   {
-    title: 'Airtime',
+    title: 'TopUps',
     desc: 'Buy airtime with your crypto asset',
     route: '/services/airtime',
     icon: <AntDesign name="phone" size={24} color={'#ffffff'} />,
@@ -26,7 +26,7 @@ export const servicesList: {
   //   icon: <MaterialIcons name="browser-updated" size={24} color={'#fff'} />,
   // },
   {
-    title: 'Electricity Bill',
+    title: 'Electricity',
     desc: 'Pay your light bills',
     route: '/services/electricity',
     icon: <Feather name="send" size={24} color={'#fff'} />,

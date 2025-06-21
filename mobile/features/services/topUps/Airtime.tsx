@@ -27,7 +27,8 @@ export default function Airtime() {
   const { formData, errors, handleChange, setErrors } = useAppForm<typeof formSchema._type>({
     amount: '0',
   })
-  const { amountToPay } = usePrice(store.airtime_amount)
+
+  const amountToPay = AppHooks.usePrice(store.airtime_amount)?.amountToPay
   const response = useResponse()
   const clearErr = () => {
     setErrors('amount', '')

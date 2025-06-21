@@ -1,11 +1,12 @@
 import { IToken } from '@/api'
+import { Static_GetTokenResponse } from '@/graphql'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
 export interface ISlice {
-  tokens?: IToken[]
-  activeToken?: IToken | null
+  tokens?: Static_GetTokenResponse[]
+  activeToken?: Static_GetTokenResponse | null
 }
 export const defaultValues: Required<ISlice> = {
   tokens: [],

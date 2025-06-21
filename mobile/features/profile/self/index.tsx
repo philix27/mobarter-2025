@@ -4,6 +4,8 @@ import { toast, TText, TView } from '@/components/ui'
 import { getUniversalLink, SelfAppBuilder } from '@selfxyz/core'
 import { InputButton } from '@/components/forms'
 import { router } from 'expo-router'
+import { v4 as uuidv4 } from 'uuid'
+
 const rootUrl = process.env.NEXT_PUBLIC_ROOT_URL || 'http://localhost:4545/api/v1'
 
 export default function SelfVerification() {
