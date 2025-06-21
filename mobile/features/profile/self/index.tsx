@@ -11,10 +11,10 @@ export default function SelfVerification() {
   // const [userId, setUserId] = useState<string | null>(uuidv4())
   const [userId, setUserId] = useState<string | null>('4f52f8f6-58d6-49ca-89a4-32eda2a1e455')
 
-  // useEffect(() => {
-  //   // Generate a user ID when the component mounts
-  //   setUserId(uuidv4())
-  // }, [])
+  useEffect(() => {
+    // Generate a user ID when the component mounts
+    setUserId(uuidv4())
+  }, [])
 
   if (!userId) return null
 
