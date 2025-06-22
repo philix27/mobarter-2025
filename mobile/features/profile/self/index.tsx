@@ -1,45 +1,30 @@
-import { useEffect, useState } from 'react'
-
-import { toast, TText, TView } from '@/components/ui'
+import { TText, TView } from '@/components/ui'
 import { getUniversalLink, SelfAppBuilder } from '@selfxyz/core'
 import { InputButton } from '@/components/forms'
 import { router } from 'expo-router'
-import { v4 as uuidv4 } from 'uuid'
+import { useAddress } from '@/hooks/web3/hooks'
 
-const rootUrl = process.env.NEXT_PUBLIC_ROOT_URL || 'http://localhost:4545/api/v1'
-
+const endpoint = process.env.EXPO_PUBLIC_SELF_XYZ_URL
 export default function SelfVerification() {
-  // const { evmAddress } = useAppContext()
-  // const [userId, setUserId] = useState<string | null>(uuidv4())
-  const [userId, setUserId] = useState<string | null>('4f52f8f6-58d6-49ca-89a4-32eda2a1e455')
-
-  useEffect(() => {
-    // Generate a user ID when the component mounts
-    setUserId(uuidv4())
-  }, [])
-
-  if (!userId) return null
+  const address = useAddress()
 
   // Create the SelfApp configuration
   const selfApp = new SelfAppBuilder({
     appName: 'Mobarter',
     scope: 'telegram-mini-app',
-    endpoint: `${rootUrl}/auth-self`,
-    userId,
+    endpoint,
     header: 'A payment solution for Africans',
     userIdType: 'hex', // only for if you want to link the proof with the user address
+    userId: address,
     // logoBase64: logoBase64ToString,
-    // userId: evmAddress,
   }).build()
 
   const deeplink = getUniversalLink(selfApp)
 
-  // selfApp
-  console.log(userId)
   return (
     <TView>
       <TText>Verify your identity</TText>
-      <TText>Open the Self App and scan the QR code {userId}</TText>
+      <TText>Open the Self App and scan the QR code </TText>
 
       <TView>
         <InputButton

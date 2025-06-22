@@ -20,6 +20,7 @@ export function InputButton(props: {
   }
   return (
     <TouchableOpacity
+      disabled={props.isLoading}
       style={{
         width: '50%',
         ...styles.button,

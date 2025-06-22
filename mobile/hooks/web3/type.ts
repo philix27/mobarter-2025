@@ -21,3 +21,22 @@ export const supportedChains: Record<IChains, Chain> = {
   ZKSYNC: zksync,
   LINEA: linea,
 }
+
+import * as tc from 'thirdweb/chains'
+export const supportedTWChains: Record<
+  IChains,
+  Readonly<
+    tc.ChainOptions & {
+      rpc: string
+    }
+  >
+> = {
+  CELO: tc.celo,
+  BASE: tc.base,
+  OPTIMISM: tc.optimism,
+  ETHEREUM: tc.mainnet,
+  ARBITRUM: tc.arbitrum,
+  POLYGON: tc.polygon,
+  ZKSYNC: tc.zkSync,
+  LINEA: tc.linea,
+}

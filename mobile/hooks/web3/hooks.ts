@@ -7,6 +7,7 @@ import { toast } from '@/components'
 import { abi as ERC20_ABI } from './erc20Abi.json'
 import * as t from 'thirdweb'
 import { AppStores } from '@/lib'
+import { useActiveAccount } from 'thirdweb/react'
 
 export function shortString(str: any, len = 5): string {
   if (Array.isArray(str)) {
@@ -53,8 +54,10 @@ export const useWalletClient = () => {
 }
 
 export const useAddress = () => {
-  const c = useWalletClient()
-  return c.account.address
+  const account = useActiveAccount()
+  // const c = useWalletClient()
+  // return c.account.address
+  return account?.address
 }
 
 export function useTransferToken() {
@@ -97,7 +100,7 @@ export const useBalance = () => {
     queryKey: ['balance-' + pc.chain.name],
     queryFn: async () => {
       const balance = await pc.getBalance({
-        address,
+        address: address!,
         blockTag: 'safe',
       })
 

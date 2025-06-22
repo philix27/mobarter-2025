@@ -1,13 +1,45 @@
-import { ParallaxScrollView, Wrapper } from '@/components'
+import { Wrapper } from '@/components'
 import { TText } from '@/components/ui'
-import { Link } from 'expo-router'
-import { Image, StyleSheet, View, useColorScheme } from 'react-native'
+import { Link, router } from 'expo-router'
+import { useColorScheme } from 'react-native'
 import { ConnectEmbed, useActiveAccount, useConnect } from 'thirdweb/react'
-import { ThemedButton } from '@/components/ThemedButton'
 import { inAppWallet } from 'thirdweb/wallets/in-app'
 import { chain, client } from '@/lib'
-import { baseSepolia, ethereum } from 'thirdweb/chains'
-import { ThirdwebClient } from 'thirdweb'
+import { celo } from 'thirdweb/chains'
+import { InputButton } from '@/components/forms'
+import { createThirdwebClient } from 'thirdweb'
+
+export default function SignIn() {
+  const account = useActiveAccount()
+  const theme = useColorScheme()
+  const conn = useConnect()
+  account?.sendTransaction({
+    chainId: 0,
+  })
+  // const account = useActiveAccount()
+
+  // if (!account) {
+  //   router.push('/(auth)/sign-in')
+  // }
+  return (
+    <Wrapper>
+      <Link href={'/home'}>
+        {account ? <TText>Connected </TText> : <TText>Not connected X</TText>}
+      </Link>
+      <TText>Home Page</TText>
+      {account ? (
+        <InputButton
+          title="Get started"
+          onPress={() => {
+            router.push('/home')
+          }}
+        />
+      ) : (
+        <ConnectWithGoogle />
+      )}
+    </Wrapper>
+  )
+}
 
 const wallets = [
   inAppWallet({
@@ -15,34 +47,49 @@ const wallets = [
       options: ['google'],
     },
     smartAccount: {
-      chain: baseSepolia,
+      chain: celo,
       sponsorGas: true,
     },
   }),
 ]
 let isLoggedIn = false
 
-const thirdwebAuth = createAuth({
-  domain: 'localhost:3000',
-  client,
-})
+// const thirdwebAuth = createAuth({
+//   domain: 'localhost:3000',
+//   client,
+// })
 
-export default function SignIn() {
-  const account = useActiveAccount()
-  const theme = useColorScheme()
-  const conn = useConnect()
-
+const ConnectWithGoogle = () => {
+  const { connect, isConnecting } = useConnect()
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={<Image source={require('@/assets/images/title.png')} style={styles.reactLogo} />}
-    >
-      <Link href={'/home'}>
-        {account ? <TText>Connected </TText> : <TText>Not connected X</TText>}
-      </Link>
-      <TText>Home Page</TText>
-      <ConnectWithGoogle />
-      {/* <ConnectEmbed
+    <ConnectEmbed
+      client={client}
+      theme={'dark'}
+      chain={celo}
+      wallets={wallets}
+      // auth={{
+      //   async doLogin(params) {
+      //     // fake delay
+      //     await new Promise((resolve) => setTimeout(resolve, 2000))
+      //     const verifiedPayload = await thirdwebAuth.verifyPayload(params)
+      //     isLoggedIn = verifiedPayload.valid
+      //   },
+      //   async doLogout() {
+      //     isLoggedIn = false
+      //   },
+      //   async getLoginPayload(params) {
+      //     return thirdwebAuth.generatePayload(params)
+      //   },
+      //   async isLoggedIn(address) {
+      //     return isLoggedIn
+      //   },
+      // }}
+    />
+  )
+}
+
+{
+  /* <ConnectEmbed
         client={client}
         theme={theme || 'dark'}
         chain={ethereum}
@@ -64,47 +111,28 @@ export default function SignIn() {
             return isLoggedIn
           },
         }}
-      /> */}
-    </ParallaxScrollView>
-  )
+      /> */
 }
 
-const ConnectWithGoogle = () => {
-  const { connect, isConnecting } = useConnect()
-  return (
-    <ThemedButton
-      title="Connect with Google"
-      loading={isConnecting}
-      loadingTitle="Connecting..."
-      onPress={() => {
-        connect(async () => {
-          const w = inAppWallet({
-            smartAccount: {
-              chain,
-              sponsorGas: true,
-            },
-          })
-          const res = await w.connect({
-            client,
-            strategy: 'google',
-          })
-
-          return w
-        })
-      }}
-    />
-  )
-}
-
-const styles = StyleSheet.create({
-  reactLogo: {
-    height: '100%',
-    width: '100%',
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-})
-function createAuth(arg0: { domain: string; client: ThirdwebClient }) {
-  throw new Error('Function not implemented.')
-}
+// Connect
+// <InputButton
+//   title={isConnecting ? 'Connecting...' : 'Connect with Google'}
+//   isLoading={isConnecting}
+//   style={{ width: '75%' }}
+//   onPress={() => {
+//     connect(async () => {
+//       const w = inAppWallet({
+//         smartAccount: {
+//           chain,
+//           sponsorGas: true,
+//         },
+//       })
+//       const res = await w.connect({
+//         client,
+//         strategy: 'google',
+//       })
+//       console.log('Connection result', res)
+//       return w
+//     })
+//   }}
+// />

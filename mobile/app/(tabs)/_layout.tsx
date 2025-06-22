@@ -95,6 +95,7 @@ export default function TabLayout() {
             <TabBarIcon name={focused ? 'person' : 'person-outline'} color={color} />
           ),
           title: 'Account',
+          // headerShown: false,
         }}
       />
     </Tabs>

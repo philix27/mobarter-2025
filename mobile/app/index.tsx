@@ -1,38 +1,58 @@
-import { ParallaxScrollView, Wrapper } from '@/components'
-import { TText } from '@/components/ui'
-import { Link, router } from 'expo-router'
-import { Image, StyleSheet } from 'react-native'
-import { useActiveAccount } from 'thirdweb/react'
-
-import { ThirdwebClient } from 'thirdweb'
+import { TView } from '@/components'
+import { HeaderBar } from '@/components/layout'
 import SignIn from '@/features/signin'
+import { useColor } from '@/hooks'
+import { memo, ReactNode } from 'react'
+import { View } from 'react-native'
 
 export default function HomeScreen() {
-  const account = useActiveAccount()
-
-  // if (!account) {
-  //   router.push('/(auth)/sign-in')
-  // }
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={<Image source={require('@/assets/images/title.png')} style={styles.reactLogo} />}
-    >
-      <Link href={'/home'}>
-        {account ? <TText>Connected </TText> : <TText>Not connected</TText>}
-        <TText>Home Page</TText>
-      </Link>
+    <Container>
+      <HeaderBar title="" headerShown={false} />
       <SignIn />
-    </ParallaxScrollView>
+    </Container>
   )
 }
 
-const styles = StyleSheet.create({
-  reactLogo: {
-    height: '100%',
-    width: '100%',
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+const Container = memo((props: { children: ReactNode; title?: string; desc?: string }) => {
+  const theme = useColor()
+  return (
+    <>
+      {/* Background overlay */}
+      <View
+        style={{
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          position: 'absolute',
+          // opacity: 0.95,
+          backgroundColor: theme.background,
+        }}
+      />
+      {/* Success content */}
+      <View
+        style={{
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          position: 'absolute',
+          flex: 1,
+          marginHorizontal: 10,
+          marginVertical: 50,
+        }}
+      >
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          {props.children}
+        </View>
+      </View>
+    </>
+  )
 })

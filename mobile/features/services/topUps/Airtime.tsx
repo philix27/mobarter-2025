@@ -28,8 +28,9 @@ export default function Airtime() {
     amount: '0',
   })
 
-  const amountToPay = AppHooks.usePrice(store.airtime_amount)?.amountToPay
+  const { amountToPay } = AppHooks.usePrice(store.airtime_amount)
   const response = useResponse()
+
   const clearErr = () => {
     setErrors('amount', '')
   }
@@ -124,6 +125,7 @@ export default function Airtime() {
         response.showError('Transaction Failed')
       })
   }
+
   return (
     <>
       <InputText
