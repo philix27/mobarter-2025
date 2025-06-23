@@ -30,9 +30,9 @@ type IProps = {
  *  
  * //Component
  * <BottomSheet ref={refRBSheet!} height={600}>
-      <ThemedView>
-        <ThemedText type="default">Hello</ThemedText>
-      </ThemedView>
+      <TView>
+        <TText type="default">Hello</TText>
+      </TView>
     </BottomSheet>
  * ```
  */
