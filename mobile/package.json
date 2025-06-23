@@ -13,6 +13,8 @@
     "gqlgen": "graphql-codegen",
     "gen": "graphql-codegen --config codegen.ts",
     "genY": "graphql-codegen --config codegen.yml",
+    "build:android": "eas build --platform android",
+    "build:ios": "eas build --platform ios",
     "gql watch": "graphql-codegen -w"
   },
   "jest": {
@@ -89,8 +91,7 @@
     "viem": "^2.29.4",
     "wagmi": "^2.15.3",
     "zod": "^3.24.2",
-    "zustand": "^5.0.4",
-    "uuid": "^10.0.0"
+    "zustand": "^5.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.27.1",

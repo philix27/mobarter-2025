@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Image } from "react-native";
-import { ThemedText } from "@/components/ThemedText";
 import { useSocialProfiles } from "thirdweb/react";
 import { ThirdwebClient } from "thirdweb";
 import { resolveScheme } from "thirdweb/storage";
 import { SocialProfile, FarcasterProfile, getSocialProfiles } from "thirdweb/social";
-import { ThemedView } from "./ThemedView";
+
 
 
 import { createThirdwebClient,  } from 'thirdweb'
+import { TText, TView } from "./ui";
 
 // Create the client (do this once and reuse it)
 const client = createThirdwebClient({
@@ -44,13 +43,13 @@ export function SocialProfilesList({
   });
 
   if (profiles.isLoading) {
-    return <ThemedText type="default">Loading...</ThemedText>;
+    return <TText type="default">Loading...</TText>;
   }
 
   return profiles.data?.length ? (
     profiles.data?.map((profile) => <SocialProfileCard profile={profile} client={client} key={profile.type + profile.name} />)
   ) : (
-    <ThemedText type="default">No social profiles found</ThemedText>
+    <TText type="default">No social profiles found</TText>
   );
 }
 
@@ -63,18 +62,18 @@ export function SocialProfileCard({
 }) {
   if (!profile) return null;
   return (
-    <ThemedView style={styles.card}>
+    <TView style={styles.card}>
       <View style={styles.contentContainer}>
         {profile.avatar && (
           <Image source={{ uri: resolveScheme({ client, uri: profile.avatar }) }} style={styles.avatar} />
         )}
         <View style={styles.tableContainer}>
-          <ThemedText type="defaultSemiBold">{profile.name}</ThemedText>
-          <ThemedText type="default">{profile.bio || "-"}</ThemedText>
-          <ThemedText type="subtext">{profile.type}</ThemedText>
+          <TText type="defaultSemiBold">{profile.name}</TText>
+          <TText type="default">{profile.bio || "-"}</TText>
+          <TText type="subtitle">{profile.type}</TText>
         </View>
       </View>
-    </ThemedView>
+    </TView>
   );
 }
 
