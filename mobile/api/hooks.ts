@@ -5,7 +5,6 @@ import { useQuery } from '@tanstack/react-query'
 // import { GiftCardCategoryData } from './GiftCategories'
 import { IChainMetadata, IToken } from './bank'
 import { api } from './instance'
-import { AppStores } from '@/lib'
 
 // export const useGiftCardProviders = (productCategoryId: string) =>
 //   useQuery({

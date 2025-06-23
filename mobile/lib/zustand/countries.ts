@@ -1,11 +1,12 @@
 import { ICountriesData } from '@/api/countries'
+import { Static_GetCountries } from '@/graphql'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
 export interface ISlice {
   countries?: ICountriesData[]
-  activeCountry?: ICountriesData | null
+  activeCountry?: Static_GetCountries | null
   activeIso?: string
 }
 export const defaultValues: Required<ISlice> = {

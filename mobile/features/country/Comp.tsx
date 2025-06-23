@@ -5,21 +5,21 @@ import React, { useRef } from 'react'
 
 import { AppStores } from '@/lib/zustand'
 
-import { useGetCountries } from '@/api/countries'
 import { BtmSheet } from '@/components/layout'
 import { ActivityIndicator } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { useColor } from '@/lib'
+import { Api } from '@/graphql'
 
 export default function SelectCountryCard() {
   const store = AppStores.useCountries()
   const countrySheet = BtmSheet.useRef()
-  const { data, isLoading } = useGetCountries()
+  const { data, loading: isLoading } = Api.useStatic_GetCountries()
   const theme = useColor()
 
   if (isLoading) return <ActivityIndicator />
   if (!data) return <TView />
-  const aCountry = data!.filter((val) => val.isoName === store.activeIso)[0]
+  const aCountry = data!.static_getCountries.filter((val) => val.isoName === store.activeIso)[0]
   return (
     <>
       {aCountry && (
@@ -36,7 +36,7 @@ export default function SelectCountryCard() {
 
       <BtmSheet.Modal ref={countrySheet!}>
         {data &&
-          data.map((item, i) => {
+          data.static_getCountries.map((item, i) => {
             return (
               <Row
                 key={i}

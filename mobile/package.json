@@ -13,7 +13,7 @@
     "gqlgen": "graphql-codegen",
     "gen": "graphql-codegen --config codegen.ts",
     "genY": "graphql-codegen --config codegen.yml",
-    "build:android": "eas build --platform android",
+    "build:a": "eas build --platform android",
     "build:ios": "eas build --platform ios",
     "gql watch": "graphql-codegen -w"
   },

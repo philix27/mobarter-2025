@@ -11,8 +11,6 @@ query static_getTokens {
   }
 }
 
-
-
 query static_getLinks {
   static_getLinks {
     title
@@ -21,5 +19,30 @@ query static_getLinks {
     url
     category
     group
+  }
+}
+
+query static_getCountry {
+  static_getCountries {
+    name
+    isoName
+    callingCodes
+    continent
+    currencyCode
+    currencyName
+    currencySymbol
+    flag
+  }
+}
+
+
+query static_getChain {
+  static_getChains {
+    name
+    rpcUrl
+    chainId
+    explorerUrl
+    explorerApiUrl
+    logoUrl
   }
 }
