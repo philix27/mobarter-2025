@@ -9,7 +9,6 @@ import * as topUp from './topUp'
 import * as user from './user'
 import * as staticFiles from './static'
 export * from './types'
-export * from './fx'
 
 export const Api = {
   ...auth,

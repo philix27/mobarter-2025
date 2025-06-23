@@ -3,8 +3,9 @@ import { getUniversalLink, SelfAppBuilder } from '@selfxyz/core'
 import { InputButton } from '@/components/forms'
 import { router } from 'expo-router'
 import { useAddress } from '@/hooks/web3/hooks'
+import { env } from '@/lib/env'
 
-const endpoint = process.env.EXPO_PUBLIC_SELF_XYZ_URL
+
 export default function SelfVerification() {
   const address = useAddress()
 
@@ -12,7 +13,7 @@ export default function SelfVerification() {
   const selfApp = new SelfAppBuilder({
     appName: 'Mobarter',
     scope: 'telegram-mini-app',
-    endpoint,
+    endpoint: env.BACKEND_SELF_ENDPOINT,
     header: 'A payment solution for Africans',
     userIdType: 'hex', // only for if you want to link the proof with the user address
     userId: address,

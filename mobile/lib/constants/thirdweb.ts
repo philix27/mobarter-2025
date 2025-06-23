@@ -1,8 +1,9 @@
 import { createThirdwebClient, getContract } from 'thirdweb'
 import { base, baseSepolia } from 'thirdweb/chains'
 import { inAppWallet } from 'thirdweb/wallets/in-app'
+import { env } from '../env'
 
-const clientId = process.env.EXPO_PUBLIC_THIRDWEB_CLIENT_ID!
+const clientId = env.THIRDWEB_CLIENT_ID!
 
 if (!clientId) {
   throw new Error('Missing EXPO_PUBLIC_THIRDWEB_CLIENT_ID - make sure to set it in your .env file')

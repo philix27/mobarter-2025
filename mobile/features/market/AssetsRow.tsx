@@ -24,7 +24,7 @@ export function AssetsRow(params: {
     queryKey: ['token-' + params.currency],
     queryFn: async () => {
       const res = await getBalance({
-        address,
+        address: address!,
         tokenAddress: params.tokenAddr,
         chianId: params.chainId,
       })

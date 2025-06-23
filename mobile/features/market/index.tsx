@@ -12,7 +12,7 @@ export default function MarketScreen() {
         <Balance />
         <QuickActions />
         <TView style={{ height: 15 }} />
-        <AssetsTab />
+        {/* <AssetsTab /> */}
         <AssetsCrypto />
       </TView>
     </Wrapper>

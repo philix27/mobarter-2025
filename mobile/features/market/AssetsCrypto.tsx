@@ -52,26 +52,6 @@ export function CryptoTokensList(props: {
         <FlatList
           data={getData()}
           renderItem={({ item }) => {
-            // const s = item.symbol
-            // const token = Tokens[s]
-
-            // if (token === undefined) {
-            //   return (
-            //     <AssetsRow
-            //       imgUrl={item.logoUrl as any}
-            //       chainId={item.chianId.toString()}
-            //       currency={item.symbol}
-            //       tokenAddr={item.address}
-            //       tokenPrice={item.tokenPrice}
-            //       performance={item.name}
-            //       onPress={() => {
-            //         storeTokens.update({ activeToken: item })
-            //         return
-            //       }}
-            //     />
-            //   )
-            // }
-
             return (
               <AssetsRow
                 imgUrl={item.logoUrl as any}

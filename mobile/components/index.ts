@@ -1,7 +1,3 @@
-// export * from "./WrapperAuth";
-// export * from "./BottomTabBar";
-// export * from "./Header";
-// export * from "./Gutter";
 export * from './ui/Collapsible'
 export * from './ExternalLink'
 export * from './ui/IconRound'

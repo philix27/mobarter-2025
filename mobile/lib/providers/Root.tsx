@@ -1,6 +1,5 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import { ReactNode } from 'react'
-import { BatchHttpLink } from '@apollo/client/link/batch-http'
 import { ThemeProvider } from './ThemeContext'
 import Toast from 'react-native-toast-message'
 import { AppStores } from '../zustand'
@@ -8,31 +7,26 @@ import React from 'react'
 import ReactQueryProvider from './Tanstack'
 import { ThirdwebProvider } from 'thirdweb/react'
 import ResponseProvider from './ResponseProvider'
+import { env } from '../env'
 
-const token = process.env.EXPO_PUBLIC_SERVER_TEST_TOKEN!
-const httpLink = new BatchHttpLink({
-  // uri: 'http://172.20.10.4:4545/graphql',
-  uri: process.env.EXPO_PUBLIC_SERVER_GQL,
-  batchInterval: 10,
-})
-
-const apollo = new ApolloClient({
-  // link: httpLink,
-  uri: process.env.EXPO_PUBLIC_SERVER_GQL,
-  headers: {
-    Authorization: `Bearer ${token}`,
-    // Authorization: `Bearer ${store.token}`,
-  },
-  cache: new InMemoryCache(),
-})
+// const token = process.env.EXPO_PUBLIC_SERVER_TEST_TOKEN!
 
 export function RootProviders(props: { children: ReactNode }) {
   const store = AppStores.useUserInfo()
+  const token = store.token
+
+  const apollo = new ApolloClient({
+    uri: env.BACKEND_GRAPHQL,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    cache: new InMemoryCache(),
+  })
 
   return (
     <ReactQueryProvider>
-      <ApolloProvider client={apollo}>
-        <ThirdwebProvider>
+      <ThirdwebProvider>
+        <ApolloProvider client={apollo}>
           {/* <WagmiProvider config={config}> */}
           <ThemeProvider>
             <ResponseProvider>
@@ -42,8 +36,8 @@ export function RootProviders(props: { children: ReactNode }) {
             </ResponseProvider>
           </ThemeProvider>
           {/* </WagmiProvider> */}
-        </ThirdwebProvider>
-      </ApolloProvider>
+        </ApolloProvider>
+      </ThirdwebProvider>
     </ReactQueryProvider>
   )
 }
