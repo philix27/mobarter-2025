@@ -32,4 +32,4 @@ const _env: Record<typeof dev, IEnv> = {
   },
 }
 
-export const env = _env['development']
+export const env = _env["production"]
