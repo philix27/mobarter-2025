@@ -10,3 +10,16 @@ query static_getTokens {
     chainId
   }
 }
+
+
+
+query static_getLinks {
+  static_getLinks {
+    title
+    desc
+    imgLink
+    url
+    category
+    group
+  }
+}

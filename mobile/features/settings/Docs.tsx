@@ -1,30 +1,30 @@
-import {Row} from '@/components/ui'
-import { AppStores } from '@/lib'
+import { Row } from '@/components/ui'
 import React from 'react'
 import { Linking } from 'react-native'
-import { useGetLinksDocs } from '@/api'
 import { TView } from '@/components'
+import { Api, StaticLinkGroup } from '@/graphql'
 
 export default function Docs() {
-  const store = AppStores.useUserInfo()
-  const { data, isLoading } = useGetLinksDocs()
+  const { data, loading } = Api.useStatic_GetLinks()
 
-  if (isLoading) {
+  if (loading) {
     return <TView />
   }
 
   return (
     <>
-      {data?.map((val, i) => (
-        <Row
-          key={i}
-          title={val.title}
-          desc={val.desc}
-          onClick={() => {
-            Linking.openURL(val.url)
-          }}
-        />
-      ))}
+      {data?.static_getLinks
+        .filter((v) => v.group === StaticLinkGroup.Docs)
+        .map((val, i) => (
+          <Row
+            key={i}
+            title={val.title}
+            desc={val.desc || undefined}
+            onClick={() => {
+              Linking.openURL(val.url)
+            }}
+          />
+        ))}
     </>
   )
 }

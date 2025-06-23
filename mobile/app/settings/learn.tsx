@@ -2,10 +2,10 @@ import { Wrapper, HeaderBar } from '@/components/layout'
 import React from 'react'
 import { Row, TView } from '@/components/ui'
 import { ActivityIndicator, Linking } from 'react-native'
-import { useGetLinksLearn } from '@/api'
+import { Api, StaticLinkGroup } from '@/graphql'
 
 export default function Page() {
-  const { data, isLoading } = useGetLinksLearn()
+  const { data, loading: isLoading } = Api.useStatic_GetLinks()
 
   if (isLoading) {
     return (
@@ -21,16 +21,18 @@ export default function Page() {
       <HeaderBar title="Learn" showBackBtn backTo="/settings" />
       <Wrapper>
         <TView style={{ width: '100%' }}>
-          {data?.map((val, i) => (
-            <Row
-              key={i}
-              title={val.title}
-              desc={val.desc}
-              onClick={() => {
-                Linking.openURL(val.url)
-              }}
-            />
-          ))}
+          {data?.static_getLinks
+            .filter((v) => v.group === StaticLinkGroup.Docs)
+            .map((val, i) => (
+              <Row
+                key={i}
+                title={val.title}
+                desc={val.desc || undefined}
+                onClick={() => {
+                  Linking.openURL(val.url)
+                }}
+              />
+            ))}
         </TView>
       </Wrapper>
     </>

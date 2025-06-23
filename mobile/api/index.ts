@@ -1,6 +1,4 @@
-export * from './getAccountInfo'
 export * from './getTxn'
 export * from './bank'
 export * from './hooks'
-export * from './links'
 export * from './countries'
