@@ -1,10 +1,6 @@
 import { TView } from '@/components/ui/TView'
-
 import { Row } from '@/components/ui/Row'
-import React, { useRef } from 'react'
-
 import { AppStores } from '@/lib/zustand'
-
 import { BtmSheet } from '@/components/layout'
 import { ActivityIndicator } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'

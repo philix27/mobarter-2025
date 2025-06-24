@@ -1,4 +1,4 @@
-import { AntDesign, Feather, MaterialIcons } from '@expo/vector-icons'
+import { AntDesign, Feather, FontAwesome, Fontisto, MaterialIcons } from '@expo/vector-icons'
 import { JSX } from 'react'
 
 export const servicesList: {
@@ -8,10 +8,16 @@ export const servicesList: {
   icon: JSX.Element
 }[] = [
   {
-    title: 'TopUps',
+    title: 'Airtime',
     desc: 'Buy airtime with your crypto asset',
     route: '/services/airtime',
     icon: <AntDesign name="phone" size={24} color={'#ffffff'} />,
+  },
+  {
+    title: 'Data Plans',
+    desc: 'Buy airtime with your crypto asset',
+    route: '/services/airtime',
+    icon: <MaterialIcons name="network-check" size={24} color={'#ffffff'} />,
   },
   // {
   //   title: 'Data Plans',
@@ -29,19 +35,25 @@ export const servicesList: {
     title: 'Electricity',
     desc: 'Pay your light bills',
     route: '/services/electricity',
-    icon: <Feather name="send" size={24} color={'#fff'} />,
+    icon: <FontAwesome name="lightbulb-o" size={24} color="#fff" />,
   },
   {
     title: 'TV',
     desc: 'Subscribe your Cable TVs (GoTv and DSTv)',
     route: '/services/tv',
-    icon: <Feather name="send" size={24} color={'#fff'} />,
+    icon: <Fontisto name="tv" size={17} color="#fff" />,
   },
   {
     title: 'Betting',
     desc: 'Fund betting wallets',
     route: '/services/betting',
-    icon: <Feather name="send" size={24} color={'#fff'} />,
+    icon: <FontAwesome name="soccer-ball-o" size={24} color="#fff" />,
+  },
+  {
+    title: 'Gift cards',
+    desc: 'Buy giftcards with your crypto asset',
+    route: '/services/betting',
+    icon: <MaterialIcons name="wallet-giftcard" size={24} color="#fff" />,
   },
   // {
   //   title: 'Schedule Payments',

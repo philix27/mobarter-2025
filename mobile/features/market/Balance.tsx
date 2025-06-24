@@ -1,38 +1,42 @@
 import { TView } from '@/components/ui'
 import { useColor } from '@/hooks/useColor'
-import AppHooks from '@/hooks'
-import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import { Text } from 'react-native'
-import { useCountries } from '@/lib/zustand/countries'
-import { api } from '@/api/instance'
 
-const useGetTokenBalance = () => {
-  const address = AppHooks.useAddress()
-  const country = useCountries()
-
-  return useQuery({
-    queryKey: ['useGetTokenBalance'],
-    queryFn: async () => {
-      const res = await api.get(`/api/tokens/total-balance`, {
-        params: { address, country: country.activeIso },
-      })
-
-      // const resBalance = await getBalance({
-      //   address,
-      //   tokenAddress: params.tokenAddr,
-      //   chianId: params.chainId,
-      // })
-      return res.data as number
-    },
-  })
-}
+import { AppStores, client } from '@/lib'
+import { useWalletBalance } from 'thirdweb/react'
+import { celo } from 'thirdweb/chains'
+import { getBalance } from 'thirdweb/extensions/erc20'
+import { formatTokenBalance } from './Balance/getBalance'
+import { useQuery } from '@tanstack/react-query'
+import { useAddress } from '@/hooks/web3/hooks'
 
 export default function Balance() {
   const appColor = useColor()
+  const address = useAddress()
 
-  const { data, isLoading } = useGetTokenBalance()
+  // getBalance()
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['balance', address],
+    queryFn: async () => {
+      const contract = '0x471EcE3750Da237f93B8E339c536989b8978a438' as `0x${string}`
+      const balance = await getBalance({
+        address: address!,
+        contract: { address: contract, chain: celo, client: client },
+      })
+      return balance
+    },
+  })
 
+  // const { data, isLoading, isError } = useWalletBalance({
+  //   chain: celo,
+  //   address: account.address,
+  //   client,
+  // })
+  const store = AppStores.useCountries()
+  if (isError) {
+    return <TView>Error loading balance</TView>
+  }
   return (
     <TView
       style={{
@@ -46,7 +50,9 @@ export default function Balance() {
         justifyContent: 'center',
       }}
     >
-      <Text style={{ fontSize: 34, color: appColor.text, fontWeight: 600 }}>{data} USD</Text>
+      <Text style={{ fontSize: 34, color: appColor.text, fontWeight: 600 }}>
+        {formatTokenBalance(parseInt(data?.value?.toString() ?? '0'))} CELO
+      </Text>
       <Text
         style={{
           fontSize: 17,
@@ -55,7 +61,8 @@ export default function Balance() {
           marginTop: 5,
         }}
       >
-        ~ {isLoading ? '*.**' : data! * 1600} NGN
+        ~ {isLoading ? '*.**' : parseFloat(data?.value?.toString() ?? '0') * 1600}
+        {store.activeCountry?.currencySymbol}
       </Text>
     </TView>
   )

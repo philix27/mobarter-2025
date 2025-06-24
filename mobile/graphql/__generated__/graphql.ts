@@ -928,7 +928,7 @@ export type Static_GetCountries = {
   currencyName: Scalars['String']['output'];
   currencySymbol: Scalars['String']['output'];
   flag: Scalars['String']['output'];
-  isoName: Scalars['String']['output'];
+  isoName: Country;
   name: Scalars['String']['output'];
 };
 
@@ -1352,7 +1352,7 @@ export type Static_GetLinksQuery = { __typename?: 'Query', static_getLinks: Arra
 export type Static_GetCountryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Static_GetCountryQuery = { __typename?: 'Query', static_getCountries: Array<{ __typename?: 'Static_GetCountries', name: string, isoName: string, callingCodes: string, continent: string, currencyCode: string, currencyName: string, currencySymbol: string, flag: string }> };
+export type Static_GetCountryQuery = { __typename?: 'Query', static_getCountries: Array<{ __typename?: 'Static_GetCountries', name: string, isoName: Country, callingCodes: string, continent: string, currencyCode: string, currencyName: string, currencySymbol: string, flag: string }> };
 
 export type Static_GetChainQueryVariables = Exact<{ [key: string]: never; }>;
 

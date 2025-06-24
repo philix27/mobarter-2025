@@ -26,9 +26,7 @@ export default function SellCryptoOrder() {
   const address = AppHooks.useAddress()
   // const balance = useTokenBalance(TokenId.cUSD)
   const token = storeTokens.activeToken
-  const { handleOnChange: handlePriceChange, amountToPay } = AppHooks.usePrice(
-    parseFloat(amountFiat?.value || '0')
-  )
+  const { amountToPay } = AppHooks.usePrice(parseFloat(amountFiat?.value || '0'))
   const account = useBankAccount()
   const { offRamp } = AppHooks.useCollectors()
   const response = useResponse()
@@ -88,7 +86,7 @@ export default function SellCryptoOrder() {
               status: OrderStatus.Pending,
               action_user: OrderActions.LockCrypto,
               merchant_id: 1,
-              wallet_customer: address,
+              wallet_customer: address!,
               wallet_merchant: offRamp,
               txn_hash: txn_hash,
               mode: OrderMode.Express,
@@ -113,7 +111,9 @@ export default function SellCryptoOrder() {
 
   const validateAmount = () => {
     if (!storeTokens.activeToken) return undefined
-    const _tokenBal = parseFloat(storeTokens.activeToken.balance)
+    // todo: get token balance from store
+    const _tokenBal = 50
+    // const _tokenBal = parseFloat(storeTokens.activeToken.)
     if (_tokenBal <= 0) return undefined
     if (amountToPay === undefined) return undefined
 
@@ -138,7 +138,6 @@ export default function SellCryptoOrder() {
             return
           }
           setAmount({ value: text, error: undefined })
-          handlePriceChange(parseFloat(text))
         }}
         inputStyle={{ fontWeight: '700' }}
       />

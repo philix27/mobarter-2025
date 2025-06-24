@@ -58,7 +58,7 @@ export function CryptoTokensList(props: {
                 chainId={item.chainId.toString()}
                 currency={item.symbol}
                 tokenAddr={item.address}
-                tokenPrice={'api'}
+                tokenPrice={''}
                 performance={item.name}
                 onPress={() => {
                   storeTokens.update({ activeToken: item })
