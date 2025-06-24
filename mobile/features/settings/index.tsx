@@ -1,7 +1,7 @@
 import { Wrapper } from '@/components/layout'
 import { Row } from '@/components/ui'
 import { useContext } from 'react'
-import { FontAwesome5, Ionicons, MaterialIcons } from '@expo/vector-icons'
+import { FontAwesome5, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 import { AppStores } from '@/lib/zustand'
 import { Collapsible } from '@/components'
 import { router } from 'expo-router'
@@ -15,9 +15,16 @@ import SelectPaymentToken from './SelectPaymentToken'
 export default function SettingsScreen() {
   const store = AppStores.useUserInfo()
   const { toggleTheme } = useContext(ThemeContext)
-
   return (
     <>
+      <Row
+        title="Bank accounts"
+        desc="Manage bank account details"
+        icon={<MaterialCommunityIcons name="bank-outline" size={24} color="#fff" />}
+        onClick={() => {
+          router.push('/bank')
+        }}
+      />
       <SelectCountry />
       <SelectPaymentToken />
       <Row

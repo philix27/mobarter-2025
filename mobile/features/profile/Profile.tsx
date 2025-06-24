@@ -36,12 +36,7 @@ export default function ProfileScreen() {
           },
         ]}
       />
-      {/* <Collapsible title={'Personal Info'}>
-        <TWInfo />
-      </Collapsible> */}
-      {/* <Collapsible title={'KYC'}>
-        <Personal />
-      </Collapsible> */}
+
       <TView style={{ paddingTop: 10, width: '100%' }}>
         {store.activeTab === 'PROFILE' ? <ProfileTab /> : <SettingsScreen />}
       </TView>

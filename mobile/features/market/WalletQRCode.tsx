@@ -22,12 +22,12 @@ export default function WalletQRCode() {
         }}
       >
         <QRCode value={address} logoBackgroundColor="transparent" size={310} />
-        <TText style={{ textAlign: 'center', marginVertical: 10 }}>{shortenAddress(address)}</TText>
+        <TText style={{ textAlign: 'center', marginVertical: 10 }}>{shortenAddress(address!)}</TText>
 
         <InputButton
           title="Copy"
           onPress={async () => {
-            await ClipboardSet(address)
+            await ClipboardSet(address!)
           }}
         />
       </TView>

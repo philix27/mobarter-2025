@@ -1,7 +1,7 @@
 import { Row, TView } from '@/components/ui'
 import React, { useState } from 'react'
 import { useColor } from '@/hooks/useColor'
-import { ViewStyle } from 'react-native'
+import { ScrollView, ViewStyle } from 'react-native'
 import { Label } from './Label'
 import { BtmSheet } from '@/components/layout'
 import ErrMsg from './ErrMsg'
@@ -42,40 +42,22 @@ export function InputSelect(params: {
       </TView>
 
       <BtmSheet.Modal ref={refRBSheet!}>
-        {params.items.map((item, i) => (
-          <Row
-            key={i}
-            title={item.label}
-            desc={item.value}
-            imgUrl={item.icon}
-            onClick={() => {
-              setSelectedValue(item.value)
-              if (params.onValueChange) {
-                params.onValueChange(item.value)
-              }
-            }}
-          />
-        ))}
-        {/* <Picker
-          style={{
-            width: '100%',
-            backgroundColor: theme.background,
-            height: 'auto',
-          }}
-          selectedValue={selectedValue}
-          onValueChange={(value) => {
-            setSelectedValue(value)
-            if (params.onValueChange) {
-              params.onValueChange(value)
-            }
-          }}
-          collapsable
-          mode="dropdown"
-        >
+        <ScrollView style={{width: '100%', paddingBottom: 20}}>
           {params.items.map((item, i) => (
-            <Picker.Item key={i} label={item.label} value={item.value} />
+            <Row
+              key={i}
+              title={item.label}
+              desc={item.value}
+              imgUrl={item.icon}
+              onClick={() => {
+                setSelectedValue(item.value)
+                if (params.onValueChange) {
+                  params.onValueChange(item.value)
+                }
+              }}
+            />
           ))}
-        </Picker> */}
+        </ScrollView>
       </BtmSheet.Modal>
     </>
   )

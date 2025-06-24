@@ -5,6 +5,7 @@ import { useColor } from '@/hooks/useColor'
 import { TText, TView } from '../ui'
 import { ViewStyle } from 'react-native'
 import { device } from '@/lib'
+import { ScrollView } from 'react-native'
 
 type IProps = {
   children: ReactNode
@@ -86,6 +87,7 @@ export const BottomSheet = forwardRef<any, IProps>(({ maxHeight = 550, ...props 
           <TText style={{ fontSize: 18, fontWeight: '700' }}>{props.title}</TText>
         </TView>
       )}
+
       <TView
         style={{
           paddingBottom: device.isiOS ? 50 : 20,

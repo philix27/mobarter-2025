@@ -24,7 +24,7 @@ export default function BettingWallet() {
 
   const countryStore = AppStores.useCountries()
   const country = countryStore.activeCountry
-  const { data, loading } = Api.useTV_GetProviders({
+  const { data, loading } = Api.useFundBetting_getProviders({
     input: { countryCode: country!.isoName },
   })
   const { formData, errors, handleChange, setErrors, setFormData } = useAppForm<
@@ -102,7 +102,7 @@ export default function BettingWallet() {
             handleChange('operator', v)
             clearErr()
           }}
-          items={data?.tvBills_getProviders.map((val) => {
+          items={data?.fundBetting_getProviders.map((val) => {
             return {
               label: val.name,
               value: val.name,
@@ -112,36 +112,21 @@ export default function BettingWallet() {
         />
       )}
 
-      <TView
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-evenly',
-          width: '100%',
-          margin: 0,
-          padding: 0,
-        }}
-      >
-        <InputButton
-          title="Prepaid"
-          variant={formData.isPrepaid ? 'primary' : 'secondary'}
-          style={{ width: '50%', borderRadius: 0 }}
-          onPress={() => {
-            setFormData({ ...formData, isPrepaid: true })
-          }}
-        />
-
-        <InputButton
-          title="Postpaid"
-          variant={!formData.isPrepaid ? 'primary' : 'secondary'}
-          style={{ width: '50%', borderRadius: 0 }}
-          onPress={() => {
-            setFormData({ ...formData, isPrepaid: false })
-          }}
-        />
-      </TView>
-
       <InputText
-        label={'Meter/Account Number'}
+        label={'Service ID'}
+        value={formData.accountNo}
+        onChangeText={(text) => {
+          if (text.length > 10) return
+          handleChange('accountNo', text)
+          clearErr()
+        }}
+        placeholder={'Enter accountNo'}
+        error={errors && errors?.accountNo && errors!.accountNo}
+        keyboardType="number-pad"
+      />
+      
+      <InputText
+        label={'Customer ID'}
         value={formData.accountNo}
         onChangeText={(text) => {
           if (text.length > 10) return
