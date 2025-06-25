@@ -5,14 +5,37 @@ import { TView, Row } from '@/components'
 import { Label } from '@/components/forms'
 import { useColor, AppStores } from '@/lib'
 import { Ionicons } from '@expo/vector-icons'
+import { useQuery } from '@tanstack/react-query'
+
+import { useAddress } from '@/hooks/web3/hooks'
+import { getBalance } from '../market/Balance/getBalance'
 
 export function SelectTokenCard({ ...props }: { group?: ITokenCategory }) {
   const theme = useColor()
   const storeTokens = AppStores.useTokens()
   const token = storeTokens.activeToken
   const confirmModal = BtmSheet.useRef()
+  const address = useAddress()
+
+  const { data: balance, isLoading } = useQuery({
+    // queryKey: [],
+    queryKey: ['token-' + token?.symbol],
+    queryFn: async () => {
+      if (!token) throw new Error('Token is not selected')
+      const res = await getBalance({
+        address: address!,
+        chianId: token.chainId.toString(),
+        tokenAddress: token.address,
+        decimals: token.decimals,
+      })
+
+      return res
+    },
+    refetchOnMount: true,
+  })
+
   // todo: display appropriate balance
-  
+
   return (
     <>
       <TView>
@@ -20,7 +43,7 @@ export function SelectTokenCard({ ...props }: { group?: ITokenCategory }) {
         <Row
           title={token?.name ? token.name : 'Select token'}
           imgUrl={token?.logoUrl}
-          desc={`Available:  ${token?.symbol}`}
+          desc={`Available: ${balance}  ${token?.symbol}`}
           trailing={<Ionicons name="caret-down" size={20} color={theme.muted} />}
           onClick={() => {
             confirmModal.current.open()

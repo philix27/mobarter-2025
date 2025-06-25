@@ -15,22 +15,27 @@ export function AssetsRow(params: {
   tokenPrice: string
   performance: string
   tokenAddr: string
+  decimals?: number
   onPress?: VoidFunction
 }) {
   const appColor = useColor()
   const bgColor = appColor.card
   const address = Hooks.useAddress()
+
   const { data: balance, isLoading } = useQuery({
+    // queryKey: [],
     queryKey: ['token-' + params.currency],
     queryFn: async () => {
       const res = await getBalance({
         address: address!,
         tokenAddress: params.tokenAddr,
         chianId: params.chainId,
+        decimals: params.decimals,
       })
 
       return res
     },
+    refetchOnMount: true,
   })
 
   return (

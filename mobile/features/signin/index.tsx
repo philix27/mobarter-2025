@@ -84,7 +84,7 @@ function Btn() {
       await w.connect({
         client,
         strategy: 'google',
-      })
+      }) 
 
       return w
     })

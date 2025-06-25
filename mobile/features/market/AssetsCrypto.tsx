@@ -60,6 +60,7 @@ export function CryptoTokensList(props: {
                 tokenAddr={item.address}
                 tokenPrice={''}
                 performance={item.name}
+                decimals={item.decimals}
                 onPress={() => {
                   storeTokens.update({ activeToken: item })
                   return

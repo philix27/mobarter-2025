@@ -16,10 +16,12 @@ export async function getBalance({
   chianId,
   address,
   tokenAddress,
+  decimals,
 }: {
   chianId: string
   address: string
   tokenAddress: string
+  decimals?: number
 }) {
   if (!isAddress(address)) {
     throw new Error('Invalid Address')
@@ -37,13 +39,14 @@ export async function getBalance({
     args: [address],
   })) as number
 
-  return formatTokenBalance(tokenBalance)
+  // return tokenBalance.toString()
+  return formatTokenBalance(tokenBalance, decimals)
 }
 
 export function formatEtherBalance(balance: bigint, decimals = 18, precision = 6) {
   const divisor = 10 ** decimals
   const ether = Number(balance) / divisor
-  return ether.toFixed(precision) // returns a string like "0.1234"
+  return ether.toFixed(precision) + '--' + decimals // returns a string like "0.1234"
 }
 
 /**

@@ -8,6 +8,7 @@ import ReactQueryProvider from './Tanstack'
 import { ThirdwebProvider } from 'thirdweb/react'
 import ResponseProvider from './ResponseProvider'
 import { env } from '../env'
+import TransactionsProvider from './TransactionsProvider'
 
 // const token = process.env.EXPO_PUBLIC_SERVER_TEST_TOKEN!
 
@@ -30,9 +31,11 @@ export function RootProviders(props: { children: ReactNode }) {
           {/* <WagmiProvider config={config}> */}
           <ThemeProvider>
             <ResponseProvider>
-              {/* <Slot /> */}
-              {props.children}
-              <Toast position="top" />
+              <TransactionsProvider>
+                {/* <Slot /> */}
+                {props.children}
+                <Toast position="top" />
+              </TransactionsProvider>
             </ResponseProvider>
           </ThemeProvider>
           {/* </WagmiProvider> */}
