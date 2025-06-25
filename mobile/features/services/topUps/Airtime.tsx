@@ -2,7 +2,6 @@ import { BtmSheet } from '@/components/layout'
 import { z } from 'zod'
 import { InputButton, InputText } from '@/components/forms'
 import { useAppForm, AppStores } from '@/lib'
-import { usePrice } from '@/hooks/usePrice'
 import { isDev } from '@/lib/constants/env'
 import { toast, TText, TView } from '@/components/ui'
 

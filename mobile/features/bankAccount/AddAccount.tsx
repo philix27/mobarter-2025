@@ -1,13 +1,11 @@
 import { InputButton, InputSelect, InputText } from '@/components/forms'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm, UseFormReturn } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import { toast, TView } from '@/components'
 import { BtmSheet } from '@/components/layout'
 import { ActivityIndicator } from 'react-native'
-import { TText } from '@/components/ui'
-import { useState } from 'react'
 import { Api } from '@/graphql'
 
 const formSchema = z.object({

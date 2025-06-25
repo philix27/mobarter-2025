@@ -1,6 +1,4 @@
 import React from 'react'
-import { RenderComponents } from '../sdui/CompsWrapper'
-import { ActivityIndicator } from 'react-native'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
 import { LoadingIndicator, TText } from '@/components/ui'

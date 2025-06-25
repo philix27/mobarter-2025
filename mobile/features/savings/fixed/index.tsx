@@ -1,5 +1,4 @@
 import { TView, Wrapper } from '@/components'
-import variables from '@/lib/constants/variables'
 import React from 'react'
 import { useSavings } from '../zustand'
 import ViewComp from './View'

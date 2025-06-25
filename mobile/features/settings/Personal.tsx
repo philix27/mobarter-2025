@@ -1,6 +1,6 @@
 import { AppStores } from '@/lib/zustand'
 import { InputButton } from '@/components/forms'
-import { Card, InfoRow, SectionTitle } from './Card'
+import { InfoRow,  } from './Card'
 
 export default function Personal() {
   const store = AppStores.useUserInfo()

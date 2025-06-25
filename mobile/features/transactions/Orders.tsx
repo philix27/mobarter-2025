@@ -1,7 +1,5 @@
 // import { useGetUi } from '@/api'
 import React from 'react'
-import { RenderComponents } from '../sdui/CompsWrapper'
-import { ActivityIndicator } from 'react-native'
 import { TText } from '@/components/ui'
 
 export default function OrdersTransactions() {

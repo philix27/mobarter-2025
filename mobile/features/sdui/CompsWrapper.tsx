@@ -3,7 +3,6 @@ import { Row, toast, TText, TView } from '@/components/ui'
 import React from 'react'
 import { create } from 'zustand'
 import { handleAction } from './handleActions'
-import axios from 'axios'
 
 // ---------- STATE MANAGEMENT ----------
 const useUIStore = create((set) => ({

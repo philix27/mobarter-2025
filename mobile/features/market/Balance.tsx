@@ -4,7 +4,6 @@ import React from 'react'
 import { Text } from 'react-native'
 
 import { AppStores, client } from '@/lib'
-import { useWalletBalance } from 'thirdweb/react'
 import { celo } from 'thirdweb/chains'
 import { getBalance } from 'thirdweb/extensions/erc20'
 import { formatTokenBalance } from './Balance/getBalance'

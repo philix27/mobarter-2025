@@ -7,7 +7,6 @@ import IconRound from '@/components/ui/IconRound'
 import WithdrawModal from './WithdrawModal'
 import WalletQRCode from './WalletQRCode'
 import { router } from 'expo-router'
-import { toast } from '@/components'
 
 export default function QuickActions() {
   const appColor = useColor()
