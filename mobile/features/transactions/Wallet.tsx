@@ -3,7 +3,7 @@ import { RenderComponents } from '../sdui/CompsWrapper'
 import { ActivityIndicator } from 'react-native'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
-import { LoadingIndicator } from '@/components/ui'
+import { LoadingIndicator, TText } from '@/components/ui'
 
 export default function WalletTransactions() {
   const { data, isLoading } = useQuery({
@@ -14,7 +14,8 @@ export default function WalletTransactions() {
     return <LoadingIndicator />
   }
 
-  return <RenderComponents components={data.txnWallet} />
+  // return <RenderComponents components={data.txnWallet} />
+  return <TText>Orders Transactions</TText>
 }
 
 async function getTxn(address: string) {

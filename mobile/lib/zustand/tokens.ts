@@ -1,4 +1,3 @@
-import { IToken } from '@/api'
 import { Static_GetTokenResponse } from '@/graphql'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'

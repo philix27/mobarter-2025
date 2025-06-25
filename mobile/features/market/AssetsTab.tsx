@@ -1,17 +1,19 @@
 import { TText, TView } from '@/components/ui'
-import { useGetChains } from '@/api'
+import { Api } from '@/graphql'
 import { useColor } from '@/hooks/useColor'
 import { AppStores } from '@/lib/zustand'
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
+// import { useGetChains } from '@/api'
 
 export default function AssetsTab() {
   const store = AppStores.useView()
-  const { data, isLoading } = useGetChains()
+  const { data, loading: isLoading } = Api.useStatic_GetChains()
 
   if (isLoading) {
     return <TView />
   }
+  
   return (
     <TView>
       <TView
@@ -29,7 +31,7 @@ export default function AssetsTab() {
             store.update({ activeViewAsset: 'ALL' })
           }}
         />
-        {data?.map((item, i) => (
+        {data?.static_getChains.map((item, i) => (
           <TabIem
             key={i}
             title={item.name}

@@ -1,5 +1,6 @@
 import { useQuery } from '@apollo/client'
 import {
+  Static_GetChainDocument,
   Static_GetCountryDocument,
   Static_GetLinksDocument,
   Static_GetTokensDocument,
@@ -14,3 +15,6 @@ export const useStatic_GetLinks = () =>
 
 export const useStatic_GetCountries = () =>
   useQuery<QueryResponse<'static_getCountries'>>(Static_GetCountryDocument)
+
+export const useStatic_GetChains = () =>
+  useQuery<QueryResponse<'static_getChains'>>(Static_GetChainDocument)
