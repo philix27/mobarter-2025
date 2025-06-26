@@ -1,62 +1,62 @@
 import React from 'react'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
-import { LoadingIndicator, TText } from '@/components/ui'
+import { Row, TView } from '@/components/ui'
+import AppHooks from '@/hooks'
+import { env } from '@/lib/env'
+import { ITransactionsResponse } from './types'
+import { shortenAddress } from 'thirdweb/utils'
 
-export default function WalletTransactions() {
-  const { data, isLoading } = useQuery({
-    queryKey: ['txns'],
+const useTxnHistory = (props: { limit: number }) => {
+  const { limit } = props
+  const address = AppHooks.useAddress()
+  return useQuery({
+    queryKey: [`txxn ${limit}`],
+    queryFn: async () => {
+      const response = await axios.get(
+        `https://insight.thirdweb.com/v1/wallets/${address}/transactions?chain_id=${42220}&chain_id=${8453}`,
+        {
+          params: {
+            filter_block_timestamp_gte: 1743150510,
+            limit: props.limit,
+            clientId: env.THIRDWEB_CLIENT_ID,
+          },
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+
+      return response.data as ITransactionsResponse
+    },
   })
+}
 
-  if (isLoading) {
-    return <LoadingIndicator />
+export default function WalletTransactions(props: { chainId: string }) {
+  const { data, isLoading } = useTxnHistory({ limit: 30 })
+  const address = AppHooks.useAddress()
+
+  const getAddr = (from: string, to: string) => {
+    const _from = from
+    const _to = to
+    const addr = address!
+
+    if (_from === addr!) return shortenAddress(_to)
+    if (_to === addr!) return shortenAddress(_from)
+    return shortenAddress(_from)
   }
-
-  // return <RenderComponents components={data.txnWallet} />
-  return <TText>Orders Transactions</TText>
+  return (
+    <TView style={{ width: '100%', paddingBottom: 50 }}>
+      {data?.data
+        .filter((item) => item.chain_id === props.chainId)
+        .map((txn, index) => (
+          <Row
+            key={index}
+            title={getAddr(txn.from_address, txn.to_address).toUpperCase()}
+            desc={address!.toUpperCase() === txn.from_address.toUpperCase() ? 'Sent' : 'Received'}
+          />
+        ))}
+    </TView>
+  )
 }
-
-async function getTxn(address: string) {
-  const response = await axios.get('https://explorer.celo.org/api', {
-    params: {
-      module: 'account',
-      action: 'txlist',
-      address: address,
-      startblock: 0,
-      endblock: 99999999,
-      sort: 'desc',
-    },
-    headers: {
-      Accept: '*/*',
-    },
-  })
-
-  return response.data
-}
-
-export interface ITransactions {
-  message: string
-  result: ITransactionsResult[]
-  status: string
-}
-
-export interface ITransactionsResult {
-  blockHash: string
-  blockNumber: string
-  confirmations: string
-  contractAddress: string
-  cumulativeGasUsed: string
-  from: string
-  gas: string
-  gasPrice: string
-  gasUsed: string
-  hash: string
-  input: string
-  isError: string
-  nonce: string
-  timeStamp: string
-  to: string
-  transactionIndex: string
-  txreceipt_status: string
-  value: string
-}
+// {`https://celoscan.io/tx/${transaction.transactionHash}`}

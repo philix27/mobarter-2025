@@ -49,7 +49,7 @@ export default function SignIn() {
         >
           Pay bills, Save and Trade with your crypto assets.
         </TText>
-        {!account ? (
+        {account ? (
           <InputButton
             title="Get started"
             onPress={() => {
