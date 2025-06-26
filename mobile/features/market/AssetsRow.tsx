@@ -19,7 +19,7 @@ export function AssetsRow(params: {
   onPress?: VoidFunction
 }) {
   const appColor = useColor()
-  const bgColor = appColor.card
+  const bgColor = appColor.background
   const address = Hooks.useAddress()
 
   const { data: balance, isLoading } = useQuery({
@@ -78,7 +78,7 @@ export function AssetsRow(params: {
             {params.imgUrl && (
               <Image
                 source={{ uri: params.imgUrl }}
-                style={{ height: 40, width: 40, borderRadius: 20 }}
+                style={{ height: 30, width: 30, borderRadius: 20 }}
               />
             )}
           </TView>

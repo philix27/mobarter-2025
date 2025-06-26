@@ -41,7 +41,7 @@ export default function SelectPaymentToken() {
       )}
 
       <BtmSheet.Modal ref={countrySheet!}>
-        <ScrollView>
+        <ScrollView style={{width: "100%"}}>
           {data &&
             data.static_getTokens.map((item, i) => {
               return (

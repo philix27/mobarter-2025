@@ -47,35 +47,30 @@ export function CryptoTokensList(props: {
   }
 
   return (
-    <TView style={{ paddingBottom: 50, width: '100%' }}>
-      {getData().length > 0 && (
-        <FlatList
-          data={getData()}
-          renderItem={({ item }) => {
-            return (
-              <AssetsRow
-                imgUrl={item.logoUrl as any}
-                chainId={item.chainId.toString()}
-                currency={item.symbol}
-                tokenAddr={item.address}
-                tokenPrice={''}
-                performance={item.name}
-                decimals={item.decimals}
-                onPress={() => {
-                  storeTokens.update({ activeToken: item })
-                  return
-                  // router.push({
-                  //   pathname: `/coin/[id]`,
-                  // pathname: `/coin/[id]`,
-                  // pathname: `/coin/${val.symbol}`,
-                  //   params: { title: val.title },
-                  // });
-                }}
-              />
-            )
-          }}
-        />
-      )}
+    <TView style={{ paddingBottom: 150, width: '100%' }}>
+      {getData().length > 0 &&
+        getData().map((item, i) => (
+          <AssetsRow
+            key={i}
+            imgUrl={item.logoUrl as any}
+            chainId={item.chainId.toString()}
+            currency={item.symbol}
+            tokenAddr={item.address}
+            tokenPrice={''}
+            performance={item.name}
+            decimals={item.decimals}
+            onPress={() => {
+              storeTokens.update({ activeToken: item })
+              return
+              // router.push({
+              //   pathname: `/coin/[id]`,
+              // pathname: `/coin/[id]`,
+              // pathname: `/coin/${val.symbol}`,
+              //   params: { title: val.title },
+              // });
+            }}
+          />
+        ))}
     </TView>
   )
 }
