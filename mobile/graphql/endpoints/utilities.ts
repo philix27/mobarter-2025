@@ -68,11 +68,16 @@ export const useElectricBillMakePayment = () => {
 }
 
 // ! TV bill
-export const useTV_GetProviders = (variables: QueryTvBills_GetProvidersArgs) =>
-  useQuery<QueryResponse<'tvBills_getProviders'>, QueryTvBills_GetProvidersArgs>(
+export const useTV_GetProviders = (variables: QueryTvBills_GetProvidersArgs) => {
+  const r = useQuery<QueryResponse<'tvBills_getProviders'>, QueryTvBills_GetProvidersArgs>(
     TvBills_GetProvidersDocument,
     { variables }
   )
+
+  console.log('Result ', r.data)
+
+  return r
+}
 
 export const useTV_GetBouquet = (variables: QueryTvBills_GetBouquetArgs) =>
   useQuery<QueryResponse<'tvBills_getBouquet'>, QueryTvBills_GetBouquetArgs>(

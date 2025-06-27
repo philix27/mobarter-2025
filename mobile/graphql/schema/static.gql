@@ -46,3 +46,12 @@ query static_getChain {
     logoUrl
   }
 }
+
+
+
+query static_getFundCollectors {
+  static_getFundCollectors {
+    walletAddress
+    purpose
+  }
+}

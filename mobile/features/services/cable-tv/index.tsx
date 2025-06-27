@@ -1,17 +1,20 @@
 import { Wrapper, BtmSheet } from '@/components/layout'
 import { z } from 'zod'
 import { InputSelect, InputButton, InputText, Label } from '@/components/forms'
-import { useAppForm, AppStores } from '@/lib'
+import { useAppForm, AppStores, formatCurrency } from '@/lib'
 import { isDev } from '@/lib/constants/env'
-import { toast, TView } from '@/components/ui'
+import { LoadingIndicator, toast, TText, TView } from '@/components/ui'
 
 import { PayableTokenCard } from '@/features/tokens'
 import AppHooks from '@/hooks'
 import { Api } from '@/graphql'
+import { useState } from 'react'
 
 const formSchema = z.object({
   amount: z.string().min(1),
-  operator: z.string(),
+  provider: z.string(),
+  packageCode: z.string(),
+  smartCardNo: z.string(),
   isPrepaid: z.boolean(),
   accountNo: z.string().min(10, 'At least 10 numbers').max(12),
 })
@@ -21,27 +24,33 @@ export default function CableTvScreen() {
   const { transferERC20 } = AppHooks.useTransferToken()
 
   const tokenStore = AppStores.useTokens()
-
+  const [service, setService] = useState<string>()
   const countryStore = AppStores.useCountries()
   const country = countryStore.activeCountry
   const { data, loading } = Api.useTV_GetProviders({
     input: { countryCode: country!.isoName },
+  })
+
+  const { data: bouquetData, loading: bouquetLoading } = Api.useTV_GetBouquet({
+    input: { countryCode: country!.isoName, service: service || '' },
   })
   const { formData, errors, handleChange, setErrors, setFormData } = useAppForm<
     typeof formSchema._type
   >({
     // Omit<typeof formSchema._type, 'amount'> & { amount: string }
     amount: '0',
-    operator: '',
+    provider: '',
     accountNo: '',
     isPrepaid: true,
+    packageCode: '',
+    smartCardNo: '',
   })
   // const { amountToPay } = AppHooks.usePrice(parseFloat(formData.amount.toString()))
 
   const clearErr = () => {
-    setErrors('amount', '')
-    setErrors('operator', '')
+    setErrors('provider', '')
     setErrors('accountNo', '')
+    setErrors('packageCode', '')
   }
 
   const showErr = () => {
@@ -52,7 +61,7 @@ export default function CableTvScreen() {
     // clearErr(validation.error);
     const errorMessages = validation.error.format()
     setErrors('amount', errorMessages.amount?._errors[0] || '')
-    setErrors('operator', errorMessages.operator?._errors[0] || '')
+    setErrors('provider', errorMessages.provider?._errors[0] || '')
     setErrors('accountNo', errorMessages.accountNo?._errors[0] || '')
   }
 
@@ -91,15 +100,24 @@ export default function CableTvScreen() {
     })
   }
 
+  if (loading) {
+    return (
+      <Wrapper style={{ rowGap: 15 }}>
+        <LoadingIndicator />
+      </Wrapper>
+    )
+  }
+
   return (
     <Wrapper style={{ rowGap: 15 }}>
       {data && (
         <InputSelect
           label="Providers"
           placeholder="Provider"
-          error={errors && errors?.operator && errors!.operator}
+          error={errors && errors?.provider && errors!.provider}
           onValueChange={(v) => {
-            handleChange('operator', v)
+            handleChange('provider', v)
+            setService(v)
             clearErr()
           }}
           items={data?.tvBills_getProviders.map((val) => {
@@ -112,36 +130,40 @@ export default function CableTvScreen() {
         />
       )}
 
-      <TView
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-evenly',
-          width: '100%',
-          margin: 0,
-          padding: 0,
-        }}
-      >
-        <InputButton
-          title="Prepaid"
-          variant={formData.isPrepaid ? 'primary' : 'secondary'}
-          style={{ width: '50%', borderRadius: 0 }}
-          onPress={() => {
-            setFormData({ ...formData, isPrepaid: true })
+      {bouquetData && (
+        <InputSelect
+          label="Bouquet"
+          placeholder="Select Bouquet"
+          error={errors && errors?.provider && errors!.provider}
+          onValueChange={(v) => {
+            handleChange('packageCode', v)
+            clearErr()
           }}
+          items={bouquetData?.tvBills_getBouquet.map((val) => {
+            return {
+              label: `₦${formatCurrency(parseInt(val.price))} - ${val.description}`,
+              value: val.code,
+              desc: `₦${val.price}`,
+            }
+          })}
         />
-
-        <InputButton
-          title="Postpaid"
-          variant={!formData.isPrepaid ? 'primary' : 'secondary'}
-          style={{ width: '50%', borderRadius: 0 }}
-          onPress={() => {
-            setFormData({ ...formData, isPrepaid: false })
-          }}
-        />
-      </TView>
+      )}
 
       <InputText
-        label={'Meter/Account Number'}
+        label={'Smart Card Number'}
+        value={formData.accountNo}
+        onChangeText={(text) => {
+          if (text.length > 10) return
+          handleChange('smartCardNo', text)
+          clearErr()
+        }}
+        placeholder={'Enter Smart Card No'}
+        error={errors && errors?.accountNo && errors!.accountNo}
+        keyboardType="number-pad"
+      />
+
+      <InputText
+        label={'Customer Name'}
         value={formData.accountNo}
         onChangeText={(text) => {
           if (text.length > 10) return
@@ -150,23 +172,8 @@ export default function CableTvScreen() {
         }}
         placeholder={'Enter accountNo'}
         error={errors && errors?.accountNo && errors!.accountNo}
-        keyboardType="number-pad"
       />
 
-      <InputText
-        label={'Amount'}
-        keyboardType="numeric"
-        leadingText={country?.currencySymbol}
-        placeholder={'Enter amount'}
-        value={formData.amount.toString()}
-        onChangeText={(text) => {
-          if (text.length > 10) return
-          handleChange('amount', text)
-
-          clearErr()
-        }}
-        error={errors && errors?.amount && errors!.amount}
-      />
       <PayableTokenCard />
       {/* <TText>{tokenStore.activeToken?.symbol} {amountToPay}</TText> */}
       <InputButton title={'Submit'} style={{ width: '50%' }} onPress={handleSubmit} />
@@ -182,7 +189,7 @@ export default function CableTvScreen() {
           rowGap: 1,
         }}
       >
-        <BtmSheet.Row text1="Operator" text2={formData.operator} />
+        <BtmSheet.Row text1="provider" text2={formData.provider} />
         <BtmSheet.Row text1="accountNo" text2={formData.accountNo} />
         <BtmSheet.Row text1="Amount" text2={formData.amount.toString()} />
         <BtmSheet.Row text1="Fee" text2={formData.amount.toString()} />

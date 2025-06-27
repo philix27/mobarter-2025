@@ -6,6 +6,7 @@ import {
   Static_GetTokensDocument,
 } from '../__generated__/graphql'
 import { QueryResponse } from './types'
+import { Static_GetFundCollectorsDocument } from '../__generated__/graphql'
 
 export const useStatic_GetTokens = () =>
   useQuery<QueryResponse<'static_getTokens'>>(Static_GetTokensDocument)
@@ -18,3 +19,6 @@ export const useStatic_GetCountries = () =>
 
 export const useStatic_GetChains = () =>
   useQuery<QueryResponse<'static_getChains'>>(Static_GetChainDocument)
+
+export const useStatic_Collectors = () =>
+  useQuery<QueryResponse<'static_getFundCollectors'>>(Static_GetFundCollectorsDocument)

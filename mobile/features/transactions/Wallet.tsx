@@ -1,11 +1,11 @@
 import React from 'react'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
-import { Row, TView } from '@/components/ui'
+import { Row, TText, TView } from '@/components/ui'
 import AppHooks from '@/hooks'
 import { env } from '@/lib/env'
 import { ITransactionsResponse } from './types'
-import { shortenAddress } from 'thirdweb/utils'
+import { shortenAddress, toEther } from 'thirdweb/utils'
 
 const useTxnHistory = (props: { limit: number }) => {
   const { limit } = props
@@ -32,6 +32,11 @@ const useTxnHistory = (props: { limit: number }) => {
   })
 }
 
+const chainName = {
+  '42220': 'CELO',
+  '8453': 'ETH',
+}
+
 export default function WalletTransactions(props: { chainId: string }) {
   const { data, isLoading } = useTxnHistory({ limit: 30 })
   const address = AppHooks.useAddress()
@@ -54,6 +59,11 @@ export default function WalletTransactions(props: { chainId: string }) {
             key={index}
             title={getAddr(txn.from_address, txn.to_address).toUpperCase()}
             desc={address!.toUpperCase() === txn.from_address.toUpperCase() ? 'Sent' : 'Received'}
+            trailing={
+              <TText style={{ fontSize: 12, fontWeight: '600'  }}>
+                {toEther(BigInt(txn.value))} {chainName[txn.chain_id.toString()]}
+              </TText>
+            }
           />
         ))}
     </TView>
