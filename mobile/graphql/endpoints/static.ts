@@ -1,5 +1,6 @@
 import { useQuery } from '@apollo/client'
 import {
+  Static_FundCollectorsResponse,
   Static_GetChainDocument,
   Static_GetCountryDocument,
   Static_GetLinksDocument,
@@ -7,6 +8,7 @@ import {
 } from '../__generated__/graphql'
 import { QueryResponse } from './types'
 import { Static_GetFundCollectorsDocument } from '../__generated__/graphql'
+import { DEFAULT_COLLECTOR } from '@/lib'
 
 export const useStatic_GetTokens = () =>
   useQuery<QueryResponse<'static_getTokens'>>(Static_GetTokensDocument)
@@ -20,5 +22,20 @@ export const useStatic_GetCountries = () =>
 export const useStatic_GetChains = () =>
   useQuery<QueryResponse<'static_getChains'>>(Static_GetChainDocument)
 
-export const useStatic_Collectors = () =>
-  useQuery<QueryResponse<'static_getFundCollectors'>>(Static_GetFundCollectorsDocument)
+export const useStatic_Collectors = (category: keyof Static_FundCollectorsResponse) => {
+  const response = useQuery<QueryResponse<'static_getFundCollectors'>>(
+    Static_GetFundCollectorsDocument
+  )
+
+  if (response.error) {
+    return DEFAULT_COLLECTOR
+  }
+
+  const collectors = response.data?.static_getFundCollectors
+
+  if (collectors === null || collectors === undefined) {
+    return DEFAULT_COLLECTOR
+  }
+
+  return collectors[category] ?? DEFAULT_COLLECTOR
+}

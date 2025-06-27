@@ -48,10 +48,13 @@ query static_getChain {
 }
 
 
-
 query static_getFundCollectors {
   static_getFundCollectors {
-    walletAddress
-    purpose
+    TopUp
+    ElectricityBills
+    FundBetting
+    OffRamping
+    TV_Bills
+    WaterBills
   }
 }

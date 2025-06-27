@@ -1,6 +1,6 @@
 import { Wrapper, BtmSheet } from '@/components/layout'
 import { z } from 'zod'
-import { InputSelect, InputButton, InputText, Label } from '@/components/forms'
+import { InputSelect, InputButton, InputText } from '@/components/forms'
 import { useAppForm, AppStores } from '@/lib'
 import { isDev } from '@/lib/constants/env'
 import { toast, TView } from '@/components/ui'
@@ -21,7 +21,7 @@ export default function BettingWallet() {
   const { transferERC20 } = AppHooks.useTransferToken()
 
   const tokenStore = AppStores.useTokens()
-
+  const recipient = Api.useStatic_Collectors('FundBetting')
   const countryStore = AppStores.useCountries()
   const country = countryStore.activeCountry
   const { data, loading } = Api.useFundBetting_getProviders({
@@ -84,7 +84,7 @@ export default function BettingWallet() {
 
   const onPay = () => {
     transferERC20({
-      recipient: '',
+      recipient,
       amount: '',
       // amountToPay!.toString(),
       token: tokenStore.activeToken?.address!,
@@ -124,7 +124,7 @@ export default function BettingWallet() {
         error={errors && errors?.accountNo && errors!.accountNo}
         keyboardType="number-pad"
       />
-      
+
       <InputText
         label={'Customer ID'}
         value={formData.accountNo}

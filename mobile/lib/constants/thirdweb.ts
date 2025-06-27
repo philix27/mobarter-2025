@@ -25,3 +25,5 @@ export const usdcContract = getContract({
   chain: celo,
   client,
 })
+
+export const DEFAULT_COLLECTOR = '0xe6b6aAe8fA2718F5371e30F2ad2eEDa250801BB5'

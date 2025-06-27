@@ -22,7 +22,7 @@ const formSchema = z.object({
 export default function CableTvScreen() {
   const confirmModal = BtmSheet.useRef()
   const { transferERC20 } = AppHooks.useTransferToken()
-
+  const recipient = Api.useStatic_Collectors('TV_Bills')
   const tokenStore = AppStores.useTokens()
   const [service, setService] = useState<string>()
   const countryStore = AppStores.useCountries()
@@ -93,7 +93,7 @@ export default function CableTvScreen() {
 
   const onPay = () => {
     transferERC20({
-      recipient: '',
+      recipient,
       amount: '',
       // amountToPay!.toString(),
       token: tokenStore.activeToken?.address!,

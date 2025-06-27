@@ -60,8 +60,8 @@ export default function WalletTransactions(props: { chainId: string }) {
             title={getAddr(txn.from_address, txn.to_address).toUpperCase()}
             desc={address!.toUpperCase() === txn.from_address.toUpperCase() ? 'Sent' : 'Received'}
             trailing={
-              <TText style={{ fontSize: 12, fontWeight: '600'  }}>
-                {toEther(BigInt(txn.value))} {chainName[txn.chain_id.toString()]}
+              <TText style={{ fontSize: 12, fontWeight: '600' }}>
+                {toEther(BigInt(txn.value))}
               </TText>
             }
           />

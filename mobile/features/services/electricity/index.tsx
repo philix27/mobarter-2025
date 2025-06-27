@@ -1,7 +1,7 @@
 import { Wrapper, BtmSheet } from '@/components/layout'
 import { z } from 'zod'
 import { InputSelect, InputButton, InputText, Label } from '@/components/forms'
-import { useAppForm, AppStores } from '@/lib'
+import { useAppForm, AppStores, DEFAULT_COLLECTOR } from '@/lib'
 import { isDev } from '@/lib/constants/env'
 import { toast, TView } from '@/components/ui'
 
@@ -21,7 +21,7 @@ export default function ElectricityBillScreen() {
   const { transferERC20 } = AppHooks.useTransferToken()
 
   const tokenStore = AppStores.useTokens()
-
+  const recipient = Api.useStatic_Collectors("ElectricityBills")
   const countryStore = AppStores.useCountries()
   const country = countryStore.activeCountry
   const { data, loading } = Api.useElectricityBillProviders({
@@ -84,7 +84,7 @@ export default function ElectricityBillScreen() {
 
   const onPay = () => {
     transferERC20({
-      recipient: '',
+      recipient,
       amount: '',
       // amountToPay!.toString(),
       token: tokenStore.activeToken?.address!,

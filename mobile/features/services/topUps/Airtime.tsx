@@ -18,6 +18,7 @@ export default function Airtime() {
   const confirmModal = BtmSheet.useRef()
   const { transferERC20 } = AppHooks.useTransferToken()
   const [mutate] = Api.usePurchaseAirtime()
+  const recipient = Api.useStatic_Collectors('TopUp')
   const tokenStore = AppStores.useTokens()
   const store = useTopUps()
 
@@ -94,7 +95,7 @@ export default function Airtime() {
     response.showLoading(true)
     confirmModal.current.close()
     transferERC20({
-      recipient: '',
+      recipient,
       amount: amountToPay!.toString(),
       token: tokenStore.activeToken?.address!,
     })

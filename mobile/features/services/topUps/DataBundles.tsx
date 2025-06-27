@@ -12,6 +12,7 @@ export default function DataBundlesComp(params: { isDataBundle?: boolean }) {
   const confirmModal = BtmSheet.useRef()
   const { transferERC20 } = AppHooks.useTransferToken()
   const tokenStore = AppStores.useTokens()
+  const recipient = Api.useStatic_Collectors('TopUp')
   const store = useTopUps()
   const [mutate] = Api.usePurchaseDataBundle()
   const country = AppStores.useCountries().activeCountry
@@ -51,7 +52,7 @@ export default function DataBundlesComp(params: { isDataBundle?: boolean }) {
     response.showLoading(true)
     confirmModal.current.close()
     transferERC20({
-      recipient: '',
+      recipient,
       amount: amountToPay!.toString(),
       token: tokenStore.activeToken?.address!,
     })
