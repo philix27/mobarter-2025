@@ -21,6 +21,7 @@ export default function SelectCountryCard() {
       {aCountry && (
         <Row
           title={aCountry.name}
+          bgBlank
           desc={'Select your preferred country'}
           trailing={<Ionicons name="caret-down" size={20} color={theme.muted} />}
           imgUrl={aCountry.flag}
@@ -36,6 +37,7 @@ export default function SelectCountryCard() {
             return (
               <Row
                 key={i}
+                bgBlank
                 title={item.currencyName}
                 desc={`${item.currencyName} | ${item.callingCodes} | ${item.currencySymbol}`}
                 imgUrl={item.flag}

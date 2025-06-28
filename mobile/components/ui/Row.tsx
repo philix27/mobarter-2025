@@ -12,13 +12,18 @@ export function Row(props: {
   imgUrl?: string
   svgUrl?: string
   bgColor?: string
+  bgBlank?: boolean
   style?: ViewStyle
   icon?: JSX.Element
   trailing?: JSX.Element
   onClick?: VoidFunction
 }) {
   const appColor = useColor()
-  const bgColor = props.bgColor ? props.bgColor : appColor.card
+  const bgColor = props.bgColor
+    ? props.bgColor
+    : props.bgBlank
+      ? appColor.background
+      : appColor.card
   return (
     <TouchableOpacity
       style={[

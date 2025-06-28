@@ -4,8 +4,6 @@
 import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import React, { useEffect } from 'react'
-import { Dimensions, StatusBar } from 'react-native'
-import { Colors } from '../lib/constants/colors'
 import { RootProviders } from '@/lib/providers'
 // import { Drawer } from 'expo-router/drawer'
 import { useColor } from '@/lib'
