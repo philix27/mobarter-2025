@@ -3,7 +3,7 @@ import { toast } from '@/components'
 import { transfer } from 'thirdweb/extensions/erc20'
 import { celo } from 'thirdweb/chains'
 import { client } from '@/lib'
-import { sendTransaction, toWei } from 'thirdweb'
+import { sendTransaction, toEther, toWei } from 'thirdweb'
 import { useActiveAccount } from 'thirdweb/react'
 import { ethers, toBigInt } from 'ethers'
 
@@ -25,7 +25,7 @@ type TransactionsContextProps = {
 }
 
 export const TransactionsContext = createContext<TransactionsContextProps | null>(null)
- 
+
 // ResponseProvider component
 export default function TransactionsProvider({ children }: PropsWithChildren) {
   const account = useActiveAccount()
@@ -38,8 +38,8 @@ export default function TransactionsProvider({ children }: PropsWithChildren) {
     const transaction = transfer({
       contract: { address: props.token as `0x${string}`, chain: celo, client: client },
       to: props.recipient,
-      amountWei: toBigInt(ethers.parseUnits(props.amount, 18)), // Convert amount to wei
-      // amountWei: toWei(),
+      // amountWei: toBigInt(ethers.parseUnits(props.amount, 18)), // Convert amount to wei
+      amount: props.amount,
     })
 
     const { transactionHash } = await sendTransaction({ transaction, account: account! })

@@ -17,7 +17,7 @@ type IData = { value: string | undefined; error: string | undefined }
 
 export default function SellCryptoOrder() {
   const confirmModal = BtmSheet.useRef()
-  const { transferERC20 } = AppHooks.useTransferToken()
+  const { transferERC20 } = AppHooks.useTxn()
   const [amountFiat, setAmount] = useState<IData>()
   const [tokenErr, setTokenErr] = useState<string>()
   const storeTokens = AppStores.useTokens()

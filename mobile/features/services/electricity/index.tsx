@@ -1,7 +1,7 @@
 import { Wrapper, BtmSheet } from '@/components/layout'
 import { z } from 'zod'
 import { InputSelect, InputButton, InputText, Label } from '@/components/forms'
-import { useAppForm, AppStores, DEFAULT_COLLECTOR } from '@/lib'
+import { useAppForm, AppStores } from '@/lib'
 import { isDev } from '@/lib/constants/env'
 import { toast, TView } from '@/components/ui'
 
@@ -18,10 +18,10 @@ const formSchema = z.object({
 
 export default function ElectricityBillScreen() {
   const confirmModal = BtmSheet.useRef()
-  const { transferERC20 } = AppHooks.useTransferToken()
+  const { transferERC20 } = AppHooks.useTxn()
 
   const tokenStore = AppStores.useTokens()
-  const recipient = Api.useStatic_Collectors("ElectricityBills")
+  const recipient = Api.useStatic_Collectors('ElectricityBills')
   const countryStore = AppStores.useCountries()
   const country = countryStore.activeCountry
   const { data, loading } = Api.useElectricityBillProviders({

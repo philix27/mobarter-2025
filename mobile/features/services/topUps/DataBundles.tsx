@@ -10,7 +10,7 @@ import AppHooks from '@/hooks'
 
 export default function DataBundlesComp(params: { isDataBundle?: boolean }) {
   const confirmModal = BtmSheet.useRef()
-  const { transferERC20 } = AppHooks.useTransferToken()
+  const { transferERC20 } = AppHooks.useTxn()
   const tokenStore = AppStores.useTokens()
   const recipient = Api.useStatic_Collectors('TopUp')
   const store = useTopUps()
@@ -65,8 +65,6 @@ export default function DataBundlesComp(params: { isDataBundle?: boolean }) {
               operatorId: _operatorId,
               phoneNo: store.phone,
               transaction_hash: hash,
-              // todo: use transaction hash
-              // transaction_hash: Date.now().toString(),
             },
           },
         })

@@ -18,7 +18,7 @@ const formSchema = z.object({
 
 export default function BettingWallet() {
   const confirmModal = BtmSheet.useRef()
-  const { transferERC20 } = AppHooks.useTransferToken()
+  const { transferERC20 } = AppHooks.useTxn()
 
   const tokenStore = AppStores.useTokens()
   const recipient = Api.useStatic_Collectors('FundBetting')
@@ -177,3 +177,4 @@ export default function BettingWallet() {
     </Wrapper>
   )
 }
+// 23104820

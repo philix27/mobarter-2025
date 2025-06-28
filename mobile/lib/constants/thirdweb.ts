@@ -2,11 +2,7 @@ import { createThirdwebClient, getContract } from 'thirdweb'
 import { base, celo } from 'thirdweb/chains'
 import { env } from '../env'
 
-const clientId = env.THIRDWEB_CLIENT_ID!
-
-if (!clientId) {
-  throw new Error('Missing EXPO_PUBLIC_THIRDWEB_CLIENT_ID - make sure to set it in your .env file')
-}
+const clientId = env.THIRDWEB_CLIENT_ID
 
 export const client = createThirdwebClient({
   clientId,
@@ -25,5 +21,3 @@ export const usdcContract = getContract({
   chain: celo,
   client,
 })
-
-export const DEFAULT_COLLECTOR = '0xe6b6aAe8fA2718F5371e30F2ad2eEDa250801BB5'

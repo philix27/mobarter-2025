@@ -16,7 +16,7 @@ const formSchema = z.object({
 
 export default function Airtime() {
   const confirmModal = BtmSheet.useRef()
-  const { transferERC20 } = AppHooks.useTransferToken()
+  const { transferERC20 } = AppHooks.useTxn()
   const [mutate] = Api.usePurchaseAirtime()
   const recipient = Api.useStatic_Collectors('TopUp')
   const tokenStore = AppStores.useTokens()
@@ -117,12 +117,12 @@ export default function Airtime() {
             response.showSuccess('Transaction Successful')
           })
           .catch((e) => {
-            response.showError('Transaction Failed')
+            response.showError('Transaction Failed' + e)
             console.log('Error: ', e)
           })
       })
-      .catch(() => {
-        response.showError('Transaction Failed')
+      .catch((e) => {
+        response.showError('Transaction Failed' + e)
       })
   }
 

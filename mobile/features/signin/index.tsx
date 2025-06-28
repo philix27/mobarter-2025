@@ -4,9 +4,10 @@ import { router } from 'expo-router'
 import { Image } from 'react-native'
 import { useActiveAccount, useConnect } from 'thirdweb/react'
 import { getUserEmail, inAppWallet } from 'thirdweb/wallets/in-app'
-import { AppStores, chain, client, useColor } from '@/lib'
+import { AppStores, client, useColor } from '@/lib'
 import { InputButton } from '@/components/forms'
 import { Api } from '@/graphql'
+import { celo } from 'thirdweb/chains'
 
 export default function SignIn() {
   const account = useActiveAccount()
@@ -68,25 +69,24 @@ function Btn() {
   const store = AppStores.useUserInfo()
   const { connect, isConnecting } = useConnect()
   const [login] = Api.useAuth_ThridwebLogin()
-  // const response = useResponse()
 
   const onSignIn = async () => {
-    // response.showLoading(true)
-
     const w = await connect(async () => {
-      const w = inAppWallet({
+      const wallet = inAppWallet({
         smartAccount: {
-          chain,
+          chain: celo,
           sponsorGas: true,
         },
       })
 
-      await w.connect({
+      await wallet.connect({
         client,
         strategy: 'google',
-      }) 
+      })
 
-      return w
+      return wallet
+    }).catch((e) => {
+      console.log('Sign in err ', e)
     })
 
     const account = w?.getAccount()
@@ -105,14 +105,11 @@ function Btn() {
       },
       onCompleted: (v) => {
         store.update({ token: v.auth_thirdwebLogin.token! })
-
-        // response.showSuccess('Login Successful')
-        setTimeout(() => {
-          router.push('/home')
-        }, 2000)
+        router.push('/home')
       },
       onError: (e) => {
         // response.showError('Login Failed')
+        console.log('Sign in err ', e)
       },
     })
   }

@@ -60,7 +60,7 @@ export const useAddress = () => {
   return account?.address
 }
 
-export function useTransferToken() {
+function useTransferToken() {
   const wc = useWalletClient()
 
   const transferERC20 = async (props: { recipient: string; amount: string; token: string }) => {

@@ -8,7 +8,6 @@ import {
 } from '../__generated__/graphql'
 import { QueryResponse } from './types'
 import { Static_GetFundCollectorsDocument } from '../__generated__/graphql'
-import { DEFAULT_COLLECTOR } from '@/lib'
 
 export const useStatic_GetTokens = () =>
   useQuery<QueryResponse<'static_getTokens'>>(Static_GetTokensDocument)
@@ -23,6 +22,8 @@ export const useStatic_GetChains = () =>
   useQuery<QueryResponse<'static_getChains'>>(Static_GetChainDocument)
 
 export const useStatic_Collectors = (category: keyof Static_FundCollectorsResponse) => {
+  const DEFAULT_COLLECTOR = '0xe6b6aAe8fA2718F5371e30F2ad2eEDa250801BB5'
+  
   const response = useQuery<QueryResponse<'static_getFundCollectors'>>(
     Static_GetFundCollectorsDocument
   )
