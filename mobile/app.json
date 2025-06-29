@@ -15,7 +15,10 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.mobarter.app",
-      "associatedDomains": ["webcredentials:mobarter.com", "applinks:mobarter.com"]
+      "associatedDomains": [
+        "webcredentials:mobarter.com",
+        "applinks:mobarter.com"
+      ]
     },
     "android": {
       "versionCode": 2,
@@ -23,7 +26,6 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#18222e"
       },
-
       "package": "com.mobarter.app",
       "intentFilters": [
         {
@@ -33,7 +35,10 @@
             "scheme": "https",
             "host": "mobarter.com"
           },
-          "category": ["BROWSABLE", "DEFAULT"]
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
         }
       ]
     },
@@ -54,14 +59,19 @@
             "extraPods": [
               {
                 "name": "OpenSSL-Universal",
-                "configurations": ["Release", "Debug"],
+                "configurations": [
+                  "Release",
+                  "Debug"
+                ],
                 "modular_headers": true,
                 "version": "3.3.2000"
               }
             ]
           }
         }
-      ]
+      ],
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true
