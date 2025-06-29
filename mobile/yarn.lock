@@ -7895,25 +7895,25 @@ expo-crypto@~14.1.4:
   dependencies:
     base64-js "^1.3.0"
 
-expo-dev-client@5.1.7:
-  version "5.1.7"
-  resolved "https://registry.yarnpkg.com/expo-dev-client/-/expo-dev-client-5.1.7.tgz#b75d5c4650a2b19e8d5c4666a798a4150a7fbd68"
-  integrity sha512-/xcwNIeZIBA/y6Io7jv1ZbEG8XRUuAynIJyIGJvpMxf6hm7eEw8rEzhO9rZNk6H8bMjTjASs0Vf1bqIV6v3j6A==
+expo-dev-client@~5.2.2:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/expo-dev-client/-/expo-dev-client-5.2.2.tgz#f6ea3c8895ff2f96a6a03cde9aad2aa8671f6f9a"
+  integrity sha512-shOMVwnfpq8ptpix+KveFz9UWv4SNxqxFYkEvRfsgyLiUG8O1vXE0FaZUNZgF+idOPGuO6C34YZM6pLzE0Dd6A==
   dependencies:
-    expo-dev-launcher "5.1.10"
-    expo-dev-menu "6.1.9"
+    expo-dev-launcher "5.1.14"
+    expo-dev-menu "6.1.12"
     expo-dev-menu-interface "1.10.0"
-    expo-manifests "~0.16.4"
+    expo-manifests "~0.16.5"
     expo-updates-interface "~1.1.0"
 
-expo-dev-launcher@5.1.10:
-  version "5.1.10"
-  resolved "https://registry.yarnpkg.com/expo-dev-launcher/-/expo-dev-launcher-5.1.10.tgz#eaa8a7a4edcab557e6623f176e60d964606651ff"
-  integrity sha512-OW4k0efB6cWigYj1GlJGObMuMpg6DIwsAZkECsGqNU3U80zE7pBMPB0sy1xehFuTplO6F+dCTLg0hPPuqkSsTg==
+expo-dev-launcher@5.1.14:
+  version "5.1.14"
+  resolved "https://registry.yarnpkg.com/expo-dev-launcher/-/expo-dev-launcher-5.1.14.tgz#509dab73af61c551a5dfafa36b6a63bc072a0bcc"
+  integrity sha512-pxXqn8xCgOuc+W32mRJ9DiVK7O0zmGTG/ePd3kw53Xg1PKB9iOeYNty53qZEkIWjt8xdqS0JdECQT4qjgA2d1g==
   dependencies:
     ajv "8.11.0"
-    expo-dev-menu "6.1.8"
-    expo-manifests "~0.16.4"
+    expo-dev-menu "6.1.12"
+    expo-manifests "~0.16.5"
     resolve-from "^5.0.0"
 
 expo-dev-menu-interface@1.10.0:
@@ -7921,17 +7921,10 @@ expo-dev-menu-interface@1.10.0:
   resolved "https://registry.yarnpkg.com/expo-dev-menu-interface/-/expo-dev-menu-interface-1.10.0.tgz#04671bda3c163d1d7b9438ce7095c3913a3f53f9"
   integrity sha512-NxtM/qot5Rh2cY333iOE87dDg1S8CibW+Wu4WdLua3UMjy81pXYzAGCZGNOeY7k9GpNFqDPNDXWyBSlk9r2pBg==
 
-expo-dev-menu@6.1.8:
-  version "6.1.8"
-  resolved "https://registry.yarnpkg.com/expo-dev-menu/-/expo-dev-menu-6.1.8.tgz#cec53379b76f5cb53e2e87a8c62555610a26e6bb"
-  integrity sha512-i8DW1OXvj4yxQuPP8p2AMGoYdnyhfTkoqWI/AiDYReh2viZv4kZlRloGAemV2bIQwswMq2GsvZehYrQPEK9QBw==
-  dependencies:
-    expo-dev-menu-interface "1.10.0"
-
-expo-dev-menu@6.1.9:
-  version "6.1.9"
-  resolved "https://registry.yarnpkg.com/expo-dev-menu/-/expo-dev-menu-6.1.9.tgz#897dcb4c49aed9c1f871b13e1359079f23981050"
-  integrity sha512-Uz02Bsc1xsYzjW4Ld+PxWLRNkbsoJYSbQtw/pZDSrJk5Hj869M4KQSOI8JpZ7WVlKEKkIRA8kBLepjhdFhq+Dg==
+expo-dev-menu@6.1.12:
+  version "6.1.12"
+  resolved "https://registry.yarnpkg.com/expo-dev-menu/-/expo-dev-menu-6.1.12.tgz#9bb8886265dd40e9a5ed3846e4d58e06b605feee"
+  integrity sha512-Bz8yjZ6a+u7ZrZWzfn3aCgBwAX+QB0ktQyV7QMS5/agyesKiqM43+VdwNQqrm8w9tS8HZ2sf6RTvdek8YgOEHg==
   dependencies:
     expo-dev-menu-interface "1.10.0"
 
@@ -7980,7 +7973,7 @@ expo-linking@~7.1.5:
     expo-constants "~17.1.6"
     invariant "^2.2.4"
 
-expo-manifests@~0.16.4:
+expo-manifests@~0.16.5:
   version "0.16.5"
   resolved "https://registry.yarnpkg.com/expo-manifests/-/expo-manifests-0.16.5.tgz#bb57ceff3db4eb74679d4a155b2ca2050375ce10"
   integrity sha512-zLUeJogn2C7qOE75Zz7jcmJorMfIbSRR35ctspN0OK/Hq/+PAAptA8p9jNVC8xp/91uP9uI8f3xPhh+A11eR2A==

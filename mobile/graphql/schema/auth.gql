@@ -1,34 +1,3 @@
-mutation Auth_minipayLogin($input: Auth_LoginMinipayInput!) {
-  auth_minipayLogin(input:$input) {
-    firstname
-    lastname
-    middlename
-    email
-    token
-  }
-}
-
-mutation Auth_minipayCreateAccount($input: Auth_MinipayCreateAccountInput!) {
-  auth_minipayCreateAccount(input:$input) {
-    firstname
-    lastname
-    middlename
-    email
-    token
-  }
-}
-
-mutation Auth_login($input: Auth_LoginInput!) {
-  auth_login(input: $input) {
-    firstname
-    country
-    lastname
-    middlename
-    email
-    token
-  }
-}
-
 mutation Auth_resetPassword($input: Auth_ResetPasswordInput!) {
   auth_resetPassword(input: $input) {
     message
