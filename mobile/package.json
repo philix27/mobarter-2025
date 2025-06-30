@@ -14,6 +14,7 @@
     "gen": "graphql-codegen --config codegen.ts",
     "genY": "graphql-codegen --config codegen.yml",
     "build:a": "eas build --platform android",
+    "b:da": "eas build --profile development --platform android",
     "build:ios": "eas build --platform ios",
     "gql watch": "graphql-codegen -w"
   },
@@ -53,7 +54,7 @@
     "expo-crypto": "^14.1.5",
     "expo-dev-client": "~5.2.2",
     "expo-font": "~13.3.1",
-    "expo-intent-launcher": "~12.1.5",
+    "expo-intent-launcher": "12.1.4",
     "expo-linking": "~7.1.5",
     "expo-navigation-bar": "~4.2.6",
     "expo-router": "~5.1.1",
