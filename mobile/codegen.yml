@@ -1,0 +1,16 @@
+overwrite: true
+schema: 'http://localhost:4545/graphql'
+documents: 'src/**/*.graphql'
+config:
+  withHooks: false
+ignoreNoDocuments: true
+generates:
+  lib/generated/graphql.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-urql'
+      # - 'typed-document-node'
+      - '@graphql-codegen/typed-document-node'
+    presetConfig:
+      gqlTagName: 'gql'

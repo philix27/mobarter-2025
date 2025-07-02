@@ -1,0 +1,31 @@
+query User_getAll {
+  user_getAll {
+    telegram_id
+    id
+    country_code
+    phone
+    firstname
+    lastname
+    middlename
+    email
+  }
+}
+
+query user_get {
+  user_get {
+    firstname
+    lastname
+    middlename
+    email
+    country_code
+    phone
+    bvn
+    bvn_status
+    nin
+    nin_status
+    state
+    dob
+    dob_status
+    home_address
+  }
+}

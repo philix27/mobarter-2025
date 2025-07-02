@@ -1,0 +1,33 @@
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    // "tsconfigRootDir": ".",
+    project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
+    sourceType: 'module',
+  },
+  plugins: ['@typescript-eslint'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'next',
+    'next/core-web-vitals',
+    'prettier',
+  ],
+  rules: {
+    '@typescript-eslint/ban-ts-comment': ['off'],
+    '@typescript-eslint/explicit-module-boundary-types': ['off'],
+    '@typescript-eslint/no-explicit-any': ['off'],
+    '@typescript-eslint/no-floating-promises': ['error'],
+    '@typescript-eslint/no-non-null-assertion': ['off'],
+    '@typescript-eslint/no-require-imports': ['warn'],
+    '@typescript-eslint/no-unused-vars': ['error'],
+    'import/no-self-import': ['error'],
+    'import/no-duplicates': ['error'],
+    'jsx-a11y/alt-text': ['off'],
+    'no-console': ['warn'],
+    'no-eval': ['error'],
+    'no-ex-assign': ['error'],
+    'no-constant-condition': ['off'],
+  },
+}
