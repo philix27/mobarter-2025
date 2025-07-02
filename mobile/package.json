@@ -1,5 +1,5 @@
 {
-  "name": "expo-starter",
+  "name": "mobarter",
   "main": "./index.js",
   "version": "1.0.0",
   "scripts": {
@@ -54,7 +54,6 @@
     "expo-crypto": "^14.1.5",
     "expo-dev-client": "~5.2.2",
     "expo-font": "~13.3.1",
-    "expo-intent-launcher": "12.1.4",
     "expo-linking": "~7.1.5",
     "expo-navigation-bar": "~4.2.6",
     "expo-router": "~5.1.1",
@@ -64,7 +63,6 @@
     "expo-symbols": "^0.4.4",
     "expo-system-ui": "~5.0.9",
     "expo-web-browser": "~14.2.0",
-    "googleapis": "^149.0.0",
     "graphql": "^16.11.0",
     "lottie-react-native": "^7.2.2",
     "react": "19.0.0",
@@ -92,7 +90,6 @@
     "thirdweb": "5.96.7",
     "victory-native": "^41.17.1",
     "viem": "^2.29.4",
-    "wagmi": "^2.15.3",
     "zod": "^3.24.2",
     "zustand": "^5.0.4"
   },
