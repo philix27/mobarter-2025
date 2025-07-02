@@ -1,5 +1,5 @@
 {
-  "name": "mini-server",
+  "name": "static-server",
   "version": "0.1.0",
   "private": true,
   "scripts": {
