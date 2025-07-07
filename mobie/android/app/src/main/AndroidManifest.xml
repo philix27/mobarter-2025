@@ -1,8 +1,11 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:tools="http://schemas.android.com/tools">
     <application
-        android:label="mobie"
+        android:label="mobarter"
+        android:fullBackupContent="@xml/pn_backup_rules"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        tools:replace="android:fullBackupContent,android:label">
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -31,6 +34,7 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
          https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.

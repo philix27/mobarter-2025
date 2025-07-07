@@ -1,4 +1,4 @@
-package com.example.mobie
+package com.mobarter.app
 
 import io.flutter.embedding.android.FlutterActivity
 

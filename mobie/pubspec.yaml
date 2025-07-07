@@ -37,6 +37,15 @@ dependencies:
   persistent_bottom_nav_bar: ^6.2.1
   modal_bottom_sheet: ^3.0.0
   persistent_bottom_nav_bar_v2: ^6.1.0
+  flutter_confetti: ^0.5.1
+  cached_network_image: ^3.4.1
+  oktoast: ^3.3.2+1
+  package_info_plus: ^8.3.0
+  particle_wallet: ^2.0.1
+  particle_base: ^2.0.1
+  particle_auth_core: ^2.0.1
+  particle_connect: ^2.0.1
+  flutter_native_splash: ^2.4.6
   # graphql: ^5.2.1
   # graphql_flutter: ^5.2.0
   # flutter_hooks: ^0.20.5
@@ -53,8 +62,8 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   graphql_codegen: ^1.2.4
   build_runner: ^2.5.4
-  url_launcher: ^6.3.1
-  flutter_confetti: ^0.5.1
+  flutter_launcher_icons: ^0.14.3
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

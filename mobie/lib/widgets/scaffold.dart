@@ -10,7 +10,7 @@ Widget appScaffold({
     appBar: AppBar(
       title: Text(
         title,
-        style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
       ),
     ),
     body: noneScrollable != null

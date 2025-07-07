@@ -4,6 +4,7 @@ import 'package:mobarter/constants/theme.dart';
 import 'package:mobarter/pages/Payments.dart';
 import 'package:mobarter/pages/Settings.dart';
 import 'package:mobarter/pages/WalletPage.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 void main() {
@@ -23,35 +24,44 @@ class MyApp extends StatelessWidget {
   // This widget is the root of y our application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Mobarter',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: Builder(
-        builder: (context) => Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ElevatedButton(
-                onPressed: () => Navigator.of(context).pushNamed("/minimal"),
-                child: const Text("Show Minimal Example"),
-              ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () =>
-                    Navigator.of(context).pushNamed("/interactive"),
-                child: const Text("Show Interactive Example"),
-              ),
-            ],
+    return OKToast(
+      // 2-A: wrap your app with OKToast
+      textStyle: const TextStyle(fontSize: 19.0, color: Colors.white),
+      backgroundColor: Colors.black,
+      animationCurve: Curves.easeIn,
+      animationBuilder: const OffsetAnimationBuilder(),
+      animationDuration: const Duration(milliseconds: 200),
+      duration: const Duration(seconds: 5),
+      child: MaterialApp(
+        title: 'Mobarter',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        ),
+        home: Builder(
+          builder: (context) => Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ElevatedButton(
+                  onPressed: () => Navigator.of(context).pushNamed("/minimal"),
+                  child: const Text("Show Minimal Example"),
+                ),
+                const SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed("/interactive"),
+                  child: const Text("Show Interactive Example"),
+                ),
+              ],
+            ),
           ),
         ),
+        routes: {
+          "/minimal": (context) => const MinimalExample(),
+          "/interactive": (context) => const WalletPage(),
+        },
       ),
-      routes: {
-        "/minimal": (context) => const MinimalExample(),
-        "/interactive": (context) => const WalletPage(),
-      },
     );
   }
 }
