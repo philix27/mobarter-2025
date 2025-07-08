@@ -9,7 +9,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "gen_icons": "dart run flutter_launcher_icons:generate",
-    "gen_splash": "dart run flutter_native_splash:create"
+    "gen_splash": "dart run flutter_native_splash:create",
+    "build": "flutter build appbundle",
+    "build_apk": "flutter build apk"
   },
   "keywords": [],
   "author": "",

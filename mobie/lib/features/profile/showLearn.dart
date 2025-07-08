@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobarter/utils/size.dart';
-import 'package:mobarter/widgets/row.dart';
+import 'package:mobarter/widgets/listTile.dart';
 
 class ShowLearn extends StatelessWidget {
   const ShowLearn({super.key});
@@ -12,8 +12,8 @@ class ShowLearn extends StatelessWidget {
       child: Column(
         spacing: 0,
         children: [
-          row(title: "How to purchase airtime"),
-          row(title: "How to purchase data"),
+          listTile(title: "How to purchase airtime"),
+          listTile(title: "How to purchase data"),
         ],
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/widgets/row.dart';
+import 'package:mobarter/widgets/listTile.dart';
 
 class ShowSocials extends StatelessWidget {
   const ShowSocials({super.key});
@@ -9,10 +9,10 @@ class ShowSocials extends StatelessWidget {
     return Column(
       spacing: 0,
       children: [
-        row(title: "Youtube"),
-        row(title: "Twitter"),
-        row(title: "Farcaster"),
-        row(title: "LinkedIn"),
+        listTile(title: "Youtube"),
+        listTile(title: "Twitter"),
+        listTile(title: "Farcaster"),
+        listTile(title: "LinkedIn"),
       ],
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobarter/utils/size.dart';
-import 'package:mobarter/widgets/row.dart';
+import 'package:mobarter/widgets/listTile.dart';
 
 class ShowBankAccounts extends StatelessWidget {
   const ShowBankAccounts({super.key});
@@ -13,37 +13,37 @@ class ShowBankAccounts extends StatelessWidget {
         child: Column(
           spacing: 0,
           children: [
-            row(
+            listTile(
               title: "ELIGBUE FELIX CHIDIEBELE",
               subtitle: "Opay | 8108850572",
               icon: Icons.account_box_outlined,
             ),
-            row(
+            listTile(
               title: "ELIGBUE FELIX CHIDIEBELE",
               subtitle: "Opay | 8108850572",
               icon: Icons.account_box_outlined,
             ),
-            row(
+            listTile(
               title: "ELIGBUE FELIX CHIDIEBELE",
               subtitle: "Opay | 8108850572",
               icon: Icons.account_box_outlined,
             ),
-            row(
+            listTile(
               title: "ELIGBUE FELIX CHIDIEBELE",
               subtitle: "Opay | 8108850572",
               icon: Icons.account_box_outlined,
             ),
-            row(
+            listTile(
               title: "ELIGBUE FELIX CHIDIEBELE",
               subtitle: "Opay | 8108850572",
               icon: Icons.account_box_outlined,
             ),
-            row(
+            listTile(
               title: "ELIGBUE FELIX CHIDIEBELE",
               subtitle: "Opay | 8108850572",
               icon: Icons.account_box_outlined,
             ),
-            row(
+            listTile(
               title: "Create",
               subtitle: "Add a new bank account",
               icon: Icons.create,

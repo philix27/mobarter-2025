@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobarter/utils/size.dart';
-import 'package:mobarter/widgets/row.dart';
+import 'package:mobarter/widgets/listTile.dart';
 
 class ShowAccountInfo extends StatelessWidget {
   const ShowAccountInfo({super.key});
@@ -12,11 +12,11 @@ class ShowAccountInfo extends StatelessWidget {
       child: Column(
         spacing: 0,
         children: [
-          row(title: "Names"),
-          row(title: "Gender"),
-          row(title: "Date Of Birth"),
-          row(title: "BVN"),
-          row(title: "NIN"),
+          listTile(title: "Names"),
+          listTile(title: "Gender"),
+          listTile(title: "Date Of Birth"),
+          listTile(title: "BVN"),
+          listTile(title: "NIN"),
         ],
       ),
     );

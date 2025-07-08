@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobarter/constants/theme.dart';
 
-Widget row({
+Widget listTile({
   required String title,
   String? subtitle,
   Widget? leading,
@@ -26,5 +26,19 @@ Widget row({
         : null,
     leading: icon != null ? Icon(icon, size: 20, color: colorPrimary) : leading,
     trailing: trailing,
+  );
+}
+
+Widget simpleRow({required String title, String? subtitle}) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(title, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400)),
+
+      Text(
+        subtitle ?? "",
+        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+      ),
+    ],
   );
 }

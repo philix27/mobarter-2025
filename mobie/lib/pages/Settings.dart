@@ -9,7 +9,7 @@ import 'package:mobarter/features/profile/showSupport.dart';
 import 'package:mobarter/features/profile/showTheme.dart';
 import 'package:mobarter/features/profile/showWallet.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
-import 'package:mobarter/widgets/row.dart';
+import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -22,7 +22,7 @@ class SettingsPage extends StatelessWidget {
       body: Column(
         // spacing: 4,
         children: [
-          row(
+          listTile(
             title: "Profile",
             subtitle: "Account informations",
             icon: Icons.person,
@@ -30,7 +30,7 @@ class SettingsPage extends StatelessWidget {
               btmSheet(ctx: context, w: ShowAccountInfo(), h: 0.5);
             },
           ),
-          row(
+          listTile(
             title: "Wallet",
             subtitle: ConnectLogic.getPublicAddress(),
             icon: Icons.wallet,
@@ -38,7 +38,7 @@ class SettingsPage extends StatelessWidget {
               btmSheet(ctx: context, w: ShowWallet(), h: 0.5);
             },
           ),
-          row(
+          listTile(
             title: "Bank Accounts",
             subtitle: "Manage bank account details",
             icon: Icons.money,
@@ -46,7 +46,7 @@ class SettingsPage extends StatelessWidget {
               btmSheet(ctx: context, w: ShowBankAccounts(), h: 0.4);
             },
           ),
-          row(
+          listTile(
             title: "Theme",
             subtitle: 'Manage appearance',
             icon: Icons.graphic_eq,
@@ -54,7 +54,7 @@ class SettingsPage extends StatelessWidget {
               btmSheet(ctx: context, w: ShowTheme(), h: 0.2);
             },
           ),
-          row(
+          listTile(
             title: "Support & Community",
             subtitle: 'Contact customer support',
             icon: Icons.support_agent_rounded,
@@ -63,7 +63,7 @@ class SettingsPage extends StatelessWidget {
             },
           ),
 
-          row(
+          listTile(
             title: "Socials",
             subtitle: 'Social Media Pages',
             // todo: use proper icons
@@ -72,7 +72,7 @@ class SettingsPage extends StatelessWidget {
               btmSheet(ctx: context, w: ShowSocials(), h: 0.5);
             },
           ),
-          row(
+          listTile(
             title: "Links",
             subtitle: 'Privacy and Legal Agreements',
             icon: Icons.link,
@@ -80,7 +80,7 @@ class SettingsPage extends StatelessWidget {
               btmSheet(ctx: context, w: ShowLinks(), h: 0.4);
             },
           ),
-          row(
+          listTile(
             title: "Learn",
             subtitle: 'Tutorials and Guide on Mobarter',
             icon: Icons.video_camera_front,
@@ -88,7 +88,7 @@ class SettingsPage extends StatelessWidget {
               btmSheet(ctx: context, w: ShowLearn(), h: 0.5);
             },
           ),
-          row(
+          listTile(
             title: "Logout",
             subtitle: "Signout your account",
             icon: Icons.logout,

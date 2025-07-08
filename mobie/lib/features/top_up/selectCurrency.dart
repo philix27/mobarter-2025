@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:mobarter/utils/size.dart';
 import 'package:mobarter/widgets/listTile.dart';
 
-class ShowTheme extends StatelessWidget {
-  const ShowTheme({super.key});
+class ShowCurrency extends StatelessWidget {
+  const ShowCurrency({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: getH(context, 0.3),
+      height: getH(context, 0.5),
       child: Column(
         spacing: 0,
         children: [
-          listTile(title: "Light", icon: Icons.light_mode),
-          listTile(title: "Dark", icon: Icons.dark_mode),
+          listTile(title: "USDT"),
+          listTile(title: "CUSD"),
+          listTile(title: "USDC"),
         ],
       ),
     );

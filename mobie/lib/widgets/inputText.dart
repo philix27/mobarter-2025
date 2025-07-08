@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:mobarter/constants/theme.dart';
 
 Widget textField({required String label}) {
   return TextField(
     decoration: InputDecoration(
       labelText: label,
       border: OutlineInputBorder(),
-      // fillColor: Colors.grey.shade400,
+      fillColor: colorCard,
+      focusColor: colorCard,
     ),
   );
 }

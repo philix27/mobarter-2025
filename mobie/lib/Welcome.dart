@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobarter/widgets/btn.dart';
 import 'connect_demo/connect_logic.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -30,19 +31,19 @@ class ConnectionButton extends StatelessWidget {
       future: ConnectLogic.isConnected(),
       builder: (BuildContext con, AsyncSnapshot<bool> snapshot) {
         if (snapshot.data == null || snapshot.data == false) {
-          return ElevatedButton(
+          return btn(
+            title: "Sign In WIth Google",
             onPressed: () {
               // ConnectLogic.connect();
               Navigator.of(context).pushNamed("/minimal");
             },
-            child: const Text("Sign In WIth Google"),
           );
         }
-        return ElevatedButton(
+        return btn(
+          title: "Welcome",
           onPressed: () {
             Navigator.of(context).pushNamed("/minimal");
           },
-          child: const Text("Welcome"),
         );
       },
     );
