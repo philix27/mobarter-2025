@@ -5,7 +5,7 @@ import 'package:particle_connect/particle_connect.dart';
 import 'package:particle_wallet/particle_wallet.dart';
 
 class ConnectLogic {
-  static ChainInfo currChainInfo = ChainInfo.Ethereum;
+  static ChainInfo currChainInfo = ChainInfo.Celo;
 
   static WalletType walletType = WalletType.authCore;
 
@@ -20,28 +20,28 @@ class ConnectLogic {
   static void init() {
     // Get your project id and client key from dashboard, https://dashboard.particle.network
     const projectId =
-        "772f7499-1d2e-40f4-8e2c-7b6dd47db9de"; //772f7499-1d2e-40f4-8e2c-7b6dd47db9de
+        "f0a0ce51-b133-4e74-8c4c-464376e60ff3"; //772f7499-1d2e-40f4-8e2c-7b6dd47db9de
     const clientK =
-        "ctWeIc2UBA6sYTKJknT9cu9LBikF00fbk1vmQjsV"; //ctWeIc2UBA6sYTKJknT9cu9LBikF00fbk1vmQjsV
+        "clydzHypxl2weS1aA3BVGUKdtZunaIwoXNm14IW1"; //ctWeIc2UBA6sYTKJknT9cu9LBikF00fbk1vmQjsV
     ParticleInfo.set(projectId, clientK);
 
     final dappInfo = DappMetaData(
-      "Particle Connect",
+      "Mobarter",
       "https://connect.particle.network/icons/512.png",
       "https://connect.particle.network",
-      "Particle Connect Flutter Demo",
+      "Payment Solutions for Africans",
     );
     ParticleConnect.init(currChainInfo, dappInfo, Env.dev);
     ParticleAuthCore.init();
     ParticleConnect.setWalletConnectV2SupportChainInfos(<ChainInfo>[
-      ChainInfo.ArbitrumSepolia,
+      ChainInfo.CeloTestnet,
     ]);
   }
 
   static void connect() async {
     try {
       final config = ParticleConnectConfig(
-        LoginType.email,
+        LoginType.google,
         "",
         SupportAuthType.values,
         SocialLoginPrompt.select_account,
@@ -55,7 +55,7 @@ class ConnectLogic {
         pnWalletName: "Custom Name",
       );
       ParticleWallet.setCustomWalletName(
-        "Group Wallet",
+        "Mobarter Wallet",
         "https://xraders.xyz/wp-content/uploads/2022/03/Group-349.png",
       );
 
@@ -66,17 +66,16 @@ class ConnectLogic {
     }
   }
 
-  static void isConnected() async {
+  static Future<bool> isConnected() async {
     try {
       bool isConnected = await ParticleConnect.isConnected(
         walletType,
         getPublicAddress(),
       );
-      showToast("isConnected: $isConnected");
-      print("isConnected: $isConnected");
+      return isConnected;
     } catch (error) {
-      showToast("isConnected: $error");
       print("isConnected: $error");
+      return false;
     }
   }
 

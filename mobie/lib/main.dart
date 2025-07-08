@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import "package:flutter/services.dart";
+import 'package:mobarter/Welcome.dart';
 import 'package:mobarter/constants/theme.dart';
 import 'package:mobarter/pages/Payments.dart';
 import 'package:mobarter/pages/Settings.dart';
@@ -38,25 +39,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        home: Builder(
-          builder: (context) => Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ElevatedButton(
-                  onPressed: () => Navigator.of(context).pushNamed("/minimal"),
-                  child: const Text("Show Minimal Example"),
-                ),
-                const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () =>
-                      Navigator.of(context).pushNamed("/interactive"),
-                  child: const Text("Show Interactive Example"),
-                ),
-              ],
-            ),
-          ),
-        ),
+        home: WelcomePage(),
         routes: {
           "/minimal": (context) => const MinimalExample(),
           "/interactive": (context) => const WalletPage(),
@@ -78,6 +61,7 @@ class MinimalExample extends StatelessWidget {
         title: "Home",
       ),
     ),
+
     PersistentTabConfig(
       screen: const PaymentsPage(),
       item: ItemConfig(
@@ -86,6 +70,7 @@ class MinimalExample extends StatelessWidget {
         title: "Payments",
       ),
     ),
+
     PersistentTabConfig(
       screen: const SettingsPage(),
       item: ItemConfig(

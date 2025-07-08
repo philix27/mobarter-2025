@@ -5,8 +5,10 @@ Widget row({
   String? subtitle,
   Widget? leading,
   Widget? trailing,
+  Function()? onTap,
 }) {
   return ListTile(
+    onTap: onTap,
     title: Text(
       title,
       style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),

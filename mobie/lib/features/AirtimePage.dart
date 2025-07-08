@@ -11,10 +11,14 @@ class AirtimePage extends StatelessWidget {
     return appScaffold(
       title: "Airtime",
       body: Column(
-        spacing: 10,
+        spacing: 15,
+        
         children: [
           row(title: "Currency", subtitle: "Currency for payment"),
+          row(title: "Network", subtitle: "Currency for payment"),
           textField(label: 'Phone No.'),
+          textField(label: 'Amount'),
+          // textField(label: 'Phone No.'),
         ],
       ),
     );

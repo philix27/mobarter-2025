@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/connect_demo/connect_demo.dart';
-import 'package:mobarter/wallet_demo/wallet_demo.dart';
 import 'package:mobarter/widgets/scaffold.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class WalletPage extends StatelessWidget {
   const WalletPage({super.key});
@@ -36,19 +33,6 @@ class WalletPage extends StatelessWidget {
           tokenRow("US Dollar Tether", "USDT", "12.3"),
           tokenRow("US Dollar C", "USDC", "12.3"),
           tokenRow("Celo Naira", "cNGN", "12.3"),
-
-          ElevatedButton(
-            onPressed: () {
-              pushScreen(context, screen: WalletDemoPage(), withNavBar: false);
-            },
-            child: const Text("Wallet Demo"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              pushScreen(context, screen: ConnectDemoPage(), withNavBar: false);
-            },
-            child: const Text("Connect Demo"),
-          ),
         ],
       ),
     );

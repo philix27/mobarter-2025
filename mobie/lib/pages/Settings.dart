@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobarter/connect_demo/connect_logic.dart';
 import 'package:mobarter/widgets/row.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 
@@ -19,7 +20,14 @@ class SettingsPage extends StatelessWidget {
           row(title: "Socials", subtitle: 'Social Media Pages'),
           row(title: "Links", subtitle: 'Privacy and Legal Agreements'),
           row(title: "Learn", subtitle: 'Tutorials and Guide on Mobarter'),
-          row(title: "Logout", subtitle: "Signout your account"),
+          row(
+            title: "Logout",
+            subtitle: "Signout your account",
+            onTap: () {
+              ConnectLogic.disconnect();
+              Navigator.of(context).pushNamed("/");
+            },
+          ),
         ],
       ),
     );
