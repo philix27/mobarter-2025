@@ -40,15 +40,13 @@ class ConnectLogic {
 
   static void connect() async {
     try {
-      final config = ParticleConnectConfig(
-        LoginType.google,
-        "",
-        SupportAuthType.values,
-        SocialLoginPrompt.select_account,
-      );
+      final config = ParticleConnectConfig(LoginType.google, "", [
+        SupportAuthType.google,
+      ], SocialLoginPrompt.select_account);
       final account = await ParticleConnect.connect(walletType, config: config);
+      
       ConnectLogic.account = account;
-      showToast('connect: $account');
+      // showToast('connect: $account');
       ParticleWallet.switchWallet(
         walletType,
         account.publicAddress,
@@ -61,8 +59,8 @@ class ConnectLogic {
 
       print("connect: $account");
     } catch (error) {
-      showToast('connect: $error');
-      print("connect: $error");
+      // showToast('connect: $error');
+      print("connect: Error $error");
     }
   }
 

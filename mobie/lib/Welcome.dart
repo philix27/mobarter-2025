@@ -32,8 +32,8 @@ class ConnectionButton extends StatelessWidget {
         if (snapshot.data == null || snapshot.data == false) {
           return ElevatedButton(
             onPressed: () {
-              ConnectLogic.connect();
-              // Navigator.of(context).pushNamed("/minimal");
+              // ConnectLogic.connect();
+              Navigator.of(context).pushNamed("/minimal");
             },
             child: const Text("Sign In WIth Google"),
           );

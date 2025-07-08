@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mobarter/connect_demo/connect_logic.dart';
+import 'package:mobarter/features/bankAccount/showBankAccounts.dart';
+import 'package:mobarter/features/profile/showAccountInfo.dart';
 import 'package:mobarter/features/profile/showLearn.dart';
 import 'package:mobarter/features/profile/showLinks.dart';
 import 'package:mobarter/features/profile/showSocials.dart';
+import 'package:mobarter/features/profile/showSupport.dart';
+import 'package:mobarter/features/profile/showTheme.dart';
 import 'package:mobarter/features/profile/showWallet.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/row.dart';
@@ -16,11 +20,15 @@ class SettingsPage extends StatelessWidget {
     return appScaffold(
       title: "Settings",
       body: Column(
+        // spacing: 4,
         children: [
           row(
             title: "Profile",
             subtitle: "Account informations",
             icon: Icons.person,
+            onTap: () {
+              btmSheet(ctx: context, w: ShowAccountInfo(), h: 0.5);
+            },
           ),
           row(
             title: "Wallet",
@@ -34,18 +42,27 @@ class SettingsPage extends StatelessWidget {
             title: "Bank Accounts",
             subtitle: "Manage bank account details",
             icon: Icons.money,
+            onTap: () {
+              btmSheet(ctx: context, w: ShowBankAccounts(), h: 0.4);
+            },
           ),
           row(
-            title: "Support",
+            title: "Theme",
+            subtitle: 'Manage appearance',
+            icon: Icons.graphic_eq,
+            onTap: () {
+              btmSheet(ctx: context, w: ShowTheme(), h: 0.2);
+            },
+          ),
+          row(
+            title: "Support & Community",
             subtitle: 'Contact customer support',
-            icon: Icons.support,
+            icon: Icons.support_agent_rounded,
+            onTap: () {
+              btmSheet(ctx: context, w: ShowSupports(), h: 0.35);
+            },
           ),
-          row(title: "Theme", subtitle: 'Manage appearance', icon: Icons.light),
-          row(
-            title: "Community",
-            subtitle: 'Groups and forums',
-            icon: Icons.group,
-          ),
+
           row(
             title: "Socials",
             subtitle: 'Social Media Pages',

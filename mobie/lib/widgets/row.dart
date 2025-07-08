@@ -7,10 +7,13 @@ Widget row({
   Widget? leading,
   IconData? icon,
   Widget? trailing,
+  Color? tileColor,
   Function()? onTap,
 }) {
   return ListTile(
     onTap: onTap,
+    splashColor: colorPrimaryLight,
+    tileColor: tileColor,
     title: Text(
       title,
       style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),

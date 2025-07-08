@@ -6,7 +6,10 @@ Future btmSheet({required BuildContext ctx, required Widget w, double? h}) {
   return showMaterialModalBottomSheet(
     context: ctx,
     builder: (context) {
-      return SizedBox(height: getH(context, h ?? 0.5), child: w);
+      return SizedBox(
+        height: getH(context, h ?? 0.5),
+        child: Padding(padding: EdgeInsets.symmetric(horizontal: 16), child: w),
+      );
     },
   );
 }

@@ -2,20 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:mobarter/utils/size.dart';
 import 'package:mobarter/widgets/row.dart';
 
-class ShowLinks extends StatelessWidget {
-  const ShowLinks({super.key});
+class ShowTheme extends StatelessWidget {
+  const ShowTheme({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: getH(context, 0.5),
+      height: getH(context, 0.3),
       child: Column(
         spacing: 0,
         children: [
-          row(title: "Youtube"),
-          row(title: "Twitter"),
-          row(title: "Farcaster"),
-          row(title: "LinkedIn"),
+          row(title: "Light", icon: Icons.light_mode),
+          row(title: "Dark", icon: Icons.dark_mode),
         ],
       ),
     );
