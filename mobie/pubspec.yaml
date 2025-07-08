@@ -46,6 +46,7 @@ dependencies:
   particle_auth_core: ^2.0.1
   particle_connect: ^2.0.1
   flutter_native_splash: ^2.4.6
+  pretty_qr_code: ^3.4.0
   # graphql: ^5.2.1
   # graphql_flutter: ^5.2.0
   # flutter_hooks: ^0.20.5
@@ -64,6 +65,13 @@ dev_dependencies:
   build_runner: ^2.5.4
   flutter_launcher_icons: ^0.14.3
   
+flutter_launcher_icons:
+    android: "launcher_icon"
+    ios: true
+    image_path: "assets/icon/logo.png"
+    adaptive_icon_background: "#fffff"
+    adaptive_icon_foreground: "assets/icon/logo.png"
+    adaptive_icon_foreground_inset: 24
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

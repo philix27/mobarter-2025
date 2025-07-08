@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mobarter/constants/theme.dart';
 
 Widget row({
   required String title,
   String? subtitle,
   Widget? leading,
+  IconData? icon,
   Widget? trailing,
   Function()? onTap,
 }) {
@@ -19,7 +21,7 @@ Widget row({
             style: TextStyle(fontSize: 13, fontWeight: FontWeight.w300),
           )
         : null,
-    leading: leading,
+    leading: icon != null ? Icon(icon, size: 20, color: colorPrimary) : leading,
     trailing: trailing,
   );
 }

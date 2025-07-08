@@ -7,9 +7,13 @@ import 'package:mobarter/pages/Settings.dart';
 import 'package:mobarter/pages/WalletPage.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+  // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
   // make navigation bar transparent
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(systemNavigationBarColor: Colors.transparent),

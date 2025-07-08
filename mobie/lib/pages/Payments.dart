@@ -42,7 +42,7 @@ class PaymentsPage extends StatelessWidget {
       title: "Payments",
       noneScrollable: true,
       body: GridView.count(
-        crossAxisCount: 3, // number of columns
+        crossAxisCount: 4   , // number of columns
         crossAxisSpacing: 8,
         // mainAxisSpacing: 8,
         children: List.generate(products.length, (index) {
