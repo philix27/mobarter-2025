@@ -1,15 +1,6 @@
 import java.util.Properties
 import java.io.FileInputStream
 
-def keystoreProperties = new Properties()
-def keystorePropertiesFile = rootProject.file("key.properties")
-if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
-}
-
-
-// Old
-
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -39,6 +30,19 @@ apply plugin: 'dev.flutter.flutter-gradle-plugin'
 // apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 
+
+//new 
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file("key.properties")
+if (keystorePropertiesFile.exists()) {
+    try {
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    } catch (Exception e) {
+        throw new GradleException("Failed to load keystore properties: ${e.message}")
+    }
+} else {
+    println "Warning: key.properties file not found. Release builds may fail without signing config."
+}
 
 android {
     namespace = "com.mobarter.app"
@@ -81,17 +85,22 @@ android {
         create("release") {
             keyAlias = keystoreProperties["keyAlias"] as String
             keyPassword = keystoreProperties["keyPassword"] as String
-            storeFile = keystoreProperties["storeFile"]?.let { file(it) }
+            storeFile = keystoreProperties["storeFile"] ? file(keystoreProperties["storeFile"]) : null
+            // storeFile = keystoreProperties["storeFile"]?.let { file(it) }
             storePassword = keystoreProperties["storePassword"] as String
         }
     }
 
     buildTypes {
         release {
+            minifyEnabled true
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
+            // signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
+        }
+        debug {
             signingConfig signingConfigs.debug
-            // signingConfig signingConfigs.release
         }
     }
 }

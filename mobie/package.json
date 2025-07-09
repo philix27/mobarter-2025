@@ -11,7 +11,8 @@
     "gen_icons": "dart run flutter_launcher_icons:generate",
     "gen_splash": "dart run flutter_native_splash:create",
     "build": "flutter build appbundle",
-    "build_apk": "flutter build apk"
+    "build_apk": "flutter build apk",
+    "build_dev": "flutter build apk --split-per-abi"
   },
   "keywords": [],
   "author": "",
