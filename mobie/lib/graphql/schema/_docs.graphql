@@ -1,0 +1,878 @@
+enum AdvertStatus {
+  CLOSE
+  OPEN
+}
+
+input Advert_CreateInput {
+  advertStatus: AdvertStatus!
+  currencyFiat: Country!
+  currency_crypto: String!
+  duration: String!
+  fiatAmountPerCrypto: Float!
+  instructions: String!
+  isFloatRate: Boolean
+  limitLower: Float!
+  limitUpper: Float!
+  merchant_id: Float!
+  rate: String
+  rateFixed: Float
+  rateFloat: Float
+  tradeType: TradeType!
+  wallet_address: String!
+}
+
+input Advert_DeleteInput {
+  id: ID!
+}
+
+input Advert_GetAllInput {
+  status: AdvertStatus
+}
+
+input Advert_GetOneInput {
+  id: Int!
+}
+
+type Advert_GetResponse {
+  advertStatus: AdvertStatus
+  currencyFiat: Country
+  currency_crypto: String
+  duration: String
+  fiatAmountPerCrypto: Float
+  id: ID!
+  instructions: String
+  isFloatRate: Boolean
+  limitLower: Float
+  limitUpper: Float
+  merchant_id: Float
+  merchant_nickname: String
+  merchant_trade_count: Float
+  rate: String
+  rateFixed: Float
+  rateFloat: Float
+  tradeType: TradeType
+  wallet_address: String
+}
+
+input Advert_UpdateInput {
+  advertStatus: AdvertStatus!
+  currencyFiat: Country!
+  currency_crypto: String!
+  duration: String!
+  fiatAmountPerCrypto: Float!
+  id: ID!
+  instructions: String!
+  isFloatRate: Boolean
+  limitLower: Float!
+  limitUpper: Float!
+  merchant_id: Float!
+  rate: String
+  rateFixed: Float
+  rateFloat: Float
+  tradeType: TradeType!
+  wallet_address: String!
+}
+
+input Auth_CreateAccountInput {
+  country: Country!
+  email: String!
+  firstname: String!
+  lastname: String!
+  middlename: String
+  password: String!
+}
+
+type Auth_CreateAccountResponse {
+  message: String!
+}
+
+input Auth_LoginInput {
+  email: String!
+  password: String!
+}
+
+input Auth_LoginMinipayInput {
+  walletAddress: String!
+}
+
+type Auth_LoginMinipayResponse {
+  email: String
+  firstname: String
+  lastname: String
+  middlename: String
+  token: String
+  walletAddress: String!
+}
+
+type Auth_LoginResponse {
+  country: Country!
+  email: String!
+  firstname: String!
+  lastname: String!
+  middlename: String
+  token: String!
+}
+
+input Auth_LogoutInput {
+  email: String!
+}
+
+input Auth_MinipayCreateAccountInput {
+  email: String!
+  walletAddress: String!
+}
+
+input Auth_ResetPasswordInput {
+  confirmPassword: String!
+  email: String!
+  password: String!
+}
+
+type Auth_ResetPasswordResponse {
+  message: String!
+}
+
+input Auth_TelegramLoginInput {
+  telegramUserId: String!
+  walletAddress: String!
+}
+
+type Auth_TelegramLoginResponse {
+  email: String
+  firstname: String
+  lastname: String
+  middlename: String
+  token: String
+  walletAddress: String!
+}
+
+input Auth_ThirdwebLoginInput {
+  email: String!
+  payload: String!
+  walletAddress: String!
+}
+
+input Auth_sendEmailOtpInput {
+  email: String!
+  purpose: OtpPurpose!
+}
+
+type Auth_sendEmailOtpResponse {
+  message: String!
+  token: String!
+}
+
+input Auth_verifyEmailOtpInput {
+  email: String!
+  otp: String!
+  token: String!
+}
+
+type Auth_verifyOtpResponse {
+  message: String!
+}
+
+input BankAccount_CreateInput {
+  accountName: String!
+  accountNo: String!
+  bankCode: String
+  bankName: String!
+}
+
+input BankAccount_DeleteInput {
+  accountId: Float!
+}
+
+type BankAccount_DeleteResponse {
+  message: String!
+}
+
+type BankAccount_Response {
+  account_name: String!
+  account_no: String!
+  bankCode: String
+  bank_name: String!
+  id: Float!
+}
+
+input BankGetAccountName_Input {
+  accountNo: String!
+  bankCode: String
+}
+
+type BankGetAccountName_Response {
+  account_name: String!
+  account_number: String!
+}
+
+type BankList_Response {
+  bankCode: String
+  bankName: String!
+}
+
+input BettingPaymentInput {
+  amount: Int!
+  countryCode: Country!
+  customer_id: String!
+  service_id: String!
+  transaction_hash: String!
+}
+
+type BettingPaymentResponse {
+  amount: Int!
+  customer_email_address: String!
+  customer_id: String!
+  customer_name: String!
+  customer_phone_number: String!
+  customer_username: String!
+  order_id: Int!
+  product_name: String!
+  request_id: String!
+  service_name: String!
+  status: String!
+}
+
+input BettingProvidersInput {
+  countryCode: Country!
+}
+
+type BettingProvidersResponse {
+  logo: String!
+  name: String!
+}
+
+enum ChainType {
+  Cosmos
+  Ethereum
+  Solana
+}
+
+enum Country {
+  GH
+  KE
+  MW
+  NG
+  RW
+  TZ
+  UG
+  ZA
+}
+
+enum CredentialsStatus {
+  FAILED
+  NONE
+  REVIEW
+  VALID
+}
+
+input ElectricityBill_PaymentInput {
+  amount: Int!
+  countryCode: Country!
+  customerAddress: String!
+  customerName: String!
+  meterNumber: String!
+  meterType: String!
+  reference: String!
+  service: String!
+  transaction_hash: String!
+}
+
+type ElectricityBill_PaymentResponse {
+  amount: String!
+  biller: String!
+  bonusToken: String!
+  chargedAmount: Int!
+  commission: Int!
+  customerId: String!
+  reference: String!
+  token: String!
+  transactionDate: String!
+  transactionId: String!
+  unit: String!
+}
+
+input ElectricityBill_ProviderInput {
+  countryCode: Country!
+}
+
+type ElectricityBill_ProvidersResponse {
+  category: String!
+  logo: String!
+  name: String!
+  slug: String!
+  status: Boolean!
+}
+
+input ElectricityBill_ValidateAccountInput {
+  countryCode: Country!
+  meterNumber: String!
+  meterType: String!
+  service: String!
+}
+
+type ElectricityBill_ValidateAccountResponse {
+  customerAddress: String!
+  customerName: String!
+  meterNumber: String!
+  meterType: String!
+  minimuVendAmount: Int!
+}
+
+type ExchangeRate_Response {
+  EUR: Float!
+  GH: Float!
+  KE: Float!
+  MW: Float!
+  NG: Float!
+  RW: Float!
+  TZ: Float!
+  UG: Float!
+  USD: Float!
+  ZA: Float!
+}
+
+type IAirtimeOperator {
+  logo: String!
+  maxAmount: Int
+  minAmount: Int
+  name: String!
+  operatorId: Int!
+  suggestedAmounts: [Int!]
+}
+
+type IDataPlan {
+  amount: Int!
+  desc: String!
+}
+
+type IOperator {
+  logo: String!
+  name: String!
+  operatorId: Int!
+  plans: [IDataPlan!]
+}
+
+input Kyc_AddAddressInfoInput {
+  country: Country!
+  houseAddress: String!
+  state: String!
+  street: String!
+}
+
+input Kyc_AddAddressProofInput {
+  proofOfAddressUrl: String!
+}
+
+input Kyc_AddBvnInput {
+  bvn: String!
+}
+
+type Kyc_AddBvnResponse {
+  message: String!
+}
+
+input Kyc_AddDobInput {
+  dob: String!
+}
+
+input Kyc_AddNamesInput {
+  firstName: String!
+  lastName: String!
+  middleName: String
+}
+
+input Kyc_AddNinInput {
+  nin: String!
+}
+
+type Kyc_AddNinResponse {
+  message: String
+}
+
+input Kyc_CreateTransactionPinInput {
+  pin: String!
+}
+
+type Kyc_Response {
+  message: String!
+}
+
+type Mutation {
+  adverts_create(input: Advert_CreateInput!): Advert_GetResponse!
+  adverts_delete(input: Advert_DeleteInput!): Advert_GetResponse!
+  adverts_update(input: Advert_UpdateInput!): Advert_GetResponse!
+  auth_createAccount(
+    input: Auth_CreateAccountInput!
+  ): Auth_CreateAccountResponse!
+  auth_login(input: Auth_LoginInput!): Auth_LoginResponse!
+  auth_loginTelegram(
+    input: Auth_TelegramLoginInput!
+  ): Auth_TelegramLoginResponse!
+  auth_logout(input: Auth_LogoutInput!): String!
+  auth_minipayCreateAccount(
+    input: Auth_MinipayCreateAccountInput!
+  ): Auth_LoginMinipayResponse!
+  auth_minipayLogin(input: Auth_LoginMinipayInput!): Auth_LoginMinipayResponse!
+  auth_resetPassword(
+    input: Auth_ResetPasswordInput!
+  ): Auth_ResetPasswordResponse!
+  auth_sendEmailOtp(input: Auth_sendEmailOtpInput!): Auth_sendEmailOtpResponse!
+  auth_thirdwebLogin(
+    input: Auth_ThirdwebLoginInput!
+  ): Auth_LoginMinipayResponse!
+  auth_verifyEmailOtp(input: Auth_verifyEmailOtpInput!): Auth_verifyOtpResponse!
+  bankAccount_create(input: BankAccount_CreateInput!): BankAccount_Response!
+  bankAccount_delete(
+    input: BankAccount_DeleteInput!
+  ): BankAccount_DeleteResponse!
+  electricityBill_makePayment(
+    input: ElectricityBill_PaymentInput!
+  ): ElectricityBill_PaymentResponse!
+  electricityBill_verifyAccount(
+    input: ElectricityBill_ValidateAccountInput!
+  ): ElectricityBill_ValidateAccountResponse!
+  fundBetting_makePayment(input: BettingPaymentInput!): BettingPaymentResponse!
+  kyc_addAddressInfo(input: Kyc_AddAddressInfoInput!): Kyc_Response!
+  kyc_addAddressProof(input: Kyc_AddAddressProofInput!): Kyc_Response!
+  kyc_addBvn(input: Kyc_AddBvnInput!): Kyc_AddBvnResponse!
+  kyc_addDob(input: Kyc_AddDobInput!): Kyc_Response!
+  kyc_addNames(input: Kyc_AddNamesInput!): Kyc_Response!
+  kyc_addNin(input: Kyc_AddNinInput!): Kyc_AddNinResponse!
+  kyc_createTransactionPin(input: Kyc_CreateTransactionPinInput!): Kyc_Response!
+  orders_Appeal(input: Order_AppealInput!): Order_Response!
+  orders_Cancel(input: Order_CancelInput!): Order_Response!
+  orders_CreateBuy(input: Order_CreteBuyInput!): Order_CreteBuyResponse!
+  orders_CreateSell(input: Order_CreteSellInput!): Order_CreteSellResponse!
+  orders_MoveCryptoToEscrow(
+    input: Order_MoveCryptoToEscrowInput!
+  ): Order_Response!
+  tvBills_makePayment(input: TvBill_PaymentInput!): TvBill_PaymentResponse!
+  tvBills_validateAccount(
+    input: TvBill_ValidateAccountInput!
+  ): TvBill_ValidateAccountResponse!
+  utility_payBill(
+    input: Utilities_PurchaseDataBundleInput!
+  ): Utilities_PurchaseTopUpResponse!
+  utility_purchaseAirtime(
+    input: Utilities_PurchaseAirtimeInput!
+  ): Utilities_PurchaseTopUpResponse!
+  utility_purchaseDataBundle(
+    input: Utilities_PurchaseDataBundleInput!
+  ): Utilities_PurchaseTopUpResponse!
+  walletCrypto_create: [WalletCryptoResponse!]!
+}
+
+enum OrderActions {
+  Appeal
+  Cancel
+  FaitReceived
+  FaitSent
+  LockCrypto
+  ReleaseCrypto
+}
+
+enum OrderMode {
+  EXPRESS
+  MARKET
+}
+
+enum OrderStatus {
+  APPEAL
+  CANCEL
+  COMPLETED
+  PENDING
+}
+
+input Order_AppealInput {
+  id: ID!
+  reason: String!
+}
+
+input Order_CancelInput {
+  id: ID!
+  reason: String!
+}
+
+input Order_CreteBuyInput {
+  action_merchant: OrderActions
+  action_user: OrderActions
+  amount_crypto: Float!
+  amount_fiat: Float!
+  bank_id: Float!
+  currency_crypto: String!
+  currency_fiat: Country!
+  currency_network: String!
+  estimated_duration: String!
+  merchant_id: Float!
+  mode: OrderMode
+  status: OrderStatus!
+  trade_type: TradeType!
+  txn_hash: String
+  wallet_customer: String!
+  wallet_merchant: String!
+}
+
+type Order_CreteBuyResponse {
+  action_merchant: OrderActions
+  action_user: OrderActions
+  amount_crypto: Float
+  amount_fiat: Float
+  bank_id: Float
+  currency_crypto: String
+  currency_fiat: Country
+  currency_network: String
+  estimated_duration: String
+  id: ID!
+  merchant_id: Float
+  mode: OrderMode
+  status: OrderStatus
+  trade_type: TradeType
+  txn_hash: String
+  wallet_customer: String
+  wallet_merchant: String
+}
+
+input Order_CreteSellInput {
+  action_merchant: OrderActions
+  action_user: OrderActions
+  amount_crypto: Float!
+  amount_fiat: Float!
+  bank_id: Float!
+  currency_crypto: String!
+  currency_fiat: Country!
+  currency_network: String!
+  estimated_duration: String!
+  merchant_id: Float!
+  mode: OrderMode
+  status: OrderStatus!
+  trade_type: TradeType!
+  txn_hash: String
+  wallet_customer: String!
+  wallet_merchant: String!
+}
+
+type Order_CreteSellResponse {
+  action_merchant: OrderActions
+  action_user: OrderActions
+  amount_crypto: Float
+  amount_fiat: Float
+  bank_id: Float
+  currency_crypto: String
+  currency_fiat: Country
+  currency_network: String
+  estimated_duration: String
+  id: ID!
+  merchant_id: Float
+  mode: OrderMode
+  status: OrderStatus
+  trade_type: TradeType
+  txn_hash: String
+  wallet_customer: String
+  wallet_merchant: String
+}
+
+input Order_GetAllInput {
+  currency_crypto: String
+  currency_fiat: Country
+  status: OrderStatus
+  trade_type: TradeType
+}
+
+input Order_GetOneInput {
+  id: ID!
+}
+
+input Order_MoveCryptoToEscrowInput {
+  action: OrderActions!
+  amountCrypto: Int!
+  currencyCrypto: String!
+  id: ID!
+}
+
+type Order_Response {
+  action_merchant: OrderActions
+  action_user: OrderActions
+  amount_crypto: Float
+  amount_fiat: Float
+  bank_id: Float
+  currency_crypto: String
+  currency_fiat: Country
+  currency_network: String
+  estimated_duration: String
+  id: ID!
+  merchant_id: Float
+  mode: OrderMode
+  status: OrderStatus
+  trade_type: TradeType
+  txn_hash: String
+  wallet_customer: String
+  wallet_merchant: String
+}
+
+enum OtpPurpose {
+  SignUp
+  Verification
+}
+
+type Query {
+  adverts_getAll: [Advert_GetResponse!]!
+  adverts_getMerchantAdverts(input: Advert_GetAllInput!): [Advert_GetResponse!]!
+  adverts_getOne(input: Advert_GetOneInput!): Advert_GetResponse!
+  bankAccount_getAll: [BankAccount_Response!]!
+  bankList: [BankList_Response!]!
+  bank_verifyAccountNo(
+    input: BankGetAccountName_Input!
+  ): BankGetAccountName_Response!
+  electricityBill_getProviders(
+    input: ElectricityBill_ProviderInput!
+  ): [ElectricityBill_ProvidersResponse!]!
+  fundBetting_getProviders(
+    input: BettingProvidersInput!
+  ): [BettingProvidersResponse!]!
+  fxRate_GetAll: ExchangeRate_Response!
+  orders_GetAll(input: Order_GetAllInput!): [Order_Response!]!
+  orders_GetAllAsMerchant(input: Order_GetAllInput!): [Order_Response!]!
+  orders_GetAllForAdmin(input: Order_GetAllInput!): [Order_Response!]!
+  orders_GetOne(input: Order_GetOneInput!): Order_Response!
+  static_getChains: [Static_GetChainsResponse!]!
+  static_getCountries: [Static_GetCountries!]!
+  static_getFundCollectors: Static_FundCollectorsResponse!
+  static_getLinks: [Static_GetLinkResponse!]!
+  static_getTokens: [Static_GetTokenResponse!]!
+  transactions_getAll: [Transaction_GetResponse!]!
+  transactions_getOne(input: Transaction_GetOneInput!): Transaction_GetResponse!
+  tvBills_getBouquet(
+    input: TvBill_GetTVBouquetInput!
+  ): [TvBill_GetBouquetPackageResponse!]!
+  tvBills_getProviders(
+    input: TvBill_GetTVProvidersInput!
+  ): [TvBill_GetTVProvidersResponse!]!
+  user_get: UserDto!
+  user_getAll: [UserDto!]!
+  utility_getTopUpOperators(
+    input: Utilities_GetOperatorsInput!
+  ): Utilities_GetOperatorResponse!
+  walletCrypto_getAll: [WalletCryptoResponse!]!
+  walletFiat_getAll: WalletFiat!
+}
+
+enum StaticLinkGroup {
+  Docs
+  Learn
+  Social
+}
+
+type Static_FundCollectorsResponse {
+  ElectricityBills: String!
+  FundBetting: String!
+  OffRamping: String!
+  TV_Bills: String!
+  TopUp: String!
+  WaterBills: String!
+}
+
+type Static_GetChainsResponse {
+  chainId: Float!
+  explorerApiUrl: String!
+  explorerUrl: String!
+  logoUrl: String!
+  name: String!
+  rpcUrl: String!
+}
+
+type Static_GetCountries {
+  callingCodes: String!
+  continent: String!
+  currencyCode: String!
+  currencyName: String!
+  currencySymbol: String!
+  flag: String!
+  isoName: Country!
+  name: String!
+}
+
+type Static_GetLinkResponse {
+  category: String
+  desc: String
+  group: StaticLinkGroup!
+  imgLink: String
+  title: String!
+  url: String!
+}
+
+type Static_GetTokenResponse {
+  address: String!
+  chainId: Float!
+  color: String!
+  decimals: Float!
+  isBuyable: Boolean
+  isPayable: Boolean
+  isSellable: Boolean
+  logoUrl: String!
+  name: String!
+  symbol: String!
+}
+
+enum TradeType {
+  BUY
+  SELL
+}
+
+enum TransactionCategory {
+  AIRTIME
+  BETTING_WALLET
+  DATA_BUNDLE
+  ELECTRICITY_BILL
+  EXPRESS_EXCHANGE
+  GIFT_CARD
+  INTERNET_BILL
+  OFF_RAMPING
+  ON_RAMPING
+  P2P_EXCHANGE
+  TV_BILL
+  WATER_BILL
+}
+
+enum TransactionStatus {
+  COMPLETED
+  PENDING
+}
+
+input Transaction_GetOneInput {
+  id: Int!
+}
+
+type Transaction_GetResponse {
+  amount: Float!
+  category: TransactionCategory!
+  id: ID!
+  mode: TransactionsMode!
+  note: String!
+  status: TransactionStatus!
+  transaction_hash: String
+}
+
+enum TransactionsMode {
+  CREDIT
+  DEBIT
+}
+
+type TvBill_GetBouquetPackageResponse {
+  code: String!
+  description: String!
+  price: String!
+}
+
+input TvBill_GetTVBouquetInput {
+  countryCode: Country!
+  service: String!
+}
+
+input TvBill_GetTVProvidersInput {
+  countryCode: Country!
+}
+
+type TvBill_GetTVProvidersResponse {
+  category: String!
+  logo: String!
+  name: String!
+  slug: String!
+  status: Boolean!
+}
+
+input TvBill_PaymentInput {
+  amount: String!
+  countryCode: Country!
+  customerName: String!
+  packageCode: String!
+  reference: String!
+  service: String!
+  smartCardNumber: String!
+  txn_hash: String!
+}
+
+type TvBill_PaymentResponse {
+  amount: Int!
+  biller: String!
+  commission: Int!
+  customerId: String!
+  transactionDate: String!
+  transactionId: String!
+  unit: String!
+}
+
+input TvBill_ValidateAccountInput {
+  service: String!
+  smartCardNumber: String!
+}
+
+type TvBill_ValidateAccountResponse {
+  customerName: String!
+  service: String!
+  smartCardNumber: String!
+}
+
+type UserDto {
+  bvn: String
+  bvn_status: CredentialsStatus
+  country_code: Country
+  dob: String
+  dob_status: CredentialsStatus
+  email: String
+  firstname: String
+  home_address: String
+  id: ID!
+  lastname: String
+  middlename: String
+  nin: String
+  nin_status: CredentialsStatus
+  phone: String
+  role: String
+  state: String
+  telegram_id: String
+}
+
+type Utilities_GetOperatorResponse {
+  airtime: [IAirtimeOperator!]!
+  dataBundles: [IOperator!]!
+  dataPlan: [IOperator!]!
+}
+
+input Utilities_GetOperatorsInput {
+  countryCode: Country!
+}
+
+input Utilities_PurchaseAirtimeInput {
+  amount: Float!
+  countryCode: Country!
+  operatorId: Int!
+  phoneNo: String!
+  transaction_hash: String!
+}
+
+input Utilities_PurchaseDataBundleInput {
+  amount: Float!
+  countryCode: Country!
+  operatorId: Int!
+  phoneNo: String!
+  transaction_hash: String!
+}
+
+type Utilities_PurchaseTopUpResponse {
+  message: String!
+}
+
+type WalletCryptoResponse {
+  address: String!
+  chainType: ChainType!
+  id: Float!
+  minipay: Boolean
+  wallet_id: String
+}
+
+type WalletFiat {
+  accountName: String!
+  accountNumber: String!
+  balance: Float!
+  bankName: String!
+}

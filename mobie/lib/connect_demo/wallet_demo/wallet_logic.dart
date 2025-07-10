@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:mobarter/wallet_demo/custom_bottom_sheet.dart';
+import 'package:mobarter/connect_demo/wallet_demo/custom_bottom_sheet.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:particle_base/particle_base.dart';
 import 'package:particle_connect/particle_connect.dart';

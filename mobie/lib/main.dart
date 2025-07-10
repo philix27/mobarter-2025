@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import "package:flutter/services.dart";
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mobarter/Welcome.dart';
 import 'package:mobarter/constants/theme.dart';
+import 'package:mobarter/graphql/api/Api.dart';
 import 'package:mobarter/pages/Payments.dart';
 import 'package:mobarter/pages/Settings.dart';
 import 'package:mobarter/pages/WalletPage.dart';
@@ -9,6 +11,10 @@ import 'package:oktoast/oktoast.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 void main() {
+  // final data = fetchDataFromSomewhereMaybeOuterSpace();
+  // final parsedData = Query$FetchPerson.fromJson(data);
+   // print(name);
+
   WidgetsFlutterBinding.ensureInitialized();
   // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
@@ -17,9 +23,15 @@ void main() {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(systemNavigationBarColor: Colors.transparent),
   );
+
   // make flutter draw behind navigation bar
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-  runApp(const MyApp());
+
+  final gql = getGqlClient();
+
+  var app = GraphQLProvider(client: gql, child: MyApp());
+
+  runApp(app);
 }
 
 class MyApp extends StatelessWidget {

@@ -1,0 +1,101 @@
+mutation Utility_purchaseAirtime($input: Utilities_PurchaseAirtimeInput!) {
+  utility_purchaseAirtime(input: $input) {
+    message
+  }
+}
+
+mutation Utility_purchaseDataBundle($input: Utilities_PurchaseDataBundleInput!) {
+  utility_purchaseDataBundle(input: $input) {
+    message
+  }
+}
+
+query ElectricityBill_getProviders($input: ElectricityBill_ProviderInput!) {
+  electricityBill_getProviders(input: $input) {
+    name
+    logo
+    status
+    category
+  }
+}
+
+mutation ElectricityBill_verifyAccount($input: ElectricityBill_ValidateAccountInput!) {
+  electricityBill_verifyAccount(input: $input) {
+    customerAddress
+    customerName
+    meterNumber
+    meterType
+    minimuVendAmount
+  }
+}
+
+mutation ElectricityBill_makePayment($input: ElectricityBill_PaymentInput!) {
+  electricityBill_makePayment(input: $input) {
+    amount
+    biller
+    bonusToken
+    chargedAmount
+    commission
+    customerId
+    transactionDate
+    unit
+  }
+}
+
+query tvBills_getProviders($input: TvBill_GetTVProvidersInput!) {
+  tvBills_getProviders(input: $input) {
+    logo
+    category
+    name
+    slug
+    status
+  }
+}
+
+query tvBills_getBouquet($input: TvBill_GetTVBouquetInput!) {
+  tvBills_getBouquet(input: $input) {
+    code
+    description
+    price
+  }
+}
+
+mutation tvBills_validateAccount($input: TvBill_ValidateAccountInput!) {
+  tvBills_validateAccount(input: $input) {
+    customerName
+    service
+    smartCardNumber
+  }
+}
+
+mutation tvBills_makePayment($input: TvBill_PaymentInput!) {
+  tvBills_makePayment(input: $input) {
+    amount
+    biller
+    commission
+    customerId
+    transactionId
+    transactionDate
+    customerId
+  }
+}
+
+query fundBetting_getProviders($input: BettingProvidersInput!) {
+  fundBetting_getProviders(input: $input) {
+    logo
+    name
+  }
+}
+
+mutation fundBetting_makePayment($input: BettingPaymentInput!) {
+  fundBetting_makePayment(input: $input) {
+    amount
+    customer_name
+    customer_username
+    customer_phone_number
+    customer_email_address
+    order_id
+    service_name
+    request_id
+  }
+}

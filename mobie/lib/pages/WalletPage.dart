@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:mobarter/graphql/docs/Tpken.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 
 class WalletPage extends StatelessWidget {
@@ -9,6 +11,7 @@ class WalletPage extends StatelessWidget {
     return appScaffold(
       title: "Wallet",
       body: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(
             height: 120,
@@ -29,42 +32,10 @@ class WalletPage extends StatelessWidget {
             ),
           ),
 
-          tokenRow("Celo Dollar", "cUSD", "12.3"),
-          tokenRow("US Dollar Tether", "USDT", "12.3"),
-          tokenRow("US Dollar C", "USDC", "12.3"),
-          tokenRow("Celo Naira", "cNGN", "12.3"),
+          TokensListWidget(),
+          // TokenHookWidget(),
         ],
       ),
     );
   }
-}
-
-Widget tokenRow(String title, String subtitle, String trailText) {
-  return ListTile(
-    title: Text(
-      title,
-      style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w500),
-    ),
-    subtitle: Text(
-      title,
-      style: TextStyle(fontSize: 11, fontWeight: FontWeight.w300),
-    ),
-    trailing: Text(
-      trailText,
-      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w300),
-    ),
-    leading: Image.network(
-      'https://images.pexels.com/photos/5980738/pexels-photo-5980738.jpeg',
-      width: 35,
-      height: 35,
-      fit: BoxFit.cover,
-      loadingBuilder: (context, child, loadingProgress) {
-        if (loadingProgress == null) return child;
-        return Center(child: CircularProgressIndicator());
-      },
-      errorBuilder: (context, error, stackTrace) {
-        return Icon(Icons.error, size: 35, color: Colors.red);
-      },
-    ),
-  );
 }

@@ -193,6 +193,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.19.1"
+  connectivity_plus:
+    dependency: transitive
+    description:
+      name: connectivity_plus
+      sha256: "051849e2bd7c7b3bc5844ea0d096609ddc3a859890ec3a9ac4a65a2620cc1f99"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.1.4"
+  connectivity_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: connectivity_plus_platform_interface
+      sha256: "42657c1715d48b167930d5f34d00222ac100475f73d10162ddf43e714932f204"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   convert:
     dependency: transitive
     description:
@@ -233,6 +249,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.0"
+  dbus:
+    dependency: transitive
+    description:
+      name: dbus
+      sha256: "79e0c23480ff85dc68de79e2cd6334add97e48f7f4865d17686dd6ea81a47e8c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.11"
   dio:
     dependency: transitive
     description:
@@ -249,6 +273,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  eip1559:
+    dependency: transitive
+    description:
+      name: eip1559
+      sha256: c2b81ac85f3e0e71aaf558201dd9a4600f051ece7ebacd0c5d70065c9b458004
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.2"
+  eip55:
+    dependency: transitive
+    description:
+      name: eip55
+      sha256: "213a9b86add87a5216328e8494b0ab836e401210c4d55eb5e521bd39e39169e1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   fake_async:
     dependency: transitive
     description:
@@ -302,6 +342,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.1"
+  flutter_hooks:
+    dependency: "direct main"
+    description:
+      name: flutter_hooks
+      sha256: cde36b12f7188c85286fba9b38cc5a902e7279f36dd676967106c041dc9dde70
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.20.5"
   flutter_launcher_icons:
     dependency: "direct dev"
     description:
@@ -384,6 +432,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.0"
+  gql_dedupe_link:
+    dependency: transitive
+    description:
+      name: gql_dedupe_link
+      sha256: "10bee0564d67c24e0c8bd08bd56e0682b64a135e58afabbeed30d85d5e9fea96"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.4-alpha+1715521079596"
+  gql_error_link:
+    dependency: transitive
+    description:
+      name: gql_error_link
+      sha256: "93901458f3c050e33386dedb0ca7173e08cebd7078e4e0deca4bf23ab7a71f63"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0+1"
   gql_exec:
     dependency: transitive
     description:
@@ -392,6 +456,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1-alpha+1699813812660"
+  gql_http_link:
+    dependency: transitive
+    description:
+      name: gql_http_link
+      sha256: ef6ad24d31beb5a30113e9b919eec20876903cc4b0ee0d31550047aaaba7d5dd
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
+  gql_link:
+    dependency: transitive
+    description:
+      name: gql_link
+      sha256: c2b0adb2f6a60c2599b9128fb095316db5feb99ce444c86fb141a6964acedfa4
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1-alpha+1730759315378"
+  gql_transform_link:
+    dependency: transitive
+    description:
+      name: gql_transform_link
+      sha256: "0645fdd874ca1be695fd327271fdfb24c0cd6fa40774a64b946062f321a59709"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   gql_tristate_value:
     dependency: transitive
     description:
@@ -400,6 +488,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+  graphql:
+    dependency: transitive
+    description:
+      name: graphql
+      sha256: "735bbbaa4db10d38054932e726d291bdd46e46e0575cd482a74b0615b8622e1c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.2.1"
   graphql_codegen:
     dependency: "direct dev"
     description:
@@ -408,6 +504,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.4"
+  graphql_flutter:
+    dependency: "direct main"
+    description:
+      name: graphql_flutter
+      sha256: "49867a84a9243142d69a31075dbb9ff9468366827b0e5bfcdb3867abbe1d5ee6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.2.0"
   graphs:
     dependency: transitive
     description:
@@ -416,6 +520,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
+  hive:
+    dependency: transitive
+    description:
+      name: hive
+      sha256: "8dcf6db979d7933da8217edcec84e9df1bdb4e4edc7fc77dbd5aa74356d6d941"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.3"
   html:
     dependency: transitive
     description:
@@ -480,6 +592,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.9.0"
+  json_rpc_2:
+    dependency: transitive
+    description:
+      name: json_rpc_2
+      sha256: "246b321532f0e8e2ba474b4d757eaa558ae4fdd0688fdbc1e1ca9705f9b8ca0e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.3"
   json_serializable:
     dependency: transitive
     description:
@@ -568,6 +688,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
+  nm:
+    dependency: transitive
+    description:
+      name: nm
+      sha256: "2c9aae4127bdc8993206464fcc063611e0e36e72018696cd9631023a31b24254"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.0"
+  normalize:
+    dependency: transitive
+    description:
+      name: normalize
+      sha256: f78bf0552b9640c76369253f0b8fdabad4f3fbfc06bdae9359e71bee9a5b071b
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.1"
   octo_image:
     dependency: transitive
     description:
@@ -736,6 +872,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+  pointycastle:
+    dependency: transitive
+    description:
+      name: pointycastle
+      sha256: "4be0097fcf3fd3e8449e53730c631200ebc7b88016acecab2b0da2f0149222fe"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.9.1"
   pool:
     dependency: transitive
     description:
@@ -808,6 +952,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.28.0"
+  sec:
+    dependency: transitive
+    description:
+      name: sec
+      sha256: "8bbd56df884502192a441b5f5d667265498f2f8728a282beccd9db79e215f379"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   shelf:
     dependency: transitive
     description:
@@ -1005,6 +1157,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "15.0.0"
+  wallet:
+    dependency: transitive
+    description:
+      name: wallet
+      sha256: "687fd89a16557649b26189e597792962f405797fc64113e8758eabc2c2605c32"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.13"
   watcher:
     dependency: transitive
     description:
@@ -1021,6 +1181,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+  web3dart:
+    dependency: "direct main"
+    description:
+      name: web3dart
+      sha256: "885e5e8f0cc3c87c09f160a7fce6279226ca41316806f7ece2001959c62ecced"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.7.3"
   web_socket:
     dependency: transitive
     description:

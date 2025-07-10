@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/wallet_demo/wallet_logic.dart';
+import 'package:mobarter/connect_demo/wallet_demo/wallet_logic.dart';
 
 class WalletDemoPage extends StatefulWidget {
   const WalletDemoPage({Key? key}) : super(key: key);
