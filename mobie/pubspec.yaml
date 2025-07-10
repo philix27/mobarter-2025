@@ -50,7 +50,7 @@ dependencies:
   pretty_qr_code: ^3.4.0
   flutter_hooks: ^0.20.5
   web3dart: ^2.7.1
-  http: ^0.13.6
+  http: ^1.2.2
   # graphql: ^5.2.1
   # graphql_flutter: ^5.2.0
   # flutter_hooks: ^0.20.5

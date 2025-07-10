@@ -3,7 +3,7 @@ import 'package:mobarter/connect_demo/connect_logic.dart';
 import 'package:mobarter/features/bankAccount/showBankAccounts.dart';
 import 'package:mobarter/features/profile/showAccountInfo.dart';
 import 'package:mobarter/features/profile/showLearn.dart';
-import 'package:mobarter/features/profile/showLinks.dart';
+import 'package:mobarter/features/profile/showDocsLinks.dart';
 import 'package:mobarter/features/profile/showSocials.dart';
 import 'package:mobarter/features/profile/showSupport.dart';
 import 'package:mobarter/features/profile/showTheme.dart';
@@ -69,15 +69,15 @@ class SettingsPage extends StatelessWidget {
             // todo: use proper icons
             icon: Icons.social_distance,
             onTap: () {
-              btmSheet(ctx: context, w: ShowSocials(), h: 0.5);
+              btmSheet(ctx: context, w: ShowSocials(), h: 0.45);
             },
           ),
           listTile(
-            title: "Links",
+            title: "Docs",
             subtitle: 'Privacy and Legal Agreements',
             icon: Icons.link,
             onTap: () {
-              btmSheet(ctx: context, w: ShowLinks(), h: 0.4);
+              btmSheet(ctx: context, w: DocsLinks(), h: 0.4);
             },
           ),
           listTile(

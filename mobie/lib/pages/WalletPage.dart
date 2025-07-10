@@ -1,6 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:mobarter/graphql/docs/Tpken.dart';
+import 'package:mobarter/features/wallet/TokensList.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 
 class WalletPage extends StatelessWidget {
@@ -31,9 +30,7 @@ class WalletPage extends StatelessWidget {
               ),
             ),
           ),
-
-          TokensListWidget(),
-          // TokenHookWidget(),
+          TokensList(),
         ],
       ),
     );

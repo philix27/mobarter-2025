@@ -9,7 +9,7 @@ Future btmSheet({required BuildContext ctx, required Widget w, double? h}) {
       return SizedBox(
         height: getH(context, h ?? 0.5),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: w,
         ),
       );

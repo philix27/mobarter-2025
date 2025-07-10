@@ -22,6 +22,7 @@ ValueNotifier<GraphQLClient> getGqlClient() {
   final GraphQLClient gqlClient = GraphQLClient(
     /// **NOTE** The default store is the InMemoryStore, which does NOT persist to disk
     cache: GraphQLCache(),
+    // cache: GraphQLCache(store: HiveStore()),
     link: _link,
   );
 

@@ -10,11 +10,7 @@ import 'package:mobarter/pages/WalletPage.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
-void main() {
-  // final data = fetchDataFromSomewhereMaybeOuterSpace();
-  // final parsedData = Query$FetchPerson.fromJson(data);
-   // print(name);
-
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
@@ -27,38 +23,40 @@ void main() {
   // make flutter draw behind navigation bar
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
-  final gql = getGqlClient();
+  await initHiveForFlutter();
+  HiveStore.open();
 
-  var app = GraphQLProvider(client: gql, child: MyApp());
-
-  runApp(app);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
+  final client = getGqlClient();
   // This widget is the root of y our application.
   @override
   Widget build(BuildContext context) {
-    return OKToast(
-      // 2-A: wrap your app with OKToast
-      textStyle: const TextStyle(fontSize: 19.0, color: Colors.white),
-      backgroundColor: Colors.black,
-      animationCurve: Curves.easeIn,
-      animationBuilder: const OffsetAnimationBuilder(),
-      animationDuration: const Duration(milliseconds: 200),
-      duration: const Duration(seconds: 5),
-      child: MaterialApp(
-        title: 'Mobarter',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: colorPrimary),
+    return GraphQLProvider(
+      client: client,
+      child: OKToast(
+        textStyle: const TextStyle(fontSize: 19.0, color: Colors.white),
+        backgroundColor: Colors.black,
+        animationCurve: Curves.easeIn,
+        animationBuilder: const OffsetAnimationBuilder(),
+        animationDuration: const Duration(milliseconds: 200),
+        duration: const Duration(seconds: 5),
+        child: MaterialApp(
+          title: 'Mobarter',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: colorPrimary),
+          ),
+          home: WelcomePage(),
+          routes: {
+            "/minimal": (context) => const MinimalExample(),
+            "/interactive": (context) => const WalletPage(),
+          },
         ),
-        home: WelcomePage(),
-        routes: {
-          "/minimal": (context) => const MinimalExample(),
-          "/interactive": (context) => const WalletPage(),
-        },
       ),
     );
   }

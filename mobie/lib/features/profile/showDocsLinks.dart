@@ -4,17 +4,17 @@ import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/widgets/listTile.dart';
 
-class ShowSocials extends StatelessWidget {
-  const ShowSocials({super.key});
+class DocsLinks extends StatelessWidget {
+  const DocsLinks({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return _SocialList();
+    return _DocsList();
   }
 }
 
-class _SocialList extends HookWidget {
-  const _SocialList({super.key});
+class _DocsList extends HookWidget {
+  const _DocsList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class _SocialList extends HookWidget {
     }
 
     final collection = linksList
-        ?.where((item) => item.group == Enum$StaticLinkGroup.Social)
+        ?.where((item) => item.group == Enum$StaticLinkGroup.Docs)
         .toList();
 
     return ListView.builder(
@@ -45,7 +45,7 @@ class _SocialList extends HookWidget {
         return listTile(
           title: item.title,
           subtitle: item.desc,
-          imgUrl: item.url,
+          // imgUrl: item.url,
         );
       },
     );
