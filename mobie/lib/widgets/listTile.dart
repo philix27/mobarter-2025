@@ -12,48 +12,53 @@ Widget listTile({
   Color? tileColor,
   Function()? onTap,
 }) {
-  return ListTile(
-    onTap: onTap,
-    splashColor: colorPrimaryLight,
-    tileColor: tileColor,
-    isThreeLine: subtitle != null,
-    title: Text(
-      title,
-      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+  return Card(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    elevation: 1,
+    child: ListTile(
+      onTap: onTap,
+      splashColor: colorPrimaryLight,
+      // tileColor: tileColor,
+      isThreeLine: false,
+      // isThreeLine: subtitle != null,
+      title: Text(
+        title,
+        style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+      ),
+      subtitle: subtitle != null
+          ? Text(
+              subtitle,
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w300),
+            )
+          : null,
+      leading: icon != null
+          ? ClipRRect(
+              borderRadius: BorderRadius.circular(
+                16,
+              ), // Change the radius as needed
+              child: Container(
+                color: colorCard,
+                padding: EdgeInsets.all(7),
+                // decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
+                child: Icon(icon, size: 20, color: colorPrimary),
+              ),
+            )
+          : imgUrl != null
+          ? ClipRRect(
+              borderRadius: BorderRadius.circular(
+                16,
+              ), // Change the radius as needed
+              child: CachedNetworkImage(
+                imageUrl: imgUrl,
+                placeholder: (context, url) => CircularProgressIndicator(),
+                width: 25,
+                height: 25,
+                fit: BoxFit.cover,
+              ),
+            )
+          : leading,
+      trailing: trailing,
     ),
-    subtitle: subtitle != null
-        ? Text(
-            subtitle,
-            style: TextStyle(fontSize: 13, fontWeight: FontWeight.w300),
-          )
-        : null,
-    leading: icon != null
-        ? ClipRRect(
-            borderRadius: BorderRadius.circular(
-              16,
-            ), // Change the radius as needed
-            child: Container(
-              color: colorCard,
-              padding: EdgeInsets.all(7),
-              // decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
-              child: Icon(icon, size: 20, color: colorPrimary),
-            ),
-          )
-        : imgUrl != null
-        ? ClipRRect(
-            borderRadius: BorderRadius.circular(
-              16,
-            ), // Change the radius as needed
-            child: CachedNetworkImage(
-              imageUrl: imgUrl,
-              placeholder: (context, url) => CircularProgressIndicator(),
-              width: 25,
-              height: 25,
-              fit: BoxFit.cover,
-            ),
-          )
-        : leading,
-    trailing: trailing,
   );
 }
 

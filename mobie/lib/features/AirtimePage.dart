@@ -17,16 +17,16 @@ class AirtimePage extends StatelessWidget {
     return appScaffold(
       title: "Airtime",
       body: Column(
-        spacing: 10,
+        spacing: 15,
         children: [
-          listTile(
-            title: "Currency",
-            subtitle: "Currency for payment",
-            tileColor: colorCard,
-            onTap: () {
-              btmSheet(ctx: context, w: ShowCurrency(), h: 0.5);
-            },
-          ),
+          // listTile(
+          //   title: "Currency",
+          //   subtitle: "Currency for payment",
+          //   tileColor: colorCard,
+          //   onTap: () {
+          //     btmSheet(ctx: context, w: ShowCurrency(), h: 0.5);
+          //   },
+          // ),
           listTile(
             title: "Network",
             subtitle: "Currency for payment",

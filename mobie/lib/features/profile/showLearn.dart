@@ -38,10 +38,7 @@ class _LearnLinks extends HookWidget {
       shrinkWrap: true,
       itemCount: collection?.length ?? 1,
       itemBuilder: (BuildContext ctx, int index) {
-        //  Text(tokensList![index]["name"] ?? "No name");
         final item = collection![index];
-        // return Text("data");
-        item.group == Enum$StaticLinkGroup.Social;
         return listTile(
           title: item.title,
           subtitle: item.desc,

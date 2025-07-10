@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/utils/size.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:mobarter/graphql/schema/_docs.graphql.dart';
+import 'package:mobarter/graphql/schema/topup.gql.dart';
 import 'package:mobarter/widgets/listTile.dart';
 
 class ShowTopUpProviders extends StatelessWidget {
@@ -7,16 +9,43 @@ class ShowTopUpProviders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: getH(context, 0.5),
-      child: Column(
-        spacing: 0,
-        children: [
-          listTile(title: "MTN"),
-          listTile(title: "Airtel"),
-          listTile(title: "Glo"),
-        ],
+    return _NetworkList();
+  }
+}
+
+class _NetworkList extends HookWidget {
+  const _NetworkList();
+
+  @override
+  Widget build(BuildContext context) {
+    final result = useQuery$utility_getTopUpOperators(
+      Options$Query$utility_getTopUpOperators(
+        variables: Variables$Query$utility_getTopUpOperators(
+          input: Input$Utilities_GetOperatorsInput(
+            countryCode: Enum$Country.NG,
+          ),
+        ),
       ),
+    );
+    final list = result.result.parsedData?.utility_getTopUpOperators;
+
+    if (result.result.hasException) {
+      print("Flutter Hook exceptio n");
+    }
+
+    if (result.result.data != null) {
+      print("Flutter Hook Success");
+    }
+
+    final collection = list?.airtime;
+
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: collection?.length ?? 1,
+      itemBuilder: (BuildContext ctx, int index) {
+        final item = collection![index];
+        return listTile(title: item.name, imgUrl: item.logo);
+      },
     );
   }
 }
