@@ -5,11 +5,11 @@ import 'package:mobarter/Welcome.dart';
 import 'package:mobarter/connect_demo/connect_demo.dart';
 import 'package:mobarter/constants/theme.dart';
 import 'package:mobarter/graphql/api/Api.dart';
-import 'package:mobarter/pages/Payments.dart';
-import 'package:mobarter/pages/Settings.dart';
+import 'package:mobarter/pages/HomeLayout.dart';
 import 'package:mobarter/pages/WalletPage.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:toastification/toastification.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,81 +27,45 @@ void main() async {
   await initHiveForFlutter();
   HiveStore.open();
 
-  runApp(MyApp());
+  runApp(AppProviders());
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+class AppProviders extends StatelessWidget {
+  AppProviders({super.key});
 
   final client = getGqlClient();
   // This widget is the root of y our application.
   @override
   Widget build(BuildContext context) {
-    return GraphQLProvider(
-      client: client,
-      child: OKToast(
-        textStyle: const TextStyle(fontSize: 19.0, color: Colors.white),
-        backgroundColor: Colors.black,
-        animationCurve: Curves.easeIn,
-        animationBuilder: const OffsetAnimationBuilder(),
-        animationDuration: const Duration(milliseconds: 200),
-        duration: const Duration(seconds: 5),
-        child: MaterialApp(
-          title: 'Mobarter',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: colorPrimary),
+    return ProviderScope(
+      child: GraphQLProvider(
+        client: client,
+        child: ToastificationWrapper(
+          child: OKToast(
+            textStyle: const TextStyle(fontSize: 19.0, color: Colors.white),
+            backgroundColor: Colors.black,
+            animationCurve: Curves.easeIn,
+            animationBuilder:  OffsetAnimationBuilder(),
+            animationDuration: const Duration(milliseconds: 200),
+            duration: const Duration(seconds: 5),
+            child: MaterialApp(
+              title: 'Mobarter',
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(
+                colorScheme: ColorScheme.fromSeed(seedColor: colorPrimary),
+              ),
+              themeMode: ThemeMode.system,
+              home: WelcomePage(),
+              routes: {
+                "/home": (context) => const HomePageLayout(),
+                "/auth": (context) => const WalletPage(),
+                "/interactive": (context) => const WalletPage(),
+                "/test-connect": (context) => const ConnectDemoPage(),
+              },
+            ),
           ),
-          themeMode: ThemeMode.system,
-          home: WelcomePage(),
-          routes: {
-            "/home": (context) => const HomePageLayout(),
-            "/auth": (context) => const WalletPage(),
-            "/interactive": (context) => const WalletPage(),
-            "/test-connect": (context) => const ConnectDemoPage(),
-          },
         ),
       ),
     );
   }
-}
-
-class HomePageLayout extends StatelessWidget {
-  const HomePageLayout({super.key});
-
-  List<PersistentTabConfig> _tabs() => [
-    PersistentTabConfig(
-      screen: const WalletPage(),
-      item: ItemConfig(
-        activeForegroundColor: colorPrimary,
-        icon: const Icon(Icons.home),
-        title: "Home",
-      ),
-    ),
-
-    PersistentTabConfig(
-      screen: const PaymentsPage(),
-      item: ItemConfig(
-        activeForegroundColor: colorPrimary,
-        icon: const Icon(Icons.payment),
-        title: "Payments",
-      ),
-    ),
-
-    PersistentTabConfig(
-      screen: const SettingsPage(),
-      item: ItemConfig(
-        activeForegroundColor: colorPrimary,
-        icon: const Icon(Icons.settings),
-        title: "Settings",
-      ),
-    ),
-  ];
-
-  @override
-  Widget build(BuildContext context) => PersistentTabView(
-    tabs: _tabs(),
-    navBarBuilder: (navBarConfig) =>
-        Style2BottomNavBar(navBarConfig: navBarConfig),
-  );
 }

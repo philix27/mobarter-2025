@@ -1,37 +1,67 @@
 import 'package:flutter/material.dart';
 import 'package:mobarter/constants/theme.dart';
 import 'package:mobarter/features/AirtimePage.dart';
-import 'package:mobarter/features/BettingPage.dart';
 import 'package:mobarter/features/DataBundlePage.dart';
-import 'package:mobarter/features/ElectricityPage.dart';
-import 'package:mobarter/features/TVBillsPage.dart';
 import 'package:mobarter/widgets/scaffold.dart';
+import 'package:mobarter/widgets/toast.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class PaymentProduct {
   final String title;
-  final Widget page;
+  // final Widget page;
   final IconData icon;
-
-  PaymentProduct({required this.icon, required this.title, required this.page});
+  final void Function()? onPressed;
+  PaymentProduct({
+    required this.onPressed,
+    required this.icon,
+    required this.title,
+    // required this.page,
+  });
 }
 
-List<PaymentProduct> products = [
-  PaymentProduct(title: 'Airtime', page: AirtimePage(), icon: Icons.phone),
-  PaymentProduct(
-    title: 'Data Bundle',
-    page: DataBundlePage(),
-    icon: Icons.network_cell,
-  ),
-  PaymentProduct(title: 'Betting', page: BettingPage(), icon: Icons.gamepad),
-  PaymentProduct(
-    title: 'Electricity',
-    page: ElectricityPage(),
-    icon: Icons.light,
-  ),
-  PaymentProduct(title: 'TV', page: TvBillsPage(), icon: Icons.abc_outlined),
-  // PaymentProduct(title: 'Headphones', page: ElectricityPage()),
-];
+List<PaymentProduct> productsList(BuildContext ctx) {
+  return [
+    PaymentProduct(
+      title: 'Airtime',
+      icon: Icons.phone,
+      onPressed: () {
+        pushScreen(ctx, screen: AirtimePage(), withNavBar: false);
+      },
+    ),
+    PaymentProduct(
+      title: 'Data Bundle',
+      icon: Icons.network_cell,
+      onPressed: () {
+        pushScreen(ctx, screen: DataBundlePage(), withNavBar: false);
+      },
+    ),
+    PaymentProduct(
+      title: 'Betting',
+      onPressed: () {
+        apptToast(ctx, "Coming soon");
+        // pushScreen(ctx, screen: BettingPage(), withNavBar: false);
+      },
+      icon: Icons.gamepad,
+    ),
+    PaymentProduct(
+      title: 'Electricity',
+      icon: Icons.light,
+      onPressed: () {
+        apptToast(ctx, "Coming soon");
+        // pushScreen(ctx, screen: ElectricityPage(), withNavBar: false);
+      },
+    ),
+    PaymentProduct(
+      title: 'TV',
+      onPressed: () {
+        apptToast(ctx, "Coming soon");
+        // pushScreen(ctx, screen: TvBillsPage(), withNavBar: false);
+      },
+      icon: Icons.abc_outlined,
+    ),
+    // PaymentProduct(title: 'Headphones', page: ElectricityPage()),
+  ];
+}
 
 class PaymentsPage extends StatelessWidget {
   const PaymentsPage({super.key});
@@ -42,11 +72,11 @@ class PaymentsPage extends StatelessWidget {
       title: "Payments",
       noneScrollable: true,
       body: GridView.count(
-        crossAxisCount: 4   , // number of columns
+        crossAxisCount: 3, // number of columns
         crossAxisSpacing: 8,
         // mainAxisSpacing: 8,
-        children: List.generate(products.length, (index) {
-          final item = products[index];
+        children: List.generate(productsList(context).length, (index) {
+          final item = productsList(context)[index];
           return Column(
             children: [
               ClipRRect(
@@ -57,13 +87,7 @@ class PaymentsPage extends StatelessWidget {
                   width: 45,
                   child: Center(
                     child: IconButton(
-                      onPressed: () {
-                        pushScreen(
-                          context,
-                          screen: item.page,
-                          withNavBar: false,
-                        );
-                      },
+                      onPressed: item.onPressed,
                       icon: Icon(Icons.wallet, size: 25, color: Colors.white),
                       // icon: Icon(item.icon, color: Colors.white),
                     ),

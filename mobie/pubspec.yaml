@@ -62,6 +62,8 @@ dependencies:
   cloud_firestore: ^5.6.6
   liquid_swipe: ^3.1.0
   smooth_page_indicator: ^1.2.1
+  riverpod_annotation: ^2.6.1
+  toastification: ^3.0.3
   # flutter_local_notifications: ^19.2.0
   # graphql: ^5.2.1
 
@@ -78,6 +80,7 @@ dev_dependencies:
   graphql_codegen: ^1.2.4
   build_runner: ^2.5.4
   flutter_launcher_icons: ^0.14.3
+  riverpod_generator: ^2.6.5
   
 flutter_launcher_icons:
     android: "launcher_icon"

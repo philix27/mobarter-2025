@@ -25,16 +25,15 @@ class TokensList extends HookWidget {
       shrinkWrap: true,
       itemCount: tokensList?.length ?? 1,
       itemBuilder: (BuildContext ctx, int index) {
-        //  Text(tokensList![index]["name"] ?? "No name");
-        final item = tokensList![index];
-        // return Text("data");
-        return tokenRow(
-          title: item.symbol,
-          subtitle: item.name,
-          trailText: "...",
-          logoUrl: item.logoUrl,
-          tokenContractAddress: item.address,
-        );
+        // final item = tokensList![index];
+        return Text("data");
+        // return tokenRow(
+        //   title: item.symbol,
+        //   subtitle: item.name,
+        //   trailText: "...",
+        //   logoUrl: item.logoUrl,
+        //   tokenContractAddress: item.address,
+        // );
       },
     );
   }
