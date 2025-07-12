@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:liquid_swipe/liquid_swipe.dart';
+import 'package:mobarter/constants/theme.dart';
+import 'package:mobarter/utils/appImages.dart';
+import 'package:mobarter/utils/size.dart';
 import 'package:mobarter/widgets/btn.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'connect_demo/connect_logic.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -10,6 +15,9 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
+  final Color page1Color = Colors.amber.shade200;
+  final Color page2Color = Colors.deepOrange.shade100;
+
   @override
   void initState() {
     super.initState();
@@ -18,14 +26,27 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Welcome")),
-      body: Column(
-        // mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      body: Stack(
+        alignment: Alignment.center,
         children: [
-          Text("Welcome to your one stop "),
-          ConnectionButton(),
-          const SizedBox(height: 16),
+          LiquidSwipe(
+            pages: [
+              IntroScreen(
+                pageColor: page1Color,
+                imagePath: Appimages.introInvest,
+                title: "Your all-in-one crypto payment solution",
+                subtitle: 'Make payemts & pay bills using your crypro assets',
+                activeIndex: 0,
+              ),
+              IntroScreen(
+                activeIndex: 1,
+                pageColor: page2Color,
+                imagePath: Appimages.introSavings,
+                title: "Save and Invest your crypto assets ",
+                subtitle: 'Earn passively as you save towards your goals',
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -44,8 +65,8 @@ class ConnectionButton extends StatelessWidget {
           return btn(
             title: "Sign In WIth Google",
             onPressed: () {
-              ConnectLogic.connect();
-              // Navigator.of(context).pushNamed("/test-connect");
+              // ConnectLogic.connect();
+              Navigator.of(context).pushNamed("/home");
             },
           );
         }
@@ -56,6 +77,69 @@ class ConnectionButton extends StatelessWidget {
           },
         );
       },
+    );
+  }
+}
+
+class IntroScreen extends StatelessWidget {
+  final Color pageColor;
+  final String imagePath;
+  final String title;
+  final String subtitle;
+  final int activeIndex;
+  const IntroScreen({
+    super.key,
+    required this.pageColor,
+    required this.imagePath,
+    required this.title,
+    required this.subtitle,
+    required this.activeIndex,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: pageColor,
+      padding: EdgeInsets.all(20),
+      width: getW(context, 1),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Image(height: getH(context, 0.4), image: AssetImage(imagePath)),
+          AnimatedSmoothIndicator(
+            activeIndex: activeIndex,
+            count: 2,
+            effect: WormEffect(
+              activeDotColor: colorPrimary,
+              dotColor: Colors.grey.shade400,
+              // dotColor: Colors.white,
+              dotHeight: 12,
+              dotWidth: 12,
+            ),
+          ),
+          SizedBox(
+            width: getW(context, 0.8),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  subtitle,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.w300, fontSize: 14),
+                ),
+                SizedBox(height: 30),
+                ConnectionButton(),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

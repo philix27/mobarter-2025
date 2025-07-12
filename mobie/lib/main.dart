@@ -52,9 +52,10 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: colorPrimary),
           ),
+          themeMode: ThemeMode.system,
           home: WelcomePage(),
           routes: {
-            "/minimal": (context) => const MinimalExample(),
+            "/home": (context) => const HomePageLayout(),
             "/auth": (context) => const WalletPage(),
             "/interactive": (context) => const WalletPage(),
             "/test-connect": (context) => const ConnectDemoPage(),
@@ -65,8 +66,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MinimalExample extends StatelessWidget {
-  const MinimalExample({super.key});
+class HomePageLayout extends StatelessWidget {
+  const HomePageLayout({super.key});
 
   List<PersistentTabConfig> _tabs() => [
     PersistentTabConfig(

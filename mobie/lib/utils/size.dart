@@ -5,3 +5,9 @@ getH(BuildContext context, double height) {
   final containerHeight = screenHeight * height; // 20% of screen height
   return containerHeight;
 }
+
+getW(BuildContext context, double width) {
+  final screenwidth = MediaQuery.of(context).size.width;
+  final containerwidth = screenwidth * width; // 20% of screen width
+  return containerwidth;
+}
