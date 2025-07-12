@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import "package:flutter/services.dart";
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mobarter/Welcome.dart';
+import 'package:mobarter/connect_demo/connect_demo.dart';
 import 'package:mobarter/constants/theme.dart';
 import 'package:mobarter/graphql/api/Api.dart';
 import 'package:mobarter/pages/Payments.dart';
@@ -54,7 +55,9 @@ class MyApp extends StatelessWidget {
           home: WelcomePage(),
           routes: {
             "/minimal": (context) => const MinimalExample(),
+            "/auth": (context) => const WalletPage(),
             "/interactive": (context) => const WalletPage(),
+            "/test-connect": (context) => const ConnectDemoPage(),
           },
         ),
       ),

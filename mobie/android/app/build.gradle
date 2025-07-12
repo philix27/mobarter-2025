@@ -70,13 +70,13 @@ android {
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         // minSdk = flutter.minSdkVersion
-        minSdkVersion 23
+        minSdkVersion 26
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        manifestPlaceholders["PN_PROJECT_ID"] = "f0a0ce51-b133-4e74-8c4c-464376e60ff3"
+        manifestPlaceholders["PN_PROJECT_ID"] = "ff0a0ce51-b133-4e74-8c4c-464376e60ff3"
         manifestPlaceholders["PN_PROJECT_CLIENT_KEY"] = "clydzHypxl2weS1aA3BVGUKdtZunaIwoXNm14IW1"
-        manifestPlaceholders["PN_APP_ID"] = "06469c01-006c-457b-9390-b8d57cb80683"
+        manifestPlaceholders["PN_APP_ID"] = "8ef67777-5802-4859-bed9-adf6ebd70b21"
 
        
     }

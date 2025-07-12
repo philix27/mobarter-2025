@@ -2,8 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:mobarter/widgets/btn.dart';
 import 'connect_demo/connect_logic.dart';
 
-class WelcomePage extends StatelessWidget {
+class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
+
+  @override
+  State<WelcomePage> createState() => _WelcomePageState();
+}
+
+class _WelcomePageState extends State<WelcomePage> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +44,8 @@ class ConnectionButton extends StatelessWidget {
           return btn(
             title: "Sign In WIth Google",
             onPressed: () {
-              // ConnectLogic.connect();
-              Navigator.of(context).pushNamed("/minimal");
+              ConnectLogic.connect();
+              // Navigator.of(context).pushNamed("/test-connect");
             },
           );
         }

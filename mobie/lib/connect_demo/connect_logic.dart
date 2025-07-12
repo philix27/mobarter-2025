@@ -40,11 +40,11 @@ class ConnectLogic {
 
   static void connect() async {
     try {
-      final config = ParticleConnectConfig(LoginType.google, "", [
+      final config = ParticleConnectConfig(LoginType.google, null, [
         SupportAuthType.google,
       ], SocialLoginPrompt.select_account);
       final account = await ParticleConnect.connect(walletType, config: config);
-      
+
       ConnectLogic.account = account;
       // showToast('connect: $account');
       ParticleWallet.switchWallet(
