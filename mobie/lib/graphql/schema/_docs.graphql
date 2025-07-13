@@ -1,3 +1,5 @@
+
+
 enum AdvertStatus {
   CLOSE
   OPEN
@@ -718,6 +720,8 @@ type Static_GetTokenResponse {
   isSellable: Boolean
   logoUrl: String!
   name: String!
+  priceNGN: Float!
+  priceUSD: Float!
   symbol: String!
 }
 

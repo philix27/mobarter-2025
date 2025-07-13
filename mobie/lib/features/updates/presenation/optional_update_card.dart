@@ -38,7 +38,8 @@ class OptionalUpdateCard extends HookWidget {
         final status = snap.data;
         if (status == UpdateStatus.optional) {
           return Card(
-            color: Colors.deepOrange.shade100,
+            elevation: 0.0,
+            // color: Colors.deepOrange.shade100,
             child: InkWell(
               splashColor: Colors.transparent,
               highlightColor: Colors.transparent,
@@ -47,7 +48,7 @@ class OptionalUpdateCard extends HookWidget {
                 launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
               },
               child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8),
+                padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6),
                 child: Row(
                   children: [
                     Icon(CupertinoIcons.arrow_up_right_diamond_fill),

@@ -8,6 +8,8 @@ query static_getTokens {
     symbol
     logoUrl
     chainId
+    priceUSD
+    priceNGN
   }
 }
 

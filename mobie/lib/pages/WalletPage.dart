@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobarter/features/updates/presenation/optional_update_card.dart';
-import 'package:mobarter/features/wallet/TokensList.dart';
+import 'package:mobarter/features/wallet/presentation/TokensList.dart';
+import 'package:mobarter/features/wallet/presentation/total_balance.dart';
+import 'package:mobarter/utils/size.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 
 class WalletPage extends StatelessWidget {
@@ -15,22 +17,8 @@ class WalletPage extends StatelessWidget {
         children: [
           OptionalUpdateCard(),
           SizedBox(
-            height: 120,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "500.90 USD",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-                  ),
-                  Text(
-                    "~800,000",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
-            ),
+            height: getH(context, 0.155),
+            child: Center(child: TotalBalance()),
           ),
           TokensList(),
         ],

@@ -41,7 +41,7 @@ final deviceBuildProvider = FutureProvider<int>.internal(
 // ignore: unused_element
 typedef DeviceBuildRef = FutureProviderRef<int>;
 String _$deviceUpdateStatusHash() =>
-    r'e066898705eeba27c35fd935133b4ba988502bfd';
+    r'391aa91afff78ff77e98e3932b582c7a9c3aed34';
 
 /// See also [deviceUpdateStatus].
 @ProviderFor(deviceUpdateStatus)
