@@ -3122,3 +3122,525 @@ class _CopyWithStubImpl$Query$static_getFundCollectors$static_getFundCollectors<
   }) =>
       _res;
 }
+
+class Query$static_appInfo {
+  Query$static_appInfo({
+    required this.static_appInfo,
+    this.$__typename = 'Query',
+  });
+
+  factory Query$static_appInfo.fromJson(Map<String, dynamic> json) {
+    final l$static_appInfo = json['static_appInfo'];
+    final l$$__typename = json['__typename'];
+    return Query$static_appInfo(
+      static_appInfo: Query$static_appInfo$static_appInfo.fromJson(
+          (l$static_appInfo as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Query$static_appInfo$static_appInfo static_appInfo;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$static_appInfo = static_appInfo;
+    _resultData['static_appInfo'] = l$static_appInfo.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$static_appInfo = static_appInfo;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$static_appInfo,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$static_appInfo || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$static_appInfo = static_appInfo;
+    final lOther$static_appInfo = other.static_appInfo;
+    if (l$static_appInfo != lOther$static_appInfo) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$static_appInfo on Query$static_appInfo {
+  CopyWith$Query$static_appInfo<Query$static_appInfo> get copyWith =>
+      CopyWith$Query$static_appInfo(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Query$static_appInfo<TRes> {
+  factory CopyWith$Query$static_appInfo(
+    Query$static_appInfo instance,
+    TRes Function(Query$static_appInfo) then,
+  ) = _CopyWithImpl$Query$static_appInfo;
+
+  factory CopyWith$Query$static_appInfo.stub(TRes res) =
+      _CopyWithStubImpl$Query$static_appInfo;
+
+  TRes call({
+    Query$static_appInfo$static_appInfo? static_appInfo,
+    String? $__typename,
+  });
+  CopyWith$Query$static_appInfo$static_appInfo<TRes> get static_appInfo;
+}
+
+class _CopyWithImpl$Query$static_appInfo<TRes>
+    implements CopyWith$Query$static_appInfo<TRes> {
+  _CopyWithImpl$Query$static_appInfo(
+    this._instance,
+    this._then,
+  );
+
+  final Query$static_appInfo _instance;
+
+  final TRes Function(Query$static_appInfo) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? static_appInfo = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$static_appInfo(
+        static_appInfo: static_appInfo == _undefined || static_appInfo == null
+            ? _instance.static_appInfo
+            : (static_appInfo as Query$static_appInfo$static_appInfo),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Query$static_appInfo$static_appInfo<TRes> get static_appInfo {
+    final local$static_appInfo = _instance.static_appInfo;
+    return CopyWith$Query$static_appInfo$static_appInfo(
+        local$static_appInfo, (e) => call(static_appInfo: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$static_appInfo<TRes>
+    implements CopyWith$Query$static_appInfo<TRes> {
+  _CopyWithStubImpl$Query$static_appInfo(this._res);
+
+  TRes _res;
+
+  call({
+    Query$static_appInfo$static_appInfo? static_appInfo,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Query$static_appInfo$static_appInfo<TRes> get static_appInfo =>
+      CopyWith$Query$static_appInfo$static_appInfo.stub(_res);
+}
+
+const documentNodeQuerystatic_appInfo = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'static_appInfo'),
+    variableDefinitions: [],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'static_appInfo'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'androidAppUrl'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'iosAppUrl'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'minBuild'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'deployedBuild'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+]);
+Query$static_appInfo _parserFn$Query$static_appInfo(
+        Map<String, dynamic> data) =>
+    Query$static_appInfo.fromJson(data);
+typedef OnQueryComplete$Query$static_appInfo = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$static_appInfo?,
+);
+
+class Options$Query$static_appInfo
+    extends graphql.QueryOptions<Query$static_appInfo> {
+  Options$Query$static_appInfo({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$static_appInfo? typedOptimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+    OnQueryComplete$Query$static_appInfo? onComplete,
+    graphql.OnQueryError? onError,
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null ? null : _parserFn$Query$static_appInfo(data),
+                  ),
+          onError: onError,
+          document: documentNodeQuerystatic_appInfo,
+          parserFn: _parserFn$Query$static_appInfo,
+        );
+
+  final OnQueryComplete$Query$static_appInfo? onCompleteWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
+}
+
+class WatchOptions$Query$static_appInfo
+    extends graphql.WatchQueryOptions<Query$static_appInfo> {
+  WatchOptions$Query$static_appInfo({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$static_appInfo? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQuerystatic_appInfo,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$static_appInfo,
+        );
+}
+
+class FetchMoreOptions$Query$static_appInfo extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$static_appInfo(
+      {required graphql.UpdateQuery updateQuery})
+      : super(
+          updateQuery: updateQuery,
+          document: documentNodeQuerystatic_appInfo,
+        );
+}
+
+extension ClientExtension$Query$static_appInfo on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$static_appInfo>> query$static_appInfo(
+          [Options$Query$static_appInfo? options]) async =>
+      await this.query(options ?? Options$Query$static_appInfo());
+  graphql.ObservableQuery<Query$static_appInfo> watchQuery$static_appInfo(
+          [WatchOptions$Query$static_appInfo? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$static_appInfo());
+  void writeQuery$static_appInfo({
+    required Query$static_appInfo data,
+    bool broadcast = true,
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+            operation:
+                graphql.Operation(document: documentNodeQuerystatic_appInfo)),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$static_appInfo? readQuery$static_appInfo({bool optimistic = true}) {
+    final result = this.readQuery(
+      graphql.Request(
+          operation:
+              graphql.Operation(document: documentNodeQuerystatic_appInfo)),
+      optimistic: optimistic,
+    );
+    return result == null ? null : Query$static_appInfo.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$static_appInfo> useQuery$static_appInfo(
+        [Options$Query$static_appInfo? options]) =>
+    graphql_flutter.useQuery(options ?? Options$Query$static_appInfo());
+graphql.ObservableQuery<Query$static_appInfo> useWatchQuery$static_appInfo(
+        [WatchOptions$Query$static_appInfo? options]) =>
+    graphql_flutter
+        .useWatchQuery(options ?? WatchOptions$Query$static_appInfo());
+
+class Query$static_appInfo$Widget
+    extends graphql_flutter.Query<Query$static_appInfo> {
+  Query$static_appInfo$Widget({
+    widgets.Key? key,
+    Options$Query$static_appInfo? options,
+    required graphql_flutter.QueryBuilder<Query$static_appInfo> builder,
+  }) : super(
+          key: key,
+          options: options ?? Options$Query$static_appInfo(),
+          builder: builder,
+        );
+}
+
+class Query$static_appInfo$static_appInfo {
+  Query$static_appInfo$static_appInfo({
+    required this.androidAppUrl,
+    required this.iosAppUrl,
+    required this.minBuild,
+    required this.deployedBuild,
+    this.$__typename = 'Static_AppInfoResponse',
+  });
+
+  factory Query$static_appInfo$static_appInfo.fromJson(
+      Map<String, dynamic> json) {
+    final l$androidAppUrl = json['androidAppUrl'];
+    final l$iosAppUrl = json['iosAppUrl'];
+    final l$minBuild = json['minBuild'];
+    final l$deployedBuild = json['deployedBuild'];
+    final l$$__typename = json['__typename'];
+    return Query$static_appInfo$static_appInfo(
+      androidAppUrl: (l$androidAppUrl as String),
+      iosAppUrl: (l$iosAppUrl as String),
+      minBuild: (l$minBuild as num).toDouble(),
+      deployedBuild: (l$deployedBuild as num).toDouble(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String androidAppUrl;
+
+  final String iosAppUrl;
+
+  final double minBuild;
+
+  final double deployedBuild;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$androidAppUrl = androidAppUrl;
+    _resultData['androidAppUrl'] = l$androidAppUrl;
+    final l$iosAppUrl = iosAppUrl;
+    _resultData['iosAppUrl'] = l$iosAppUrl;
+    final l$minBuild = minBuild;
+    _resultData['minBuild'] = l$minBuild;
+    final l$deployedBuild = deployedBuild;
+    _resultData['deployedBuild'] = l$deployedBuild;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$androidAppUrl = androidAppUrl;
+    final l$iosAppUrl = iosAppUrl;
+    final l$minBuild = minBuild;
+    final l$deployedBuild = deployedBuild;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$androidAppUrl,
+      l$iosAppUrl,
+      l$minBuild,
+      l$deployedBuild,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$static_appInfo$static_appInfo ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$androidAppUrl = androidAppUrl;
+    final lOther$androidAppUrl = other.androidAppUrl;
+    if (l$androidAppUrl != lOther$androidAppUrl) {
+      return false;
+    }
+    final l$iosAppUrl = iosAppUrl;
+    final lOther$iosAppUrl = other.iosAppUrl;
+    if (l$iosAppUrl != lOther$iosAppUrl) {
+      return false;
+    }
+    final l$minBuild = minBuild;
+    final lOther$minBuild = other.minBuild;
+    if (l$minBuild != lOther$minBuild) {
+      return false;
+    }
+    final l$deployedBuild = deployedBuild;
+    final lOther$deployedBuild = other.deployedBuild;
+    if (l$deployedBuild != lOther$deployedBuild) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$static_appInfo$static_appInfo
+    on Query$static_appInfo$static_appInfo {
+  CopyWith$Query$static_appInfo$static_appInfo<
+          Query$static_appInfo$static_appInfo>
+      get copyWith => CopyWith$Query$static_appInfo$static_appInfo(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$static_appInfo$static_appInfo<TRes> {
+  factory CopyWith$Query$static_appInfo$static_appInfo(
+    Query$static_appInfo$static_appInfo instance,
+    TRes Function(Query$static_appInfo$static_appInfo) then,
+  ) = _CopyWithImpl$Query$static_appInfo$static_appInfo;
+
+  factory CopyWith$Query$static_appInfo$static_appInfo.stub(TRes res) =
+      _CopyWithStubImpl$Query$static_appInfo$static_appInfo;
+
+  TRes call({
+    String? androidAppUrl,
+    String? iosAppUrl,
+    double? minBuild,
+    double? deployedBuild,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Query$static_appInfo$static_appInfo<TRes>
+    implements CopyWith$Query$static_appInfo$static_appInfo<TRes> {
+  _CopyWithImpl$Query$static_appInfo$static_appInfo(
+    this._instance,
+    this._then,
+  );
+
+  final Query$static_appInfo$static_appInfo _instance;
+
+  final TRes Function(Query$static_appInfo$static_appInfo) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? androidAppUrl = _undefined,
+    Object? iosAppUrl = _undefined,
+    Object? minBuild = _undefined,
+    Object? deployedBuild = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$static_appInfo$static_appInfo(
+        androidAppUrl: androidAppUrl == _undefined || androidAppUrl == null
+            ? _instance.androidAppUrl
+            : (androidAppUrl as String),
+        iosAppUrl: iosAppUrl == _undefined || iosAppUrl == null
+            ? _instance.iosAppUrl
+            : (iosAppUrl as String),
+        minBuild: minBuild == _undefined || minBuild == null
+            ? _instance.minBuild
+            : (minBuild as double),
+        deployedBuild: deployedBuild == _undefined || deployedBuild == null
+            ? _instance.deployedBuild
+            : (deployedBuild as double),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Query$static_appInfo$static_appInfo<TRes>
+    implements CopyWith$Query$static_appInfo$static_appInfo<TRes> {
+  _CopyWithStubImpl$Query$static_appInfo$static_appInfo(this._res);
+
+  TRes _res;
+
+  call({
+    String? androidAppUrl,
+    String? iosAppUrl,
+    double? minBuild,
+    double? deployedBuild,
+    String? $__typename,
+  }) =>
+      _res;
+}

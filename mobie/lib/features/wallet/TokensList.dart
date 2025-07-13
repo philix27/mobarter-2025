@@ -19,21 +19,24 @@ class TokensList extends HookWidget {
     if (result.result.data != null) {
       print("Flutter Hook Success");
     }
+    if (tokensList == null || tokensList!.isEmpty) {
+      return Text("No data yet");
+    }
     // return Text(extract?.logoUrl ?? '...loading');
     return ListView.builder(
       primary: true,
       shrinkWrap: true,
       itemCount: tokensList?.length ?? 1,
       itemBuilder: (BuildContext ctx, int index) {
-        // final item = tokensList![index];
-        return Text("data");
-        // return tokenRow(
-        //   title: item.symbol,
-        //   subtitle: item.name,
-        //   trailText: "...",
-        //   logoUrl: item.logoUrl,
-        //   tokenContractAddress: item.address,
-        // );
+        final item = tokensList![index];
+        // return Text("data");
+        return tokenRow(
+          title: item.symbol,
+          subtitle: item.name,
+          trailText: "...",
+          logoUrl: item.logoUrl,
+          tokenContractAddress: item.address,
+        );
       },
     );
   }

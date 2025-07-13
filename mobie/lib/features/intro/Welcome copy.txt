@@ -1,54 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:mobarter/constants/theme.dart';
+import 'package:mobarter/features/updates/data/update_repository.dart';
+import 'package:mobarter/features/updates/models/status.dart';
+import 'package:mobarter/features/updates/presenation/display_version_no.dart';
+import 'package:mobarter/features/updates/presenation/mandatory_update_screen.dart';
 import 'package:mobarter/utils/appImages.dart';
 import 'package:mobarter/utils/size.dart';
 import 'package:mobarter/widgets/btn.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'connect_demo/connect_logic.dart';
 
-class WelcomePage extends StatefulWidget {
-  const WelcomePage({super.key});
+class WelcomePage extends ConsumerWidget {
+  WelcomePage({super.key});
 
-  @override
-  State<WelcomePage> createState() => _WelcomePageState();
-}
-
-class _WelcomePageState extends State<WelcomePage> {
   final Color page1Color = Colors.amber.shade200;
   final Color page2Color = Colors.deepOrange.shade100;
 
   @override
-  void initState() {
-    super.initState();
-  }
+  Widget build(BuildContext context, WidgetRef ref) {
+    final updateStatusValue = ref.watch(deviceUpdateStatusProvider);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          LiquidSwipe(
-            pages: [
-              IntroScreen(
-                pageColor: page1Color,
-                imagePath: Appimages.introInvest,
-                title: "Your all-in-one crypto payment solution",
-                subtitle: 'Make payemts & pay bills using your crypro assets',
-                activeIndex: 0,
-              ),
-              IntroScreen(
-                activeIndex: 1,
-                pageColor: page2Color,
-                imagePath: Appimages.introSavings,
-                title: "Save and Invest your crypto assets ",
-                subtitle: 'Earn passively as you save towards your goals',
+    return updateStatusValue.when(
+      loading: () => const CircularProgressIndicator.adaptive(),
+      error: (e, s) => const Center(
+        child: Text("There was a problem loading the app, please try again"),
+      ),
+      data: (updateStatus) {
+        if (updateStatus == UpdateStatus.mandatory) {
+          return const MandatoryUpdateScreen();
+        }
+        return Scaffold(
+          body: Stack(
+            alignment: Alignment.center,
+            children: [
+              LiquidSwipe(
+                pages: [
+                  IntroScreen(
+                    pageColor: page1Color,
+                    imagePath: Appimages.introInvest,
+                    title: "Your all-in-one crypto payment solution",
+                    subtitle:
+                        'Make payemts & pay bills using your crypro assets',
+                    activeIndex: 0,
+                  ),
+                  IntroScreen(
+                    activeIndex: 1,
+                    pageColor: page2Color,
+                    imagePath: Appimages.introSavings,
+                    title: "Save and Invest your crypto assets ",
+                    subtitle: 'Earn passively as you save towards your goals',
+                  ),
+                ],
               ),
             ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
@@ -138,6 +147,7 @@ class IntroScreen extends StatelessWidget {
               ],
             ),
           ),
+          DisplayAppVersion(),
         ],
       ),
     );

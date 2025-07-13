@@ -634,6 +634,7 @@ type Query {
   orders_GetAllAsMerchant(input: Order_GetAllInput!): [Order_Response!]!
   orders_GetAllForAdmin(input: Order_GetAllInput!): [Order_Response!]!
   orders_GetOne(input: Order_GetOneInput!): Order_Response!
+  static_appInfo: Static_AppInfoResponse!
   static_getChains: [Static_GetChainsResponse!]!
   static_getCountries: [Static_GetCountries!]!
   static_getFundCollectors: Static_FundCollectorsResponse!
@@ -660,6 +661,13 @@ enum StaticLinkGroup {
   Docs
   Learn
   Social
+}
+
+type Static_AppInfoResponse {
+  androidAppUrl: String!
+  deployedBuild: Float!
+  iosAppUrl: String!
+  minBuild: Float!
 }
 
 type Static_FundCollectorsResponse {

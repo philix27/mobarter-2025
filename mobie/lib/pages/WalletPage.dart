@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobarter/features/updates/presenation/optional_update_card.dart';
 import 'package:mobarter/features/wallet/TokensList.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 
@@ -12,6 +13,7 @@ class WalletPage extends StatelessWidget {
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          OptionalUpdateCard(),
           SizedBox(
             height: 120,
             child: Center(

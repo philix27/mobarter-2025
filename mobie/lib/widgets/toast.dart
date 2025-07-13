@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:mobarter/constants/theme.dart';
 import 'package:toastification/toastification.dart';
 
-apptToast(BuildContext ctx, String text, {String? subtitle}) {
+ToastificationItem apptToast(
+  BuildContext ctx,
+  String text, {
+  String? subtitle,
+}) {
   return toastification.show(
     context: ctx, // optional if you use ToastificationWrapper
     type: ToastificationType.success,

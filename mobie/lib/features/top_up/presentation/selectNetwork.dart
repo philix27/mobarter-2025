@@ -27,6 +27,7 @@ class _NetworkList extends HookWidget {
         ),
       ),
     );
+
     final list = result.result.parsedData?.utility_getTopUpOperators;
 
     if (result.result.hasException) {
@@ -38,6 +39,10 @@ class _NetworkList extends HookWidget {
     }
 
     final collection = list?.airtime;
+    
+    if (collection == null || collection!.isEmpty) {
+      return Text("No data yet");
+    }
 
     return ListView.builder(
       shrinkWrap: true,

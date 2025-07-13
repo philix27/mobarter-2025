@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import "package:flutter/services.dart";
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:mobarter/Welcome.dart';
+import 'package:mobarter/features/intro/Welcome.dart';
 import 'package:mobarter/connect_demo/connect_demo.dart';
 import 'package:mobarter/constants/theme.dart';
 import 'package:mobarter/graphql/api/Api.dart';
@@ -33,7 +33,7 @@ void main() async {
 class AppProviders extends StatelessWidget {
   AppProviders({super.key});
 
-  final client = getGqlClient();
+  ValueNotifier<GraphQLClient> client = ValueNotifier(getGqlClient());
   // This widget is the root of y our application.
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class AppProviders extends StatelessWidget {
             textStyle: const TextStyle(fontSize: 19.0, color: Colors.white),
             backgroundColor: Colors.black,
             animationCurve: Curves.easeIn,
-            animationBuilder:  OffsetAnimationBuilder(),
+            animationBuilder: OffsetAnimationBuilder(),
             animationDuration: const Duration(milliseconds: 200),
             duration: const Duration(seconds: 5),
             child: MaterialApp(

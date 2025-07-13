@@ -58,3 +58,12 @@ query static_getFundCollectors {
     WaterBills
   }
 }
+
+query static_appInfo {
+  static_appInfo {
+    androidAppUrl
+    iosAppUrl
+    minBuild
+    deployedBuild
+  }
+}

@@ -10,7 +10,7 @@ final _authLink = AuthLink(getToken: () async => 'Bearer $TEST_TOKEN');
 
 Link _link = _authLink.concat(_httpLink);
 
-ValueNotifier<GraphQLClient> getGqlClient() {
+GraphQLClient getGqlClient() {
   /// subscriptions must be split otherwise `HttpLink` will. swallow them
   // if (websocketEndpoint != null){
 
@@ -26,6 +26,5 @@ ValueNotifier<GraphQLClient> getGqlClient() {
     link: _link,
   );
 
-  ValueNotifier<GraphQLClient> client = ValueNotifier(gqlClient);
-  return client;
+  return gqlClient;
 }
