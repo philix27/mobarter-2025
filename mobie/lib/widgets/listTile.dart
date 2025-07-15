@@ -14,7 +14,7 @@ Widget listTile({
 }) {
   return Card(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-    elevation: 1,
+    elevation: 0.1,
     child: ListTile(
       onTap: onTap,
       splashColor: colorPrimaryLight,

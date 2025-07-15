@@ -6,7 +6,7 @@ import 'package:web3dart/credentials.dart';
 import 'package:pointycastle/export.dart';
 import 'package:web3dart/crypto.dart';
 
-class WalletHelper {
+class CryptoWalletService {
   final _storage = const FlutterSecureStorage();
   static const _keyStorageKey = 'encrypted_private_key';
   static const _ivStorageKey = 'encryption_iv';
