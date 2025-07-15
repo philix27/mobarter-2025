@@ -28,7 +28,7 @@ class HomePageLayout extends StatelessWidget {
     ),
 
     PersistentTabConfig(
-      screen: const SettingsPage(),
+      screen: SettingsPage(),
       item: ItemConfig(
         activeForegroundColor: colorPrimary,
         icon: const Icon(Icons.settings),

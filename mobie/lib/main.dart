@@ -1,8 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import "package:flutter/services.dart";
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mobarter/features/intro/Welcome.dart';
-import 'package:mobarter/connect_demo/connect_demo.dart';
 import 'package:mobarter/constants/theme.dart';
 import 'package:mobarter/graphql/api/Api.dart';
 import 'package:mobarter/pages/HomeLayout.dart';
@@ -27,6 +27,7 @@ void main() async {
   await initHiveForFlutter();
   HiveStore.open();
 
+  await Firebase.initializeApp();
   runApp(AppProviders());
 }
 
@@ -60,7 +61,6 @@ class AppProviders extends StatelessWidget {
                 "/home": (context) => const HomePageLayout(),
                 "/auth": (context) => const WalletPage(),
                 "/interactive": (context) => const WalletPage(),
-                "/test-connect": (context) => const ConnectDemoPage(),
               },
             ),
           ),

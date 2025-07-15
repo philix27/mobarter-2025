@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/connect_demo/connect_logic.dart';
+import 'package:mobarter/features/auth/auth_service.dart';
 import 'package:mobarter/features/bankAccount/showBankAccounts.dart';
 import 'package:mobarter/features/profile/showAccountInfo.dart';
 import 'package:mobarter/features/profile/showLearn.dart';
@@ -13,26 +13,35 @@ import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
-
+  SettingsPage({super.key});
+  final authSvc = AuthService();
   @override
   Widget build(BuildContext context) {
+    final user = authSvc.user()!;
     return appScaffold(
       title: "Settings",
       body: Column(
         // spacing: 4,
         children: [
           listTile(
-            title: "Profile",
-            subtitle: "Account informations",
-            icon: Icons.person,
+            title: user.displayName!,
+            subtitle: user.email,
+            imgUrl: user.photoURL,
             onTap: () {
               btmSheet(ctx: context, w: ShowAccountInfo(), h: 0.5);
             },
           ),
+          // listTile(
+          //   title: "Profile",
+          //   subtitle: "Account informations",
+          //   icon: Icons.person,
+          //   onTap: () {
+          //     btmSheet(ctx: context, w: ShowAccountInfo(), h: 0.5);
+          //   },
+          // ),
           listTile(
             title: "Wallet",
-            subtitle: ConnectLogic.getPublicAddress(),
+            subtitle: "Ethereum Wallet Address",
             icon: Icons.wallet,
             onTap: () {
               btmSheet(ctx: context, w: ShowWallet(), h: 0.5);
@@ -92,8 +101,8 @@ class SettingsPage extends StatelessWidget {
             title: "Logout",
             subtitle: "Signout your account",
             icon: Icons.logout,
-            onTap: () {
-              ConnectLogic.disconnect();
+            onTap: () async {
+              await authSvc.signOut();
               Navigator.of(context).pushNamed("/");
             },
           ),

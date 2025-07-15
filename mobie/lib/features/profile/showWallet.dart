@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/connect_demo/connect_logic.dart';
 import 'package:mobarter/utils/size.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
@@ -15,7 +14,7 @@ class ShowWallet extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           PrettyQrView.data(
-            data: ConnectLogic.getPublicAddress(),
+            data: "ConnectLogic.getPublicAddress()",
             decoration: const PrettyQrDecoration(
               // image: PrettyQrDecorationImage(
               //   image: AssetImage('images/flutter.png'),
@@ -24,7 +23,7 @@ class ShowWallet extends StatelessWidget {
             ),
           ),
           Text(
-            ConnectLogic.getPublicAddress(),
+            "ConnectLogic.getPublicAddress()",
             style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w300),
           ),
         ],

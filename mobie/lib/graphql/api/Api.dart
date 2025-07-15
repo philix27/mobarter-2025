@@ -4,7 +4,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 final _httpLink = HttpLink('http://192.168.0.123:4545/graphql');
 
 final String TEST_TOKEN =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoicGhpbGl4Ym9iQGdtYWlsLmNvbSIsImlhdCI6MTc1MjI4OTY3MSwiZXhwIjoxNzUyNDYyNDcxfQ.aigP9GB6nzc5mgom_7zjrUopszcavEg-NQzLlomYgc4";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoicGhpbGl4Ym9iQGdtYWlsLmNvbSIsImlhdCI6MTc1MjU3MDkwNiwiZXhwIjoxNzUyNzQzNzA2fQ.148R_nLbO81ZoAm0oLCPTXOTYOyyBkBEwBSfzkAu08Y";
 
 final _authLink = AuthLink(getToken: () async => 'Bearer $TEST_TOKEN');
 

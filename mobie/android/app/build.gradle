@@ -27,6 +27,8 @@ if (flutterVersionName == null) {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'dev.flutter.flutter-gradle-plugin'
+apply plugin: 'com.google.gms.google-services'
+// id 'com.google.gms.google-services'
 // apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 
@@ -124,4 +126,7 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
 
     implementation 'androidx.appcompat:appcompat:1.7.0'
+
+    implementation platform('com.google.firebase:firebase-bom:33.16.0')
+    implementation 'com.google.firebase:firebase-analytics'
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/connect_demo/connect_logic.dart';
 import 'package:mobarter/utils/size.dart';
 import 'package:mobarter/widgets/listTile.dart';
-import 'package:pretty_qr_code/pretty_qr_code.dart';
 
 class ShowSupports extends StatelessWidget {
   const ShowSupports({super.key});

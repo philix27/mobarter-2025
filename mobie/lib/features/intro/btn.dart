@@ -1,31 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/connect_demo/connect_logic.dart';
 import 'package:mobarter/widgets/btn.dart';
+import 'package:mobarter/features/auth/auth_service.dart';
+import 'package:mobarter/widgets/toast.dart';
 
 class ConnectionButton extends StatelessWidget {
-  const ConnectionButton({super.key});
+  ConnectionButton({super.key});
+
+  final svc = AuthService();
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: ConnectLogic.isConnected(),
-      builder: (BuildContext con, AsyncSnapshot<bool> snapshot) {
-        if (snapshot.data == null || snapshot.data == false) {
-          return btn(
-            title: "Sign In WIth Google",
-            onPressed: () {
-              // ConnectLogic.connect();
-              Navigator.of(context).pushNamed("/home");
-            },
-          );
-        }
-        return btn(
-          title: "Welcome",
-          onPressed: () {
-            Navigator.of(context).pushNamed("/minimal");
-          },
-        );
-      },
-    );
+    if (svc.isLoggedIn()) {
+      return btn(
+        title: "Welcome",
+        onPressed: () {
+          Navigator.of(context).pushNamed("/home");
+        },
+      );
+    } else {
+      return btn(
+        title: "Sign In WIth Google",
+        onPressed: () async {
+          final loggedIn = await svc.loginWithGoogle();
+          if (loggedIn) {
+            Navigator.of(context).pushNamed("/home");
+          } else {
+            apptToast(context, "Login Failed");
+          }
+        },
+      );
+    }
   }
 }
