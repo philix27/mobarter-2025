@@ -8,11 +8,13 @@ Widget textField({
   List<TextInputFormatter>? inputFormatters,
   int? maxLength,
   String? helperText,
+  TextEditingController? controller,
 }) {
   return TextField(
     maxLength: maxLength,
     keyboardType: keyboardType,
     inputFormatters: inputFormatters,
+    controller: controller,
     decoration: InputDecoration(
       labelText: label,
       border: OutlineInputBorder(),

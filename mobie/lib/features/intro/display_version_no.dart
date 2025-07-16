@@ -13,7 +13,7 @@ class DisplayAppVersion extends StatelessWidget {
         return currentBuild.when(
           data: (value) {
             return Text(
-              "mobarter: v: $value",
+              "Mobarter v: $value",
               style: TextStyle(
                 fontWeight: FontWeight.w400,
                 fontSize: 12,

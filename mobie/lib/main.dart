@@ -4,6 +4,7 @@ import "package:flutter/services.dart";
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mobarter/features/intro/Welcome.dart';
 import 'package:mobarter/constants/theme.dart';
+import 'package:mobarter/features/onboarding/SetupTxnPinPage.dart';
 import 'package:mobarter/graphql/api/Api.dart';
 import 'package:mobarter/pages/HomeLayout.dart';
 import 'package:mobarter/pages/WalletPage.dart';
@@ -61,6 +62,7 @@ class AppProviders extends StatelessWidget {
                 "/home": (context) => const HomePageLayout(),
                 "/auth": (context) => const WalletPage(),
                 "/interactive": (context) => const WalletPage(),
+                "/setup-pin": (context) => const SetupTxnPinPage(),
               },
             ),
           ),
