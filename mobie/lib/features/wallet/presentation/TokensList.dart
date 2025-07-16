@@ -1,33 +1,43 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:mobarter/features/firestore/wallet.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/utils/getBalance.dart';
 
 class TokensList extends HookWidget {
-  const TokensList({super.key});
-
+  TokensList({super.key});
+  final walletSvc = WalletStoreService();
   @override
   Widget build(BuildContext context) {
     final result = useQuery$static_getTokens(Options$Query$static_getTokens());
     final tokensList = result.result.parsedData?.static_getTokens;
 
-    if (tokensList == null || tokensList!.isEmpty) {
+    if (tokensList == null || tokensList.isEmpty) {
       return Text("No data yet");
     }
-    return ListView.builder(
-      primary: true,
-      shrinkWrap: true,
-      itemCount: tokensList?.length ?? 1,
-      itemBuilder: (BuildContext ctx, int index) {
-        final item = tokensList![index];
-        return tokenRow(item);
+    return FutureBuilder(
+      future: walletSvc.userWalletAddress(),
+      builder: (builder, snap) {
+        if (!snap.hasData || tokensList.isEmpty) {
+          return SizedBox.shrink();
+        }
+
+        return ListView.builder(
+          primary: true,
+          shrinkWrap: true,
+          itemCount: tokensList.length,
+          itemBuilder: (BuildContext ctx, int index) {
+            final item = tokensList[index];
+            return tokenRow(item, snap.data!);
+          },
+        );
       },
     );
   }
 }
 
-Widget tokenRow(Query$static_getTokens$static_getTokens item) {
+Widget tokenRow(Query$static_getTokens$static_getTokens item, String wallet) {
   return ListTile(
     title: Text(
       item.symbol,
@@ -36,7 +46,7 @@ Widget tokenRow(Query$static_getTokens$static_getTokens item) {
 
     subtitle: FutureBuilder(
       future: getWalletTokenBalance(
-        walletAddress: "0x20F50b8832f87104853df3FdDA47Dd464f885a49",
+        walletAddress: wallet,
         tokenContractAddress: item.address,
         tokenDecimal: int.tryParse(item.decimals.toString()) ?? 18,
       ),
@@ -63,7 +73,7 @@ Widget tokenRow(Query$static_getTokens$static_getTokens item) {
 
     trailing: FutureBuilder(
       future: getWalletTokenBalance(
-        walletAddress: "0x20F50b8832f87104853df3FdDA47Dd464f885a49",
+        walletAddress: wallet,
         tokenContractAddress: item.address,
         tokenDecimal: int.tryParse(item.decimals.toString()) ?? 18,
       ),

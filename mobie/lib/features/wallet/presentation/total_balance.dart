@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:mobarter/features/auth/auth_service.dart';
+import 'package:mobarter/features/firestore/wallet.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/utils/getBalance.dart';
 import 'package:intl/intl.dart';
 
 class TotalBalance extends HookWidget {
-  const TotalBalance({super.key});
-
+  TotalBalance({super.key});
+  final authSvc = AuthService();
   @override
   Widget build(BuildContext context) {
     final result = useQuery$static_getTokens(Options$Query$static_getTokens());
@@ -60,9 +62,12 @@ class TotalBalance extends HookWidget {
 Future<double> getTotalPriceAsync(
   List<Query$static_getTokens$static_getTokens>? tokens,
 ) async {
+  final walletSvc = WalletStoreService();
+  final address = await walletSvc.userWalletAddress();
+
   final futures = tokens?.map((item) async {
     final price = await getWalletTokenBalance(
-      walletAddress: "0x20F50b8832f87104853df3FdDA47Dd464f885a49",
+      walletAddress: address!,
       tokenContractAddress: item.address,
       tokenDecimal: int.tryParse(item.decimals.toString()) ?? 18,
     );

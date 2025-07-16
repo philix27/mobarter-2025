@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import "package:flutter/services.dart";
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:mobarter/features/hive/collections.dart';
 import 'package:mobarter/features/intro/Welcome.dart';
 import 'package:mobarter/constants/theme.dart';
 import 'package:mobarter/features/onboarding/SetupTxnPinPage.dart';
@@ -25,9 +27,12 @@ void main() async {
   // make flutter draw behind navigation bar
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
+  Hive.initFlutter();
   await initHiveForFlutter();
-  HiveStore.open();
 
+  // LocalStore();
+  HiveStore.open();
+  Hive.openBox("wallet");
   await Firebase.initializeApp();
   runApp(AppProviders());
 }

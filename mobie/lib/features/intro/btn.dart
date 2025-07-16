@@ -33,6 +33,7 @@ class ConnectionButton extends StatelessWidget {
             if (hasWallet) {
               Navigator.of(context).pushNamed("/setup-pin");
             } else {
+              await walletSvc.userWalletAddress();
               Navigator.of(context).pushNamed("/home");
             }
           } else {

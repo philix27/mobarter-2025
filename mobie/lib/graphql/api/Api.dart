@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:mobarter/env.dart';
 
-final _httpLink = HttpLink('http://192.168.0.123:4545/graphql');
+final _httpLink = isDevEnv
+    ? HttpLink('http://192.168.0.123:4545/graphql')
+    : HttpLink('https://server.mobarter.com/graphql');
 
 final String TEST_TOKEN =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoicGhpbGl4Ym9iQGdtYWlsLmNvbSIsImlhdCI6MTc1MjU3MDkwNiwiZXhwIjoxNzUyNzQzNzA2fQ.148R_nLbO81ZoAm0oLCPTXOTYOyyBkBEwBSfzkAu08Y";

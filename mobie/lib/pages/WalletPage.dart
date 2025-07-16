@@ -24,12 +24,6 @@ class WalletPage extends StatelessWidget {
             child: Center(child: TotalBalance()),
           ),
           TokensList(),
-          btn(
-            title: "Setup txn pin",
-            onPressed: () {
-              pushScreen(context, screen: SetupTxnPinPage(), withNavBar: false);
-            },
-          ),
         ],
       ),
     );

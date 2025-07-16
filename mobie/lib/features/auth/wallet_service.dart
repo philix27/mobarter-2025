@@ -1,15 +1,10 @@
 import 'dart:convert';
-import 'dart:math';
-import 'dart:typed_data';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:encrypt/encrypt.dart' as encrypt;
-import 'package:mobarter/features/auth/password_service.dart';
 import 'package:mobarter/utils/logger.dart';
 import 'package:web3dart/credentials.dart';
 import 'package:pointycastle/export.dart';
-import 'package:web3dart/crypto.dart';
 import 'package:bip39/bip39.dart' as bip39;
-// import 'package:ethereum_util/ethereum_util.dart' as eth_util;
 import "package:ed25519_hd_key/ed25519_hd_key.dart";
 import 'package:convert/convert.dart'; // for hex
 
@@ -50,8 +45,6 @@ class CryptoWalletService {
 
   Future<WalletCredentials> generateEthereumAddress(String password) async {
     String seedPhrase = generateSeedPhrase();
-    appLogger.i("Seed - $seedPhrase");
-
     String hexSeed = _stringToHex(seedPhrase);
 
     List<int> seedBytes = hex.decode(hexSeed);

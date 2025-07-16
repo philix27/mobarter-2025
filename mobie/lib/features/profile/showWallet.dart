@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/features/auth/auth_service.dart';
 import 'package:mobarter/features/firestore/wallet.dart';
 import 'package:mobarter/utils/size.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
@@ -7,7 +6,6 @@ import 'package:pretty_qr_code/pretty_qr_code.dart';
 class ShowWallet extends StatelessWidget {
   ShowWallet({super.key});
   final walletStore = WalletStoreService();
-  final authSvc = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +16,13 @@ class ShowWallet extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FutureBuilder(
-            future: walletStore.getUserWallet(authSvc.user()!.uid),
+            future: walletStore.userWalletAddress(),
             builder: (BuildContext context, snapshot) {
               if (!snapshot.hasData) {
                 return Text("No wallet found");
               }
 
-              final w = snapshot.data!.address;
+              final w = snapshot.data!;
               return Column(
                 children: [
                   PrettyQrView.data(
