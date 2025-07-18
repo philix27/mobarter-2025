@@ -1,7 +1,5 @@
 name: mobarter
-description: "A new Flutter project."
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
+description: "A crypto based payment solution for Africans"
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
@@ -16,7 +14,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 0.0.1+1
+version: 0.0.1+5
 
 environment:
   sdk: ^3.8.1
@@ -30,9 +28,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   bip39: ^1.0.6
   cached_network_image: ^3.4.1
   cupertino_icons: ^1.0.8
@@ -47,10 +42,6 @@ dependencies:
   intl: ^0.18.1
   oktoast: ^3.3.2+1
   package_info_plus: ^8.3.0
-  particle_wallet: ^2.0.1
-  particle_base: ^2.0.1
-  particle_auth_core: ^2.0.1
-  particle_connect: ^2.0.1
   persistent_bottom_nav_bar: ^6.2.1
   pretty_qr_code: ^3.4.0
   flutter_hooks: ^0.20.5

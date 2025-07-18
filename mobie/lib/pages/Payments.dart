@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobarter/constants/theme.dart';
-import 'package:mobarter/features/AirtimePage.dart';
-import 'package:mobarter/features/DataBundlePage.dart';
+import 'package:mobarter/features/TopUpPage.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 import 'package:mobarter/widgets/toast.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
@@ -25,14 +24,33 @@ List<PaymentProduct> productsList(BuildContext ctx) {
       title: 'Airtime',
       icon: Icons.phone,
       onPressed: () {
-        pushScreen(ctx, screen: AirtimePage(), withNavBar: false);
+        pushScreen(
+          ctx,
+          screen: TopUpsPage(screen: TopUpScreen.airtime),
+          withNavBar: false,
+        );
+      },
+    ),
+    PaymentProduct(
+      title: 'Data Plans',
+      icon: Icons.network_cell,
+      onPressed: () {
+        pushScreen(
+          ctx,
+          screen: TopUpsPage(screen: TopUpScreen.dataPlan),
+          withNavBar: false,
+        );
       },
     ),
     PaymentProduct(
       title: 'Data Bundle',
       icon: Icons.network_cell,
       onPressed: () {
-        pushScreen(ctx, screen: DataBundlePage(), withNavBar: false);
+        pushScreen(
+          ctx,
+          screen: TopUpsPage(screen: TopUpScreen.dataBundle),
+          withNavBar: false,
+        );
       },
     ),
     PaymentProduct(

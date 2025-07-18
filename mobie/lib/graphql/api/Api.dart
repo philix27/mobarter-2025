@@ -6,7 +6,7 @@ final _httpLink = isDevEnv
     : HttpLink('https://server.mobarter.com/graphql');
 
 final String TEST_TOKEN =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoicGhpbGl4Ym9iQGdtYWlsLmNvbSIsImlhdCI6MTc1MjU3MDkwNiwiZXhwIjoxNzUyNzQzNzA2fQ.148R_nLbO81ZoAm0oLCPTXOTYOyyBkBEwBSfzkAu08Y";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoicGhpbGl4Ym9iQGdtYWlsLmNvbSIsImlhdCI6MTc1Mjg2MTcxNywiZXhwIjoxNzUzMDM0NTE3fQ.QhFJkMAYYDfvYlTGwyZ9TyPJD5UFsKNmOx27WNh9zVQ";
 
 final _authLink = AuthLink(getToken: () async => 'Bearer $TEST_TOKEN');
 

@@ -4,24 +4,24 @@ import 'package:mobarter/utils/size.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/listTile.dart';
 
-class ShowCurrency extends StatelessWidget {
-  const ShowCurrency({super.key});
+class DataPlanWidget extends StatelessWidget {
+  const DataPlanWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return listTile(
-      title: "Select Currency for payment",
-      subtitle: "Currency for payment",
+      title: "Select a data plan",
+      subtitle: "",
       tileColor: colorCard,
       onTap: () {
-        btmSheet(ctx: context, w: _ShowCurrencyList(), h: 0.5);
+        btmSheet(ctx: context, w: _SelectDataPlan(), h: 0.5);
       },
     );
   }
 }
 
-class _ShowCurrencyList extends StatelessWidget {
-  const _ShowCurrencyList({super.key});
+class _SelectDataPlan extends StatelessWidget {
+  const _SelectDataPlan();
 
   @override
   Widget build(BuildContext context) {

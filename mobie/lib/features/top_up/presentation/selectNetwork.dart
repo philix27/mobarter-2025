@@ -39,7 +39,7 @@ class _NetworkList extends HookWidget {
     }
 
     final collection = list?.airtime;
-    
+
     if (collection == null || collection!.isEmpty) {
       return Text("No data yet");
     }

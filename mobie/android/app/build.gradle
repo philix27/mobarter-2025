@@ -76,11 +76,7 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        manifestPlaceholders["PN_PROJECT_ID"] = "ff0a0ce51-b133-4e74-8c4c-464376e60ff3"
-        manifestPlaceholders["PN_PROJECT_CLIENT_KEY"] = "clydzHypxl2weS1aA3BVGUKdtZunaIwoXNm14IW1"
-        manifestPlaceholders["PN_APP_ID"] = "8ef67777-5802-4859-bed9-adf6ebd70b21"
 
-       
     }
 
     signingConfigs {
