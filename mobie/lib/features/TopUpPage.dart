@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobarter/features/top_up/logic/provider.dart';
 import 'package:mobarter/features/top_up/presentation/airtime.dart';
 import 'package:mobarter/features/top_up/presentation/dataPlan.dart';
 import 'package:mobarter/features/top_up/presentation/phoneNo.dart';
+import 'package:mobarter/features/top_up/presentation/screenTabs.dart';
 import 'package:mobarter/features/top_up/presentation/selectCurrency.dart';
 import 'package:mobarter/features/top_up/presentation/selectNetwork.dart';
 import 'package:mobarter/features/top_up/presentation/topUpSummary.dart';
@@ -11,15 +14,16 @@ import 'package:mobarter/widgets/scaffold.dart';
 
 enum TopUpScreen { airtime, dataPlan, dataBundle }
 
-class TopUpsPage extends StatelessWidget {
+class TopUpsPage extends ConsumerWidget {
   final TopUpScreen screen;
   const TopUpsPage({super.key, required this.screen});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     Widget screenToDisplay;
+    final data = ref.watch(topUpDataProvider);
 
-    switch (screen) {
+    switch (data.screen!) {
       case TopUpScreen.airtime:
         screenToDisplay = AirtimeWidget();
         break;
@@ -39,6 +43,7 @@ class TopUpsPage extends StatelessWidget {
           ShowTopUpProviders(),
           PhoneTextField(),
           ShowCurrency(),
+          TopUpTabs(),
           screenToDisplay,
           btn(
             title: "Submit",
@@ -46,11 +51,11 @@ class TopUpsPage extends StatelessWidget {
               btmSheet(
                 ctx: context,
                 w: ShowTopUpSummary(
-                  recipientPhone: '08101234567',
-                  networkProvider: 'MTN',
-                  amountToPay: '300',
-                  amountOfProduct: '500',
-                  cashback: '30',
+                  recipientPhone: data.phoneNo!,
+                  networkProvider: data.networkProvider!,
+                  amountToPay: data.amountCrypto!.toString(),
+                  amountOfProduct: data.amountCrypto!.toString(),
+                  cashback: '',
                 ),
                 h: 0.5,
               );

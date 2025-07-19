@@ -8,7 +8,7 @@ class ShowTopUpSummary extends StatelessWidget {
   final String networkProvider;
   final String amountToPay;
   final String amountOfProduct;
-  final String cashback;
+  final String? cashback;
   const ShowTopUpSummary({
     super.key,
     required this.recipientPhone,

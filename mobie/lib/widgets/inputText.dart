@@ -9,12 +9,14 @@ Widget textField({
   int? maxLength,
   String? helperText,
   TextEditingController? controller,
+  Function(String)? onChanged,
 }) {
   return TextField(
     maxLength: maxLength,
     keyboardType: keyboardType,
     inputFormatters: inputFormatters,
     controller: controller,
+    onChanged: onChanged,
     decoration: InputDecoration(
       labelText: label,
       border: OutlineInputBorder(),
