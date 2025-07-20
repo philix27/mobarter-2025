@@ -29,11 +29,7 @@ class SettingsPage extends StatelessWidget {
             subtitle: user.email,
             imgUrl: user.photoURL,
             onTap: () async {
-              final token = await user.getIdToken();
-              printWrapped(token ?? "No token found");
-              // print("User token: $token");
-              // appLogger.i("User token: $token");
-              // btmSheet(ctx: context, w: ShowAccountInfo(), h: 0.5);
+              btmSheet(ctx: context, w: ShowAccountInfo(), h: 0.5);
             },
           ),
           // listTile(
@@ -122,9 +118,4 @@ class SettingsPage extends StatelessWidget {
       ),
     );
   }
-}
-
-void printWrapped(String text) {
-  final pattern = new RegExp('.{1,800}'); // 800 is the size of each chunk
-  pattern.allMatches(text).forEach((match) => print(match.group(0)));
 }

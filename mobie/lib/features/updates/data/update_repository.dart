@@ -29,7 +29,7 @@ class UpdateRepository {
     // final info = result.result.parsedData?.static_appInfo;
 
     try {
-      final client = getGqlClient();
+      final client = getGqlClientNotifier(null).value;
 
       QueryResult<Query$static_appInfo> result = await client.query(
         Options$Query$static_appInfo(),
