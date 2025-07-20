@@ -7,3 +7,11 @@ final topUpDataProvider = StateNotifierProvider<TopUpDataNotifier, TopData>((
 ) {
   return TopUpDataNotifier();
 });
+
+TopUpDataNotifier topUpRead(WidgetRef ref) {
+  return ref.read(topUpDataProvider.notifier);
+}
+
+TopData topUpWatch(WidgetRef ref) {
+  return ref.watch(topUpDataProvider);
+}

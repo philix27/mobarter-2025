@@ -1,5 +1,3 @@
-
-
 enum AdvertStatus {
   CLOSE
   OPEN
@@ -86,6 +84,19 @@ input Auth_CreateAccountInput {
 
 type Auth_CreateAccountResponse {
   message: String!
+}
+
+input Auth_FirebaseLoginInput {
+  idToken: String!
+}
+
+type Auth_FirebaseLoginResponse {
+  email: String
+  firstname: String
+  lastname: String
+  middlename: String
+  token: String
+  walletAddress: String
 }
 
 input Auth_LoginInput {
@@ -406,6 +417,9 @@ type Mutation {
   auth_createAccount(
     input: Auth_CreateAccountInput!
   ): Auth_CreateAccountResponse!
+  auth_firebaseLogin(
+    input: Auth_FirebaseLoginInput!
+  ): Auth_FirebaseLoginResponse!
   auth_login(input: Auth_LoginInput!): Auth_LoginResponse!
   auth_loginTelegram(
     input: Auth_TelegramLoginInput!

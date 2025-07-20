@@ -1370,6 +1370,104 @@ class _CopyWithStubImpl$Input$Auth_CreateAccountInput<TRes>
       _res;
 }
 
+class Input$Auth_FirebaseLoginInput {
+  factory Input$Auth_FirebaseLoginInput({required String idToken}) =>
+      Input$Auth_FirebaseLoginInput._({
+        r'idToken': idToken,
+      });
+
+  Input$Auth_FirebaseLoginInput._(this._$data);
+
+  factory Input$Auth_FirebaseLoginInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$idToken = data['idToken'];
+    result$data['idToken'] = (l$idToken as String);
+    return Input$Auth_FirebaseLoginInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get idToken => (_$data['idToken'] as String);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$idToken = idToken;
+    result$data['idToken'] = l$idToken;
+    return result$data;
+  }
+
+  CopyWith$Input$Auth_FirebaseLoginInput<Input$Auth_FirebaseLoginInput>
+      get copyWith => CopyWith$Input$Auth_FirebaseLoginInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$Auth_FirebaseLoginInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$idToken = idToken;
+    final lOther$idToken = other.idToken;
+    if (l$idToken != lOther$idToken) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$idToken = idToken;
+    return Object.hashAll([l$idToken]);
+  }
+}
+
+abstract class CopyWith$Input$Auth_FirebaseLoginInput<TRes> {
+  factory CopyWith$Input$Auth_FirebaseLoginInput(
+    Input$Auth_FirebaseLoginInput instance,
+    TRes Function(Input$Auth_FirebaseLoginInput) then,
+  ) = _CopyWithImpl$Input$Auth_FirebaseLoginInput;
+
+  factory CopyWith$Input$Auth_FirebaseLoginInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$Auth_FirebaseLoginInput;
+
+  TRes call({String? idToken});
+}
+
+class _CopyWithImpl$Input$Auth_FirebaseLoginInput<TRes>
+    implements CopyWith$Input$Auth_FirebaseLoginInput<TRes> {
+  _CopyWithImpl$Input$Auth_FirebaseLoginInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$Auth_FirebaseLoginInput _instance;
+
+  final TRes Function(Input$Auth_FirebaseLoginInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({Object? idToken = _undefined}) =>
+      _then(Input$Auth_FirebaseLoginInput._({
+        ..._instance._$data,
+        if (idToken != _undefined && idToken != null)
+          'idToken': (idToken as String),
+      }));
+}
+
+class _CopyWithStubImpl$Input$Auth_FirebaseLoginInput<TRes>
+    implements CopyWith$Input$Auth_FirebaseLoginInput<TRes> {
+  _CopyWithStubImpl$Input$Auth_FirebaseLoginInput(this._res);
+
+  TRes _res;
+
+  call({String? idToken}) => _res;
+}
+
 class Input$Auth_LoginInput {
   factory Input$Auth_LoginInput({
     required String email,

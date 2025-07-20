@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobarter/features/top_up/logic/provider.dart';
 import 'package:mobarter/features/top_up/presentation/airtime.dart';
+import 'package:mobarter/features/top_up/presentation/amountToPay.dart';
 import 'package:mobarter/features/top_up/presentation/dataPlan.dart';
 import 'package:mobarter/features/top_up/presentation/phoneNo.dart';
 import 'package:mobarter/features/top_up/presentation/screenTabs.dart';
@@ -21,7 +22,7 @@ class TopUpsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     Widget screenToDisplay;
-    final data = ref.watch(topUpDataProvider);
+    final data = topUpWatch(ref);
 
     switch (data.screen!) {
       case TopUpScreen.airtime:
@@ -45,6 +46,7 @@ class TopUpsPage extends ConsumerWidget {
           ShowCurrency(),
           TopUpTabs(),
           screenToDisplay,
+          CryptoAmountPay(),
           btn(
             title: "Submit",
             onPressed: () {
@@ -53,8 +55,12 @@ class TopUpsPage extends ConsumerWidget {
                 w: ShowTopUpSummary(
                   recipientPhone: data.phoneNo!,
                   networkProvider: data.networkProvider!,
-                  amountToPay: data.amountCrypto!.toString(),
-                  amountOfProduct: data.amountCrypto!.toString(),
+                  amountToPay: data.amountCrypto != null
+                      ? data.amountCrypto.toString()
+                      : "0",
+                  amountOfProduct: data.amountFiat != null
+                      ? "₦ ${data.amountFiat.toString()}"
+                      : "0",
                   cashback: '',
                 ),
                 h: 0.5,

@@ -8,6 +8,7 @@ class TopUpDataNotifier extends StateNotifier<TopData> {
         TopData(
           amountFiat: null,
           amountCrypto: null,
+          dataPlanDescription: null,
           networkProvider: '',
           phoneNo: '',
           currency: "cUSD",
@@ -20,9 +21,12 @@ class TopUpDataNotifier extends StateNotifier<TopData> {
     state = state.copyWith(phoneNo: phone);
   }
 
-  void updateAmountFiat(double amountFiat) {
+  void updateAmountFiat(double amountFiat, String? dataPlanDescription) {
     if (amountFiat <= 0) return;
-    state = state.copyWith(amountFiat: amountFiat);
+    state = state.copyWith(
+      amountFiat: amountFiat,
+      dataPlanDescription: dataPlanDescription,
+    );
   }
 
   void updateAmountCrypto(double amountCrypto) {
@@ -35,10 +39,16 @@ class TopUpDataNotifier extends StateNotifier<TopData> {
   }
 
   void updateCurrency(String currency) {
-    state = state.copyWith(currency: currency);
+    state = state.copyWith(currency: currency); 
   }
 
   void updateScreen(TopUpScreen tab) {
-    state = state.copyWith(screen: tab);
+    state = state.copyWith(
+      screen: tab,
+      amountFiat: null,
+      amountCrypto: null,
+      dataPlanDescription: "",
+    );
+    this.updateAmountFiat(0, "");
   }
 }

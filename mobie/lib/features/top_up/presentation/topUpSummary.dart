@@ -23,17 +23,17 @@ class ShowTopUpSummary extends StatelessWidget {
     return SizedBox(
       height: getH(context, 0.5),
       child: Column(
-        spacing: 16,
+        spacing: 18,
         children: [
           SizedBox(height: 10),
           simpleRow(title: "Recipient number", subtitle: recipientPhone),
           simpleRow(title: "Nettwork Provider", subtitle: networkProvider),
           simpleRow(title: "Amount", subtitle: amountOfProduct),
           simpleRow(title: "Pay", subtitle: amountToPay),
-          simpleRow(title: "Cashback bonus", subtitle: cashback),
-          btn(title: "Send"),
+          // simpleRow(title: "Cashback bonus", subtitle: cashback),
+          btn(title: "Send", onPressed: () {}),
         ],
-      ),
+      ), 
     );
   }
 }

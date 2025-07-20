@@ -8,6 +8,7 @@ import 'package:mobarter/features/profile/showSocials.dart';
 import 'package:mobarter/features/profile/showSupport.dart';
 import 'package:mobarter/features/profile/showTheme.dart';
 import 'package:mobarter/features/profile/showWallet.dart';
+import 'package:mobarter/utils/logger.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/scaffold.dart';
@@ -27,8 +28,12 @@ class SettingsPage extends StatelessWidget {
             title: user.displayName!,
             subtitle: user.email,
             imgUrl: user.photoURL,
-            onTap: () {
-              btmSheet(ctx: context, w: ShowAccountInfo(), h: 0.5);
+            onTap: () async {
+              final token = await user.getIdToken();
+              printWrapped(token ?? "No token found");
+              // print("User token: $token");
+              // appLogger.i("User token: $token");
+              // btmSheet(ctx: context, w: ShowAccountInfo(), h: 0.5);
             },
           ),
           // listTile(
@@ -102,12 +107,24 @@ class SettingsPage extends StatelessWidget {
             subtitle: "Signout your account",
             icon: Icons.logout,
             onTap: () async {
-              await authSvc.signOut();
-              Navigator.of(context).pushNamed("/");
+              await authSvc
+                  .signOut()
+                  .then((value) {
+                    appLogger.i("User logged out successfully");
+                    Navigator.of(context).pushNamed("/");
+                  })
+                  .catchError((error) {
+                    appLogger.e("Error logging out: $error");
+                  });
             },
           ),
         ],
       ),
     );
   }
+}
+
+void printWrapped(String text) {
+  final pattern = new RegExp('.{1,800}'); // 800 is the size of each chunk
+  pattern.allMatches(text).forEach((match) => print(match.group(0)));
 }

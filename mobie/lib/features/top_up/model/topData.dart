@@ -6,6 +6,7 @@ class TopData {
   final String? networkProvider;
   final String? phoneNo;
   final String? currency;
+  final String? dataPlanDescription;
   final TopUpScreen? screen;
 
   TopData({
@@ -15,6 +16,7 @@ class TopData {
     required this.phoneNo,
     required this.currency,
     required this.screen,
+    required this.dataPlanDescription,
   });
 
   TopData copyWith({
@@ -24,6 +26,7 @@ class TopData {
     String? phoneNo,
     TopUpScreen? screen,
     String? currency,
+    String? dataPlanDescription,
   }) {
     return TopData(
       amountFiat: amountFiat ?? this.amountFiat,
@@ -32,6 +35,7 @@ class TopData {
       phoneNo: phoneNo ?? this.phoneNo,
       currency: currency ?? this.currency,
       screen: screen ?? this.screen,
+      dataPlanDescription: dataPlanDescription ?? this.dataPlanDescription,
     );
   }
 }

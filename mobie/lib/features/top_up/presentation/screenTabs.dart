@@ -7,8 +7,8 @@ import 'package:mobarter/features/top_up/logic/provider.dart';
 class TopUpTabs extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
-    final data = ref.watch(topUpDataProvider);
-    final readData = ref.read(topUpDataProvider.notifier);
+    final data = topUpWatch(ref);
+    final readData = topUpRead(ref);
 
     Widget textTab(String title, TopUpScreen screen) {
       final data = ref.watch(topUpDataProvider);

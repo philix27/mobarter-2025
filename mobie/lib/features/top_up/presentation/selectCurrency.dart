@@ -11,7 +11,7 @@ class ShowCurrency extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final data = ref.watch(topUpDataProvider);
+    final data = topUpWatch(ref);
     return listTile(
       title: data.currency == null || data.currency!.isEmpty
           ? "Select Currency for payment"
@@ -30,7 +30,7 @@ class _ShowCurrencyList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final topUpdata = ref.read(topUpDataProvider.notifier);
+    final topUpdata = topUpRead(ref);
 
     return SizedBox(
       height: getH(context, 0.5),
