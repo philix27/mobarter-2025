@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
+import 'package:mobarter/utils/launcher.dart';
 import 'package:mobarter/widgets/listTile.dart';
 
 class ShowSocials extends StatelessWidget {
@@ -25,8 +26,8 @@ class _SocialList extends HookWidget {
       print("Flutter Hook exceptio n");
     }
 
-    if (result.result.data != null) {
-      print("Flutter Hook Success");
+    if (result.result.data == null) {
+      return const Center(child: Text("No data found"));
     }
 
     final collection = linksList
@@ -45,7 +46,10 @@ class _SocialList extends HookWidget {
         return listTile(
           title: item.title,
           subtitle: item.desc,
-          imgUrl: item.url,
+          onTap: () {
+            launchURL(item.url);
+          },
+          imgUrl: item.imgLink,
         );
       },
     );

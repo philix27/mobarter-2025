@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mobarter/constants/theme.dart';
 import 'package:mobarter/pages/WalletPage.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
-import 'package:mobarter/pages/Payments.dart';
-import 'package:mobarter/pages/Settings.dart';
+import 'package:mobarter/pages/PaymentsPage.dart';
+import 'package:mobarter/pages/SettingsPage.dart';
 
 class HomePageLayout extends StatelessWidget {
   const HomePageLayout({super.key});

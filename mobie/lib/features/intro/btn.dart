@@ -47,7 +47,7 @@ class ConnectionButton extends HookConsumerWidget {
         onPressed: () async {
           await walletSvc.userWalletAddress();
 
-          await getServerToken();
+           await getServerToken();
 
           Navigator.of(context).pushNamed("/home");
         },

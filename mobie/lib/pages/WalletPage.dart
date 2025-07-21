@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/features/onboarding/SetupTxnPinPage.dart';
 import 'package:mobarter/features/updates/presenation/optional_update_card.dart';
 import 'package:mobarter/features/wallet/presentation/TokensList.dart';
 import 'package:mobarter/features/wallet/presentation/total_balance.dart';
 import 'package:mobarter/utils/size.dart';
-import 'package:mobarter/widgets/btn.dart';
 import 'package:mobarter/widgets/scaffold.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class WalletPage extends StatelessWidget {
   const WalletPage({super.key});

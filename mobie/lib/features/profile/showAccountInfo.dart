@@ -10,6 +10,7 @@ class ShowAccountInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = authSvc.user()!;
+
     return SizedBox(
       height: getH(context, 0.3),
       child: SingleChildScrollView(

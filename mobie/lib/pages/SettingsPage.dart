@@ -12,6 +12,7 @@ import 'package:mobarter/utils/logger.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/scaffold.dart';
+import 'package:mobarter/widgets/toast.dart';
 
 class SettingsPage extends StatelessWidget {
   SettingsPage({super.key});
@@ -32,14 +33,7 @@ class SettingsPage extends StatelessWidget {
               btmSheet(ctx: context, w: ShowAccountInfo(), h: 0.5);
             },
           ),
-          // listTile(
-          //   title: "Profile",
-          //   subtitle: "Account informations",
-          //   icon: Icons.person,
-          //   onTap: () {
-          //     btmSheet(ctx: context, w: ShowAccountInfo(), h: 0.5);
-          //   },
-          // ),
+
           listTile(
             title: "Wallet",
             subtitle: "Ethereum Wallet Address",

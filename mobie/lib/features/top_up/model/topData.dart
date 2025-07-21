@@ -1,4 +1,4 @@
-import 'package:mobarter/features/TopUpPage.dart';
+import 'package:mobarter/pages/TopUpPage.dart';
 
 class TopData {
   final double? amountFiat;

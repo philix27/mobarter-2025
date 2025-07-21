@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobarter/constants/theme.dart';
-import 'package:mobarter/features/TopUpPage.dart';
+import 'package:mobarter/pages/TopUpPage.dart';
 import 'package:mobarter/features/top_up/logic/provider.dart';
 
 class TopUpTabs extends ConsumerWidget {
