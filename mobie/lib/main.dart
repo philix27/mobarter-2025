@@ -4,7 +4,6 @@ import "package:flutter/services.dart";
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mobarter/features/app/logic/provider.dart';
-import 'package:mobarter/features/hive/collections.dart';
 import 'package:mobarter/features/intro/Welcome.dart';
 import 'package:mobarter/constants/theme.dart';
 import 'package:mobarter/features/onboarding/SetupTxnPinPage.dart';

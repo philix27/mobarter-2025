@@ -12,14 +12,22 @@ import 'package:mobarter/utils/logger.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/scaffold.dart';
-import 'package:mobarter/widgets/toast.dart';
 
 class SettingsPage extends StatelessWidget {
   SettingsPage({super.key});
   final authSvc = AuthService();
   @override
   Widget build(BuildContext context) {
-    final user = authSvc.user()!;
+    final user = authSvc.user();
+
+    if (user == null) {
+      appLogger.e("User is not logged in");
+      return appScaffold(
+        title: "Settings",
+        body: Center(child: Text("You are not logged in.")),
+      );
+    }
+
     return appScaffold(
       title: "Settings",
       body: Column(

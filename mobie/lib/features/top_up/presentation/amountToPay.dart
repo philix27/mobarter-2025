@@ -28,15 +28,33 @@ class _PriceToPay extends HookWidget {
       return const Center(child: CircularProgressIndicator());
     }
 
-    final usdRate = data.parsedData?.fxRate_GetAll.USD ?? 0;
-    final amt = amountFiat ?? 0.0;
-    final double costP = usdRate * amt;
-    return Text(
-      costP.toStringAsFixed(2),
-      style: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-        color: Colors.black,
+    final rate = data.parsedData?.fxRate_GetAll.NG ?? 0;
+    print("Amount To usdRate $rate");
+
+    final amountFiatN = amountFiat ?? 0.0;
+
+    final price = amountFiatN / rate;
+
+    return RichText(
+      text: TextSpan(
+        style: DefaultTextStyle.of(context).style, // Inherit default style
+        children: <TextSpan>[
+          TextSpan(
+            text: "CUSD ",
+            style: TextStyle(
+              fontWeight: FontWeight.w400,
+              color: Colors.black45,
+            ),
+          ),
+          TextSpan(
+            text: price.toStringAsFixed(2),
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: Colors.black87,
+            ),
+          ),
+        ],
       ),
     );
   }

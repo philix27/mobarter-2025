@@ -2,12 +2,13 @@ import 'dart:async';
 
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mobarter/utils/logger.dart';
 
 class AuthService {
   final _auth = FirebaseAuth.instance;
   final GoogleSignIn signIn = GoogleSignIn();
 
-  Future<bool> loginWithGoogle() async {
+  Future<User?> loginWithGoogle() async {
     try {
       final account = await signIn.signIn();
 
@@ -18,15 +19,14 @@ class AuthService {
         accessToken: userAuth.accessToken,
       );
 
-      final user = await FirebaseAuth.instance.signInWithCredential(credential);
+      final data = await FirebaseAuth.instance.signInWithCredential(credential);
 
-      final userExist = FirebaseAuth.instance.currentUser != null;
+      // final userExist = FirebaseAuth.instance.currentUser != null;
 
-      print("User credentials: $user");
-      return userExist;
+      return data.user;
     } catch (e) {
-      print("Error: could not login $e");
-      return false;
+      appLogger.e("Could not login $e");
+      return null;
     }
   }
 
@@ -41,7 +41,11 @@ class AuthService {
   }
 
   User? user() {
-    return FirebaseAuth.instance.currentUser;
+    var user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      return null;
+    }
+    return user;
   }
 
   Future signOut() async {

@@ -1,17 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/top_up/logic/provider.dart';
+import 'package:mobarter/graphql/schema/fx.gql.dart';
 
 import 'package:mobarter/widgets/inputText.dart';
 import 'package:mobarter/widgets/toast.dart';
 
-class AirtimeWidget extends ConsumerWidget {
+class AirtimeWidget extends HookConsumerWidget {
   const AirtimeWidget({super.key});
 
   @override
   Widget build(BuildContext context, ref) {
     final topUpdata = topUpRead(ref);
+    final result = useQuery$FxRate_GetAll(Options$Query$FxRate_GetAll());
+
+    final data = result.result;
+    if (data.isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    final rate = data.parsedData?.fxRate_GetAll.NG ?? 0;
+
+    calcPrice(double amt) {
+      final amountFiatN = amt ?? 0.0;
+
+      return amountFiatN / rate;
+    }
 
     return textField(
       label: 'Amount',
@@ -25,12 +41,13 @@ class AirtimeWidget extends ConsumerWidget {
       ],
       onChanged: (value) {
         if (value.length > 6) {
-          value = value.substring(0, 6); // Limit to 11 digits
-          apptToast(context, "Maximum 11 digits allowed");
+          value = value.substring(0, 6); // Limit to 11 digits3
+          apptToast(context, "Maximum 6 digits allowed");
           return;
         }
-
-        topUpdata.updateAmountFiat(double.parse(value), "Airtime");
+        final double amt = double.tryParse(value) ?? 0.0;
+        topUpdata.updateAmountFiat(amt, "Airtime");
+        topUpdata.updateAmountCrypto(calcPrice(amt));
       },
     );
   }

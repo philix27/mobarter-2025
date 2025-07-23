@@ -12,6 +12,7 @@ import 'package:mobarter/features/top_up/presentation/topUpSummary.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/btn.dart';
 import 'package:mobarter/widgets/scaffold.dart';
+import 'package:mobarter/widgets/toast.dart';
 
 enum TopUpScreen { airtime, dataPlan, dataBundle }
 
@@ -39,25 +40,50 @@ class TopUpsPage extends ConsumerWidget {
     return appScaffold(
       title: "Top Ups",
       body: Column(
-        spacing: 15,
+        spacing: 20,
         children: [
           ShowTopUpProviders(),
           PhoneTextField(),
-          ShowCurrency(),
+          // ShowCurrency(),
           TopUpTabs(),
           screenToDisplay,
           CryptoAmountPay(),
           btn(
             title: "Submit",
             onPressed: () {
+              if (data.phoneNo == null || data.phoneNo!.isEmpty) {
+                apptToast(context, "Enter phone number");
+                return;
+              }
+
+              if (data.phoneNo!.length != 11) {
+                apptToast(
+                  context,
+                  "Phone number must be 11 ${data.phoneNo} digits ${data.phoneNo!.length}",
+                );
+                return;
+              }
+
+              if (data.networkProvider == null ||
+                  data.networkProvider!.isEmpty) {
+                apptToast(context, "Select a network provider");
+                return;
+              }
+
+              if (data.amountCrypto == null) {
+                apptToast(context, "Select/Enter and amount");
+                return;
+              }
+
               btmSheet(
                 ctx: context,
                 w: ShowTopUpSummary(
                   recipientPhone: data.phoneNo!,
                   networkProvider: data.networkProvider!,
-                  amountToPay: data.amountCrypto != null
-                      ? data.amountCrypto.toString()
-                      : "0",
+                  amountToPay: "CUSD ${data.amountCrypto!.toStringAsFixed(3)}",
+                  // amountToPay: data.amountCrypto != null
+                  //     ? data.amountCrypto.toString()
+                  //     : "0",
                   amountOfProduct: data.amountFiat != null
                       ? "₦ ${data.amountFiat.toString()}"
                       : "0",

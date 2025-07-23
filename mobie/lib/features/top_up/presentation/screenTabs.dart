@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobarter/constants/theme.dart';
 import 'package:mobarter/pages/TopUpPage.dart';
 import 'package:mobarter/features/top_up/logic/provider.dart';
+import 'package:mobarter/widgets/toast.dart';
 
 class TopUpTabs extends ConsumerWidget {
   @override
@@ -16,9 +17,12 @@ class TopUpTabs extends ConsumerWidget {
       return InkWell(
         onTap: () {
           readData.updateScreen(screen);
+          readData.updateAmountCrypto(0.0);
+          readData.updateAmountFiat(0.0, "Data plan");
+          // apptToast(context, "Switch tab");
         },
         child: Center(
-          widthFactor: 1,
+          widthFactor: 1,      
           child: Text(
             title,
             style: TextStyle(

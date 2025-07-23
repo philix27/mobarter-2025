@@ -65,7 +65,7 @@ Future<double?> getWalletTokenBalance({
       final BigInt rawBalance = result.first as BigInt;
       // print('ERC20 decimalsResult: $cc');
       // print('ERC20 tokenContractAddress: $tokenContractAddress');
-      print('ERC20 rawBalance: $rawBalance');
+      // print('ERC20 rawBalance: $rawBalance');
 
       if (rawBalance == 0) {
         return 0;
@@ -75,7 +75,7 @@ Future<double?> getWalletTokenBalance({
 
         // BigInt raw = BigInt.parse(rawBalance);
         // Decimal decimal = Decimal.fromBigInt(rawBalance);
-        print('ERC20 decimal: $decimalCount');
+        // print('ERC20 decimal: $decimalCount');
 
         // final decimal2 = decimal / Decimal.fromInt(tokenDecimal);
         // final newDC = rawBalance / (10 * tokenDecimal);
