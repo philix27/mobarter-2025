@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import "package:flutter/services.dart";
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:mobarter/config/crashlytics.dart';
 import 'package:mobarter/features/app/logic/provider.dart';
 import 'package:mobarter/features/intro/Welcome.dart';
 import 'package:mobarter/constants/theme.dart';
@@ -25,7 +26,8 @@ void main() async {
   );
 
   // make flutter draw behind navigation bar
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   Hive.initFlutter();
   await initHiveForFlutter();
@@ -33,7 +35,11 @@ void main() async {
   // LocalStore();
   HiveStore.open();
   Hive.openBox("wallet");
+
   await Firebase.initializeApp();
+
+  await initiateCrashlytics();
+
   runApp(AppProviders());
 }
 
@@ -78,6 +84,7 @@ class InitiateGql extends ConsumerWidget {
               "/auth": (context) => const WalletPage(),
               "/interactive": (context) => const WalletPage(),
               "/setup-pin": (context) => const SetupTxnPinPage(),
+              "/welcome": (context) => const WelcomePage(),
             },
           ),
         ),

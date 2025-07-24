@@ -110,6 +110,7 @@ class SettingsPage extends StatelessWidget {
                   .then((value) {
                     appLogger.i("User logged out successfully");
                     Navigator.of(context).pushNamed("/");
+                    // Navigator.of(context).pushNamed("/welcome");
                   })
                   .catchError((error) {
                     appLogger.e("Error logging out: $error");

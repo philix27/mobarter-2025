@@ -6,6 +6,7 @@ Widget appScaffold({
   bool? noneScrollable,
   required Widget body,
   bool automaticallyImplyLeading = true,
+  List<Widget>? actions
 }) {
   return Scaffold(
     appBar: AppBar(
@@ -14,6 +15,7 @@ Widget appScaffold({
         title,
         style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
       ),
+      actions: actions,
     ),
     body: noneScrollable != null
         ? Padding(padding: bodyPadding, child: body)

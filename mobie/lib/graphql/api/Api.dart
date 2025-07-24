@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:mobarter/env.dart';
+import 'package:mobarter/config/env.dart';
 
 final _httpLink = isDevEnv
     ? HttpLink('http://192.168.0.123:4545/graphql')

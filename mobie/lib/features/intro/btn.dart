@@ -62,47 +62,52 @@ class _ConnectionButton extends HookWidget {
       }
     }
 
+    welcome() async {
+      await walletSvc.userWalletAddress();
+
+      final user = await svc.user();
+
+      if (user == null) {
+        apptToast(context, "User not found");
+        return;
+      }
+
+      await getServerToken(user);
+    }
+
+    int attempt = 0;
+    loginWithGoogle() async {
+      attempt = attempt + 1;
+
+      final user = await svc.loginWithGoogle();
+
+      if (user != null) {
+        final hasWallet = await walletSvc.doesWalletExist(user.uid);
+
+        if (!hasWallet) {
+          Navigator.of(context).pushNamed("/setup-pin");
+        } else {
+          await walletSvc.userWalletAddress();
+
+          await getServerToken(user);
+        }
+      } else {
+        apptToast(context, "Login Failed");
+        if (attempt < 2) {
+          await loginWithGoogle();
+          apptToast(context, "Sorry, could not login your google account");
+        }
+      }
+    }
+
     if (result.result.isLoading) {
       return const Center(child: CircularProgressIndicator());
     }
 
     if (svc.isLoggedIn()) {
-      return btn(
-        title: "Welcome",
-        onPressed: () async {
-          await walletSvc.userWalletAddress();
-
-          final user = await svc.user();
-
-          if (user == null) {
-            apptToast(context, "User not found");
-            return;
-          }
-
-          await getServerToken(user);
-        },
-      );
+      return btn(title: "Welcome", onPressed: welcome);
     } else {
-      return btn(
-        title: "Sign In WIth Google",
-        onPressed: () async {
-          final user = await svc.loginWithGoogle();
-
-          if (user != null) {
-            final hasWallet = await walletSvc.doesWalletExist(user.uid);
-
-            if (!hasWallet) {
-              Navigator.of(context).pushNamed("/setup-pin");
-            } else {
-              await walletSvc.userWalletAddress();
-
-              await getServerToken(user);
-            }
-          } else {
-            apptToast(context, "Login Failed");
-          }
-        },
-      );
+      return btn(title: "Sign In WIth Google", onPressed: loginWithGoogle);
     }
   }
 }

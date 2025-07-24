@@ -20,6 +20,7 @@ class HomePageLayout extends StatelessWidget {
 
     PersistentTabConfig(
       screen: const PaymentsPage(),
+      // screen: CrashlyticsPage(),
       item: ItemConfig(
         activeForegroundColor: colorPrimary,
         icon: const Icon(Icons.payment),

@@ -7,9 +7,9 @@ import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class PaymentProduct {
   final String title;
-  // final Widget page;
   final IconData icon;
   final void Function()? onPressed;
+  
   PaymentProduct({
     required this.onPressed,
     required this.icon,
@@ -77,7 +77,14 @@ List<PaymentProduct> productsList(BuildContext ctx) {
       },
       icon: Icons.abc_outlined,
     ),
-    // PaymentProduct(title: 'Headphones', page: ElectricityPage()),
+    // PaymentProduct(
+    //   title: 'Webview',
+    //   onPressed: () {
+    //     // apptToast(ctx, "Coming soon");
+    //     pushScreen(ctx, screen: AppWebView(), withNavBar: false);
+    //   },
+    //   icon: Icons.abc_outlined,
+    // ),
   ];
 }
 
