@@ -76,7 +76,7 @@ class ListItem extends ConsumerWidget {
     return listTile(
       title: item.name,
       onTap: () {
-        topUpdata.updateNetwork(item.name);
+        topUpdata.updateNetwork(item.name, item.operatorId);
       },
     );
   }

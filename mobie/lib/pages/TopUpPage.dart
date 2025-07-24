@@ -70,8 +70,13 @@ class TopUpsPage extends ConsumerWidget {
                 return;
               }
 
-              if (data.amountCrypto == null) {
+              if (data.amountCrypto == null || data.amountFiat == null) {
                 apptToast(context, "Select/Enter and amount");
+                return;
+              }
+
+              if (data.amountFiat! < 50.0) {
+                apptToast(context, "Minimum of ₦50");
                 return;
               }
 

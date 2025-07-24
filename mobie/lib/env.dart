@@ -1,1 +1,1 @@
-final isDevEnv = true;
+final isDevEnv = false;

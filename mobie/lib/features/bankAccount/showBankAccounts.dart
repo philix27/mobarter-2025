@@ -9,7 +9,7 @@ class ShowBankAccounts extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final result = useQuery$BankAccount_getAll(
-      Options$Query$BankAccount_getAll(),
+      Options$Query$BankAccount_getAll(), 
     );
     final list = result.result.parsedData?.bankAccount_getAll;
 

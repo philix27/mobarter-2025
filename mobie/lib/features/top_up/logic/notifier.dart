@@ -10,6 +10,7 @@ class TopUpDataNotifier extends StateNotifier<TopData> {
           amountCrypto: null,
           dataPlanDescription: null,
           networkProvider: null,
+          networkOperatorId: null,
           phoneNo: '',
           currency: "cUSD",
           screen: TopUpScreen.airtime,
@@ -34,8 +35,8 @@ class TopUpDataNotifier extends StateNotifier<TopData> {
     state = state.copyWith(amountCrypto: amountCrypto);
   }
 
-  void updateNetwork(String network) {
-    state = state.copyWith(networkProvider: network);
+  void updateNetwork(String network, int networkOperatorId) {
+    state = state.copyWith(networkProvider: network, networkOperatorId: networkOperatorId);
   }
 
   void updateCurrency(String currency) {
