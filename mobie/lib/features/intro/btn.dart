@@ -54,8 +54,6 @@ class _ConnectionButton extends HookWidget {
 
         final serverToken = tokenData!.parsedData?.auth_firebaseLogin.token;
         updateServerToken(serverToken!);
-
-        Navigator.of(context).pushNamed("/home");
       } catch (e) {
         appLogger.e("Login Err: $e");
         apptToast(context, "Failed to get server token: $e");
@@ -72,7 +70,16 @@ class _ConnectionButton extends HookWidget {
         return;
       }
 
+      final hasWallet = await walletSvc.doesWalletExist(user.uid);
+
       await getServerToken(user);
+
+      if (!hasWallet) {
+        Navigator.of(context).pushNamed("/setup-pin");
+        return;
+      }
+
+      Navigator.of(context).pushNamed("/home");
     }
 
     int attempt = 0;
@@ -82,6 +89,8 @@ class _ConnectionButton extends HookWidget {
       final user = await svc.loginWithGoogle();
 
       if (user != null) {
+        await getServerToken(user);
+
         final hasWallet = await walletSvc.doesWalletExist(user.uid);
 
         if (!hasWallet) {
@@ -89,7 +98,7 @@ class _ConnectionButton extends HookWidget {
         } else {
           await walletSvc.userWalletAddress();
 
-          await getServerToken(user);
+          Navigator.of(context).pushNamed("/home");
         }
       } else {
         apptToast(context, "Login Failed");

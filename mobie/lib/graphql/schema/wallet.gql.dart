@@ -1177,3 +1177,672 @@ class _CopyWithStubImpl$Query$WalletCrypto_getAll$walletCrypto_getAll<TRes>
   }) =>
       _res;
 }
+
+class Variables$Mutation$WalletCrypto_mobileCreate {
+  factory Variables$Mutation$WalletCrypto_mobileCreate(
+          {required Input$Wallet_CreateInput input}) =>
+      Variables$Mutation$WalletCrypto_mobileCreate._({
+        r'input': input,
+      });
+
+  Variables$Mutation$WalletCrypto_mobileCreate._(this._$data);
+
+  factory Variables$Mutation$WalletCrypto_mobileCreate.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$input = data['input'];
+    result$data['input'] =
+        Input$Wallet_CreateInput.fromJson((l$input as Map<String, dynamic>));
+    return Variables$Mutation$WalletCrypto_mobileCreate._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$Wallet_CreateInput get input =>
+      (_$data['input'] as Input$Wallet_CreateInput);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$input = input;
+    result$data['input'] = l$input.toJson();
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$WalletCrypto_mobileCreate<
+          Variables$Mutation$WalletCrypto_mobileCreate>
+      get copyWith => CopyWith$Variables$Mutation$WalletCrypto_mobileCreate(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Variables$Mutation$WalletCrypto_mobileCreate ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$input = input;
+    final lOther$input = other.input;
+    if (l$input != lOther$input) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$input = input;
+    return Object.hashAll([l$input]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$WalletCrypto_mobileCreate<TRes> {
+  factory CopyWith$Variables$Mutation$WalletCrypto_mobileCreate(
+    Variables$Mutation$WalletCrypto_mobileCreate instance,
+    TRes Function(Variables$Mutation$WalletCrypto_mobileCreate) then,
+  ) = _CopyWithImpl$Variables$Mutation$WalletCrypto_mobileCreate;
+
+  factory CopyWith$Variables$Mutation$WalletCrypto_mobileCreate.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$WalletCrypto_mobileCreate;
+
+  TRes call({Input$Wallet_CreateInput? input});
+}
+
+class _CopyWithImpl$Variables$Mutation$WalletCrypto_mobileCreate<TRes>
+    implements CopyWith$Variables$Mutation$WalletCrypto_mobileCreate<TRes> {
+  _CopyWithImpl$Variables$Mutation$WalletCrypto_mobileCreate(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Mutation$WalletCrypto_mobileCreate _instance;
+
+  final TRes Function(Variables$Mutation$WalletCrypto_mobileCreate) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({Object? input = _undefined}) =>
+      _then(Variables$Mutation$WalletCrypto_mobileCreate._({
+        ..._instance._$data,
+        if (input != _undefined && input != null)
+          'input': (input as Input$Wallet_CreateInput),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$WalletCrypto_mobileCreate<TRes>
+    implements CopyWith$Variables$Mutation$WalletCrypto_mobileCreate<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$WalletCrypto_mobileCreate(this._res);
+
+  TRes _res;
+
+  call({Input$Wallet_CreateInput? input}) => _res;
+}
+
+class Mutation$WalletCrypto_mobileCreate {
+  Mutation$WalletCrypto_mobileCreate({
+    required this.walletCrypto_mobileCreate,
+    this.$__typename = 'Mutation',
+  });
+
+  factory Mutation$WalletCrypto_mobileCreate.fromJson(
+      Map<String, dynamic> json) {
+    final l$walletCrypto_mobileCreate = json['walletCrypto_mobileCreate'];
+    final l$$__typename = json['__typename'];
+    return Mutation$WalletCrypto_mobileCreate(
+      walletCrypto_mobileCreate:
+          Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate.fromJson(
+              (l$walletCrypto_mobileCreate as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate
+      walletCrypto_mobileCreate;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$walletCrypto_mobileCreate = walletCrypto_mobileCreate;
+    _resultData['walletCrypto_mobileCreate'] =
+        l$walletCrypto_mobileCreate.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$walletCrypto_mobileCreate = walletCrypto_mobileCreate;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$walletCrypto_mobileCreate,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Mutation$WalletCrypto_mobileCreate ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$walletCrypto_mobileCreate = walletCrypto_mobileCreate;
+    final lOther$walletCrypto_mobileCreate = other.walletCrypto_mobileCreate;
+    if (l$walletCrypto_mobileCreate != lOther$walletCrypto_mobileCreate) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$WalletCrypto_mobileCreate
+    on Mutation$WalletCrypto_mobileCreate {
+  CopyWith$Mutation$WalletCrypto_mobileCreate<
+          Mutation$WalletCrypto_mobileCreate>
+      get copyWith => CopyWith$Mutation$WalletCrypto_mobileCreate(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$WalletCrypto_mobileCreate<TRes> {
+  factory CopyWith$Mutation$WalletCrypto_mobileCreate(
+    Mutation$WalletCrypto_mobileCreate instance,
+    TRes Function(Mutation$WalletCrypto_mobileCreate) then,
+  ) = _CopyWithImpl$Mutation$WalletCrypto_mobileCreate;
+
+  factory CopyWith$Mutation$WalletCrypto_mobileCreate.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$WalletCrypto_mobileCreate;
+
+  TRes call({
+    Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate?
+        walletCrypto_mobileCreate,
+    String? $__typename,
+  });
+  CopyWith$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate<TRes>
+      get walletCrypto_mobileCreate;
+}
+
+class _CopyWithImpl$Mutation$WalletCrypto_mobileCreate<TRes>
+    implements CopyWith$Mutation$WalletCrypto_mobileCreate<TRes> {
+  _CopyWithImpl$Mutation$WalletCrypto_mobileCreate(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$WalletCrypto_mobileCreate _instance;
+
+  final TRes Function(Mutation$WalletCrypto_mobileCreate) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? walletCrypto_mobileCreate = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$WalletCrypto_mobileCreate(
+        walletCrypto_mobileCreate: walletCrypto_mobileCreate == _undefined ||
+                walletCrypto_mobileCreate == null
+            ? _instance.walletCrypto_mobileCreate
+            : (walletCrypto_mobileCreate
+                as Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate<TRes>
+      get walletCrypto_mobileCreate {
+    final local$walletCrypto_mobileCreate = _instance.walletCrypto_mobileCreate;
+    return CopyWith$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate(
+        local$walletCrypto_mobileCreate,
+        (e) => call(walletCrypto_mobileCreate: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$WalletCrypto_mobileCreate<TRes>
+    implements CopyWith$Mutation$WalletCrypto_mobileCreate<TRes> {
+  _CopyWithStubImpl$Mutation$WalletCrypto_mobileCreate(this._res);
+
+  TRes _res;
+
+  call({
+    Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate?
+        walletCrypto_mobileCreate,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate<TRes>
+      get walletCrypto_mobileCreate =>
+          CopyWith$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate
+              .stub(_res);
+}
+
+const documentNodeMutationWalletCrypto_mobileCreate =
+    DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'WalletCrypto_mobileCreate'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'input')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Wallet_CreateInput'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'walletCrypto_mobileCreate'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'input'),
+            value: VariableNode(name: NameNode(value: 'input')),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'message'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+]);
+Mutation$WalletCrypto_mobileCreate _parserFn$Mutation$WalletCrypto_mobileCreate(
+        Map<String, dynamic> data) =>
+    Mutation$WalletCrypto_mobileCreate.fromJson(data);
+typedef OnMutationCompleted$Mutation$WalletCrypto_mobileCreate = FutureOr<void>
+    Function(
+  Map<String, dynamic>?,
+  Mutation$WalletCrypto_mobileCreate?,
+);
+
+class Options$Mutation$WalletCrypto_mobileCreate
+    extends graphql.MutationOptions<Mutation$WalletCrypto_mobileCreate> {
+  Options$Mutation$WalletCrypto_mobileCreate({
+    String? operationName,
+    required Variables$Mutation$WalletCrypto_mobileCreate variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$WalletCrypto_mobileCreate? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$WalletCrypto_mobileCreate? onCompleted,
+    graphql.OnMutationUpdate<Mutation$WalletCrypto_mobileCreate>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$WalletCrypto_mobileCreate(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationWalletCrypto_mobileCreate,
+          parserFn: _parserFn$Mutation$WalletCrypto_mobileCreate,
+        );
+
+  final OnMutationCompleted$Mutation$WalletCrypto_mobileCreate?
+      onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+class WatchOptions$Mutation$WalletCrypto_mobileCreate
+    extends graphql.WatchQueryOptions<Mutation$WalletCrypto_mobileCreate> {
+  WatchOptions$Mutation$WalletCrypto_mobileCreate({
+    String? operationName,
+    required Variables$Mutation$WalletCrypto_mobileCreate variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$WalletCrypto_mobileCreate? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeMutationWalletCrypto_mobileCreate,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$WalletCrypto_mobileCreate,
+        );
+}
+
+extension ClientExtension$Mutation$WalletCrypto_mobileCreate
+    on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$WalletCrypto_mobileCreate>>
+      mutate$WalletCrypto_mobileCreate(
+              Options$Mutation$WalletCrypto_mobileCreate options) async =>
+          await this.mutate(options);
+  graphql.ObservableQuery<Mutation$WalletCrypto_mobileCreate>
+      watchMutation$WalletCrypto_mobileCreate(
+              WatchOptions$Mutation$WalletCrypto_mobileCreate options) =>
+          this.watchMutation(options);
+}
+
+class Mutation$WalletCrypto_mobileCreate$HookResult {
+  Mutation$WalletCrypto_mobileCreate$HookResult(
+    this.runMutation,
+    this.result,
+  );
+
+  final RunMutation$Mutation$WalletCrypto_mobileCreate runMutation;
+
+  final graphql.QueryResult<Mutation$WalletCrypto_mobileCreate> result;
+}
+
+Mutation$WalletCrypto_mobileCreate$HookResult
+    useMutation$WalletCrypto_mobileCreate(
+        [WidgetOptions$Mutation$WalletCrypto_mobileCreate? options]) {
+  final result = graphql_flutter.useMutation(
+      options ?? WidgetOptions$Mutation$WalletCrypto_mobileCreate());
+  return Mutation$WalletCrypto_mobileCreate$HookResult(
+    (variables, {optimisticResult, typedOptimisticResult}) =>
+        result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$WalletCrypto_mobileCreate>
+    useWatchMutation$WalletCrypto_mobileCreate(
+            WatchOptions$Mutation$WalletCrypto_mobileCreate options) =>
+        graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$WalletCrypto_mobileCreate
+    extends graphql.MutationOptions<Mutation$WalletCrypto_mobileCreate> {
+  WidgetOptions$Mutation$WalletCrypto_mobileCreate({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$WalletCrypto_mobileCreate? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$WalletCrypto_mobileCreate? onCompleted,
+    graphql.OnMutationUpdate<Mutation$WalletCrypto_mobileCreate>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$WalletCrypto_mobileCreate(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationWalletCrypto_mobileCreate,
+          parserFn: _parserFn$Mutation$WalletCrypto_mobileCreate,
+        );
+
+  final OnMutationCompleted$Mutation$WalletCrypto_mobileCreate?
+      onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+typedef RunMutation$Mutation$WalletCrypto_mobileCreate
+    = graphql.MultiSourceResult<Mutation$WalletCrypto_mobileCreate> Function(
+  Variables$Mutation$WalletCrypto_mobileCreate, {
+  Object? optimisticResult,
+  Mutation$WalletCrypto_mobileCreate? typedOptimisticResult,
+});
+typedef Builder$Mutation$WalletCrypto_mobileCreate = widgets.Widget Function(
+  RunMutation$Mutation$WalletCrypto_mobileCreate,
+  graphql.QueryResult<Mutation$WalletCrypto_mobileCreate>?,
+);
+
+class Mutation$WalletCrypto_mobileCreate$Widget
+    extends graphql_flutter.Mutation<Mutation$WalletCrypto_mobileCreate> {
+  Mutation$WalletCrypto_mobileCreate$Widget({
+    widgets.Key? key,
+    WidgetOptions$Mutation$WalletCrypto_mobileCreate? options,
+    required Builder$Mutation$WalletCrypto_mobileCreate builder,
+  }) : super(
+          key: key,
+          options:
+              options ?? WidgetOptions$Mutation$WalletCrypto_mobileCreate(),
+          builder: (
+            run,
+            result,
+          ) =>
+              builder(
+            (
+              variables, {
+              optimisticResult,
+              typedOptimisticResult,
+            }) =>
+                run(
+              variables.toJson(),
+              optimisticResult:
+                  optimisticResult ?? typedOptimisticResult?.toJson(),
+            ),
+            result,
+          ),
+        );
+}
+
+class Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate {
+  Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate({
+    required this.message,
+    this.$__typename = 'Wallet_CreateResponse',
+  });
+
+  factory Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate.fromJson(
+      Map<String, dynamic> json) {
+    final l$message = json['message'];
+    final l$$__typename = json['__typename'];
+    return Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate(
+      message: (l$message as String),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String message;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$message = message;
+    _resultData['message'] = l$message;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$message = message;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$message,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other
+            is! Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$message = message;
+    final lOther$message = other.message;
+    if (l$message != lOther$message) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate
+    on Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate {
+  CopyWith$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate<
+          Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate>
+      get copyWith =>
+          CopyWith$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate<
+    TRes> {
+  factory CopyWith$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate(
+    Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate instance,
+    TRes Function(Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate)
+        then,
+  ) = _CopyWithImpl$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate;
+
+  factory CopyWith$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate.stub(
+          TRes res) =
+      _CopyWithStubImpl$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate;
+
+  TRes call({
+    String? message,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate<
+        TRes>
+    implements
+        CopyWith$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate<
+            TRes> {
+  _CopyWithImpl$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate _instance;
+
+  final TRes Function(
+      Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? message = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate(
+        message: message == _undefined || message == null
+            ? _instance.message
+            : (message as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate<
+        TRes>
+    implements
+        CopyWith$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate<
+            TRes> {
+  _CopyWithStubImpl$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate(
+      this._res);
+
+  TRes _res;
+
+  call({
+    String? message,
+    String? $__typename,
+  }) =>
+      _res;
+}

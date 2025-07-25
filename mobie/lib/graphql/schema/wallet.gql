@@ -15,3 +15,10 @@ query WalletCrypto_getAll {
     wallet_id
   }
 }
+
+
+mutation WalletCrypto_mobileCreate($input: Wallet_CreateInput!) {
+  walletCrypto_mobileCreate(input: $input) {
+    message
+  }
+}

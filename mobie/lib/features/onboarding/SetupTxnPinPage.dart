@@ -7,6 +7,7 @@ import 'package:mobarter/features/onboarding/questionsList.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/auth.gql.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
+import 'package:mobarter/graphql/schema/wallet.gql.dart';
 import 'package:mobarter/utils/logger.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/btn.dart';
@@ -24,7 +25,26 @@ class SetupTxnPinPage extends StatefulWidget {
 }
 
 class _SetupTxnPinPageState extends State<SetupTxnPinPage> {
+  // void setState(void Function() fn)
   String questionSelected = "";
+  @override
+  Widget build(BuildContext context) {
+    return SetupTxnPinHook(
+      stateUpdater: (text) {
+        setState(() {
+          questionSelected = text;
+        });
+      },
+      questionSelected: questionSelected,
+    );
+  }
+}
+
+class SetupTxnPinHook extends HookWidget {
+  final void Function(String text) stateUpdater;
+  final String questionSelected;
+  SetupTxnPinHook({required this.stateUpdater, required this.questionSelected});
+
   TextEditingController answer = TextEditingController();
   TextEditingController txnPin = TextEditingController();
   TextEditingController txnPinConfirm = TextEditingController();
@@ -32,53 +52,53 @@ class _SetupTxnPinPageState extends State<SetupTxnPinPage> {
   final authSvc = AuthService();
   // final cryptoSvc = CryptoWalletService();
 
-  validate() async {
-    final pin = txnPin.text;
-    final pinC = txnPinConfirm.text;
-    if (answer.text.isEmpty || questionSelected.isEmpty) {
-      apptToast(context, "Answer is needed");
-      return;
-    }
-
-    if (pin.length < 6 || pinC.length < 6) {
-      apptToast(context, "Minimum of 6 characters");
-      return;
-    }
-    if (pin != pinC) {
-      apptToast(context, "Password doesn't match");
-      return;
-    }
-    // ! Submit
-
-    final result = useMutation$walletCrypto_mobileCreate();
-
-    try {
-      final response = await result
-          .runMutation(
-            Variables$Mutation$walletCrypto_mobileCreate(
-              input: Input$Wallet_CreateInput(
-                answer: answer.text,
-                pin: pin,
-                question: questionSelected,
-                user_uid: authSvc.user()!.uid,
-              ),
-            ),
-          )
-          .networkResult;
-
-      final msg = response!.parsedData?.walletCrypto_mobileCreate.message;
-
-      apptToast(context, "Your pin has been succcessfully setup");
-      Navigator.of(context).pushNamed("/home");
-    } catch (e) {
-      apptToast(context, "$e");
-      appLogger.e("Error in creating wallet:  $e");
-      Navigator.of(context).pushNamed("/home");
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    final result = useMutation$WalletCrypto_mobileCreate();
+
+    validate() async {
+      final pin = txnPin.text;
+      final pinC = txnPinConfirm.text;
+      if (answer.text.isEmpty || questionSelected.isEmpty) {
+        apptToast(context, "Answer is needed");
+        return;
+      }
+
+      if (pin.length < 6 || pinC.length < 6) {
+        apptToast(context, "Minimum of 6 characters");
+        return;
+      }
+      if (pin != pinC) {
+        apptToast(context, "Password doesn't match");
+        return;
+      }
+      // ! Submit
+
+      try {
+        final response = await result
+            .runMutation(
+              Variables$Mutation$WalletCrypto_mobileCreate(
+                input: Input$Wallet_CreateInput(
+                  answer: answer.text,
+                  pin: pin,
+                  question: questionSelected,
+                  user_uid: authSvc.user()!.uid,
+                ),
+              ),
+            )
+            .networkResult;
+
+        final msg = response!.parsedData?.walletCrypto_mobileCreate.message;
+
+        apptToast(context, "Your pin has been succcessfully setup");
+        Navigator.of(context).pushNamed("/home");
+      } catch (e) {
+        apptToast(context, "$e");
+        appLogger.e("Error in creating wallet:  $e");
+        Navigator.of(context).pushNamed("/home");
+      }
+    }
+
     return appScaffold(
       title: "Password Setup",
       automaticallyImplyLeading: false,
@@ -102,9 +122,7 @@ class _SetupTxnPinPageState extends State<SetupTxnPinPage> {
                     return listTile(
                       title: title,
                       onTap: () {
-                        setState(() {
-                          questionSelected = title;
-                        });
+                        stateUpdater(title);
                       },
                     );
                   },

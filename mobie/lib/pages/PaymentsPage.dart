@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mobarter/constants/theme.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/pages/BettingPage.dart';
@@ -116,7 +117,7 @@ List<PaymentProduct> productsList(
   ];
 }
 
-class PaymentsPage extends StatelessWidget {
+class PaymentsPage extends HookWidget {
   const PaymentsPage({super.key});
 
   @override

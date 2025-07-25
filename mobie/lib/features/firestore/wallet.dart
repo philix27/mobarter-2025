@@ -8,7 +8,6 @@ class WalletStoreService {
   final _collection = CollectionsService().wallet;
   final authSvc = AuthService();
 
-
   Future<WalletModel?> getUserWallet(String userId) async {
     final user = authSvc.user();
     try {

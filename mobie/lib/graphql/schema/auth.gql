@@ -9,8 +9,3 @@ mutation Auth_firebaseLogin($input: Auth_FirebaseLoginInput!) {
 }
 
 
-mutation walletCrypto_mobileCreate($input: Wallet_CreateInput!) {
-  walletCrypto_mobileCreate(input: $input) {
-    message
-  }
-}
