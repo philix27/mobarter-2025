@@ -11,7 +11,6 @@ import 'package:mobarter/features/onboarding/SetupTxnPinPage.dart';
 import 'package:mobarter/graphql/api/Api.dart';
 import 'package:mobarter/pages/HomeLayout.dart';
 import 'package:mobarter/pages/WalletPage.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:toastification/toastification.dart';
 
@@ -64,29 +63,21 @@ class InitiateGql extends ConsumerWidget {
     return GraphQLProvider(
       client: getGqlClientNotifier(token),
       child: ToastificationWrapper(
-        child: OKToast(
-          textStyle: const TextStyle(fontSize: 19.0, color: Colors.white),
-          backgroundColor: Colors.black,
-          animationCurve: Curves.easeIn,
-          animationBuilder: OffsetAnimationBuilder(),
-          animationDuration: const Duration(milliseconds: 200),
-          duration: const Duration(seconds: 5),
-          child: MaterialApp(
-            title: 'Mobarter',
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: colorPrimary),
-            ),
-            themeMode: ThemeMode.system,
-            home: WelcomePage(),
-            routes: {
-              "/home": (context) => const HomePageLayout(),
-              "/auth": (context) => const WalletPage(),
-              "/interactive": (context) => const WalletPage(),
-              "/setup-pin": (context) => const SetupTxnPinPage(),
-              "/welcome": (context) => const WelcomePage(),
-            },
+        child: MaterialApp(
+          title: 'Mobarter',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: colorPrimary),
           ),
+          themeMode: ThemeMode.system,
+          home: WelcomePage(),
+          routes: {
+            "/home": (context) => const HomePageLayout(),
+            "/auth": (context) => const WalletPage(),
+            "/interactive": (context) => const WalletPage(),
+            "/setup-pin": (context) => const SetupTxnPinPage(),
+            "/welcome": (context) => const WelcomePage(),
+          },
         ),
       ),
     );

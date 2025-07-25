@@ -17,7 +17,7 @@ class PasswordCredentials {
 }
 
 class PasswordService {
-  /// Generates a secure PBKDF2 hash of a password with a random salt
+  /// Generates a secure b       hash of a password with a random salt
   PasswordCredentials hashPasswordSecure(
     String password, {
     int keyLength = 32,

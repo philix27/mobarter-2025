@@ -6,7 +6,6 @@ import 'package:mobarter/features/top_up/presentation/amountToPay.dart';
 import 'package:mobarter/features/top_up/presentation/dataPlan.dart';
 import 'package:mobarter/features/top_up/presentation/phoneNo.dart';
 import 'package:mobarter/features/top_up/presentation/screenTabs.dart';
-import 'package:mobarter/features/top_up/presentation/selectCurrency.dart';
 import 'package:mobarter/features/top_up/presentation/selectNetwork.dart';
 import 'package:mobarter/features/top_up/presentation/topUpSummary.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';

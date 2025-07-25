@@ -9,12 +9,11 @@ class PaymentProduct {
   final String title;
   final IconData icon;
   final void Function()? onPressed;
-  
+
   PaymentProduct({
-    required this.onPressed,
-    required this.icon,
     required this.title,
-    // required this.page,
+    required this.icon,
+    required this.onPressed,
   });
 }
 

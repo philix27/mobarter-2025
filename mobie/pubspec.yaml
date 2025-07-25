@@ -40,7 +40,6 @@ dependencies:
   eth_sig_util: ^0.0.9
   hex: ^0.2.0
   intl: ^0.18.1
-  oktoast: ^3.3.2+1
   package_info_plus: ^8.3.0
   persistent_bottom_nav_bar: ^6.2.1
   pretty_qr_code: ^3.4.0
