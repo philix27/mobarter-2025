@@ -1,1160 +1,3 @@
-class Input$Advert_CreateInput {
-  factory Input$Advert_CreateInput({
-    required Enum$AdvertStatus advertStatus,
-    required Enum$Country currencyFiat,
-    required String currency_crypto,
-    required String duration,
-    required double fiatAmountPerCrypto,
-    required String instructions,
-    bool? isFloatRate,
-    required double limitLower,
-    required double limitUpper,
-    required double merchant_id,
-    String? rate,
-    double? rateFixed,
-    double? rateFloat,
-    required Enum$TradeType tradeType,
-    required String wallet_address,
-  }) =>
-      Input$Advert_CreateInput._({
-        r'advertStatus': advertStatus,
-        r'currencyFiat': currencyFiat,
-        r'currency_crypto': currency_crypto,
-        r'duration': duration,
-        r'fiatAmountPerCrypto': fiatAmountPerCrypto,
-        r'instructions': instructions,
-        if (isFloatRate != null) r'isFloatRate': isFloatRate,
-        r'limitLower': limitLower,
-        r'limitUpper': limitUpper,
-        r'merchant_id': merchant_id,
-        if (rate != null) r'rate': rate,
-        if (rateFixed != null) r'rateFixed': rateFixed,
-        if (rateFloat != null) r'rateFloat': rateFloat,
-        r'tradeType': tradeType,
-        r'wallet_address': wallet_address,
-      });
-
-  Input$Advert_CreateInput._(this._$data);
-
-  factory Input$Advert_CreateInput.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    final l$advertStatus = data['advertStatus'];
-    result$data['advertStatus'] =
-        fromJson$Enum$AdvertStatus((l$advertStatus as String));
-    final l$currencyFiat = data['currencyFiat'];
-    result$data['currencyFiat'] =
-        fromJson$Enum$Country((l$currencyFiat as String));
-    final l$currency_crypto = data['currency_crypto'];
-    result$data['currency_crypto'] = (l$currency_crypto as String);
-    final l$duration = data['duration'];
-    result$data['duration'] = (l$duration as String);
-    final l$fiatAmountPerCrypto = data['fiatAmountPerCrypto'];
-    result$data['fiatAmountPerCrypto'] =
-        (l$fiatAmountPerCrypto as num).toDouble();
-    final l$instructions = data['instructions'];
-    result$data['instructions'] = (l$instructions as String);
-    if (data.containsKey('isFloatRate')) {
-      final l$isFloatRate = data['isFloatRate'];
-      result$data['isFloatRate'] = (l$isFloatRate as bool?);
-    }
-    final l$limitLower = data['limitLower'];
-    result$data['limitLower'] = (l$limitLower as num).toDouble();
-    final l$limitUpper = data['limitUpper'];
-    result$data['limitUpper'] = (l$limitUpper as num).toDouble();
-    final l$merchant_id = data['merchant_id'];
-    result$data['merchant_id'] = (l$merchant_id as num).toDouble();
-    if (data.containsKey('rate')) {
-      final l$rate = data['rate'];
-      result$data['rate'] = (l$rate as String?);
-    }
-    if (data.containsKey('rateFixed')) {
-      final l$rateFixed = data['rateFixed'];
-      result$data['rateFixed'] = (l$rateFixed as num?)?.toDouble();
-    }
-    if (data.containsKey('rateFloat')) {
-      final l$rateFloat = data['rateFloat'];
-      result$data['rateFloat'] = (l$rateFloat as num?)?.toDouble();
-    }
-    final l$tradeType = data['tradeType'];
-    result$data['tradeType'] = fromJson$Enum$TradeType((l$tradeType as String));
-    final l$wallet_address = data['wallet_address'];
-    result$data['wallet_address'] = (l$wallet_address as String);
-    return Input$Advert_CreateInput._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  Enum$AdvertStatus get advertStatus =>
-      (_$data['advertStatus'] as Enum$AdvertStatus);
-
-  Enum$Country get currencyFiat => (_$data['currencyFiat'] as Enum$Country);
-
-  String get currency_crypto => (_$data['currency_crypto'] as String);
-
-  String get duration => (_$data['duration'] as String);
-
-  double get fiatAmountPerCrypto => (_$data['fiatAmountPerCrypto'] as double);
-
-  String get instructions => (_$data['instructions'] as String);
-
-  bool? get isFloatRate => (_$data['isFloatRate'] as bool?);
-
-  double get limitLower => (_$data['limitLower'] as double);
-
-  double get limitUpper => (_$data['limitUpper'] as double);
-
-  double get merchant_id => (_$data['merchant_id'] as double);
-
-  String? get rate => (_$data['rate'] as String?);
-
-  double? get rateFixed => (_$data['rateFixed'] as double?);
-
-  double? get rateFloat => (_$data['rateFloat'] as double?);
-
-  Enum$TradeType get tradeType => (_$data['tradeType'] as Enum$TradeType);
-
-  String get wallet_address => (_$data['wallet_address'] as String);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    final l$advertStatus = advertStatus;
-    result$data['advertStatus'] = toJson$Enum$AdvertStatus(l$advertStatus);
-    final l$currencyFiat = currencyFiat;
-    result$data['currencyFiat'] = toJson$Enum$Country(l$currencyFiat);
-    final l$currency_crypto = currency_crypto;
-    result$data['currency_crypto'] = l$currency_crypto;
-    final l$duration = duration;
-    result$data['duration'] = l$duration;
-    final l$fiatAmountPerCrypto = fiatAmountPerCrypto;
-    result$data['fiatAmountPerCrypto'] = l$fiatAmountPerCrypto;
-    final l$instructions = instructions;
-    result$data['instructions'] = l$instructions;
-    if (_$data.containsKey('isFloatRate')) {
-      final l$isFloatRate = isFloatRate;
-      result$data['isFloatRate'] = l$isFloatRate;
-    }
-    final l$limitLower = limitLower;
-    result$data['limitLower'] = l$limitLower;
-    final l$limitUpper = limitUpper;
-    result$data['limitUpper'] = l$limitUpper;
-    final l$merchant_id = merchant_id;
-    result$data['merchant_id'] = l$merchant_id;
-    if (_$data.containsKey('rate')) {
-      final l$rate = rate;
-      result$data['rate'] = l$rate;
-    }
-    if (_$data.containsKey('rateFixed')) {
-      final l$rateFixed = rateFixed;
-      result$data['rateFixed'] = l$rateFixed;
-    }
-    if (_$data.containsKey('rateFloat')) {
-      final l$rateFloat = rateFloat;
-      result$data['rateFloat'] = l$rateFloat;
-    }
-    final l$tradeType = tradeType;
-    result$data['tradeType'] = toJson$Enum$TradeType(l$tradeType);
-    final l$wallet_address = wallet_address;
-    result$data['wallet_address'] = l$wallet_address;
-    return result$data;
-  }
-
-  CopyWith$Input$Advert_CreateInput<Input$Advert_CreateInput> get copyWith =>
-      CopyWith$Input$Advert_CreateInput(
-        this,
-        (i) => i,
-      );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$Advert_CreateInput ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$advertStatus = advertStatus;
-    final lOther$advertStatus = other.advertStatus;
-    if (l$advertStatus != lOther$advertStatus) {
-      return false;
-    }
-    final l$currencyFiat = currencyFiat;
-    final lOther$currencyFiat = other.currencyFiat;
-    if (l$currencyFiat != lOther$currencyFiat) {
-      return false;
-    }
-    final l$currency_crypto = currency_crypto;
-    final lOther$currency_crypto = other.currency_crypto;
-    if (l$currency_crypto != lOther$currency_crypto) {
-      return false;
-    }
-    final l$duration = duration;
-    final lOther$duration = other.duration;
-    if (l$duration != lOther$duration) {
-      return false;
-    }
-    final l$fiatAmountPerCrypto = fiatAmountPerCrypto;
-    final lOther$fiatAmountPerCrypto = other.fiatAmountPerCrypto;
-    if (l$fiatAmountPerCrypto != lOther$fiatAmountPerCrypto) {
-      return false;
-    }
-    final l$instructions = instructions;
-    final lOther$instructions = other.instructions;
-    if (l$instructions != lOther$instructions) {
-      return false;
-    }
-    final l$isFloatRate = isFloatRate;
-    final lOther$isFloatRate = other.isFloatRate;
-    if (_$data.containsKey('isFloatRate') !=
-        other._$data.containsKey('isFloatRate')) {
-      return false;
-    }
-    if (l$isFloatRate != lOther$isFloatRate) {
-      return false;
-    }
-    final l$limitLower = limitLower;
-    final lOther$limitLower = other.limitLower;
-    if (l$limitLower != lOther$limitLower) {
-      return false;
-    }
-    final l$limitUpper = limitUpper;
-    final lOther$limitUpper = other.limitUpper;
-    if (l$limitUpper != lOther$limitUpper) {
-      return false;
-    }
-    final l$merchant_id = merchant_id;
-    final lOther$merchant_id = other.merchant_id;
-    if (l$merchant_id != lOther$merchant_id) {
-      return false;
-    }
-    final l$rate = rate;
-    final lOther$rate = other.rate;
-    if (_$data.containsKey('rate') != other._$data.containsKey('rate')) {
-      return false;
-    }
-    if (l$rate != lOther$rate) {
-      return false;
-    }
-    final l$rateFixed = rateFixed;
-    final lOther$rateFixed = other.rateFixed;
-    if (_$data.containsKey('rateFixed') !=
-        other._$data.containsKey('rateFixed')) {
-      return false;
-    }
-    if (l$rateFixed != lOther$rateFixed) {
-      return false;
-    }
-    final l$rateFloat = rateFloat;
-    final lOther$rateFloat = other.rateFloat;
-    if (_$data.containsKey('rateFloat') !=
-        other._$data.containsKey('rateFloat')) {
-      return false;
-    }
-    if (l$rateFloat != lOther$rateFloat) {
-      return false;
-    }
-    final l$tradeType = tradeType;
-    final lOther$tradeType = other.tradeType;
-    if (l$tradeType != lOther$tradeType) {
-      return false;
-    }
-    final l$wallet_address = wallet_address;
-    final lOther$wallet_address = other.wallet_address;
-    if (l$wallet_address != lOther$wallet_address) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$advertStatus = advertStatus;
-    final l$currencyFiat = currencyFiat;
-    final l$currency_crypto = currency_crypto;
-    final l$duration = duration;
-    final l$fiatAmountPerCrypto = fiatAmountPerCrypto;
-    final l$instructions = instructions;
-    final l$isFloatRate = isFloatRate;
-    final l$limitLower = limitLower;
-    final l$limitUpper = limitUpper;
-    final l$merchant_id = merchant_id;
-    final l$rate = rate;
-    final l$rateFixed = rateFixed;
-    final l$rateFloat = rateFloat;
-    final l$tradeType = tradeType;
-    final l$wallet_address = wallet_address;
-    return Object.hashAll([
-      l$advertStatus,
-      l$currencyFiat,
-      l$currency_crypto,
-      l$duration,
-      l$fiatAmountPerCrypto,
-      l$instructions,
-      _$data.containsKey('isFloatRate') ? l$isFloatRate : const {},
-      l$limitLower,
-      l$limitUpper,
-      l$merchant_id,
-      _$data.containsKey('rate') ? l$rate : const {},
-      _$data.containsKey('rateFixed') ? l$rateFixed : const {},
-      _$data.containsKey('rateFloat') ? l$rateFloat : const {},
-      l$tradeType,
-      l$wallet_address,
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$Advert_CreateInput<TRes> {
-  factory CopyWith$Input$Advert_CreateInput(
-    Input$Advert_CreateInput instance,
-    TRes Function(Input$Advert_CreateInput) then,
-  ) = _CopyWithImpl$Input$Advert_CreateInput;
-
-  factory CopyWith$Input$Advert_CreateInput.stub(TRes res) =
-      _CopyWithStubImpl$Input$Advert_CreateInput;
-
-  TRes call({
-    Enum$AdvertStatus? advertStatus,
-    Enum$Country? currencyFiat,
-    String? currency_crypto,
-    String? duration,
-    double? fiatAmountPerCrypto,
-    String? instructions,
-    bool? isFloatRate,
-    double? limitLower,
-    double? limitUpper,
-    double? merchant_id,
-    String? rate,
-    double? rateFixed,
-    double? rateFloat,
-    Enum$TradeType? tradeType,
-    String? wallet_address,
-  });
-}
-
-class _CopyWithImpl$Input$Advert_CreateInput<TRes>
-    implements CopyWith$Input$Advert_CreateInput<TRes> {
-  _CopyWithImpl$Input$Advert_CreateInput(
-    this._instance,
-    this._then,
-  );
-
-  final Input$Advert_CreateInput _instance;
-
-  final TRes Function(Input$Advert_CreateInput) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? advertStatus = _undefined,
-    Object? currencyFiat = _undefined,
-    Object? currency_crypto = _undefined,
-    Object? duration = _undefined,
-    Object? fiatAmountPerCrypto = _undefined,
-    Object? instructions = _undefined,
-    Object? isFloatRate = _undefined,
-    Object? limitLower = _undefined,
-    Object? limitUpper = _undefined,
-    Object? merchant_id = _undefined,
-    Object? rate = _undefined,
-    Object? rateFixed = _undefined,
-    Object? rateFloat = _undefined,
-    Object? tradeType = _undefined,
-    Object? wallet_address = _undefined,
-  }) =>
-      _then(Input$Advert_CreateInput._({
-        ..._instance._$data,
-        if (advertStatus != _undefined && advertStatus != null)
-          'advertStatus': (advertStatus as Enum$AdvertStatus),
-        if (currencyFiat != _undefined && currencyFiat != null)
-          'currencyFiat': (currencyFiat as Enum$Country),
-        if (currency_crypto != _undefined && currency_crypto != null)
-          'currency_crypto': (currency_crypto as String),
-        if (duration != _undefined && duration != null)
-          'duration': (duration as String),
-        if (fiatAmountPerCrypto != _undefined && fiatAmountPerCrypto != null)
-          'fiatAmountPerCrypto': (fiatAmountPerCrypto as double),
-        if (instructions != _undefined && instructions != null)
-          'instructions': (instructions as String),
-        if (isFloatRate != _undefined) 'isFloatRate': (isFloatRate as bool?),
-        if (limitLower != _undefined && limitLower != null)
-          'limitLower': (limitLower as double),
-        if (limitUpper != _undefined && limitUpper != null)
-          'limitUpper': (limitUpper as double),
-        if (merchant_id != _undefined && merchant_id != null)
-          'merchant_id': (merchant_id as double),
-        if (rate != _undefined) 'rate': (rate as String?),
-        if (rateFixed != _undefined) 'rateFixed': (rateFixed as double?),
-        if (rateFloat != _undefined) 'rateFloat': (rateFloat as double?),
-        if (tradeType != _undefined && tradeType != null)
-          'tradeType': (tradeType as Enum$TradeType),
-        if (wallet_address != _undefined && wallet_address != null)
-          'wallet_address': (wallet_address as String),
-      }));
-}
-
-class _CopyWithStubImpl$Input$Advert_CreateInput<TRes>
-    implements CopyWith$Input$Advert_CreateInput<TRes> {
-  _CopyWithStubImpl$Input$Advert_CreateInput(this._res);
-
-  TRes _res;
-
-  call({
-    Enum$AdvertStatus? advertStatus,
-    Enum$Country? currencyFiat,
-    String? currency_crypto,
-    String? duration,
-    double? fiatAmountPerCrypto,
-    String? instructions,
-    bool? isFloatRate,
-    double? limitLower,
-    double? limitUpper,
-    double? merchant_id,
-    String? rate,
-    double? rateFixed,
-    double? rateFloat,
-    Enum$TradeType? tradeType,
-    String? wallet_address,
-  }) =>
-      _res;
-}
-
-class Input$Advert_DeleteInput {
-  factory Input$Advert_DeleteInput({required String id}) =>
-      Input$Advert_DeleteInput._({
-        r'id': id,
-      });
-
-  Input$Advert_DeleteInput._(this._$data);
-
-  factory Input$Advert_DeleteInput.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    final l$id = data['id'];
-    result$data['id'] = (l$id as String);
-    return Input$Advert_DeleteInput._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  String get id => (_$data['id'] as String);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    final l$id = id;
-    result$data['id'] = l$id;
-    return result$data;
-  }
-
-  CopyWith$Input$Advert_DeleteInput<Input$Advert_DeleteInput> get copyWith =>
-      CopyWith$Input$Advert_DeleteInput(
-        this,
-        (i) => i,
-      );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$Advert_DeleteInput ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (l$id != lOther$id) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    return Object.hashAll([l$id]);
-  }
-}
-
-abstract class CopyWith$Input$Advert_DeleteInput<TRes> {
-  factory CopyWith$Input$Advert_DeleteInput(
-    Input$Advert_DeleteInput instance,
-    TRes Function(Input$Advert_DeleteInput) then,
-  ) = _CopyWithImpl$Input$Advert_DeleteInput;
-
-  factory CopyWith$Input$Advert_DeleteInput.stub(TRes res) =
-      _CopyWithStubImpl$Input$Advert_DeleteInput;
-
-  TRes call({String? id});
-}
-
-class _CopyWithImpl$Input$Advert_DeleteInput<TRes>
-    implements CopyWith$Input$Advert_DeleteInput<TRes> {
-  _CopyWithImpl$Input$Advert_DeleteInput(
-    this._instance,
-    this._then,
-  );
-
-  final Input$Advert_DeleteInput _instance;
-
-  final TRes Function(Input$Advert_DeleteInput) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({Object? id = _undefined}) => _then(Input$Advert_DeleteInput._({
-        ..._instance._$data,
-        if (id != _undefined && id != null) 'id': (id as String),
-      }));
-}
-
-class _CopyWithStubImpl$Input$Advert_DeleteInput<TRes>
-    implements CopyWith$Input$Advert_DeleteInput<TRes> {
-  _CopyWithStubImpl$Input$Advert_DeleteInput(this._res);
-
-  TRes _res;
-
-  call({String? id}) => _res;
-}
-
-class Input$Advert_GetAllInput {
-  factory Input$Advert_GetAllInput({Enum$AdvertStatus? status}) =>
-      Input$Advert_GetAllInput._({
-        if (status != null) r'status': status,
-      });
-
-  Input$Advert_GetAllInput._(this._$data);
-
-  factory Input$Advert_GetAllInput.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('status')) {
-      final l$status = data['status'];
-      result$data['status'] = l$status == null
-          ? null
-          : fromJson$Enum$AdvertStatus((l$status as String));
-    }
-    return Input$Advert_GetAllInput._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  Enum$AdvertStatus? get status => (_$data['status'] as Enum$AdvertStatus?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('status')) {
-      final l$status = status;
-      result$data['status'] =
-          l$status == null ? null : toJson$Enum$AdvertStatus(l$status);
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$Advert_GetAllInput<Input$Advert_GetAllInput> get copyWith =>
-      CopyWith$Input$Advert_GetAllInput(
-        this,
-        (i) => i,
-      );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$Advert_GetAllInput ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$status = status;
-    final lOther$status = other.status;
-    if (_$data.containsKey('status') != other._$data.containsKey('status')) {
-      return false;
-    }
-    if (l$status != lOther$status) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$status = status;
-    return Object.hashAll([_$data.containsKey('status') ? l$status : const {}]);
-  }
-}
-
-abstract class CopyWith$Input$Advert_GetAllInput<TRes> {
-  factory CopyWith$Input$Advert_GetAllInput(
-    Input$Advert_GetAllInput instance,
-    TRes Function(Input$Advert_GetAllInput) then,
-  ) = _CopyWithImpl$Input$Advert_GetAllInput;
-
-  factory CopyWith$Input$Advert_GetAllInput.stub(TRes res) =
-      _CopyWithStubImpl$Input$Advert_GetAllInput;
-
-  TRes call({Enum$AdvertStatus? status});
-}
-
-class _CopyWithImpl$Input$Advert_GetAllInput<TRes>
-    implements CopyWith$Input$Advert_GetAllInput<TRes> {
-  _CopyWithImpl$Input$Advert_GetAllInput(
-    this._instance,
-    this._then,
-  );
-
-  final Input$Advert_GetAllInput _instance;
-
-  final TRes Function(Input$Advert_GetAllInput) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({Object? status = _undefined}) => _then(Input$Advert_GetAllInput._({
-        ..._instance._$data,
-        if (status != _undefined) 'status': (status as Enum$AdvertStatus?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$Advert_GetAllInput<TRes>
-    implements CopyWith$Input$Advert_GetAllInput<TRes> {
-  _CopyWithStubImpl$Input$Advert_GetAllInput(this._res);
-
-  TRes _res;
-
-  call({Enum$AdvertStatus? status}) => _res;
-}
-
-class Input$Advert_GetOneInput {
-  factory Input$Advert_GetOneInput({required int id}) =>
-      Input$Advert_GetOneInput._({
-        r'id': id,
-      });
-
-  Input$Advert_GetOneInput._(this._$data);
-
-  factory Input$Advert_GetOneInput.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    final l$id = data['id'];
-    result$data['id'] = (l$id as int);
-    return Input$Advert_GetOneInput._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  int get id => (_$data['id'] as int);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    final l$id = id;
-    result$data['id'] = l$id;
-    return result$data;
-  }
-
-  CopyWith$Input$Advert_GetOneInput<Input$Advert_GetOneInput> get copyWith =>
-      CopyWith$Input$Advert_GetOneInput(
-        this,
-        (i) => i,
-      );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$Advert_GetOneInput ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (l$id != lOther$id) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    return Object.hashAll([l$id]);
-  }
-}
-
-abstract class CopyWith$Input$Advert_GetOneInput<TRes> {
-  factory CopyWith$Input$Advert_GetOneInput(
-    Input$Advert_GetOneInput instance,
-    TRes Function(Input$Advert_GetOneInput) then,
-  ) = _CopyWithImpl$Input$Advert_GetOneInput;
-
-  factory CopyWith$Input$Advert_GetOneInput.stub(TRes res) =
-      _CopyWithStubImpl$Input$Advert_GetOneInput;
-
-  TRes call({int? id});
-}
-
-class _CopyWithImpl$Input$Advert_GetOneInput<TRes>
-    implements CopyWith$Input$Advert_GetOneInput<TRes> {
-  _CopyWithImpl$Input$Advert_GetOneInput(
-    this._instance,
-    this._then,
-  );
-
-  final Input$Advert_GetOneInput _instance;
-
-  final TRes Function(Input$Advert_GetOneInput) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({Object? id = _undefined}) => _then(Input$Advert_GetOneInput._({
-        ..._instance._$data,
-        if (id != _undefined && id != null) 'id': (id as int),
-      }));
-}
-
-class _CopyWithStubImpl$Input$Advert_GetOneInput<TRes>
-    implements CopyWith$Input$Advert_GetOneInput<TRes> {
-  _CopyWithStubImpl$Input$Advert_GetOneInput(this._res);
-
-  TRes _res;
-
-  call({int? id}) => _res;
-}
-
-class Input$Advert_UpdateInput {
-  factory Input$Advert_UpdateInput({
-    required Enum$AdvertStatus advertStatus,
-    required Enum$Country currencyFiat,
-    required String currency_crypto,
-    required String duration,
-    required double fiatAmountPerCrypto,
-    required String id,
-    required String instructions,
-    bool? isFloatRate,
-    required double limitLower,
-    required double limitUpper,
-    required double merchant_id,
-    String? rate,
-    double? rateFixed,
-    double? rateFloat,
-    required Enum$TradeType tradeType,
-    required String wallet_address,
-  }) =>
-      Input$Advert_UpdateInput._({
-        r'advertStatus': advertStatus,
-        r'currencyFiat': currencyFiat,
-        r'currency_crypto': currency_crypto,
-        r'duration': duration,
-        r'fiatAmountPerCrypto': fiatAmountPerCrypto,
-        r'id': id,
-        r'instructions': instructions,
-        if (isFloatRate != null) r'isFloatRate': isFloatRate,
-        r'limitLower': limitLower,
-        r'limitUpper': limitUpper,
-        r'merchant_id': merchant_id,
-        if (rate != null) r'rate': rate,
-        if (rateFixed != null) r'rateFixed': rateFixed,
-        if (rateFloat != null) r'rateFloat': rateFloat,
-        r'tradeType': tradeType,
-        r'wallet_address': wallet_address,
-      });
-
-  Input$Advert_UpdateInput._(this._$data);
-
-  factory Input$Advert_UpdateInput.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    final l$advertStatus = data['advertStatus'];
-    result$data['advertStatus'] =
-        fromJson$Enum$AdvertStatus((l$advertStatus as String));
-    final l$currencyFiat = data['currencyFiat'];
-    result$data['currencyFiat'] =
-        fromJson$Enum$Country((l$currencyFiat as String));
-    final l$currency_crypto = data['currency_crypto'];
-    result$data['currency_crypto'] = (l$currency_crypto as String);
-    final l$duration = data['duration'];
-    result$data['duration'] = (l$duration as String);
-    final l$fiatAmountPerCrypto = data['fiatAmountPerCrypto'];
-    result$data['fiatAmountPerCrypto'] =
-        (l$fiatAmountPerCrypto as num).toDouble();
-    final l$id = data['id'];
-    result$data['id'] = (l$id as String);
-    final l$instructions = data['instructions'];
-    result$data['instructions'] = (l$instructions as String);
-    if (data.containsKey('isFloatRate')) {
-      final l$isFloatRate = data['isFloatRate'];
-      result$data['isFloatRate'] = (l$isFloatRate as bool?);
-    }
-    final l$limitLower = data['limitLower'];
-    result$data['limitLower'] = (l$limitLower as num).toDouble();
-    final l$limitUpper = data['limitUpper'];
-    result$data['limitUpper'] = (l$limitUpper as num).toDouble();
-    final l$merchant_id = data['merchant_id'];
-    result$data['merchant_id'] = (l$merchant_id as num).toDouble();
-    if (data.containsKey('rate')) {
-      final l$rate = data['rate'];
-      result$data['rate'] = (l$rate as String?);
-    }
-    if (data.containsKey('rateFixed')) {
-      final l$rateFixed = data['rateFixed'];
-      result$data['rateFixed'] = (l$rateFixed as num?)?.toDouble();
-    }
-    if (data.containsKey('rateFloat')) {
-      final l$rateFloat = data['rateFloat'];
-      result$data['rateFloat'] = (l$rateFloat as num?)?.toDouble();
-    }
-    final l$tradeType = data['tradeType'];
-    result$data['tradeType'] = fromJson$Enum$TradeType((l$tradeType as String));
-    final l$wallet_address = data['wallet_address'];
-    result$data['wallet_address'] = (l$wallet_address as String);
-    return Input$Advert_UpdateInput._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  Enum$AdvertStatus get advertStatus =>
-      (_$data['advertStatus'] as Enum$AdvertStatus);
-
-  Enum$Country get currencyFiat => (_$data['currencyFiat'] as Enum$Country);
-
-  String get currency_crypto => (_$data['currency_crypto'] as String);
-
-  String get duration => (_$data['duration'] as String);
-
-  double get fiatAmountPerCrypto => (_$data['fiatAmountPerCrypto'] as double);
-
-  String get id => (_$data['id'] as String);
-
-  String get instructions => (_$data['instructions'] as String);
-
-  bool? get isFloatRate => (_$data['isFloatRate'] as bool?);
-
-  double get limitLower => (_$data['limitLower'] as double);
-
-  double get limitUpper => (_$data['limitUpper'] as double);
-
-  double get merchant_id => (_$data['merchant_id'] as double);
-
-  String? get rate => (_$data['rate'] as String?);
-
-  double? get rateFixed => (_$data['rateFixed'] as double?);
-
-  double? get rateFloat => (_$data['rateFloat'] as double?);
-
-  Enum$TradeType get tradeType => (_$data['tradeType'] as Enum$TradeType);
-
-  String get wallet_address => (_$data['wallet_address'] as String);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    final l$advertStatus = advertStatus;
-    result$data['advertStatus'] = toJson$Enum$AdvertStatus(l$advertStatus);
-    final l$currencyFiat = currencyFiat;
-    result$data['currencyFiat'] = toJson$Enum$Country(l$currencyFiat);
-    final l$currency_crypto = currency_crypto;
-    result$data['currency_crypto'] = l$currency_crypto;
-    final l$duration = duration;
-    result$data['duration'] = l$duration;
-    final l$fiatAmountPerCrypto = fiatAmountPerCrypto;
-    result$data['fiatAmountPerCrypto'] = l$fiatAmountPerCrypto;
-    final l$id = id;
-    result$data['id'] = l$id;
-    final l$instructions = instructions;
-    result$data['instructions'] = l$instructions;
-    if (_$data.containsKey('isFloatRate')) {
-      final l$isFloatRate = isFloatRate;
-      result$data['isFloatRate'] = l$isFloatRate;
-    }
-    final l$limitLower = limitLower;
-    result$data['limitLower'] = l$limitLower;
-    final l$limitUpper = limitUpper;
-    result$data['limitUpper'] = l$limitUpper;
-    final l$merchant_id = merchant_id;
-    result$data['merchant_id'] = l$merchant_id;
-    if (_$data.containsKey('rate')) {
-      final l$rate = rate;
-      result$data['rate'] = l$rate;
-    }
-    if (_$data.containsKey('rateFixed')) {
-      final l$rateFixed = rateFixed;
-      result$data['rateFixed'] = l$rateFixed;
-    }
-    if (_$data.containsKey('rateFloat')) {
-      final l$rateFloat = rateFloat;
-      result$data['rateFloat'] = l$rateFloat;
-    }
-    final l$tradeType = tradeType;
-    result$data['tradeType'] = toJson$Enum$TradeType(l$tradeType);
-    final l$wallet_address = wallet_address;
-    result$data['wallet_address'] = l$wallet_address;
-    return result$data;
-  }
-
-  CopyWith$Input$Advert_UpdateInput<Input$Advert_UpdateInput> get copyWith =>
-      CopyWith$Input$Advert_UpdateInput(
-        this,
-        (i) => i,
-      );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$Advert_UpdateInput ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$advertStatus = advertStatus;
-    final lOther$advertStatus = other.advertStatus;
-    if (l$advertStatus != lOther$advertStatus) {
-      return false;
-    }
-    final l$currencyFiat = currencyFiat;
-    final lOther$currencyFiat = other.currencyFiat;
-    if (l$currencyFiat != lOther$currencyFiat) {
-      return false;
-    }
-    final l$currency_crypto = currency_crypto;
-    final lOther$currency_crypto = other.currency_crypto;
-    if (l$currency_crypto != lOther$currency_crypto) {
-      return false;
-    }
-    final l$duration = duration;
-    final lOther$duration = other.duration;
-    if (l$duration != lOther$duration) {
-      return false;
-    }
-    final l$fiatAmountPerCrypto = fiatAmountPerCrypto;
-    final lOther$fiatAmountPerCrypto = other.fiatAmountPerCrypto;
-    if (l$fiatAmountPerCrypto != lOther$fiatAmountPerCrypto) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$instructions = instructions;
-    final lOther$instructions = other.instructions;
-    if (l$instructions != lOther$instructions) {
-      return false;
-    }
-    final l$isFloatRate = isFloatRate;
-    final lOther$isFloatRate = other.isFloatRate;
-    if (_$data.containsKey('isFloatRate') !=
-        other._$data.containsKey('isFloatRate')) {
-      return false;
-    }
-    if (l$isFloatRate != lOther$isFloatRate) {
-      return false;
-    }
-    final l$limitLower = limitLower;
-    final lOther$limitLower = other.limitLower;
-    if (l$limitLower != lOther$limitLower) {
-      return false;
-    }
-    final l$limitUpper = limitUpper;
-    final lOther$limitUpper = other.limitUpper;
-    if (l$limitUpper != lOther$limitUpper) {
-      return false;
-    }
-    final l$merchant_id = merchant_id;
-    final lOther$merchant_id = other.merchant_id;
-    if (l$merchant_id != lOther$merchant_id) {
-      return false;
-    }
-    final l$rate = rate;
-    final lOther$rate = other.rate;
-    if (_$data.containsKey('rate') != other._$data.containsKey('rate')) {
-      return false;
-    }
-    if (l$rate != lOther$rate) {
-      return false;
-    }
-    final l$rateFixed = rateFixed;
-    final lOther$rateFixed = other.rateFixed;
-    if (_$data.containsKey('rateFixed') !=
-        other._$data.containsKey('rateFixed')) {
-      return false;
-    }
-    if (l$rateFixed != lOther$rateFixed) {
-      return false;
-    }
-    final l$rateFloat = rateFloat;
-    final lOther$rateFloat = other.rateFloat;
-    if (_$data.containsKey('rateFloat') !=
-        other._$data.containsKey('rateFloat')) {
-      return false;
-    }
-    if (l$rateFloat != lOther$rateFloat) {
-      return false;
-    }
-    final l$tradeType = tradeType;
-    final lOther$tradeType = other.tradeType;
-    if (l$tradeType != lOther$tradeType) {
-      return false;
-    }
-    final l$wallet_address = wallet_address;
-    final lOther$wallet_address = other.wallet_address;
-    if (l$wallet_address != lOther$wallet_address) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$advertStatus = advertStatus;
-    final l$currencyFiat = currencyFiat;
-    final l$currency_crypto = currency_crypto;
-    final l$duration = duration;
-    final l$fiatAmountPerCrypto = fiatAmountPerCrypto;
-    final l$id = id;
-    final l$instructions = instructions;
-    final l$isFloatRate = isFloatRate;
-    final l$limitLower = limitLower;
-    final l$limitUpper = limitUpper;
-    final l$merchant_id = merchant_id;
-    final l$rate = rate;
-    final l$rateFixed = rateFixed;
-    final l$rateFloat = rateFloat;
-    final l$tradeType = tradeType;
-    final l$wallet_address = wallet_address;
-    return Object.hashAll([
-      l$advertStatus,
-      l$currencyFiat,
-      l$currency_crypto,
-      l$duration,
-      l$fiatAmountPerCrypto,
-      l$id,
-      l$instructions,
-      _$data.containsKey('isFloatRate') ? l$isFloatRate : const {},
-      l$limitLower,
-      l$limitUpper,
-      l$merchant_id,
-      _$data.containsKey('rate') ? l$rate : const {},
-      _$data.containsKey('rateFixed') ? l$rateFixed : const {},
-      _$data.containsKey('rateFloat') ? l$rateFloat : const {},
-      l$tradeType,
-      l$wallet_address,
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$Advert_UpdateInput<TRes> {
-  factory CopyWith$Input$Advert_UpdateInput(
-    Input$Advert_UpdateInput instance,
-    TRes Function(Input$Advert_UpdateInput) then,
-  ) = _CopyWithImpl$Input$Advert_UpdateInput;
-
-  factory CopyWith$Input$Advert_UpdateInput.stub(TRes res) =
-      _CopyWithStubImpl$Input$Advert_UpdateInput;
-
-  TRes call({
-    Enum$AdvertStatus? advertStatus,
-    Enum$Country? currencyFiat,
-    String? currency_crypto,
-    String? duration,
-    double? fiatAmountPerCrypto,
-    String? id,
-    String? instructions,
-    bool? isFloatRate,
-    double? limitLower,
-    double? limitUpper,
-    double? merchant_id,
-    String? rate,
-    double? rateFixed,
-    double? rateFloat,
-    Enum$TradeType? tradeType,
-    String? wallet_address,
-  });
-}
-
-class _CopyWithImpl$Input$Advert_UpdateInput<TRes>
-    implements CopyWith$Input$Advert_UpdateInput<TRes> {
-  _CopyWithImpl$Input$Advert_UpdateInput(
-    this._instance,
-    this._then,
-  );
-
-  final Input$Advert_UpdateInput _instance;
-
-  final TRes Function(Input$Advert_UpdateInput) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? advertStatus = _undefined,
-    Object? currencyFiat = _undefined,
-    Object? currency_crypto = _undefined,
-    Object? duration = _undefined,
-    Object? fiatAmountPerCrypto = _undefined,
-    Object? id = _undefined,
-    Object? instructions = _undefined,
-    Object? isFloatRate = _undefined,
-    Object? limitLower = _undefined,
-    Object? limitUpper = _undefined,
-    Object? merchant_id = _undefined,
-    Object? rate = _undefined,
-    Object? rateFixed = _undefined,
-    Object? rateFloat = _undefined,
-    Object? tradeType = _undefined,
-    Object? wallet_address = _undefined,
-  }) =>
-      _then(Input$Advert_UpdateInput._({
-        ..._instance._$data,
-        if (advertStatus != _undefined && advertStatus != null)
-          'advertStatus': (advertStatus as Enum$AdvertStatus),
-        if (currencyFiat != _undefined && currencyFiat != null)
-          'currencyFiat': (currencyFiat as Enum$Country),
-        if (currency_crypto != _undefined && currency_crypto != null)
-          'currency_crypto': (currency_crypto as String),
-        if (duration != _undefined && duration != null)
-          'duration': (duration as String),
-        if (fiatAmountPerCrypto != _undefined && fiatAmountPerCrypto != null)
-          'fiatAmountPerCrypto': (fiatAmountPerCrypto as double),
-        if (id != _undefined && id != null) 'id': (id as String),
-        if (instructions != _undefined && instructions != null)
-          'instructions': (instructions as String),
-        if (isFloatRate != _undefined) 'isFloatRate': (isFloatRate as bool?),
-        if (limitLower != _undefined && limitLower != null)
-          'limitLower': (limitLower as double),
-        if (limitUpper != _undefined && limitUpper != null)
-          'limitUpper': (limitUpper as double),
-        if (merchant_id != _undefined && merchant_id != null)
-          'merchant_id': (merchant_id as double),
-        if (rate != _undefined) 'rate': (rate as String?),
-        if (rateFixed != _undefined) 'rateFixed': (rateFixed as double?),
-        if (rateFloat != _undefined) 'rateFloat': (rateFloat as double?),
-        if (tradeType != _undefined && tradeType != null)
-          'tradeType': (tradeType as Enum$TradeType),
-        if (wallet_address != _undefined && wallet_address != null)
-          'wallet_address': (wallet_address as String),
-      }));
-}
-
-class _CopyWithStubImpl$Input$Advert_UpdateInput<TRes>
-    implements CopyWith$Input$Advert_UpdateInput<TRes> {
-  _CopyWithStubImpl$Input$Advert_UpdateInput(this._res);
-
-  TRes _res;
-
-  call({
-    Enum$AdvertStatus? advertStatus,
-    Enum$Country? currencyFiat,
-    String? currency_crypto,
-    String? duration,
-    double? fiatAmountPerCrypto,
-    String? id,
-    String? instructions,
-    bool? isFloatRate,
-    double? limitLower,
-    double? limitUpper,
-    double? merchant_id,
-    String? rate,
-    double? rateFixed,
-    double? rateFloat,
-    Enum$TradeType? tradeType,
-    String? wallet_address,
-  }) =>
-      _res;
-}
-
 class Input$Auth_CreateAccountInput {
   factory Input$Auth_CreateAccountInput({
     required Enum$Country country,
@@ -7487,37 +6330,172 @@ class _CopyWithStubImpl$Input$Utilities_PurchaseDataBundleInput<TRes>
       _res;
 }
 
-enum Enum$AdvertStatus {
-  CLOSE,
-  OPEN,
-  $unknown;
+class Input$Wallet_CreateInput {
+  factory Input$Wallet_CreateInput({
+    required String answer,
+    required String pin,
+    required String question,
+    required String user_uid,
+  }) =>
+      Input$Wallet_CreateInput._({
+        r'answer': answer,
+        r'pin': pin,
+        r'question': question,
+        r'user_uid': user_uid,
+      });
 
-  factory Enum$AdvertStatus.fromJson(String value) =>
-      fromJson$Enum$AdvertStatus(value);
+  Input$Wallet_CreateInput._(this._$data);
 
-  String toJson() => toJson$Enum$AdvertStatus(this);
-}
+  factory Input$Wallet_CreateInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$answer = data['answer'];
+    result$data['answer'] = (l$answer as String);
+    final l$pin = data['pin'];
+    result$data['pin'] = (l$pin as String);
+    final l$question = data['question'];
+    result$data['question'] = (l$question as String);
+    final l$user_uid = data['user_uid'];
+    result$data['user_uid'] = (l$user_uid as String);
+    return Input$Wallet_CreateInput._(result$data);
+  }
 
-String toJson$Enum$AdvertStatus(Enum$AdvertStatus e) {
-  switch (e) {
-    case Enum$AdvertStatus.CLOSE:
-      return r'CLOSE';
-    case Enum$AdvertStatus.OPEN:
-      return r'OPEN';
-    case Enum$AdvertStatus.$unknown:
-      return r'$unknown';
+  Map<String, dynamic> _$data;
+
+  String get answer => (_$data['answer'] as String);
+
+  String get pin => (_$data['pin'] as String);
+
+  String get question => (_$data['question'] as String);
+
+  String get user_uid => (_$data['user_uid'] as String);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$answer = answer;
+    result$data['answer'] = l$answer;
+    final l$pin = pin;
+    result$data['pin'] = l$pin;
+    final l$question = question;
+    result$data['question'] = l$question;
+    final l$user_uid = user_uid;
+    result$data['user_uid'] = l$user_uid;
+    return result$data;
+  }
+
+  CopyWith$Input$Wallet_CreateInput<Input$Wallet_CreateInput> get copyWith =>
+      CopyWith$Input$Wallet_CreateInput(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$Wallet_CreateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$answer = answer;
+    final lOther$answer = other.answer;
+    if (l$answer != lOther$answer) {
+      return false;
+    }
+    final l$pin = pin;
+    final lOther$pin = other.pin;
+    if (l$pin != lOther$pin) {
+      return false;
+    }
+    final l$question = question;
+    final lOther$question = other.question;
+    if (l$question != lOther$question) {
+      return false;
+    }
+    final l$user_uid = user_uid;
+    final lOther$user_uid = other.user_uid;
+    if (l$user_uid != lOther$user_uid) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$answer = answer;
+    final l$pin = pin;
+    final l$question = question;
+    final l$user_uid = user_uid;
+    return Object.hashAll([
+      l$answer,
+      l$pin,
+      l$question,
+      l$user_uid,
+    ]);
   }
 }
 
-Enum$AdvertStatus fromJson$Enum$AdvertStatus(String value) {
-  switch (value) {
-    case r'CLOSE':
-      return Enum$AdvertStatus.CLOSE;
-    case r'OPEN':
-      return Enum$AdvertStatus.OPEN;
-    default:
-      return Enum$AdvertStatus.$unknown;
-  }
+abstract class CopyWith$Input$Wallet_CreateInput<TRes> {
+  factory CopyWith$Input$Wallet_CreateInput(
+    Input$Wallet_CreateInput instance,
+    TRes Function(Input$Wallet_CreateInput) then,
+  ) = _CopyWithImpl$Input$Wallet_CreateInput;
+
+  factory CopyWith$Input$Wallet_CreateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$Wallet_CreateInput;
+
+  TRes call({
+    String? answer,
+    String? pin,
+    String? question,
+    String? user_uid,
+  });
+}
+
+class _CopyWithImpl$Input$Wallet_CreateInput<TRes>
+    implements CopyWith$Input$Wallet_CreateInput<TRes> {
+  _CopyWithImpl$Input$Wallet_CreateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$Wallet_CreateInput _instance;
+
+  final TRes Function(Input$Wallet_CreateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? answer = _undefined,
+    Object? pin = _undefined,
+    Object? question = _undefined,
+    Object? user_uid = _undefined,
+  }) =>
+      _then(Input$Wallet_CreateInput._({
+        ..._instance._$data,
+        if (answer != _undefined && answer != null)
+          'answer': (answer as String),
+        if (pin != _undefined && pin != null) 'pin': (pin as String),
+        if (question != _undefined && question != null)
+          'question': (question as String),
+        if (user_uid != _undefined && user_uid != null)
+          'user_uid': (user_uid as String),
+      }));
+}
+
+class _CopyWithStubImpl$Input$Wallet_CreateInput<TRes>
+    implements CopyWith$Input$Wallet_CreateInput<TRes> {
+  _CopyWithStubImpl$Input$Wallet_CreateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? answer,
+    String? pin,
+    String? question,
+    String? user_uid,
+  }) =>
+      _res;
 }
 
 enum Enum$ChainType {

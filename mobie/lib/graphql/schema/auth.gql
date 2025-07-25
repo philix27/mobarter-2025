@@ -7,3 +7,10 @@ mutation Auth_firebaseLogin($input: Auth_FirebaseLoginInput!) {
     token
   }
 }
+
+
+mutation walletCrypto_mobileCreate($input: Wallet_CreateInput!) {
+  walletCrypto_mobileCreate(input: $input) {
+    message
+  }
+}

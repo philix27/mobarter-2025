@@ -3353,6 +3353,41 @@ const documentNodeQuerystatic_appInfo = DocumentNode(definitions: [
             selectionSet: null,
           ),
           FieldNode(
+            name: NameNode(value: 'enableAirtime'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'enableBetting'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'enableDataPlan'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'enableElectricityBillPayment'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'enableTVBillPayment'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
             name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
@@ -3518,6 +3553,11 @@ class Query$static_appInfo$static_appInfo {
     required this.iosAppUrl,
     required this.minBuild,
     required this.deployedBuild,
+    required this.enableAirtime,
+    required this.enableBetting,
+    required this.enableDataPlan,
+    required this.enableElectricityBillPayment,
+    required this.enableTVBillPayment,
     this.$__typename = 'Static_AppInfoResponse',
   });
 
@@ -3527,12 +3567,22 @@ class Query$static_appInfo$static_appInfo {
     final l$iosAppUrl = json['iosAppUrl'];
     final l$minBuild = json['minBuild'];
     final l$deployedBuild = json['deployedBuild'];
+    final l$enableAirtime = json['enableAirtime'];
+    final l$enableBetting = json['enableBetting'];
+    final l$enableDataPlan = json['enableDataPlan'];
+    final l$enableElectricityBillPayment = json['enableElectricityBillPayment'];
+    final l$enableTVBillPayment = json['enableTVBillPayment'];
     final l$$__typename = json['__typename'];
     return Query$static_appInfo$static_appInfo(
       androidAppUrl: (l$androidAppUrl as String),
       iosAppUrl: (l$iosAppUrl as String),
       minBuild: (l$minBuild as num).toDouble(),
       deployedBuild: (l$deployedBuild as num).toDouble(),
+      enableAirtime: (l$enableAirtime as bool),
+      enableBetting: (l$enableBetting as bool),
+      enableDataPlan: (l$enableDataPlan as bool),
+      enableElectricityBillPayment: (l$enableElectricityBillPayment as bool),
+      enableTVBillPayment: (l$enableTVBillPayment as bool),
       $__typename: (l$$__typename as String),
     );
   }
@@ -3544,6 +3594,16 @@ class Query$static_appInfo$static_appInfo {
   final double minBuild;
 
   final double deployedBuild;
+
+  final bool enableAirtime;
+
+  final bool enableBetting;
+
+  final bool enableDataPlan;
+
+  final bool enableElectricityBillPayment;
+
+  final bool enableTVBillPayment;
 
   final String $__typename;
 
@@ -3557,6 +3617,17 @@ class Query$static_appInfo$static_appInfo {
     _resultData['minBuild'] = l$minBuild;
     final l$deployedBuild = deployedBuild;
     _resultData['deployedBuild'] = l$deployedBuild;
+    final l$enableAirtime = enableAirtime;
+    _resultData['enableAirtime'] = l$enableAirtime;
+    final l$enableBetting = enableBetting;
+    _resultData['enableBetting'] = l$enableBetting;
+    final l$enableDataPlan = enableDataPlan;
+    _resultData['enableDataPlan'] = l$enableDataPlan;
+    final l$enableElectricityBillPayment = enableElectricityBillPayment;
+    _resultData['enableElectricityBillPayment'] =
+        l$enableElectricityBillPayment;
+    final l$enableTVBillPayment = enableTVBillPayment;
+    _resultData['enableTVBillPayment'] = l$enableTVBillPayment;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -3568,12 +3639,22 @@ class Query$static_appInfo$static_appInfo {
     final l$iosAppUrl = iosAppUrl;
     final l$minBuild = minBuild;
     final l$deployedBuild = deployedBuild;
+    final l$enableAirtime = enableAirtime;
+    final l$enableBetting = enableBetting;
+    final l$enableDataPlan = enableDataPlan;
+    final l$enableElectricityBillPayment = enableElectricityBillPayment;
+    final l$enableTVBillPayment = enableTVBillPayment;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$androidAppUrl,
       l$iosAppUrl,
       l$minBuild,
       l$deployedBuild,
+      l$enableAirtime,
+      l$enableBetting,
+      l$enableDataPlan,
+      l$enableElectricityBillPayment,
+      l$enableTVBillPayment,
       l$$__typename,
     ]);
   }
@@ -3605,6 +3686,32 @@ class Query$static_appInfo$static_appInfo {
     final l$deployedBuild = deployedBuild;
     final lOther$deployedBuild = other.deployedBuild;
     if (l$deployedBuild != lOther$deployedBuild) {
+      return false;
+    }
+    final l$enableAirtime = enableAirtime;
+    final lOther$enableAirtime = other.enableAirtime;
+    if (l$enableAirtime != lOther$enableAirtime) {
+      return false;
+    }
+    final l$enableBetting = enableBetting;
+    final lOther$enableBetting = other.enableBetting;
+    if (l$enableBetting != lOther$enableBetting) {
+      return false;
+    }
+    final l$enableDataPlan = enableDataPlan;
+    final lOther$enableDataPlan = other.enableDataPlan;
+    if (l$enableDataPlan != lOther$enableDataPlan) {
+      return false;
+    }
+    final l$enableElectricityBillPayment = enableElectricityBillPayment;
+    final lOther$enableElectricityBillPayment =
+        other.enableElectricityBillPayment;
+    if (l$enableElectricityBillPayment != lOther$enableElectricityBillPayment) {
+      return false;
+    }
+    final l$enableTVBillPayment = enableTVBillPayment;
+    final lOther$enableTVBillPayment = other.enableTVBillPayment;
+    if (l$enableTVBillPayment != lOther$enableTVBillPayment) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -3640,6 +3747,11 @@ abstract class CopyWith$Query$static_appInfo$static_appInfo<TRes> {
     String? iosAppUrl,
     double? minBuild,
     double? deployedBuild,
+    bool? enableAirtime,
+    bool? enableBetting,
+    bool? enableDataPlan,
+    bool? enableElectricityBillPayment,
+    bool? enableTVBillPayment,
     String? $__typename,
   });
 }
@@ -3662,6 +3774,11 @@ class _CopyWithImpl$Query$static_appInfo$static_appInfo<TRes>
     Object? iosAppUrl = _undefined,
     Object? minBuild = _undefined,
     Object? deployedBuild = _undefined,
+    Object? enableAirtime = _undefined,
+    Object? enableBetting = _undefined,
+    Object? enableDataPlan = _undefined,
+    Object? enableElectricityBillPayment = _undefined,
+    Object? enableTVBillPayment = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Query$static_appInfo$static_appInfo(
@@ -3677,6 +3794,24 @@ class _CopyWithImpl$Query$static_appInfo$static_appInfo<TRes>
         deployedBuild: deployedBuild == _undefined || deployedBuild == null
             ? _instance.deployedBuild
             : (deployedBuild as double),
+        enableAirtime: enableAirtime == _undefined || enableAirtime == null
+            ? _instance.enableAirtime
+            : (enableAirtime as bool),
+        enableBetting: enableBetting == _undefined || enableBetting == null
+            ? _instance.enableBetting
+            : (enableBetting as bool),
+        enableDataPlan: enableDataPlan == _undefined || enableDataPlan == null
+            ? _instance.enableDataPlan
+            : (enableDataPlan as bool),
+        enableElectricityBillPayment:
+            enableElectricityBillPayment == _undefined ||
+                    enableElectricityBillPayment == null
+                ? _instance.enableElectricityBillPayment
+                : (enableElectricityBillPayment as bool),
+        enableTVBillPayment:
+            enableTVBillPayment == _undefined || enableTVBillPayment == null
+                ? _instance.enableTVBillPayment
+                : (enableTVBillPayment as bool),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -3694,6 +3829,505 @@ class _CopyWithStubImpl$Query$static_appInfo$static_appInfo<TRes>
     String? iosAppUrl,
     double? minBuild,
     double? deployedBuild,
+    bool? enableAirtime,
+    bool? enableBetting,
+    bool? enableDataPlan,
+    bool? enableElectricityBillPayment,
+    bool? enableTVBillPayment,
+    String? $__typename,
+  }) =>
+      _res;
+}
+
+class Query$static_secretQuestions {
+  Query$static_secretQuestions({
+    required this.static_secretQuestions,
+    this.$__typename = 'Query',
+  });
+
+  factory Query$static_secretQuestions.fromJson(Map<String, dynamic> json) {
+    final l$static_secretQuestions = json['static_secretQuestions'];
+    final l$$__typename = json['__typename'];
+    return Query$static_secretQuestions(
+      static_secretQuestions: (l$static_secretQuestions as List<dynamic>)
+          .map((e) =>
+              Query$static_secretQuestions$static_secretQuestions.fromJson(
+                  (e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Query$static_secretQuestions$static_secretQuestions>
+      static_secretQuestions;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$static_secretQuestions = static_secretQuestions;
+    _resultData['static_secretQuestions'] =
+        l$static_secretQuestions.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$static_secretQuestions = static_secretQuestions;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$static_secretQuestions.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$static_secretQuestions ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$static_secretQuestions = static_secretQuestions;
+    final lOther$static_secretQuestions = other.static_secretQuestions;
+    if (l$static_secretQuestions.length !=
+        lOther$static_secretQuestions.length) {
+      return false;
+    }
+    for (int i = 0; i < l$static_secretQuestions.length; i++) {
+      final l$static_secretQuestions$entry = l$static_secretQuestions[i];
+      final lOther$static_secretQuestions$entry =
+          lOther$static_secretQuestions[i];
+      if (l$static_secretQuestions$entry !=
+          lOther$static_secretQuestions$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$static_secretQuestions
+    on Query$static_secretQuestions {
+  CopyWith$Query$static_secretQuestions<Query$static_secretQuestions>
+      get copyWith => CopyWith$Query$static_secretQuestions(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$static_secretQuestions<TRes> {
+  factory CopyWith$Query$static_secretQuestions(
+    Query$static_secretQuestions instance,
+    TRes Function(Query$static_secretQuestions) then,
+  ) = _CopyWithImpl$Query$static_secretQuestions;
+
+  factory CopyWith$Query$static_secretQuestions.stub(TRes res) =
+      _CopyWithStubImpl$Query$static_secretQuestions;
+
+  TRes call({
+    List<Query$static_secretQuestions$static_secretQuestions>?
+        static_secretQuestions,
+    String? $__typename,
+  });
+  TRes static_secretQuestions(
+      Iterable<Query$static_secretQuestions$static_secretQuestions> Function(
+              Iterable<
+                  CopyWith$Query$static_secretQuestions$static_secretQuestions<
+                      Query$static_secretQuestions$static_secretQuestions>>)
+          _fn);
+}
+
+class _CopyWithImpl$Query$static_secretQuestions<TRes>
+    implements CopyWith$Query$static_secretQuestions<TRes> {
+  _CopyWithImpl$Query$static_secretQuestions(
+    this._instance,
+    this._then,
+  );
+
+  final Query$static_secretQuestions _instance;
+
+  final TRes Function(Query$static_secretQuestions) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? static_secretQuestions = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$static_secretQuestions(
+        static_secretQuestions: static_secretQuestions == _undefined ||
+                static_secretQuestions == null
+            ? _instance.static_secretQuestions
+            : (static_secretQuestions
+                as List<Query$static_secretQuestions$static_secretQuestions>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes static_secretQuestions(
+          Iterable<Query$static_secretQuestions$static_secretQuestions> Function(
+                  Iterable<
+                      CopyWith$Query$static_secretQuestions$static_secretQuestions<
+                          Query$static_secretQuestions$static_secretQuestions>>)
+              _fn) =>
+      call(
+          static_secretQuestions: _fn(_instance.static_secretQuestions.map(
+              (e) =>
+                  CopyWith$Query$static_secretQuestions$static_secretQuestions(
+                    e,
+                    (i) => i,
+                  ))).toList());
+}
+
+class _CopyWithStubImpl$Query$static_secretQuestions<TRes>
+    implements CopyWith$Query$static_secretQuestions<TRes> {
+  _CopyWithStubImpl$Query$static_secretQuestions(this._res);
+
+  TRes _res;
+
+  call({
+    List<Query$static_secretQuestions$static_secretQuestions>?
+        static_secretQuestions,
+    String? $__typename,
+  }) =>
+      _res;
+
+  static_secretQuestions(_fn) => _res;
+}
+
+const documentNodeQuerystatic_secretQuestions = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'static_secretQuestions'),
+    variableDefinitions: [],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'static_secretQuestions'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'text'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+]);
+Query$static_secretQuestions _parserFn$Query$static_secretQuestions(
+        Map<String, dynamic> data) =>
+    Query$static_secretQuestions.fromJson(data);
+typedef OnQueryComplete$Query$static_secretQuestions = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$static_secretQuestions?,
+);
+
+class Options$Query$static_secretQuestions
+    extends graphql.QueryOptions<Query$static_secretQuestions> {
+  Options$Query$static_secretQuestions({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$static_secretQuestions? typedOptimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+    OnQueryComplete$Query$static_secretQuestions? onComplete,
+    graphql.OnQueryError? onError,
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Query$static_secretQuestions(data),
+                  ),
+          onError: onError,
+          document: documentNodeQuerystatic_secretQuestions,
+          parserFn: _parserFn$Query$static_secretQuestions,
+        );
+
+  final OnQueryComplete$Query$static_secretQuestions? onCompleteWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
+}
+
+class WatchOptions$Query$static_secretQuestions
+    extends graphql.WatchQueryOptions<Query$static_secretQuestions> {
+  WatchOptions$Query$static_secretQuestions({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$static_secretQuestions? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQuerystatic_secretQuestions,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$static_secretQuestions,
+        );
+}
+
+class FetchMoreOptions$Query$static_secretQuestions
+    extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$static_secretQuestions(
+      {required graphql.UpdateQuery updateQuery})
+      : super(
+          updateQuery: updateQuery,
+          document: documentNodeQuerystatic_secretQuestions,
+        );
+}
+
+extension ClientExtension$Query$static_secretQuestions
+    on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$static_secretQuestions>>
+      query$static_secretQuestions(
+              [Options$Query$static_secretQuestions? options]) async =>
+          await this.query(options ?? Options$Query$static_secretQuestions());
+  graphql.ObservableQuery<
+      Query$static_secretQuestions> watchQuery$static_secretQuestions(
+          [WatchOptions$Query$static_secretQuestions? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$static_secretQuestions());
+  void writeQuery$static_secretQuestions({
+    required Query$static_secretQuestions data,
+    bool broadcast = true,
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+            operation: graphql.Operation(
+                document: documentNodeQuerystatic_secretQuestions)),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$static_secretQuestions? readQuery$static_secretQuestions(
+      {bool optimistic = true}) {
+    final result = this.readQuery(
+      graphql.Request(
+          operation: graphql.Operation(
+              document: documentNodeQuerystatic_secretQuestions)),
+      optimistic: optimistic,
+    );
+    return result == null
+        ? null
+        : Query$static_secretQuestions.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$static_secretQuestions>
+    useQuery$static_secretQuestions(
+            [Options$Query$static_secretQuestions? options]) =>
+        graphql_flutter
+            .useQuery(options ?? Options$Query$static_secretQuestions());
+graphql.ObservableQuery<Query$static_secretQuestions>
+    useWatchQuery$static_secretQuestions(
+            [WatchOptions$Query$static_secretQuestions? options]) =>
+        graphql_flutter.useWatchQuery(
+            options ?? WatchOptions$Query$static_secretQuestions());
+
+class Query$static_secretQuestions$Widget
+    extends graphql_flutter.Query<Query$static_secretQuestions> {
+  Query$static_secretQuestions$Widget({
+    widgets.Key? key,
+    Options$Query$static_secretQuestions? options,
+    required graphql_flutter.QueryBuilder<Query$static_secretQuestions> builder,
+  }) : super(
+          key: key,
+          options: options ?? Options$Query$static_secretQuestions(),
+          builder: builder,
+        );
+}
+
+class Query$static_secretQuestions$static_secretQuestions {
+  Query$static_secretQuestions$static_secretQuestions({
+    required this.text,
+    this.$__typename = 'Static_SecretQuestionsResponse',
+  });
+
+  factory Query$static_secretQuestions$static_secretQuestions.fromJson(
+      Map<String, dynamic> json) {
+    final l$text = json['text'];
+    final l$$__typename = json['__typename'];
+    return Query$static_secretQuestions$static_secretQuestions(
+      text: (l$text as String),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String text;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$text = text;
+    _resultData['text'] = l$text;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$text = text;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$text,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$static_secretQuestions$static_secretQuestions ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$text = text;
+    final lOther$text = other.text;
+    if (l$text != lOther$text) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$static_secretQuestions$static_secretQuestions
+    on Query$static_secretQuestions$static_secretQuestions {
+  CopyWith$Query$static_secretQuestions$static_secretQuestions<
+          Query$static_secretQuestions$static_secretQuestions>
+      get copyWith =>
+          CopyWith$Query$static_secretQuestions$static_secretQuestions(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$static_secretQuestions$static_secretQuestions<
+    TRes> {
+  factory CopyWith$Query$static_secretQuestions$static_secretQuestions(
+    Query$static_secretQuestions$static_secretQuestions instance,
+    TRes Function(Query$static_secretQuestions$static_secretQuestions) then,
+  ) = _CopyWithImpl$Query$static_secretQuestions$static_secretQuestions;
+
+  factory CopyWith$Query$static_secretQuestions$static_secretQuestions.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$static_secretQuestions$static_secretQuestions;
+
+  TRes call({
+    String? text,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Query$static_secretQuestions$static_secretQuestions<TRes>
+    implements
+        CopyWith$Query$static_secretQuestions$static_secretQuestions<TRes> {
+  _CopyWithImpl$Query$static_secretQuestions$static_secretQuestions(
+    this._instance,
+    this._then,
+  );
+
+  final Query$static_secretQuestions$static_secretQuestions _instance;
+
+  final TRes Function(Query$static_secretQuestions$static_secretQuestions)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? text = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$static_secretQuestions$static_secretQuestions(
+        text: text == _undefined || text == null
+            ? _instance.text
+            : (text as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Query$static_secretQuestions$static_secretQuestions<
+        TRes>
+    implements
+        CopyWith$Query$static_secretQuestions$static_secretQuestions<TRes> {
+  _CopyWithStubImpl$Query$static_secretQuestions$static_secretQuestions(
+      this._res);
+
+  TRes _res;
+
+  call({
+    String? text,
     String? $__typename,
   }) =>
       _res;

@@ -4,23 +4,25 @@ class WalletModel {
   final String address;
   final String ecrypted_private_key;
   final String public_key;
+  final String seed_phrase_hash;
+  final String encryptedPin;
   final String secret_question;
-  final String answer_salt;
   final String answer_hash;
-  final String pin_salt;
+  final String ivBase64;
   final String pin_hash;
-  final int pin_iterations;
+  final int salt_iterations;
 
   WalletModel({
     required this.address,
     required this.ecrypted_private_key,
     required this.public_key,
+    required this.seed_phrase_hash,
+    required this.encryptedPin,
     required this.secret_question,
     required this.answer_hash,
-    required this.answer_salt,
+    required this.ivBase64,
     required this.pin_hash,
-    required this.pin_salt,
-    required this.pin_iterations,
+    required this.salt_iterations,
   });
 
   // Create an instance from a Map
@@ -31,10 +33,11 @@ class WalletModel {
       public_key: map['public_key'] ?? '',
       secret_question: map['secret_question'] ?? '',
       pin_hash: map['pin_hash'] ?? '',
-      pin_iterations: map['pin_iterations'] ?? '',
-      pin_salt: map['pin_salt'] ?? '',
       answer_hash: map['answer_hash'] ?? '',
-      answer_salt: map['answer_salt'] ?? '',
+      seed_phrase_hash: map['seed_phrase_hash'] ?? '',
+      encryptedPin: map['encryptedPin'] ?? '',
+      ivBase64: map['ivBase64'] ?? '',
+      salt_iterations: map['salt_iterations'] ?? '',
     );
   }
 
@@ -46,10 +49,11 @@ class WalletModel {
       'public_key': public_key,
       'secret_question': secret_question,
       'pin_hash': pin_hash,
-      'pin_iterations': pin_iterations,
-      'pin_salt': pin_salt,
       'answer_hash': answer_hash,
-      'answer_salt': answer_salt,
+      "seed_phrase_hash": seed_phrase_hash,
+      "encryptedPin": encryptedPin,
+      "ivBase64": ivBase64,
+      "salt_iterations": salt_iterations,
     };
   }
 

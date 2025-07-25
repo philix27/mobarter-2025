@@ -1,77 +1,3 @@
-enum AdvertStatus {
-  CLOSE
-  OPEN
-}
-
-input Advert_CreateInput {
-  advertStatus: AdvertStatus!
-  currencyFiat: Country!
-  currency_crypto: String!
-  duration: String!
-  fiatAmountPerCrypto: Float!
-  instructions: String!
-  isFloatRate: Boolean
-  limitLower: Float!
-  limitUpper: Float!
-  merchant_id: Float!
-  rate: String
-  rateFixed: Float
-  rateFloat: Float
-  tradeType: TradeType!
-  wallet_address: String!
-}
-
-input Advert_DeleteInput {
-  id: ID!
-}
-
-input Advert_GetAllInput {
-  status: AdvertStatus
-}
-
-input Advert_GetOneInput {
-  id: Int!
-}
-
-type Advert_GetResponse {
-  advertStatus: AdvertStatus
-  currencyFiat: Country
-  currency_crypto: String
-  duration: String
-  fiatAmountPerCrypto: Float
-  id: ID!
-  instructions: String
-  isFloatRate: Boolean
-  limitLower: Float
-  limitUpper: Float
-  merchant_id: Float
-  merchant_nickname: String
-  merchant_trade_count: Float
-  rate: String
-  rateFixed: Float
-  rateFloat: Float
-  tradeType: TradeType
-  wallet_address: String
-}
-
-input Advert_UpdateInput {
-  advertStatus: AdvertStatus!
-  currencyFiat: Country!
-  currency_crypto: String!
-  duration: String!
-  fiatAmountPerCrypto: Float!
-  id: ID!
-  instructions: String!
-  isFloatRate: Boolean
-  limitLower: Float!
-  limitUpper: Float!
-  merchant_id: Float!
-  rate: String
-  rateFixed: Float
-  rateFloat: Float
-  tradeType: TradeType!
-  wallet_address: String!
-}
 
 input Auth_CreateAccountInput {
   country: Country!
@@ -411,9 +337,6 @@ type Kyc_Response {
 }
 
 type Mutation {
-  adverts_create(input: Advert_CreateInput!): Advert_GetResponse!
-  adverts_delete(input: Advert_DeleteInput!): Advert_GetResponse!
-  adverts_update(input: Advert_UpdateInput!): Advert_GetResponse!
   auth_createAccount(
     input: Auth_CreateAccountInput!
   ): Auth_CreateAccountResponse!
@@ -476,6 +399,7 @@ type Mutation {
     input: Utilities_PurchaseDataBundleInput!
   ): Utilities_PurchaseTopUpResponse!
   walletCrypto_create: [WalletCryptoResponse!]!
+  walletCrypto_mobileCreate(input: Wallet_CreateInput!): Wallet_CreateResponse!
 }
 
 enum OrderActions {
@@ -631,9 +555,6 @@ enum OtpPurpose {
 }
 
 type Query {
-  adverts_getAll: [Advert_GetResponse!]!
-  adverts_getMerchantAdverts(input: Advert_GetAllInput!): [Advert_GetResponse!]!
-  adverts_getOne(input: Advert_GetOneInput!): Advert_GetResponse!
   bankAccount_getAll: [BankAccount_Response!]!
   bankList: [BankList_Response!]!
   bank_verifyAccountNo(
@@ -656,6 +577,7 @@ type Query {
   static_getFundCollectors: Static_FundCollectorsResponse!
   static_getLinks: [Static_GetLinkResponse!]!
   static_getTokens: [Static_GetTokenResponse!]!
+  static_secretQuestions: [Static_SecretQuestionsResponse!]!
   transactions_getAll: [Transaction_GetResponse!]!
   transactions_getOne(input: Transaction_GetOneInput!): Transaction_GetResponse!
   tvBills_getBouquet(
@@ -682,6 +604,11 @@ enum StaticLinkGroup {
 type Static_AppInfoResponse {
   androidAppUrl: String!
   deployedBuild: Float!
+  enableAirtime: Boolean!
+  enableBetting: Boolean!
+  enableDataPlan: Boolean!
+  enableElectricityBillPayment: Boolean!
+  enableTVBillPayment: Boolean!
   iosAppUrl: String!
   minBuild: Float!
 }
@@ -737,6 +664,10 @@ type Static_GetTokenResponse {
   priceNGN: Float!
   priceUSD: Float!
   symbol: String!
+}
+
+type Static_SecretQuestionsResponse {
+  text: String!
 }
 
 enum TradeType {
@@ -901,4 +832,15 @@ type WalletFiat {
   accountNumber: String!
   balance: Float!
   bankName: String!
+}
+
+input Wallet_CreateInput {
+  answer: String!
+  pin: String!
+  question: String!
+  user_uid: String!
+}
+
+type Wallet_CreateResponse {
+  message: String!
 }

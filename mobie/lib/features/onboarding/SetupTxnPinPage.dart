@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mobarter/features/auth/auth_service.dart';
-import 'package:mobarter/features/auth/wallet_service.dart';
-import 'package:mobarter/features/onboarding/pinsetup.service.dart';
+// import 'package:mobarter/features/auth/wallet_service.txt';
 import 'package:mobarter/features/onboarding/questionsList.dart';
+import 'package:mobarter/graphql/schema/_docs.graphql.dart';
+import 'package:mobarter/graphql/schema/auth.gql.dart';
+import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/utils/logger.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/btn.dart';
@@ -25,9 +28,9 @@ class _SetupTxnPinPageState extends State<SetupTxnPinPage> {
   TextEditingController answer = TextEditingController();
   TextEditingController txnPin = TextEditingController();
   TextEditingController txnPinConfirm = TextEditingController();
-  final setUpPin = PinSetupService();
+  // final setUpPin = PinSetupService();
   final authSvc = AuthService();
-  final cryptoSvc = CryptoWalletService();
+  // final cryptoSvc = CryptoWalletService();
 
   validate() async {
     final pin = txnPin.text;
@@ -45,14 +48,26 @@ class _SetupTxnPinPageState extends State<SetupTxnPinPage> {
       apptToast(context, "Password doesn't match");
       return;
     }
+    // ! Submit
+
+    final result = useMutation$walletCrypto_mobileCreate();
 
     try {
-      await setUpPin.submit(
-        question: questionSelected,
-        answer: answer.text,
-        pin: pin,
-        userId: authSvc.user()!.uid,
-      );
+      final response = await result
+          .runMutation(
+            Variables$Mutation$walletCrypto_mobileCreate(
+              input: Input$Wallet_CreateInput(
+                answer: answer.text,
+                pin: pin,
+                question: questionSelected,
+                user_uid: authSvc.user()!.uid,
+              ),
+            ),
+          )
+          .networkResult;
+
+      final msg = response!.parsedData?.walletCrypto_mobileCreate.message;
+
       apptToast(context, "Your pin has been succcessfully setup");
       Navigator.of(context).pushNamed("/home");
     } catch (e) {
@@ -138,34 +153,25 @@ class _SetupTxnPinPageState extends State<SetupTxnPinPage> {
   }
 }
 
-class SecretQuestion extends StatelessWidget {
+class SecretQuestion extends HookWidget {
   SecretQuestion({super.key});
   @override
   Widget build(BuildContext context) {
+    final result = useQuery$static_secretQuestions(
+      Options$Query$static_secretQuestions(),
+    );
+    final list = result.result.parsedData?.static_secretQuestions;
+
+    if (list == null || list.isEmpty) {
+      return Text("No data yet");
+    }
+
     return ListView.builder(
-      itemCount: questionsList.length,
+      itemCount: list.length,
       itemBuilder: (context, index) {
-        final title = questionsList[index];
-        return listTile(title: title);
+        final item = list[index];
+        return listTile(title: item.text);
       },
     );
   }
 }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return FutureBuilder(
-  //     future: questionsSvc.getQuestions(),
-  //     builder: (BuildContext context, AsyncSnapshot<List<String>?> snapshot) {
-  //       if (!snapshot.hasData) return SizedBox.shrink();
-  //       final data = snapshot.data!;
-  //       return ListView.builder(
-  //         itemCount: data.length,
-  //         itemBuilder: (context, index) {
-  //           final title = data[index];
-  //           return listTile(title: title);
-  //         },
-  //       );
-  //     },
-  //   );
-  // }
