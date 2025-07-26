@@ -8,10 +8,10 @@ import 'package:mobarter/features/top_up/presentation/phoneNo.dart';
 import 'package:mobarter/features/top_up/presentation/screenTabs.dart';
 import 'package:mobarter/features/top_up/presentation/selectNetwork.dart';
 import 'package:mobarter/features/top_up/presentation/topUpSummary.dart';
-import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/btn.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 import 'package:mobarter/widgets/toast.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 enum TopUpScreen { airtime, dataPlan, dataBundle }
 
@@ -79,9 +79,10 @@ class TopUpsPage extends ConsumerWidget {
                 return;
               }
 
-              btmSheet(
-                ctx: context,
-                w: ShowTopUpSummary(
+              pushScreen(
+                context,
+                withNavBar: false,
+                screen: TopUpSummaryPage(
                   recipientPhone: data.phoneNo!,
                   networkProvider: data.networkProvider!,
                   amountToPay: "CUSD ${data.amountCrypto!.toStringAsFixed(3)}",
@@ -93,7 +94,6 @@ class TopUpsPage extends ConsumerWidget {
                       : "0",
                   cashback: '',
                 ),
-                h: 0.5,
               );
             },
           ),

@@ -28,46 +28,38 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  bip39: ^1.0.6
   cached_network_image: ^3.4.1
+  cloud_firestore: ^5.6.11
   cupertino_icons: ^1.0.8
   decimal: ^2.3.2
+  firebase_core: ^3.12.1
+  firebase_crashlytics: ^4.3.10
+  firebase_auth: ^5.6.2
+  flutter_riverpod: ^2.6.1
+  # flutter_secure_storage: ^9.0.0
+  flutter_native_splash: ^2.4.6
+  # flutter_confetti: ^0.5.1
+  google_sign_in: ^6.3.0
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  hooks_riverpod: ^2.6.1
   modal_bottom_sheet: ^3.0.0
   persistent_bottom_nav_bar_v2: ^6.1.0
-  flutter_confetti: ^0.5.1
-  flutter_native_splash: ^2.4.6
   graphql_flutter: ^5.2.0
-  eth_sig_util: ^0.0.9
-  hex: ^0.2.0
   intl: ^0.18.1
   package_info_plus: ^8.3.0
-  persistent_bottom_nav_bar: ^6.2.1
   pretty_qr_code: ^3.4.0
   flutter_hooks: ^0.20.5
   web3dart: ^2.7.1
   http: ^1.2.2
-  web3auth_flutter: ^6.1.2
   riverpod: ^2.6.1
-  flutter_riverpod: ^2.6.1
-  flutter_secure_storage: ^9.0.0
-  encrypt: ^5.0.1
-  pointycastle: ^3.7.3
-  firebase_core: ^3.12.1
-  firebase_auth: ^5.6.2
-  cloud_firestore: ^5.6.11
   liquid_swipe: ^3.1.0
   smooth_page_indicator: ^1.2.1
   riverpod_annotation: ^2.6.1
   toastification: ^3.0.3
   url_launcher: ^6.3.2
-  google_sign_in: ^6.3.0
   logger: ^2.6.0
-  ed25519_hd_key: ^2.3.0
   convert: ^3.1.2
-  hive: ^2.2.3
-  hive_flutter: ^1.1.0
-  hooks_riverpod: ^2.6.1
-  firebase_crashlytics: ^4.3.10
   webview_flutter: ^4.13.0
   webview_flutter_android: ^4.8.2
   # flutter_local_notifications: ^19.2.0

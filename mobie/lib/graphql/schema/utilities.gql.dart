@@ -283,7 +283,14 @@ const documentNodeMutationUtility_purchaseAirtime = DocumentNode(definitions: [
         directives: [],
         selectionSet: SelectionSetNode(selections: [
           FieldNode(
-            name: NameNode(value: 'message'),
+            name: NameNode(value: 'title'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'subtitle'),
             alias: null,
             arguments: [],
             directives: [],
@@ -529,28 +536,35 @@ class Mutation$Utility_purchaseAirtime$Widget
 
 class Mutation$Utility_purchaseAirtime$utility_purchaseAirtime {
   Mutation$Utility_purchaseAirtime$utility_purchaseAirtime({
-    required this.message,
+    required this.title,
+    required this.subtitle,
     this.$__typename = 'Utilities_PurchaseTopUpResponse',
   });
 
   factory Mutation$Utility_purchaseAirtime$utility_purchaseAirtime.fromJson(
       Map<String, dynamic> json) {
-    final l$message = json['message'];
+    final l$title = json['title'];
+    final l$subtitle = json['subtitle'];
     final l$$__typename = json['__typename'];
     return Mutation$Utility_purchaseAirtime$utility_purchaseAirtime(
-      message: (l$message as String),
+      title: (l$title as String),
+      subtitle: (l$subtitle as String),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final String message;
+  final String title;
+
+  final String subtitle;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$message = message;
-    _resultData['message'] = l$message;
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$subtitle = subtitle;
+    _resultData['subtitle'] = l$subtitle;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -558,10 +572,12 @@ class Mutation$Utility_purchaseAirtime$utility_purchaseAirtime {
 
   @override
   int get hashCode {
-    final l$message = message;
+    final l$title = title;
+    final l$subtitle = subtitle;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$message,
+      l$title,
+      l$subtitle,
       l$$__typename,
     ]);
   }
@@ -575,9 +591,14 @@ class Mutation$Utility_purchaseAirtime$utility_purchaseAirtime {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$message = message;
-    final lOther$message = other.message;
-    if (l$message != lOther$message) {
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) {
+      return false;
+    }
+    final l$subtitle = subtitle;
+    final lOther$subtitle = other.subtitle;
+    if (l$subtitle != lOther$subtitle) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -613,7 +634,8 @@ abstract class CopyWith$Mutation$Utility_purchaseAirtime$utility_purchaseAirtime
       _CopyWithStubImpl$Mutation$Utility_purchaseAirtime$utility_purchaseAirtime;
 
   TRes call({
-    String? message,
+    String? title,
+    String? subtitle,
     String? $__typename,
   });
 }
@@ -636,13 +658,17 @@ class _CopyWithImpl$Mutation$Utility_purchaseAirtime$utility_purchaseAirtime<
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? message = _undefined,
+    Object? title = _undefined,
+    Object? subtitle = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Mutation$Utility_purchaseAirtime$utility_purchaseAirtime(
-        message: message == _undefined || message == null
-            ? _instance.message
-            : (message as String),
+        title: title == _undefined || title == null
+            ? _instance.title
+            : (title as String),
+        subtitle: subtitle == _undefined || subtitle == null
+            ? _instance.subtitle
+            : (subtitle as String),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -660,7 +686,8 @@ class _CopyWithStubImpl$Mutation$Utility_purchaseAirtime$utility_purchaseAirtime
   TRes _res;
 
   call({
-    String? message,
+    String? title,
+    String? subtitle,
     String? $__typename,
   }) =>
       _res;
@@ -951,7 +978,14 @@ const documentNodeMutationUtility_purchaseDataBundle =
         directives: [],
         selectionSet: SelectionSetNode(selections: [
           FieldNode(
-            name: NameNode(value: 'message'),
+            name: NameNode(value: 'title'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'subtitle'),
             alias: null,
             arguments: [],
             directives: [],
@@ -1199,28 +1233,35 @@ class Mutation$Utility_purchaseDataBundle$Widget
 
 class Mutation$Utility_purchaseDataBundle$utility_purchaseDataBundle {
   Mutation$Utility_purchaseDataBundle$utility_purchaseDataBundle({
-    required this.message,
+    required this.title,
+    required this.subtitle,
     this.$__typename = 'Utilities_PurchaseTopUpResponse',
   });
 
   factory Mutation$Utility_purchaseDataBundle$utility_purchaseDataBundle.fromJson(
       Map<String, dynamic> json) {
-    final l$message = json['message'];
+    final l$title = json['title'];
+    final l$subtitle = json['subtitle'];
     final l$$__typename = json['__typename'];
     return Mutation$Utility_purchaseDataBundle$utility_purchaseDataBundle(
-      message: (l$message as String),
+      title: (l$title as String),
+      subtitle: (l$subtitle as String),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final String message;
+  final String title;
+
+  final String subtitle;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$message = message;
-    _resultData['message'] = l$message;
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$subtitle = subtitle;
+    _resultData['subtitle'] = l$subtitle;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -1228,10 +1269,12 @@ class Mutation$Utility_purchaseDataBundle$utility_purchaseDataBundle {
 
   @override
   int get hashCode {
-    final l$message = message;
+    final l$title = title;
+    final l$subtitle = subtitle;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$message,
+      l$title,
+      l$subtitle,
       l$$__typename,
     ]);
   }
@@ -1246,9 +1289,14 @@ class Mutation$Utility_purchaseDataBundle$utility_purchaseDataBundle {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$message = message;
-    final lOther$message = other.message;
-    if (l$message != lOther$message) {
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) {
+      return false;
+    }
+    final l$subtitle = subtitle;
+    final lOther$subtitle = other.subtitle;
+    if (l$subtitle != lOther$subtitle) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -1285,7 +1333,8 @@ abstract class CopyWith$Mutation$Utility_purchaseDataBundle$utility_purchaseData
       _CopyWithStubImpl$Mutation$Utility_purchaseDataBundle$utility_purchaseDataBundle;
 
   TRes call({
-    String? message,
+    String? title,
+    String? subtitle,
     String? $__typename,
   });
 }
@@ -1309,13 +1358,17 @@ class _CopyWithImpl$Mutation$Utility_purchaseDataBundle$utility_purchaseDataBund
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? message = _undefined,
+    Object? title = _undefined,
+    Object? subtitle = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Mutation$Utility_purchaseDataBundle$utility_purchaseDataBundle(
-        message: message == _undefined || message == null
-            ? _instance.message
-            : (message as String),
+        title: title == _undefined || title == null
+            ? _instance.title
+            : (title as String),
+        subtitle: subtitle == _undefined || subtitle == null
+            ? _instance.subtitle
+            : (subtitle as String),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -1333,7 +1386,8 @@ class _CopyWithStubImpl$Mutation$Utility_purchaseDataBundle$utility_purchaseData
   TRes _res;
 
   call({
-    String? message,
+    String? title,
+    String? subtitle,
     String? $__typename,
   }) =>
       _res;

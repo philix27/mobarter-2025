@@ -1,12 +1,14 @@
 mutation Utility_purchaseAirtime($input: Utilities_PurchaseAirtimeInput!) {
   utility_purchaseAirtime(input: $input) {
-    message
+    title
+    subtitle
   }
 }
 
 mutation Utility_purchaseDataBundle($input: Utilities_PurchaseDataBundleInput!) {
   utility_purchaseDataBundle(input: $input) {
-    message
+    title
+    subtitle
   }
 }
 

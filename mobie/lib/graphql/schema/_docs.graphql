@@ -816,7 +816,8 @@ input Utilities_PurchaseDataBundleInput {
 }
 
 type Utilities_PurchaseTopUpResponse {
-  message: String!
+  subtitle: String!
+  title: String!
 }
 
 type WalletCryptoResponse {

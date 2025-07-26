@@ -1,0 +1,40 @@
+We ensure that all Firebase and third party SDKs integrated into our app comply with Google Play's Developer Policies through the following measures:
+
+- Use of Official Firebase SDKs: We exclusively use Firebase SDKs provided and maintained by Google, which are designed to align with Google Play policies by default.
+
+- Feature-Specific Integration: We only integrate Firebase services that are essential to our app’s functionality (e.g., Firebase Authentication, Firestore, Crashlytics), 
+and we configure each service to limit data collection to only what is necessary.
+
+- Data Privacy and Consent: We ensure that any user data collected through Firebase services is clearly disclosed in our app’s privacy policy. Where required 
+(e.g., for Firebase Crashlytics), we obtain user consent before enabling data collection.
+
+- Minimal Permissions Usage: Firebase SDKs are integrated in a way that avoids requesting unnecessary permissions, and we regularly 
+review our package manager and manifest to ensure compliance with Google Play's restricted permissions policy.
+
+Ongoing Monitoring and Updates: We keep Firebase SDKs up to date and monitor Firebase’s release notes to ensure continued compliance. We 
+also audit our implementation regularly to ensure no default settings are unintentionally collecting data in violation of policy.
+
+By following these practices, we ensure that our use of third parties and Firebase SDKs is fully compliant with Google Play’s developer policies, 
+especially around data handling, user privacy, and restricted permissions.
+
+
+Firebase Core, 
+Firebase Auth & Google_sign_in => Authentication, 
+Firestore =>  storage,  
+Cached_network_image,
+ Modal_bottom_sheet
+ Persistent_bottom_nav_bar_v2 => For managing bottom navigation bar
+ hive => Local Storage
+ flutter_native_splash  => To manage the splash screen
+  graphql_flutter => Enable communication with graphql endpoint
+  package_info_plus => Provide the app version and infomation
+  pretty_qr_code => To display QR code
+  flutter_hooks => Make using Hooks in flutter easier
+  web3dart => For checking wallet balance and transactions info
+  http => To make Http requests
+  riverpod => For state management
+  Liquid_swipe and Smooth_page_indicator=> For Onboarding UI
+  toastification => For toast and 
+  url_launcher => To open links on the browser
+  logger => For logging
+  webview_flutter => To open links and urls in app

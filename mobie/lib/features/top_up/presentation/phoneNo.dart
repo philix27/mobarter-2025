@@ -7,7 +7,7 @@ import 'package:mobarter/widgets/toast.dart';
 
 class PhoneTextField extends ConsumerWidget {
   PhoneTextField({super.key});
-  TextEditingController phone = TextEditingController();
+  final TextEditingController phone = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
