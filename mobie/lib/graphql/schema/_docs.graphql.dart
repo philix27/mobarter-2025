@@ -1875,15 +1875,15 @@ class Input$BettingPaymentInput {
     required int amount,
     required Enum$Country countryCode,
     required String customer_id,
+    required Input$PaymentInput payment,
     required String service_id,
-    required String transaction_hash,
   }) =>
       Input$BettingPaymentInput._({
         r'amount': amount,
         r'countryCode': countryCode,
         r'customer_id': customer_id,
+        r'payment': payment,
         r'service_id': service_id,
-        r'transaction_hash': transaction_hash,
       });
 
   Input$BettingPaymentInput._(this._$data);
@@ -1897,10 +1897,11 @@ class Input$BettingPaymentInput {
         fromJson$Enum$Country((l$countryCode as String));
     final l$customer_id = data['customer_id'];
     result$data['customer_id'] = (l$customer_id as String);
+    final l$payment = data['payment'];
+    result$data['payment'] =
+        Input$PaymentInput.fromJson((l$payment as Map<String, dynamic>));
     final l$service_id = data['service_id'];
     result$data['service_id'] = (l$service_id as String);
-    final l$transaction_hash = data['transaction_hash'];
-    result$data['transaction_hash'] = (l$transaction_hash as String);
     return Input$BettingPaymentInput._(result$data);
   }
 
@@ -1912,9 +1913,9 @@ class Input$BettingPaymentInput {
 
   String get customer_id => (_$data['customer_id'] as String);
 
-  String get service_id => (_$data['service_id'] as String);
+  Input$PaymentInput get payment => (_$data['payment'] as Input$PaymentInput);
 
-  String get transaction_hash => (_$data['transaction_hash'] as String);
+  String get service_id => (_$data['service_id'] as String);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -1924,10 +1925,10 @@ class Input$BettingPaymentInput {
     result$data['countryCode'] = toJson$Enum$Country(l$countryCode);
     final l$customer_id = customer_id;
     result$data['customer_id'] = l$customer_id;
+    final l$payment = payment;
+    result$data['payment'] = l$payment.toJson();
     final l$service_id = service_id;
     result$data['service_id'] = l$service_id;
-    final l$transaction_hash = transaction_hash;
-    result$data['transaction_hash'] = l$transaction_hash;
     return result$data;
   }
 
@@ -1961,14 +1962,14 @@ class Input$BettingPaymentInput {
     if (l$customer_id != lOther$customer_id) {
       return false;
     }
+    final l$payment = payment;
+    final lOther$payment = other.payment;
+    if (l$payment != lOther$payment) {
+      return false;
+    }
     final l$service_id = service_id;
     final lOther$service_id = other.service_id;
     if (l$service_id != lOther$service_id) {
-      return false;
-    }
-    final l$transaction_hash = transaction_hash;
-    final lOther$transaction_hash = other.transaction_hash;
-    if (l$transaction_hash != lOther$transaction_hash) {
       return false;
     }
     return true;
@@ -1979,14 +1980,14 @@ class Input$BettingPaymentInput {
     final l$amount = amount;
     final l$countryCode = countryCode;
     final l$customer_id = customer_id;
+    final l$payment = payment;
     final l$service_id = service_id;
-    final l$transaction_hash = transaction_hash;
     return Object.hashAll([
       l$amount,
       l$countryCode,
       l$customer_id,
+      l$payment,
       l$service_id,
-      l$transaction_hash,
     ]);
   }
 }
@@ -2004,9 +2005,10 @@ abstract class CopyWith$Input$BettingPaymentInput<TRes> {
     int? amount,
     Enum$Country? countryCode,
     String? customer_id,
+    Input$PaymentInput? payment,
     String? service_id,
-    String? transaction_hash,
   });
+  CopyWith$Input$PaymentInput<TRes> get payment;
 }
 
 class _CopyWithImpl$Input$BettingPaymentInput<TRes>
@@ -2026,8 +2028,8 @@ class _CopyWithImpl$Input$BettingPaymentInput<TRes>
     Object? amount = _undefined,
     Object? countryCode = _undefined,
     Object? customer_id = _undefined,
+    Object? payment = _undefined,
     Object? service_id = _undefined,
-    Object? transaction_hash = _undefined,
   }) =>
       _then(Input$BettingPaymentInput._({
         ..._instance._$data,
@@ -2036,11 +2038,16 @@ class _CopyWithImpl$Input$BettingPaymentInput<TRes>
           'countryCode': (countryCode as Enum$Country),
         if (customer_id != _undefined && customer_id != null)
           'customer_id': (customer_id as String),
+        if (payment != _undefined && payment != null)
+          'payment': (payment as Input$PaymentInput),
         if (service_id != _undefined && service_id != null)
           'service_id': (service_id as String),
-        if (transaction_hash != _undefined && transaction_hash != null)
-          'transaction_hash': (transaction_hash as String),
       }));
+
+  CopyWith$Input$PaymentInput<TRes> get payment {
+    final local$payment = _instance.payment;
+    return CopyWith$Input$PaymentInput(local$payment, (e) => call(payment: e));
+  }
 }
 
 class _CopyWithStubImpl$Input$BettingPaymentInput<TRes>
@@ -2053,10 +2060,13 @@ class _CopyWithStubImpl$Input$BettingPaymentInput<TRes>
     int? amount,
     Enum$Country? countryCode,
     String? customer_id,
+    Input$PaymentInput? payment,
     String? service_id,
-    String? transaction_hash,
   }) =>
       _res;
+
+  CopyWith$Input$PaymentInput<TRes> get payment =>
+      CopyWith$Input$PaymentInput.stub(_res);
 }
 
 class Input$BettingProvidersInput {
@@ -2166,9 +2176,9 @@ class Input$ElectricityBill_PaymentInput {
     required String customerName,
     required String meterNumber,
     required String meterType,
+    required Input$PaymentInput payment,
     required String reference,
     required String service,
-    required String transaction_hash,
   }) =>
       Input$ElectricityBill_PaymentInput._({
         r'amount': amount,
@@ -2177,9 +2187,9 @@ class Input$ElectricityBill_PaymentInput {
         r'customerName': customerName,
         r'meterNumber': meterNumber,
         r'meterType': meterType,
+        r'payment': payment,
         r'reference': reference,
         r'service': service,
-        r'transaction_hash': transaction_hash,
       });
 
   Input$ElectricityBill_PaymentInput._(this._$data);
@@ -2200,12 +2210,13 @@ class Input$ElectricityBill_PaymentInput {
     result$data['meterNumber'] = (l$meterNumber as String);
     final l$meterType = data['meterType'];
     result$data['meterType'] = (l$meterType as String);
+    final l$payment = data['payment'];
+    result$data['payment'] =
+        Input$PaymentInput.fromJson((l$payment as Map<String, dynamic>));
     final l$reference = data['reference'];
     result$data['reference'] = (l$reference as String);
     final l$service = data['service'];
     result$data['service'] = (l$service as String);
-    final l$transaction_hash = data['transaction_hash'];
-    result$data['transaction_hash'] = (l$transaction_hash as String);
     return Input$ElectricityBill_PaymentInput._(result$data);
   }
 
@@ -2223,11 +2234,11 @@ class Input$ElectricityBill_PaymentInput {
 
   String get meterType => (_$data['meterType'] as String);
 
+  Input$PaymentInput get payment => (_$data['payment'] as Input$PaymentInput);
+
   String get reference => (_$data['reference'] as String);
 
   String get service => (_$data['service'] as String);
-
-  String get transaction_hash => (_$data['transaction_hash'] as String);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -2243,12 +2254,12 @@ class Input$ElectricityBill_PaymentInput {
     result$data['meterNumber'] = l$meterNumber;
     final l$meterType = meterType;
     result$data['meterType'] = l$meterType;
+    final l$payment = payment;
+    result$data['payment'] = l$payment.toJson();
     final l$reference = reference;
     result$data['reference'] = l$reference;
     final l$service = service;
     result$data['service'] = l$service;
-    final l$transaction_hash = transaction_hash;
-    result$data['transaction_hash'] = l$transaction_hash;
     return result$data;
   }
 
@@ -2298,6 +2309,11 @@ class Input$ElectricityBill_PaymentInput {
     if (l$meterType != lOther$meterType) {
       return false;
     }
+    final l$payment = payment;
+    final lOther$payment = other.payment;
+    if (l$payment != lOther$payment) {
+      return false;
+    }
     final l$reference = reference;
     final lOther$reference = other.reference;
     if (l$reference != lOther$reference) {
@@ -2306,11 +2322,6 @@ class Input$ElectricityBill_PaymentInput {
     final l$service = service;
     final lOther$service = other.service;
     if (l$service != lOther$service) {
-      return false;
-    }
-    final l$transaction_hash = transaction_hash;
-    final lOther$transaction_hash = other.transaction_hash;
-    if (l$transaction_hash != lOther$transaction_hash) {
       return false;
     }
     return true;
@@ -2324,9 +2335,9 @@ class Input$ElectricityBill_PaymentInput {
     final l$customerName = customerName;
     final l$meterNumber = meterNumber;
     final l$meterType = meterType;
+    final l$payment = payment;
     final l$reference = reference;
     final l$service = service;
-    final l$transaction_hash = transaction_hash;
     return Object.hashAll([
       l$amount,
       l$countryCode,
@@ -2334,9 +2345,9 @@ class Input$ElectricityBill_PaymentInput {
       l$customerName,
       l$meterNumber,
       l$meterType,
+      l$payment,
       l$reference,
       l$service,
-      l$transaction_hash,
     ]);
   }
 }
@@ -2357,10 +2368,11 @@ abstract class CopyWith$Input$ElectricityBill_PaymentInput<TRes> {
     String? customerName,
     String? meterNumber,
     String? meterType,
+    Input$PaymentInput? payment,
     String? reference,
     String? service,
-    String? transaction_hash,
   });
+  CopyWith$Input$PaymentInput<TRes> get payment;
 }
 
 class _CopyWithImpl$Input$ElectricityBill_PaymentInput<TRes>
@@ -2383,9 +2395,9 @@ class _CopyWithImpl$Input$ElectricityBill_PaymentInput<TRes>
     Object? customerName = _undefined,
     Object? meterNumber = _undefined,
     Object? meterType = _undefined,
+    Object? payment = _undefined,
     Object? reference = _undefined,
     Object? service = _undefined,
-    Object? transaction_hash = _undefined,
   }) =>
       _then(Input$ElectricityBill_PaymentInput._({
         ..._instance._$data,
@@ -2400,13 +2412,18 @@ class _CopyWithImpl$Input$ElectricityBill_PaymentInput<TRes>
           'meterNumber': (meterNumber as String),
         if (meterType != _undefined && meterType != null)
           'meterType': (meterType as String),
+        if (payment != _undefined && payment != null)
+          'payment': (payment as Input$PaymentInput),
         if (reference != _undefined && reference != null)
           'reference': (reference as String),
         if (service != _undefined && service != null)
           'service': (service as String),
-        if (transaction_hash != _undefined && transaction_hash != null)
-          'transaction_hash': (transaction_hash as String),
       }));
+
+  CopyWith$Input$PaymentInput<TRes> get payment {
+    final local$payment = _instance.payment;
+    return CopyWith$Input$PaymentInput(local$payment, (e) => call(payment: e));
+  }
 }
 
 class _CopyWithStubImpl$Input$ElectricityBill_PaymentInput<TRes>
@@ -2422,11 +2439,14 @@ class _CopyWithStubImpl$Input$ElectricityBill_PaymentInput<TRes>
     String? customerName,
     String? meterNumber,
     String? meterType,
+    Input$PaymentInput? payment,
     String? reference,
     String? service,
-    String? transaction_hash,
   }) =>
       _res;
+
+  CopyWith$Input$PaymentInput<TRes> get payment =>
+      CopyWith$Input$PaymentInput.stub(_res);
 }
 
 class Input$ElectricityBill_ProviderInput {
@@ -5138,6 +5158,134 @@ class _CopyWithStubImpl$Input$Order_MoveCryptoToEscrowInput<TRes>
       _res;
 }
 
+class Input$PaymentInput {
+  factory Input$PaymentInput({
+    required String transaction_pin,
+    required String user_uid,
+  }) =>
+      Input$PaymentInput._({
+        r'transaction_pin': transaction_pin,
+        r'user_uid': user_uid,
+      });
+
+  Input$PaymentInput._(this._$data);
+
+  factory Input$PaymentInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$transaction_pin = data['transaction_pin'];
+    result$data['transaction_pin'] = (l$transaction_pin as String);
+    final l$user_uid = data['user_uid'];
+    result$data['user_uid'] = (l$user_uid as String);
+    return Input$PaymentInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get transaction_pin => (_$data['transaction_pin'] as String);
+
+  String get user_uid => (_$data['user_uid'] as String);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$transaction_pin = transaction_pin;
+    result$data['transaction_pin'] = l$transaction_pin;
+    final l$user_uid = user_uid;
+    result$data['user_uid'] = l$user_uid;
+    return result$data;
+  }
+
+  CopyWith$Input$PaymentInput<Input$PaymentInput> get copyWith =>
+      CopyWith$Input$PaymentInput(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$PaymentInput || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$transaction_pin = transaction_pin;
+    final lOther$transaction_pin = other.transaction_pin;
+    if (l$transaction_pin != lOther$transaction_pin) {
+      return false;
+    }
+    final l$user_uid = user_uid;
+    final lOther$user_uid = other.user_uid;
+    if (l$user_uid != lOther$user_uid) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$transaction_pin = transaction_pin;
+    final l$user_uid = user_uid;
+    return Object.hashAll([
+      l$transaction_pin,
+      l$user_uid,
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$PaymentInput<TRes> {
+  factory CopyWith$Input$PaymentInput(
+    Input$PaymentInput instance,
+    TRes Function(Input$PaymentInput) then,
+  ) = _CopyWithImpl$Input$PaymentInput;
+
+  factory CopyWith$Input$PaymentInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$PaymentInput;
+
+  TRes call({
+    String? transaction_pin,
+    String? user_uid,
+  });
+}
+
+class _CopyWithImpl$Input$PaymentInput<TRes>
+    implements CopyWith$Input$PaymentInput<TRes> {
+  _CopyWithImpl$Input$PaymentInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$PaymentInput _instance;
+
+  final TRes Function(Input$PaymentInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? transaction_pin = _undefined,
+    Object? user_uid = _undefined,
+  }) =>
+      _then(Input$PaymentInput._({
+        ..._instance._$data,
+        if (transaction_pin != _undefined && transaction_pin != null)
+          'transaction_pin': (transaction_pin as String),
+        if (user_uid != _undefined && user_uid != null)
+          'user_uid': (user_uid as String),
+      }));
+}
+
+class _CopyWithStubImpl$Input$PaymentInput<TRes>
+    implements CopyWith$Input$PaymentInput<TRes> {
+  _CopyWithStubImpl$Input$PaymentInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? transaction_pin,
+    String? user_uid,
+  }) =>
+      _res;
+}
+
 class Input$Transaction_GetOneInput {
   factory Input$Transaction_GetOneInput({required int id}) =>
       Input$Transaction_GetOneInput._({
@@ -5471,20 +5619,20 @@ class Input$TvBill_PaymentInput {
     required Enum$Country countryCode,
     required String customerName,
     required String packageCode,
+    required Input$PaymentInput payment,
     required String reference,
     required String service,
     required String smartCardNumber,
-    required String txn_hash,
   }) =>
       Input$TvBill_PaymentInput._({
         r'amount': amount,
         r'countryCode': countryCode,
         r'customerName': customerName,
         r'packageCode': packageCode,
+        r'payment': payment,
         r'reference': reference,
         r'service': service,
         r'smartCardNumber': smartCardNumber,
-        r'txn_hash': txn_hash,
       });
 
   Input$TvBill_PaymentInput._(this._$data);
@@ -5500,14 +5648,15 @@ class Input$TvBill_PaymentInput {
     result$data['customerName'] = (l$customerName as String);
     final l$packageCode = data['packageCode'];
     result$data['packageCode'] = (l$packageCode as String);
+    final l$payment = data['payment'];
+    result$data['payment'] =
+        Input$PaymentInput.fromJson((l$payment as Map<String, dynamic>));
     final l$reference = data['reference'];
     result$data['reference'] = (l$reference as String);
     final l$service = data['service'];
     result$data['service'] = (l$service as String);
     final l$smartCardNumber = data['smartCardNumber'];
     result$data['smartCardNumber'] = (l$smartCardNumber as String);
-    final l$txn_hash = data['txn_hash'];
-    result$data['txn_hash'] = (l$txn_hash as String);
     return Input$TvBill_PaymentInput._(result$data);
   }
 
@@ -5521,13 +5670,13 @@ class Input$TvBill_PaymentInput {
 
   String get packageCode => (_$data['packageCode'] as String);
 
+  Input$PaymentInput get payment => (_$data['payment'] as Input$PaymentInput);
+
   String get reference => (_$data['reference'] as String);
 
   String get service => (_$data['service'] as String);
 
   String get smartCardNumber => (_$data['smartCardNumber'] as String);
-
-  String get txn_hash => (_$data['txn_hash'] as String);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -5539,14 +5688,14 @@ class Input$TvBill_PaymentInput {
     result$data['customerName'] = l$customerName;
     final l$packageCode = packageCode;
     result$data['packageCode'] = l$packageCode;
+    final l$payment = payment;
+    result$data['payment'] = l$payment.toJson();
     final l$reference = reference;
     result$data['reference'] = l$reference;
     final l$service = service;
     result$data['service'] = l$service;
     final l$smartCardNumber = smartCardNumber;
     result$data['smartCardNumber'] = l$smartCardNumber;
-    final l$txn_hash = txn_hash;
-    result$data['txn_hash'] = l$txn_hash;
     return result$data;
   }
 
@@ -5585,6 +5734,11 @@ class Input$TvBill_PaymentInput {
     if (l$packageCode != lOther$packageCode) {
       return false;
     }
+    final l$payment = payment;
+    final lOther$payment = other.payment;
+    if (l$payment != lOther$payment) {
+      return false;
+    }
     final l$reference = reference;
     final lOther$reference = other.reference;
     if (l$reference != lOther$reference) {
@@ -5600,11 +5754,6 @@ class Input$TvBill_PaymentInput {
     if (l$smartCardNumber != lOther$smartCardNumber) {
       return false;
     }
-    final l$txn_hash = txn_hash;
-    final lOther$txn_hash = other.txn_hash;
-    if (l$txn_hash != lOther$txn_hash) {
-      return false;
-    }
     return true;
   }
 
@@ -5614,19 +5763,19 @@ class Input$TvBill_PaymentInput {
     final l$countryCode = countryCode;
     final l$customerName = customerName;
     final l$packageCode = packageCode;
+    final l$payment = payment;
     final l$reference = reference;
     final l$service = service;
     final l$smartCardNumber = smartCardNumber;
-    final l$txn_hash = txn_hash;
     return Object.hashAll([
       l$amount,
       l$countryCode,
       l$customerName,
       l$packageCode,
+      l$payment,
       l$reference,
       l$service,
       l$smartCardNumber,
-      l$txn_hash,
     ]);
   }
 }
@@ -5645,11 +5794,12 @@ abstract class CopyWith$Input$TvBill_PaymentInput<TRes> {
     Enum$Country? countryCode,
     String? customerName,
     String? packageCode,
+    Input$PaymentInput? payment,
     String? reference,
     String? service,
     String? smartCardNumber,
-    String? txn_hash,
   });
+  CopyWith$Input$PaymentInput<TRes> get payment;
 }
 
 class _CopyWithImpl$Input$TvBill_PaymentInput<TRes>
@@ -5670,10 +5820,10 @@ class _CopyWithImpl$Input$TvBill_PaymentInput<TRes>
     Object? countryCode = _undefined,
     Object? customerName = _undefined,
     Object? packageCode = _undefined,
+    Object? payment = _undefined,
     Object? reference = _undefined,
     Object? service = _undefined,
     Object? smartCardNumber = _undefined,
-    Object? txn_hash = _undefined,
   }) =>
       _then(Input$TvBill_PaymentInput._({
         ..._instance._$data,
@@ -5685,15 +5835,20 @@ class _CopyWithImpl$Input$TvBill_PaymentInput<TRes>
           'customerName': (customerName as String),
         if (packageCode != _undefined && packageCode != null)
           'packageCode': (packageCode as String),
+        if (payment != _undefined && payment != null)
+          'payment': (payment as Input$PaymentInput),
         if (reference != _undefined && reference != null)
           'reference': (reference as String),
         if (service != _undefined && service != null)
           'service': (service as String),
         if (smartCardNumber != _undefined && smartCardNumber != null)
           'smartCardNumber': (smartCardNumber as String),
-        if (txn_hash != _undefined && txn_hash != null)
-          'txn_hash': (txn_hash as String),
       }));
+
+  CopyWith$Input$PaymentInput<TRes> get payment {
+    final local$payment = _instance.payment;
+    return CopyWith$Input$PaymentInput(local$payment, (e) => call(payment: e));
+  }
 }
 
 class _CopyWithStubImpl$Input$TvBill_PaymentInput<TRes>
@@ -5707,12 +5862,15 @@ class _CopyWithStubImpl$Input$TvBill_PaymentInput<TRes>
     Enum$Country? countryCode,
     String? customerName,
     String? packageCode,
+    Input$PaymentInput? payment,
     String? reference,
     String? service,
     String? smartCardNumber,
-    String? txn_hash,
   }) =>
       _res;
+
+  CopyWith$Input$PaymentInput<TRes> get payment =>
+      CopyWith$Input$PaymentInput.stub(_res);
 }
 
 class Input$TvBill_ValidateAccountInput {
@@ -5951,15 +6109,15 @@ class Input$Utilities_PurchaseAirtimeInput {
     required double amount,
     required Enum$Country countryCode,
     required int operatorId,
+    required Input$PaymentInput payment,
     required String phoneNo,
-    required String transaction_hash,
   }) =>
       Input$Utilities_PurchaseAirtimeInput._({
         r'amount': amount,
         r'countryCode': countryCode,
         r'operatorId': operatorId,
+        r'payment': payment,
         r'phoneNo': phoneNo,
-        r'transaction_hash': transaction_hash,
       });
 
   Input$Utilities_PurchaseAirtimeInput._(this._$data);
@@ -5974,10 +6132,11 @@ class Input$Utilities_PurchaseAirtimeInput {
         fromJson$Enum$Country((l$countryCode as String));
     final l$operatorId = data['operatorId'];
     result$data['operatorId'] = (l$operatorId as int);
+    final l$payment = data['payment'];
+    result$data['payment'] =
+        Input$PaymentInput.fromJson((l$payment as Map<String, dynamic>));
     final l$phoneNo = data['phoneNo'];
     result$data['phoneNo'] = (l$phoneNo as String);
-    final l$transaction_hash = data['transaction_hash'];
-    result$data['transaction_hash'] = (l$transaction_hash as String);
     return Input$Utilities_PurchaseAirtimeInput._(result$data);
   }
 
@@ -5989,9 +6148,9 @@ class Input$Utilities_PurchaseAirtimeInput {
 
   int get operatorId => (_$data['operatorId'] as int);
 
-  String get phoneNo => (_$data['phoneNo'] as String);
+  Input$PaymentInput get payment => (_$data['payment'] as Input$PaymentInput);
 
-  String get transaction_hash => (_$data['transaction_hash'] as String);
+  String get phoneNo => (_$data['phoneNo'] as String);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -6001,10 +6160,10 @@ class Input$Utilities_PurchaseAirtimeInput {
     result$data['countryCode'] = toJson$Enum$Country(l$countryCode);
     final l$operatorId = operatorId;
     result$data['operatorId'] = l$operatorId;
+    final l$payment = payment;
+    result$data['payment'] = l$payment.toJson();
     final l$phoneNo = phoneNo;
     result$data['phoneNo'] = l$phoneNo;
-    final l$transaction_hash = transaction_hash;
-    result$data['transaction_hash'] = l$transaction_hash;
     return result$data;
   }
 
@@ -6039,14 +6198,14 @@ class Input$Utilities_PurchaseAirtimeInput {
     if (l$operatorId != lOther$operatorId) {
       return false;
     }
+    final l$payment = payment;
+    final lOther$payment = other.payment;
+    if (l$payment != lOther$payment) {
+      return false;
+    }
     final l$phoneNo = phoneNo;
     final lOther$phoneNo = other.phoneNo;
     if (l$phoneNo != lOther$phoneNo) {
-      return false;
-    }
-    final l$transaction_hash = transaction_hash;
-    final lOther$transaction_hash = other.transaction_hash;
-    if (l$transaction_hash != lOther$transaction_hash) {
       return false;
     }
     return true;
@@ -6057,14 +6216,14 @@ class Input$Utilities_PurchaseAirtimeInput {
     final l$amount = amount;
     final l$countryCode = countryCode;
     final l$operatorId = operatorId;
+    final l$payment = payment;
     final l$phoneNo = phoneNo;
-    final l$transaction_hash = transaction_hash;
     return Object.hashAll([
       l$amount,
       l$countryCode,
       l$operatorId,
+      l$payment,
       l$phoneNo,
-      l$transaction_hash,
     ]);
   }
 }
@@ -6082,9 +6241,10 @@ abstract class CopyWith$Input$Utilities_PurchaseAirtimeInput<TRes> {
     double? amount,
     Enum$Country? countryCode,
     int? operatorId,
+    Input$PaymentInput? payment,
     String? phoneNo,
-    String? transaction_hash,
   });
+  CopyWith$Input$PaymentInput<TRes> get payment;
 }
 
 class _CopyWithImpl$Input$Utilities_PurchaseAirtimeInput<TRes>
@@ -6104,8 +6264,8 @@ class _CopyWithImpl$Input$Utilities_PurchaseAirtimeInput<TRes>
     Object? amount = _undefined,
     Object? countryCode = _undefined,
     Object? operatorId = _undefined,
+    Object? payment = _undefined,
     Object? phoneNo = _undefined,
-    Object? transaction_hash = _undefined,
   }) =>
       _then(Input$Utilities_PurchaseAirtimeInput._({
         ..._instance._$data,
@@ -6115,11 +6275,16 @@ class _CopyWithImpl$Input$Utilities_PurchaseAirtimeInput<TRes>
           'countryCode': (countryCode as Enum$Country),
         if (operatorId != _undefined && operatorId != null)
           'operatorId': (operatorId as int),
+        if (payment != _undefined && payment != null)
+          'payment': (payment as Input$PaymentInput),
         if (phoneNo != _undefined && phoneNo != null)
           'phoneNo': (phoneNo as String),
-        if (transaction_hash != _undefined && transaction_hash != null)
-          'transaction_hash': (transaction_hash as String),
       }));
+
+  CopyWith$Input$PaymentInput<TRes> get payment {
+    final local$payment = _instance.payment;
+    return CopyWith$Input$PaymentInput(local$payment, (e) => call(payment: e));
+  }
 }
 
 class _CopyWithStubImpl$Input$Utilities_PurchaseAirtimeInput<TRes>
@@ -6132,10 +6297,13 @@ class _CopyWithStubImpl$Input$Utilities_PurchaseAirtimeInput<TRes>
     double? amount,
     Enum$Country? countryCode,
     int? operatorId,
+    Input$PaymentInput? payment,
     String? phoneNo,
-    String? transaction_hash,
   }) =>
       _res;
+
+  CopyWith$Input$PaymentInput<TRes> get payment =>
+      CopyWith$Input$PaymentInput.stub(_res);
 }
 
 class Input$Utilities_PurchaseDataBundleInput {
@@ -6143,15 +6311,15 @@ class Input$Utilities_PurchaseDataBundleInput {
     required double amount,
     required Enum$Country countryCode,
     required int operatorId,
+    required Input$PaymentInput payment,
     required String phoneNo,
-    required String transaction_hash,
   }) =>
       Input$Utilities_PurchaseDataBundleInput._({
         r'amount': amount,
         r'countryCode': countryCode,
         r'operatorId': operatorId,
+        r'payment': payment,
         r'phoneNo': phoneNo,
-        r'transaction_hash': transaction_hash,
       });
 
   Input$Utilities_PurchaseDataBundleInput._(this._$data);
@@ -6166,10 +6334,11 @@ class Input$Utilities_PurchaseDataBundleInput {
         fromJson$Enum$Country((l$countryCode as String));
     final l$operatorId = data['operatorId'];
     result$data['operatorId'] = (l$operatorId as int);
+    final l$payment = data['payment'];
+    result$data['payment'] =
+        Input$PaymentInput.fromJson((l$payment as Map<String, dynamic>));
     final l$phoneNo = data['phoneNo'];
     result$data['phoneNo'] = (l$phoneNo as String);
-    final l$transaction_hash = data['transaction_hash'];
-    result$data['transaction_hash'] = (l$transaction_hash as String);
     return Input$Utilities_PurchaseDataBundleInput._(result$data);
   }
 
@@ -6181,9 +6350,9 @@ class Input$Utilities_PurchaseDataBundleInput {
 
   int get operatorId => (_$data['operatorId'] as int);
 
-  String get phoneNo => (_$data['phoneNo'] as String);
+  Input$PaymentInput get payment => (_$data['payment'] as Input$PaymentInput);
 
-  String get transaction_hash => (_$data['transaction_hash'] as String);
+  String get phoneNo => (_$data['phoneNo'] as String);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -6193,10 +6362,10 @@ class Input$Utilities_PurchaseDataBundleInput {
     result$data['countryCode'] = toJson$Enum$Country(l$countryCode);
     final l$operatorId = operatorId;
     result$data['operatorId'] = l$operatorId;
+    final l$payment = payment;
+    result$data['payment'] = l$payment.toJson();
     final l$phoneNo = phoneNo;
     result$data['phoneNo'] = l$phoneNo;
-    final l$transaction_hash = transaction_hash;
-    result$data['transaction_hash'] = l$transaction_hash;
     return result$data;
   }
 
@@ -6231,14 +6400,14 @@ class Input$Utilities_PurchaseDataBundleInput {
     if (l$operatorId != lOther$operatorId) {
       return false;
     }
+    final l$payment = payment;
+    final lOther$payment = other.payment;
+    if (l$payment != lOther$payment) {
+      return false;
+    }
     final l$phoneNo = phoneNo;
     final lOther$phoneNo = other.phoneNo;
     if (l$phoneNo != lOther$phoneNo) {
-      return false;
-    }
-    final l$transaction_hash = transaction_hash;
-    final lOther$transaction_hash = other.transaction_hash;
-    if (l$transaction_hash != lOther$transaction_hash) {
       return false;
     }
     return true;
@@ -6249,14 +6418,14 @@ class Input$Utilities_PurchaseDataBundleInput {
     final l$amount = amount;
     final l$countryCode = countryCode;
     final l$operatorId = operatorId;
+    final l$payment = payment;
     final l$phoneNo = phoneNo;
-    final l$transaction_hash = transaction_hash;
     return Object.hashAll([
       l$amount,
       l$countryCode,
       l$operatorId,
+      l$payment,
       l$phoneNo,
-      l$transaction_hash,
     ]);
   }
 }
@@ -6274,9 +6443,10 @@ abstract class CopyWith$Input$Utilities_PurchaseDataBundleInput<TRes> {
     double? amount,
     Enum$Country? countryCode,
     int? operatorId,
+    Input$PaymentInput? payment,
     String? phoneNo,
-    String? transaction_hash,
   });
+  CopyWith$Input$PaymentInput<TRes> get payment;
 }
 
 class _CopyWithImpl$Input$Utilities_PurchaseDataBundleInput<TRes>
@@ -6296,8 +6466,8 @@ class _CopyWithImpl$Input$Utilities_PurchaseDataBundleInput<TRes>
     Object? amount = _undefined,
     Object? countryCode = _undefined,
     Object? operatorId = _undefined,
+    Object? payment = _undefined,
     Object? phoneNo = _undefined,
-    Object? transaction_hash = _undefined,
   }) =>
       _then(Input$Utilities_PurchaseDataBundleInput._({
         ..._instance._$data,
@@ -6307,11 +6477,16 @@ class _CopyWithImpl$Input$Utilities_PurchaseDataBundleInput<TRes>
           'countryCode': (countryCode as Enum$Country),
         if (operatorId != _undefined && operatorId != null)
           'operatorId': (operatorId as int),
+        if (payment != _undefined && payment != null)
+          'payment': (payment as Input$PaymentInput),
         if (phoneNo != _undefined && phoneNo != null)
           'phoneNo': (phoneNo as String),
-        if (transaction_hash != _undefined && transaction_hash != null)
-          'transaction_hash': (transaction_hash as String),
       }));
+
+  CopyWith$Input$PaymentInput<TRes> get payment {
+    final local$payment = _instance.payment;
+    return CopyWith$Input$PaymentInput(local$payment, (e) => call(payment: e));
+  }
 }
 
 class _CopyWithStubImpl$Input$Utilities_PurchaseDataBundleInput<TRes>
@@ -6324,10 +6499,13 @@ class _CopyWithStubImpl$Input$Utilities_PurchaseDataBundleInput<TRes>
     double? amount,
     Enum$Country? countryCode,
     int? operatorId,
+    Input$PaymentInput? payment,
     String? phoneNo,
-    String? transaction_hash,
   }) =>
       _res;
+
+  CopyWith$Input$PaymentInput<TRes> get payment =>
+      CopyWith$Input$PaymentInput.stub(_res);
 }
 
 class Input$Wallet_CreateInput {

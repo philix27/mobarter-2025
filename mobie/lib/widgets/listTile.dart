@@ -49,13 +49,17 @@ Widget listTile({
               borderRadius: BorderRadius.circular(
                 16,
               ), // Change the radius as needed
-              child: CachedNetworkImage(
-                imageUrl: imgUrl,
-                placeholder: (context, url) => CircularProgressIndicator(),
-                width: 25,
-                height: 25,
-                fit: BoxFit.cover,
-              ),
+              child: imgUrl == null
+                  ? SizedBox.shrink()
+                  : CachedNetworkImage(
+                      imageUrl: imgUrl,
+                      placeholder: (context, url) =>
+                          CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => SizedBox.shrink(),
+                      width: 25,
+                      height: 25,
+                      fit: BoxFit.cover,
+                    ),
             )
           : leading,
       trailing: trailing,

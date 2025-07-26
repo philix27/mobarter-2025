@@ -153,8 +153,8 @@ input BettingPaymentInput {
   amount: Int!
   countryCode: Country!
   customer_id: String!
+  payment: PaymentInput!
   service_id: String!
-  transaction_hash: String!
 }
 
 type BettingPaymentResponse {
@@ -211,9 +211,9 @@ input ElectricityBill_PaymentInput {
   customerName: String!
   meterNumber: String!
   meterType: String!
+  payment: PaymentInput!
   reference: String!
   service: String!
-  transaction_hash: String!
 }
 
 type ElectricityBill_PaymentResponse {
@@ -554,6 +554,11 @@ enum OtpPurpose {
   Verification
 }
 
+input PaymentInput {
+  transaction_pin: String!
+  user_uid: String!
+}
+
 type Query {
   bankAccount_getAll: [BankAccount_Response!]!
   bankList: [BankList_Response!]!
@@ -742,10 +747,10 @@ input TvBill_PaymentInput {
   countryCode: Country!
   customerName: String!
   packageCode: String!
+  payment: PaymentInput!
   reference: String!
   service: String!
   smartCardNumber: String!
-  txn_hash: String!
 }
 
 type TvBill_PaymentResponse {
@@ -803,16 +808,16 @@ input Utilities_PurchaseAirtimeInput {
   amount: Float!
   countryCode: Country!
   operatorId: Int!
+  payment: PaymentInput!
   phoneNo: String!
-  transaction_hash: String!
 }
 
 input Utilities_PurchaseDataBundleInput {
   amount: Float!
   countryCode: Country!
   operatorId: Int!
+  payment: PaymentInput!
   phoneNo: String!
-  transaction_hash: String!
 }
 
 type Utilities_PurchaseTopUpResponse {

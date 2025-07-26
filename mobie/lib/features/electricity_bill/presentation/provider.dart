@@ -1,0 +1,105 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobarter/constants/theme.dart';
+import 'package:mobarter/features/electricity_bill/logic/provider.dart';
+import 'package:mobarter/graphql/schema/utilities.gql.dart';
+import 'package:mobarter/graphql/schema/_docs.graphql.dart';
+import 'package:mobarter/widgets/bottomSheet.dart';
+import 'package:mobarter/widgets/listTile.dart';
+
+class ElectricityBillerType extends ConsumerWidget {
+  const ElectricityBillerType({super.key});
+
+  @override
+  Widget build(BuildContext context, ref) {
+    final data = electricBillWatch(ref);
+
+    return listTile(
+      title: data.providerName ?? "Select Providers",
+      tileColor: colorCard,
+      imgUrl: data.providerImg,
+      trailing: Text(
+        "Providers",
+        style: TextStyle(fontSize: 12, color: colorText),
+      ),
+      onTap: () {
+        btmSheet(ctx: context, w: _SelectDataPlan(), h: 0.7);
+      },
+    );
+  }
+}
+
+class _SelectDataPlan extends HookWidget {
+  const _SelectDataPlan();
+
+  @override
+  Widget build(BuildContext context) {
+    final result = useQuery$ElectricityBill_getProviders(
+      Options$Query$ElectricityBill_getProviders(
+        variables: Variables$Query$ElectricityBill_getProviders(
+          input: Input$ElectricityBill_ProviderInput(
+            countryCode: Enum$Country.NG,
+          ),
+        ),
+      ),
+    );
+
+    if (result.result.isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    final list = result.result.parsedData?.electricityBill_getProviders;
+
+    return BillProvidersList(list: list);
+  }
+}
+
+class BillProvidersList extends ConsumerWidget {
+  BillProvidersList({super.key, required this.list});
+
+  final List<Query$ElectricityBill_getProviders$electricityBill_getProviders>?
+  list;
+
+  @override
+  Widget build(BuildContext context, ref) {
+    final data = electricBillWatch(ref);
+    final dataRead = electricBillRead(ref);
+
+    final cols = list;
+
+    if (cols == null || cols.isEmpty) {
+      return Center(child: Text("No providers"));
+    }
+
+    return ListView.builder(
+      itemCount: cols.length,
+      shrinkWrap: true,
+      itemBuilder: (ctx, i) {
+        final item = cols[i];
+
+        return listTile(
+          title: item.name,
+          subtitle: "${item.status ? "ACTIVE" : "NON-ACTIVE"}",
+          trailing: Text(
+            item.category.toUpperCase(),
+            style: TextStyle(fontSize: 13, color: colorText),
+          ),
+          imgUrl: item.logo,
+          onTap: () {
+            dataRead.updateBilerType(item.name, item.logo);
+          },
+        );
+      },
+    );
+  }
+}
+
+class Lists extends StatelessWidget {
+  const Lists({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
