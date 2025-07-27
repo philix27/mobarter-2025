@@ -6,7 +6,7 @@ class SendCryptoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return appScaffold(
+    return appScaffold(context,
       title: "Send Crypto",
       body: Column(children: []),
     );

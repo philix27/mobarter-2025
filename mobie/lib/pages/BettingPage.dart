@@ -6,7 +6,7 @@ class BettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return appScaffold(
+    return appScaffold(context,
       title: "Fund Betting Wallets",
       body: Column(children: []),
     );

@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import "package:flutter/services.dart";
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/config/crashlytics.dart';
 import 'package:mobarter/features/app/logic/provider.dart';
 import 'package:mobarter/features/intro/Welcome.dart';
-import 'package:mobarter/constants/theme.dart';
 import 'package:mobarter/features/onboarding/SetupTxnPinPage.dart';
+import 'package:mobarter/features/theme/theme.dart';
+import 'package:mobarter/features/theme/themes_provider.dart';
 import 'package:mobarter/graphql/api/Api.dart';
 import 'package:mobarter/pages/HomeLayout.dart';
 import 'package:mobarter/pages/WalletPage.dart';
@@ -53,23 +55,24 @@ class AppProviders extends StatelessWidget {
   }
 }
 
-class InitiateGql extends ConsumerWidget {
+class InitiateGql extends HookConsumerWidget {
   const InitiateGql({super.key});
 
   @override
   Widget build(BuildContext context, ref) {
     final token = appCredentialsWatch(ref).serverToken;
-
+    final themeState = themeWatch(ref);
     return GraphQLProvider(
       client: getGqlClientNotifier(token),
       child: ToastificationWrapper(
         child: MaterialApp(
           title: 'Mobarter',
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: colorPrimary),
-          ),
-          themeMode: ThemeMode.system,
+          themeMode: themeState.isDarkModeEnabled
+              ? ThemeMode.dark
+              : ThemeMode.light,
+          darkTheme: AppTheme.dark,
+          theme: AppTheme.light,
           home: WelcomePage(),
           routes: {
             "/home": (context) => const HomePageLayout(),

@@ -99,13 +99,13 @@ class SetupTxnPinHook extends HookWidget {
       }
     }
 
-    return appScaffold(
+    return appScaffold(context,
       title: "Password Setup",
       automaticallyImplyLeading: false,
       body: Column(
         spacing: 20,
         children: [
-          listTile(
+          listTile(context,
             title: questionSelected.isEmpty
                 ? "Pick a secret question"
                 : questionSelected,
@@ -119,7 +119,7 @@ class SetupTxnPinHook extends HookWidget {
                   itemCount: questionsList.length,
                   itemBuilder: (context, index) {
                     final title = questionsList[index];
-                    return listTile(
+                    return listTile(context,
                       title: title,
                       onTap: () {
                         stateUpdater(title);
@@ -188,7 +188,7 @@ class SecretQuestion extends HookWidget {
       itemCount: list.length,
       itemBuilder: (context, index) {
         final item = list[index];
-        return listTile(title: item.text);
+        return listTile( context,title: item.text);
       },
     );
   }

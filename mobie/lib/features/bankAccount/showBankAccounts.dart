@@ -9,7 +9,7 @@ class ShowBankAccounts extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final result = useQuery$BankAccount_getAll(
-      Options$Query$BankAccount_getAll(), 
+      Options$Query$BankAccount_getAll(),
     );
     final list = result.result.parsedData?.bankAccount_getAll;
 
@@ -27,6 +27,7 @@ class ShowBankAccounts extends HookWidget {
       itemBuilder: (BuildContext ctx, int index) {
         final item = list[index];
         return listTile(
+          context,
           title: item.account_name,
           subtitle: item.account_no,
           trailing: Text(item.bank_name, style: TextStyle(fontSize: 14)),

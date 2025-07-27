@@ -36,7 +36,7 @@ class TopUpsPage extends ConsumerWidget {
         break;
     }
 
-    return appScaffold(
+    return appScaffold(context,
       title: "Top Ups",
       body: Column(
         spacing: 20,

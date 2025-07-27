@@ -6,7 +6,7 @@ class GiftcardsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return appScaffold(
+    return appScaffold(context,
       title: "Giftcards",
       body: Column(children: []),
     );

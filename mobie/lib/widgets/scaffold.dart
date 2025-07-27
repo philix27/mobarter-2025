@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mobarter/features/theme/themeHandlers.dart';
 
 final bodyPadding = EdgeInsets.symmetric(horizontal: 16);
-Widget appScaffold({
+Widget appScaffold(
+  BuildContext context, {
   required String title,
   bool? noneScrollable,
   required Widget body,
@@ -11,8 +13,9 @@ Widget appScaffold({
   return Scaffold(
     appBar: AppBar(
       automaticallyImplyLeading: automaticallyImplyLeading,
-      title: appText(title),
+      title: Text(title, style: textTheme(context).headlineMedium),
       actions: actions,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor ,
     ),
     body: noneScrollable != null
         ? Padding(padding: bodyPadding, child: body)
@@ -26,6 +29,6 @@ Widget appScaffold({
 Widget appText(String title) {
   return Text(
     title,
-    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+    // style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
   );
 }

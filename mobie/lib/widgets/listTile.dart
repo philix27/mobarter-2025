@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:mobarter/constants/theme.dart';
+import 'package:mobarter/features/theme/themeHandlers.dart';
+// import 'package:mobarter/constants/theme.dart';
 
-Widget listTile({
+Widget listTile(
+  BuildContext context, {
   required String title,
   String? subtitle,
   Widget? leading,
@@ -11,40 +13,31 @@ Widget listTile({
   Widget? trailing,
   Color? tileColor,
   Function()? onTap,
-}) {  
+}) {
   return Card(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     elevation: 0.1,
-    color: colorCard,
+    // color: colorCard,
     child: ListTile(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       dense: true,
       onTap: onTap,
-      splashColor: colorPrimaryLight,
+      // splashColor: colorPrimaryLight,
       isThreeLine: false,
       // tileColor: colorCard,
       // tileColor: tileColor,
       // isThreeLine: subtitle != null,
-      title: Text(
-        title,
-        style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-      ),
+      title: Text(title, style: textTheme(context).bodyMedium),
       subtitle: subtitle != null
-          ? Text(
-              subtitle,
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w300),
-            )
+          ? Text(subtitle, style: textTheme(context).bodySmall)
           : null,
       leading: icon != null
-          ? ClipRRect(
-              borderRadius: BorderRadius.circular(
-                16,
-              ), // Change the radius as needed
-              child: Container(
-                color: colorCard,
-                padding: EdgeInsets.all(7),
-                // decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
-                child: Icon(icon, size: 20, color: colorPrimary),
+          ? Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
               ),
+              padding: EdgeInsets.all(7),
+              child: Icon(icon, size: 20),
             )
           : imgUrl != null
           ? ClipRRect(

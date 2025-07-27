@@ -6,7 +6,7 @@ class TransactionsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return appScaffold(
+    return appScaffold(context,
       title: "Transactions",
       body: Column(children: []),
     );

@@ -1,39 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/auth/auth_service.dart';
-import 'package:mobarter/features/bankAccount/showBankAccounts.dart';
 import 'package:mobarter/features/profile/showAccountInfo.dart';
 import 'package:mobarter/features/profile/showLearn.dart';
 import 'package:mobarter/features/profile/showDocsLinks.dart';
 import 'package:mobarter/features/profile/showSocials.dart';
 import 'package:mobarter/features/profile/showSupport.dart';
-import 'package:mobarter/features/profile/showTheme.dart';
 import 'package:mobarter/features/profile/showWallet.dart';
+import 'package:mobarter/features/theme/themes_provider.dart';
 import 'package:mobarter/utils/logger.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends HookConsumerWidget {
   SettingsPage({super.key});
   final authSvc = AuthService();
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeState = themeWatch(ref);
     final user = authSvc.user();
 
     if (user == null) {
       appLogger.e("User is not logged in");
       return appScaffold(
+        context,
         title: "Settings",
         body: Center(child: Text("You are not logged in.")),
       );
     }
 
     return appScaffold(
+      context,
       title: "Settings",
       body: Column(
         // spacing: 4,
         children: [
           listTile(
+            context,
             title: user.displayName!,
             subtitle: user.email,
             imgUrl: user.photoURL,
@@ -43,6 +48,7 @@ class SettingsPage extends StatelessWidget {
           ),
 
           listTile(
+            context,
             title: "Wallet",
             subtitle: "Ethereum Wallet Address",
             icon: Icons.wallet,
@@ -59,14 +65,31 @@ class SettingsPage extends StatelessWidget {
           //   },
           // ),
           listTile(
+            context,
             title: "Theme",
-            subtitle: 'Manage appearance',
+            subtitle: 'Toggle theme',
             icon: Icons.graphic_eq,
-            onTap: () {
-              btmSheet(ctx: context, w: ShowTheme(), h: 0.2);
-            },
+            // onTap: () {
+            //   btmSheet(ctx: context, w: ShowTheme(), h: 0.2);
+            // },
+            trailing: Transform.scale(
+              scale: 0.6,
+              child: Switch(
+                padding: EdgeInsets.all(0),
+                value: themeState.isDarkModeEnabled,
+                // materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                onChanged: (enabled) {
+                  if (enabled) {
+                    themeState.setDarkTheme();
+                  } else {
+                    themeState.setLightTheme();
+                  }
+                },
+              ),
+            ),
           ),
           listTile(
+            context,
             title: "Support & Community",
             subtitle: 'Contact customer support',
             icon: Icons.support_agent_rounded,
@@ -76,6 +99,7 @@ class SettingsPage extends StatelessWidget {
           ),
 
           listTile(
+            context,
             title: "Socials",
             subtitle: 'Social Media Pages',
             // todo: use proper icons
@@ -85,6 +109,7 @@ class SettingsPage extends StatelessWidget {
             },
           ),
           listTile(
+            context,
             title: "Docs",
             subtitle: 'Privacy and Legal Agreements',
             icon: Icons.link,
@@ -93,6 +118,7 @@ class SettingsPage extends StatelessWidget {
             },
           ),
           listTile(
+            context,
             title: "Learn",
             subtitle: 'Tutorials and Guide on Mobarter',
             icon: Icons.video_camera_front,
@@ -101,6 +127,7 @@ class SettingsPage extends StatelessWidget {
             },
           ),
           listTile(
+            context,
             title: "Logout",
             subtitle: "Signout your account",
             icon: Icons.logout,

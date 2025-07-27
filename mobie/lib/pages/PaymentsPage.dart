@@ -100,6 +100,7 @@ class PaymentsPage extends HookWidget {
     final notReady = data == null || result.result.isLoading;
 
     return appScaffold(
+      context,
       title: "Payment Services",
       noneScrollable: true,
       body: notReady
@@ -181,6 +182,7 @@ class MiniApps extends HookWidget {
       itemBuilder: (BuildContext ctx, int index) {
         final item = collection![index];
         return listTile(
+          context,
           title: item.title,
           subtitle: item.description,
           onTap: () {

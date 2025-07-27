@@ -12,7 +12,7 @@ class ShowCurrency extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final data = topUpWatch(ref);
-    return listTile(
+    return listTile(context,
       title: data.currency == null || data.currency!.isEmpty
           ? "Select Currency for payment"
           : data.currency!,
@@ -37,19 +37,19 @@ class _ShowCurrencyList extends ConsumerWidget {
       child: Column(
         spacing: 0,
         children: [
-          listTile(
+          listTile(context,
             title: "USDT",
             onTap: () {
               topUpdata.updateCurrency("USDT");
             },
           ),
-          listTile(
+          listTile(context,
             title: "CUSD",
             onTap: () {
               topUpdata.updateCurrency("CUSD");
             },
           ),
-          listTile(
+          listTile(context,
             title: "USDC",
             onTap: () {
               topUpdata.updateCurrency("USDC");

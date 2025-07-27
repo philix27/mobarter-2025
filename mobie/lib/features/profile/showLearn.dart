@@ -40,7 +40,7 @@ class _LearnLinks extends HookWidget {
       itemCount: collection?.length ?? 1,
       itemBuilder: (BuildContext ctx, int index) {
         final item = collection![index];
-        return listTile(
+        return listTile(context,
           title: item.title,
           subtitle: item.desc,
           icon: Icons.info,

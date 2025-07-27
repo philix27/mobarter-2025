@@ -22,15 +22,14 @@ class ShowWallet extends StatelessWidget {
                 return Text("No wallet found");
               }
 
+              final bg = Theme.of(context).hintColor;
               final w = snapshot.data!;
               return Column(
                 children: [
                   PrettyQrView.data(
                     data: w,
-                    decoration: const PrettyQrDecoration(
-                      // image: PrettyQrDecorationImage(
-                      //   image: AssetImage('images/flutter.png'),
-                      // ),
+                    decoration: PrettyQrDecoration(
+                      background: bg,
                       quietZone: PrettyQrQuietZone.standart,
                     ),
                   ),

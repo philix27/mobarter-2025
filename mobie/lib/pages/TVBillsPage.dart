@@ -6,7 +6,7 @@ class TvBillsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return appScaffold(
+    return appScaffold(context,
       title: "Pay TV Bills",
       body: Column(children: []),
     );

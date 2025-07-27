@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mobarter/features/auth/auth_service.dart';
 import 'package:mobarter/features/firestore/wallet.dart';
+import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/utils/getBalance.dart';
 import 'package:intl/intl.dart';
@@ -39,19 +40,9 @@ class TotalBalance extends HookWidget {
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "$total USD",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
-            ),
+            Text("$total USD", style: textTheme(context).bodyLarge),
             SizedBox(height: 8),
-            Text(
-              "~$displayNgn",
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w400,
-                color: Colors.grey,
-              ),
-            ),
+            Text("~$displayNgn", style: textTheme(context).bodySmall),
           ],
         );
       },

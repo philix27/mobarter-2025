@@ -11,13 +11,14 @@ class WalletPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return appScaffold(
+      context,
       title: "Wallet",
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           OptionalUpdateCard(),
           SizedBox(
-            height: getH(context, 0.1),
+            height: getH(context, 0.12),
             child: Center(child: TotalBalance()),
           ),
           TokensList(),

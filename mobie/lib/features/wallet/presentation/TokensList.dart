@@ -29,7 +29,7 @@ class TokensList extends HookWidget {
           itemCount: tokensList.length,
           itemBuilder: (BuildContext ctx, int index) {
             final item = tokensList[index];
-            return tokenRow(item, snap.data!);
+            return tokenRow(context, item, snap.data!);
           },
         );
       },
@@ -37,14 +37,15 @@ class TokensList extends HookWidget {
   }
 }
 
-Widget tokenRow(Query$static_getTokens$static_getTokens item, String wallet) {
+Widget tokenRow(
+  BuildContext context,
+  Query$static_getTokens$static_getTokens item,
+  String wallet,
+) {
   return ListTile(
     dense: true,
-    title: Text(
-      item.symbol,
-      style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w500),
-    ),
-
+    tileColor: Theme.of(context).scaffoldBackgroundColor,
+    title: Text(item.symbol, style: Theme.of(context).textTheme.headlineMedium),
     subtitle: FutureBuilder(
       future: getWalletTokenBalance(
         walletAddress: wallet,
@@ -53,14 +54,11 @@ Widget tokenRow(Query$static_getTokens$static_getTokens item, String wallet) {
       ),
       builder: (ctx, snap) {
         if (snap.data == null) {
-          return Text(
-            "0",
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-          );
+          return Text("0", style: Theme.of(context).textTheme.bodySmall);
         }
         return Text(
           snap.data.toString(),
-          style: TextStyle(fontSize: 12, fontWeight: FontWeight.w300),
+          style: Theme.of(context).textTheme.bodySmall,
         );
       },
     ),
@@ -80,10 +78,7 @@ Widget tokenRow(Query$static_getTokens$static_getTokens item, String wallet) {
       ),
       builder: (ctx, snap) {
         if (snap.data == null) {
-          return Text(
-            "0",
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w300),
-          );
+          return Text("0", style: Theme.of(context).textTheme.bodyMedium);
         }
 
         // final tokenCount = double.parse(snap.data!.toStringAsFixed(3));
@@ -94,20 +89,8 @@ Widget tokenRow(Query$static_getTokens$static_getTokens item, String wallet) {
         final displayBal = prev;
         return Text(
           "\$$displayBal",
-          style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+          style: Theme.of(context).textTheme.bodyMedium,
         );
-        // return Column(
-        //   children: [
-        //     // Text(
-        //     //   snap.data.toString(),
-        //     //   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w300),
-        //     // ),
-        //     Text(
-        //       "\$$bal",
-        //       style: TextStyle(fontSize: 12, fontWeight: FontWeight.w300),
-        //     ),
-        //   ],
-        // );
       },
     ),
   );

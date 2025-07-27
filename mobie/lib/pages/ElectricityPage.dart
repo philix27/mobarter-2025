@@ -19,7 +19,7 @@ class ElectricityPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final data = topUpWatch(ref);
 
-    return appScaffold(
+    return appScaffold(context,
       title: "Pay Electricity Bill",
       body: Column(
         spacing: 20,

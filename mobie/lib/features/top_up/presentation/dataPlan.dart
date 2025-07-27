@@ -16,7 +16,7 @@ class DataPlanWidget extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final data = topUpWatch(ref);
 
-    return listTile(
+    return listTile(context,
       title: data.amountFiat.toString() ?? "Select a data plan",
       tileColor: colorCard,
       trailing: Text(
@@ -111,7 +111,7 @@ class PlanList extends ConsumerWidget {
       itemBuilder: (ctx, i) {
         final item = plans[i];
 
-        return listTile(
+        return listTile(context,
           title: item.desc,
           trailing: Text(
             item.amount.toString(),

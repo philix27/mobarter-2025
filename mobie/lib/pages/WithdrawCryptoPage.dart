@@ -7,6 +7,7 @@ class WithdrawalPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return appScaffold(
+      context,
       title: "Withdraw Crypto",
       body: Column(children: []),
     );

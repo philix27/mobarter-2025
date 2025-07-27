@@ -43,7 +43,8 @@ class TopUpSummaryPage extends HookConsumerWidget {
       );
     }
 
-    return appScaffold(context,
+    return appScaffold(
+      context,
       title: "Transaction Summary",
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -106,7 +107,6 @@ class EnterPinAndSubmit extends HookConsumerWidget {
                   transaction_pin: "transaction_pin",
                   user_uid: "user_uid",
                 ),
-              
               ),
             ),
           )

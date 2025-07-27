@@ -6,7 +6,7 @@ class AddBankAccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return appScaffold(
+    return appScaffold(context,
       title: "Add Bank Accounts",
       body: Column(children: []),
     );

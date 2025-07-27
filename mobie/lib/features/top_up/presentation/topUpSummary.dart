@@ -43,7 +43,7 @@ class TopUpSummaryPage extends HookConsumerWidget {
       );
     }
 
-    return appScaffold(
+    return appScaffold(context,
       title: "Transaction Summary",
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),

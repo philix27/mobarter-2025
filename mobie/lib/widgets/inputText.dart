@@ -19,11 +19,22 @@ Widget textField({
     onChanged: onChanged,
     decoration: InputDecoration(
       labelText: label,
-      border: OutlineInputBorder(),
-      fillColor: colorCard,
-      focusColor: colorCard,
       helperText: helperText,
+      // focusedBorder: OutlineInputBorder(),
+      // enabledBorder: OutlineInputBorder(),
+      fillColor: Colors.grey.shade800,
+      focusColor: Colors.grey.shade800,
+      border: OutlineInputBorder(),
+      //
       helperStyle: TextStyle(color: Colors.grey),
+      labelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+      floatingLabelStyle: TextStyle(
+        fontSize: 12.5,
+        fontWeight: FontWeight.w300,
+      ),
+      // fillColor: colorCard,
+      // focusColor: colorCard,
+      // helperStyle: TextStyle(color: Colors.grey),
     ),
   );
 }

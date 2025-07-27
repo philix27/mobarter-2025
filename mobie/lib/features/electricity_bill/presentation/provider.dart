@@ -15,7 +15,7 @@ class ElectricityProviders extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final data = electricBillWatch(ref);
 
-    return listTile(
+    return listTile(context,
       title: data.providerName ?? "Select Providers",
       tileColor: colorCard,
       imgUrl: data.providerImg,
@@ -78,7 +78,7 @@ class BillProvidersList extends ConsumerWidget {
       itemBuilder: (ctx, i) {
         final item = cols[i];
 
-        return listTile(
+        return listTile(context,
           title: item.name,
           subtitle: "${item.status ? "ACTIVE" : "NON-ACTIVE"}",
           imgUrl: item.logo,
