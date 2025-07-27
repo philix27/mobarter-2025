@@ -24,15 +24,13 @@ class ElectricityPage extends ConsumerWidget {
       body: Column(
         spacing: 20,
         children: [
+          ElectricityProviders(),
           ElectricityAmount(),
-          ElectricityBillerType(),
           AccountNoField(),
-          listTile(title: "Upper Limit", subtitle: "Instructions"),
+          // listTile(title: "Upper Limit", subtitle: "Instructions"),
           CryptoAmountPay(),
-          SizedBox(height: 20),
-          // ShowTopUpProviders(),
-          // PhoneTextField(),
-          // TopUpTabs(),
+          SizedBox(height: 10),
+
           btn(
             title: "Submit",
             onPressed: () {

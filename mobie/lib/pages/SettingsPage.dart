@@ -50,14 +50,14 @@ class SettingsPage extends StatelessWidget {
               btmSheet(ctx: context, w: ShowWallet(), h: 0.5);
             },
           ),
-          listTile(
-            title: "Bank Accounts",
-            subtitle: "Manage bank account details",
-            icon: Icons.money,
-            onTap: () {
-              btmSheet(ctx: context, w: ShowBankAccounts(), h: 0.4);
-            },
-          ),
+          // listTile(
+          //   title: "Bank Accounts",
+          //   subtitle: "Manage bank account details",
+          //   icon: Icons.money,
+          //   onTap: () {
+          //     btmSheet(ctx: context, w: ShowBankAccounts(), h: 0.4);
+          //   },
+          // ),
           listTile(
             title: "Theme",
             subtitle: 'Manage appearance',

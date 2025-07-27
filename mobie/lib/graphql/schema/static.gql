@@ -81,3 +81,13 @@ query static_secretQuestions {
     text
   }
 }
+
+query static_miniApps {
+  static_miniApps {
+    title
+    description
+    logo
+    url
+    aboutInfo
+  }
+}

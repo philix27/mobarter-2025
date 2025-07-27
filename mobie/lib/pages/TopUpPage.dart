@@ -16,8 +16,8 @@ import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 enum TopUpScreen { airtime, dataPlan, dataBundle }
 
 class TopUpsPage extends ConsumerWidget {
-  final TopUpScreen screen;
-  const TopUpsPage({super.key, required this.screen});
+  // final TopUpScreen screen;
+  const TopUpsPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -1,4 +1,5 @@
 
+
 input Auth_CreateAccountInput {
   country: Country!
   email: String!
@@ -582,6 +583,7 @@ type Query {
   static_getFundCollectors: Static_FundCollectorsResponse!
   static_getLinks: [Static_GetLinkResponse!]!
   static_getTokens: [Static_GetTokenResponse!]!
+  static_miniApps: [Static_MiniAppsResponse!]!
   static_secretQuestions: [Static_SecretQuestionsResponse!]!
   transactions_getAll: [Transaction_GetResponse!]!
   transactions_getOne(input: Transaction_GetOneInput!): Transaction_GetResponse!
@@ -669,6 +671,14 @@ type Static_GetTokenResponse {
   priceNGN: Float!
   priceUSD: Float!
   symbol: String!
+}
+
+type Static_MiniAppsResponse {
+  aboutInfo: String
+  description: String!
+  logo: String!
+  title: String!
+  url: String!
 }
 
 type Static_SecretQuestionsResponse {

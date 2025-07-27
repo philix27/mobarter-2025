@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mobarter/constants/theme.dart';
+import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import 'package:webview_flutter_android/webview_flutter_android.dart';
@@ -6,16 +8,30 @@ import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
 class AppWebView extends StatefulWidget {
   final String url;
-  const AppWebView({super.key, required this.url});
+  final String title;
+  final String info;
+  const AppWebView({
+    super.key,
+    required this.url,
+    required this.title,
+    required this.info,
+  });
 
   @override
-  State<AppWebView> createState() => _AppWebViewState(url: url);
+  State<AppWebView> createState() =>
+      _AppWebViewState(url: url, title: title, info: info);
 }
 
 class _AppWebViewState extends State<AppWebView> {
-  _AppWebViewState({required this.url});
+  _AppWebViewState({
+    required this.url,
+    required this.info,
+    required this.title,
+  });
   late final WebViewController _controller;
   final String url;
+  final String title;
+  final String info;
 
   @override
   void initState() {
@@ -95,12 +111,42 @@ Page resource error:
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        toolbarHeight: 35,
+        toolbarOpacity: 0.7,
         title: Text(
-          "Page title",
+          title,
           style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              btmSheet(
+                ctx: context,
+                w: ShowDescription(desc: info),
+                h: 0.4,
+              );
+            },
+            padding: const EdgeInsets.only(right: 20.0),
+            icon: Icon(Icons.info, color: colorMuted, size: 24.0),
+          ),
+        ],
       ),
       body: WebViewWidget(controller: _controller),
+    );
+  }
+}
+
+class ShowDescription extends StatelessWidget {
+  const ShowDescription({super.key, required this.desc});
+  final String desc;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Text(
+        desc,
+        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w300),
+      ),
     );
   }
 }

@@ -14,7 +14,7 @@ class TokensList extends HookWidget {
     final tokensList = result.result.parsedData?.static_getTokens;
 
     if (tokensList == null || tokensList.isEmpty) {
-      return Text("No data yet");
+      return Center(child: Text("No data. Check your network connection"));
     }
     return FutureBuilder(
       future: walletSvc.userWalletAddress(),
@@ -39,6 +39,7 @@ class TokensList extends HookWidget {
 
 Widget tokenRow(Query$static_getTokens$static_getTokens item, String wallet) {
   return ListTile(
+    dense: true,
     title: Text(
       item.symbol,
       style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w500),

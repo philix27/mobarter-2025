@@ -11,11 +11,13 @@ Widget listTile({
   Widget? trailing,
   Color? tileColor,
   Function()? onTap,
-}) {
+}) {  
   return Card(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     elevation: 0.1,
+    color: colorCard,
     child: ListTile(
+      dense: true,
       onTap: onTap,
       splashColor: colorPrimaryLight,
       isThreeLine: false,

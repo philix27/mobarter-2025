@@ -4332,3 +4332,572 @@ class _CopyWithStubImpl$Query$static_secretQuestions$static_secretQuestions<
   }) =>
       _res;
 }
+
+class Query$static_miniApps {
+  Query$static_miniApps({
+    required this.static_miniApps,
+    this.$__typename = 'Query',
+  });
+
+  factory Query$static_miniApps.fromJson(Map<String, dynamic> json) {
+    final l$static_miniApps = json['static_miniApps'];
+    final l$$__typename = json['__typename'];
+    return Query$static_miniApps(
+      static_miniApps: (l$static_miniApps as List<dynamic>)
+          .map((e) => Query$static_miniApps$static_miniApps.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Query$static_miniApps$static_miniApps> static_miniApps;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$static_miniApps = static_miniApps;
+    _resultData['static_miniApps'] =
+        l$static_miniApps.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$static_miniApps = static_miniApps;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$static_miniApps.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$static_miniApps || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$static_miniApps = static_miniApps;
+    final lOther$static_miniApps = other.static_miniApps;
+    if (l$static_miniApps.length != lOther$static_miniApps.length) {
+      return false;
+    }
+    for (int i = 0; i < l$static_miniApps.length; i++) {
+      final l$static_miniApps$entry = l$static_miniApps[i];
+      final lOther$static_miniApps$entry = lOther$static_miniApps[i];
+      if (l$static_miniApps$entry != lOther$static_miniApps$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$static_miniApps on Query$static_miniApps {
+  CopyWith$Query$static_miniApps<Query$static_miniApps> get copyWith =>
+      CopyWith$Query$static_miniApps(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Query$static_miniApps<TRes> {
+  factory CopyWith$Query$static_miniApps(
+    Query$static_miniApps instance,
+    TRes Function(Query$static_miniApps) then,
+  ) = _CopyWithImpl$Query$static_miniApps;
+
+  factory CopyWith$Query$static_miniApps.stub(TRes res) =
+      _CopyWithStubImpl$Query$static_miniApps;
+
+  TRes call({
+    List<Query$static_miniApps$static_miniApps>? static_miniApps,
+    String? $__typename,
+  });
+  TRes static_miniApps(
+      Iterable<Query$static_miniApps$static_miniApps> Function(
+              Iterable<
+                  CopyWith$Query$static_miniApps$static_miniApps<
+                      Query$static_miniApps$static_miniApps>>)
+          _fn);
+}
+
+class _CopyWithImpl$Query$static_miniApps<TRes>
+    implements CopyWith$Query$static_miniApps<TRes> {
+  _CopyWithImpl$Query$static_miniApps(
+    this._instance,
+    this._then,
+  );
+
+  final Query$static_miniApps _instance;
+
+  final TRes Function(Query$static_miniApps) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? static_miniApps = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$static_miniApps(
+        static_miniApps: static_miniApps == _undefined ||
+                static_miniApps == null
+            ? _instance.static_miniApps
+            : (static_miniApps as List<Query$static_miniApps$static_miniApps>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes static_miniApps(
+          Iterable<Query$static_miniApps$static_miniApps> Function(
+                  Iterable<
+                      CopyWith$Query$static_miniApps$static_miniApps<
+                          Query$static_miniApps$static_miniApps>>)
+              _fn) =>
+      call(
+          static_miniApps: _fn(_instance.static_miniApps
+              .map((e) => CopyWith$Query$static_miniApps$static_miniApps(
+                    e,
+                    (i) => i,
+                  ))).toList());
+}
+
+class _CopyWithStubImpl$Query$static_miniApps<TRes>
+    implements CopyWith$Query$static_miniApps<TRes> {
+  _CopyWithStubImpl$Query$static_miniApps(this._res);
+
+  TRes _res;
+
+  call({
+    List<Query$static_miniApps$static_miniApps>? static_miniApps,
+    String? $__typename,
+  }) =>
+      _res;
+
+  static_miniApps(_fn) => _res;
+}
+
+const documentNodeQuerystatic_miniApps = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'static_miniApps'),
+    variableDefinitions: [],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'static_miniApps'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'title'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'description'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'logo'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'url'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'aboutInfo'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+]);
+Query$static_miniApps _parserFn$Query$static_miniApps(
+        Map<String, dynamic> data) =>
+    Query$static_miniApps.fromJson(data);
+typedef OnQueryComplete$Query$static_miniApps = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$static_miniApps?,
+);
+
+class Options$Query$static_miniApps
+    extends graphql.QueryOptions<Query$static_miniApps> {
+  Options$Query$static_miniApps({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$static_miniApps? typedOptimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+    OnQueryComplete$Query$static_miniApps? onComplete,
+    graphql.OnQueryError? onError,
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null ? null : _parserFn$Query$static_miniApps(data),
+                  ),
+          onError: onError,
+          document: documentNodeQuerystatic_miniApps,
+          parserFn: _parserFn$Query$static_miniApps,
+        );
+
+  final OnQueryComplete$Query$static_miniApps? onCompleteWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
+}
+
+class WatchOptions$Query$static_miniApps
+    extends graphql.WatchQueryOptions<Query$static_miniApps> {
+  WatchOptions$Query$static_miniApps({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$static_miniApps? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQuerystatic_miniApps,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$static_miniApps,
+        );
+}
+
+class FetchMoreOptions$Query$static_miniApps extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$static_miniApps(
+      {required graphql.UpdateQuery updateQuery})
+      : super(
+          updateQuery: updateQuery,
+          document: documentNodeQuerystatic_miniApps,
+        );
+}
+
+extension ClientExtension$Query$static_miniApps on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$static_miniApps>> query$static_miniApps(
+          [Options$Query$static_miniApps? options]) async =>
+      await this.query(options ?? Options$Query$static_miniApps());
+  graphql.ObservableQuery<Query$static_miniApps> watchQuery$static_miniApps(
+          [WatchOptions$Query$static_miniApps? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$static_miniApps());
+  void writeQuery$static_miniApps({
+    required Query$static_miniApps data,
+    bool broadcast = true,
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+            operation:
+                graphql.Operation(document: documentNodeQuerystatic_miniApps)),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$static_miniApps? readQuery$static_miniApps({bool optimistic = true}) {
+    final result = this.readQuery(
+      graphql.Request(
+          operation:
+              graphql.Operation(document: documentNodeQuerystatic_miniApps)),
+      optimistic: optimistic,
+    );
+    return result == null ? null : Query$static_miniApps.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$static_miniApps> useQuery$static_miniApps(
+        [Options$Query$static_miniApps? options]) =>
+    graphql_flutter.useQuery(options ?? Options$Query$static_miniApps());
+graphql.ObservableQuery<Query$static_miniApps> useWatchQuery$static_miniApps(
+        [WatchOptions$Query$static_miniApps? options]) =>
+    graphql_flutter
+        .useWatchQuery(options ?? WatchOptions$Query$static_miniApps());
+
+class Query$static_miniApps$Widget
+    extends graphql_flutter.Query<Query$static_miniApps> {
+  Query$static_miniApps$Widget({
+    widgets.Key? key,
+    Options$Query$static_miniApps? options,
+    required graphql_flutter.QueryBuilder<Query$static_miniApps> builder,
+  }) : super(
+          key: key,
+          options: options ?? Options$Query$static_miniApps(),
+          builder: builder,
+        );
+}
+
+class Query$static_miniApps$static_miniApps {
+  Query$static_miniApps$static_miniApps({
+    required this.title,
+    required this.description,
+    required this.logo,
+    required this.url,
+    this.aboutInfo,
+    this.$__typename = 'Static_MiniAppsResponse',
+  });
+
+  factory Query$static_miniApps$static_miniApps.fromJson(
+      Map<String, dynamic> json) {
+    final l$title = json['title'];
+    final l$description = json['description'];
+    final l$logo = json['logo'];
+    final l$url = json['url'];
+    final l$aboutInfo = json['aboutInfo'];
+    final l$$__typename = json['__typename'];
+    return Query$static_miniApps$static_miniApps(
+      title: (l$title as String),
+      description: (l$description as String),
+      logo: (l$logo as String),
+      url: (l$url as String),
+      aboutInfo: (l$aboutInfo as String?),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String title;
+
+  final String description;
+
+  final String logo;
+
+  final String url;
+
+  final String? aboutInfo;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$description = description;
+    _resultData['description'] = l$description;
+    final l$logo = logo;
+    _resultData['logo'] = l$logo;
+    final l$url = url;
+    _resultData['url'] = l$url;
+    final l$aboutInfo = aboutInfo;
+    _resultData['aboutInfo'] = l$aboutInfo;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$title = title;
+    final l$description = description;
+    final l$logo = logo;
+    final l$url = url;
+    final l$aboutInfo = aboutInfo;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$title,
+      l$description,
+      l$logo,
+      l$url,
+      l$aboutInfo,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$static_miniApps$static_miniApps ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) {
+      return false;
+    }
+    final l$description = description;
+    final lOther$description = other.description;
+    if (l$description != lOther$description) {
+      return false;
+    }
+    final l$logo = logo;
+    final lOther$logo = other.logo;
+    if (l$logo != lOther$logo) {
+      return false;
+    }
+    final l$url = url;
+    final lOther$url = other.url;
+    if (l$url != lOther$url) {
+      return false;
+    }
+    final l$aboutInfo = aboutInfo;
+    final lOther$aboutInfo = other.aboutInfo;
+    if (l$aboutInfo != lOther$aboutInfo) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$static_miniApps$static_miniApps
+    on Query$static_miniApps$static_miniApps {
+  CopyWith$Query$static_miniApps$static_miniApps<
+          Query$static_miniApps$static_miniApps>
+      get copyWith => CopyWith$Query$static_miniApps$static_miniApps(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$static_miniApps$static_miniApps<TRes> {
+  factory CopyWith$Query$static_miniApps$static_miniApps(
+    Query$static_miniApps$static_miniApps instance,
+    TRes Function(Query$static_miniApps$static_miniApps) then,
+  ) = _CopyWithImpl$Query$static_miniApps$static_miniApps;
+
+  factory CopyWith$Query$static_miniApps$static_miniApps.stub(TRes res) =
+      _CopyWithStubImpl$Query$static_miniApps$static_miniApps;
+
+  TRes call({
+    String? title,
+    String? description,
+    String? logo,
+    String? url,
+    String? aboutInfo,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Query$static_miniApps$static_miniApps<TRes>
+    implements CopyWith$Query$static_miniApps$static_miniApps<TRes> {
+  _CopyWithImpl$Query$static_miniApps$static_miniApps(
+    this._instance,
+    this._then,
+  );
+
+  final Query$static_miniApps$static_miniApps _instance;
+
+  final TRes Function(Query$static_miniApps$static_miniApps) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? title = _undefined,
+    Object? description = _undefined,
+    Object? logo = _undefined,
+    Object? url = _undefined,
+    Object? aboutInfo = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$static_miniApps$static_miniApps(
+        title: title == _undefined || title == null
+            ? _instance.title
+            : (title as String),
+        description: description == _undefined || description == null
+            ? _instance.description
+            : (description as String),
+        logo: logo == _undefined || logo == null
+            ? _instance.logo
+            : (logo as String),
+        url: url == _undefined || url == null ? _instance.url : (url as String),
+        aboutInfo: aboutInfo == _undefined
+            ? _instance.aboutInfo
+            : (aboutInfo as String?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Query$static_miniApps$static_miniApps<TRes>
+    implements CopyWith$Query$static_miniApps$static_miniApps<TRes> {
+  _CopyWithStubImpl$Query$static_miniApps$static_miniApps(this._res);
+
+  TRes _res;
+
+  call({
+    String? title,
+    String? description,
+    String? logo,
+    String? url,
+    String? aboutInfo,
+    String? $__typename,
+  }) =>
+      _res;
+}

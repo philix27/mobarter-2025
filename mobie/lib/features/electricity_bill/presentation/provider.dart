@@ -8,8 +8,8 @@ import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/listTile.dart';
 
-class ElectricityBillerType extends ConsumerWidget {
-  const ElectricityBillerType({super.key});
+class ElectricityProviders extends ConsumerWidget {
+  const ElectricityProviders({super.key});
 
   @override
   Widget build(BuildContext context, ref) {
@@ -81,10 +81,6 @@ class BillProvidersList extends ConsumerWidget {
         return listTile(
           title: item.name,
           subtitle: "${item.status ? "ACTIVE" : "NON-ACTIVE"}",
-          trailing: Text(
-            item.category.toUpperCase(),
-            style: TextStyle(fontSize: 13, color: colorText),
-          ),
           imgUrl: item.logo,
           onTap: () {
             dataRead.updateBilerType(item.name, item.logo);

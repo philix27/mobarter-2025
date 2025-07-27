@@ -17,7 +17,7 @@ class WalletPage extends StatelessWidget {
         children: [
           OptionalUpdateCard(),
           SizedBox(
-            height: getH(context, 0.155),
+            height: getH(context, 0.1),
             child: Center(child: TotalBalance()),
           ),
           TokensList(),
