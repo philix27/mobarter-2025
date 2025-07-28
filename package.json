@@ -38,7 +38,7 @@
     "typescript": "^5.8.3",
     "prettier": "^3.1.1",
     "turbo": "^2.4.4"
-  },
+  }, 
   "packageManager": "yarn@1.22.19",
   "husky": {
     "hooks": {
@@ -50,3 +50,4 @@
     "dotenv-cli": "^7.4.1"
   }
 }
+      

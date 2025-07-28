@@ -1,0 +1,45 @@
+buildscript {
+    ext.kotlin_version = '1.9.10'
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.5.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // classpath 'com.google.gms:google-services:4.4.3'
+        
+    }
+}
+
+plugins {
+    id 'com.google.gms.google-services' version '4.4.3' apply false
+    // Add the dependency for the Crashlytics Gradle plugin
+    id 'com.google.firebase.crashlytics' version '3.0.5' apply false
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { setUrl("https://s01.oss.sonatype.org/content/groups/staging/") }
+        maven { setUrl("https://s01.oss.sonatype.org/content/repositories/releases/") }
+        maven { setUrl("https://jitpack.io") }
+
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
+
+

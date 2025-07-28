@@ -1,0 +1,13 @@
+query FxRate_GetAll {
+  fxRate_GetAll {
+    GH
+    NG
+    KE
+    UG
+    MW
+    TZ
+    ZA
+    USD
+    EUR
+  }
+}

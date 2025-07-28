@@ -1,0 +1,22 @@
+{
+  "name": "mobie",
+  "version": "1.0.0",
+  "description": "A new Flutter project.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "w": " dart run build_runner watch -d",
+    "gen_gql": " dart run build_runner build",
+    "gen_icons": "dart run flutter_launcher_icons:generate",
+    "gen_splash": "dart run flutter_native_splash:create",
+    "build": "flutter build appbundle",
+    "build_apk": "flutter build apk",
+    "build_dev": "flutter build apk --split-per-abi"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,11 @@
+mutation Auth_firebaseLogin($input: Auth_FirebaseLoginInput!) {
+  auth_firebaseLogin(input: $input) {
+    firstname
+    lastname
+    middlename
+    email
+    token
+  }
+}
+
+

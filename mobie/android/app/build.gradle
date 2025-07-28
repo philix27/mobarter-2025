@@ -1,0 +1,132 @@
+import java.util.Properties
+import java.io.FileInputStream
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'dev.flutter.flutter-gradle-plugin'
+apply plugin: 'com.google.gms.google-services'
+// id 'com.google.gms.google-services'
+// apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+
+
+//new 
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file("key.properties")
+if (keystorePropertiesFile.exists()) {
+    try {
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    } catch (Exception e) {
+        throw new GradleException("Failed to load keystore properties: ${e.message}")
+    }
+} else {
+    println "Warning: key.properties file not found. Release builds may fail without signing config."
+}
+
+android {
+    namespace = "com.mobarter.app"
+    ndkVersion = "27.0.12077973"
+    compileSdkVersion flutter.compileSdkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17.toString()
+    }
+    dataBinding {
+        enabled = true
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.mobarter.app"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        // minSdk = flutter.minSdkVersion
+        minSdkVersion 26
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+
+    }
+
+    signingConfigs {
+        create("release") {
+            keyAlias = keystoreProperties["keyAlias"] as String
+            keyPassword = keystoreProperties["keyPassword"] as String
+            storeFile = keystoreProperties["storeFile"] ? file(keystoreProperties["storeFile"]) : null
+            // storeFile = keystoreProperties["storeFile"]?.let { file(it) }
+            storePassword = keystoreProperties["storePassword"] as String
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            // signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    modules {
+        module("org.bouncycastle:bcprov-jdk15to18") {
+            replacedBy("org.bouncycastle:bcprov-jdk15on")
+        }
+        module("org.bouncycastle:bcprov-jdk18on") {
+            replacedBy("org.bouncycastle:bcprov-jdk15on")
+        }
+    }
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation("com.github.xxhong:CollectsPkg:2.1.0")
+    implementation("commons-codec:commons-codec:1.15")
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+
+    implementation platform('com.google.firebase:firebase-bom:33.16.0')
+         // Add the dependencies for the Crashlytics NDK and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation("com.google.firebase:firebase-crashlytics-ndk")
+    implementation 'com.google.firebase:firebase-analytics'
+
+}
