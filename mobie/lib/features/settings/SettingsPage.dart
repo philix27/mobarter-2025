@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/auth/auth_service.dart';
-import 'package:mobarter/features/settings/showAccountInfo.dart';
+import 'package:mobarter/features/profile/profile_page.dart';
+import 'package:mobarter/features/settings/kyc_page.dart';
 import 'package:mobarter/features/settings/showLearn.dart';
 import 'package:mobarter/features/settings/showDocsLinks.dart';
 import 'package:mobarter/features/settings/showSocials.dart';
@@ -12,6 +13,7 @@ import 'package:mobarter/utils/logger.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/scaffold.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class SettingsPage extends HookConsumerWidget {
   SettingsPage({super.key});
@@ -43,10 +45,15 @@ class SettingsPage extends HookConsumerWidget {
             subtitle: user.email,
             imgUrl: user.photoURL,
             onTap: () async {
-              btmSheet(ctx: context, w: ShowAccountInfo(), h: 0.5);
+              pushScreen(
+                context,
+                screen: ProfilePage(),
+                withNavBar: false,
+                pageTransitionAnimation: PageTransitionAnimation.slideUp,
+              );
             },
           ),
-
+          KYCTile(),
           listTile(
             context,
             title: "Wallet",
@@ -69,9 +76,6 @@ class SettingsPage extends HookConsumerWidget {
             title: "Theme",
             subtitle: 'Toggle theme',
             icon: Icons.graphic_eq,
-            // onTap: () {
-            //   btmSheet(ctx: context, w: ShowTheme(), h: 0.2);
-            // },
             trailing: Transform.scale(
               scale: 0.6,
               child: Switch(

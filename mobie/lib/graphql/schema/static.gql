@@ -72,6 +72,9 @@ query static_appInfo {
     enableDataPlan
     enableElectricityBillPayment
     enableTVBillPayment
+    selfKycUrl
+    transactionsPageUrl
+    notificationsPageUrl
   }
 }
 
@@ -91,3 +94,5 @@ query static_miniApps {
     aboutInfo
   }
 }
+
+

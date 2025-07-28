@@ -31,7 +31,7 @@ class AppTheme {
       tileColor: Colors.grey.shade300,
       style: ListTileStyle.list,
     ),
-    hintColor: Colors.black,
+    hintColor: Colors.white,
     iconTheme: IconThemeData(color: Colors.black87),
   );
 
@@ -71,6 +71,6 @@ class AppTheme {
       labelStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
       floatingLabelStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w300),
     ),
-    iconTheme: IconThemeData(color: Colors.white70 ),
+    iconTheme: IconThemeData(color: Colors.white70),
   );
 }

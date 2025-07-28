@@ -101,7 +101,7 @@ class PaymentsPage extends HookWidget {
 
     return appScaffold(
       context,
-      title: "Payment Services",
+      title: "Services",
       noneScrollable: true,
       body: notReady
           ? CircularProgressIndicator()

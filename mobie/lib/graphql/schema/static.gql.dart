@@ -3388,6 +3388,27 @@ const documentNodeQuerystatic_appInfo = DocumentNode(definitions: [
             selectionSet: null,
           ),
           FieldNode(
+            name: NameNode(value: 'selfKycUrl'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'transactionsPageUrl'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'notificationsPageUrl'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
             name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
@@ -3558,6 +3579,9 @@ class Query$static_appInfo$static_appInfo {
     required this.enableDataPlan,
     required this.enableElectricityBillPayment,
     required this.enableTVBillPayment,
+    required this.selfKycUrl,
+    required this.transactionsPageUrl,
+    required this.notificationsPageUrl,
     this.$__typename = 'Static_AppInfoResponse',
   });
 
@@ -3572,6 +3596,9 @@ class Query$static_appInfo$static_appInfo {
     final l$enableDataPlan = json['enableDataPlan'];
     final l$enableElectricityBillPayment = json['enableElectricityBillPayment'];
     final l$enableTVBillPayment = json['enableTVBillPayment'];
+    final l$selfKycUrl = json['selfKycUrl'];
+    final l$transactionsPageUrl = json['transactionsPageUrl'];
+    final l$notificationsPageUrl = json['notificationsPageUrl'];
     final l$$__typename = json['__typename'];
     return Query$static_appInfo$static_appInfo(
       androidAppUrl: (l$androidAppUrl as String),
@@ -3583,6 +3610,9 @@ class Query$static_appInfo$static_appInfo {
       enableDataPlan: (l$enableDataPlan as bool),
       enableElectricityBillPayment: (l$enableElectricityBillPayment as bool),
       enableTVBillPayment: (l$enableTVBillPayment as bool),
+      selfKycUrl: (l$selfKycUrl as String),
+      transactionsPageUrl: (l$transactionsPageUrl as String),
+      notificationsPageUrl: (l$notificationsPageUrl as String),
       $__typename: (l$$__typename as String),
     );
   }
@@ -3604,6 +3634,12 @@ class Query$static_appInfo$static_appInfo {
   final bool enableElectricityBillPayment;
 
   final bool enableTVBillPayment;
+
+  final String selfKycUrl;
+
+  final String transactionsPageUrl;
+
+  final String notificationsPageUrl;
 
   final String $__typename;
 
@@ -3628,6 +3664,12 @@ class Query$static_appInfo$static_appInfo {
         l$enableElectricityBillPayment;
     final l$enableTVBillPayment = enableTVBillPayment;
     _resultData['enableTVBillPayment'] = l$enableTVBillPayment;
+    final l$selfKycUrl = selfKycUrl;
+    _resultData['selfKycUrl'] = l$selfKycUrl;
+    final l$transactionsPageUrl = transactionsPageUrl;
+    _resultData['transactionsPageUrl'] = l$transactionsPageUrl;
+    final l$notificationsPageUrl = notificationsPageUrl;
+    _resultData['notificationsPageUrl'] = l$notificationsPageUrl;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -3644,6 +3686,9 @@ class Query$static_appInfo$static_appInfo {
     final l$enableDataPlan = enableDataPlan;
     final l$enableElectricityBillPayment = enableElectricityBillPayment;
     final l$enableTVBillPayment = enableTVBillPayment;
+    final l$selfKycUrl = selfKycUrl;
+    final l$transactionsPageUrl = transactionsPageUrl;
+    final l$notificationsPageUrl = notificationsPageUrl;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$androidAppUrl,
@@ -3655,6 +3700,9 @@ class Query$static_appInfo$static_appInfo {
       l$enableDataPlan,
       l$enableElectricityBillPayment,
       l$enableTVBillPayment,
+      l$selfKycUrl,
+      l$transactionsPageUrl,
+      l$notificationsPageUrl,
       l$$__typename,
     ]);
   }
@@ -3714,6 +3762,21 @@ class Query$static_appInfo$static_appInfo {
     if (l$enableTVBillPayment != lOther$enableTVBillPayment) {
       return false;
     }
+    final l$selfKycUrl = selfKycUrl;
+    final lOther$selfKycUrl = other.selfKycUrl;
+    if (l$selfKycUrl != lOther$selfKycUrl) {
+      return false;
+    }
+    final l$transactionsPageUrl = transactionsPageUrl;
+    final lOther$transactionsPageUrl = other.transactionsPageUrl;
+    if (l$transactionsPageUrl != lOther$transactionsPageUrl) {
+      return false;
+    }
+    final l$notificationsPageUrl = notificationsPageUrl;
+    final lOther$notificationsPageUrl = other.notificationsPageUrl;
+    if (l$notificationsPageUrl != lOther$notificationsPageUrl) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -3752,6 +3815,9 @@ abstract class CopyWith$Query$static_appInfo$static_appInfo<TRes> {
     bool? enableDataPlan,
     bool? enableElectricityBillPayment,
     bool? enableTVBillPayment,
+    String? selfKycUrl,
+    String? transactionsPageUrl,
+    String? notificationsPageUrl,
     String? $__typename,
   });
 }
@@ -3779,6 +3845,9 @@ class _CopyWithImpl$Query$static_appInfo$static_appInfo<TRes>
     Object? enableDataPlan = _undefined,
     Object? enableElectricityBillPayment = _undefined,
     Object? enableTVBillPayment = _undefined,
+    Object? selfKycUrl = _undefined,
+    Object? transactionsPageUrl = _undefined,
+    Object? notificationsPageUrl = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Query$static_appInfo$static_appInfo(
@@ -3812,6 +3881,17 @@ class _CopyWithImpl$Query$static_appInfo$static_appInfo<TRes>
             enableTVBillPayment == _undefined || enableTVBillPayment == null
                 ? _instance.enableTVBillPayment
                 : (enableTVBillPayment as bool),
+        selfKycUrl: selfKycUrl == _undefined || selfKycUrl == null
+            ? _instance.selfKycUrl
+            : (selfKycUrl as String),
+        transactionsPageUrl:
+            transactionsPageUrl == _undefined || transactionsPageUrl == null
+                ? _instance.transactionsPageUrl
+                : (transactionsPageUrl as String),
+        notificationsPageUrl:
+            notificationsPageUrl == _undefined || notificationsPageUrl == null
+                ? _instance.notificationsPageUrl
+                : (notificationsPageUrl as String),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -3834,6 +3914,9 @@ class _CopyWithStubImpl$Query$static_appInfo$static_appInfo<TRes>
     bool? enableDataPlan,
     bool? enableElectricityBillPayment,
     bool? enableTVBillPayment,
+    String? selfKycUrl,
+    String? transactionsPageUrl,
+    String? notificationsPageUrl,
     String? $__typename,
   }) =>
       _res;

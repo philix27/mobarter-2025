@@ -12,10 +12,11 @@ Widget appScaffold(
 }) {
   return Scaffold(
     appBar: AppBar(
+      centerTitle: true,
       automaticallyImplyLeading: automaticallyImplyLeading,
       title: Text(title, style: textTheme(context).headlineMedium),
       actions: actions,
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor ,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     ),
     body: noneScrollable != null
         ? Padding(padding: bodyPadding, child: body)

@@ -1,5 +1,4 @@
 
-
 input Auth_CreateAccountInput {
   country: Country!
   email: String!
@@ -618,6 +617,9 @@ type Static_AppInfoResponse {
   enableTVBillPayment: Boolean!
   iosAppUrl: String!
   minBuild: Float!
+  notificationsPageUrl: String!
+  selfKycUrl: String!
+  transactionsPageUrl: String!
 }
 
 type Static_FundCollectorsResponse {
