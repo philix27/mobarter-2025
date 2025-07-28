@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:mobarter/features/bill_tv/TvBillsPage.dart';
 import 'package:mobarter/features/theme/constColors.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/pages/BettingPage.dart';
-import 'package:mobarter/pages/ElectricityPage.dart';
-import 'package:mobarter/pages/TVBillsPage.dart';
-import 'package:mobarter/pages/TopUpPage.dart';
+import 'package:mobarter/features/bill_electricity/ElectricityPage.dart';
+import 'package:mobarter/features/top_up/TopUpPage.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 import 'package:mobarter/widgets/toast.dart';
 import 'package:mobarter/widgets/webview.dart';

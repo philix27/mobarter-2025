@@ -1,23 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobarter/features/top_up/logic/provider.dart';
 import 'package:mobarter/graphql/schema/fx.gql.dart';
 
-class CryptoAmountPay extends ConsumerWidget {
-  const CryptoAmountPay({super.key});
+class CryptoAmountPay extends HookWidget {
+  final double amountFiat;
 
-  @override
-  Widget build(BuildContext context, ref) {
-    final data = topUpWatch(ref);
-    return _PriceToPay(amountFiat: data.amountFiat);
-  }
-}
-
-class _PriceToPay extends HookWidget {
-  final double? amountFiat;
-
-  _PriceToPay({required this.amountFiat});
+  CryptoAmountPay({required this.amountFiat});
 
   @override
   Widget build(BuildContext context) {

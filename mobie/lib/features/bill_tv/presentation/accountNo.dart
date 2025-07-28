@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobarter/features/electricity_bill/logic/provider.dart';
+import 'package:mobarter/features/bill_tv/logic/provider.dart';
 import 'package:mobarter/widgets/inputText.dart';
 import 'package:mobarter/widgets/toast.dart';
 
-class AccountNoField extends ConsumerWidget {
-  AccountNoField({super.key});
+class TvBillsAccountNoField extends ConsumerWidget {
+  TvBillsAccountNoField({super.key});
   final TextEditingController text = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final provider = electricBillRead(ref);
+    final provider = tvBillRead(ref);
 
     return textField(
       label: 'Meter/Account Number',

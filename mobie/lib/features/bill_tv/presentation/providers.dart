@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobarter/features/bill_tv/logic/provider.dart';
 import 'package:mobarter/features/theme/constColors.dart';
-import 'package:mobarter/features/electricity_bill/logic/provider.dart';
 import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/listTile.dart';
 
-class ElectricityProviders extends ConsumerWidget {
-  const ElectricityProviders({super.key});
+class TvBillsProviders extends ConsumerWidget {
+  const TvBillsProviders({super.key});
 
   @override
   Widget build(BuildContext context, ref) {
-    final data = electricBillWatch(ref);
+    final data = tvBillWatch(ref);
 
-    return listTile(context,
+    return listTile(
+      context,
       title: data.providerName ?? "Select Providers",
       tileColor: colorCard,
       imgUrl: data.providerImg,
@@ -35,12 +36,10 @@ class _SelectDataPlan extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final result = useQuery$ElectricityBill_getProviders(
-      Options$Query$ElectricityBill_getProviders(
-        variables: Variables$Query$ElectricityBill_getProviders(
-          input: Input$ElectricityBill_ProviderInput(
-            countryCode: Enum$Country.NG,
-          ),
+    final result = useQuery$tvBills_getProviders(
+      Options$Query$tvBills_getProviders(
+        variables: Variables$Query$tvBills_getProviders(
+          input: Input$TvBill_GetTVProvidersInput(countryCode: Enum$Country.NG),
         ),
       ),
     );
@@ -49,7 +48,7 @@ class _SelectDataPlan extends HookWidget {
       return const Center(child: CircularProgressIndicator());
     }
 
-    final list = result.result.parsedData?.electricityBill_getProviders;
+    final list = result.result.parsedData?.tvBills_getProviders;
 
     return BillProvidersList(list: list);
   }
@@ -58,13 +57,12 @@ class _SelectDataPlan extends HookWidget {
 class BillProvidersList extends ConsumerWidget {
   BillProvidersList({super.key, required this.list});
 
-  final List<Query$ElectricityBill_getProviders$electricityBill_getProviders>?
-  list;
+  final List<Query$tvBills_getProviders$tvBills_getProviders>? list;
 
   @override
   Widget build(BuildContext context, ref) {
-    final data = electricBillWatch(ref);
-    final dataRead = electricBillRead(ref);
+    final data = tvBillWatch(ref);
+    final dataRead = tvBillRead(ref);
 
     final cols = list;
 
@@ -78,7 +76,8 @@ class BillProvidersList extends ConsumerWidget {
       itemBuilder: (ctx, i) {
         final item = cols[i];
 
-        return listTile(context,
+        return listTile(
+          context,
           title: item.name,
           subtitle: "${item.status ? "ACTIVE" : "NON-ACTIVE"}",
           imgUrl: item.logo,

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mobarter/features/electricity_bill/logic/provider.dart';
+import 'package:mobarter/features/bill_tv/logic/provider.dart';
 import 'package:mobarter/graphql/schema/fx.gql.dart';
 
 import 'package:mobarter/widgets/inputText.dart';
 import 'package:mobarter/widgets/toast.dart';
 
-class ElectricityAmount extends HookConsumerWidget {
-  const ElectricityAmount({super.key});
+class TvBillsAmount extends HookConsumerWidget {
+  const TvBillsAmount({super.key});
 
   @override
   Widget build(BuildContext context, ref) {
-    final topUpdata = electricBillRead(ref);
+    final topUpdata = tvBillRead(ref);
     final result = useQuery$FxRate_GetAll(Options$Query$FxRate_GetAll());
 
     final data = result.result;

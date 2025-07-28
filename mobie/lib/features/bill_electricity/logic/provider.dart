@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobarter/features/electricity_bill/logic/notifier.dart';
-import 'package:mobarter/features/electricity_bill/model/topData.dart';
+import 'package:mobarter/features/bill_electricity/logic/notifier.dart';
+import 'package:mobarter/features/bill_electricity/model/data.dart';
 
 final electricityBillProvider =
     StateNotifierProvider<ElectricityBillDataNotifier, ElectricityBillData>((
