@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:mobarter/features/bill_betting/FundBettingWalletPage.dart';
 import 'package:mobarter/features/bill_tv/TvBillsPage.dart';
 import 'package:mobarter/features/theme/constColors.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
-import 'package:mobarter/pages/BettingPage.dart';
 import 'package:mobarter/features/bill_electricity/ElectricityPage.dart';
-import 'package:mobarter/features/top_up/TopUpPage.dart';
+import 'package:mobarter/features/bill_top_up/TopUpPage.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 import 'package:mobarter/widgets/toast.dart';
 import 'package:mobarter/widgets/webview.dart';
@@ -34,7 +34,12 @@ List<PaymentProduct> productsList(
       icon: Icons.phone,
       onPressed: () {
         if (appInfo!.enableAirtime) {
-          pushScreen(ctx, screen: TopUpsPage(), withNavBar: false);
+          pushScreen(
+            ctx,
+            screen: TopUpsPage(),
+            withNavBar: false,
+            pageTransitionAnimation: PageTransitionAnimation.slideUp,
+          );
           return;
         } else {
           apptToast(ctx, "Coming soon");
@@ -47,7 +52,12 @@ List<PaymentProduct> productsList(
       icon: Icons.network_cell,
       onPressed: () {
         if (appInfo!.enableDataPlan) {
-          pushScreen(ctx, screen: TopUpsPage(), withNavBar: false);
+          pushScreen(
+            ctx,
+            screen: TopUpsPage(),
+            withNavBar: false,
+            pageTransitionAnimation: PageTransitionAnimation.slideUp,
+          );
         } else {
           apptToast(ctx, "Coming soon");
         }
@@ -58,7 +68,12 @@ List<PaymentProduct> productsList(
       icon: Icons.light,
       onPressed: () {
         if (appInfo!.enableElectricityBillPayment) {
-          pushScreen(ctx, screen: ElectricityPage(), withNavBar: false);
+          pushScreen(
+            ctx,
+            screen: ElectricityPage(),
+            withNavBar: false,
+            pageTransitionAnimation: PageTransitionAnimation.slideUp,
+          );
         } else {
           apptToast(ctx, "Coming soon");
         }
@@ -68,7 +83,12 @@ List<PaymentProduct> productsList(
       title: 'TV',
       onPressed: () {
         if (appInfo!.enableTVBillPayment) {
-          pushScreen(ctx, screen: TvBillsPage(), withNavBar: false);
+          pushScreen(
+            ctx,
+            screen: TvBillsPage(),
+            withNavBar: false,
+            pageTransitionAnimation: PageTransitionAnimation.slideUp,
+          );
         } else {
           apptToast(ctx, "Coming soon");
         }
@@ -79,7 +99,12 @@ List<PaymentProduct> productsList(
       title: 'Betting',
       onPressed: () {
         if (appInfo!.enableBetting) {
-          pushScreen(ctx, screen: BettingPage(), withNavBar: false);
+          pushScreen(
+            ctx,
+            screen: FundBettingBillsPage(),
+            withNavBar: false,
+            pageTransitionAnimation: PageTransitionAnimation.slideUp,
+          );
         } else {
           apptToast(ctx, "Coming soon");
         }
@@ -194,6 +219,7 @@ class MiniApps extends HookWidget {
                 info: item.description,
               ),
               withNavBar: false,
+              pageTransitionAnimation: PageTransitionAnimation.slideUp,
             );
           },
           imgUrl: item.logo,

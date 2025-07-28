@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobarter/features/top_up/TopUpPage.dart';
-import 'package:mobarter/features/top_up/model/topData.dart';
+import 'package:mobarter/features/bill_top_up/TopUpPage.dart';
+import 'package:mobarter/features/bill_top_up/model/topData.dart';
 
 class TopUpDataNotifier extends StateNotifier<TopData> {
   TopUpDataNotifier()

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobarter/features/theme/constColors.dart';
-import 'package:mobarter/features/top_up/TopUpPage.dart';
-import 'package:mobarter/features/top_up/logic/provider.dart';
+import 'package:mobarter/features/bill_top_up/TopUpPage.dart';
+import 'package:mobarter/features/bill_top_up/logic/provider.dart';
 
 class TopUpTabs extends ConsumerWidget {
   @override

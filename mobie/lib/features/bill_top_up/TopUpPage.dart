@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mobarter/features/top_up/logic/provider.dart';
-import 'package:mobarter/features/top_up/presentation/airtime.dart';
-import 'package:mobarter/features/top_up/presentation/dataPlan.dart';
-import 'package:mobarter/features/top_up/presentation/phoneNo.dart';
-import 'package:mobarter/features/top_up/presentation/screenTabs.dart';
-import 'package:mobarter/features/top_up/presentation/selectNetwork.dart';
+import 'package:mobarter/features/bill_top_up/logic/provider.dart';
+import 'package:mobarter/features/bill_top_up/presentation/airtime.dart';
+import 'package:mobarter/features/bill_top_up/presentation/dataPlan.dart';
+import 'package:mobarter/features/bill_top_up/presentation/phoneNo.dart';
+import 'package:mobarter/features/bill_top_up/presentation/screenTabs.dart';
+import 'package:mobarter/features/bill_top_up/presentation/selectNetwork.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/utils/logger.dart' show appLogger;

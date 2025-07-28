@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mobarter/features/top_up/logic/provider.dart';
+import 'package:mobarter/features/bill_top_up/logic/provider.dart';
 import 'package:mobarter/graphql/schema/fx.gql.dart';
 
 import 'package:mobarter/widgets/inputText.dart';

@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobarter/features/top_up/logic/provider.dart';
+import 'package:mobarter/features/bill_betting/logic/provider.dart';
 import 'package:mobarter/widgets/inputText.dart';
 import 'package:mobarter/widgets/toast.dart';
 
-class PhoneTextField extends ConsumerWidget {
-  PhoneTextField({super.key});
-  final TextEditingController phone = TextEditingController();
+class ServiceIdField extends ConsumerWidget {
+  ServiceIdField({super.key});
+  final TextEditingController text = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final topUpdata = topUpRead(ref);
+    final provider = bettingRead(ref);
 
     return textField(
-      label: 'Phone No.',
-      helperText: "Ensure the no. belogs to the specified network",
+      label: 'Meter/Account Number',
+      // helperText: "Ensure the no. belogs to the specified network",
       maxLength: 11,
-      // controller: phone,
+      // controller: text,
       keyboardType: TextInputType.number,
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly, // Allow digits only
@@ -29,8 +29,8 @@ class PhoneTextField extends ConsumerWidget {
           apptToast(context, "Maximum 11 digits allowed");
           return;
         }
-        // phone.text = value;
-        topUpdata.updatePhone(value);
+        // text.text = value;
+        provider.updateAccountNo(value);
       },
     );
   }
