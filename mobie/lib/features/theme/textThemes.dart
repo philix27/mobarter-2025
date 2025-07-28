@@ -9,7 +9,7 @@ final TextTheme textThemeLight = TextTheme(
   ),
   bodyLarge: TextStyle(
     color: Colors.black87,
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: FontWeight.w700,
   ),
   bodyMedium: TextStyle(

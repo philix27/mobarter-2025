@@ -8,7 +8,7 @@ import 'package:mobarter/config/crashlytics.dart';
 import 'package:mobarter/features/app/logic/provider.dart';
 import 'package:mobarter/features/intro/Welcome.dart';
 import 'package:mobarter/features/onboarding/SetupTxnPinPage.dart';
-import 'package:mobarter/features/theme/theme.dart';
+import 'package:mobarter/features/theme/app_theme.dart';
 import 'package:mobarter/features/theme/themes_provider.dart';
 import 'package:mobarter/graphql/api/Api.dart';
 import 'package:mobarter/pages/HomeLayout.dart';

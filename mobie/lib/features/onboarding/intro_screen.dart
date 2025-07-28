@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/constants/theme.dart';
+import 'package:mobarter/features/theme/constColors.dart';
 import 'package:mobarter/features/intro/btn.dart';
 import 'package:mobarter/features/intro/display_version_no.dart';
 import 'package:mobarter/utils/size.dart';

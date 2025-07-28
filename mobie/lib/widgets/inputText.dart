@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/constants/theme.dart';
+import 'package:mobarter/features/theme/constColors.dart';
 import 'package:flutter/services.dart';
 
 Widget textField({
@@ -17,24 +17,27 @@ Widget textField({
     inputFormatters: inputFormatters,
     controller: controller,
     onChanged: onChanged,
+    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
     decoration: InputDecoration(
       labelText: label,
       helperText: helperText,
-      // focusedBorder: OutlineInputBorder(),
-      // enabledBorder: OutlineInputBorder(),
-      fillColor: Colors.grey.shade800,
-      focusColor: Colors.grey.shade800,
-      border: OutlineInputBorder(),
-      //
-      helperStyle: TextStyle(color: Colors.grey),
-      labelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-      floatingLabelStyle: TextStyle(
-        fontSize: 12.5,
-        fontWeight: FontWeight.w300,
+      fillColor: Colors.grey.shade200,
+      focusColor: Colors.deepOrange,
+      contentPadding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
+      border: OutlineInputBorder(
+        borderSide: BorderSide(width: 0.8, color: Colors.grey.shade200),
       ),
-      // fillColor: colorCard,
-      // focusColor: colorCard,
-      // helperStyle: TextStyle(color: Colors.grey),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(width: 1, color: Colors.deepOrange),
+      ),
+      filled: true,
+      //   helperStyle: TextStyle(color: Colors.grey),
+      labelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+      floatingLabelStyle: TextStyle(
+        fontSize: 15,
+        fontWeight: FontWeight.w300,
+        // color: Colors.deepOrange,
+      ),
     ),
   );
 }

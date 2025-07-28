@@ -31,8 +31,8 @@ class AppTheme {
       tileColor: Colors.grey.shade300,
       style: ListTileStyle.list,
     ),
-
     hintColor: Colors.black,
+    iconTheme: IconThemeData(color: Colors.black87),
   );
 
   static final dark = ThemeData(
@@ -60,7 +60,10 @@ class AppTheme {
     cardTheme: CardThemeData(color: Colors.black54),
     switchTheme: switchThemeDark,
     inputDecorationTheme: InputDecorationTheme(
-      focusedBorder: OutlineInputBorder(),
+      border: OutlineInputBorder(borderSide: BorderSide(width: 0.4)),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(width: 0.8, color: Colors.deepOrange),
+      ),
       enabledBorder: OutlineInputBorder(),
       fillColor: Colors.grey.shade800,
       focusColor: Colors.grey.shade800,
@@ -68,5 +71,6 @@ class AppTheme {
       labelStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
       floatingLabelStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w300),
     ),
+    iconTheme: IconThemeData(color: Colors.white70 ),
   );
 }
