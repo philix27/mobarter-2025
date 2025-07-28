@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:mobarter/constants/theme.dart';
-import 'package:mobarter/pages/WalletPage.dart';
+import 'package:mobarter/features/wallet/WalletPage.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:mobarter/pages/PaymentsPage.dart';
 import 'package:mobarter/features/settings/SettingsPage.dart';

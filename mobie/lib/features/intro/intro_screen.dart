@@ -37,7 +37,7 @@ class IntroScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Image(height: getH(context, 0.4), image: AssetImage(imagePath)),
+          Image(height: getH(context, 0.35), image: AssetImage(imagePath)),
           button == null
               ? AnimatedSmoothIndicator(
                   activeIndex: activeIndex,
