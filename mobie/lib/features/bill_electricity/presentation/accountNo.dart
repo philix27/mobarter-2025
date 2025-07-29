@@ -22,7 +22,6 @@ class AccountNo extends HookConsumerWidget {
 
     getAcctInfo() async {
       try {
-        require(null, "Select a provider");
         require(w.providerName, "Select a provider");
         require(w.isPrepaid, "Select a Meter type");
         require(w.accountNo, "Account No. needed");
@@ -48,7 +47,7 @@ class AccountNo extends HookConsumerWidget {
           result.customerAddress,
         );
       } catch (e) {
-        apptToast(context, e.toString());
+        appToast(context, e.toString());
       }
     }
 
@@ -64,7 +63,7 @@ class AccountNo extends HookConsumerWidget {
       onChanged: (value) {
         if (value.length > 13) {
           value = value.substring(0, 13); // Limit to 11 digits
-          apptToast(context, "Maximum 13 digits allowed");
+          appToast(context, "Maximum 13 digits allowed");
           return;
         }
         if (value.length >= 11 && value.length <= 13) {

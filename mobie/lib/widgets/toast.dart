@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobarter/features/theme/constColors.dart';
 import 'package:toastification/toastification.dart';
 
-ToastificationItem apptToast(
+ToastificationItem appToast(
   BuildContext ctx,
   String text, {
   String? subtitle,

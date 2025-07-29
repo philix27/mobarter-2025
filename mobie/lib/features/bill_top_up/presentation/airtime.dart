@@ -42,7 +42,7 @@ class AirtimeWidget extends HookConsumerWidget {
       onChanged: (value) {
         if (value.length > 6) {
           value = value.substring(0, 6); // Limit to 11 digits3
-          apptToast(context, "Maximum 6 digits allowed");
+          appToast(context, "Maximum 6 digits allowed");
           return;
         }
         final double amt = double.tryParse(value) ?? 0.0;

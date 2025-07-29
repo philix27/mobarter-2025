@@ -26,7 +26,7 @@ class ServiceIdField extends ConsumerWidget {
       onChanged: (value) {
         if (value.length > 11) {
           value = value.substring(0, 11); // Limit to 11 digits
-          apptToast(context, "Maximum 11 digits allowed");
+          appToast(context, "Maximum 11 digits allowed");
           return;
         }
         // text.text = value;

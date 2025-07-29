@@ -42,7 +42,7 @@ List<PaymentProduct> productsList(
           );
           return;
         } else {
-          apptToast(ctx, "Coming soon");
+          appToast(ctx, "Coming soon");
         }
       },
     ),
@@ -59,7 +59,7 @@ List<PaymentProduct> productsList(
             pageTransitionAnimation: PageTransitionAnimation.slideUp,
           );
         } else {
-          apptToast(ctx, "Coming soon");
+          appToast(ctx, "Coming soon");
         }
       },
     ),
@@ -75,7 +75,7 @@ List<PaymentProduct> productsList(
             pageTransitionAnimation: PageTransitionAnimation.slideUp,
           );
         } else {
-          apptToast(ctx, "Coming soon");
+          appToast(ctx, "Coming soon");
         }
       },
     ),
@@ -90,7 +90,7 @@ List<PaymentProduct> productsList(
             pageTransitionAnimation: PageTransitionAnimation.slideUp,
           );
         } else {
-          apptToast(ctx, "Coming soon");
+          appToast(ctx, "Coming soon");
         }
       },
       icon: Icons.abc_outlined,
@@ -106,7 +106,7 @@ List<PaymentProduct> productsList(
             pageTransitionAnimation: PageTransitionAnimation.slideUp,
           );
         } else {
-          apptToast(ctx, "Coming soon");
+          appToast(ctx, "Coming soon");
         }
       },
       icon: Icons.gamepad,

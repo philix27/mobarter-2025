@@ -36,22 +36,22 @@ class FundBettingBillsPage extends ConsumerWidget {
             title: "Submit",
             onPressed: () {
               // if (data.accountNo!.length != 11) {
-              //   apptToast(context, "Phone number must be");
+              //   appToast(context, "Phone number must be");
               //   return;
               // }
 
               // if (data.providerName == null || data.providerName!.isEmpty) {
-              //   apptToast(context, "Select a network provider");
+              //   appToast(context, "Select a network provider");
               //   return;
               // }
 
               // if (data.amountCrypto == null || data.amountFiat == null) {
-              //   apptToast(context, "Select/Enter and amount");
+              //   appToast(context, "Select/Enter and amount");
               //   return;
               // }
 
               // if (data.amountFiat! < 50.0) {
-              //   apptToast(context, "Minimum of ₦50");
+              //   appToast(context, "Minimum of ₦50");
               //   return;
               // }
 
@@ -75,7 +75,7 @@ class FundBettingBillsPage extends ConsumerWidget {
                     // btn(title: "Send", onPressed: ),
                   ],
                   send: (Input$PaymentInput paylod) {
-                    apptToast(context, "Summary Page testing");
+                    appToast(context, "Summary Page testing");
                   },
                 ),
               );

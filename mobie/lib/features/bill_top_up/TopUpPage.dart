@@ -106,10 +106,7 @@ class TopUpsPage extends HookConsumerWidget {
                                 countryCode: Enum$Country.NG,
                                 operatorId: data.networkOperatorId!,
                                 phoneNo: data.phoneNo!,
-                                payment: Input$PaymentInput(
-                                  transaction_pin: "transaction_pin",
-                                  user_uid: "user_uid",
-                                ),
+                                payment: paylod,
                               ),
                             ),
                           )
@@ -119,12 +116,12 @@ class TopUpsPage extends HookConsumerWidget {
 
                       final msg = response!.parsedData?.utility_purchaseAirtime;
 
-                      apptToast(context, msg!.title, subtitle: msg.subtitle);
+                      appToast(context, msg!.title, subtitle: msg.subtitle);
                     },
                   ),
                 );
               } catch (e) {
-                apptToast(context, e.toString());
+                appToast(context, e.toString());
               }
             },
           ),

@@ -68,7 +68,7 @@ class _EnterPinAndSubmit extends StatelessWidget {
           title: "Send",
           onPressed: () {
             if (pin.text.length < 6) {
-              apptToast(context, "Minimum of 6 characters");
+              appToast(context, "Minimum of 6 characters");
               return;
             }
 

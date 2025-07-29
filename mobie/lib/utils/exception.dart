@@ -24,6 +24,13 @@ require(dynamic payload, String msg) {
   if (payload is int) {
     if (payload.isNaN) throw AppPlainException(msg);
     if (payload.isInfinite) throw AppPlainException(msg);
+    if (payload == 0) throw AppPlainException(msg);
+    return;
+  }
+  if (payload is double) {
+    if (payload.isNaN) throw AppPlainException(msg);
+    if (payload.isInfinite) throw AppPlainException(msg);
+    if (payload == 0) throw AppPlainException(msg);
     return;
   }
 }
