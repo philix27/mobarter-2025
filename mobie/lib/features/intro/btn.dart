@@ -56,7 +56,7 @@ class _ConnectionButton extends HookWidget {
         updateServerToken(serverToken!);
       } catch (e) {
         appLogger.e("Login Err: $e");
-        apptToast(context, "Failed to get server token: $e");
+        appToast(context, "Failed to get server token: $e");
       }
     }
 
@@ -66,7 +66,7 @@ class _ConnectionButton extends HookWidget {
       final user = await svc.user();
 
       if (user == null) {
-        apptToast(context, "User not found");
+        appToast(context, "User not found");
         return;
       }
 
@@ -101,10 +101,10 @@ class _ConnectionButton extends HookWidget {
           Navigator.of(context).pushNamed("/home");
         }
       } else {
-        apptToast(context, "Login Failed");
+        appToast(context, "Login Failed");
         if (attempt < 2) {
           await loginWithGoogle();
-          apptToast(context, "Sorry, could not login your google account");
+          appToast(context, "Sorry, could not login your google account");
         }
       }
     }

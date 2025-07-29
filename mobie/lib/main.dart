@@ -12,7 +12,7 @@ import 'package:mobarter/features/theme/app_theme.dart';
 import 'package:mobarter/features/theme/themes_provider.dart';
 import 'package:mobarter/graphql/api/Api.dart';
 import 'package:mobarter/pages/HomeLayout.dart';
-import 'package:mobarter/pages/WalletPage.dart';
+import 'package:mobarter/features/wallet/WalletPage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:toastification/toastification.dart';
 

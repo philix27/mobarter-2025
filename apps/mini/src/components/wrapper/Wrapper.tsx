@@ -3,14 +3,9 @@ import { ReactNode } from 'react'
 import BottomNav from './BottomNav'
 import Drawer from './Drawer'
 import Sidebar from './Sidebar'
-import { useInitUserToken } from '@/src/Root/initUser'
-import { useTgUi } from '@/src/hooks/useTgUI'
 
-// import { AppStores } from '@/src/lib/zustand'
 
 export default function Wrapper(props: { children: ReactNode; hideBottomNav?: boolean }) {
-  useTgUi(props.hideBottomNav)
-  useInitUserToken()
 
   return (
     <div className="w-screen bg-background h-screen p-0 m-0">

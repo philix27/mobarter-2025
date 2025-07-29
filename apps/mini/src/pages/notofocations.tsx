@@ -4,10 +4,7 @@ import Home from 'src/features/home'
 export default function HomePage() {
   return (
     <div>
-      Loaded Home
+      Notifications page
     </div>
   )
 }
-//  <Wrapper>
-//       <Home />
-//     </Wrapper>

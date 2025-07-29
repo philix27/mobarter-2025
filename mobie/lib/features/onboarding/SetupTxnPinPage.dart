@@ -60,16 +60,16 @@ class SetupTxnPinHook extends HookWidget {
       final pin = txnPin.text;
       final pinC = txnPinConfirm.text;
       if (answer.text.isEmpty || questionSelected.isEmpty) {
-        apptToast(context, "Answer is needed");
+        appToast(context, "Answer is needed");
         return;
       }
 
       if (pin.length < 6 || pinC.length < 6) {
-        apptToast(context, "Minimum of 6 characters");
+        appToast(context, "Minimum of 6 characters");
         return;
       }
       if (pin != pinC) {
-        apptToast(context, "Password doesn't match");
+        appToast(context, "Password doesn't match");
         return;
       }
       // ! Submit
@@ -90,22 +90,24 @@ class SetupTxnPinHook extends HookWidget {
 
         final msg = response!.parsedData?.walletCrypto_mobileCreate.message;
 
-        apptToast(context, "Your pin has been succcessfully setup");
+        appToast(context, "Your pin has been succcessfully setup");
         Navigator.of(context).pushNamed("/home");
       } catch (e) {
-        apptToast(context, "$e");
+        appToast(context, "$e");
         appLogger.e("Error in creating wallet:  $e");
         Navigator.of(context).pushNamed("/home");
       }
     }
 
-    return appScaffold(context,
+    return appScaffold(
+      context,
       title: "Password Setup",
       automaticallyImplyLeading: false,
       body: Column(
         spacing: 20,
         children: [
-          listTile(context,
+          listTile(
+            context,
             title: questionSelected.isEmpty
                 ? "Pick a secret question"
                 : questionSelected,
@@ -119,7 +121,8 @@ class SetupTxnPinHook extends HookWidget {
                   itemCount: questionsList.length,
                   itemBuilder: (context, index) {
                     final title = questionsList[index];
-                    return listTile(context,
+                    return listTile(
+                      context,
                       title: title,
                       onTap: () {
                         stateUpdater(title);
@@ -188,7 +191,7 @@ class SecretQuestion extends HookWidget {
       itemCount: list.length,
       itemBuilder: (context, index) {
         final item = list[index];
-        return listTile( context,title: item.text);
+        return listTile(context, title: item.text);
       },
     );
   }

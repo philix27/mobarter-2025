@@ -73,7 +73,7 @@ class SelctDisplay extends HookWidget {
         return LiquidSwipe(
           pages: [
             IntroScreen(
-              pageColor: Colors.amber.shade200,
+              pageColor: Colors.grey.shade200,
               imagePath: Appimages.introInvest,
               title: "Your all-in-one crypto payment solution",
               subtitle: 'Make payemts & pay bills using your crypro assets',
@@ -81,7 +81,7 @@ class SelctDisplay extends HookWidget {
             ),
             IntroScreen(
               activeIndex: 1,
-              pageColor: Colors.deepOrange.shade100,
+              pageColor: Colors.white,
               imagePath: Appimages.introSavings,
               title: "Save and Invest your crypto assets ",
               subtitle: 'Earn passively as you save towards your goals',

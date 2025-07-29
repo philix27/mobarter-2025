@@ -9,6 +9,7 @@ Widget appScaffold(
   required Widget body,
   bool automaticallyImplyLeading = true,
   List<Widget>? actions,
+  Widget? leading,
 }) {
   return Scaffold(
     appBar: AppBar(
@@ -17,6 +18,7 @@ Widget appScaffold(
       title: Text(title, style: textTheme(context).headlineMedium),
       actions: actions,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      leading: leading,
     ),
     body: noneScrollable != null
         ? Padding(padding: bodyPadding, child: body)

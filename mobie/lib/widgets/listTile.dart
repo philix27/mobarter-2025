@@ -17,7 +17,7 @@ Widget listTile(
   return Card(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     elevation: 0.1,
-    // color: colorCard,
+    color: tileColor,
     child: ListTile(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       dense: true,
