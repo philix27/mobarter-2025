@@ -16,12 +16,14 @@ class TopUpTabs extends ConsumerWidget {
       return InkWell(
         onTap: () {
           readData.updateScreen(screen);
-          readData.updateAmountCrypto(0.0);
-          readData.updateAmountFiat(0.0, "Data plan");
-          // apptToast(context, "Switch tab");
+          readData.updateAmount(
+            amountCrypto: 0.0,
+            amountFiat: 0.0,
+            dataPlanDescription: "Data plan",
+          );
         },
         child: Center(
-          widthFactor: 1,      
+          widthFactor: 1,
           child: Text(
             title,
             style: TextStyle(

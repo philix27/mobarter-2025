@@ -10,6 +10,9 @@ class ElectricityBillDataNotifier extends StateNotifier<ElectricityBillData> {
           providerName: null,
           providerImg: null,
           accountNo: '',
+          isPrepaid: null,
+          customerAddress: '',
+          customerName: '',
         ),
       );
 
@@ -17,15 +20,22 @@ class ElectricityBillDataNotifier extends StateNotifier<ElectricityBillData> {
     state = state.copyWith(accountNo: accountNo);
   }
 
-  void updateAmountFiat(double amountFiat) {
-    state = state.copyWith(amountFiat: amountFiat);
+  void updateIsPrepaid(bool payload) {
+    state = state.copyWith(isPrepaid: payload);
   }
 
-  void updateAmountCrypto(double amountCrypto) {
-    state = state.copyWith(amountCrypto: amountCrypto);
+  void updateAmount({
+    required double amountFiat,
+    required double amountCrypto,
+  }) {
+    state = state.copyWith(amountFiat: amountFiat, amountCrypto: amountCrypto);
   }
 
   void updateBilerType(String providerName, String img) {
     state = state.copyWith(providerName: providerName, providerImg: img);
+  }
+
+  void updateCustomerInfo(String name, String address) {
+    state = state.copyWith(customerName: name, customerAddress: address);
   }
 }

@@ -22,7 +22,7 @@ class ElectricityProviders extends ConsumerWidget {
       imgUrl: data.providerImg,
       trailing: Text(
         "Providers",
-        style: TextStyle(fontSize: 12, color: colorText),
+        style: TextStyle(fontSize: 12, color: Theme.of(context).disabledColor),
       ),
       onTap: () {
         btmSheet(ctx: context, w: _SelectDataPlan(), h: 0.7);

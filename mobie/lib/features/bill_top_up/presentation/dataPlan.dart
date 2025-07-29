@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/theme/constColors.dart';
 import 'package:mobarter/features/bill_top_up/TopUpPage.dart';
 import 'package:mobarter/features/bill_top_up/logic/provider.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
+import 'package:mobarter/graphql/schema/fx.gql.dart';
 import 'package:mobarter/graphql/schema/topup.gql.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/listTile.dart';
@@ -16,7 +18,8 @@ class DataPlanWidget extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final data = topUpWatch(ref);
 
-    return listTile(context,
+    return listTile(
+      context,
       title: data.amountFiat.toString() ?? "Select a data plan",
       tileColor: colorCard,
       trailing: Text(
@@ -61,7 +64,7 @@ class _SelectDataPlan extends HookWidget {
   }
 }
 
-class PlanList extends ConsumerWidget {
+class PlanList extends HookConsumerWidget {
   PlanList({
     super.key,
     required this.dataPlanCollection,
@@ -81,6 +84,22 @@ class PlanList extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final data = topUpWatch(ref);
     final dataRead = topUpRead(ref);
+    final result = useQuery$FxRate_GetAll(Options$Query$FxRate_GetAll());
+    // !New
+
+    final dataFx = result.result;
+
+    if (dataFx.isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    final rate = dataFx.parsedData?.fxRate_GetAll.NG ?? 0;
+
+    calcPrice(double amt) {
+      final amountFiatN = amt ?? 0.0;
+
+      return amountFiatN / rate;
+    }
 
     final cols = data.screen == TopUpScreen.dataBundle
         ? dataBundleCollection
@@ -111,16 +130,18 @@ class PlanList extends ConsumerWidget {
       itemBuilder: (ctx, i) {
         final item = plans[i];
 
-        return listTile(context,
+        return listTile(
+          context,
           title: item.desc,
           trailing: Text(
             item.amount.toString(),
             style: TextStyle(fontSize: 13, color: colorText),
           ),
           onTap: () {
-            dataRead.updateAmountFiat(
-              double.parse(item.amount.toString()) ?? 0,
-              item.desc,
+            dataRead.updateAmount(
+              amountFiat: double.parse(item.amount.toString()),
+              dataPlanDescription: item.desc,
+              amountCrypto: calcPrice(double.parse(item.amount.toString())),
             );
           },
         );

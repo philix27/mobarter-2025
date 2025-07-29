@@ -3,10 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobarter/features/bill_electricity/logic/provider.dart';
 import 'package:mobarter/features/bill_electricity/presentation/accountNo.dart';
 import 'package:mobarter/features/bill_electricity/presentation/amount.dart';
+import 'package:mobarter/features/bill_electricity/presentation/meterType.dart';
 import 'package:mobarter/features/bill_electricity/presentation/provider.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/widgets/amountToPay.dart';
 import 'package:mobarter/widgets/btn.dart';
+import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 import 'package:mobarter/widgets/toast.dart';
 import 'package:mobarter/widgets/txn_summary_page.dart';
@@ -17,7 +19,7 @@ class ElectricityPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final data = electricBillWatch(ref);
+    final w = electricBillWatch(ref);
 
     return appScaffold(
       context,
@@ -26,39 +28,26 @@ class ElectricityPage extends ConsumerWidget {
         spacing: 20,
         children: [
           ElectricityProviders(),
+          Electric_MeterType(),
+          AccountNo(),
           ElectricityAmount(),
-          AccountNoField(),
-          // listTile(title: "Upper Limit", subtitle: "Instructions"),
-          CryptoAmountPay(amountFiat: data.amountFiat ?? 0),
+          CryptoAmountPay(amountFiat: w.amountFiat ?? 0),
           SizedBox(height: 10),
 
           btn(
             title: "Submit",
             onPressed: () {
-              // if (data.phoneNo == null || data.phoneNo!.isEmpty) {
-              //   apptToast(context, "Enter phone number");
-              //   return;
-              // }
-
-              // if (data.phoneNo!.length != 11) {
-              //   apptToast(
-              //     context,
-              //     "Phone number must be 11 ${data.phoneNo} digits ${data.phoneNo!.length}",
-              //   );
-              //   return;
-              // }
-
-              if (data.providerName == null || data.providerName!.isEmpty) {
+              if (w.providerName == null || w.providerName!.isEmpty) {
                 apptToast(context, "Select a network provider");
                 return;
               }
 
-              if (data.amountCrypto == null || data.amountFiat == null) {
+              if (w.amountCrypto == null || w.amountFiat == null) {
                 apptToast(context, "Select/Enter and amount");
                 return;
               }
 
-              if (data.amountFiat! < 50.0) {
+              if (w.amountFiat! < 50.0) {
                 apptToast(context, "Minimum of ₦50");
                 return;
               }
@@ -67,7 +56,26 @@ class ElectricityPage extends ConsumerWidget {
                 context,
                 withNavBar: false,
                 screen: TxnSummaryPage(
-                  childeren: [],
+                  childeren: [
+                    simpleRow(
+                      title: "Customer name",
+                      subtitle: w.customerName!,
+                    ),
+                    simpleRow(
+                      title: "Customer address",
+                      subtitle: w.customerAddress!,
+                    ),
+                    simpleRow(title: "Provider", subtitle: w.providerName!),
+                    simpleRow(title: "Meter No.", subtitle: w.accountNo),
+                    simpleRow(
+                      title: "Amount",
+                      subtitle: "₦ ${w.amountFiat.toString()}",
+                    ),
+                    simpleRow(
+                      title: "Amount in crypto",
+                      subtitle: "cUSD ${w.amountCrypto.toString()}",
+                    ),
+                  ],
                   send: (Input$PaymentInput paylod) {},
                 ),
               );

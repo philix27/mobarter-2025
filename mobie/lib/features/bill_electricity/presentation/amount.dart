@@ -12,7 +12,7 @@ class ElectricityAmount extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final topUpdata = electricBillRead(ref);
+    final r = electricBillRead(ref);
     final result = useQuery$FxRate_GetAll(Options$Query$FxRate_GetAll());
 
     final data = result.result;
@@ -44,8 +44,7 @@ class ElectricityAmount extends HookConsumerWidget {
           return;
         }
         final double amt = double.tryParse(value) ?? 0.0;
-        topUpdata.updateAmountFiat(amt);
-        topUpdata.updateAmountCrypto(calcPrice(amt));
+        r.updateAmount(amountFiat: amt, amountCrypto: calcPrice(amt));
       },
     );
   }

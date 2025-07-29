@@ -38,7 +38,7 @@ class AirtimeWidget extends HookConsumerWidget {
         FilteringTextInputFormatter.digitsOnly, // Allow digits only
         LengthLimitingTextInputFormatter(6), // Enforces the limit
       ],
-      
+
       onChanged: (value) {
         if (value.length > 6) {
           value = value.substring(0, 6); // Limit to 11 digits3
@@ -46,8 +46,11 @@ class AirtimeWidget extends HookConsumerWidget {
           return;
         }
         final double amt = double.tryParse(value) ?? 0.0;
-        topUpdata.updateAmountFiat(amt, "Airtime");
-        topUpdata.updateAmountCrypto(calcPrice(amt));
+        topUpdata.updateAmount(
+          amountCrypto: calcPrice(amt),
+          amountFiat: amt,
+          dataPlanDescription: "Airtime",
+        );
       },
     );
   }

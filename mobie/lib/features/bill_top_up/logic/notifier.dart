@@ -22,21 +22,24 @@ class TopUpDataNotifier extends StateNotifier<TopData> {
     state = state.copyWith(phoneNo: phone);
   }
 
-  void updateAmountFiat(double amountFiat, String? dataPlanDescription) {
-    // if (amountFiat <= 0) return;
+  void updateAmount({
+    required double amountCrypto,
+    required double amountFiat,
+    String? dataPlanDescription,
+  }) {
+    // if (amountCrypto <= 0) return;
     state = state.copyWith(
+      amountCrypto: amountCrypto,
       amountFiat: amountFiat,
       dataPlanDescription: dataPlanDescription,
     );
   }
 
-  void updateAmountCrypto(double amountCrypto) {
-    // if (amountCrypto <= 0) return;
-    state = state.copyWith(amountCrypto: amountCrypto);
-  }
-
   void updateNetwork(String network, int networkOperatorId) {
-    state = state.copyWith(networkProvider: network, networkOperatorId: networkOperatorId);
+    state = state.copyWith(
+      networkProvider: network,
+      networkOperatorId: networkOperatorId,
+    );
   }
 
   void updateCurrency(String currency) {

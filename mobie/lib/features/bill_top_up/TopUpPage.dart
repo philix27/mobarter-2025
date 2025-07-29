@@ -9,6 +9,7 @@ import 'package:mobarter/features/bill_top_up/presentation/screenTabs.dart';
 import 'package:mobarter/features/bill_top_up/presentation/selectNetwork.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/utilities.gql.dart';
+import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/utils/logger.dart' show appLogger;
 import 'package:mobarter/widgets/amountToPay.dart';
 import 'package:mobarter/widgets/btn.dart';
@@ -58,87 +59,73 @@ class TopUpsPage extends HookConsumerWidget {
           btn(
             title: "Submit",
             onPressed: () {
-              if (data.phoneNo == null || data.phoneNo!.isEmpty) {
-                apptToast(context, "Enter phone number");
-                return;
-              }
-
-              if (data.phoneNo!.length != 11) {
-                apptToast(
-                  context,
-                  "Phone number must be 11 ${data.phoneNo} digits ${data.phoneNo!.length}",
+              try {
+                require(data.phoneNo, "Phone No. needed");
+                require(
+                  data.phoneNo!.length == 11,
+                  "Phone number must be 11 digits",
                 );
-                return;
-              }
 
-              if (data.networkProvider == null ||
-                  data.networkProvider!.isEmpty) {
-                apptToast(context, "Select a network provider");
-                return;
-              }
+                require(data.networkProvider, "Select a network provider");
+                require(data.amountCrypto, "Select/Enter and amount");
+                require(data.amountFiat! >= 50.0, "Minimum of ₦50");
 
-              if (data.amountCrypto == null || data.amountFiat == null) {
-                apptToast(context, "Select/Enter and amount");
-                return;
-              }
-
-              if (data.amountFiat! < 50.0) {
-                apptToast(context, "Minimum of ₦50");
-                return;
-              }
-
-              pushScreen(
-                context,
-                withNavBar: false,
-                screen: TxnSummaryPage(
-                  childeren: [
-                    simpleRow(
-                      title: "Recipient number",
-                      subtitle: data.phoneNo!,
-                    ),
-                    simpleRow(
-                      title: "Nettwork Provider",
-                      subtitle: data.networkProvider!,
-                    ),
-                    simpleRow(
-                      title: "Amount",
-                      subtitle: data.amountFiat != null
-                          ? "₦ ${data.amountFiat.toString()}"
-                          : "0",
-                    ),
-                    simpleRow(
-                      title: "Pay",
-                      subtitle: "CUSD ${data.amountCrypto!.toStringAsFixed(3)}",
-                    ),
-                    // simpleRow(title: "Cashback bonus", subtitle: cashback),
-                    SizedBox(height: 20),
-                  ],
-                  send: (Input$PaymentInput paylod) async {
-                    final response = await result
-                        .runMutation(
-                          Variables$Mutation$Utility_purchaseAirtime(
-                            input: Input$Utilities_PurchaseAirtimeInput(
-                              amount: data.amountFiat!,
-                              countryCode: Enum$Country.NG,
-                              operatorId: data.networkOperatorId!,
-                              phoneNo: data.phoneNo!,
-                              payment: Input$PaymentInput(
-                                transaction_pin: "transaction_pin",
-                                user_uid: "user_uid",
+                pushScreen(
+                  context,
+                  withNavBar: false,
+                  screen: TxnSummaryPage(
+                    childeren: [
+                      simpleRow(
+                        title: "Recipient number",
+                        subtitle: data.phoneNo!,
+                      ),
+                      simpleRow(
+                        title: "Nettwork Provider",
+                        subtitle: data.networkProvider!,
+                      ),
+                      simpleRow(
+                        title: "Amount",
+                        subtitle: data.amountFiat != null
+                            ? "₦ ${data.amountFiat.toString()}"
+                            : "0",
+                      ),
+                      simpleRow(
+                        title: "Pay",
+                        subtitle:
+                            "CUSD ${data.amountCrypto!.toStringAsFixed(3)}",
+                      ),
+                      // simpleRow(title: "Cashback bonus", subtitle: cashback),
+                      SizedBox(height: 20),
+                    ],
+                    send: (Input$PaymentInput paylod) async {
+                      final response = await result
+                          .runMutation(
+                            Variables$Mutation$Utility_purchaseAirtime(
+                              input: Input$Utilities_PurchaseAirtimeInput(
+                                amount: data.amountFiat!,
+                                countryCode: Enum$Country.NG,
+                                operatorId: data.networkOperatorId!,
+                                phoneNo: data.phoneNo!,
+                                payment: Input$PaymentInput(
+                                  transaction_pin: "transaction_pin",
+                                  user_uid: "user_uid",
+                                ),
                               ),
                             ),
-                          ),
-                        )
-                        .networkResult;
+                          )
+                          .networkResult;
 
-                    appLogger.e("Purchase airtime $response");
+                      appLogger.e("Purchase airtime $response");
 
-                    final msg = response!.parsedData?.utility_purchaseAirtime;
+                      final msg = response!.parsedData?.utility_purchaseAirtime;
 
-                    apptToast(context, msg!.title, subtitle: msg.subtitle);
-                  },
-                ),
-              );
+                      apptToast(context, msg!.title, subtitle: msg.subtitle);
+                    },
+                  ),
+                );
+              } catch (e) {
+                apptToast(context, e.toString());
+              }
             },
           ),
         ],
