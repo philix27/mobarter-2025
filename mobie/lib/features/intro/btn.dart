@@ -12,6 +12,7 @@ import 'package:mobarter/utils/logger.dart';
 import 'package:mobarter/widgets/btn.dart';
 import 'package:mobarter/features/auth/auth_service.dart';
 import 'package:mobarter/widgets/toast.dart';
+import 'package:toastification/toastification.dart';
 
 class ConnectionButton extends ConsumerWidget {
   const ConnectionButton({super.key});
@@ -56,7 +57,11 @@ class _ConnectionButton extends HookWidget {
         updateServerToken(serverToken!);
       } catch (e) {
         appLogger.e("Login Err: $e");
-        appToast(context, "Failed to get server token: $e");
+        appToast(
+          context,
+          "Failed to get server token: $e!",
+          type: ToastificationType.error,
+        );
       }
     }
 
@@ -66,7 +71,7 @@ class _ConnectionButton extends HookWidget {
       final user = await svc.user();
 
       if (user == null) {
-        appToast(context, "User not found");
+        appToast(context, "User not found", type: ToastificationType.info);
         return;
       }
 
@@ -88,24 +93,32 @@ class _ConnectionButton extends HookWidget {
 
       final user = await svc.loginWithGoogle();
 
-      if (user != null) {
-        await getServerToken(user);
+      try {
+        if (user != null) {
+          await getServerToken(user);
 
-        final hasWallet = await walletSvc.doesWalletExist(user.uid);
+          final hasWallet = await walletSvc.doesWalletExist(user.uid);
 
-        if (!hasWallet) {
-          Navigator.of(context).pushNamed("/setup-pin");
+          if (!hasWallet) {
+            Navigator.of(context).pushNamed("/setup-pin");
+          } else {
+            await walletSvc.userWalletAddress();
+
+            Navigator.of(context).pushNamed("/home");
+          }
         } else {
-          await walletSvc.userWalletAddress();
-
-          Navigator.of(context).pushNamed("/home");
+          if (attempt < 2) {
+            await loginWithGoogle();
+            appToast(context, "Retrying...", type: ToastificationType.info);
+          }
         }
-      } else {
-        appToast(context, "Login Failed");
-        if (attempt < 2) {
-          await loginWithGoogle();
-          appToast(context, "Sorry, could not login your google account");
-        }
+        appToast(
+          context,
+          "Sorry, could not login your google account",
+          type: ToastificationType.error,
+        );
+      } catch (e) {
+        appToast(context, "${e}", type: ToastificationType.error);
       }
     }
 

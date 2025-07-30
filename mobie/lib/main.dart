@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import "package:flutter/services.dart";
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -51,7 +52,7 @@ class AppProviders extends StatelessWidget {
   // This widget is the root of y our application.
   @override
   Widget build(BuildContext context) {
-    return ProviderScope(child: InitiateGql());
+    return Phoenix(child: ProviderScope(child: InitiateGql()));
   }
 }
 
@@ -62,6 +63,16 @@ class InitiateGql extends HookConsumerWidget {
   Widget build(BuildContext context, ref) {
     final token = appCredentialsWatch(ref).serverToken;
     final themeState = themeWatch(ref);
+
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        systemNavigationBarColor:
+            Colors.purpleAccent, // Set your desired color here
+        systemNavigationBarIconBrightness:
+            Brightness.light, // Adjust icon brightness as needed
+      ),
+    );
+
     return GraphQLProvider(
       client: getGqlClientNotifier(token),
       child: ToastificationWrapper(

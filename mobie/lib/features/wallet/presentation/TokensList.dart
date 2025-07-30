@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mobarter/features/firestore/wallet.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/utils/getBalance.dart';
+import 'package:mobarter/widgets/shimmer.dart';
 
 class TokensList extends HookWidget {
   TokensList({super.key});
@@ -62,12 +63,16 @@ Widget tokenRow(
         );
       },
     ),
-    leading: CachedNetworkImage(
-      imageUrl: item.logoUrl,
-      placeholder: (context, url) => CircularProgressIndicator(),
-      width: 30,
-      height: 30,
-      fit: BoxFit.cover,
+    leading: ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child: CachedNetworkImage(
+        imageUrl: item.logoUrl,
+        placeholder: (context, url) => roundShimmerImg(context),
+        errorWidget: (context, url, error) => SizedBox.shrink(), 
+        width: 30,
+        height: 30,
+        fit: BoxFit.cover,
+      ),
     ),
 
     trailing: FutureBuilder(

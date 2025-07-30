@@ -46,7 +46,7 @@ class _DocsList extends HookWidget {
         return listTile(
           context,
           title: item.title,
-          subtitle: item.desc,
+          subtitle: null,
           onTap: () {
             launchURL(item.url);
           },

@@ -42,7 +42,7 @@ class _LearnLinks extends HookWidget {
         final item = collection![index];
         return listTile(context,
           title: item.title,
-          subtitle: item.desc,
+          subtitle: null,
           icon: Icons.info,
           onTap: () {
             launchURL(item.url);
