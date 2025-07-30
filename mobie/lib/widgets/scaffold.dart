@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
 
 final bodyPadding = EdgeInsets.symmetric(horizontal: 16);
@@ -19,6 +20,17 @@ Widget appScaffold(
       actions: actions,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       leading: leading,
+      systemOverlayStyle: SystemUiOverlayStyle(
+        systemNavigationBarColor: Theme.of(
+          context,
+        ).scaffoldBackgroundColor, // Navigation bar
+        statusBarColor: Theme.of(context).scaffoldBackgroundColor, // Status bar
+        systemNavigationBarDividerColor: Theme.of(
+          context,
+        ).scaffoldBackgroundColor,
+        systemNavigationBarContrastEnforced: true,
+        systemStatusBarContrastEnforced: true,
+      ),
     ),
     body: noneScrollable != null
         ? Padding(padding: bodyPadding, child: body)

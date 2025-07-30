@@ -112,11 +112,6 @@ class _ConnectionButton extends HookWidget {
             appToast(context, "Retrying...", type: ToastificationType.info);
           }
         }
-        appToast(
-          context,
-          "Sorry, could not login your google account",
-          type: ToastificationType.error,
-        );
       } catch (e) {
         appToast(context, "${e}", type: ToastificationType.error);
       }

@@ -64,15 +64,6 @@ class InitiateGql extends HookConsumerWidget {
     final token = appCredentialsWatch(ref).serverToken;
     final themeState = themeWatch(ref);
 
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        systemNavigationBarColor:
-            Colors.purpleAccent, // Set your desired color here
-        systemNavigationBarIconBrightness:
-            Brightness.light, // Adjust icon brightness as needed
-      ),
-    );
-
     return GraphQLProvider(
       client: getGqlClientNotifier(token),
       child: ToastificationWrapper(
