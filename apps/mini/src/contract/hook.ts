@@ -3,7 +3,6 @@ import { ethers } from 'ethers'
 import { toast } from 'sonner'
 import { TokenAddresses, TokenId } from 'src/lib/config/tokens'
 
-import { useProvider } from '../hooks/useProvider'
 import { ChainId } from '../lib/config'
 
 import { TXN_MANAGER_ABI } from './abi.txnManager'
@@ -13,7 +12,7 @@ const erc20Abi = ['function approve(address spender, uint256 amount) public retu
 
 export type PaymentPurpose = 'AIRTIME' | 'DATA' | 'OFFRAMP' | 'ELECTRICITY' | 'GIFTCARD'
 export function usePay<T>() {
-  const provider = useProvider()
+  const provider = {} as any
 
   const pay = async (props: {
     token: TokenId

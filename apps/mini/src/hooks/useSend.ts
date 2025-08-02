@@ -7,7 +7,6 @@ import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
 import { ChainId } from '../lib/config'
 import { logger, shortString } from '../lib/utils'
 
-import { useProvider } from './useProvider'
 
 // const w = window as any
 
@@ -16,7 +15,7 @@ import { useProvider } from './useProvider'
 const ERC20_ABI = ['function transfer(address recipient, uint256 amount) public returns (bool)']
 
 export function useSendToken() {
-  const provider = useProvider()
+  const provider = {} as any
   const { sendTransaction } = useEthereum()
 
   const sendErc20 = async (props: { recipient: string; amount: string; token: TokenId }) => {
