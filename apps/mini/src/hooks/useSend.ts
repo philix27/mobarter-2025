@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import { toast } from 'sonner'
 import { TokenId, getTokenAddress } from 'src/lib/config/tokens'
 
-import { useAppContext } from '../Root/TgContext'
+// import { useAppContext } from '../Root/TgContext'
 import { ChainId } from '../lib/config'
 import { logger, shortString } from '../lib/utils'
 
@@ -18,7 +18,6 @@ const ERC20_ABI = ['function transfer(address recipient, uint256 amount) public 
 export function useSendToken() {
   const provider = useProvider()
   const { sendTransaction } = useEthereum()
-  const { handleError } = useAppContext()
 
   const sendErc20 = async (props: { recipient: string; amount: string; token: TokenId }) => {
     const signer = await provider.getSigner()
@@ -50,7 +49,7 @@ export function useSendToken() {
       toast.success(`Send Native Success! Hash: ${shortString(result)}`)
     } catch (error: any) {
       logger.error('sendNative error', error)
-      handleError(error)
+      // handleError(error)
     }
   }
 

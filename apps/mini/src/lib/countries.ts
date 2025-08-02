@@ -1,4 +1,4 @@
-import { CurrencyFiat } from '@repo/api'
+import { CurrencyFiat } from '@/src/api'
 
 export type CountriesIso = 'NG' | 'GH' | 'KE' | 'MW' | 'RW' | 'TZ' | 'UG' | 'ZA'
 

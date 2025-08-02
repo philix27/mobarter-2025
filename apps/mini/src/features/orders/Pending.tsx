@@ -5,7 +5,7 @@ import {
   Orders_GetAllDocument,
   QueryOrders_GetAllArgs,
   QueryResponse,
-} from '@repo/api'
+} from '@/src/api'
 import Link from 'next/link'
 import React from 'react'
 import { AppStores } from 'src/lib/zustand'

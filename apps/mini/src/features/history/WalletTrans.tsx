@@ -5,7 +5,7 @@ import BottomModal from 'src/components/BottomModal'
 import { Spinner } from 'src/components/Spinner'
 import { shortenAddress } from 'src/lib/config/addresses'
 
-import { useAppContext } from '@/src/Root/TgContext'
+// import { useAppContext } from '@/src/Root/TgContext'
 import { TokenAddresses, TokenId } from '@/src/lib/config'
 import { ITransactions, ITransactionsResult, getTxHistory } from '@/src/lib/server'
 import { cn, formatEtherBalance, shortString } from '@/src/lib/utils'
@@ -39,11 +39,11 @@ export default function WalletTransactions() {
     },
   })
 
-  const { evmAddress } = useAppContext()
+  // const { evmAddress } = useAppContext()
   const { data, isLoading } = useQuery({
     queryKey: ['getTxHistory'],
     queryFn: async () => {
-      const res = await getTxHistory(evmAddress!)
+      const res = await getTxHistory("evmAddress"!)
       return res
     },
   })
@@ -68,7 +68,7 @@ export default function WalletTransactions() {
   return (
     <Content
       data={data}
-      evmAddress={evmAddress}
+      evmAddress={"evmAddress"}
       setShowMore={setShowMore}
       getTokenId={getTokenId}
       showMore={showMore}

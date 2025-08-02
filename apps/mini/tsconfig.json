@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx",],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".reserve/apages/savings.tsx", ".reserve/apages/swap.tsx", ".reserve/apages/tg.tsx", ".reserve/apages/notofocations.tsx", ".reserve/apages/history.tsx", ".reserve/apages/gifts.tsx", ".reserve/apages/bank-accounts.tsx", ".reserve/apages/apps.tsx",],
   "exclude": ["node_modules", ".trash", ".next"]
 }
