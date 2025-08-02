@@ -16,7 +16,6 @@ query ElectricityBill_getProviders($input: ElectricityBill_ProviderInput!) {
   electricityBill_getProviders(input: $input) {
     name
     logo
-    status
     category
   }
 }

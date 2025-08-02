@@ -37,6 +37,18 @@ class SettingsPage extends HookConsumerWidget {
     return appScaffold(
       context,
       title: "Settings",
+      actions: [
+        IconButton(
+          padding: EdgeInsets.only(right: 20),
+          icon: Icon(
+            themeState.isDarkModeEnabled ? Icons.dark_mode : Icons.light_mode,
+            size: 22,
+          ),
+          onPressed: () {
+            themeState.toggleTheme();
+          },
+        ),
+      ],
       body: Column(
         // spacing: 4,
         children: [
@@ -77,27 +89,27 @@ class SettingsPage extends HookConsumerWidget {
           //     btmSheet(ctx: context, w: ShowBankAccounts(), h: 0.4);
           //   },
           // ),
-          listTile(
-            context,
-            title: "Theme",
-            subtitle: 'Toggle theme',
-            icon: Icons.graphic_eq,
-            trailing: Transform.scale(
-              scale: 0.6,
-              child: Switch(
-                padding: EdgeInsets.all(0),
-                value: themeState.isDarkModeEnabled,
-                // materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                onChanged: (enabled) {
-                  if (enabled) {
-                    themeState.setDarkTheme();
-                  } else {
-                    themeState.setLightTheme();
-                  }
-                },
-              ),
-            ),
-          ),
+          // listTile(
+          //   context,
+          //   title: "Theme",
+          //   subtitle: 'Toggle theme',
+          //   icon: Icons.graphic_eq,
+          //   trailing: Transform.scale(
+          //     scale: 0.6,
+          //     child: Switch(
+          //       padding: EdgeInsets.all(0),
+          //       value: themeState.isDarkModeEnabled,
+          //       // materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          //       onChanged: (enabled) {
+          //         if (enabled) {
+          //           themeState.setDarkTheme();
+          //         } else {
+          //           themeState.setLightTheme();
+          //         }
+          //       },
+          //     ),
+          //   ),
+          // ),
           listTile(
             context,
             title: "Support & Community",

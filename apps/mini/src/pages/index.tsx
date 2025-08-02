@@ -8,6 +8,3 @@ export default function HomePage() {
     </div>
   )
 }
-//  <Wrapper>
-//       <Home />
-//     </Wrapper>
