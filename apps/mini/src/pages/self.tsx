@@ -10,7 +10,7 @@ export default function SelfKyc() {
     // Create the SelfApp configuration
     const selfApp = new SelfAppBuilder({
         appName: 'Mobarter',
-        scope: 'telegram-mini-app',
+        scope: 'mini-app',
         endpoint: process.env.NEXT_PUBLIC_BACKEND_SELF_ENDPOINT,
         header: 'A payment solution for Africans',
         userIdType: 'hex', // only for if you want to link the proof with the user address
