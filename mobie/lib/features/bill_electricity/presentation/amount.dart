@@ -4,8 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/bill_electricity/logic/provider.dart';
 import 'package:mobarter/graphql/schema/fx.gql.dart';
 
-import 'package:mobarter/widgets/inputText.dart';
-import 'package:mobarter/widgets/toast.dart';
+import 'package:mobarter/widgets/widgets.dart';
 
 class ElectricityAmount extends HookConsumerWidget {
   const ElectricityAmount({super.key});
@@ -17,7 +16,7 @@ class ElectricityAmount extends HookConsumerWidget {
 
     final data = result.result;
     if (data.isLoading) {
-      return const Center(child: CircularProgressIndicator());
+      return const LoadingIndicator();
     }
 
     final rate = data.parsedData?.fxRate_GetAll.NG ?? 0;

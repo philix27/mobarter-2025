@@ -7,6 +7,7 @@ import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/listTile.dart';
+import 'package:mobarter/widgets/loading.dart';
 
 class TvBillsProviders extends ConsumerWidget {
   const TvBillsProviders({super.key});
@@ -45,7 +46,7 @@ class _SelectDataPlan extends HookWidget {
     );
 
     if (result.result.isLoading) {
-      return const Center(child: CircularProgressIndicator());
+      return const LoadingIndicator();
     }
 
     final list = result.result.parsedData?.tvBills_getProviders;

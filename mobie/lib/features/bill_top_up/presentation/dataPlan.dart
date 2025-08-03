@@ -8,8 +8,7 @@ import 'package:mobarter/features/bill_top_up/logic/provider.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/fx.gql.dart';
 import 'package:mobarter/graphql/schema/topup.gql.dart';
-import 'package:mobarter/widgets/bottomSheet.dart';
-import 'package:mobarter/widgets/listTile.dart';
+import 'package:mobarter/widgets/widgets.dart';
 
 class DataPlanWidget extends ConsumerWidget {
   const DataPlanWidget({super.key});
@@ -49,7 +48,7 @@ class _SelectDataPlan extends HookWidget {
     );
 
     if (result.result.isLoading) {
-      return const Center(child: CircularProgressIndicator());
+      return const LoadingIndicator();
     }
 
     final dataPlanList =
@@ -90,7 +89,7 @@ class PlanList extends HookConsumerWidget {
     final dataFx = result.result;
 
     if (dataFx.isLoading) {
-      return const Center(child: CircularProgressIndicator());
+      return const LoadingIndicator();
     }
 
     final rate = dataFx.parsedData?.fxRate_GetAll.NG ?? 0;

@@ -5,8 +5,7 @@ import 'package:mobarter/features/theme/constColors.dart';
 import 'package:mobarter/features/bill_electricity/logic/provider.dart';
 import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
-import 'package:mobarter/widgets/bottomSheet.dart';
-import 'package:mobarter/widgets/listTile.dart';
+import 'package:mobarter/widgets/widgets.dart';
 
 class ElectricityProviders extends ConsumerWidget {
   const ElectricityProviders({super.key});
@@ -47,7 +46,7 @@ class _SelectDataPlan extends HookWidget {
     );
 
     if (result.result.isLoading) {
-      return const Center(child: CircularProgressIndicator());
+      return const LoadingIndicator();
     }
 
     final list = result.result.parsedData?.electricityBill_getProviders;

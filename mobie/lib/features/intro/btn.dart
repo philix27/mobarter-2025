@@ -13,8 +13,8 @@ import 'package:mobarter/graphql/schema/auth.gql.dart';
 import 'package:mobarter/utils/logger.dart';
 import 'package:mobarter/widgets/btn.dart';
 import 'package:mobarter/features/auth/auth_service.dart';
+import 'package:mobarter/widgets/loading.dart';
 import 'package:mobarter/widgets/toast.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:toastification/toastification.dart';
 
 class ConnectionButton extends ConsumerWidget {
@@ -22,6 +22,7 @@ class ConnectionButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+
     updateServerToken(String serverToken) {
       appCredentialsRead(ref).updateServerToken(serverToken);
     }
@@ -121,7 +122,7 @@ class _ConnectionButton extends HookWidget {
     }
 
     if (result.result.isLoading) {
-      return const Center(child: CircularProgressIndicator());
+      return const  LoadingIndicator();
     }
 
     if (svc.isLoggedIn()) {

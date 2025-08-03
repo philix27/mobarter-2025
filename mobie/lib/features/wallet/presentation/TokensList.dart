@@ -12,11 +12,17 @@ class TokensList extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final result = useQuery$static_getTokens(Options$Query$static_getTokens());
+    final resultChains = useQuery$static_getChain(
+      Options$Query$static_getChain(),
+    );
+    
     final tokensList = result.result.parsedData?.static_getTokens;
+    final chainsList = resultChains.result.parsedData?.static_getChains;
 
-    if (tokensList == null || tokensList.isEmpty) {
+    if (tokensList == null || tokensList.isEmpty || chainsList == null) {
       return Center(child: Text("No data. Check your network connection"));
     }
+
     return FutureBuilder(
       future: walletSvc.userWalletAddress(),
       builder: (builder, snap) {
@@ -30,7 +36,11 @@ class TokensList extends HookWidget {
           itemCount: tokensList.length,
           itemBuilder: (BuildContext ctx, int index) {
             final item = tokensList[index];
-            return tokenRow(context, item, snap.data!);
+            final chain = chainsList.firstWhere(
+              (val) => val.chainId == item.chainId,
+            );
+
+            return tokenRow(context, item, snap.data!, chain);
           },
         );
       },
@@ -42,6 +52,7 @@ Widget tokenRow(
   BuildContext context,
   Query$static_getTokens$static_getTokens item,
   String wallet,
+  Query$static_getChain$static_getChains chain,
 ) {
   return ListTile(
     dense: true,
@@ -68,35 +79,40 @@ Widget tokenRow(
       child: CachedNetworkImage(
         imageUrl: item.logoUrl,
         placeholder: (context, url) => roundShimmerImg(context),
-        errorWidget: (context, url, error) => SizedBox.shrink(), 
+        errorWidget: (context, url, error) => SizedBox.shrink(),
         width: 30,
         height: 30,
         fit: BoxFit.cover,
       ),
     ),
 
-    trailing: FutureBuilder(
-      future: getWalletTokenBalance(
-        walletAddress: wallet,
-        tokenContractAddress: item.address,
-        tokenDecimal: int.tryParse(item.decimals.toString()) ?? 18,
-      ),
-      builder: (ctx, snap) {
-        if (snap.data == null) {
-          return Text("0", style: Theme.of(context).textTheme.bodyMedium);
-        }
+    trailing: Column(
+      children: [
+        FutureBuilder(
+          future: getWalletTokenBalance(
+            walletAddress: wallet,
+            tokenContractAddress: item.address,
+            tokenDecimal: int.tryParse(item.decimals.toString()) ?? 18,
+          ),
+          builder: (ctx, snap) {
+            if (snap.data == null) {
+              return Text("0", style: Theme.of(context).textTheme.bodyMedium);
+            }
 
-        // final tokenCount = double.parse(snap.data!.toStringAsFixed(3));
-        // final bal = roundUpTo3Decimals(snap.data!) * item.priceUSD;
-        final bal = snap.data! * item.priceUSD;
-        // final displayBal = int.tryParse(bal.toString()) ?? 333;
-        final prev = bal.toStringAsFixed(3).toString();
-        final displayBal = prev;
-        return Text(
-          "\$$displayBal",
-          style: Theme.of(context).textTheme.bodyMedium,
-        );
-      },
+            // final tokenCount = double.parse(snap.data!.toStringAsFixed(3));
+            // final bal = roundUpTo3Decimals(snap.data!) * item.priceUSD;
+            final bal = snap.data! * item.priceUSD;
+            // final displayBal = int.tryParse(bal.toString()) ?? 333;
+            final prev = bal.toStringAsFixed(3).toString();
+            final displayBal = prev;
+            return Text(
+              "\$$displayBal",
+              style: Theme.of(context).textTheme.bodyMedium,
+            );
+          },
+        ),
+        Text(chain.name, style: Theme.of(context).textTheme.bodySmall),
+      ],
     ),
   );
 }

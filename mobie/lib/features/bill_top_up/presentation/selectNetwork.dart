@@ -5,8 +5,7 @@ import 'package:mobarter/features/theme/constColors.dart';
 import 'package:mobarter/features/bill_top_up/logic/provider.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/topup.gql.dart';
-import 'package:mobarter/widgets/bottomSheet.dart';
-import 'package:mobarter/widgets/listTile.dart';
+import 'package:mobarter/widgets/widgets.dart';
 
 class ShowTopUpProviders extends ConsumerWidget {
   const ShowTopUpProviders({super.key});
@@ -44,7 +43,7 @@ class _NetworkList extends HookWidget {
     );
 
     if (result.result.isLoading) {
-      return const Center(child: CircularProgressIndicator());
+      return const LoadingIndicator();
     }
 
     final list = result.result.parsedData?.utility_getTopUpOperators;

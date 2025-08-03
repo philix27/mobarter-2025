@@ -5,8 +5,7 @@ import 'package:mobarter/features/bill_betting/logic/provider.dart';
 import 'package:mobarter/features/theme/constColors.dart';
 import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
-import 'package:mobarter/widgets/bottomSheet.dart';
-import 'package:mobarter/widgets/listTile.dart';
+import 'package:mobarter/widgets/widgets.dart';
 
 class BettingProviders extends ConsumerWidget {
   const BettingProviders({super.key});
@@ -45,7 +44,7 @@ class _SelectDataPlan extends HookWidget {
     );
 
     if (result.result.isLoading) {
-      return const Center(child: CircularProgressIndicator());
+      return const LoadingIndicator();
     }
 
     final list = result.result.parsedData?.fundBetting_getProviders;

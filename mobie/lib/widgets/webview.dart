@@ -1,16 +1,69 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mobarter/features/app/logic/provider.dart';
+import 'package:mobarter/features/auth/auth_service.dart';
+import 'package:mobarter/features/firestore/wallet.dart';
 import 'package:mobarter/features/theme/constColors.dart';
+import 'package:mobarter/features/theme/themes_provider.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
+import 'package:mobarter/widgets/loading.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
-class AppWebView extends StatefulWidget {
+class AppWebView extends ConsumerWidget {
   final String url;
   final String title;
   final String info;
-  const AppWebView({
+
+  AppWebView({
+    super.key,
+    required this.url,
+    required this.title,
+    required this.info,
+  });
+  final authService = AuthService();
+  final walletStore = WalletStoreService();
+
+  @override
+  Widget build(BuildContext context, ref) {
+    final themeState = themeWatch(ref);
+
+    getParams() async {
+      final user = authService.user();
+      final idToken = await user?.getIdToken();
+      final uid = user?.uid;
+      final email = user?.email;
+      final displayName = user?.displayName;
+      final wallet = await walletStore.userWalletAddress();
+      final cred = appCredentialsWatch(ref);
+      final server = cred.serverToken;
+
+      final fullString =
+          "${this.url}?wallet=${wallet}&displayName=${displayName}&email=${email}&uid=${uid}&serverToken=${server}&idToken=${idToken}&${server}&isDark=${themeState.isDarkModeEnabled}";
+
+      return fullString;
+    }
+
+    return FutureBuilder(
+      future: getParams(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const LoadingIndicator();
+        }
+
+        return _AppWebView(url: snapshot.data ?? url, title: title, info: info);
+      },
+    );
+  }
+}
+
+class _AppWebView extends StatefulWidget {
+  final String url;
+  final String title;
+  final String info;
+  const _AppWebView({
     super.key,
     required this.url,
     required this.title,
@@ -18,11 +71,11 @@ class AppWebView extends StatefulWidget {
   });
 
   @override
-  State<AppWebView> createState() =>
+  State<_AppWebView> createState() =>
       _AppWebViewState(url: url, title: title, info: info);
 }
 
-class _AppWebViewState extends State<AppWebView> {
+class _AppWebViewState extends State<_AppWebView> {
   _AppWebViewState({
     required this.url,
     required this.info,

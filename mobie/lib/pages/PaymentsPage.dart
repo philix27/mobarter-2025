@@ -6,11 +6,8 @@ import 'package:mobarter/features/theme/constColors.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/features/bill_electricity/ElectricityPage.dart';
 import 'package:mobarter/features/bill_top_up/TopUpPage.dart';
-import 'package:mobarter/widgets/scaffold.dart';
-import 'package:mobarter/widgets/toast.dart';
-import 'package:mobarter/widgets/webview.dart';
+import 'package:mobarter/widgets/widgets.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
-import 'package:mobarter/widgets/listTile.dart';
 
 class PaymentProduct {
   final String title;
@@ -129,7 +126,7 @@ class PaymentsPage extends HookWidget {
       title: "Services",
       noneScrollable: true,
       body: notReady
-          ? CircularProgressIndicator()
+          ? const  LoadingIndicator()
           : Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -195,7 +192,7 @@ class MiniApps extends HookWidget {
     }
 
     if (result.result.data == null) {
-      return const Center(child: Text("No data found"));
+      return LoadingIndicator();
     }
 
     final collection = result.result.parsedData?.static_miniApps;
