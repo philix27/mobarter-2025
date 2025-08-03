@@ -2,7 +2,6 @@ import type { IconType } from 'react-icons'
 import { BsBank } from 'react-icons/bs'
 import { CiWallet } from 'react-icons/ci'
 import { FaRegUser } from 'react-icons/fa6'
-import { GiTwoCoins } from 'react-icons/gi'
 import { MdNotes } from 'react-icons/md'
 import { RiAppsFill } from 'react-icons/ri'
 

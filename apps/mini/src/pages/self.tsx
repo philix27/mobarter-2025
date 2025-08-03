@@ -25,8 +25,8 @@ export default function SelfKyc() {
         <div>
             <SelfVerification />
 
-            <Button onClick={() => {
-                router.push(deeplink);
+            <Button onClick={ async() => {
+                await router.push(deeplink);
             }}>Deep Link</Button>
         </div>
     )

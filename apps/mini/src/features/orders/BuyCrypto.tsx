@@ -14,7 +14,7 @@ import { formatEtherBalance, pasteTextFromClipboard, shortString } from 'src/lib
 import { logger } from 'src/lib/utils/logger'
 import { useBalance } from 'wagmi'
 
-import { useAppContext } from '@/src/Root/TgContext'
+// import { useAppContext } from '@/src/Root/TgContext'
 import { useSendToken } from '@/src/hooks/useSend'
 
 export default function BuyCrypto() {
@@ -24,8 +24,8 @@ export default function BuyCrypto() {
   const [amount, setAmount] = useState(0)
   const Copy = FaCopy as any
   const { sendTransaction } = useEthereum()
-  const { handleError } = useAppContext()
-  const { evmAddress } = useAppContext()
+  // const { handleError } = useAppContext()
+  const evmAddress = ""
   const { data, isLoading } = useBalance({
     address: evmAddress as `0x${string}`,
     chainId: ChainId.Celo,
@@ -46,7 +46,6 @@ export default function BuyCrypto() {
       setWalletAddress('')
     } catch (error: any) {
       logger.error('sendNative error', error)
-      handleError(error)
     }
   }
 
@@ -82,9 +81,8 @@ export default function BuyCrypto() {
     <div className="w-full items-center justify-center flex flex-col px-1 mb-[20%] gap-y-2">
       <AppSelect
         label="Currency"
-        desc={`${
-          isLoading ? '...' : formatEtherBalance(data!.value, data!.decimals, 3)
-        } ${selectedToken}`}
+        desc={`${isLoading ? '...' : formatEtherBalance(data!.value, data!.decimals, 3)
+          } ${selectedToken}`}
         onChange={(data) => {
           setToken(data)
         }}

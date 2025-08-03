@@ -25,7 +25,7 @@ export default function Drawer() {
         <motion.div
           initial={{ x: 200, opacity: 1 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.7, ease: 'easeOut', easeInOut: 'easeOut' }}
+          transition={{ duration: 0.7, ease: 'easeOut', }}
           className="md:w-[30%] md:max-w-[30%] block w-full bg-card h-full"
         >
           <div

@@ -48,7 +48,7 @@ export default function RewardsView() {
                 onChange={function (newValue: string) {
                     setFeedbackCategory(newValue)
                 }}
-                data={categories.map((val, i) => { return { value: val, label: val } })} />
+                data={categories.map((val) => { return { value: val, label: val } })} />
             <Input
                 label="Feedback"
                 placeholder="Provide a feedback"

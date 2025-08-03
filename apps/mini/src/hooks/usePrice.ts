@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client'
-import { FxRate_GetAllDocument, QueryResponse } from '@repo/api'
+import { FxRate_GetAllDocument, QueryResponse } from '@/src/api'
 import { useState } from 'react'
 
 import { logger } from '../lib/utils'

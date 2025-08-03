@@ -9,7 +9,7 @@ import {
   OrderStatus,
   Orders_CreateSellDocument,
   TradeType,
-} from '@repo/api'
+} from '@/src/api'
 import { useState } from 'react'
 import { FaArrowDownShortWide } from 'react-icons/fa6'
 import { toast } from 'sonner'
@@ -17,11 +17,7 @@ import { Button } from 'src/components/Button'
 import Input from 'src/components/Input'
 import { TokenId } from 'src/lib/config/tokens'
 
-import ListBankAccounts from '../bankAccount/ListAccounts'
-import BalCard from '../others/BalCard'
 
-import { useAppContext } from '@/src/Root/TgContext'
-import BottomModal from '@/src/components/BottomModal'
 import { Card, Label } from '@/src/components/comps'
 import { usePrice } from '@/src/hooks/usePrice'
 import { useSendToken } from '@/src/hooks/useSend'
@@ -40,12 +36,11 @@ export default function SellCrypto() {
   const store = AppStores.useSendToBank()
   const storeBank = AppStores.useBankAccount()
   const storeSettings = AppStores.useSettings()
-  const [showBanks, setShowBanks] = useState(false)
+  // const [showBanks, setShowBanks] = useState(false)
   // const [selectedToken, setToken] = useState('cUSD')
   // const [bankCode, setBankCode] = useState('0')
   // const [bankAccountNo, setBankAccountNo] = useState('')
   const [amountFiat, setAmount] = useState(0)
-  const { evmAddress } = useAppContext()
   const { sendErc20 } = useSendToken()
   const { amountToPay, handleOnChange } = usePrice()
   const balance = useTokenBalance(TokenId.cUSD)
@@ -97,7 +92,7 @@ export default function SellCrypto() {
             status: OrderStatus.Pending,
             action_user: OrderActions.LockCrypto,
             merchant_id: 1,
-            wallet_customer: evmAddress!,
+            wallet_customer: "evmAddress"!,
             wallet_merchant: COLLECTOR,
             txn_hash: txn_hash,
             mode: OrderMode.Express,
@@ -130,7 +125,7 @@ export default function SellCrypto() {
 
   return (
     <div className="w-full items-center justify-center flex flex-col px-1 gap-y-2">
-      <BalCard />
+      {/* <BalCard /> */}
 
       <Input
         label="SELECT Account*"
@@ -142,7 +137,7 @@ export default function SellCrypto() {
           <TrailIcon
             className="text-primary"
             onClick={async () => {
-              setShowBanks(true)
+              // setShowBanks(true)
             }}
           />
         }
@@ -172,14 +167,14 @@ export default function SellCrypto() {
       <Button className="mt-5" onClick={handleSend}>
         Send
       </Button>
-      <BottomModal
+      {/* <BottomModal
         onClose={() => {
           setShowBanks(false)
         }}
         showSheet={showBanks}
       >
         <ListBankAccounts />
-      </BottomModal>
+      </BottomModal> */}
     </div>
   )
 }
