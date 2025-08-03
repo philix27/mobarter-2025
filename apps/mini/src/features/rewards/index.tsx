@@ -23,8 +23,6 @@ export default function RewardsView() {
     const router = useRouter();
     const params = router.query;
 
-    // Example: Accessing a specific parameter
-    const myParam = router.query.myParam;
     const handleSubmit = () => {
         if (!feedback) {
             toast.error('Please provide a feedback')
