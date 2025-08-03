@@ -1713,13 +1713,6 @@ const documentNodeQueryElectricityBill_getProviders =
             selectionSet: null,
           ),
           FieldNode(
-            name: NameNode(value: 'status'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
             name: NameNode(value: 'category'),
             alias: null,
             arguments: [],
@@ -1916,7 +1909,6 @@ class Query$ElectricityBill_getProviders$electricityBill_getProviders {
   Query$ElectricityBill_getProviders$electricityBill_getProviders({
     required this.name,
     required this.logo,
-    required this.status,
     required this.category,
     this.$__typename = 'ElectricityBill_ProvidersResponse',
   });
@@ -1925,13 +1917,11 @@ class Query$ElectricityBill_getProviders$electricityBill_getProviders {
       Map<String, dynamic> json) {
     final l$name = json['name'];
     final l$logo = json['logo'];
-    final l$status = json['status'];
     final l$category = json['category'];
     final l$$__typename = json['__typename'];
     return Query$ElectricityBill_getProviders$electricityBill_getProviders(
       name: (l$name as String),
       logo: (l$logo as String),
-      status: (l$status as bool),
       category: (l$category as String),
       $__typename: (l$$__typename as String),
     );
@@ -1940,8 +1930,6 @@ class Query$ElectricityBill_getProviders$electricityBill_getProviders {
   final String name;
 
   final String logo;
-
-  final bool status;
 
   final String category;
 
@@ -1953,8 +1941,6 @@ class Query$ElectricityBill_getProviders$electricityBill_getProviders {
     _resultData['name'] = l$name;
     final l$logo = logo;
     _resultData['logo'] = l$logo;
-    final l$status = status;
-    _resultData['status'] = l$status;
     final l$category = category;
     _resultData['category'] = l$category;
     final l$$__typename = $__typename;
@@ -1966,13 +1952,11 @@ class Query$ElectricityBill_getProviders$electricityBill_getProviders {
   int get hashCode {
     final l$name = name;
     final l$logo = logo;
-    final l$status = status;
     final l$category = category;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$name,
       l$logo,
-      l$status,
       l$category,
       l$$__typename,
     ]);
@@ -1996,11 +1980,6 @@ class Query$ElectricityBill_getProviders$electricityBill_getProviders {
     final l$logo = logo;
     final lOther$logo = other.logo;
     if (l$logo != lOther$logo) {
-      return false;
-    }
-    final l$status = status;
-    final lOther$status = other.status;
-    if (l$status != lOther$status) {
       return false;
     }
     final l$category = category;
@@ -2044,7 +2023,6 @@ abstract class CopyWith$Query$ElectricityBill_getProviders$electricityBill_getPr
   TRes call({
     String? name,
     String? logo,
-    bool? status,
     String? category,
     String? $__typename,
   });
@@ -2071,7 +2049,6 @@ class _CopyWithImpl$Query$ElectricityBill_getProviders$electricityBill_getProvid
   TRes call({
     Object? name = _undefined,
     Object? logo = _undefined,
-    Object? status = _undefined,
     Object? category = _undefined,
     Object? $__typename = _undefined,
   }) =>
@@ -2082,9 +2059,6 @@ class _CopyWithImpl$Query$ElectricityBill_getProviders$electricityBill_getProvid
         logo: logo == _undefined || logo == null
             ? _instance.logo
             : (logo as String),
-        status: status == _undefined || status == null
-            ? _instance.status
-            : (status as bool),
         category: category == _undefined || category == null
             ? _instance.category
             : (category as String),
@@ -2107,7 +2081,6 @@ class _CopyWithStubImpl$Query$ElectricityBill_getProviders$electricityBill_getPr
   call({
     String? name,
     String? logo,
-    bool? status,
     String? category,
     String? $__typename,
   }) =>

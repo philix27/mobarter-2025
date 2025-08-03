@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
+import 'package:mobarter/widgets/shimmer.dart';
 // import 'package:mobarter/constants/theme.dart';
 
 Widget listTile(
@@ -48,8 +49,7 @@ Widget listTile(
                   ? SizedBox.shrink()
                   : CachedNetworkImage(
                       imageUrl: imgUrl,
-                      placeholder: (context, url) =>
-                          CircularProgressIndicator(),
+                      placeholder: (context, url) => roundShimmerImg(context),
                       errorWidget: (context, url, error) => SizedBox.shrink(),
                       width: 25,
                       height: 25,

@@ -19,4 +19,9 @@ class AppThemeState extends ChangeNotifier {
     isDarkModeEnabled = true;
     notifyListeners();
   }
+
+  void toggleTheme() {
+    isDarkModeEnabled = !isDarkModeEnabled;
+    notifyListeners();
+  }
 }

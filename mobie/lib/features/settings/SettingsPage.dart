@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/auth/auth_service.dart';
 import 'package:mobarter/features/profile/profile_page.dart';
@@ -7,7 +8,7 @@ import 'package:mobarter/features/settings/showLearn.dart';
 import 'package:mobarter/features/settings/showDocsLinks.dart';
 import 'package:mobarter/features/settings/showSocials.dart';
 import 'package:mobarter/features/settings/showSupport.dart';
-import 'package:mobarter/features/settings/showWallet.dart';
+import 'package:mobarter/features/wallet/WalletQRCodePage.dart';
 import 'package:mobarter/features/theme/themes_provider.dart';
 import 'package:mobarter/utils/logger.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
@@ -36,6 +37,18 @@ class SettingsPage extends HookConsumerWidget {
     return appScaffold(
       context,
       title: "Settings",
+      actions: [
+        IconButton(
+          padding: EdgeInsets.only(right: 20),
+          icon: Icon(
+            themeState.isDarkModeEnabled ? Icons.dark_mode : Icons.light_mode,
+            size: 22,
+          ),
+          onPressed: () {
+            themeState.toggleTheme();
+          },
+        ),
+      ],
       body: Column(
         // spacing: 4,
         children: [
@@ -60,7 +73,12 @@ class SettingsPage extends HookConsumerWidget {
             subtitle: "Ethereum Wallet Address",
             icon: Icons.wallet,
             onTap: () {
-              btmSheet(ctx: context, w: ShowWallet(), h: 0.5);
+              pushScreen(
+                context,
+                screen: WalletQrCodePage(),
+                withNavBar: false,
+                pageTransitionAnimation: PageTransitionAnimation.slideUp,
+              );
             },
           ),
           // listTile(
@@ -71,27 +89,27 @@ class SettingsPage extends HookConsumerWidget {
           //     btmSheet(ctx: context, w: ShowBankAccounts(), h: 0.4);
           //   },
           // ),
-          listTile(
-            context,
-            title: "Theme",
-            subtitle: 'Toggle theme',
-            icon: Icons.graphic_eq,
-            trailing: Transform.scale(
-              scale: 0.6,
-              child: Switch(
-                padding: EdgeInsets.all(0),
-                value: themeState.isDarkModeEnabled,
-                // materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                onChanged: (enabled) {
-                  if (enabled) {
-                    themeState.setDarkTheme();
-                  } else {
-                    themeState.setLightTheme();
-                  }
-                },
-              ),
-            ),
-          ),
+          // listTile(
+          //   context,
+          //   title: "Theme",
+          //   subtitle: 'Toggle theme',
+          //   icon: Icons.graphic_eq,
+          //   trailing: Transform.scale(
+          //     scale: 0.6,
+          //     child: Switch(
+          //       padding: EdgeInsets.all(0),
+          //       value: themeState.isDarkModeEnabled,
+          //       // materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          //       onChanged: (enabled) {
+          //         if (enabled) {
+          //           themeState.setDarkTheme();
+          //         } else {
+          //           themeState.setLightTheme();
+          //         }
+          //       },
+          //     ),
+          //   ),
+          // ),
           listTile(
             context,
             title: "Support & Community",
@@ -141,6 +159,7 @@ class SettingsPage extends HookConsumerWidget {
                   .then((value) {
                     appLogger.i("User logged out successfully");
                     Navigator.of(context).pushNamed("/");
+                    Phoenix.rebirth(context);
                     // Navigator.of(context).pushNamed("/welcome");
                   })
                   .catchError((error) {

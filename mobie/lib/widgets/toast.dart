@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:mobarter/features/theme/constColors.dart';
 import 'package:toastification/toastification.dart';
 
+enum ToastStatus { error, warning, success, info }
+
 ToastificationItem appToast(
-  BuildContext ctx,
+  BuildContext context,
   String text, {
   String? subtitle,
+  ToastificationType? type,
 }) {
   return toastification.show(
-    context: ctx, // optional if you use ToastificationWrapper
-    type: ToastificationType.success,
+    context: context, // optional if you use ToastificationWrapper
+    type: type,
     style: ToastificationStyle.flat,
     autoCloseDuration: const Duration(seconds: 4),
     title: Text(text, style: TextStyle(fontWeight: FontWeight.w600)),
@@ -26,10 +29,10 @@ ToastificationItem appToast(
     //     child: child,
     //   );
     // },
-    icon: const Icon(Icons.info, color: Colors.grey),
     showIcon: true, // show or hide the icon
-    primaryColor: colorPrimary,
-    backgroundColor: Colors.white,
+    // primaryColor: colorPrimary,
+    // backgroundColor: Colors.white,
+    // backgroundColor: Colors.red.shade200,
     foregroundColor: Colors.black,
     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
     margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),

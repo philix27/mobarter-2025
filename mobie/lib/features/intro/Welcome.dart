@@ -12,6 +12,7 @@ import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/utils/appImages.dart';
 import 'package:mobarter/widgets/btn.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 class WelcomePage extends ConsumerWidget {
   const WelcomePage({super.key});
@@ -37,7 +38,20 @@ class SelctDisplay extends HookWidget {
     }
 
     if (appInfo == null) {
-      return Text("No data yet");
+      return IntroScreen(
+        pageColor: Colors.deepPurple.shade100,
+        imagePath: Appimages.appUpdate,
+        title: "Connection Error",
+        subtitle: "Kindly check your network connection and try again",
+        activeIndex: 0,
+        button: btn(
+          title: "Restart",
+          onPressed: () {
+            Phoenix.rebirth(context);
+            // launchUrl(Uri.parse(_url), mode: LaunchMode.externalApplication);
+          },
+        ),
+      );
     }
 
     final _url = Platform.isIOS ? appInfo.iosAppUrl : appInfo.androidAppUrl;

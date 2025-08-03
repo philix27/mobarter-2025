@@ -25,7 +25,7 @@ class ElectricityPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final _makePayment = useMutation$ElectricityBill_makePayment();
     final w = electricBillWatch(ref);
-
+  
     return appScaffold(
       context,
       title: "Pay Electricity Bill",
@@ -37,8 +37,7 @@ class ElectricityPage extends HookConsumerWidget {
           AccountNo(),
           ElectricityAmount(),
           CryptoAmountPay(amountFiat: w.amountFiat ?? 0),
-          SizedBox(height: 10),
-          w.customerName != null
+          w.customerName != null && !w.customerName!.isEmpty
               ? listTile(
                   context,
                   title: w.customerName!,

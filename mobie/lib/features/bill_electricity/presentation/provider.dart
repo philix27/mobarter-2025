@@ -82,7 +82,6 @@ class BillProvidersList extends ConsumerWidget {
         return listTile(
           context,
           title: item.name,
-          subtitle: "${item.status ? "ACTIVE" : "NON-ACTIVE"}",
           imgUrl: item.logo,
           onTap: () {
             dataRead.updateBilerType(item.name, item.logo);
