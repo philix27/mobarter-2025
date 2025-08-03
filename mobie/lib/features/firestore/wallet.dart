@@ -25,7 +25,7 @@ class WalletStoreService {
       appLogger.e("Error getting document: $e");
       return null;
     }
-  }
+  } 
 
   Future<String?> userWalletAddress() async {
     final user = authSvc.user();

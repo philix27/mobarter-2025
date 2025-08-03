@@ -84,6 +84,7 @@ class SelctDisplay extends HookWidget {
             ),
           );
         }
+        
         return LiquidSwipe(
           pages: [
             IntroScreen(

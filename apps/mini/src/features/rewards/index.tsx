@@ -5,6 +5,7 @@ import { AppSelect } from "@/src/components/Select"
 import { Text } from "@/src/components/ui/Text"
 import { useState } from "react"
 import { toast } from "sonner"
+import { useRouter } from 'next/router';
 
 export const categories = [
     "Airtime",
@@ -19,7 +20,11 @@ export default function RewardsView() {
     const [feedback, setFeedback] = useState<string>()
     const [feedbackCategory, setFeedbackCategory] = useState<string>()
     const [pin, setPin] = useState<string>()
+    const router = useRouter();
+    const params = router.query;
 
+    // Example: Accessing a specific parameter
+    const myParam = router.query.myParam;
     const handleSubmit = () => {
         if (!feedback) {
             toast.error('Please provide a feedback')
@@ -42,6 +47,7 @@ export default function RewardsView() {
         <div className="h-[50px] flex items-center justify-center bg-card mb-5 rounded-md">
             <Text className="font-bold" variant="md">Provide Feedback and Claim Rewards</Text>
         </div>
+        <p> {JSON.stringify(params)}</p>
         <div className="gap-y-5 flex flex-col items-center">
             <AppSelect
                 label="Category"
