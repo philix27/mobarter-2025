@@ -6,7 +6,6 @@ import 'package:mobarter/features/bill_tv/presentation/amount.dart';
 import 'package:mobarter/features/bill_tv/presentation/providers.dart';
 import 'package:mobarter/widgets/amountToPay.dart';
 import 'package:mobarter/widgets/txn_summary_page.dart';
-import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/widgets/btn.dart';
 import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/scaffold.dart';
@@ -59,13 +58,13 @@ class TvBillsPage extends ConsumerWidget {
                 context,
                 withNavBar: false,
                 screen: TxnSummaryPage(
-                  childeren: [
+                  children: [
                     simpleRow(
                       title: "Recipient number",
                       subtitle: "recipientPhone",
                     ),
                     simpleRow(
-                      title: "Nettwork Provider",
+                      title: "Network Provider",
                       subtitle: "networkProvider",
                     ),
                     simpleRow(title: "Amount", subtitle: "amountOfProduct"),
@@ -74,7 +73,7 @@ class TvBillsPage extends ConsumerWidget {
                     SizedBox(height: 20),
                     // btn(title: "Send", onPressed: ),
                   ],
-                  send: (Input$PaymentInput paylod) {
+                  send: (pin) {
                     appToast(context, "Summary Page testing");
                   },
                 ),

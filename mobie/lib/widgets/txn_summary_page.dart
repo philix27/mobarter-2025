@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/btn.dart';
 import 'package:mobarter/widgets/inputText.dart';
@@ -9,10 +8,10 @@ import 'package:mobarter/widgets/scaffold.dart';
 import 'package:mobarter/widgets/toast.dart';
 
 class TxnSummaryPage extends HookConsumerWidget {
-  final List<Widget> childeren;
-  void Function(Input$PaymentInput paylod) send;
+  final List<Widget> children;
+  void Function(String pin) send;
 
-  TxnSummaryPage({super.key, required this.childeren, required this.send});
+  TxnSummaryPage({super.key, required this.children, required this.send});
 
   @override
   Widget build(BuildContext context, ref) {
@@ -24,7 +23,7 @@ class TxnSummaryPage extends HookConsumerWidget {
         child: Column(
           spacing: 18,
           children: [
-            ...this.childeren,
+            ...this.children,
             btn(
               title: "Send",
               onPressed: () {
@@ -44,7 +43,7 @@ class TxnSummaryPage extends HookConsumerWidget {
 
 class _EnterPinAndSubmit extends StatelessWidget {
   _EnterPinAndSubmit({super.key, required this.send});
-  void Function(Input$PaymentInput paylod) send;
+  void Function(String paylod) send;
 
   final TextEditingController pin = TextEditingController();
 
@@ -54,7 +53,8 @@ class _EnterPinAndSubmit extends StatelessWidget {
       spacing: 20,
       children: [
         appText("Enter your pin to confirm transaction"),
-        textField(context,
+        textField(
+          context,
           label: 'Enter Transaction Pin',
           maxLength: 6,
           controller: pin,
@@ -72,12 +72,7 @@ class _EnterPinAndSubmit extends StatelessWidget {
               return;
             }
 
-            send(
-              Input$PaymentInput(
-                transaction_pin: pin.text,
-                user_uid: "user_uid",
-              ),
-            );
+            send(pin.text);
           },
         ),
       ],

@@ -86,7 +86,7 @@ class SettingsPage extends HookConsumerWidget {
           //   subtitle: "Manage bank account details",
           //   icon: Icons.money,
           //   onTap: () {
-          //     btmSheet(ctx: context, w: ShowBankAccounts(), h: 0.4);
+          //     btmSheet(ctx: context, w: ShowBankAccounts());
           //   },
           // ),
           // listTile(
@@ -116,7 +116,7 @@ class SettingsPage extends HookConsumerWidget {
             subtitle: 'Contact customer support',
             icon: Icons.support_agent_rounded,
             onTap: () {
-              btmSheet(ctx: context, w: ShowSupports(), h: 0.35);
+              btmSheet(ctx: context, w: ShowSupports());
             },
           ),
 
@@ -127,7 +127,7 @@ class SettingsPage extends HookConsumerWidget {
             // todo: use proper icons
             icon: Icons.social_distance,
             onTap: () {
-              btmSheet(ctx: context, w: ShowSocials(), h: 0.45);
+              btmSheet(ctx: context, w: ShowSocials());
             },
           ),
           listTile(
@@ -136,7 +136,7 @@ class SettingsPage extends HookConsumerWidget {
             subtitle: 'Privacy and Legal Agreements',
             icon: Icons.link,
             onTap: () {
-              btmSheet(ctx: context, w: DocsLinks(), h: 0.4);
+              btmSheet(ctx: context, w: DocsLinks());
             },
           ),
           listTile(
@@ -145,7 +145,7 @@ class SettingsPage extends HookConsumerWidget {
             subtitle: 'Tutorials and Guide on Mobarter',
             icon: Icons.video_camera_front,
             onTap: () {
-              btmSheet(ctx: context, w: ShowLearn(), h: 0.5);
+              btmSheet(ctx: context, w: ShowLearn());
             },
           ),
           listTile(

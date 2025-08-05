@@ -6,7 +6,6 @@ import 'package:mobarter/features/bill_betting/presentation/amount.dart';
 import 'package:mobarter/features/bill_betting/presentation/providers.dart';
 import 'package:mobarter/widgets/amountToPay.dart';
 import 'package:mobarter/widgets/txn_summary_page.dart';
-import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/widgets/btn.dart';
 import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/scaffold.dart';
@@ -59,7 +58,7 @@ class FundBettingBillsPage extends ConsumerWidget {
                 context,
                 withNavBar: false,
                 screen: TxnSummaryPage(
-                  childeren: [
+                  children: [
                     simpleRow(
                       title: "Recipient number",
                       subtitle: "recipientPhone",
@@ -74,7 +73,7 @@ class FundBettingBillsPage extends ConsumerWidget {
                     SizedBox(height: 20),
                     // btn(title: "Send", onPressed: ),
                   ],
-                  send: (Input$PaymentInput paylod) {
+                  send: (pin) {
                     appToast(context, "Summary Page testing");
                   },
                 ),

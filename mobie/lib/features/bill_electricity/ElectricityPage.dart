@@ -25,7 +25,7 @@ class ElectricityPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final _makePayment = useMutation$ElectricityBill_makePayment();
     final w = electricBillWatch(ref);
-  
+
     return appScaffold(
       context,
       title: "Pay Electricity Bill",
@@ -66,7 +66,7 @@ class ElectricityPage extends HookConsumerWidget {
                 context,
                 withNavBar: false,
                 screen: TxnSummaryPage(
-                  childeren: [
+                  children: [
                     simpleRow(
                       title: "Customer name",
                       subtitle: w.customerName!,
@@ -86,7 +86,7 @@ class ElectricityPage extends HookConsumerWidget {
                       subtitle: "cUSD ${w.amountCrypto.toString()}",
                     ),
                   ],
-                  send: (Input$PaymentInput paylod) async {
+                  send: (pin) async {
                     try {
                       require(w.providerName, "Select a provider");
                       require(w.isPrepaid, "Select a Meter type");
@@ -100,7 +100,6 @@ class ElectricityPage extends HookConsumerWidget {
                           .runMutation(
                             Variables$Mutation$ElectricityBill_makePayment(
                               input: Input$ElectricityBill_PaymentInput(
-                                payment: paylod,
                                 countryCode: Enum$Country.NG,
                                 customerName: w.customerName!,
                                 customerAddress: w.customerAddress!,
@@ -111,6 +110,13 @@ class ElectricityPage extends HookConsumerWidget {
                                 service: w.providerName!,
                                 amount: int.parse(w.amountFiat.toString()),
                                 reference: '',
+                                payment: Input$PaymentInput(
+                                  amount: w.amountCrypto!,
+                                  tokenAddress: "tokenAddress",
+                                  tokenChain: "tokenChain",
+                                  transaction_pin: pin,
+                                  user_uid: "user_uid",
+                                ),
                               ),
                             ),
                           )

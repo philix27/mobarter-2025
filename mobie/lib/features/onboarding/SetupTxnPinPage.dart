@@ -130,7 +130,6 @@ class SetupTxnPinHook extends HookWidget {
                     );
                   },
                 ),
-                h: 0.65,
               );
             },
           ),

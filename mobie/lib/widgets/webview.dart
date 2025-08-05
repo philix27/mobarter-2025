@@ -176,7 +176,6 @@ Page resource error:
               btmSheet(
                 ctx: context,
                 w: ShowDescription(desc: info),
-                h: 0.4,
               );
             },
             padding: const EdgeInsets.only(right: 20.0),

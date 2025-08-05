@@ -26,7 +26,7 @@ class DataPlanWidget extends ConsumerWidget {
         style: TextStyle(fontSize: 13, color: colorText),
       ),
       onTap: () {
-        btmSheet(ctx: context, w: _SelectDataPlan(), h: 0.6);
+        btmSheet(ctx: context, w: _SelectDataPlan());
       },
     );
   }

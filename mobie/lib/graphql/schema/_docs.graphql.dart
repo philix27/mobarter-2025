@@ -5160,10 +5160,18 @@ class _CopyWithStubImpl$Input$Order_MoveCryptoToEscrowInput<TRes>
 
 class Input$PaymentInput {
   factory Input$PaymentInput({
+    required double amount,
+    bool? isNative,
+    required String tokenAddress,
+    required String tokenChain,
     required String transaction_pin,
     required String user_uid,
   }) =>
       Input$PaymentInput._({
+        r'amount': amount,
+        if (isNative != null) r'isNative': isNative,
+        r'tokenAddress': tokenAddress,
+        r'tokenChain': tokenChain,
         r'transaction_pin': transaction_pin,
         r'user_uid': user_uid,
       });
@@ -5172,6 +5180,16 @@ class Input$PaymentInput {
 
   factory Input$PaymentInput.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
+    final l$amount = data['amount'];
+    result$data['amount'] = (l$amount as num).toDouble();
+    if (data.containsKey('isNative')) {
+      final l$isNative = data['isNative'];
+      result$data['isNative'] = (l$isNative as bool?);
+    }
+    final l$tokenAddress = data['tokenAddress'];
+    result$data['tokenAddress'] = (l$tokenAddress as String);
+    final l$tokenChain = data['tokenChain'];
+    result$data['tokenChain'] = (l$tokenChain as String);
     final l$transaction_pin = data['transaction_pin'];
     result$data['transaction_pin'] = (l$transaction_pin as String);
     final l$user_uid = data['user_uid'];
@@ -5181,12 +5199,30 @@ class Input$PaymentInput {
 
   Map<String, dynamic> _$data;
 
+  double get amount => (_$data['amount'] as double);
+
+  bool? get isNative => (_$data['isNative'] as bool?);
+
+  String get tokenAddress => (_$data['tokenAddress'] as String);
+
+  String get tokenChain => (_$data['tokenChain'] as String);
+
   String get transaction_pin => (_$data['transaction_pin'] as String);
 
   String get user_uid => (_$data['user_uid'] as String);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
+    final l$amount = amount;
+    result$data['amount'] = l$amount;
+    if (_$data.containsKey('isNative')) {
+      final l$isNative = isNative;
+      result$data['isNative'] = l$isNative;
+    }
+    final l$tokenAddress = tokenAddress;
+    result$data['tokenAddress'] = l$tokenAddress;
+    final l$tokenChain = tokenChain;
+    result$data['tokenChain'] = l$tokenChain;
     final l$transaction_pin = transaction_pin;
     result$data['transaction_pin'] = l$transaction_pin;
     final l$user_uid = user_uid;
@@ -5208,6 +5244,30 @@ class Input$PaymentInput {
     if (other is! Input$PaymentInput || runtimeType != other.runtimeType) {
       return false;
     }
+    final l$amount = amount;
+    final lOther$amount = other.amount;
+    if (l$amount != lOther$amount) {
+      return false;
+    }
+    final l$isNative = isNative;
+    final lOther$isNative = other.isNative;
+    if (_$data.containsKey('isNative') !=
+        other._$data.containsKey('isNative')) {
+      return false;
+    }
+    if (l$isNative != lOther$isNative) {
+      return false;
+    }
+    final l$tokenAddress = tokenAddress;
+    final lOther$tokenAddress = other.tokenAddress;
+    if (l$tokenAddress != lOther$tokenAddress) {
+      return false;
+    }
+    final l$tokenChain = tokenChain;
+    final lOther$tokenChain = other.tokenChain;
+    if (l$tokenChain != lOther$tokenChain) {
+      return false;
+    }
     final l$transaction_pin = transaction_pin;
     final lOther$transaction_pin = other.transaction_pin;
     if (l$transaction_pin != lOther$transaction_pin) {
@@ -5223,9 +5283,17 @@ class Input$PaymentInput {
 
   @override
   int get hashCode {
+    final l$amount = amount;
+    final l$isNative = isNative;
+    final l$tokenAddress = tokenAddress;
+    final l$tokenChain = tokenChain;
     final l$transaction_pin = transaction_pin;
     final l$user_uid = user_uid;
     return Object.hashAll([
+      l$amount,
+      _$data.containsKey('isNative') ? l$isNative : const {},
+      l$tokenAddress,
+      l$tokenChain,
       l$transaction_pin,
       l$user_uid,
     ]);
@@ -5242,6 +5310,10 @@ abstract class CopyWith$Input$PaymentInput<TRes> {
       _CopyWithStubImpl$Input$PaymentInput;
 
   TRes call({
+    double? amount,
+    bool? isNative,
+    String? tokenAddress,
+    String? tokenChain,
     String? transaction_pin,
     String? user_uid,
   });
@@ -5261,11 +5333,22 @@ class _CopyWithImpl$Input$PaymentInput<TRes>
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
+    Object? amount = _undefined,
+    Object? isNative = _undefined,
+    Object? tokenAddress = _undefined,
+    Object? tokenChain = _undefined,
     Object? transaction_pin = _undefined,
     Object? user_uid = _undefined,
   }) =>
       _then(Input$PaymentInput._({
         ..._instance._$data,
+        if (amount != _undefined && amount != null)
+          'amount': (amount as double),
+        if (isNative != _undefined) 'isNative': (isNative as bool?),
+        if (tokenAddress != _undefined && tokenAddress != null)
+          'tokenAddress': (tokenAddress as String),
+        if (tokenChain != _undefined && tokenChain != null)
+          'tokenChain': (tokenChain as String),
         if (transaction_pin != _undefined && transaction_pin != null)
           'transaction_pin': (transaction_pin as String),
         if (user_uid != _undefined && user_uid != null)
@@ -5280,6 +5363,10 @@ class _CopyWithStubImpl$Input$PaymentInput<TRes>
   TRes _res;
 
   call({
+    double? amount,
+    bool? isNative,
+    String? tokenAddress,
+    String? tokenChain,
     String? transaction_pin,
     String? user_uid,
   }) =>

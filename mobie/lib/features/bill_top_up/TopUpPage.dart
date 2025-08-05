@@ -74,7 +74,7 @@ class TopUpsPage extends HookConsumerWidget {
                   context,
                   withNavBar: false,
                   screen: TxnSummaryPage(
-                    childeren: [
+                    children: [
                       simpleRow(
                         title: "Recipient number",
                         subtitle: data.phoneNo!,
@@ -97,7 +97,7 @@ class TopUpsPage extends HookConsumerWidget {
                       // simpleRow(title: "Cashback bonus", subtitle: cashback),
                       SizedBox(height: 20),
                     ],
-                    send: (Input$PaymentInput paylod) async {
+                    send: (pin) async {
                       final response = await result
                           .runMutation(
                             Variables$Mutation$Utility_purchaseAirtime(
@@ -106,7 +106,13 @@ class TopUpsPage extends HookConsumerWidget {
                                 countryCode: Enum$Country.NG,
                                 operatorId: data.networkOperatorId!,
                                 phoneNo: data.phoneNo!,
-                                payment: paylod,
+                                payment: Input$PaymentInput(
+                                  amount: data.amountCrypto!,
+                                  tokenAddress: "tokenAddress",
+                                  tokenChain: "tokenChain",
+                                  transaction_pin: pin,
+                                  user_uid: "user_uid",
+                                ),
                               ),
                             ),
                           )

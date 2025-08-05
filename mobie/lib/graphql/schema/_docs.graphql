@@ -239,7 +239,6 @@ type ElectricityBill_ProvidersResponse {
   logo: String!
   name: String!
   slug: String!
-  status: Boolean!
 }
 
 input ElectricityBill_ValidateAccountInput {
@@ -555,6 +554,10 @@ enum OtpPurpose {
 }
 
 input PaymentInput {
+  amount: Float!
+  isNative: Boolean
+  tokenAddress: String!
+  tokenChain: String!
   transaction_pin: String!
   user_uid: String!
 }
@@ -751,7 +754,6 @@ type TvBill_GetTVProvidersResponse {
   logo: String!
   name: String!
   slug: String!
-  status: Boolean!
 }
 
 input TvBill_PaymentInput {

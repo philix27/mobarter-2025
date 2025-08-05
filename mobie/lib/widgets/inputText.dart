@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/features/theme/constColors.dart';
 import 'package:flutter/services.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
 

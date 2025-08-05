@@ -4071,13 +4071,6 @@ const documentNodeQuerytvBills_getProviders = DocumentNode(definitions: [
             selectionSet: null,
           ),
           FieldNode(
-            name: NameNode(value: 'status'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
             name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
@@ -4262,7 +4255,6 @@ class Query$tvBills_getProviders$tvBills_getProviders {
     required this.category,
     required this.name,
     required this.slug,
-    required this.status,
     this.$__typename = 'TvBill_GetTVProvidersResponse',
   });
 
@@ -4272,14 +4264,12 @@ class Query$tvBills_getProviders$tvBills_getProviders {
     final l$category = json['category'];
     final l$name = json['name'];
     final l$slug = json['slug'];
-    final l$status = json['status'];
     final l$$__typename = json['__typename'];
     return Query$tvBills_getProviders$tvBills_getProviders(
       logo: (l$logo as String),
       category: (l$category as String),
       name: (l$name as String),
       slug: (l$slug as String),
-      status: (l$status as bool),
       $__typename: (l$$__typename as String),
     );
   }
@@ -4291,8 +4281,6 @@ class Query$tvBills_getProviders$tvBills_getProviders {
   final String name;
 
   final String slug;
-
-  final bool status;
 
   final String $__typename;
 
@@ -4306,8 +4294,6 @@ class Query$tvBills_getProviders$tvBills_getProviders {
     _resultData['name'] = l$name;
     final l$slug = slug;
     _resultData['slug'] = l$slug;
-    final l$status = status;
-    _resultData['status'] = l$status;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -4319,14 +4305,12 @@ class Query$tvBills_getProviders$tvBills_getProviders {
     final l$category = category;
     final l$name = name;
     final l$slug = slug;
-    final l$status = status;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$logo,
       l$category,
       l$name,
       l$slug,
-      l$status,
       l$$__typename,
     ]);
   }
@@ -4358,11 +4342,6 @@ class Query$tvBills_getProviders$tvBills_getProviders {
     final l$slug = slug;
     final lOther$slug = other.slug;
     if (l$slug != lOther$slug) {
-      return false;
-    }
-    final l$status = status;
-    final lOther$status = other.status;
-    if (l$status != lOther$status) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -4399,7 +4378,6 @@ abstract class CopyWith$Query$tvBills_getProviders$tvBills_getProviders<TRes> {
     String? category,
     String? name,
     String? slug,
-    bool? status,
     String? $__typename,
   });
 }
@@ -4422,7 +4400,6 @@ class _CopyWithImpl$Query$tvBills_getProviders$tvBills_getProviders<TRes>
     Object? category = _undefined,
     Object? name = _undefined,
     Object? slug = _undefined,
-    Object? status = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Query$tvBills_getProviders$tvBills_getProviders(
@@ -4438,9 +4415,6 @@ class _CopyWithImpl$Query$tvBills_getProviders$tvBills_getProviders<TRes>
         slug: slug == _undefined || slug == null
             ? _instance.slug
             : (slug as String),
-        status: status == _undefined || status == null
-            ? _instance.status
-            : (status as bool),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -4458,7 +4432,6 @@ class _CopyWithStubImpl$Query$tvBills_getProviders$tvBills_getProviders<TRes>
     String? category,
     String? name,
     String? slug,
-    bool? status,
     String? $__typename,
   }) =>
       _res;

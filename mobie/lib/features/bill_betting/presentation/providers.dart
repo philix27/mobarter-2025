@@ -24,7 +24,7 @@ class BettingProviders extends ConsumerWidget {
         style: TextStyle(fontSize: 12, color: colorText),
       ),
       onTap: () {
-        btmSheet(ctx: context, w: _SelectDataPlan(), h: 0.7);
+        btmSheet(ctx: context, w: _SelectDataPlan());
       },
     );
   }

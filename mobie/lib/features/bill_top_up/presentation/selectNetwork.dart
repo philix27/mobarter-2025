@@ -21,7 +21,7 @@ class ShowTopUpProviders extends ConsumerWidget {
       subtitle: "Network providers for top-up",
       tileColor: colorCard,
       onTap: () {
-        btmSheet(ctx: context, w: _NetworkList(), h: 0.5);
+        btmSheet(ctx: context, w: _NetworkList());
       },
     );
   }

@@ -55,7 +55,6 @@ dependencies:
   modal_bottom_sheet: ^3.0.0
   package_info_plus: ^8.3.0
   persistent_bottom_nav_bar_v2: ^6.1.0
-  pinput: ^5.0.1
   pretty_qr_code: ^3.4.0
   riverpod: ^2.6.1
   riverpod_annotation: ^2.6.1

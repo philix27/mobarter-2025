@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobarter/features/bill_tv/logic/provider.dart';
 import 'package:mobarter/features/theme/constColors.dart';
+import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
@@ -26,7 +27,7 @@ class TvBillsProviders extends ConsumerWidget {
         style: TextStyle(fontSize: 12, color: colorText),
       ),
       onTap: () {
-        btmSheet(ctx: context, w: _SelectDataPlan(), h: 0.7);
+        btmSheet(ctx: context, w: _SelectDataPlan());
       },
     );
   }
@@ -80,7 +81,7 @@ class BillProvidersList extends ConsumerWidget {
         return listTile(
           context,
           title: item.name,
-          subtitle: "${item.status ? "ACTIVE" : "NON-ACTIVE"}",
+          trailing: Text("Provider", style: textTheme(context).bodySmall),
           imgUrl: item.logo,
           onTap: () {
             dataRead.updateBilerType(item.name, item.logo);

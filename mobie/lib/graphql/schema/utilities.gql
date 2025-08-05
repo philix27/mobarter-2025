@@ -49,7 +49,6 @@ query tvBills_getProviders($input: TvBill_GetTVProvidersInput!) {
     category
     name
     slug
-    status
   }
 }
 
