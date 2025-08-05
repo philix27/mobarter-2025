@@ -3,7 +3,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mobarter/features/bill_betting/FundBettingWalletPage.dart';
 import 'package:mobarter/features/bill_tv/TvBillsPage.dart';
 import 'package:mobarter/features/theme/constColors.dart';
-import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/features/bill_electricity/ElectricityPage.dart';
 import 'package:mobarter/features/bill_top_up/TopUpPage.dart';
@@ -136,13 +135,13 @@ class PaymentsPage extends HookWidget {
                   borderRadius: BorderRadius.circular(12),
                   child: Container(
                     height: getH(context, 0.2),
-                    padding: EdgeInsets.all(15),
+                    padding: EdgeInsets.all(10),
                     color: Theme.of(context).cardColor,
                     child: GridView.count(
                       shrinkWrap: true,
                       crossAxisCount: 4, // number of columns
-                      crossAxisSpacing: 0,
-                      mainAxisSpacing: 0,
+                      crossAxisSpacing: 4,
+                      mainAxisSpacing: 4,
                       children: List.generate(
                         productsList(context, data).length,
                         (index) {

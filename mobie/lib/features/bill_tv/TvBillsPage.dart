@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobarter/features/bill_tv/logic/provider.dart';
-import 'package:mobarter/features/bill_tv/presentation/accountNo.dart';
+import 'package:mobarter/features/bill_tv/presentation/smartCardNo.dart';
 import 'package:mobarter/features/bill_tv/presentation/amount.dart';
+import 'package:mobarter/features/bill_tv/presentation/bouquet.dart';
 import 'package:mobarter/features/bill_tv/presentation/providers.dart';
+import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/widgets/amountToPay.dart';
 import 'package:mobarter/widgets/txn_summary_page.dart';
 import 'package:mobarter/widgets/btn.dart';
@@ -17,7 +19,35 @@ class TvBillsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final data = tvBillWatch(ref);
+    final watch = tvBillWatch(ref);
+    final read = tvBillRead(ref);
+
+    handleSubmit() {
+      require(watch.providerName, "Select a Provider");
+      require(watch.bouquetName, "Select a Bouquet");
+      require(watch.smartCardNo, "Please enter a smart card no");
+      require(watch.amountCrypto, "Please set the amount");
+
+      pushScreen(
+        context,
+        withNavBar: false,
+        screen: TxnSummaryPage(
+          children: [
+            simpleRow(title: "Provider", subtitle: watch.providerName),
+            simpleRow(title: "Bouquet", subtitle: watch.bouquetName),
+            simpleRow(title: "Smart Card No", subtitle: watch.smartCardNo),
+            simpleRow(
+              title: "Crypto Amount",
+              subtitle: watch.amountCrypto.toString(),
+            ),
+            SizedBox(height: 20),
+          ],
+          send: (pin) {
+            appToast(context, "Summary Page testing");
+          },
+        ),
+      );
+    }
 
     return appScaffold(
       context,
@@ -26,60 +56,12 @@ class TvBillsPage extends ConsumerWidget {
         spacing: 20,
         children: [
           TvBillsProviders(),
+          watch.providerName != null ? TvBillsBouquet() : SizedBox.shrink(),
+          TvBillsSmartCardNoField(),
           TvBillsAmount(),
-          TvBillsAccountNoField(),
-          CryptoAmountPay(amountFiat: data.amountFiat ?? 0),
+          CryptoAmountPay(amountFiat: watch.amountFiat ?? 0),
           SizedBox(height: 10),
-
-          btn(
-            title: "Submit",
-            onPressed: () {
-              // if (data.accountNo!.length != 11) {
-              //   appToast(context, "Phone number must be");
-              //   return;
-              // }
-
-              // if (data.providerName == null || data.providerName!.isEmpty) {
-              //   appToast(context, "Select a network provider");
-              //   return;
-              // }
-
-              // if (data.amountCrypto == null || data.amountFiat == null) {
-              //   appToast(context, "Select/Enter and amount");
-              //   return;
-              // }
-
-              // if (data.amountFiat! < 50.0) {
-              //   appToast(context, "Minimum of ₦50");
-              //   return;
-              // }
-
-              pushScreen(
-                context,
-                withNavBar: false,
-                screen: TxnSummaryPage(
-                  children: [
-                    simpleRow(
-                      title: "Recipient number",
-                      subtitle: "recipientPhone",
-                    ),
-                    simpleRow(
-                      title: "Network Provider",
-                      subtitle: "networkProvider",
-                    ),
-                    simpleRow(title: "Amount", subtitle: "amountOfProduct"),
-                    simpleRow(title: "Pay", subtitle: "amountToPay"),
-                    // simpleRow(title: "Cashback bonus", subtitle: cashback),
-                    SizedBox(height: 20),
-                    // btn(title: "Send", onPressed: ),
-                  ],
-                  send: (pin) {
-                    appToast(context, "Summary Page testing");
-                  },
-                ),
-              );
-            },
-          ),
+          btn(title: "Submit", onPressed: handleSubmit),
         ],
       ),
     );

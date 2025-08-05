@@ -24,7 +24,7 @@ class BettingProviders extends ConsumerWidget {
         style: TextStyle(fontSize: 12, color: colorText),
       ),
       onTap: () {
-        btmSheet(ctx: context, w: _SelectDataPlan());
+        btmSheet(ctx: context, w: _SelectDataPlan(), h: 0.5);
       },
     );
   }
@@ -54,7 +54,7 @@ class _SelectDataPlan extends HookWidget {
 }
 
 class BillProvidersList extends ConsumerWidget {
-  BillProvidersList({super.key, required this.list});
+  const BillProvidersList({super.key, required this.list});
 
   final List<Query$fundBetting_getProviders$fundBetting_getProviders>? list;
 
@@ -70,6 +70,7 @@ class BillProvidersList extends ConsumerWidget {
     }
 
     return ListView.builder(
+      primary: true,
       itemCount: cols.length,
       shrinkWrap: true,
       itemBuilder: (ctx, i) {
@@ -78,7 +79,6 @@ class BillProvidersList extends ConsumerWidget {
         return listTile(
           context,
           title: item.name,
-          subtitle: "Provider",
           imgUrl: item.logo,
           onTap: () {
             dataRead.updateBilerType(item.name, item.logo);

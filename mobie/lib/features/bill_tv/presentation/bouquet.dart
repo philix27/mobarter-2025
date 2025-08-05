@@ -6,12 +6,13 @@ import 'package:mobarter/features/theme/constColors.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
+import 'package:mobarter/utils/size.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/loading.dart';
 
-class TvBillsProviders extends ConsumerWidget {
-  const TvBillsProviders({super.key});
+class TvBillsBouquet extends ConsumerWidget {
+  const TvBillsBouquet({super.key});
 
   @override
   Widget build(BuildContext context, ref) {
@@ -19,32 +20,35 @@ class TvBillsProviders extends ConsumerWidget {
 
     return listTile(
       context,
-      title: data.providerName ?? "Select Providers",
+      title: data.bouquetName ?? "Select Bouquet",
       tileColor: colorCard,
-      imgUrl: data.providerImg,
+      // imgUrl: data.providerImg,
       trailing: Text(
-        "Providers",
+        "Bouquet",
         style: TextStyle(fontSize: 12, color: colorText),
       ),
       onTap: () {
-        btmSheet(ctx: context, w: _ProvidersList());
+        btmSheet(ctx: context, w: _BouquetList(), h: 0.6);
       },
     );
   }
 }
 
-class _ProvidersList extends HookConsumerWidget {
-  const _ProvidersList();
+class _BouquetList extends HookConsumerWidget {
+  const _BouquetList();
 
   @override
   Widget build(BuildContext context, ref) {
     final data = tvBillWatch(ref);
     final dataRead = tvBillRead(ref);
 
-    final result = useQuery$tvBills_getProviders(
-      Options$Query$tvBills_getProviders(
-        variables: Variables$Query$tvBills_getProviders(
-          input: Input$TvBill_GetTVProvidersInput(countryCode: Enum$Country.NG),
+    final result = useQuery$tvBills_getBouquet(
+      Options$Query$tvBills_getBouquet(
+        variables: Variables$Query$tvBills_getBouquet(
+          input: Input$TvBill_GetTVBouquetInput(
+            countryCode: Enum$Country.NG,
+            service: data.providerName!,
+          ),
         ),
       ),
     );
@@ -53,12 +57,15 @@ class _ProvidersList extends HookConsumerWidget {
       return const LoadingIndicator();
     }
 
-    final list = result.result.parsedData?.tvBills_getProviders;
+    final list = result.result.parsedData?.tvBills_getBouquet;
 
     final cols = list;
 
     if (cols == null || cols.isEmpty) {
-      return Center(child: Text("No providers"));
+      return Center(
+        heightFactor: getH(context, 0.3),
+        child: Text("No providers"),
+      );
     }
 
     return ListView.builder(
@@ -69,11 +76,11 @@ class _ProvidersList extends HookConsumerWidget {
 
         return listTile(
           context,
-          title: item.name,
-          trailing: Text("Provider", style: textTheme(context).bodySmall),
-          imgUrl: item.logo,
+          title: item.description,
+          trailing: Text(item.price, style: textTheme(context).bodySmall),
+          subtitle: item.code,
           onTap: () {
-            dataRead.updateProvider(item.name, item.logo);
+            dataRead.updateBouquet(item.description);
           },
         );
       },

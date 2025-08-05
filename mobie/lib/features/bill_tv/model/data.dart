@@ -3,14 +3,18 @@ class TvBillsData {
   final double? amountCrypto;
   final String? providerName;
   final String? providerImg;
-  final String? accountNo;
+  final String? bouquetName;
+  final String? smartCardNo;
+  final String? customerName;
 
   TvBillsData({
     required this.amountFiat,
     required this.amountCrypto,
     required this.providerName,
     required this.providerImg,
-    required this.accountNo,
+    required this.smartCardNo,
+    required this.bouquetName,
+    required this.customerName,
   });
 
   TvBillsData copyWith({
@@ -18,14 +22,18 @@ class TvBillsData {
     double? amountCrypto,
     String? providerName,
     String? providerImg,
-    String? accountNo,
+    String? bouquetName,
+    String? smartCardNo,
+    String? customerName,
   }) {
     return TvBillsData(
       amountFiat: amountFiat ?? this.amountFiat,
       amountCrypto: amountCrypto ?? this.amountCrypto,
       providerName: providerName ?? this.providerName,
       providerImg: providerImg ?? this.providerImg,
-      accountNo: accountNo ?? this.accountNo,
+      smartCardNo: smartCardNo ?? this.smartCardNo,
+      bouquetName: bouquetName ?? this.bouquetName,
+      customerName: customerName ?? this.customerName,
     );
   }
 }

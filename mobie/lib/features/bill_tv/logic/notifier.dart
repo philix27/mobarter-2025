@@ -9,12 +9,17 @@ class TvBillsDataNotifier extends StateNotifier<TvBillsData> {
           amountCrypto: null,
           providerName: null,
           providerImg: null,
-          accountNo: '',
+          bouquetName: null,
+          customerName: null,
+          smartCardNo: '',
         ),
       );
 
-  void updateAccountNo(String accountNo) {
-    state = state.copyWith(accountNo: accountNo);
+  void updateCustomerName(String customerName) {
+    state = state.copyWith(customerName: customerName);
+  }
+  void updateSmartCardNo(String smartCardNo) {
+    state = state.copyWith(smartCardNo: smartCardNo);
   }
 
   void updateAmountFiat(double amountFiat) {
@@ -25,7 +30,10 @@ class TvBillsDataNotifier extends StateNotifier<TvBillsData> {
     state = state.copyWith(amountCrypto: amountCrypto);
   }
 
-  void updateBilerType(String providerName, String img) {
+  void updateProvider(String providerName, String img) {
     state = state.copyWith(providerName: providerName, providerImg: img);
+  }
+  void updateBouquet(String bouquet) {
+    state = state.copyWith(bouquetName: bouquet);
   }
 }

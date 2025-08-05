@@ -64,7 +64,7 @@ class FundBettingBillsPage extends ConsumerWidget {
                       subtitle: "recipientPhone",
                     ),
                     simpleRow(
-                      title: "Nettwork Provider",
+                      title: "Network Provider",
                       subtitle: "networkProvider",
                     ),
                     simpleRow(title: "Amount", subtitle: "amountOfProduct"),
@@ -73,7 +73,7 @@ class FundBettingBillsPage extends ConsumerWidget {
                     SizedBox(height: 20),
                     // btn(title: "Send", onPressed: ),
                   ],
-                  send: (pin) {
+                  send: (pin) async {
                     appToast(context, "Summary Page testing");
                   },
                 ),

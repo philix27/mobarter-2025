@@ -16,6 +16,7 @@ class AppTheme {
     scaffoldBackgroundColor: Colors.white,
     canvasColor: Colors.white,
     highlightColor: colorPrimaryLight,
+    primaryColorLight: colorPrimaryLight,
     switchTheme: switchThemeLight,
     textTheme: textThemeLight,
     appBarTheme: AppBarTheme(
