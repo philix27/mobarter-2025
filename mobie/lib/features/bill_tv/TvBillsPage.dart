@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobarter/features/bill_tv/logic/provider.dart';
 import 'package:mobarter/features/bill_tv/presentation/smartCardNo.dart';
-import 'package:mobarter/features/bill_tv/presentation/amount.dart';
 import 'package:mobarter/features/bill_tv/presentation/bouquet.dart';
 import 'package:mobarter/features/bill_tv/presentation/providers.dart';
 import 'package:mobarter/utils/exception.dart';
@@ -24,6 +23,7 @@ class TvBillsPage extends ConsumerWidget {
 
     handleSubmit() {
       require(watch.providerName, "Select a Provider");
+      require(watch.amountCrypto, "Select a Bouquet");
       require(watch.bouquetName, "Select a Bouquet");
       require(watch.smartCardNo, "Please enter a smart card no");
       require(watch.amountCrypto, "Please set the amount");
@@ -32,6 +32,10 @@ class TvBillsPage extends ConsumerWidget {
         context,
         withNavBar: false,
         screen: TxnSummaryPage(
+          send: (pin) {
+            appToast(context, "Summary Page testing");
+          },
+          cryptoAmountToPay: watch.amountCrypto!,
           children: [
             simpleRow(title: "Provider", subtitle: watch.providerName),
             simpleRow(title: "Bouquet", subtitle: watch.bouquetName),
@@ -42,9 +46,6 @@ class TvBillsPage extends ConsumerWidget {
             ),
             SizedBox(height: 20),
           ],
-          send: (pin) {
-            appToast(context, "Summary Page testing");
-          },
         ),
       );
     }
@@ -58,7 +59,6 @@ class TvBillsPage extends ConsumerWidget {
           TvBillsProviders(),
           watch.providerName != null ? TvBillsBouquet() : SizedBox.shrink(),
           TvBillsSmartCardNoField(),
-          TvBillsAmount(),
           CryptoAmountPay(amountFiat: watch.amountFiat ?? 0),
           SizedBox(height: 10),
           btn(title: "Submit", onPressed: handleSubmit),

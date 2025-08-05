@@ -54,11 +54,9 @@ Future<double> getTotalPriceAsync(
   List<Query$static_getTokens$static_getTokens>? tokens,
 ) async {
   final walletSvc = WalletStoreService();
-  final address = await walletSvc.userWalletAddress();
 
   final futures = tokens?.map((item) async {
     final price = await getWalletTokenBalance(
-      walletAddress: address!,
       tokenContractAddress: item.address,
       tokenDecimal: int.tryParse(item.decimals.toString()) ?? 18,
     );

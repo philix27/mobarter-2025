@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/bill_tv/logic/provider.dart';
 import 'package:mobarter/features/theme/constColors.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
+import 'package:mobarter/graphql/schema/fx.gql.dart';
 import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/utils/size.dart';
@@ -42,6 +43,16 @@ class _BouquetList extends HookConsumerWidget {
     final data = tvBillWatch(ref);
     final dataRead = tvBillRead(ref);
 
+    final fxResult = useQuery$FxRate_GetAll(Options$Query$FxRate_GetAll());
+    final fxData = fxResult.result;
+    final rate = fxData.parsedData?.fxRate_GetAll.NG ?? 0;
+
+    calcPrice(double amt) {
+      final amountFiatN = amt ?? 0.0;
+
+      return amountFiatN / rate;
+    }
+
     final result = useQuery$tvBills_getBouquet(
       Options$Query$tvBills_getBouquet(
         variables: Variables$Query$tvBills_getBouquet(
@@ -64,7 +75,7 @@ class _BouquetList extends HookConsumerWidget {
     if (cols == null || cols.isEmpty) {
       return Center(
         heightFactor: getH(context, 0.3),
-        child: Text("No providers"),
+        child: Text("No Bouquet"),
       );
     }
 
@@ -80,7 +91,12 @@ class _BouquetList extends HookConsumerWidget {
           trailing: Text(item.price, style: textTheme(context).bodySmall),
           subtitle: item.code,
           onTap: () {
+            final amt = double.tryParse(item.price) ?? 0;
             dataRead.updateBouquet(item.description);
+            dataRead.updateAmountCrypto(
+              amountFia: amt,
+              amountCrypto: calcPrice(amt),
+            );
           },
         );
       },

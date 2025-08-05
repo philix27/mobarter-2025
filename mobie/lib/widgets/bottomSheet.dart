@@ -6,6 +6,8 @@ Future btmSheet({required BuildContext ctx, required Widget w, double? h}) {
   return showMaterialModalBottomSheet(
     context: ctx,
     bounce: true,
+    elevation: 2,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
     builder: (context) {
       return Column(
         mainAxisSize: MainAxisSize.min,

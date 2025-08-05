@@ -66,6 +66,7 @@ class ElectricityPage extends HookConsumerWidget {
                 context,
                 withNavBar: false,
                 screen: TxnSummaryPage(
+                  cryptoAmountToPay: w.amountCrypto!,
                   children: [
                     simpleRow(
                       title: "Customer name",

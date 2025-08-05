@@ -1,3 +1,4 @@
+import 'package:mobarter/features/firestore/wallet.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:http/http.dart';
 
@@ -22,16 +23,19 @@ final String erc20Abi = '''
       ''';
 
 Future<double?> getWalletTokenBalance({
-  required String walletAddress,
+  // required String walletAddress,
   required int tokenDecimal,
   String? tokenContractAddress,
 }) async {
+  final walletSvc = WalletStoreService();
+  final walletAddress = await walletSvc.userWalletAddress();
+
   final rpcUrl = 'https://forno.celo.org'; // Celo RPC
   final httpClient = Client();
   final ethClient = Web3Client(rpcUrl, httpClient);
 
   try {
-    final EthereumAddress address = EthereumAddress.fromHex(walletAddress);
+    final EthereumAddress address = EthereumAddress.fromHex(walletAddress!);
 
     if (tokenContractAddress == null || tokenContractAddress == "") {
       // Fetch CELO or native token balance

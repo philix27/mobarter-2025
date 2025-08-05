@@ -74,6 +74,7 @@ class TopUpsPage extends HookConsumerWidget {
                   context,
                   withNavBar: false,
                   screen: TxnSummaryPage(
+                    cryptoAmountToPay: data.amountCrypto!,
                     children: [
                       simpleRow(
                         title: "Recipient number",

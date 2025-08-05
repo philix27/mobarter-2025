@@ -26,8 +26,8 @@ class TvBillsDataNotifier extends StateNotifier<TvBillsData> {
     state = state.copyWith(amountFiat: amountFiat);
   }
 
-  void updateAmountCrypto(double amountCrypto) {
-    state = state.copyWith(amountCrypto: amountCrypto);
+  void updateAmountCrypto({required double amountCrypto, required double amountFia}) {
+    state = state.copyWith(amountCrypto: amountCrypto, amountFiat: amountFia);
   }
 
   void updateProvider(String providerName, String img) {
