@@ -6,15 +6,11 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/app/logic/provider.dart';
 import 'package:mobarter/features/firestore/wallet.dart';
-import 'package:mobarter/features/intro/auth/SigUpPage.dart';
-import 'package:mobarter/features/intro/auth/SiginPage.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/auth.gql.dart';
 import 'package:mobarter/utils/logger.dart';
-import 'package:mobarter/widgets/btn.dart';
 import 'package:mobarter/features/auth/auth_service.dart';
-import 'package:mobarter/widgets/loading.dart';
-import 'package:mobarter/widgets/toast.dart';
+import 'package:mobarter/widgets/widgets.dart';
 import 'package:toastification/toastification.dart';
 
 class ConnectionButton extends ConsumerWidget {
@@ -22,7 +18,6 @@ class ConnectionButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-
     updateServerToken(String serverToken) {
       appCredentialsRead(ref).updateServerToken(serverToken);
     }
@@ -122,7 +117,7 @@ class _ConnectionButton extends HookWidget {
     }
 
     if (result.result.isLoading) {
-      return const  LoadingIndicator();
+      return const LoadingIndicator();
     }
 
     if (svc.isLoggedIn()) {
@@ -138,13 +133,6 @@ class _ConnectionButton extends HookWidget {
       //         pushScreen(context, screen: SignInPage());
       //       },
       //     ),
-      //     btn(
-      //       title: "Create Account",
-      //       onPressed: () {
-      //         pushScreen(context, screen: SignUpPage());
-      //       },
-      //     ),
-      //     // btn(title: "Sign In WIth Google", onPressed: loginWithGoogle),
       //   ],
       // );
     }

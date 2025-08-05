@@ -42,10 +42,15 @@ class WalletPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           OptionalUpdateCard(),
-          SizedBox(
-            height: getH(context, 0.12),
-            child: Center(child: TotalBalance()),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Container(
+              color: Theme.of(context).cardColor,
+              height: getH(context, 0.12),
+              child: Center(child: TotalBalance()),
+            ),
           ),
+          SizedBox(height: 20),
           TokensList(),
         ],
       ),

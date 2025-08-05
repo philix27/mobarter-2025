@@ -3,9 +3,11 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mobarter/features/bill_betting/FundBettingWalletPage.dart';
 import 'package:mobarter/features/bill_tv/TvBillsPage.dart';
 import 'package:mobarter/features/theme/constColors.dart';
+import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/features/bill_electricity/ElectricityPage.dart';
 import 'package:mobarter/features/bill_top_up/TopUpPage.dart';
+import 'package:mobarter/utils/size.dart';
 import 'package:mobarter/widgets/widgets.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
@@ -126,53 +128,64 @@ class PaymentsPage extends HookWidget {
       title: "Services",
       noneScrollable: true,
       body: notReady
-          ? const  LoadingIndicator()
+          ? const LoadingIndicator()
           : Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(
-                  // height: 275,
-                  child: GridView.count(
-                    shrinkWrap: true,
-                    crossAxisCount: 3, // number of columns
-                    crossAxisSpacing: 8,
-                    children: List.generate(productsList(context, data).length, (
-                      index,
-                    ) {
-                      final item = productsList(context, data)[index];
-                      return Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Container(
-                              color: colorPrimary,
-                              height: 45,
-                              width: 45,
-                              child: Center(
-                                child: IconButton(
-                                  onPressed: item.onPressed,
-                                  icon: Icon(
-                                    Icons.wallet,
-                                    size: 25,
-                                    color: Colors.white,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Container(
+                    height: getH(context, 0.2),
+                    padding: EdgeInsets.all(15),
+                    color: Theme.of(context).cardColor,
+                    child: GridView.count(
+                      shrinkWrap: true,
+                      crossAxisCount: 4, // number of columns
+                      crossAxisSpacing: 0,
+                      mainAxisSpacing: 0,
+                      children: List.generate(
+                        productsList(context, data).length,
+                        (index) {
+                          final item = productsList(context, data)[index];
+                          return Column(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(25),
+                                child: Container(
+                                  color: colorPrimary,
+                                  height: 45,
+                                  width: 45,
+                                  child: Center(
+                                    child: IconButton(
+                                      onPressed: item.onPressed,
+                                      icon: Icon(
+                                        Icons.wallet,
+                                        size: 25,
+                                        color: Colors.white,
+                                      ),
+                                      // icon: Icon(item.icon, color: Colors.white),
+                                    ),
                                   ),
-                                  // icon: Icon(item.icon, color: Colors.white),
                                 ),
                               ),
-                            ),
-                          ),
-                          SizedBox(height: 4),
-                          Center(
-                            child: Text(
-                              item.title,
-                              style: TextStyle(fontSize: 11),
-                            ),
-                          ),
-                        ],
-                      );
-                    }),
+                              SizedBox(height: 4),
+                              Center(
+                                child: Text(
+                                  item.title,
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: Theme.of(context).disabledColor,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
                   ),
                 ),
+                SizedBox(height: 20),
                 MiniApps(),
               ],
             ),

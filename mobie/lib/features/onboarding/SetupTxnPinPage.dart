@@ -134,7 +134,7 @@ class SetupTxnPinHook extends HookWidget {
               );
             },
           ),
-          textField(
+          textField(context,
             label: 'Secret answer',
             maxLength: 25,
             helperText: "An answer only you will know",
@@ -145,7 +145,7 @@ class SetupTxnPinHook extends HookWidget {
             "Pin Set up",
             style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
           ),
-          textField(
+          textField(context,
             label: 'Enter Transaction Pin',
             helperText: "Will be used for every transaction",
             maxLength: 6,
@@ -156,7 +156,7 @@ class SetupTxnPinHook extends HookWidget {
               LengthLimitingTextInputFormatter(6), // Enforces the limit
             ],
           ),
-          textField(
+          textField(context,
             label: 'Confirm Transaction Pin',
             helperText: "Please do not forget your pin",
             maxLength: 6,

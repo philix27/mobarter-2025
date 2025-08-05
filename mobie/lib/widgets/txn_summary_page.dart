@@ -54,7 +54,7 @@ class _EnterPinAndSubmit extends StatelessWidget {
       spacing: 20,
       children: [
         appText("Enter your pin to confirm transaction"),
-        textField(
+        textField(context,
           label: 'Enter Transaction Pin',
           maxLength: 6,
           controller: pin,

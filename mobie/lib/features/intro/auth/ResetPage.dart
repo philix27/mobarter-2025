@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mobarter/features/intro/auth/SigUpPage.dart';
+import 'package:mobarter/features/intro/auth/SiginPage.dart';
+import 'package:mobarter/widgets/btn.dart';
 import 'package:mobarter/widgets/inputText.dart';
 import 'package:mobarter/widgets/scaffold.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class ResetPasswordPage extends StatelessWidget {
   const ResetPasswordPage({super.key});
@@ -10,16 +14,35 @@ class ResetPasswordPage extends StatelessWidget {
     return appScaffold(
       context,
       title: "Reset Password",
-      body: Column(
-        children: [
-          textField(label: "Email"),
-          textField(label: "Password"),
-          textField(label: "Confirm Password"),
-          IconButton(onPressed: () {}, icon: Text("Forgot password")),
-          SizedBox(height: 20),
-          Text("Don't have an account?"),
-          IconButton(onPressed: () {}, icon: Text("Sign In")),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(.0),
+        child: Column(
+          children: [
+            textField(context, label: "Email"),
+            SizedBox(height: 20),
+            textField(context, label: "Password"),
+            SizedBox(height: 20),
+            textField(context, label: "Confirm Password"),
+            SizedBox(height: 20),
+            btn(title: "Reset", onPressed: () {}),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Remember Password?"),
+                IconButton(
+                  onPressed: () {
+                    pushScreen(context, screen: SignInPage());
+                  },
+                  icon: Text(
+                    "Login",
+                    style: TextStyle(color: Theme.of(context).primaryColor),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

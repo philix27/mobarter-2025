@@ -15,7 +15,7 @@ Widget listTile(
   Color? tileColor,
   Function()? onTap,
 }) {
-  return Card(
+  return Card( 
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     elevation: 0.1,
     color: tileColor,
@@ -34,6 +34,7 @@ Widget listTile(
           : null,
       leading: icon != null
           ? Container(
+              // color: Colors.white,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
               ),

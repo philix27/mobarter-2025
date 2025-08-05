@@ -27,7 +27,7 @@ class FundWalletAmount extends HookConsumerWidget {
       return amountFiatN / rate;
     }
 
-    return textField(
+    return textField(context,
       label: 'Amount',
       maxLength: 7,
       keyboardType: TextInputType.number,
