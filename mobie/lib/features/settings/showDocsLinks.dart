@@ -49,6 +49,7 @@ class _DocsList extends HookWidget {
           subtitle: null,
           onTap: () {
             launchURL(item.url);
+            Navigator.pop(context);
           },
           imgUrl: item.imgLink,
         );

@@ -93,7 +93,7 @@ class SetupTxnPinHook extends HookWidget {
         appToast(context, "Your pin has been succcessfully setup");
         Navigator.of(context).pushNamed("/home");
       } catch (e) {
-        appToast(context, "$e");
+         appToastErr(context, e.toString());
         appLogger.e("Error in creating wallet:  $e");
         Navigator.of(context).pushNamed("/home");
       }

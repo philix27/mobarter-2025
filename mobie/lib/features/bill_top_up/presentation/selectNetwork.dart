@@ -66,6 +66,7 @@ class _NetworkList extends HookConsumerWidget {
           title: item.name,
           onTap: () {
             topUpdata.updateNetwork(item.name, item.operatorId);
+            Navigator.pop(context);
           },
         );
       },

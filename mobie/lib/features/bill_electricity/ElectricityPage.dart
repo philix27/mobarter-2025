@@ -130,7 +130,7 @@ class ElectricityPage extends HookConsumerWidget {
                         subtitle: "Payment made successfully",
                       );
                     } catch (e) {
-                      appToast(context, "Error: ${e}");
+                      appToastErr(context, "${e}");
                     }
                   },
                 ),

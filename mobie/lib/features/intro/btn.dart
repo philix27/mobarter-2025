@@ -56,11 +56,7 @@ class _ConnectionButton extends HookWidget {
         updateServerToken(serverToken!);
       } catch (e) {
         appLogger.e("Login Err: $e");
-        appToast(
-          context,
-          "Failed to get server token: $e!",
-          type: ToastificationType.error,
-        );
+          appToastErr(context, e.toString());
       }
     }
 
@@ -84,7 +80,7 @@ class _ConnectionButton extends HookWidget {
       }
 
       Navigator.of(context).pushNamed("/home");
-    }     
+    }
 
     int attempt = 0;
     loginWithGoogle() async {
@@ -112,7 +108,7 @@ class _ConnectionButton extends HookWidget {
           }
         }
       } catch (e) {
-        appToast(context, "${e}", type: ToastificationType.error);
+        appToastErr(context, e.toString());
       }
     }
 

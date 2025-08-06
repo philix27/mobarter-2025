@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/features/theme/constColors.dart';
 import 'package:toastification/toastification.dart';
 
 enum ToastStatus { error, warning, success, info }
+
+ToastificationItem appToastErr(
+  BuildContext context,
+  String text, {
+  String? subtitle,
+}) {
+  return appToast(
+    context,
+    text,
+    subtitle: subtitle,
+    type: ToastificationType.error,
+  );
+}
 
 ToastificationItem appToast(
   BuildContext context,

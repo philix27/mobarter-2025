@@ -74,6 +74,7 @@ class _ProvidersList extends HookConsumerWidget {
           imgUrl: item.logo,
           onTap: () {
             dataRead.updateProvider(item.name, item.logo);
+            Navigator.of(context).pop();
           },
         );
       },
@@ -81,11 +82,3 @@ class _ProvidersList extends HookConsumerWidget {
   }
 }
 
-class Lists extends StatelessWidget {
-  const Lists({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}

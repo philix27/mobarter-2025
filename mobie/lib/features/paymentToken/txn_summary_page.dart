@@ -7,6 +7,7 @@ import 'package:mobarter/features/paymentToken/logic/provider.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/widgets/widgets.dart';
+import 'package:toastification/toastification.dart';
 
 class SendPaymentInput {
   final String pin;
@@ -25,7 +26,7 @@ class SendPaymentInput {
 class TxnSummaryPage extends HookConsumerWidget {
   final List<Widget> children;
   final double cryptoAmountToPay;
-  void Function(SendPaymentInput input) send;
+  Future<void> Function(SendPaymentInput input) send;
 
   TxnSummaryPage({
     super.key,
@@ -65,12 +66,12 @@ class TxnSummaryPage extends HookConsumerWidget {
                         );
 
                         btmSheet(
-                          h: 0.4,
+                          h: 0.65,
                           ctx: context,
                           w: _EnterPinAndSubmit(send: this.send),
                         );
                       } catch (e) {
-                        appToast(context, e.toString());
+                       appToastErr(context, e.toString());
                       }
                     },
             ),
@@ -83,10 +84,16 @@ class TxnSummaryPage extends HookConsumerWidget {
 
 class _EnterPinAndSubmit extends ConsumerWidget {
   _EnterPinAndSubmit({super.key, required this.send});
-  void Function(SendPaymentInput paylod) send;
+  Future<void> Function(SendPaymentInput paylod) send;
 
   final TextEditingController pin = TextEditingController();
   final AuthService auth = AuthService();
+
+  @override
+  void dispose() {
+    pin.dispose(); // 👈 Clean up the controller when widget is removed
+  }
+
   @override
   Widget build(BuildContext context, ref) {
     final watch = paymentTokenWatch(ref);
@@ -106,7 +113,7 @@ class _EnterPinAndSubmit extends ConsumerWidget {
             length: 6,
             controller: pin,
             keyboardType: TextInputType.number,
-
+            obscureText: true,
             inputFormatters: [
               FilteringTextInputFormatter.digitsOnly, // Allow digits only
               LengthLimitingTextInputFormatter(6), // Enforces the limit
@@ -120,20 +127,25 @@ class _EnterPinAndSubmit extends ConsumerWidget {
           SizedBox(height: 35),
           btn(
             title: "Send",
-            onPressed: () {
-              if (pin.text.length < 6) {
-                appToast(context, "Minimum of 6 characters");
-                return;
+            onPressed: () async {
+              try {
+                require(pin.text.length == 6, "Invalid pin");
+
+                final user = auth.user();
+                await send(
+                  SendPaymentInput(
+                    pin: pin.text,
+                    tokenAddress: watch.address!,
+                    tokenChain: watch.chain!,
+                    user_uid: user!.uid,
+                  ),
+                ).then((onValu) {
+                  Navigator.of(context).pop();
+                  // Navigator.of(context).pop();
+                });
+              } catch (e) {
+                appToastErr(context, e.toString());
               }
-              final user = auth.user();
-              send(
-                SendPaymentInput(
-                  pin: pin.text,
-                  tokenAddress: watch.address!,
-                  tokenChain: watch.chain!,
-                  user_uid: user!.uid,
-                ),
-              );
             },
           ),
         ],

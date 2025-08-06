@@ -97,18 +97,10 @@ class _BouquetList extends HookConsumerWidget {
               amountFia: amt,
               amountCrypto: calcPrice(amt),
             );
+            Navigator.of(context).pop();
           },
         );
       },
     );
-  }
-}
-
-class Lists extends StatelessWidget {
-  const Lists({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }

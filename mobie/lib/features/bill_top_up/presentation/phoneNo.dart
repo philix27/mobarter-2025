@@ -9,6 +9,11 @@ class PhoneTextField extends ConsumerWidget {
   PhoneTextField({super.key});
   final TextEditingController phone = TextEditingController();
 
+@override
+  void dispose() {
+    phone.dispose(); // 👈 Clean up the controller when widget is removed
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final topUpdata = topUpRead(ref);

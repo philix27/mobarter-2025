@@ -10,6 +10,7 @@ Widget pinInput(
   String? helperText,
   TextEditingController? controller,
   void Function(String)? onCompleted,
+  bool? obscureText,
 }) {
   final defaultPinTheme = PinTheme(
     width: 56,
@@ -47,5 +48,6 @@ Widget pinInput(
     pinAnimationType: PinAnimationType.slide,
     inputFormatters: inputFormatters,
     onCompleted: onCompleted,
+    obscureText: obscureText ?? false,
   );
 }

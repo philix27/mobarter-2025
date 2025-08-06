@@ -13,7 +13,10 @@ import 'package:mobarter/widgets/toast.dart';
 class AccountNo extends HookConsumerWidget {
   AccountNo({super.key});
   final TextEditingController text = TextEditingController();
-
+@override
+  void dispose() {
+    text.dispose(); // 👈 Clean up the controller when widget is removed
+  }
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final provider = electricBillRead(ref);

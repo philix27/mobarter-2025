@@ -8,7 +8,6 @@ import 'package:mobarter/features/paymentToken/model/data.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/utils/getBalance.dart';
-import 'package:mobarter/widgets/shimmer.dart';
 import 'package:mobarter/widgets/widgets.dart';
 import 'package:toastification/toastification.dart';
 
@@ -85,21 +84,7 @@ Widget tokenRow(
     dense: true,
     tileColor: Theme.of(context).scaffoldBackgroundColor,
     title: Text(item.symbol, style: Theme.of(context).textTheme.headlineMedium),
-    subtitle: FutureBuilder(
-      future: getWalletTokenBalance(
-        tokenContractAddress: item.address,
-        tokenDecimal: int.tryParse(item.decimals.toString()) ?? 18,
-      ),
-      builder: (ctx, snap) {
-        if (snap.data == null) {
-          return Text("0", style: Theme.of(context).textTheme.bodySmall);
-        }
-        return Text(
-          snap.data.toString(),
-          style: Theme.of(context).textTheme.bodySmall,
-        );
-      },
-    ),
+    subtitle: Text(chain.name, style: Theme.of(context).textTheme.bodySmall),
     leading: ClipRRect(
       borderRadius: BorderRadius.circular(16),
       child: CachedNetworkImage(
@@ -136,7 +121,7 @@ Widget tokenRow(
             );
           },
         ),
-        Text(chain.name, style: Theme.of(context).textTheme.bodySmall),
+        // Text(chain.name, style: Theme.of(context).textTheme.bodySmall),
       ],
     ),
     onTap: () async {
@@ -170,8 +155,9 @@ Widget tokenRow(
               chain: chain.name,
             ),
           );
+          Navigator.pop(context);
         } catch (e) {
-          appToast(context, e.toString());
+          appToastErr(context, e.toString());
         }
       }
     },

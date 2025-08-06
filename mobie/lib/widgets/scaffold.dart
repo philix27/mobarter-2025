@@ -13,6 +13,7 @@ Widget appScaffold(
   Widget? leading,
 }) {
   return Scaffold(
+    resizeToAvoidBottomInset: true,
     appBar: AppBar(
       centerTitle: true,
       automaticallyImplyLeading: automaticallyImplyLeading,
@@ -32,12 +33,14 @@ Widget appScaffold(
         systemStatusBarContrastEnforced: true,
       ),
     ),
-    body: noneScrollable != null
-        ? Padding(padding: bodyPadding, child: body)
-        : SingleChildScrollView(
-            padding: bodyPadding, // optional
-            child: body,
-          ),
+    body: noneScrollable == null
+        ? SafeArea(
+            child: SingleChildScrollView(
+              padding: bodyPadding, // optional
+              child: body,
+            ),
+          )
+        : SafeArea(minimum: bodyPadding, child: body),
   );
 }
 

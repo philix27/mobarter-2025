@@ -29,14 +29,14 @@ class TvBillsPage extends ConsumerWidget {
         require(watch.smartCardNo, "Please enter a smart card no");
         require(watch.amountCrypto, "Please set the amount");
       } catch (e) {
-        appToast(context, e.toString());
+        appToastErr(context, e.toString());
       }
 
       pushScreen(
         context,
         withNavBar: false,
         screen: TxnSummaryPage(
-          send: (pin) {
+          send: (pin) async {
             appToast(context, "Summary Page testing");
           },
           cryptoAmountToPay: watch.amountCrypto!,

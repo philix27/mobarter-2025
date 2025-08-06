@@ -118,7 +118,7 @@ class FundBettingBillsPage extends HookConsumerWidget {
                           // btn(title: "Send", onPressed: ),
                         ],
                         send: (pin) async {
-                          appToast(context, "Summary Page testing");
+                          appToastErr(context, "Summary Page testing");
                         },
                       ),
                     );
