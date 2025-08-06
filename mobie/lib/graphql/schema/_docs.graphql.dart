@@ -1872,14 +1872,12 @@ class _CopyWithStubImpl$Input$BankGetAccountName_Input<TRes>
 
 class Input$BettingPaymentInput {
   factory Input$BettingPaymentInput({
-    required int amount,
     required Enum$Country countryCode,
     required String customer_id,
     required Input$PaymentInput payment,
     required String service_id,
   }) =>
       Input$BettingPaymentInput._({
-        r'amount': amount,
         r'countryCode': countryCode,
         r'customer_id': customer_id,
         r'payment': payment,
@@ -1890,8 +1888,6 @@ class Input$BettingPaymentInput {
 
   factory Input$BettingPaymentInput.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
-    final l$amount = data['amount'];
-    result$data['amount'] = (l$amount as int);
     final l$countryCode = data['countryCode'];
     result$data['countryCode'] =
         fromJson$Enum$Country((l$countryCode as String));
@@ -1907,8 +1903,6 @@ class Input$BettingPaymentInput {
 
   Map<String, dynamic> _$data;
 
-  int get amount => (_$data['amount'] as int);
-
   Enum$Country get countryCode => (_$data['countryCode'] as Enum$Country);
 
   String get customer_id => (_$data['customer_id'] as String);
@@ -1919,8 +1913,6 @@ class Input$BettingPaymentInput {
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
-    final l$amount = amount;
-    result$data['amount'] = l$amount;
     final l$countryCode = countryCode;
     result$data['countryCode'] = toJson$Enum$Country(l$countryCode);
     final l$customer_id = customer_id;
@@ -1945,11 +1937,6 @@ class Input$BettingPaymentInput {
     }
     if (other is! Input$BettingPaymentInput ||
         runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$amount = amount;
-    final lOther$amount = other.amount;
-    if (l$amount != lOther$amount) {
       return false;
     }
     final l$countryCode = countryCode;
@@ -1977,13 +1964,11 @@ class Input$BettingPaymentInput {
 
   @override
   int get hashCode {
-    final l$amount = amount;
     final l$countryCode = countryCode;
     final l$customer_id = customer_id;
     final l$payment = payment;
     final l$service_id = service_id;
     return Object.hashAll([
-      l$amount,
       l$countryCode,
       l$customer_id,
       l$payment,
@@ -2002,7 +1987,6 @@ abstract class CopyWith$Input$BettingPaymentInput<TRes> {
       _CopyWithStubImpl$Input$BettingPaymentInput;
 
   TRes call({
-    int? amount,
     Enum$Country? countryCode,
     String? customer_id,
     Input$PaymentInput? payment,
@@ -2025,7 +2009,6 @@ class _CopyWithImpl$Input$BettingPaymentInput<TRes>
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? amount = _undefined,
     Object? countryCode = _undefined,
     Object? customer_id = _undefined,
     Object? payment = _undefined,
@@ -2033,7 +2016,6 @@ class _CopyWithImpl$Input$BettingPaymentInput<TRes>
   }) =>
       _then(Input$BettingPaymentInput._({
         ..._instance._$data,
-        if (amount != _undefined && amount != null) 'amount': (amount as int),
         if (countryCode != _undefined && countryCode != null)
           'countryCode': (countryCode as Enum$Country),
         if (customer_id != _undefined && customer_id != null)
@@ -2057,7 +2039,6 @@ class _CopyWithStubImpl$Input$BettingPaymentInput<TRes>
   TRes _res;
 
   call({
-    int? amount,
     Enum$Country? countryCode,
     String? customer_id,
     Input$PaymentInput? payment,
@@ -5160,7 +5141,8 @@ class _CopyWithStubImpl$Input$Order_MoveCryptoToEscrowInput<TRes>
 
 class Input$PaymentInput {
   factory Input$PaymentInput({
-    required double amount,
+    required double amountCrypto,
+    required double amountFiat,
     bool? isNative,
     required String tokenAddress,
     required String tokenChain,
@@ -5168,7 +5150,8 @@ class Input$PaymentInput {
     required String user_uid,
   }) =>
       Input$PaymentInput._({
-        r'amount': amount,
+        r'amountCrypto': amountCrypto,
+        r'amountFiat': amountFiat,
         if (isNative != null) r'isNative': isNative,
         r'tokenAddress': tokenAddress,
         r'tokenChain': tokenChain,
@@ -5180,8 +5163,10 @@ class Input$PaymentInput {
 
   factory Input$PaymentInput.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
-    final l$amount = data['amount'];
-    result$data['amount'] = (l$amount as num).toDouble();
+    final l$amountCrypto = data['amountCrypto'];
+    result$data['amountCrypto'] = (l$amountCrypto as num).toDouble();
+    final l$amountFiat = data['amountFiat'];
+    result$data['amountFiat'] = (l$amountFiat as num).toDouble();
     if (data.containsKey('isNative')) {
       final l$isNative = data['isNative'];
       result$data['isNative'] = (l$isNative as bool?);
@@ -5199,7 +5184,9 @@ class Input$PaymentInput {
 
   Map<String, dynamic> _$data;
 
-  double get amount => (_$data['amount'] as double);
+  double get amountCrypto => (_$data['amountCrypto'] as double);
+
+  double get amountFiat => (_$data['amountFiat'] as double);
 
   bool? get isNative => (_$data['isNative'] as bool?);
 
@@ -5213,8 +5200,10 @@ class Input$PaymentInput {
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
-    final l$amount = amount;
-    result$data['amount'] = l$amount;
+    final l$amountCrypto = amountCrypto;
+    result$data['amountCrypto'] = l$amountCrypto;
+    final l$amountFiat = amountFiat;
+    result$data['amountFiat'] = l$amountFiat;
     if (_$data.containsKey('isNative')) {
       final l$isNative = isNative;
       result$data['isNative'] = l$isNative;
@@ -5244,9 +5233,14 @@ class Input$PaymentInput {
     if (other is! Input$PaymentInput || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$amount = amount;
-    final lOther$amount = other.amount;
-    if (l$amount != lOther$amount) {
+    final l$amountCrypto = amountCrypto;
+    final lOther$amountCrypto = other.amountCrypto;
+    if (l$amountCrypto != lOther$amountCrypto) {
+      return false;
+    }
+    final l$amountFiat = amountFiat;
+    final lOther$amountFiat = other.amountFiat;
+    if (l$amountFiat != lOther$amountFiat) {
       return false;
     }
     final l$isNative = isNative;
@@ -5283,14 +5277,16 @@ class Input$PaymentInput {
 
   @override
   int get hashCode {
-    final l$amount = amount;
+    final l$amountCrypto = amountCrypto;
+    final l$amountFiat = amountFiat;
     final l$isNative = isNative;
     final l$tokenAddress = tokenAddress;
     final l$tokenChain = tokenChain;
     final l$transaction_pin = transaction_pin;
     final l$user_uid = user_uid;
     return Object.hashAll([
-      l$amount,
+      l$amountCrypto,
+      l$amountFiat,
       _$data.containsKey('isNative') ? l$isNative : const {},
       l$tokenAddress,
       l$tokenChain,
@@ -5310,7 +5306,8 @@ abstract class CopyWith$Input$PaymentInput<TRes> {
       _CopyWithStubImpl$Input$PaymentInput;
 
   TRes call({
-    double? amount,
+    double? amountCrypto,
+    double? amountFiat,
     bool? isNative,
     String? tokenAddress,
     String? tokenChain,
@@ -5333,7 +5330,8 @@ class _CopyWithImpl$Input$PaymentInput<TRes>
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? amount = _undefined,
+    Object? amountCrypto = _undefined,
+    Object? amountFiat = _undefined,
     Object? isNative = _undefined,
     Object? tokenAddress = _undefined,
     Object? tokenChain = _undefined,
@@ -5342,8 +5340,10 @@ class _CopyWithImpl$Input$PaymentInput<TRes>
   }) =>
       _then(Input$PaymentInput._({
         ..._instance._$data,
-        if (amount != _undefined && amount != null)
-          'amount': (amount as double),
+        if (amountCrypto != _undefined && amountCrypto != null)
+          'amountCrypto': (amountCrypto as double),
+        if (amountFiat != _undefined && amountFiat != null)
+          'amountFiat': (amountFiat as double),
         if (isNative != _undefined) 'isNative': (isNative as bool?),
         if (tokenAddress != _undefined && tokenAddress != null)
           'tokenAddress': (tokenAddress as String),
@@ -5363,7 +5363,8 @@ class _CopyWithStubImpl$Input$PaymentInput<TRes>
   TRes _res;
 
   call({
-    double? amount,
+    double? amountCrypto,
+    double? amountFiat,
     bool? isNative,
     String? tokenAddress,
     String? tokenChain,

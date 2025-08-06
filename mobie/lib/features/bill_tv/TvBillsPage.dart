@@ -6,7 +6,7 @@ import 'package:mobarter/features/bill_tv/presentation/bouquet.dart';
 import 'package:mobarter/features/bill_tv/presentation/providers.dart';
 import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/widgets/amountToPay.dart';
-import 'package:mobarter/widgets/txn_summary_page.dart';
+import 'package:mobarter/features/paymentToken/txn_summary_page.dart';
 import 'package:mobarter/widgets/btn.dart';
 import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/scaffold.dart';
@@ -22,11 +22,15 @@ class TvBillsPage extends ConsumerWidget {
     final read = tvBillRead(ref);
 
     handleSubmit() {
-      require(watch.providerName, "Select a Provider");
-      require(watch.amountCrypto, "Select a Bouquet");
-      require(watch.bouquetName, "Select a Bouquet");
-      require(watch.smartCardNo, "Please enter a smart card no");
-      require(watch.amountCrypto, "Please set the amount");
+      try {
+        require(watch.providerName, "Select a Provider");
+        require(watch.amountCrypto, "Select a Bouquet");
+        require(watch.bouquetName, "Select a Bouquet");
+        require(watch.smartCardNo, "Please enter a smart card no");
+        require(watch.amountCrypto, "Please set the amount");
+      } catch (e) {
+        appToast(context, e.toString());
+      }
 
       pushScreen(
         context,

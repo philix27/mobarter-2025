@@ -84,7 +84,7 @@ class _ConnectionButton extends HookWidget {
       }
 
       Navigator.of(context).pushNamed("/home");
-    }
+    }     
 
     int attempt = 0;
     loginWithGoogle() async {

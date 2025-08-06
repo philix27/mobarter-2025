@@ -141,34 +141,38 @@ Widget tokenRow(
     ),
     onTap: () async {
       if (useCase == TokenListUseCase.paymentToken) {
-        // todo: store in riverpod
-        final bal =
-            await getWalletTokenBalance(
-              tokenContractAddress: item.address,
-              tokenDecimal: int.tryParse(item.decimals.toString()) ?? 18,
-            ) ??
-            0;
+        try {
+          require(cryptoAmountToPay, "Crypto Amount needed");
 
-        require(cryptoAmountToPay, "Crypto Amount needed");
-        if (cryptoAmountToPay! > bal) {
-          appToast(
-            context,
-            "Insufficient Balance",
-            type: ToastificationType.error,
+          final bal =
+              await getWalletTokenBalance(
+                tokenContractAddress: item.address,
+                tokenDecimal: int.tryParse(item.decimals.toString()) ?? 18,
+              ) ??
+              0;
+
+          if (cryptoAmountToPay! > bal) {
+            appToast(
+              context,
+              "Insufficient Balance",
+              type: ToastificationType.error,
+            );
+            return;
+          }
+
+          read.update(
+            PaymentTokenData(
+              priceUSD: item.priceUSD,
+              decimals: item.decimals,
+              address: item.address,
+              name: item.name,
+              logo: item.logoUrl,
+              chain: chain.name,
+            ),
           );
-          return;
+        } catch (e) {
+          appToast(context, e.toString());
         }
-
-        read.update(
-          PaymentTokenData(
-            priceUSD: item.priceUSD,
-            decimals: item.decimals,
-            address: item.address,
-            name: item.name,
-            logo: item.logoUrl,
-            chain: chain.name,
-          ),
-        );
       }
     },
   );

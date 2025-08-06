@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/theme/constColors.dart';
 import 'package:mobarter/features/bill_top_up/logic/provider.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
@@ -14,7 +14,8 @@ class ShowTopUpProviders extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final data = ref.watch(topUpDataProvider);
 
-    return listTile(context,
+    return listTile(
+      context,
       title: data.networkProvider == null || data.networkProvider!.isEmpty
           ? "Select Network Provider"
           : data.networkProvider!,
@@ -27,11 +28,12 @@ class ShowTopUpProviders extends ConsumerWidget {
   }
 }
 
-class _NetworkList extends HookWidget {
+class _NetworkList extends HookConsumerWidget {
   const _NetworkList();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    final topUpdata = ref.read(topUpDataProvider.notifier);
     final result = useQuery$utility_getTopUpOperators(
       Options$Query$utility_getTopUpOperators(
         variables: Variables$Query$utility_getTopUpOperators(
@@ -59,23 +61,13 @@ class _NetworkList extends HookWidget {
       itemCount: collection.length,
       itemBuilder: (BuildContext ctx, int index) {
         final item = collection[index];
-        return ListItem(item);
-      },
-    );
-  }
-}
-
-class ListItem extends ConsumerWidget {
-  final Query$utility_getTopUpOperators$utility_getTopUpOperators$airtime item;
-  const ListItem(this.item, {super.key});
-  @override
-  Widget build(BuildContext context, ref) {
-    final topUpdata = ref.read(topUpDataProvider.notifier);
-    // return listTile(title: item.name, imgUrl: item.logo);
-    return listTile(context,
-      title: item.name,
-      onTap: () {
-        topUpdata.updateNetwork(item.name, item.operatorId);
+        return listTile(
+          context,
+          title: item.name,
+          onTap: () {
+            topUpdata.updateNetwork(item.name, item.operatorId);
+          },
+        );
       },
     );
   }

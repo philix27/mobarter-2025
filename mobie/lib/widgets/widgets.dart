@@ -8,7 +8,7 @@ export "./scaffold.dart";
 export "../features/paymentToken/selectPayToken.dart";
 export "./shimmer.dart";
 export "./toast.dart";
-export "./txn_summary_page.dart";
+export "../features/paymentToken/txn_summary_page.dart";
 export "./walletQRCode.dart";
 export "./webview.dart";
 export "./pinInput.dart";

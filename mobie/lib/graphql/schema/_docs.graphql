@@ -150,7 +150,6 @@ type BankList_Response {
 }
 
 input BettingPaymentInput {
-  amount: Int!
   countryCode: Country!
   customer_id: String!
   payment: PaymentInput!
@@ -169,6 +168,10 @@ type BettingPaymentResponse {
   request_id: String!
   service_name: String!
   status: String!
+}
+
+type BettingPricesResponse {
+  amount: Float!
 }
 
 input BettingProvidersInput {
@@ -554,7 +557,8 @@ enum OtpPurpose {
 }
 
 input PaymentInput {
-  amount: Float!
+  amountCrypto: Float!
+  amountFiat: Float!
   isNative: Boolean
   tokenAddress: String!
   tokenChain: String!
@@ -571,6 +575,9 @@ type Query {
   electricityBill_getProviders(
     input: ElectricityBill_ProviderInput!
   ): [ElectricityBill_ProvidersResponse!]!
+  fundBetting_getPriceList(
+    input: BettingProvidersInput!
+  ): [BettingPricesResponse!]!
   fundBetting_getProviders(
     input: BettingProvidersInput!
   ): [BettingProvidersResponse!]!

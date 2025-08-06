@@ -48,7 +48,10 @@ class SelectPaymentToken extends ConsumerWidget {
         btmSheet(
           h: 0.7,
           ctx: context,
-          w: TokensList(useCase: TokenListUseCase.paymentToken),
+          w: TokensList(
+            useCase: TokenListUseCase.paymentToken,
+            cryptoAmountToPay: cryptoAmountToPay,
+          ),
         );
       },
     );

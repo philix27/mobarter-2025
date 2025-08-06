@@ -10,12 +10,7 @@ import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/utils/logger.dart';
-import 'package:mobarter/widgets/amountToPay.dart';
-import 'package:mobarter/widgets/btn.dart';
-import 'package:mobarter/widgets/listTile.dart';
-import 'package:mobarter/widgets/scaffold.dart';
-import 'package:mobarter/widgets/toast.dart';
-import 'package:mobarter/widgets/txn_summary_page.dart';
+import 'package:mobarter/widgets/widgets.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class ElectricityPage extends HookConsumerWidget {
@@ -87,7 +82,7 @@ class ElectricityPage extends HookConsumerWidget {
                       subtitle: "cUSD ${w.amountCrypto.toString()}",
                     ),
                   ],
-                  send: (pin) async {
+                  send: (paymentInfo) async {
                     try {
                       require(w.providerName, "Select a provider");
                       require(w.isPrepaid, "Select a Meter type");
@@ -112,11 +107,12 @@ class ElectricityPage extends HookConsumerWidget {
                                 amount: int.parse(w.amountFiat.toString()),
                                 reference: '',
                                 payment: Input$PaymentInput(
-                                  amount: w.amountCrypto!,
-                                  tokenAddress: "tokenAddress",
-                                  tokenChain: "tokenChain",
-                                  transaction_pin: pin,
-                                  user_uid: "user_uid",
+                                  amountCrypto: w.amountCrypto!,
+                                  amountFiat: w.amountFiat!,
+                                  tokenAddress: paymentInfo.tokenAddress,
+                                  tokenChain: paymentInfo.tokenChain,
+                                  transaction_pin: paymentInfo.pin,
+                                  user_uid: paymentInfo.user_uid,
                                 ),
                               ),
                             ),

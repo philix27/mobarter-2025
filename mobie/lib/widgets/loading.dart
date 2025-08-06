@@ -22,7 +22,7 @@ class LoadingIndicator extends StatelessWidget {
           strokeWidth: 1,
 
           /// Optional, The stroke of the line, only applicable to widget which contains line
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
 
           /// Optional, Background of the widget
           pathBackgroundColor: Theme.of(context).scaffoldBackgroundColor,

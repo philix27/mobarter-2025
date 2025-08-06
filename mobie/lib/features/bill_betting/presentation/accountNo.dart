@@ -15,14 +15,13 @@ class ServiceIdField extends ConsumerWidget {
 
     return textField(
       context,
-      label: 'Meter/Account Number',
-      // helperText: "Ensure the no. belogs to the specified network",
-      maxLength: 11,
-      // controller: text,
+      label: 'Customer ID',
+      helperText: "Your Wallet ID",
+      maxLength: 21,
       keyboardType: TextInputType.number,
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly, // Allow digits only
-        LengthLimitingTextInputFormatter(11), // Enforces the limit
+        LengthLimitingTextInputFormatter(21), // Enforces the limit
       ],
       onChanged: (value) {
         if (value.length > 11) {

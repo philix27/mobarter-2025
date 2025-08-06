@@ -16,7 +16,7 @@ import 'package:mobarter/widgets/btn.dart';
 import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 import 'package:mobarter/widgets/toast.dart';
-import 'package:mobarter/widgets/txn_summary_page.dart';
+import 'package:mobarter/features/paymentToken/txn_summary_page.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 enum TopUpScreen { airtime, dataPlan, dataBundle }
@@ -52,7 +52,6 @@ class TopUpsPage extends HookConsumerWidget {
         children: [
           ShowTopUpProviders(),
           PhoneTextField(),
-          // ShowCurrency(),
           TopUpTabs(),
           screenToDisplay,
           CryptoAmountPay(amountFiat: data.amountFiat ?? 0),
@@ -98,7 +97,7 @@ class TopUpsPage extends HookConsumerWidget {
                       // simpleRow(title: "Cashback bonus", subtitle: cashback),
                       SizedBox(height: 20),
                     ],
-                    send: (pin) async {
+                    send: (paymentInfo) async {
                       final response = await result
                           .runMutation(
                             Variables$Mutation$Utility_purchaseAirtime(
@@ -108,11 +107,12 @@ class TopUpsPage extends HookConsumerWidget {
                                 operatorId: data.networkOperatorId!,
                                 phoneNo: data.phoneNo!,
                                 payment: Input$PaymentInput(
-                                  amount: data.amountCrypto!,
-                                  tokenAddress: "tokenAddress",
-                                  tokenChain: "tokenChain",
-                                  transaction_pin: pin,
-                                  user_uid: "user_uid",
+                                  amountCrypto: data.amountCrypto!,
+                                  amountFiat: data.amountFiat!,
+                                  tokenAddress: paymentInfo.tokenAddress,
+                                  tokenChain: paymentInfo.tokenChain,
+                                  transaction_pin: paymentInfo.pin,
+                                  user_uid: paymentInfo.user_uid,
                                 ),
                               ),
                             ),

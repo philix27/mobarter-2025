@@ -4,12 +4,11 @@ import 'package:mobarter/features/bill_betting/logic/provider.dart';
 import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/widgets/widgets.dart';
 
-class BettingProvidersList extends ConsumerWidget {
-  const BettingProvidersList({required this.list});
-  final List<Query$fundBetting_getProviders$fundBetting_getProviders> list;
+class BettingPriceList extends ConsumerWidget {
+  BettingPriceList({required this.list});
+  final List<Query$fundBetting_getProviders$fundBetting_getPriceList> list;
   @override
   Widget build(BuildContext context, ref) {
-    final data = bettingWatch(ref);
     final dataRead = bettingRead(ref);
 
     return ListView.builder(
@@ -21,10 +20,9 @@ class BettingProvidersList extends ConsumerWidget {
 
         return listTile(
           context,
-          title: item.name,
-          imgUrl: item.logo,
+          title: "₦${item.amount}",
           onTap: () {
-            dataRead.updateBilerType(item.name, item.logo);
+            dataRead.updateAmountFiat(item.amount);
           },
         );
       },

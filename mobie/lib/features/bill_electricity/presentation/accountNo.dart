@@ -51,14 +51,15 @@ class AccountNo extends HookConsumerWidget {
       }
     }
 
-    return textField(context,
+    return textField(
+      context,
       label: 'Meter/Account Number',
       // helperText: "Ensure the no. belogs to the specified network",
-      maxLength: 11,
+      maxLength: 13,
       keyboardType: TextInputType.number,
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly, // Allow digits only
-        LengthLimitingTextInputFormatter(11), // Enforces the limit
+        LengthLimitingTextInputFormatter(13), // Enforces the limit
       ],
       onChanged: (value) {
         if (value.length > 13) {

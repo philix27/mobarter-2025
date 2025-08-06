@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mobarter/features/bill_betting/FundBettingWalletPage.dart';
 import 'package:mobarter/features/bill_tv/TvBillsPage.dart';
-import 'package:mobarter/features/theme/constColors.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/features/bill_electricity/ElectricityPage.dart';
 import 'package:mobarter/features/bill_top_up/TopUpPage.dart';
@@ -91,7 +90,7 @@ List<PaymentProduct> productsList(
           appToast(ctx, "Coming soon");
         }
       },
-      icon: Icons.abc_outlined,
+      icon: Icons.tv,
     ),
     PaymentProduct(
       title: 'Betting',
@@ -135,52 +134,53 @@ class PaymentsPage extends HookWidget {
                   borderRadius: BorderRadius.circular(12),
                   child: Container(
                     height: getH(context, 0.2),
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     color: Theme.of(context).cardColor,
-                    child: GridView.count(
-                      shrinkWrap: true,
-                      crossAxisCount: 4, // number of columns
-                      crossAxisSpacing: 4,
-                      mainAxisSpacing: 4,
-                      children: List.generate(
-                        productsList(context, data).length,
-                        (index) {
-                          final item = productsList(context, data)[index];
-                          return Column(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(25),
-                                child: Container(
-                                  color: colorPrimary,
-                                  height: 45,
-                                  width: 45,
-                                  child: Center(
-                                    child: IconButton(
-                                      onPressed: item.onPressed,
-                                      icon: Icon(
-                                        Icons.wallet,
-                                        size: 25,
-                                        color: Colors.white,
-                                      ),
-                                      // icon: Icon(item.icon, color: Colors.white),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 4),
-                              Center(
-                                child: Text(
-                                  item.title,
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    color: Theme.of(context).disabledColor,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          );
-                        },
+                    child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3, // Number of columns
+                        crossAxisSpacing: 5.0,
+                        mainAxisSpacing: 10.0,
+                        childAspectRatio: 1.4, // width / height
                       ),
+                      shrinkWrap: true,
+                      itemCount: productsList(context, data).length,
+                      itemBuilder: (context, index) {
+                        final item = productsList(context, data)[index];
+                        return Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(25),
+                              child: Container(
+                                color: Theme.of(context).primaryColor,
+                                height: 40,
+                                width: 40,
+                                child: Center(
+                                  child: IconButton(
+                                    onPressed: item.onPressed,
+                                    icon: Icon(
+                                      item.icon,
+                                      size: 25,
+                                      color: Colors.white,
+                                    ),
+                                    // icon: Icon(item.icon, color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            // SizedBox(height: 4),
+                            Center(
+                              child: Text(
+                                item.title,
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Theme.of(context).disabledColor,
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ),
                 ),

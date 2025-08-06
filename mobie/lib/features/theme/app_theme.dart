@@ -19,6 +19,7 @@ class AppTheme {
     primaryColorLight: colorPrimaryLight,
     switchTheme: switchThemeLight,
     textTheme: textThemeLight,
+    disabledColor: Colors.grey.shade700,
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.white,
       elevation: 0,
@@ -40,9 +41,10 @@ class AppTheme {
     cardColor: Colors.grey.shade800,
     primaryColor: Colors.deepOrange,
     indicatorColor: Colors.deepOrange,
-    scaffoldBackgroundColor: Colors.black,
+    scaffoldBackgroundColor: Colors.grey.shade900,
     canvasColor: Colors.black54,
     highlightColor: colorPrimaryLight,
+    disabledColor: Colors.grey.shade500,
     textTheme: textThemeDark,
     hintColor: Colors.white,
     appBarTheme: AppBarTheme(

@@ -85,7 +85,12 @@ query fundBetting_getProviders($input: BettingProvidersInput!) {
     logo
     name
   }
+  
+  fundBetting_getPriceList(input: $input) {
+    amount
+  }
 }
+
 
 mutation fundBetting_makePayment($input: BettingPaymentInput!) {
   fundBetting_makePayment(input: $input) {
@@ -99,3 +104,4 @@ mutation fundBetting_makePayment($input: BettingPaymentInput!) {
     request_id
   }
 }
+
