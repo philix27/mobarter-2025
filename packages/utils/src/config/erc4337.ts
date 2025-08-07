@@ -1,4 +1,4 @@
-import { chains, type ChainInfo } from '@particle-network/chains';
+// import { chains, type ChainInfo } from '@particle-network/chains';
 
 const erc4337Raw = {
   BICONOMY_V1: {
@@ -62,23 +62,3 @@ const erc4337Raw = {
     VERSION: '1.0.0',
   },
 };
-
-export type ERC4337Config = {
-  name: string;
-  version: string;
-  chains: ChainInfo[];
-};
-
-export const erc4337Config: ERC4337Config[] = Object.keys(erc4337Raw).map((key) => {
-  const data = erc4337Raw[key as keyof typeof erc4337Raw];
-  const name = key.split('_')[0];
-  const version = data.VERSION;
-  const chainInfos = data.SUPPORTED_CHAIN_IDS.map((id) => chains.getEVMChainInfoById(id)).filter((item) =>
-    Boolean(item)
-  );
-  return {
-    name,
-    version,
-    chains: chainInfos as ChainInfo[],
-  };
-});

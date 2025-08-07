@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-final isDevEnv = true;
+final isDevEnv = false;
 final enableCrashlytics = true;
 
 final mm = kDebugMode;

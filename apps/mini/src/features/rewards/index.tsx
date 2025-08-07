@@ -5,7 +5,9 @@ import { AppSelect } from "@/src/components/Select"
 import { Text } from "@/src/components/ui/Text"
 import { useState } from "react"
 import { toast } from "sonner"
-import { useRouter } from 'next/router';
+import { Label } from "@/src/components/comps"
+// import { useRouter } from 'next/router';
+// import { IAppParams } from "../types/appParams"
 
 export const categories = [
     "Airtime",
@@ -13,19 +15,34 @@ export const categories = [
     "Sign Up",
     "Wallet",
     "Settings",
-    "Profile"
+    "Profile",
+    "Others",
 ]
+
 export default function RewardsView() {
     const [showConfirmModal, setShowConfirmModal] = useState(false)
     const [feedback, setFeedback] = useState<string>()
     const [feedbackCategory, setFeedbackCategory] = useState<string>()
     const [pin, setPin] = useState<string>()
-    const router = useRouter();
-    const params = router.query;
+    // const router = useRouter();
+    // const params = router.query as unknown as IAppParams;
+
+    const validateForm = () => {
+        if (!feedback || feedback.trim().length == 0) {
+            toast.error('Please provide a feedbackV')
+            return
+        }
+        if (!feedbackCategory) {
+            toast.error('Select a feedback category')
+            return
+        }
+        setShowConfirmModal(true)
+    }
 
     const handleSubmit = () => {
-        if (!feedback) {
-            toast.error('Please provide a feedback')
+
+        if (!feedback || feedback.trim().length == 0) {
+            toast.error('Please provide a feedbackH')
             return
         }
         if (!feedbackCategory) {
@@ -42,35 +59,39 @@ export default function RewardsView() {
     }
 
     return <div className="p-4">
-        <div className="h-[50px] flex items-center justify-center bg-card mb-5 rounded-md">
-            <Text className="font-bold" variant="md">Provide Feedback and Claim Rewards</Text>
+        <div className="text-center flex flex-col items-center justify-center bg-card mb-5 rounded-md py-2 px-4">
+            <Text className="font-bold mb-4 text-[15px]" variant="md">Provide Feedback and Claim Rewards</Text>
+            <Text className="font-light text-[13.5 px] text-muted" >
+                Help us improve the app by providing feedbacks
+                and updates you would love to see in a future version.
+            </Text>
         </div>
-        <p> {JSON.stringify(params)}</p>
-        <div className="gap-y-5 flex flex-col items-center">
+        <div className="gap-y-6 flex flex-col items-center">
             <AppSelect
                 label="Category"
                 onChange={function (newValue: string) {
                     setFeedbackCategory(newValue)
                 }}
                 data={categories.map((val) => { return { value: val, label: val } })} />
-            <Input
-                label="Feedback"
-                placeholder="Provide a feedback"
-                value={feedback}
-                onChange={(e) => {
-                    setFeedback(e.target.value)
-                }} />
-            <Button onClick={() => {
-                if (!feedback) {
-                    toast.error('Please provide a feedback')
-                    return
-                }
-                if (!feedbackCategory) {
-                    toast.error('Select a feedback category')
-                    return
-                }
-                setShowConfirmModal(true)
-            }}>Claim</Button>
+
+            <div className="w-full">
+                <Label className="">Feedback</Label>
+                <textarea
+                    placeholder="Your feedback"
+                    value={feedback}
+                    className="bg-card w-full min-h-[100px] rounded-[10px] max-h-[500px] px-3 py-2"
+                    onChange={(e) => {
+                        setFeedback(e.target.value)
+                    }}
+                />
+
+            </div>
+
+            <p className="text-[16px] font-bold text-primary">12:45</p>
+            <Button
+                className="w-[45%]"
+                onClick={validateForm}>
+                Claim</Button>
         </div>
         <BottomModal
             title="Confirm Transaction"
