@@ -1,5 +1,4 @@
 import React from 'react'
-import SelfVerification from '../features/kyc/comps/Self'
 import { getUniversalLink, SelfAppBuilder } from '@selfxyz/core'
 import { Button } from '../components/Button'
 import { useRouter } from 'next/router'
@@ -23,9 +22,9 @@ export default function SelfKyc() {
 
     return (
         <div>
-            <SelfVerification />
+            {/* <SelfVerification /> */}
 
-            <Button onClick={ async() => {
+            <Button onClick={async () => {
                 await router.push(deeplink);
             }}>Deep Link</Button>
         </div>

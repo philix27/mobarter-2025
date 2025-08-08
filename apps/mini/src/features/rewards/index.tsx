@@ -97,7 +97,7 @@ export default function RewardsView() {
             toast.success("Reward claimed",)
             setPin("")
             setFeedback("")
-        }).catch((e) => {
+        }).catch(() => {
             setShowConfirmModal(false);
             toast.error("Oops, an error")
         })

@@ -3,10 +3,8 @@ import { FxRate_GetAllDocument, QueryResponse } from '@/src/api'
 import { useState } from 'react'
 
 import { logger } from '../lib/utils'
-import { AppStores } from '../lib/zustand'
 
 export function usePrice() {
-  const store = AppStores.useSettings()
   const [amountToPay, setAmtToPay] = useState(0)
   const { data: fxData, error } = useQuery<QueryResponse<'fxRate_GetAll'>>(FxRate_GetAllDocument)
 
@@ -22,12 +20,13 @@ export function usePrice() {
       },
     }
 
-  const rate = fxData!.fxRate_GetAll[store.countryIso]
+  // const rate = fxData!.fxRate_GetAll[store.countryIso]
 
-  const handleOnChange = (amountInFiatCurrency: number) => {
-    const c = amountInFiatCurrency / rate
-    const plusFee = c + 0.1
-    setAmtToPay(plusFee)
+  // const handleOnChange = (amountInFiatCurrency: number) => {
+  const handleOnChange = () => {
+    // const c = amountInFiatCurrency / rate
+    // const plusFee = c + 0.1
+    setAmtToPay(0)
   }
 
   return { amountToPay, handleOnChange }

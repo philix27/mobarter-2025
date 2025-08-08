@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
-import { CountriesIso } from '../countries'
+// import { CountriesIso } from '../countries'
 
 export type IHomeTab = 'BALANCE' | 'TX_HISTORY'
 export type IManageAdsTab = 'OPEN' | 'CLOSED' | 'ADD'
@@ -32,7 +32,7 @@ export interface ISlice {
   homeBtmSheet?: IHomeBottomSheet
   historyTab?: IHistoryTabs
   token?: boolean
-  countryIso?: CountriesIso
+  countryIso?: any
   chainIcon?: string
 }
 
