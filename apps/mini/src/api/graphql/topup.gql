@@ -1,0 +1,30 @@
+query utility_getTopUpOperators($input: Utilities_GetOperatorsInput!) {
+  utility_getTopUpOperators(input: $input) {
+    airtime {
+      name
+      suggestedAmounts
+      logo
+      maxAmount
+      minAmount
+      operatorId
+    }
+    dataPlan {
+      name
+      logo
+      operatorId
+      plans {
+        amount
+        desc
+      }
+    }
+    dataBundles {
+      name
+      logo
+      operatorId
+      plans {
+        amount
+        desc
+      }
+    }
+  }
+}

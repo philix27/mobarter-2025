@@ -44,7 +44,7 @@ function Others(props: PropsWithChildren) {
   return (
     <>
       {props.children}
-      <Toaster richColors position="bottom-center" expand={false} closeButton duration={2000} />
+      <Toaster richColors position="top-center" expand={false} closeButton duration={2000} />
     </>
   )
 }

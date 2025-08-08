@@ -10,6 +10,7 @@ export default function Input(
     error?: string
     desc?: string
     label?: string
+    obscure?: boolean
     trailingIcon?: JSX.Element
     control?: any
   } & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
@@ -53,7 +54,7 @@ export default function Input(
           onBlur={() => {
             setFocus(false)
           }}
-          type={isNum && 'number'}
+          type={props.obscure ? "password" : isNum ? 'number' : "text"}
           pattern={isNum && '[0-9]*'}
           inputMode={isNum && 'decimal'}
           min={isNum && 0}

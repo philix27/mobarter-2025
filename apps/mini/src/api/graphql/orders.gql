@@ -2,9 +2,7 @@ mutation Orders_CreateSell($input: Order_CreteSellInput!) {
   orders_CreateSell(input: $input) {
     amount_fiat
     amount_crypto
-    bank_account_no
-    bank_name
-    bank_account_name
+    bank_id
     amount_crypto
     currency_fiat
     currency_crypto
@@ -26,12 +24,9 @@ query Orders_GetAll($input: Order_GetAllInput!) {
     id
     action_user
     status
-    bank_account_no
     amount_fiat
     amount_crypto
-    bank_account_no
-    bank_name
-    bank_account_name
+    bank_id
     amount_crypto
     currency_fiat
     currency_crypto
@@ -53,12 +48,9 @@ query Orders_GetOne($input: Order_GetOneInput!) {
     id
     action_user
     status
-    bank_account_no
     amount_fiat
     amount_crypto
-    bank_account_no
-    bank_name
-    bank_account_name
+    bank_id
     amount_crypto
     currency_fiat
     estimated_duration
@@ -79,12 +71,9 @@ query Orders_GetAllForAdmin($input: Order_GetAllInput!) {
     id
     action_user
     status
-    bank_account_no
     amount_fiat
     amount_crypto
-    bank_account_no
-    bank_name
-    bank_account_name
+    bank_id
     amount_crypto
     currency_fiat
     currency_crypto

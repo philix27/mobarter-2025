@@ -1,0 +1,100 @@
+query static_getTokens {
+  static_getTokens {
+    name
+    address
+    decimals
+    isBuyable
+    isPayable
+    symbol
+    logoUrl
+    chainId
+    priceUSD
+    priceNGN
+    rpcUrl
+    chainName
+  }
+}
+
+query static_getLinks {
+  static_getLinks {
+    title
+    desc
+    imgLink
+    url
+    category
+    group
+  }
+}
+
+query static_getCountry {
+  static_getCountries {
+    name
+    isoName
+    callingCodes
+    continent
+    currencyCode
+    currencyName
+    currencySymbol
+    flag
+  }
+}
+
+
+query static_getChain {
+  static_getChains {
+    name
+    rpcUrl
+    chainId
+    explorerUrl
+    explorerApiUrl
+    logoUrl
+  }
+}
+
+
+query static_getFundCollectors {
+  static_getFundCollectors {
+    TopUp
+    ElectricityBills
+    FundBetting
+    OffRamping
+    TV_Bills
+    WaterBills
+  }
+}
+
+query static_appInfo {
+  static_appInfo {
+    androidAppUrl
+    iosAppUrl
+    minBuild
+    deployedBuild
+    enableAirtime
+    enableBetting
+    enableDataPlan
+    enableElectricityBillPayment
+    enableTVBillPayment
+    selfKycUrl
+    transactionsPageUrl
+    notificationsPageUrl
+  }
+}
+
+
+query static_secretQuestions {
+  static_secretQuestions {
+    text
+  }
+}
+
+query static_miniApps {
+  static_miniApps {
+    title
+    description
+    logo
+    url
+    aboutInfo
+  }
+}
+
+

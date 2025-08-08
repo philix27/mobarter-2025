@@ -1,0 +1,5 @@
+mutation Onchain_claim($input: Onchain_ClaimRewardsInput!) {
+  onchain_claim(input: $input) {
+    message
+  }
+}
