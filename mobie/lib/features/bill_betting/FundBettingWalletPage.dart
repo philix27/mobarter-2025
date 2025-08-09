@@ -74,14 +74,14 @@ class FundBettingBillsPage extends HookConsumerWidget {
                 ),
                 ServiceIdField(),
                 listTile(
-                  context,
+                  context, 
                   title: data.amountFiat == null
                       ? "Select amount"
                       : "₦${data.amountFiat}",
                   onTap: () {
                     btmSheet(
                       ctx: context,
-                      w: BettingPriceList(list: priceList!),
+                      w: BettingPriceList(list: priceList),
                       h: 0.5,
                     );
                   },

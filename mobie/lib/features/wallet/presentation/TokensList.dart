@@ -48,6 +48,7 @@ class TokensList extends HookConsumerWidget {
         return ListView.builder(
           primary: true,
           shrinkWrap: true,
+          padding: EdgeInsets.all(0),
           itemCount: tList.length,
           itemBuilder: (BuildContext ctx, int index) {
             final item = tList.toList()[index];
@@ -82,6 +83,8 @@ Widget tokenRow(
 ) {
   return ListTile(
     dense: true,
+    // isThreeLine: false,
+    style: ListTileStyle.list,
     tileColor: Theme.of(context).scaffoldBackgroundColor,
     title: Text(item.symbol, style: Theme.of(context).textTheme.headlineMedium),
     subtitle: Text(chain.name, style: Theme.of(context).textTheme.bodySmall),
