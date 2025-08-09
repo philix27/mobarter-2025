@@ -11,6 +11,7 @@ class PaymentTokenDataNotifier extends StateNotifier<PaymentTokenData> {
           chain: null,
           decimals: null,
           priceUSD: null,
+          rpcUrl: null,
         ),
       );
 
@@ -22,6 +23,7 @@ class PaymentTokenDataNotifier extends StateNotifier<PaymentTokenData> {
       chain: token.chain,
       decimals: token.decimals,
       priceUSD: token.priceUSD,
+      rpcUrl: token.rpcUrl,
     );
   }
 

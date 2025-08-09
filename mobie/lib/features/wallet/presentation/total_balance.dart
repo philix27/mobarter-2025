@@ -27,7 +27,7 @@ class TotalBalance extends HookWidget {
             "...",
             style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
           );
-        }
+        }       
         double ngnPrice = tokensList
             .where((i) => i.symbol.contains("USD"))
             .first
@@ -59,6 +59,7 @@ Future<double> getTotalPriceAsync(
     final price = await getWalletTokenBalance(
       tokenContractAddress: item.address,
       tokenDecimal: int.tryParse(item.decimals.toString()) ?? 18,
+      rpcUrl: item.rpcUrl,
     );
     if (price == null) return 0.0;
 

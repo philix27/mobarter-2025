@@ -25,12 +25,12 @@ final String erc20Abi = '''
 Future<double?> getWalletTokenBalance({
   // required String walletAddress,
   required int tokenDecimal,
+  required String rpcUrl,
   String? tokenContractAddress,
 }) async {
   final walletSvc = WalletStoreService();
   final walletAddress = await walletSvc.userWalletAddress();
 
-  final rpcUrl = 'https://forno.celo.org'; // Celo RPC
   final httpClient = Client();
   final ethClient = Web3Client(rpcUrl, httpClient);
 

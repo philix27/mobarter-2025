@@ -246,6 +246,20 @@ const documentNodeQuerystatic_getTokens = DocumentNode(definitions: [
             selectionSet: null,
           ),
           FieldNode(
+            name: NameNode(value: 'rpcUrl'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'chainName'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
             name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
@@ -419,6 +433,8 @@ class Query$static_getTokens$static_getTokens {
     required this.chainId,
     required this.priceUSD,
     required this.priceNGN,
+    required this.rpcUrl,
+    required this.chainName,
     this.$__typename = 'Static_GetTokenResponse',
   });
 
@@ -434,6 +450,8 @@ class Query$static_getTokens$static_getTokens {
     final l$chainId = json['chainId'];
     final l$priceUSD = json['priceUSD'];
     final l$priceNGN = json['priceNGN'];
+    final l$rpcUrl = json['rpcUrl'];
+    final l$chainName = json['chainName'];
     final l$$__typename = json['__typename'];
     return Query$static_getTokens$static_getTokens(
       name: (l$name as String),
@@ -446,6 +464,8 @@ class Query$static_getTokens$static_getTokens {
       chainId: (l$chainId as num).toDouble(),
       priceUSD: (l$priceUSD as num).toDouble(),
       priceNGN: (l$priceNGN as num).toDouble(),
+      rpcUrl: (l$rpcUrl as String),
+      chainName: (l$chainName as String),
       $__typename: (l$$__typename as String),
     );
   }
@@ -469,6 +489,10 @@ class Query$static_getTokens$static_getTokens {
   final double priceUSD;
 
   final double priceNGN;
+
+  final String rpcUrl;
+
+  final String chainName;
 
   final String $__typename;
 
@@ -494,6 +518,10 @@ class Query$static_getTokens$static_getTokens {
     _resultData['priceUSD'] = l$priceUSD;
     final l$priceNGN = priceNGN;
     _resultData['priceNGN'] = l$priceNGN;
+    final l$rpcUrl = rpcUrl;
+    _resultData['rpcUrl'] = l$rpcUrl;
+    final l$chainName = chainName;
+    _resultData['chainName'] = l$chainName;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -511,6 +539,8 @@ class Query$static_getTokens$static_getTokens {
     final l$chainId = chainId;
     final l$priceUSD = priceUSD;
     final l$priceNGN = priceNGN;
+    final l$rpcUrl = rpcUrl;
+    final l$chainName = chainName;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$name,
@@ -523,6 +553,8 @@ class Query$static_getTokens$static_getTokens {
       l$chainId,
       l$priceUSD,
       l$priceNGN,
+      l$rpcUrl,
+      l$chainName,
       l$$__typename,
     ]);
   }
@@ -586,6 +618,16 @@ class Query$static_getTokens$static_getTokens {
     if (l$priceNGN != lOther$priceNGN) {
       return false;
     }
+    final l$rpcUrl = rpcUrl;
+    final lOther$rpcUrl = other.rpcUrl;
+    if (l$rpcUrl != lOther$rpcUrl) {
+      return false;
+    }
+    final l$chainName = chainName;
+    final lOther$chainName = other.chainName;
+    if (l$chainName != lOther$chainName) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -625,6 +667,8 @@ abstract class CopyWith$Query$static_getTokens$static_getTokens<TRes> {
     double? chainId,
     double? priceUSD,
     double? priceNGN,
+    String? rpcUrl,
+    String? chainName,
     String? $__typename,
   });
 }
@@ -653,6 +697,8 @@ class _CopyWithImpl$Query$static_getTokens$static_getTokens<TRes>
     Object? chainId = _undefined,
     Object? priceUSD = _undefined,
     Object? priceNGN = _undefined,
+    Object? rpcUrl = _undefined,
+    Object? chainName = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Query$static_getTokens$static_getTokens(
@@ -686,6 +732,12 @@ class _CopyWithImpl$Query$static_getTokens$static_getTokens<TRes>
         priceNGN: priceNGN == _undefined || priceNGN == null
             ? _instance.priceNGN
             : (priceNGN as double),
+        rpcUrl: rpcUrl == _undefined || rpcUrl == null
+            ? _instance.rpcUrl
+            : (rpcUrl as String),
+        chainName: chainName == _undefined || chainName == null
+            ? _instance.chainName
+            : (chainName as String),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -709,6 +761,8 @@ class _CopyWithStubImpl$Query$static_getTokens$static_getTokens<TRes>
     double? chainId,
     double? priceUSD,
     double? priceNGN,
+    String? rpcUrl,
+    String? chainName,
     String? $__typename,
   }) =>
       _res;

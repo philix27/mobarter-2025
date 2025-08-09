@@ -26,6 +26,7 @@ class SelectPaymentToken extends ConsumerWidget {
               future: getWalletTokenBalance(
                 tokenContractAddress: watch.address,
                 tokenDecimal: int.tryParse(watch.decimals.toString()) ?? 18,
+                rpcUrl: watch.rpcUrl!,
               ),
               builder: (ctx, snap) {
                 if (snap.data == null) {

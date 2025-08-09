@@ -96,13 +96,13 @@ Widget tokenRow(
         fit: BoxFit.cover,
       ),
     ),
-
     trailing: Column(
       children: [
         FutureBuilder(
           future: getWalletTokenBalance(
             tokenContractAddress: item.address,
             tokenDecimal: int.tryParse(item.decimals.toString()) ?? 18,
+            rpcUrl: item.rpcUrl,
           ),
           builder: (ctx, snap) {
             if (snap.data == null) {
@@ -133,6 +133,7 @@ Widget tokenRow(
               await getWalletTokenBalance(
                 tokenContractAddress: item.address,
                 tokenDecimal: int.tryParse(item.decimals.toString()) ?? 18,
+                rpcUrl: item.rpcUrl,
               ) ??
               0;
 
@@ -153,6 +154,7 @@ Widget tokenRow(
               name: item.name,
               logo: item.logoUrl,
               chain: chain.name,
+              rpcUrl: item.rpcUrl,
             ),
           );
           Navigator.pop(context);

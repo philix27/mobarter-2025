@@ -7,7 +7,6 @@ import 'package:mobarter/features/paymentToken/logic/provider.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/widgets/widgets.dart';
-import 'package:toastification/toastification.dart';
 
 class SendPaymentInput {
   final String pin;

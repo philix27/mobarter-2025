@@ -3509,6 +3509,200 @@ class _CopyWithStubImpl$Input$Kyc_CreateTransactionPinInput<TRes>
   call({String? pin}) => _res;
 }
 
+class Input$Onchain_ClaimRewardsInput {
+  factory Input$Onchain_ClaimRewardsInput({
+    String? category,
+    String? claimTokenAddress,
+    required String feedback,
+    required Input$PaymentInput payment,
+  }) =>
+      Input$Onchain_ClaimRewardsInput._({
+        if (category != null) r'category': category,
+        if (claimTokenAddress != null) r'claimTokenAddress': claimTokenAddress,
+        r'feedback': feedback,
+        r'payment': payment,
+      });
+
+  Input$Onchain_ClaimRewardsInput._(this._$data);
+
+  factory Input$Onchain_ClaimRewardsInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('category')) {
+      final l$category = data['category'];
+      result$data['category'] = (l$category as String?);
+    }
+    if (data.containsKey('claimTokenAddress')) {
+      final l$claimTokenAddress = data['claimTokenAddress'];
+      result$data['claimTokenAddress'] = (l$claimTokenAddress as String?);
+    }
+    final l$feedback = data['feedback'];
+    result$data['feedback'] = (l$feedback as String);
+    final l$payment = data['payment'];
+    result$data['payment'] =
+        Input$PaymentInput.fromJson((l$payment as Map<String, dynamic>));
+    return Input$Onchain_ClaimRewardsInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get category => (_$data['category'] as String?);
+
+  String? get claimTokenAddress => (_$data['claimTokenAddress'] as String?);
+
+  String get feedback => (_$data['feedback'] as String);
+
+  Input$PaymentInput get payment => (_$data['payment'] as Input$PaymentInput);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('category')) {
+      final l$category = category;
+      result$data['category'] = l$category;
+    }
+    if (_$data.containsKey('claimTokenAddress')) {
+      final l$claimTokenAddress = claimTokenAddress;
+      result$data['claimTokenAddress'] = l$claimTokenAddress;
+    }
+    final l$feedback = feedback;
+    result$data['feedback'] = l$feedback;
+    final l$payment = payment;
+    result$data['payment'] = l$payment.toJson();
+    return result$data;
+  }
+
+  CopyWith$Input$Onchain_ClaimRewardsInput<Input$Onchain_ClaimRewardsInput>
+      get copyWith => CopyWith$Input$Onchain_ClaimRewardsInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$Onchain_ClaimRewardsInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$category = category;
+    final lOther$category = other.category;
+    if (_$data.containsKey('category') !=
+        other._$data.containsKey('category')) {
+      return false;
+    }
+    if (l$category != lOther$category) {
+      return false;
+    }
+    final l$claimTokenAddress = claimTokenAddress;
+    final lOther$claimTokenAddress = other.claimTokenAddress;
+    if (_$data.containsKey('claimTokenAddress') !=
+        other._$data.containsKey('claimTokenAddress')) {
+      return false;
+    }
+    if (l$claimTokenAddress != lOther$claimTokenAddress) {
+      return false;
+    }
+    final l$feedback = feedback;
+    final lOther$feedback = other.feedback;
+    if (l$feedback != lOther$feedback) {
+      return false;
+    }
+    final l$payment = payment;
+    final lOther$payment = other.payment;
+    if (l$payment != lOther$payment) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$category = category;
+    final l$claimTokenAddress = claimTokenAddress;
+    final l$feedback = feedback;
+    final l$payment = payment;
+    return Object.hashAll([
+      _$data.containsKey('category') ? l$category : const {},
+      _$data.containsKey('claimTokenAddress') ? l$claimTokenAddress : const {},
+      l$feedback,
+      l$payment,
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$Onchain_ClaimRewardsInput<TRes> {
+  factory CopyWith$Input$Onchain_ClaimRewardsInput(
+    Input$Onchain_ClaimRewardsInput instance,
+    TRes Function(Input$Onchain_ClaimRewardsInput) then,
+  ) = _CopyWithImpl$Input$Onchain_ClaimRewardsInput;
+
+  factory CopyWith$Input$Onchain_ClaimRewardsInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$Onchain_ClaimRewardsInput;
+
+  TRes call({
+    String? category,
+    String? claimTokenAddress,
+    String? feedback,
+    Input$PaymentInput? payment,
+  });
+  CopyWith$Input$PaymentInput<TRes> get payment;
+}
+
+class _CopyWithImpl$Input$Onchain_ClaimRewardsInput<TRes>
+    implements CopyWith$Input$Onchain_ClaimRewardsInput<TRes> {
+  _CopyWithImpl$Input$Onchain_ClaimRewardsInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$Onchain_ClaimRewardsInput _instance;
+
+  final TRes Function(Input$Onchain_ClaimRewardsInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? category = _undefined,
+    Object? claimTokenAddress = _undefined,
+    Object? feedback = _undefined,
+    Object? payment = _undefined,
+  }) =>
+      _then(Input$Onchain_ClaimRewardsInput._({
+        ..._instance._$data,
+        if (category != _undefined) 'category': (category as String?),
+        if (claimTokenAddress != _undefined)
+          'claimTokenAddress': (claimTokenAddress as String?),
+        if (feedback != _undefined && feedback != null)
+          'feedback': (feedback as String),
+        if (payment != _undefined && payment != null)
+          'payment': (payment as Input$PaymentInput),
+      }));
+
+  CopyWith$Input$PaymentInput<TRes> get payment {
+    final local$payment = _instance.payment;
+    return CopyWith$Input$PaymentInput(local$payment, (e) => call(payment: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$Onchain_ClaimRewardsInput<TRes>
+    implements CopyWith$Input$Onchain_ClaimRewardsInput<TRes> {
+  _CopyWithStubImpl$Input$Onchain_ClaimRewardsInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? category,
+    String? claimTokenAddress,
+    String? feedback,
+    Input$PaymentInput? payment,
+  }) =>
+      _res;
+
+  CopyWith$Input$PaymentInput<TRes> get payment =>
+      CopyWith$Input$PaymentInput.stub(_res);
+}
+
 class Input$Order_AppealInput {
   factory Input$Order_AppealInput({
     required String id,
