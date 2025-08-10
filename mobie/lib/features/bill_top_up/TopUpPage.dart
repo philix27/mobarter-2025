@@ -18,7 +18,6 @@ import 'package:mobarter/widgets/scaffold.dart';
 import 'package:mobarter/widgets/toast.dart';
 import 'package:mobarter/features/paymentToken/txn_summary_page.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
-import 'package:toastification/toastification.dart';
 
 enum TopUpScreen { airtime, dataPlan, dataBundle }
 

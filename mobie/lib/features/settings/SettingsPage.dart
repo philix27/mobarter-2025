@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/auth/auth_service.dart';
+import 'package:mobarter/features/bank_account/BankAccountPage.dart';
 import 'package:mobarter/features/profile/profile_page.dart';
 import 'package:mobarter/features/settings/kyc_page.dart';
 import 'package:mobarter/features/settings/showLearn.dart';
@@ -76,6 +77,20 @@ class SettingsPage extends HookConsumerWidget {
               pushScreen(
                 context,
                 screen: WalletQrCodePage(),
+                withNavBar: false,
+                pageTransitionAnimation: PageTransitionAnimation.slideUp,
+              );
+            },
+          ),
+          listTile(
+            context,
+            title: "Bank Account",
+            subtitle: "Manage your bank accounts",
+            icon: Icons.food_bank,
+            onTap: () {
+              pushScreen(
+                context,
+                screen: BankAccountPage(),
                 withNavBar: false,
                 pageTransitionAnimation: PageTransitionAnimation.slideUp,
               );

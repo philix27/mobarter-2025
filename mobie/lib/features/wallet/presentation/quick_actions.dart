@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
+import 'package:mobarter/features/wallet/WalletQRCodePage.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class QuickActionsModel {
   final String title;
@@ -27,24 +29,27 @@ Widget box(BuildContext context, QuickActionsModel item) {
     children: [
       ClipRRect(
         borderRadius: BorderRadius.circular(5),
-        child: Container(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          width: 80,
-          // height: 60,
-          padding: EdgeInsets.all(10),
-          child: Column(
-            children: [
-              Icon(
-                item.icon,
-                size: 18,
-                color: Theme.of(context).highlightColor,
-              ),
-              SizedBox(height: 7),
-              Text(
-                item.title,
-                style: textTheme(context).bodySmall?.copyWith(fontSize: 12),
-              ),
-            ],
+        child: InkWell(
+          onTap: item.onPressed,
+          child: Container(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            width: 80,
+            // height: 60,
+            padding: EdgeInsets.all(10),
+            child: Column(
+              children: [
+                Icon(
+                  item.icon,
+                  size: 18,
+                  color: Theme.of(context).highlightColor,
+                ),
+                SizedBox(height: 7),
+                Text(
+                  item.title,
+                  style: textTheme(context).bodySmall?.copyWith(fontSize: 12),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -77,7 +82,14 @@ class QuickActions extends StatelessWidget {
             QuickActionsModel(
               title: "Receive",
               icon: Icons.qr_code,
-              onPressed: () {},
+              onPressed: () {
+                pushScreen(
+                  context,
+                  screen: WalletQrCodePage(),
+                  withNavBar: false,
+                  pageTransitionAnimation: PageTransitionAnimation.slideUp,
+                );
+              },
             ),
           ),
           box(

@@ -41,7 +41,7 @@ class WalletPage extends StatelessWidget {
         children: [
           OptionalUpdateCard(),
           ClipRRect(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(15),
             child: Column(
               children: [
                 Container(

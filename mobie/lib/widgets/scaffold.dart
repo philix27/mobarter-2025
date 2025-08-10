@@ -11,9 +11,11 @@ Widget appScaffold(
   bool automaticallyImplyLeading = true,
   List<Widget>? actions,
   Widget? leading,
+  Widget? floatingActionButton,
 }) {
   return Scaffold(
     resizeToAvoidBottomInset: true,
+    floatingActionButton: floatingActionButton,
     appBar: AppBar(
       centerTitle: true,
       automaticallyImplyLeading: automaticallyImplyLeading,
