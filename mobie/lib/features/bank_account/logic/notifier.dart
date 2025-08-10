@@ -1,52 +1,27 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobarter/features/bill_top_up/TopUpPage.dart';
-import 'package:mobarter/features/bill_top_up/model/topData.dart';
+import 'package:mobarter/features/bank_account/logic/bank_account_model.dart';
 
-class TopUpDataNotifier extends StateNotifier<TopData> {
-  TopUpDataNotifier()
+class BankAccountNotifier extends StateNotifier<BankAccountModel> {
+  BankAccountNotifier()
     : super(
-        TopData(
-          amountFiat: null,
-          amountCrypto: null,
-          dataPlanDescription: null,
-          networkProvider: null,
-          networkOperatorId: null,
-          phoneNo: '',
-          currency: "cUSD",
-          screen: TopUpScreen.airtime,
+        BankAccountModel(
+          accountNo: null,
+          accountName: null,
+          bankName: null,
+          bankCode: null,
         ),
       );
 
-  void updatePhone(String phone) {
-    if (phone.length > 11) return;
-    state = state.copyWith(phoneNo: phone);
+  void updateName(String accountName) {
+    state = state.copyWith(accountName: accountName);
   }
 
-  void updateAmount({
-    required double amountCrypto,
-    required double amountFiat,
-    String? dataPlanDescription,
-  }) {
+  void updateNo(String accountNo) {
+    state = state.copyWith(accountNo: accountNo);
+  }
+
+  void updateBankInfo({required String name, required String code}) {
     // if (amountCrypto <= 0) return;
-    state = state.copyWith(
-      amountCrypto: amountCrypto,
-      amountFiat: amountFiat,
-      dataPlanDescription: dataPlanDescription,
-    );
-  }
-
-  void updateNetwork(String network, int networkOperatorId) {
-    state = state.copyWith(
-      networkProvider: network,
-      networkOperatorId: networkOperatorId,
-    );
-  }
-
-  void updateCurrency(String currency) {
-    state = state.copyWith(currency: currency);
-  }
-
-  void updateScreen(TopUpScreen tab) {
-    state = state.copyWith(screen: tab);
+    state = state.copyWith(bankName: name, bankCode: code);
   }
 }

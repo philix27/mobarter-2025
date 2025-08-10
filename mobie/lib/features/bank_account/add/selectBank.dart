@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mobarter/features/bank_account/logic/provider.dart';
 import 'package:mobarter/features/theme/constColors.dart';
-import 'package:mobarter/features/bill_top_up/logic/provider.dart';
-import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/bankAccount.gql.dart';
-import 'package:mobarter/graphql/schema/topup.gql.dart';
 import 'package:mobarter/widgets/widgets.dart';
 
 class BanksList extends ConsumerWidget {
@@ -13,14 +11,13 @@ class BanksList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final data = ref.watch(topUpDataProvider);
+    final data = bankWatch(ref);
 
     return listTile(
       context,
-      title: data.networkProvider == null || data.networkProvider!.isEmpty
+      title: data.bankName == null || data.bankName!.isEmpty
           ? "Select Bank"
-          : data.networkProvider!,
-      subtitle: "Bank",
+          : data.bankName!,
       tileColor: colorCard,
       onTap: () {
         btmSheet(ctx: context, w: _NetworkList());
@@ -34,7 +31,7 @@ class _NetworkList extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final topUpdata = ref.read(topUpDataProvider.notifier);
+    final r = bankRead(ref);
     final result = useQuery$BankList(Options$Query$BankList());
 
     if (result.result.isLoading) {
@@ -58,7 +55,7 @@ class _NetworkList extends HookConsumerWidget {
           context,
           title: item.bankName,
           onTap: () {
-            // topUpdata.updateNetwork(item.name, item.operatorId);
+            r.updateBankInfo(name: item.bankName, code: item.bankCode!);
             Navigator.pop(context);
           },
         );

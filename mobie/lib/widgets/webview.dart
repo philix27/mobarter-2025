@@ -50,7 +50,7 @@ class AppWebView extends ConsumerWidget {
       future: getParams(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return const LoadingIndicator();
+          return LoadingIndicator();
         }
 
         return _AppWebView(url: snapshot.data ?? url, title: title, info: info);

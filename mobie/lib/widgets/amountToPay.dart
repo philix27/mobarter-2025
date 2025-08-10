@@ -14,7 +14,7 @@ class CryptoAmountPay extends HookWidget {
 
     final data = result.result;
     if (data.isLoading) {
-      return const  LoadingIndicator();
+      return LoadingIndicator();
     }
 
     final rate = data.parsedData?.fxRate_GetAll.NG ?? 0;

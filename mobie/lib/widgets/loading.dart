@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart' as load;
 
 class LoadingIndicator extends StatelessWidget {
-  const LoadingIndicator({super.key});
+  const LoadingIndicator({super.key, this.height});
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        height: 50,
+        height: height ?? 50,
         child: load.LoadingIndicator(
           indicatorType: load.Indicator.ballRotateChase,
 

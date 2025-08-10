@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobarter/features/bank_account/logic/provider.dart';
 import 'package:mobarter/features/bill_top_up/logic/provider.dart';
 import 'package:mobarter/widgets/inputText.dart';
 import 'package:mobarter/widgets/toast.dart';
@@ -17,18 +18,18 @@ class AccountNo extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final len = 10;
-    final topUpdata = topUpRead(ref);
+    final r = bankRead(ref);
 
     return textField(
       context,
       label: 'Account No.',
-      helperText: "Ensure it name matches your personal documents",
+      helperText: "Ensure name matches your personal documents",
       maxLength: len,
       // controller: phone,
       keyboardType: TextInputType.number,
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly, // Allow digits only
-        LengthLimitingTextInputFormatter(11), // Enforces the limit
+        LengthLimitingTextInputFormatter(len), // Enforces the limit
       ],
       onChanged: (value) {
         if (value.length > len) {
@@ -36,8 +37,7 @@ class AccountNo extends ConsumerWidget {
           appToast(context, "Maximum ${len} digits allowed");
           return;
         }
-        // phone.text = value;
-        topUpdata.updatePhone(value);
+        r.updateNo(value);
       },
     );
   }

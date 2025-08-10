@@ -1,17 +1,16 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobarter/features/bill_top_up/logic/notifier.dart';
-import 'package:mobarter/features/bill_top_up/model/topData.dart';
+import 'package:mobarter/features/bank_account/logic/bank_account_model.dart';
+import 'package:mobarter/features/bank_account/logic/notifier.dart';
 
-final topUpDataProvider = StateNotifierProvider<TopUpDataNotifier, TopData>((
-  ref,
-) {
-  return TopUpDataNotifier();
-});
+final bankAccountProvider =
+    StateNotifierProvider<BankAccountNotifier, BankAccountModel>((ref) {
+      return BankAccountNotifier();
+    });
 
-TopUpDataNotifier topUpRead(WidgetRef ref) {
-  return ref.read(topUpDataProvider.notifier);
+BankAccountNotifier bankRead(WidgetRef ref) {
+  return ref.read(bankAccountProvider.notifier);
 }
 
-TopData topUpWatch(WidgetRef ref) {
-  return ref.watch(topUpDataProvider);
+BankAccountModel bankWatch(WidgetRef ref) {
+  return ref.watch(bankAccountProvider);
 }
