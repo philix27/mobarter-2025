@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobarter/features/orders_sell/OrderSellCryptoPage.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/features/wallet/WalletQRCodePage.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
@@ -15,45 +16,28 @@ class QuickActionsModel {
   });
 }
 
-List<QuickActionsModel> actions(BuildContext ctx) {
-  return [
-    QuickActionsModel(title: "Send", icon: Icons.send, onPressed: () {}),
-    QuickActionsModel(title: "Receive", icon: Icons.qr_code, onPressed: () {}),
-    QuickActionsModel(title: "Buy", icon: Icons.sell, onPressed: () {}),
-    QuickActionsModel(title: "Withdraw", icon: Icons.outbond, onPressed: () {}),
-  ];
-}
-
 Widget box(BuildContext context, QuickActionsModel item) {
-  return Column(
-    children: [
-      ClipRRect(
-        borderRadius: BorderRadius.circular(5),
-        child: InkWell(
-          onTap: item.onPressed,
-          child: Container(
-            color: Theme.of(context).scaffoldBackgroundColor,
-            width: 80,
-            // height: 60,
-            padding: EdgeInsets.all(10),
-            child: Column(
-              children: [
-                Icon(
-                  item.icon,
-                  size: 18,
-                  color: Theme.of(context).highlightColor,
-                ),
-                SizedBox(height: 7),
-                Text(
-                  item.title,
-                  style: textTheme(context).bodySmall?.copyWith(fontSize: 12),
-                ),
-              ],
-            ),
+  return Expanded(
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(5),
+      child: InkWell(
+        onTap: item.onPressed,
+        child: Container(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          padding: EdgeInsets.all(10),
+          child: Column(
+            children: [
+              Icon(item.icon, size: 18, color: Theme.of(context).primaryColor),
+              SizedBox(height: 7),
+              Text(
+                item.title,
+                style: textTheme(context).bodySmall?.copyWith(fontSize: 10),
+              ),
+            ],
           ),
         ),
       ),
-    ],
+    ),
   );
 }
 
@@ -68,6 +52,7 @@ class QuickActions extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.max,
+        spacing: 10,
         children: [
           box(
             context,
@@ -92,20 +77,27 @@ class QuickActions extends StatelessWidget {
               },
             ),
           ),
+          // box(
+          //   context,
+          //   QuickActionsModel(
+          //     title: "Buy",
+          //     icon: Icons.arrow_downward,
+          //     onPressed: () {},
+          //   ),
+          // ),
           box(
             context,
             QuickActionsModel(
-              title: "Buy",
-              icon: Icons.arrow_downward,
-              onPressed: () {},
-            ),
-          ),
-          box(
-            context,
-            QuickActionsModel(
-              title: "Withdraw",
+              title: "Sell",
               icon: Icons.arrow_upward,
-              onPressed: () {},
+              onPressed: () {
+                pushScreen(
+                  context,
+                  screen: OrdersSellCryptoPage(),
+                  withNavBar: false,
+                  pageTransitionAnimation: PageTransitionAnimation.slideUp,
+                );
+              },
             ),
           ),
         ],

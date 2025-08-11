@@ -1,3 +1,5 @@
+
+
 input Auth_CreateAccountInput {
   country: Country!
   email: String!
@@ -384,7 +386,6 @@ type Mutation {
   ): Onchain_ClaimRewardsResponse!
   orders_Appeal(input: Order_AppealInput!): Order_Response!
   orders_Cancel(input: Order_CancelInput!): Order_Response!
-  orders_CreateBuy(input: Order_CreteBuyInput!): Order_CreteBuyResponse!
   orders_CreateSell(input: Order_CreteSellInput!): Order_CreteSellResponse!
   orders_MoveCryptoToEscrow(
     input: Order_MoveCryptoToEscrowInput!
@@ -426,11 +427,6 @@ enum OrderActions {
   ReleaseCrypto
 }
 
-enum OrderMode {
-  EXPRESS
-  MARKET
-}
-
 enum OrderStatus {
   APPEAL
   CANCEL
@@ -448,82 +444,18 @@ input Order_CancelInput {
   reason: String!
 }
 
-input Order_CreteBuyInput {
-  action_merchant: OrderActions
-  action_user: OrderActions
-  amount_crypto: Float!
-  amount_fiat: Float!
-  bank_id: Float!
-  currency_crypto: String!
-  currency_fiat: Country!
-  currency_network: String!
-  estimated_duration: String!
-  merchant_id: Float!
-  mode: OrderMode
-  status: OrderStatus!
-  trade_type: TradeType!
-  txn_hash: String
-  wallet_customer: String!
-  wallet_merchant: String!
-}
-
-type Order_CreteBuyResponse {
-  action_merchant: OrderActions
-  action_user: OrderActions
-  amount_crypto: Float
-  amount_fiat: Float
-  bank_id: Float
-  currency_crypto: String
-  currency_fiat: Country
-  currency_network: String
-  estimated_duration: String
-  id: ID!
-  merchant_id: Float
-  mode: OrderMode
-  status: OrderStatus
-  trade_type: TradeType
-  txn_hash: String
-  wallet_customer: String
-  wallet_merchant: String
-}
-
 input Order_CreteSellInput {
   action_merchant: OrderActions
   action_user: OrderActions
-  amount_crypto: Float!
-  amount_fiat: Float!
   bank_id: Float!
-  currency_crypto: String!
   currency_fiat: Country!
-  currency_network: String!
-  estimated_duration: String!
-  merchant_id: Float!
-  mode: OrderMode
+  payment: PaymentInput!
   status: OrderStatus!
   trade_type: TradeType!
-  txn_hash: String
-  wallet_customer: String!
-  wallet_merchant: String!
 }
 
 type Order_CreteSellResponse {
-  action_merchant: OrderActions
-  action_user: OrderActions
-  amount_crypto: Float
-  amount_fiat: Float
-  bank_id: Float
-  currency_crypto: String
-  currency_fiat: Country
-  currency_network: String
-  estimated_duration: String
-  id: ID!
-  merchant_id: Float
-  mode: OrderMode
-  status: OrderStatus
-  trade_type: TradeType
-  txn_hash: String
-  wallet_customer: String
-  wallet_merchant: String
+  msg: String!
 }
 
 input Order_GetAllInput {
@@ -547,21 +479,11 @@ input Order_MoveCryptoToEscrowInput {
 type Order_Response {
   action_merchant: OrderActions
   action_user: OrderActions
-  amount_crypto: Float
-  amount_fiat: Float
   bank_id: Float
-  currency_crypto: String
   currency_fiat: Country
-  currency_network: String
-  estimated_duration: String
   id: ID!
-  merchant_id: Float
-  mode: OrderMode
   status: OrderStatus
   trade_type: TradeType
-  txn_hash: String
-  wallet_customer: String
-  wallet_merchant: String
 }
 
 enum OtpPurpose {
@@ -572,6 +494,7 @@ enum OtpPurpose {
 input PaymentInput {
   amountCrypto: Float!
   amountFiat: Float!
+  fiatCurrency: Country!
   isNative: Boolean
   tokenAddress: String!
   tokenChain: String!

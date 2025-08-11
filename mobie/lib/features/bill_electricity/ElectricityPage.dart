@@ -113,6 +113,7 @@ class ElectricityPage extends HookConsumerWidget {
                                   tokenChain: paymentInfo.tokenChain,
                                   transaction_pin: paymentInfo.pin,
                                   user_uid: paymentInfo.user_uid,
+                                  fiatCurrency: Enum$Country.NG,
                                 ),
                               ),
                             ),

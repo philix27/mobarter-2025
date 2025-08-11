@@ -1,73 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mobarter/features/bill_top_up/logic/provider.dart';
-import 'package:mobarter/features/bill_top_up/presentation/airtime.dart';
-import 'package:mobarter/features/bill_top_up/presentation/dataPlan.dart';
-import 'package:mobarter/features/bill_top_up/presentation/phoneNo.dart';
-import 'package:mobarter/features/bill_top_up/presentation/screenTabs.dart';
-import 'package:mobarter/features/bill_top_up/presentation/selectNetwork.dart';
+import 'package:mobarter/features/orders_sell/logic/provider.dart';
+import 'package:mobarter/features/orders_sell/presentation/amount.dart';
+import 'package:mobarter/features/orders_sell/presentation/select_account.dart';
+import 'package:mobarter/features/paymentToken/txn_summary_page.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
-import 'package:mobarter/graphql/schema/utilities.gql.dart';
+import 'package:mobarter/graphql/schema/orders.gql.dart';
 import 'package:mobarter/utils/exception.dart';
-import 'package:mobarter/utils/logger.dart' show appLogger;
 import 'package:mobarter/widgets/amountToPay.dart';
 import 'package:mobarter/widgets/btn.dart';
 import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 import 'package:mobarter/widgets/toast.dart';
-import 'package:mobarter/features/paymentToken/txn_summary_page.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
-enum TopUpScreen { airtime, dataPlan, dataBundle }
-
-class TopUpsPage extends HookConsumerWidget {
-  // final TopUpScreen screen;
-  const TopUpsPage({super.key});
+class OrdersSellCryptoPage extends HookConsumerWidget {
+  const OrdersSellCryptoPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    Widget screenToDisplay;
-    final data = topUpWatch(ref);
-
-    final result = useMutation$Utility_purchaseAirtime();
-
-    switch (data.screen!) {
-      case TopUpScreen.airtime:
-        screenToDisplay = AirtimeWidget();
-        break;
-      case TopUpScreen.dataPlan:
-        screenToDisplay = DataPlanWidget();
-        break;
-      case TopUpScreen.dataBundle:
-        screenToDisplay = DataPlanWidget();
-        break;
-    }
-
+  Widget build(BuildContext context, ref) {
+    final data = sellOrderWatch(ref);
+    final result = useMutation$Orders_CreateSell();
     return appScaffold(
       context,
-      title: "Top Ups",
+      title: "Sell Crypto",
       body: Column(
-        spacing: 20,
         children: [
-          ShowTopUpProviders(),
-          PhoneTextField(),
-          TopUpTabs(),
-          screenToDisplay,
-          CryptoAmountPay(amountFiat: data.amountFiat ?? 0),
+          SellAmount(),
+          SelectBankAccount(),
+          CryptoAmountPay(amountFiat: 0 ?? 0),
           btn(
-            title: "Submit",
+            title: "Send",
             onPressed: () {
               try {
-                require(data.phoneNo, "Phone No. needed");
                 require(
-                  data.phoneNo!.length == 11,
-                  "Phone number must be 11 digits",
+                  data.bankAccount,
+                  "Select a bank account to receive funds",
                 );
-
-                require(data.networkProvider, "Select a network provider");
                 require(data.amountCrypto, "Select/Enter and amount");
-                require(data.amountFiat! >= 50.0, "Minimum of ₦50");
+                require(data.amountFiat! >= 5000.0, "Minimum of ₦5000");
 
                 pushScreen(
                   context,
@@ -76,12 +47,16 @@ class TopUpsPage extends HookConsumerWidget {
                     cryptoAmountToPay: data.amountCrypto!,
                     children: [
                       simpleRow(
-                        title: "Recipient number",
-                        subtitle: data.phoneNo!,
+                        title: "Account name",
+                        subtitle: data.bankAccount?.accountName,
                       ),
                       simpleRow(
-                        title: "Nettwork Provider",
-                        subtitle: data.networkProvider!,
+                        title: "Account no.",
+                        subtitle: data.bankAccount?.accountNo,
+                      ),
+                      simpleRow(
+                        title: "Bank name",
+                        subtitle: data.bankAccount?.bankName,
                       ),
                       simpleRow(
                         title: "Amount",
@@ -100,12 +75,8 @@ class TopUpsPage extends HookConsumerWidget {
                     send: (paymentInfo) async {
                       final response = await result
                           .runMutation(
-                            Variables$Mutation$Utility_purchaseAirtime(
-                              input: Input$Utilities_PurchaseAirtimeInput(
-                                amount: data.amountFiat!,
-                                countryCode: Enum$Country.NG,
-                                operatorId: data.networkOperatorId!,
-                                phoneNo: data.phoneNo!,
+                            Variables$Mutation$Orders_CreateSell(
+                              input: Input$Order_CreteSellInput(
                                 payment: Input$PaymentInput(
                                   amountCrypto: data.amountCrypto!,
                                   amountFiat: data.amountFiat!,
@@ -115,16 +86,19 @@ class TopUpsPage extends HookConsumerWidget {
                                   user_uid: paymentInfo.user_uid,
                                   fiatCurrency: Enum$Country.NG,
                                 ),
+                                bank_id: 1,
+                                currency_fiat: Enum$Country.NG,
+                                status: Enum$OrderStatus.PENDING,
+                                trade_type: Enum$TradeType.SELL,
+                                action_user: Enum$OrderActions.LockCrypto,
                               ),
                             ),
                           )
                           .networkResult;
 
-                      appLogger.e("Purchase airtime $response");
+                      final msg = response!.parsedData?.orders_CreateSell;
 
-                      final msg = response!.parsedData?.utility_purchaseAirtime;
-
-                      appToast(context, msg!.title, subtitle: msg.subtitle);
+                      appToast(context, "Sent successful");
                     },
                   ),
                 );

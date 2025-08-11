@@ -3957,494 +3957,24 @@ class _CopyWithStubImpl$Input$Order_CancelInput<TRes>
       _res;
 }
 
-class Input$Order_CreteBuyInput {
-  factory Input$Order_CreteBuyInput({
-    Enum$OrderActions? action_merchant,
-    Enum$OrderActions? action_user,
-    required double amount_crypto,
-    required double amount_fiat,
-    required double bank_id,
-    required String currency_crypto,
-    required Enum$Country currency_fiat,
-    required String currency_network,
-    required String estimated_duration,
-    required double merchant_id,
-    Enum$OrderMode? mode,
-    required Enum$OrderStatus status,
-    required Enum$TradeType trade_type,
-    String? txn_hash,
-    required String wallet_customer,
-    required String wallet_merchant,
-  }) =>
-      Input$Order_CreteBuyInput._({
-        if (action_merchant != null) r'action_merchant': action_merchant,
-        if (action_user != null) r'action_user': action_user,
-        r'amount_crypto': amount_crypto,
-        r'amount_fiat': amount_fiat,
-        r'bank_id': bank_id,
-        r'currency_crypto': currency_crypto,
-        r'currency_fiat': currency_fiat,
-        r'currency_network': currency_network,
-        r'estimated_duration': estimated_duration,
-        r'merchant_id': merchant_id,
-        if (mode != null) r'mode': mode,
-        r'status': status,
-        r'trade_type': trade_type,
-        if (txn_hash != null) r'txn_hash': txn_hash,
-        r'wallet_customer': wallet_customer,
-        r'wallet_merchant': wallet_merchant,
-      });
-
-  Input$Order_CreteBuyInput._(this._$data);
-
-  factory Input$Order_CreteBuyInput.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('action_merchant')) {
-      final l$action_merchant = data['action_merchant'];
-      result$data['action_merchant'] = l$action_merchant == null
-          ? null
-          : fromJson$Enum$OrderActions((l$action_merchant as String));
-    }
-    if (data.containsKey('action_user')) {
-      final l$action_user = data['action_user'];
-      result$data['action_user'] = l$action_user == null
-          ? null
-          : fromJson$Enum$OrderActions((l$action_user as String));
-    }
-    final l$amount_crypto = data['amount_crypto'];
-    result$data['amount_crypto'] = (l$amount_crypto as num).toDouble();
-    final l$amount_fiat = data['amount_fiat'];
-    result$data['amount_fiat'] = (l$amount_fiat as num).toDouble();
-    final l$bank_id = data['bank_id'];
-    result$data['bank_id'] = (l$bank_id as num).toDouble();
-    final l$currency_crypto = data['currency_crypto'];
-    result$data['currency_crypto'] = (l$currency_crypto as String);
-    final l$currency_fiat = data['currency_fiat'];
-    result$data['currency_fiat'] =
-        fromJson$Enum$Country((l$currency_fiat as String));
-    final l$currency_network = data['currency_network'];
-    result$data['currency_network'] = (l$currency_network as String);
-    final l$estimated_duration = data['estimated_duration'];
-    result$data['estimated_duration'] = (l$estimated_duration as String);
-    final l$merchant_id = data['merchant_id'];
-    result$data['merchant_id'] = (l$merchant_id as num).toDouble();
-    if (data.containsKey('mode')) {
-      final l$mode = data['mode'];
-      result$data['mode'] =
-          l$mode == null ? null : fromJson$Enum$OrderMode((l$mode as String));
-    }
-    final l$status = data['status'];
-    result$data['status'] = fromJson$Enum$OrderStatus((l$status as String));
-    final l$trade_type = data['trade_type'];
-    result$data['trade_type'] =
-        fromJson$Enum$TradeType((l$trade_type as String));
-    if (data.containsKey('txn_hash')) {
-      final l$txn_hash = data['txn_hash'];
-      result$data['txn_hash'] = (l$txn_hash as String?);
-    }
-    final l$wallet_customer = data['wallet_customer'];
-    result$data['wallet_customer'] = (l$wallet_customer as String);
-    final l$wallet_merchant = data['wallet_merchant'];
-    result$data['wallet_merchant'] = (l$wallet_merchant as String);
-    return Input$Order_CreteBuyInput._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  Enum$OrderActions? get action_merchant =>
-      (_$data['action_merchant'] as Enum$OrderActions?);
-
-  Enum$OrderActions? get action_user =>
-      (_$data['action_user'] as Enum$OrderActions?);
-
-  double get amount_crypto => (_$data['amount_crypto'] as double);
-
-  double get amount_fiat => (_$data['amount_fiat'] as double);
-
-  double get bank_id => (_$data['bank_id'] as double);
-
-  String get currency_crypto => (_$data['currency_crypto'] as String);
-
-  Enum$Country get currency_fiat => (_$data['currency_fiat'] as Enum$Country);
-
-  String get currency_network => (_$data['currency_network'] as String);
-
-  String get estimated_duration => (_$data['estimated_duration'] as String);
-
-  double get merchant_id => (_$data['merchant_id'] as double);
-
-  Enum$OrderMode? get mode => (_$data['mode'] as Enum$OrderMode?);
-
-  Enum$OrderStatus get status => (_$data['status'] as Enum$OrderStatus);
-
-  Enum$TradeType get trade_type => (_$data['trade_type'] as Enum$TradeType);
-
-  String? get txn_hash => (_$data['txn_hash'] as String?);
-
-  String get wallet_customer => (_$data['wallet_customer'] as String);
-
-  String get wallet_merchant => (_$data['wallet_merchant'] as String);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('action_merchant')) {
-      final l$action_merchant = action_merchant;
-      result$data['action_merchant'] = l$action_merchant == null
-          ? null
-          : toJson$Enum$OrderActions(l$action_merchant);
-    }
-    if (_$data.containsKey('action_user')) {
-      final l$action_user = action_user;
-      result$data['action_user'] = l$action_user == null
-          ? null
-          : toJson$Enum$OrderActions(l$action_user);
-    }
-    final l$amount_crypto = amount_crypto;
-    result$data['amount_crypto'] = l$amount_crypto;
-    final l$amount_fiat = amount_fiat;
-    result$data['amount_fiat'] = l$amount_fiat;
-    final l$bank_id = bank_id;
-    result$data['bank_id'] = l$bank_id;
-    final l$currency_crypto = currency_crypto;
-    result$data['currency_crypto'] = l$currency_crypto;
-    final l$currency_fiat = currency_fiat;
-    result$data['currency_fiat'] = toJson$Enum$Country(l$currency_fiat);
-    final l$currency_network = currency_network;
-    result$data['currency_network'] = l$currency_network;
-    final l$estimated_duration = estimated_duration;
-    result$data['estimated_duration'] = l$estimated_duration;
-    final l$merchant_id = merchant_id;
-    result$data['merchant_id'] = l$merchant_id;
-    if (_$data.containsKey('mode')) {
-      final l$mode = mode;
-      result$data['mode'] =
-          l$mode == null ? null : toJson$Enum$OrderMode(l$mode);
-    }
-    final l$status = status;
-    result$data['status'] = toJson$Enum$OrderStatus(l$status);
-    final l$trade_type = trade_type;
-    result$data['trade_type'] = toJson$Enum$TradeType(l$trade_type);
-    if (_$data.containsKey('txn_hash')) {
-      final l$txn_hash = txn_hash;
-      result$data['txn_hash'] = l$txn_hash;
-    }
-    final l$wallet_customer = wallet_customer;
-    result$data['wallet_customer'] = l$wallet_customer;
-    final l$wallet_merchant = wallet_merchant;
-    result$data['wallet_merchant'] = l$wallet_merchant;
-    return result$data;
-  }
-
-  CopyWith$Input$Order_CreteBuyInput<Input$Order_CreteBuyInput> get copyWith =>
-      CopyWith$Input$Order_CreteBuyInput(
-        this,
-        (i) => i,
-      );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$Order_CreteBuyInput ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$action_merchant = action_merchant;
-    final lOther$action_merchant = other.action_merchant;
-    if (_$data.containsKey('action_merchant') !=
-        other._$data.containsKey('action_merchant')) {
-      return false;
-    }
-    if (l$action_merchant != lOther$action_merchant) {
-      return false;
-    }
-    final l$action_user = action_user;
-    final lOther$action_user = other.action_user;
-    if (_$data.containsKey('action_user') !=
-        other._$data.containsKey('action_user')) {
-      return false;
-    }
-    if (l$action_user != lOther$action_user) {
-      return false;
-    }
-    final l$amount_crypto = amount_crypto;
-    final lOther$amount_crypto = other.amount_crypto;
-    if (l$amount_crypto != lOther$amount_crypto) {
-      return false;
-    }
-    final l$amount_fiat = amount_fiat;
-    final lOther$amount_fiat = other.amount_fiat;
-    if (l$amount_fiat != lOther$amount_fiat) {
-      return false;
-    }
-    final l$bank_id = bank_id;
-    final lOther$bank_id = other.bank_id;
-    if (l$bank_id != lOther$bank_id) {
-      return false;
-    }
-    final l$currency_crypto = currency_crypto;
-    final lOther$currency_crypto = other.currency_crypto;
-    if (l$currency_crypto != lOther$currency_crypto) {
-      return false;
-    }
-    final l$currency_fiat = currency_fiat;
-    final lOther$currency_fiat = other.currency_fiat;
-    if (l$currency_fiat != lOther$currency_fiat) {
-      return false;
-    }
-    final l$currency_network = currency_network;
-    final lOther$currency_network = other.currency_network;
-    if (l$currency_network != lOther$currency_network) {
-      return false;
-    }
-    final l$estimated_duration = estimated_duration;
-    final lOther$estimated_duration = other.estimated_duration;
-    if (l$estimated_duration != lOther$estimated_duration) {
-      return false;
-    }
-    final l$merchant_id = merchant_id;
-    final lOther$merchant_id = other.merchant_id;
-    if (l$merchant_id != lOther$merchant_id) {
-      return false;
-    }
-    final l$mode = mode;
-    final lOther$mode = other.mode;
-    if (_$data.containsKey('mode') != other._$data.containsKey('mode')) {
-      return false;
-    }
-    if (l$mode != lOther$mode) {
-      return false;
-    }
-    final l$status = status;
-    final lOther$status = other.status;
-    if (l$status != lOther$status) {
-      return false;
-    }
-    final l$trade_type = trade_type;
-    final lOther$trade_type = other.trade_type;
-    if (l$trade_type != lOther$trade_type) {
-      return false;
-    }
-    final l$txn_hash = txn_hash;
-    final lOther$txn_hash = other.txn_hash;
-    if (_$data.containsKey('txn_hash') !=
-        other._$data.containsKey('txn_hash')) {
-      return false;
-    }
-    if (l$txn_hash != lOther$txn_hash) {
-      return false;
-    }
-    final l$wallet_customer = wallet_customer;
-    final lOther$wallet_customer = other.wallet_customer;
-    if (l$wallet_customer != lOther$wallet_customer) {
-      return false;
-    }
-    final l$wallet_merchant = wallet_merchant;
-    final lOther$wallet_merchant = other.wallet_merchant;
-    if (l$wallet_merchant != lOther$wallet_merchant) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$action_merchant = action_merchant;
-    final l$action_user = action_user;
-    final l$amount_crypto = amount_crypto;
-    final l$amount_fiat = amount_fiat;
-    final l$bank_id = bank_id;
-    final l$currency_crypto = currency_crypto;
-    final l$currency_fiat = currency_fiat;
-    final l$currency_network = currency_network;
-    final l$estimated_duration = estimated_duration;
-    final l$merchant_id = merchant_id;
-    final l$mode = mode;
-    final l$status = status;
-    final l$trade_type = trade_type;
-    final l$txn_hash = txn_hash;
-    final l$wallet_customer = wallet_customer;
-    final l$wallet_merchant = wallet_merchant;
-    return Object.hashAll([
-      _$data.containsKey('action_merchant') ? l$action_merchant : const {},
-      _$data.containsKey('action_user') ? l$action_user : const {},
-      l$amount_crypto,
-      l$amount_fiat,
-      l$bank_id,
-      l$currency_crypto,
-      l$currency_fiat,
-      l$currency_network,
-      l$estimated_duration,
-      l$merchant_id,
-      _$data.containsKey('mode') ? l$mode : const {},
-      l$status,
-      l$trade_type,
-      _$data.containsKey('txn_hash') ? l$txn_hash : const {},
-      l$wallet_customer,
-      l$wallet_merchant,
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$Order_CreteBuyInput<TRes> {
-  factory CopyWith$Input$Order_CreteBuyInput(
-    Input$Order_CreteBuyInput instance,
-    TRes Function(Input$Order_CreteBuyInput) then,
-  ) = _CopyWithImpl$Input$Order_CreteBuyInput;
-
-  factory CopyWith$Input$Order_CreteBuyInput.stub(TRes res) =
-      _CopyWithStubImpl$Input$Order_CreteBuyInput;
-
-  TRes call({
-    Enum$OrderActions? action_merchant,
-    Enum$OrderActions? action_user,
-    double? amount_crypto,
-    double? amount_fiat,
-    double? bank_id,
-    String? currency_crypto,
-    Enum$Country? currency_fiat,
-    String? currency_network,
-    String? estimated_duration,
-    double? merchant_id,
-    Enum$OrderMode? mode,
-    Enum$OrderStatus? status,
-    Enum$TradeType? trade_type,
-    String? txn_hash,
-    String? wallet_customer,
-    String? wallet_merchant,
-  });
-}
-
-class _CopyWithImpl$Input$Order_CreteBuyInput<TRes>
-    implements CopyWith$Input$Order_CreteBuyInput<TRes> {
-  _CopyWithImpl$Input$Order_CreteBuyInput(
-    this._instance,
-    this._then,
-  );
-
-  final Input$Order_CreteBuyInput _instance;
-
-  final TRes Function(Input$Order_CreteBuyInput) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? action_merchant = _undefined,
-    Object? action_user = _undefined,
-    Object? amount_crypto = _undefined,
-    Object? amount_fiat = _undefined,
-    Object? bank_id = _undefined,
-    Object? currency_crypto = _undefined,
-    Object? currency_fiat = _undefined,
-    Object? currency_network = _undefined,
-    Object? estimated_duration = _undefined,
-    Object? merchant_id = _undefined,
-    Object? mode = _undefined,
-    Object? status = _undefined,
-    Object? trade_type = _undefined,
-    Object? txn_hash = _undefined,
-    Object? wallet_customer = _undefined,
-    Object? wallet_merchant = _undefined,
-  }) =>
-      _then(Input$Order_CreteBuyInput._({
-        ..._instance._$data,
-        if (action_merchant != _undefined)
-          'action_merchant': (action_merchant as Enum$OrderActions?),
-        if (action_user != _undefined)
-          'action_user': (action_user as Enum$OrderActions?),
-        if (amount_crypto != _undefined && amount_crypto != null)
-          'amount_crypto': (amount_crypto as double),
-        if (amount_fiat != _undefined && amount_fiat != null)
-          'amount_fiat': (amount_fiat as double),
-        if (bank_id != _undefined && bank_id != null)
-          'bank_id': (bank_id as double),
-        if (currency_crypto != _undefined && currency_crypto != null)
-          'currency_crypto': (currency_crypto as String),
-        if (currency_fiat != _undefined && currency_fiat != null)
-          'currency_fiat': (currency_fiat as Enum$Country),
-        if (currency_network != _undefined && currency_network != null)
-          'currency_network': (currency_network as String),
-        if (estimated_duration != _undefined && estimated_duration != null)
-          'estimated_duration': (estimated_duration as String),
-        if (merchant_id != _undefined && merchant_id != null)
-          'merchant_id': (merchant_id as double),
-        if (mode != _undefined) 'mode': (mode as Enum$OrderMode?),
-        if (status != _undefined && status != null)
-          'status': (status as Enum$OrderStatus),
-        if (trade_type != _undefined && trade_type != null)
-          'trade_type': (trade_type as Enum$TradeType),
-        if (txn_hash != _undefined) 'txn_hash': (txn_hash as String?),
-        if (wallet_customer != _undefined && wallet_customer != null)
-          'wallet_customer': (wallet_customer as String),
-        if (wallet_merchant != _undefined && wallet_merchant != null)
-          'wallet_merchant': (wallet_merchant as String),
-      }));
-}
-
-class _CopyWithStubImpl$Input$Order_CreteBuyInput<TRes>
-    implements CopyWith$Input$Order_CreteBuyInput<TRes> {
-  _CopyWithStubImpl$Input$Order_CreteBuyInput(this._res);
-
-  TRes _res;
-
-  call({
-    Enum$OrderActions? action_merchant,
-    Enum$OrderActions? action_user,
-    double? amount_crypto,
-    double? amount_fiat,
-    double? bank_id,
-    String? currency_crypto,
-    Enum$Country? currency_fiat,
-    String? currency_network,
-    String? estimated_duration,
-    double? merchant_id,
-    Enum$OrderMode? mode,
-    Enum$OrderStatus? status,
-    Enum$TradeType? trade_type,
-    String? txn_hash,
-    String? wallet_customer,
-    String? wallet_merchant,
-  }) =>
-      _res;
-}
-
 class Input$Order_CreteSellInput {
   factory Input$Order_CreteSellInput({
     Enum$OrderActions? action_merchant,
     Enum$OrderActions? action_user,
-    required double amount_crypto,
-    required double amount_fiat,
     required double bank_id,
-    required String currency_crypto,
     required Enum$Country currency_fiat,
-    required String currency_network,
-    required String estimated_duration,
-    required double merchant_id,
-    Enum$OrderMode? mode,
+    required Input$PaymentInput payment,
     required Enum$OrderStatus status,
     required Enum$TradeType trade_type,
-    String? txn_hash,
-    required String wallet_customer,
-    required String wallet_merchant,
   }) =>
       Input$Order_CreteSellInput._({
         if (action_merchant != null) r'action_merchant': action_merchant,
         if (action_user != null) r'action_user': action_user,
-        r'amount_crypto': amount_crypto,
-        r'amount_fiat': amount_fiat,
         r'bank_id': bank_id,
-        r'currency_crypto': currency_crypto,
         r'currency_fiat': currency_fiat,
-        r'currency_network': currency_network,
-        r'estimated_duration': estimated_duration,
-        r'merchant_id': merchant_id,
-        if (mode != null) r'mode': mode,
+        r'payment': payment,
         r'status': status,
         r'trade_type': trade_type,
-        if (txn_hash != null) r'txn_hash': txn_hash,
-        r'wallet_customer': wallet_customer,
-        r'wallet_merchant': wallet_merchant,
       });
 
   Input$Order_CreteSellInput._(this._$data);
@@ -4463,41 +3993,19 @@ class Input$Order_CreteSellInput {
           ? null
           : fromJson$Enum$OrderActions((l$action_user as String));
     }
-    final l$amount_crypto = data['amount_crypto'];
-    result$data['amount_crypto'] = (l$amount_crypto as num).toDouble();
-    final l$amount_fiat = data['amount_fiat'];
-    result$data['amount_fiat'] = (l$amount_fiat as num).toDouble();
     final l$bank_id = data['bank_id'];
     result$data['bank_id'] = (l$bank_id as num).toDouble();
-    final l$currency_crypto = data['currency_crypto'];
-    result$data['currency_crypto'] = (l$currency_crypto as String);
     final l$currency_fiat = data['currency_fiat'];
     result$data['currency_fiat'] =
         fromJson$Enum$Country((l$currency_fiat as String));
-    final l$currency_network = data['currency_network'];
-    result$data['currency_network'] = (l$currency_network as String);
-    final l$estimated_duration = data['estimated_duration'];
-    result$data['estimated_duration'] = (l$estimated_duration as String);
-    final l$merchant_id = data['merchant_id'];
-    result$data['merchant_id'] = (l$merchant_id as num).toDouble();
-    if (data.containsKey('mode')) {
-      final l$mode = data['mode'];
-      result$data['mode'] =
-          l$mode == null ? null : fromJson$Enum$OrderMode((l$mode as String));
-    }
+    final l$payment = data['payment'];
+    result$data['payment'] =
+        Input$PaymentInput.fromJson((l$payment as Map<String, dynamic>));
     final l$status = data['status'];
     result$data['status'] = fromJson$Enum$OrderStatus((l$status as String));
     final l$trade_type = data['trade_type'];
     result$data['trade_type'] =
         fromJson$Enum$TradeType((l$trade_type as String));
-    if (data.containsKey('txn_hash')) {
-      final l$txn_hash = data['txn_hash'];
-      result$data['txn_hash'] = (l$txn_hash as String?);
-    }
-    final l$wallet_customer = data['wallet_customer'];
-    result$data['wallet_customer'] = (l$wallet_customer as String);
-    final l$wallet_merchant = data['wallet_merchant'];
-    result$data['wallet_merchant'] = (l$wallet_merchant as String);
     return Input$Order_CreteSellInput._(result$data);
   }
 
@@ -4509,33 +4017,15 @@ class Input$Order_CreteSellInput {
   Enum$OrderActions? get action_user =>
       (_$data['action_user'] as Enum$OrderActions?);
 
-  double get amount_crypto => (_$data['amount_crypto'] as double);
-
-  double get amount_fiat => (_$data['amount_fiat'] as double);
-
   double get bank_id => (_$data['bank_id'] as double);
-
-  String get currency_crypto => (_$data['currency_crypto'] as String);
 
   Enum$Country get currency_fiat => (_$data['currency_fiat'] as Enum$Country);
 
-  String get currency_network => (_$data['currency_network'] as String);
-
-  String get estimated_duration => (_$data['estimated_duration'] as String);
-
-  double get merchant_id => (_$data['merchant_id'] as double);
-
-  Enum$OrderMode? get mode => (_$data['mode'] as Enum$OrderMode?);
+  Input$PaymentInput get payment => (_$data['payment'] as Input$PaymentInput);
 
   Enum$OrderStatus get status => (_$data['status'] as Enum$OrderStatus);
 
   Enum$TradeType get trade_type => (_$data['trade_type'] as Enum$TradeType);
-
-  String? get txn_hash => (_$data['txn_hash'] as String?);
-
-  String get wallet_customer => (_$data['wallet_customer'] as String);
-
-  String get wallet_merchant => (_$data['wallet_merchant'] as String);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -4551,39 +4041,16 @@ class Input$Order_CreteSellInput {
           ? null
           : toJson$Enum$OrderActions(l$action_user);
     }
-    final l$amount_crypto = amount_crypto;
-    result$data['amount_crypto'] = l$amount_crypto;
-    final l$amount_fiat = amount_fiat;
-    result$data['amount_fiat'] = l$amount_fiat;
     final l$bank_id = bank_id;
     result$data['bank_id'] = l$bank_id;
-    final l$currency_crypto = currency_crypto;
-    result$data['currency_crypto'] = l$currency_crypto;
     final l$currency_fiat = currency_fiat;
     result$data['currency_fiat'] = toJson$Enum$Country(l$currency_fiat);
-    final l$currency_network = currency_network;
-    result$data['currency_network'] = l$currency_network;
-    final l$estimated_duration = estimated_duration;
-    result$data['estimated_duration'] = l$estimated_duration;
-    final l$merchant_id = merchant_id;
-    result$data['merchant_id'] = l$merchant_id;
-    if (_$data.containsKey('mode')) {
-      final l$mode = mode;
-      result$data['mode'] =
-          l$mode == null ? null : toJson$Enum$OrderMode(l$mode);
-    }
+    final l$payment = payment;
+    result$data['payment'] = l$payment.toJson();
     final l$status = status;
     result$data['status'] = toJson$Enum$OrderStatus(l$status);
     final l$trade_type = trade_type;
     result$data['trade_type'] = toJson$Enum$TradeType(l$trade_type);
-    if (_$data.containsKey('txn_hash')) {
-      final l$txn_hash = txn_hash;
-      result$data['txn_hash'] = l$txn_hash;
-    }
-    final l$wallet_customer = wallet_customer;
-    result$data['wallet_customer'] = l$wallet_customer;
-    final l$wallet_merchant = wallet_merchant;
-    result$data['wallet_merchant'] = l$wallet_merchant;
     return result$data;
   }
 
@@ -4620,24 +4087,9 @@ class Input$Order_CreteSellInput {
     if (l$action_user != lOther$action_user) {
       return false;
     }
-    final l$amount_crypto = amount_crypto;
-    final lOther$amount_crypto = other.amount_crypto;
-    if (l$amount_crypto != lOther$amount_crypto) {
-      return false;
-    }
-    final l$amount_fiat = amount_fiat;
-    final lOther$amount_fiat = other.amount_fiat;
-    if (l$amount_fiat != lOther$amount_fiat) {
-      return false;
-    }
     final l$bank_id = bank_id;
     final lOther$bank_id = other.bank_id;
     if (l$bank_id != lOther$bank_id) {
-      return false;
-    }
-    final l$currency_crypto = currency_crypto;
-    final lOther$currency_crypto = other.currency_crypto;
-    if (l$currency_crypto != lOther$currency_crypto) {
       return false;
     }
     final l$currency_fiat = currency_fiat;
@@ -4645,27 +4097,9 @@ class Input$Order_CreteSellInput {
     if (l$currency_fiat != lOther$currency_fiat) {
       return false;
     }
-    final l$currency_network = currency_network;
-    final lOther$currency_network = other.currency_network;
-    if (l$currency_network != lOther$currency_network) {
-      return false;
-    }
-    final l$estimated_duration = estimated_duration;
-    final lOther$estimated_duration = other.estimated_duration;
-    if (l$estimated_duration != lOther$estimated_duration) {
-      return false;
-    }
-    final l$merchant_id = merchant_id;
-    final lOther$merchant_id = other.merchant_id;
-    if (l$merchant_id != lOther$merchant_id) {
-      return false;
-    }
-    final l$mode = mode;
-    final lOther$mode = other.mode;
-    if (_$data.containsKey('mode') != other._$data.containsKey('mode')) {
-      return false;
-    }
-    if (l$mode != lOther$mode) {
+    final l$payment = payment;
+    final lOther$payment = other.payment;
+    if (l$payment != lOther$payment) {
       return false;
     }
     final l$status = status;
@@ -4678,25 +4112,6 @@ class Input$Order_CreteSellInput {
     if (l$trade_type != lOther$trade_type) {
       return false;
     }
-    final l$txn_hash = txn_hash;
-    final lOther$txn_hash = other.txn_hash;
-    if (_$data.containsKey('txn_hash') !=
-        other._$data.containsKey('txn_hash')) {
-      return false;
-    }
-    if (l$txn_hash != lOther$txn_hash) {
-      return false;
-    }
-    final l$wallet_customer = wallet_customer;
-    final lOther$wallet_customer = other.wallet_customer;
-    if (l$wallet_customer != lOther$wallet_customer) {
-      return false;
-    }
-    final l$wallet_merchant = wallet_merchant;
-    final lOther$wallet_merchant = other.wallet_merchant;
-    if (l$wallet_merchant != lOther$wallet_merchant) {
-      return false;
-    }
     return true;
   }
 
@@ -4704,37 +4119,19 @@ class Input$Order_CreteSellInput {
   int get hashCode {
     final l$action_merchant = action_merchant;
     final l$action_user = action_user;
-    final l$amount_crypto = amount_crypto;
-    final l$amount_fiat = amount_fiat;
     final l$bank_id = bank_id;
-    final l$currency_crypto = currency_crypto;
     final l$currency_fiat = currency_fiat;
-    final l$currency_network = currency_network;
-    final l$estimated_duration = estimated_duration;
-    final l$merchant_id = merchant_id;
-    final l$mode = mode;
+    final l$payment = payment;
     final l$status = status;
     final l$trade_type = trade_type;
-    final l$txn_hash = txn_hash;
-    final l$wallet_customer = wallet_customer;
-    final l$wallet_merchant = wallet_merchant;
     return Object.hashAll([
       _$data.containsKey('action_merchant') ? l$action_merchant : const {},
       _$data.containsKey('action_user') ? l$action_user : const {},
-      l$amount_crypto,
-      l$amount_fiat,
       l$bank_id,
-      l$currency_crypto,
       l$currency_fiat,
-      l$currency_network,
-      l$estimated_duration,
-      l$merchant_id,
-      _$data.containsKey('mode') ? l$mode : const {},
+      l$payment,
       l$status,
       l$trade_type,
-      _$data.containsKey('txn_hash') ? l$txn_hash : const {},
-      l$wallet_customer,
-      l$wallet_merchant,
     ]);
   }
 }
@@ -4751,21 +4148,13 @@ abstract class CopyWith$Input$Order_CreteSellInput<TRes> {
   TRes call({
     Enum$OrderActions? action_merchant,
     Enum$OrderActions? action_user,
-    double? amount_crypto,
-    double? amount_fiat,
     double? bank_id,
-    String? currency_crypto,
     Enum$Country? currency_fiat,
-    String? currency_network,
-    String? estimated_duration,
-    double? merchant_id,
-    Enum$OrderMode? mode,
+    Input$PaymentInput? payment,
     Enum$OrderStatus? status,
     Enum$TradeType? trade_type,
-    String? txn_hash,
-    String? wallet_customer,
-    String? wallet_merchant,
   });
+  CopyWith$Input$PaymentInput<TRes> get payment;
 }
 
 class _CopyWithImpl$Input$Order_CreteSellInput<TRes>
@@ -4784,20 +4173,11 @@ class _CopyWithImpl$Input$Order_CreteSellInput<TRes>
   TRes call({
     Object? action_merchant = _undefined,
     Object? action_user = _undefined,
-    Object? amount_crypto = _undefined,
-    Object? amount_fiat = _undefined,
     Object? bank_id = _undefined,
-    Object? currency_crypto = _undefined,
     Object? currency_fiat = _undefined,
-    Object? currency_network = _undefined,
-    Object? estimated_duration = _undefined,
-    Object? merchant_id = _undefined,
-    Object? mode = _undefined,
+    Object? payment = _undefined,
     Object? status = _undefined,
     Object? trade_type = _undefined,
-    Object? txn_hash = _undefined,
-    Object? wallet_customer = _undefined,
-    Object? wallet_merchant = _undefined,
   }) =>
       _then(Input$Order_CreteSellInput._({
         ..._instance._$data,
@@ -4805,33 +4185,22 @@ class _CopyWithImpl$Input$Order_CreteSellInput<TRes>
           'action_merchant': (action_merchant as Enum$OrderActions?),
         if (action_user != _undefined)
           'action_user': (action_user as Enum$OrderActions?),
-        if (amount_crypto != _undefined && amount_crypto != null)
-          'amount_crypto': (amount_crypto as double),
-        if (amount_fiat != _undefined && amount_fiat != null)
-          'amount_fiat': (amount_fiat as double),
         if (bank_id != _undefined && bank_id != null)
           'bank_id': (bank_id as double),
-        if (currency_crypto != _undefined && currency_crypto != null)
-          'currency_crypto': (currency_crypto as String),
         if (currency_fiat != _undefined && currency_fiat != null)
           'currency_fiat': (currency_fiat as Enum$Country),
-        if (currency_network != _undefined && currency_network != null)
-          'currency_network': (currency_network as String),
-        if (estimated_duration != _undefined && estimated_duration != null)
-          'estimated_duration': (estimated_duration as String),
-        if (merchant_id != _undefined && merchant_id != null)
-          'merchant_id': (merchant_id as double),
-        if (mode != _undefined) 'mode': (mode as Enum$OrderMode?),
+        if (payment != _undefined && payment != null)
+          'payment': (payment as Input$PaymentInput),
         if (status != _undefined && status != null)
           'status': (status as Enum$OrderStatus),
         if (trade_type != _undefined && trade_type != null)
           'trade_type': (trade_type as Enum$TradeType),
-        if (txn_hash != _undefined) 'txn_hash': (txn_hash as String?),
-        if (wallet_customer != _undefined && wallet_customer != null)
-          'wallet_customer': (wallet_customer as String),
-        if (wallet_merchant != _undefined && wallet_merchant != null)
-          'wallet_merchant': (wallet_merchant as String),
       }));
+
+  CopyWith$Input$PaymentInput<TRes> get payment {
+    final local$payment = _instance.payment;
+    return CopyWith$Input$PaymentInput(local$payment, (e) => call(payment: e));
+  }
 }
 
 class _CopyWithStubImpl$Input$Order_CreteSellInput<TRes>
@@ -4843,22 +4212,16 @@ class _CopyWithStubImpl$Input$Order_CreteSellInput<TRes>
   call({
     Enum$OrderActions? action_merchant,
     Enum$OrderActions? action_user,
-    double? amount_crypto,
-    double? amount_fiat,
     double? bank_id,
-    String? currency_crypto,
     Enum$Country? currency_fiat,
-    String? currency_network,
-    String? estimated_duration,
-    double? merchant_id,
-    Enum$OrderMode? mode,
+    Input$PaymentInput? payment,
     Enum$OrderStatus? status,
     Enum$TradeType? trade_type,
-    String? txn_hash,
-    String? wallet_customer,
-    String? wallet_merchant,
   }) =>
       _res;
+
+  CopyWith$Input$PaymentInput<TRes> get payment =>
+      CopyWith$Input$PaymentInput.stub(_res);
 }
 
 class Input$Order_GetAllInput {
@@ -5337,6 +4700,7 @@ class Input$PaymentInput {
   factory Input$PaymentInput({
     required double amountCrypto,
     required double amountFiat,
+    required Enum$Country fiatCurrency,
     bool? isNative,
     required String tokenAddress,
     required String tokenChain,
@@ -5346,6 +4710,7 @@ class Input$PaymentInput {
       Input$PaymentInput._({
         r'amountCrypto': amountCrypto,
         r'amountFiat': amountFiat,
+        r'fiatCurrency': fiatCurrency,
         if (isNative != null) r'isNative': isNative,
         r'tokenAddress': tokenAddress,
         r'tokenChain': tokenChain,
@@ -5361,6 +4726,9 @@ class Input$PaymentInput {
     result$data['amountCrypto'] = (l$amountCrypto as num).toDouble();
     final l$amountFiat = data['amountFiat'];
     result$data['amountFiat'] = (l$amountFiat as num).toDouble();
+    final l$fiatCurrency = data['fiatCurrency'];
+    result$data['fiatCurrency'] =
+        fromJson$Enum$Country((l$fiatCurrency as String));
     if (data.containsKey('isNative')) {
       final l$isNative = data['isNative'];
       result$data['isNative'] = (l$isNative as bool?);
@@ -5382,6 +4750,8 @@ class Input$PaymentInput {
 
   double get amountFiat => (_$data['amountFiat'] as double);
 
+  Enum$Country get fiatCurrency => (_$data['fiatCurrency'] as Enum$Country);
+
   bool? get isNative => (_$data['isNative'] as bool?);
 
   String get tokenAddress => (_$data['tokenAddress'] as String);
@@ -5398,6 +4768,8 @@ class Input$PaymentInput {
     result$data['amountCrypto'] = l$amountCrypto;
     final l$amountFiat = amountFiat;
     result$data['amountFiat'] = l$amountFiat;
+    final l$fiatCurrency = fiatCurrency;
+    result$data['fiatCurrency'] = toJson$Enum$Country(l$fiatCurrency);
     if (_$data.containsKey('isNative')) {
       final l$isNative = isNative;
       result$data['isNative'] = l$isNative;
@@ -5437,6 +4809,11 @@ class Input$PaymentInput {
     if (l$amountFiat != lOther$amountFiat) {
       return false;
     }
+    final l$fiatCurrency = fiatCurrency;
+    final lOther$fiatCurrency = other.fiatCurrency;
+    if (l$fiatCurrency != lOther$fiatCurrency) {
+      return false;
+    }
     final l$isNative = isNative;
     final lOther$isNative = other.isNative;
     if (_$data.containsKey('isNative') !=
@@ -5473,6 +4850,7 @@ class Input$PaymentInput {
   int get hashCode {
     final l$amountCrypto = amountCrypto;
     final l$amountFiat = amountFiat;
+    final l$fiatCurrency = fiatCurrency;
     final l$isNative = isNative;
     final l$tokenAddress = tokenAddress;
     final l$tokenChain = tokenChain;
@@ -5481,6 +4859,7 @@ class Input$PaymentInput {
     return Object.hashAll([
       l$amountCrypto,
       l$amountFiat,
+      l$fiatCurrency,
       _$data.containsKey('isNative') ? l$isNative : const {},
       l$tokenAddress,
       l$tokenChain,
@@ -5502,6 +4881,7 @@ abstract class CopyWith$Input$PaymentInput<TRes> {
   TRes call({
     double? amountCrypto,
     double? amountFiat,
+    Enum$Country? fiatCurrency,
     bool? isNative,
     String? tokenAddress,
     String? tokenChain,
@@ -5526,6 +4906,7 @@ class _CopyWithImpl$Input$PaymentInput<TRes>
   TRes call({
     Object? amountCrypto = _undefined,
     Object? amountFiat = _undefined,
+    Object? fiatCurrency = _undefined,
     Object? isNative = _undefined,
     Object? tokenAddress = _undefined,
     Object? tokenChain = _undefined,
@@ -5538,6 +4919,8 @@ class _CopyWithImpl$Input$PaymentInput<TRes>
           'amountCrypto': (amountCrypto as double),
         if (amountFiat != _undefined && amountFiat != null)
           'amountFiat': (amountFiat as double),
+        if (fiatCurrency != _undefined && fiatCurrency != null)
+          'fiatCurrency': (fiatCurrency as Enum$Country),
         if (isNative != _undefined) 'isNative': (isNative as bool?),
         if (tokenAddress != _undefined && tokenAddress != null)
           'tokenAddress': (tokenAddress as String),
@@ -5559,6 +4942,7 @@ class _CopyWithStubImpl$Input$PaymentInput<TRes>
   call({
     double? amountCrypto,
     double? amountFiat,
+    Enum$Country? fiatCurrency,
     bool? isNative,
     String? tokenAddress,
     String? tokenChain,
@@ -7151,39 +6535,6 @@ Enum$OrderActions fromJson$Enum$OrderActions(String value) {
       return Enum$OrderActions.ReleaseCrypto;
     default:
       return Enum$OrderActions.$unknown;
-  }
-}
-
-enum Enum$OrderMode {
-  EXPRESS,
-  MARKET,
-  $unknown;
-
-  factory Enum$OrderMode.fromJson(String value) =>
-      fromJson$Enum$OrderMode(value);
-
-  String toJson() => toJson$Enum$OrderMode(this);
-}
-
-String toJson$Enum$OrderMode(Enum$OrderMode e) {
-  switch (e) {
-    case Enum$OrderMode.EXPRESS:
-      return r'EXPRESS';
-    case Enum$OrderMode.MARKET:
-      return r'MARKET';
-    case Enum$OrderMode.$unknown:
-      return r'$unknown';
-  }
-}
-
-Enum$OrderMode fromJson$Enum$OrderMode(String value) {
-  switch (value) {
-    case r'EXPRESS':
-      return Enum$OrderMode.EXPRESS;
-    case r'MARKET':
-      return Enum$OrderMode.MARKET;
-    default:
-      return Enum$OrderMode.$unknown;
   }
 }
 

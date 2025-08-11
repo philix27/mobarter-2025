@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mobarter/features/bill_betting/FundBettingWalletPage.dart';
 import 'package:mobarter/features/bill_tv/TvBillsPage.dart';
+import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/features/bill_electricity/ElectricityPage.dart';
 import 'package:mobarter/features/bill_top_up/TopUpPage.dart';
@@ -168,14 +169,13 @@ class PaymentsPage extends HookWidget {
                                 ),
                               ),
                             ),
-                            // SizedBox(height: 4),
+                            SizedBox(height: 2),
                             Center(
                               child: Text(
                                 item.title,
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  color: Theme.of(context).disabledColor,
-                                ),
+                                style: textTheme(
+                                  context,
+                                ).bodySmall?.copyWith(fontSize: 10),
                               ),
                             ),
                           ],

@@ -18,11 +18,11 @@ class WalletPage extends StatelessWidget {
       context,
       title: "Wallet",
       actions: [
-        IconButton(
-          padding: EdgeInsets.only(right: 20),
-          icon: Icon(Icons.receipt_long_outlined, size: 22),
-          onPressed: () {},
-        ),
+        // IconButton(
+        //   padding: EdgeInsets.only(right: 20),
+        //   icon: Icon(Icons.receipt_long_outlined, size: 22),
+        //   onPressed: () {},
+        // ),
       ],
       leading: IconButton(
         padding: EdgeInsets.only(left: 20),

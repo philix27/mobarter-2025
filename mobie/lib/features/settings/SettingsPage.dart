@@ -9,7 +9,6 @@ import 'package:mobarter/features/settings/showLearn.dart';
 import 'package:mobarter/features/settings/showDocsLinks.dart';
 import 'package:mobarter/features/settings/showSocials.dart';
 import 'package:mobarter/features/settings/showSupport.dart';
-import 'package:mobarter/features/wallet/WalletQRCodePage.dart';
 import 'package:mobarter/features/theme/themes_provider.dart';
 import 'package:mobarter/utils/logger.dart';
 import 'package:mobarter/widgets/bottomSheet.dart';
@@ -68,20 +67,7 @@ class SettingsPage extends HookConsumerWidget {
             },
           ),
           KYCTile(),
-          listTile(
-            context,
-            title: "Wallet",
-            subtitle: "Ethereum Wallet Address",
-            icon: Icons.wallet,
-            onTap: () {
-              pushScreen(
-                context,
-                screen: WalletQrCodePage(),
-                withNavBar: false,
-                pageTransitionAnimation: PageTransitionAnimation.slideUp,
-              );
-            },
-          ),
+
           listTile(
             context,
             title: "Bank Account",
