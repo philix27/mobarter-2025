@@ -24,4 +24,14 @@ class BankAccountNotifier extends StateNotifier<BankAccountModel> {
     // if (amountCrypto <= 0) return;
     state = state.copyWith(bankName: name, bankCode: code);
   }
+
+  void clear() {
+    // if (amountCrypto <= 0) return;
+    state = state.copyWith(
+      accountNo: null,
+      accountName: null,
+      bankName: null,
+      bankCode: null,
+    );
+  }
 }

@@ -15,7 +15,6 @@ import 'package:mobarter/features/theme/themes_provider.dart';
 import 'package:mobarter/graphql/api/Api.dart';
 import 'package:mobarter/pages/HomeLayout.dart';
 import 'package:mobarter/features/wallet/WalletPage.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:toastification/toastification.dart';
 
 void main() async {
@@ -49,7 +48,7 @@ void main() async {
 }
 
 class AppProviders extends StatelessWidget {
-  AppProviders({super.key});
+  const AppProviders({super.key});
 
   // ValueNotifier<GraphQLClient> client = ValueNotifier(getGqlClient());
   // This widget is the root of y our application.

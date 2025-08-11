@@ -8,7 +8,7 @@ import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/loading.dart';
 
 class AccountName extends HookConsumerWidget {
-  AccountName({super.key});
+  const AccountName({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,8 +34,6 @@ class AccountName extends HookConsumerWidget {
 
     if (account == null) {
       return Text("No name found");
-    } else {
-      r.updateName(account.account_name);
     }
 
     return listTile(context, title: account.account_name);

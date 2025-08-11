@@ -17,6 +17,7 @@ class AddBankAccountPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final w = bankWatch(ref);
+    final r = bankRead(ref);
     final createBankAccount = useMutation$BankAccount_create();
 
     submit() async {
@@ -24,7 +25,7 @@ class AddBankAccountPage extends HookConsumerWidget {
         require(w.accountNo, "Account No. needed");
         require(w.accountName, "Account name needed");
         require(w.bankName, "Bank name needed");
-        
+
         final response = await createBankAccount
             .runMutation(
               Variables$Mutation$BankAccount_create(
@@ -40,11 +41,13 @@ class AddBankAccountPage extends HookConsumerWidget {
 
         if (kDebugMode) {
           appLogger.e("Add Bank Account $response");
+          return;
         }
 
         // final msg = response!.parsedData?.bankAccount_create;
-
+        r.clear();
         appToast(context, "Account added successfully");
+        Navigator.of(context).pop();
       } catch (e) {
         appToastErr(context, e.toString());
       }
