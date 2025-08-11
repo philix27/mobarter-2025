@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:mobarter/features/bank_account/logic/model.dart';
 import 'package:mobarter/graphql/schema/bankAccount.gql.dart';
 import 'package:mobarter/widgets/listTile.dart';
 
 class BankItem extends StatelessWidget {
-  const BankItem({super.key, required this.item});
+  BankItem({super.key, required this.item, this.onAddBank});
   final Query$BankAccount_getAll$bankAccount_getAll item;
+
+  void Function(BankAccountModel bank)? onAddBank;
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +74,18 @@ class BankItem extends StatelessWidget {
         title: item.account_name,
         subtitle: item.bank_name,
         imgUrl: item.account_no,
+        onTap: () {
+          if (onAddBank != null) {
+            onAddBank!(
+              BankAccountModel(
+                accountNo: item.account_no,
+                accountName: item.account_name,
+                bankName: item.bank_name,
+                bankCode: item.bankCode,
+              ),
+            );
+          }
+        },
       ),
     );
   }

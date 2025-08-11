@@ -1,4 +1,4 @@
-import 'package:mobarter/features/bank_account/logic/bank_account_model.dart';
+import 'package:mobarter/features/bank_account/logic/model.dart';
 
 class OrderSell {
   final double? amountFiat;

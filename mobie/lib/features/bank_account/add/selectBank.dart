@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/bank_account/logic/provider.dart';
 import 'package:mobarter/features/theme/constColors.dart';
 import 'package:mobarter/graphql/schema/bankAccount.gql.dart';
 import 'package:mobarter/widgets/widgets.dart';
 
-class BanksList extends ConsumerWidget {
-  const BanksList({super.key});
+class SelectBankAccount extends ConsumerWidget {
+  const SelectBankAccount({super.key});
 
   @override
   Widget build(BuildContext context, ref) {

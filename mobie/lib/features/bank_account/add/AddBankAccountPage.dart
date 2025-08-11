@@ -73,7 +73,7 @@ class AddBankAccountPage extends HookConsumerWidget {
       body: Column(
         spacing: 20,
         children: [
-          BanksList(),
+          SelectBankAccount(),
           AccountNo(),
           w.accountNo != null && w.accountNo!.length == 10
               ? AccountName()

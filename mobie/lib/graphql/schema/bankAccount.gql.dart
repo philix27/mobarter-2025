@@ -1571,6 +1571,13 @@ const documentNodeQueryBankAccount_getAll = DocumentNode(definitions: [
             selectionSet: null,
           ),
           FieldNode(
+            name: NameNode(value: 'bankCode'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
             name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
@@ -1743,6 +1750,7 @@ class Query$BankAccount_getAll$bankAccount_getAll {
     required this.account_name,
     required this.account_no,
     required this.bank_name,
+    this.bankCode,
     this.$__typename = 'BankAccount_Response',
   });
 
@@ -1752,12 +1760,14 @@ class Query$BankAccount_getAll$bankAccount_getAll {
     final l$account_name = json['account_name'];
     final l$account_no = json['account_no'];
     final l$bank_name = json['bank_name'];
+    final l$bankCode = json['bankCode'];
     final l$$__typename = json['__typename'];
     return Query$BankAccount_getAll$bankAccount_getAll(
       id: (l$id as num).toDouble(),
       account_name: (l$account_name as String),
       account_no: (l$account_no as String),
       bank_name: (l$bank_name as String),
+      bankCode: (l$bankCode as String?),
       $__typename: (l$$__typename as String),
     );
   }
@@ -1769,6 +1779,8 @@ class Query$BankAccount_getAll$bankAccount_getAll {
   final String account_no;
 
   final String bank_name;
+
+  final String? bankCode;
 
   final String $__typename;
 
@@ -1782,6 +1794,8 @@ class Query$BankAccount_getAll$bankAccount_getAll {
     _resultData['account_no'] = l$account_no;
     final l$bank_name = bank_name;
     _resultData['bank_name'] = l$bank_name;
+    final l$bankCode = bankCode;
+    _resultData['bankCode'] = l$bankCode;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -1793,12 +1807,14 @@ class Query$BankAccount_getAll$bankAccount_getAll {
     final l$account_name = account_name;
     final l$account_no = account_no;
     final l$bank_name = bank_name;
+    final l$bankCode = bankCode;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
       l$account_name,
       l$account_no,
       l$bank_name,
+      l$bankCode,
       l$$__typename,
     ]);
   }
@@ -1830,6 +1846,11 @@ class Query$BankAccount_getAll$bankAccount_getAll {
     final l$bank_name = bank_name;
     final lOther$bank_name = other.bank_name;
     if (l$bank_name != lOther$bank_name) {
+      return false;
+    }
+    final l$bankCode = bankCode;
+    final lOther$bankCode = other.bankCode;
+    if (l$bankCode != lOther$bankCode) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -1865,6 +1886,7 @@ abstract class CopyWith$Query$BankAccount_getAll$bankAccount_getAll<TRes> {
     String? account_name,
     String? account_no,
     String? bank_name,
+    String? bankCode,
     String? $__typename,
   });
 }
@@ -1887,6 +1909,7 @@ class _CopyWithImpl$Query$BankAccount_getAll$bankAccount_getAll<TRes>
     Object? account_name = _undefined,
     Object? account_no = _undefined,
     Object? bank_name = _undefined,
+    Object? bankCode = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Query$BankAccount_getAll$bankAccount_getAll(
@@ -1900,6 +1923,8 @@ class _CopyWithImpl$Query$BankAccount_getAll$bankAccount_getAll<TRes>
         bank_name: bank_name == _undefined || bank_name == null
             ? _instance.bank_name
             : (bank_name as String),
+        bankCode:
+            bankCode == _undefined ? _instance.bankCode : (bankCode as String?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -1917,6 +1942,7 @@ class _CopyWithStubImpl$Query$BankAccount_getAll$bankAccount_getAll<TRes>
     String? account_name,
     String? account_no,
     String? bank_name,
+    String? bankCode,
     String? $__typename,
   }) =>
       _res;

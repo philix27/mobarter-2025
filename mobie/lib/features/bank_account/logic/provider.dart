@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobarter/features/bank_account/logic/bank_account_model.dart';
+import 'package:mobarter/features/bank_account/logic/model.dart';
 import 'package:mobarter/features/bank_account/logic/notifier.dart';
 
 final bankAccountProvider =

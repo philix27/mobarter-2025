@@ -3,15 +3,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/orders_sell/logic/provider.dart';
 import 'package:mobarter/features/orders_sell/presentation/amount.dart';
 import 'package:mobarter/features/orders_sell/presentation/select_account.dart';
-import 'package:mobarter/features/paymentToken/txn_summary_page.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/orders.gql.dart';
 import 'package:mobarter/utils/exception.dart';
-import 'package:mobarter/widgets/amountToPay.dart';
-import 'package:mobarter/widgets/btn.dart';
-import 'package:mobarter/widgets/listTile.dart';
-import 'package:mobarter/widgets/scaffold.dart';
-import 'package:mobarter/widgets/toast.dart';
+import 'package:mobarter/widgets/widgets.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class OrdersSellCryptoPage extends HookConsumerWidget {
@@ -29,7 +24,7 @@ class OrdersSellCryptoPage extends HookConsumerWidget {
         children: [
           SellAmount(),
           SelectBankAccount(),
-          CryptoAmountPay(amountFiat: 0 ?? 0),
+          CryptoAmountPay(amountFiat: data.amountFiat ?? 0),
           btn(
             title: "Send",
             onPressed: () {
@@ -39,7 +34,7 @@ class OrdersSellCryptoPage extends HookConsumerWidget {
                   "Select a bank account to receive funds",
                 );
                 require(data.amountCrypto, "Select/Enter and amount");
-                require(data.amountFiat! >= 5000.0, "Minimum of ₦5000");
+                require(data.amountFiat! >= 2000.0, "Minimum of ₦2000");
 
                 pushScreen(
                   context,
@@ -47,6 +42,17 @@ class OrdersSellCryptoPage extends HookConsumerWidget {
                   screen: TxnSummaryPage(
                     cryptoAmountToPay: data.amountCrypto!,
                     children: [
+                      simpleRow(
+                        title: "You receive",
+                        subtitle: data.amountFiat != null
+                            ? "₦ ${data.amountFiat.toString()}"
+                            : "0",
+                      ),
+                      simpleRow(
+                        title: "Pay",
+                        subtitle:
+                            "USD ${data.amountCrypto!.toStringAsFixed(3)}",
+                      ),
                       simpleRow(
                         title: "Account name",
                         subtitle: data.bankAccount?.accountName,
@@ -59,17 +65,7 @@ class OrdersSellCryptoPage extends HookConsumerWidget {
                         title: "Bank name",
                         subtitle: data.bankAccount?.bankName,
                       ),
-                      simpleRow(
-                        title: "Amount",
-                        subtitle: data.amountFiat != null
-                            ? "₦ ${data.amountFiat.toString()}"
-                            : "0",
-                      ),
-                      simpleRow(
-                        title: "Pay",
-                        subtitle:
-                            "USD ${data.amountCrypto!.toStringAsFixed(3)}",
-                      ),
+
                       // simpleRow(title: "Cashback bonus", subtitle: cashback),
                       SizedBox(height: 20),
                     ],

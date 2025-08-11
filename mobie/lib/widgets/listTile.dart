@@ -10,56 +10,60 @@ Widget listTile(
   String? subtitle,
   Widget? leading,
   String? imgUrl,
+  String? label,
   IconData? icon,
   Widget? trailing,
   Color? tileColor,
   Function()? onTap,
 }) {
-  return Card( 
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-    elevation: 0.1,
-    color: tileColor,
-    child: ListTile(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      dense: true,
-      onTap: onTap,
-      // splashColor: colorPrimaryLight,
-      isThreeLine: false,
-      // tileColor: colorCard,
-      // tileColor: tileColor,
-      // isThreeLine: subtitle != null,
-      title: Text(title, style: textTheme(context).bodyMedium),
-      subtitle: subtitle != null
-          ? Text(subtitle, style: textTheme(context).bodySmall)
-          : null,
-      leading: icon != null
-          ? Container(
-              // color: Colors.white,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              padding: EdgeInsets.all(7),
-              child: Icon(icon, size: 20),
-            )
-          : imgUrl != null
-          ? ClipRRect(
-              borderRadius: BorderRadius.circular(
-                16,
-              ), // Change the radius as needed
-              child: imgUrl == null
-                  ? SizedBox.shrink()
-                  : CachedNetworkImage(
-                      imageUrl: imgUrl,
-                      placeholder: (context, url) => roundShimmerImg(context),
-                      errorWidget: (context, url, error) => SizedBox.shrink(),
-                      width: 25,
-                      height: 25,
-                      fit: BoxFit.cover,
-                    ),
-            )
-          : leading,
-      trailing: trailing,
-    ),
+  return Column(
+    children: [
+      label != null
+          ? Row(children: [Text(label, style: textTheme(context).bodyMedium)])
+          : SizedBox.shrink(),
+      SizedBox(height: 5),
+      ListTile(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        dense: true,
+        onTap: onTap,
+        // splashColor: colorPrimaryLight,
+        isThreeLine: false,
+        // tileColor: colorCard,
+        // tileColor: tileColor,
+        // isThreeLine: subtitle != null,
+        title: Text(title, style: textTheme(context).bodyMedium),
+        subtitle: subtitle != null
+            ? Text(subtitle, style: textTheme(context).bodySmall)
+            : null,
+        leading: icon != null
+            ? Container(
+                // color: Colors.white,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                padding: EdgeInsets.all(7),
+                child: Icon(icon, size: 20),
+              )
+            : imgUrl != null
+            ? ClipRRect(
+                borderRadius: BorderRadius.circular(
+                  16,
+                ), // Change the radius as needed
+                child: imgUrl == null
+                    ? SizedBox.shrink()
+                    : CachedNetworkImage(
+                        imageUrl: imgUrl,
+                        placeholder: (context, url) => roundShimmerImg(context),
+                        errorWidget: (context, url, error) => SizedBox.shrink(),
+                        width: 25,
+                        height: 25,
+                        fit: BoxFit.cover,
+                      ),
+              )
+            : leading,
+        trailing: trailing,
+      ),
+    ],
   );
 }
 

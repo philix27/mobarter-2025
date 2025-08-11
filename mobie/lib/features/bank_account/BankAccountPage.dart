@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobarter/features/bank_account/add/AddBankAccountPage.dart';
-import 'package:mobarter/features/bank_account/bank_list.dart';
+import 'package:mobarter/features/bank_account/presentation/bank_list.dart';
 import 'package:mobarter/widgets/widgets.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
