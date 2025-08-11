@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mobarter/features/onboarding/SetupTxnPinPage.dart';
 import 'package:mobarter/features/orders_sell/OrderSellCryptoPage.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/features/wallet/WalletQRCodePage.dart';
+import 'package:mobarter/widgets/toast.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
+import 'package:toastification/toastification.dart';
 
 class QuickActionsModel {
   final String title;
@@ -59,7 +62,15 @@ class QuickActions extends StatelessWidget {
             QuickActionsModel(
               title: "Send",
               icon: Icons.send,
-              onPressed: () {},
+              onPressed: () {
+                appToast(context, "Coming soon", type: ToastificationType.info);
+                // pushScreen(
+                //   context,
+                //   screen: SetupTxnPinPage(),
+                //   withNavBar: false,
+                //   pageTransitionAnimation: PageTransitionAnimation.slideUp,
+                // );
+              },
             ),
           ),
           box(

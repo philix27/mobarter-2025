@@ -5,7 +5,6 @@ import 'package:mobarter/features/auth/auth_service.dart';
 // import 'package:mobarter/features/auth/wallet_service.txt';
 import 'package:mobarter/features/onboarding/questionsList.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
-import 'package:mobarter/graphql/schema/auth.gql.dart';
 import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/graphql/schema/wallet.gql.dart';
 import 'package:mobarter/utils/logger.dart';
@@ -93,7 +92,7 @@ class SetupTxnPinHook extends HookWidget {
         appToast(context, "Your pin has been succcessfully setup");
         Navigator.of(context).pushNamed("/home");
       } catch (e) {
-         appToastErr(context, e.toString());
+        appToastErr(context, e.toString());
         appLogger.e("Error in creating wallet:  $e");
         Navigator.of(context).pushNamed("/home");
       }
@@ -117,6 +116,7 @@ class SetupTxnPinHook extends HookWidget {
             onTap: () {
               btmSheet(
                 ctx: context,
+                h: 0.65,
                 w: ListView.builder(
                   itemCount: questionsList.length,
                   itemBuilder: (context, index) {
@@ -133,7 +133,8 @@ class SetupTxnPinHook extends HookWidget {
               );
             },
           ),
-          textField(context,
+          textField(
+            context,
             label: 'Secret answer',
             maxLength: 25,
             helperText: "An answer only you will know",
@@ -144,7 +145,8 @@ class SetupTxnPinHook extends HookWidget {
             "Pin Set up",
             style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
           ),
-          textField(context,
+          textField(
+            context,
             label: 'Enter Transaction Pin',
             helperText: "Will be used for every transaction",
             maxLength: 6,
@@ -155,7 +157,8 @@ class SetupTxnPinHook extends HookWidget {
               LengthLimitingTextInputFormatter(6), // Enforces the limit
             ],
           ),
-          textField(context,
+          textField(
+            context,
             label: 'Confirm Transaction Pin',
             helperText: "Please do not forget your pin",
             maxLength: 6,
@@ -173,25 +176,25 @@ class SetupTxnPinHook extends HookWidget {
   }
 }
 
-class SecretQuestion extends HookWidget {
-  SecretQuestion({super.key});
-  @override
-  Widget build(BuildContext context) {
-    final result = useQuery$static_secretQuestions(
-      Options$Query$static_secretQuestions(),
-    );
-    final list = result.result.parsedData?.static_secretQuestions;
+// class SecretQuestion extends HookWidget {
+//   SecretQuestion({super.key});
+//   @override
+//   Widget build(BuildContext context) {
+//     final result = useQuery$static_secretQuestions(
+//       Options$Query$static_secretQuestions(),
+//     );
+//     final list = result.result.parsedData?.static_secretQuestions;
 
-    if (list == null || list.isEmpty) {
-      return Text("No data yet");
-    }
+//     if (list == null || list.isEmpty) {
+//       return Text("No data yet");
+//     }
 
-    return ListView.builder(
-      itemCount: list.length,
-      itemBuilder: (context, index) {
-        final item = list[index];
-        return listTile(context, title: item.text);
-      },
-    );
-  }
-}
+//     return ListView.builder(
+//       itemCount: list.length,
+//       itemBuilder: (context, index) {
+//         final item = list[index];
+//         return listTile(context, title: item.text);
+//       },
+//     );
+//   }
+// }

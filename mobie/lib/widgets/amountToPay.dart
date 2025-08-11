@@ -29,7 +29,7 @@ class CryptoAmountPay extends HookWidget {
         style: DefaultTextStyle.of(context).style, // Inherit default style
         children: <TextSpan>[
           TextSpan(
-            text: "CUSD ",
+            text: "USD ",
             style: TextStyle(
               fontWeight: FontWeight.w400,
               color: Colors.black45,

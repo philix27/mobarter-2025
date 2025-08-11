@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mobarter/features/firestore/wallet.dart';
+import 'package:mobarter/utils/size.dart';
 import 'package:mobarter/widgets/btn.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 import 'package:mobarter/widgets/toast.dart';
@@ -37,11 +38,16 @@ class WalletQrCodePage extends StatelessWidget {
                       quietZone: PrettyQrQuietZone.standart,
                     ),
                   ),
-                  Text(
-                    w,
-                    style: TextStyle(
-                      fontSize: 13.5,
-                      fontWeight: FontWeight.w300,
+                  SizedBox(height: 20),
+                  SizedBox(
+                    width: getW(context, 0.7),
+                    child: Text(
+                      w,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                   SizedBox(height: 20),

@@ -25,6 +25,7 @@ class OrdersSellCryptoPage extends HookConsumerWidget {
       context,
       title: "Sell Crypto",
       body: Column(
+        spacing: 20,
         children: [
           SellAmount(),
           SelectBankAccount(),
