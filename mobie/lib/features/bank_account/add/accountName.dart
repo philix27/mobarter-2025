@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/bank_account/logic/provider.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
@@ -9,6 +8,21 @@ import 'package:mobarter/widgets/loading.dart';
 
 class AccountName extends HookConsumerWidget {
   const AccountName({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final w = bankWatch(ref);
+
+    return listTile(
+      context,
+      title: w.accountName == null ? "No name found" : w.accountName!,
+      onTap: () {},
+    );
+  }
+}
+
+class FetchAccountName extends HookConsumerWidget {
+  const FetchAccountName({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -36,6 +50,12 @@ class AccountName extends HookConsumerWidget {
       return Text("No name found");
     }
 
-    return listTile(context, title: account.account_name);
+    return listTile(
+      context,
+      title: account.account_name,
+      onTap: () {
+        r.updateName(account.account_name);
+      },
+    );
   }
 }

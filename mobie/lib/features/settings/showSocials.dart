@@ -46,7 +46,7 @@ class _SocialList extends HookWidget {
         return listTile(
           context,
           title: item.title,
-          subtitle: null,
+          subtitle: item.desc ?? item.url,
           onTap: () {
             launchURL(item.url);
           },

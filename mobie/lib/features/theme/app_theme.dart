@@ -34,7 +34,7 @@ class AppTheme {
       style: ListTileStyle.list,
     ),
     hintColor: Colors.white,
-    iconTheme: IconThemeData(color: Colors.grey.shade500),
+    iconTheme: IconThemeData(color: Colors.grey.shade200),
   );
 
   static final dark = ThemeData(

@@ -56,28 +56,12 @@ class AddBankAccountPage extends HookConsumerWidget {
     return appScaffold(
       context,
       title: "Add Bank Accounts",
-      floatingActionButton: Container(
-        height: 50,
-        width: 50,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: Theme.of(context).primaryColor,
-        ),
-        child: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.add),
-          color: Colors.white,
-          iconSize: 25,
-        ),
-      ),
       body: Column(
         spacing: 20,
         children: [
           SelectBankAccount(),
           AccountNo(),
-          w.accountNo != null && w.accountNo!.length == 10
-              ? AccountName()
-              : SizedBox.shrink(),
+          w.accountName != null ? AccountName() : SizedBox.shrink(),
           SizedBox(height: 20),
           btn(title: "Add", onPressed: submit),
         ],

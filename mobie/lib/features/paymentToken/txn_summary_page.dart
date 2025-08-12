@@ -70,7 +70,7 @@ class TxnSummaryPage extends HookConsumerWidget {
                           w: _EnterPinAndSubmit(send: this.send),
                         );
                       } catch (e) {
-                       appToastErr(context, e.toString());
+                        appToastErr(context, e.toString());
                       }
                     },
             ),
@@ -119,7 +119,7 @@ class _EnterPinAndSubmit extends ConsumerWidget {
             ],
             onCompleted: (pin) {
               if (kDebugMode) {
-                print(pin);
+                print("Submitted");
               }
             },
           ),

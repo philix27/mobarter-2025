@@ -11,14 +11,12 @@ import 'package:mobarter/features/settings/showSocials.dart';
 import 'package:mobarter/features/settings/showSupport.dart';
 import 'package:mobarter/features/theme/themes_provider.dart';
 import 'package:mobarter/utils/logger.dart';
-import 'package:mobarter/widgets/bottomSheet.dart';
-import 'package:mobarter/widgets/listTile.dart';
-import 'package:mobarter/widgets/scaffold.dart';
+import 'package:mobarter/widgets/widgets.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class SettingsPage extends HookConsumerWidget {
   SettingsPage({super.key});
-  final authSvc = AuthService();
+  final authSvc = AuthService(); 
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

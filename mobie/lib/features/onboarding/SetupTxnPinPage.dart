@@ -81,7 +81,7 @@ class SetupTxnPinHook extends HookWidget {
 
         final msg = response!.parsedData?.walletCrypto_mobileCreate.message;
 
-        appToast(context, "Your pin has been succcessfully setup");
+        appToast(context, "Your pin has been setup successfully");
         Navigator.of(context).pushNamed("/home");
       } catch (e) {
         appToastErr(context, e.toString());

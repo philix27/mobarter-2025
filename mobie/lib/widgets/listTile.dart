@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/widgets/shimmer.dart';
-// import 'package:mobarter/constants/theme.dart';
 
 Widget listTile(
   BuildContext context, {
@@ -26,8 +25,8 @@ Widget listTile(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         dense: true,
         onTap: onTap,
-        // splashColor: colorPrimaryLight,
         isThreeLine: false,
+        // splashColor: colorPrimaryLight,
         // tileColor: colorCard,
         // tileColor: tileColor,
         // isThreeLine: subtitle != null,
@@ -37,12 +36,16 @@ Widget listTile(
             : null,
         leading: icon != null
             ? Container(
-                // color: Colors.white,
+                color: Theme.of(context).scaffoldBackgroundColor  ,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                 ),
-                padding: EdgeInsets.all(7),
-                child: Icon(icon, size: 20),
+                padding: EdgeInsets.all(5),
+                child: Icon(
+                  icon,
+                  size: 20,
+                  color: Theme.of(context).disabledColor,
+                ),
               )
             : imgUrl != null
             ? ClipRRect(

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobarter/features/bank_account/add/accountName.dart';
 import 'package:mobarter/features/bank_account/logic/provider.dart';
-import 'package:mobarter/features/bill_top_up/logic/provider.dart';
+import 'package:mobarter/widgets/bottomSheet.dart';
 import 'package:mobarter/widgets/inputText.dart';
 import 'package:mobarter/widgets/toast.dart';
 
@@ -38,6 +39,9 @@ class AccountNo extends ConsumerWidget {
           return;
         }
         r.updateNo(value);
+        if (value.length == 10) {
+          btmSheet(ctx: context, h: 0.25, w: FetchAccountName());
+        }
       },
     );
   }
