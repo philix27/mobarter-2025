@@ -2,19 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mobarter/features/auth/auth_service.dart';
-// import 'package:mobarter/features/auth/wallet_service.txt';
 import 'package:mobarter/features/onboarding/questionsList.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
-import 'package:mobarter/graphql/schema/static.gql.dart';
 import 'package:mobarter/graphql/schema/wallet.gql.dart';
 import 'package:mobarter/utils/logger.dart';
-import 'package:mobarter/widgets/bottomSheet.dart';
-import 'package:mobarter/widgets/btn.dart';
-
-import 'package:mobarter/widgets/inputText.dart';
-import 'package:mobarter/widgets/listTile.dart';
-import 'package:mobarter/widgets/scaffold.dart';
-import 'package:mobarter/widgets/toast.dart';
+import 'package:mobarter/widgets/widgets.dart';
 
 class SetupTxnPinPage extends StatefulWidget {
   const SetupTxnPinPage({super.key});

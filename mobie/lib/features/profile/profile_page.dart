@@ -1,4 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:mobarter/config/env.dart';
+import 'package:mobarter/widgets/btn.dart';
 import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/scaffold.dart';
 
@@ -19,6 +22,7 @@ class ProfilePage extends StatelessWidget {
           listTile(context, title: "Date Of Birth"),
           listTile(context, title: "BVN"),
           listTile(context, title: "NIN"),
+          isDevEnv ? btn(title: "KYC") : SizedBox.shrink(),
         ],
       ),
     );
