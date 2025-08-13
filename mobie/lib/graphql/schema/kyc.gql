@@ -49,19 +49,14 @@ mutation kyc_createTransactionPin($input: Kyc_CreateTransactionPinInput!) {
 
 mutation kyc_sendPhoneOtp($input: Kyc_SendPhoneOtpInput!) {
   kyc_sendPhoneOtp(input: $input) {
- message
+    message
+    otpToken
   }
 }
 
 
-mutation kyc_verifyPhoneOtp($input: Kyc_VerifyPhoneOtpInput!) {
-  kyc_verifyPhoneOtp(input: $input) {
- message
-  }
-}
-
-mutation kyc_sendCredentials($input: Kyc_sendCredentialsInput!) {
-  kyc_sendCredentials(input: $input) {
- message
+mutation kyc_verifyPhoneOtpAndSubmitCredentials($input: Kyc_verifyPhoneOtpAndSubmitCredentialsInput!) {
+  kyc_verifyPhoneOtpAndSubmitCredentials(input: $input) {
+    message
   }
 }

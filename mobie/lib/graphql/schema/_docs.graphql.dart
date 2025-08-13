@@ -3606,154 +3606,8 @@ class _CopyWithStubImpl$Input$Kyc_SendPhoneOtpInput<TRes>
   call({String? phone}) => _res;
 }
 
-class Input$Kyc_VerifyPhoneOtpInput {
-  factory Input$Kyc_VerifyPhoneOtpInput({
-    required String otp,
-    required String phone,
-    required String token,
-  }) =>
-      Input$Kyc_VerifyPhoneOtpInput._({
-        r'otp': otp,
-        r'phone': phone,
-        r'token': token,
-      });
-
-  Input$Kyc_VerifyPhoneOtpInput._(this._$data);
-
-  factory Input$Kyc_VerifyPhoneOtpInput.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    final l$otp = data['otp'];
-    result$data['otp'] = (l$otp as String);
-    final l$phone = data['phone'];
-    result$data['phone'] = (l$phone as String);
-    final l$token = data['token'];
-    result$data['token'] = (l$token as String);
-    return Input$Kyc_VerifyPhoneOtpInput._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  String get otp => (_$data['otp'] as String);
-
-  String get phone => (_$data['phone'] as String);
-
-  String get token => (_$data['token'] as String);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    final l$otp = otp;
-    result$data['otp'] = l$otp;
-    final l$phone = phone;
-    result$data['phone'] = l$phone;
-    final l$token = token;
-    result$data['token'] = l$token;
-    return result$data;
-  }
-
-  CopyWith$Input$Kyc_VerifyPhoneOtpInput<Input$Kyc_VerifyPhoneOtpInput>
-      get copyWith => CopyWith$Input$Kyc_VerifyPhoneOtpInput(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$Kyc_VerifyPhoneOtpInput ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$otp = otp;
-    final lOther$otp = other.otp;
-    if (l$otp != lOther$otp) {
-      return false;
-    }
-    final l$phone = phone;
-    final lOther$phone = other.phone;
-    if (l$phone != lOther$phone) {
-      return false;
-    }
-    final l$token = token;
-    final lOther$token = other.token;
-    if (l$token != lOther$token) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$otp = otp;
-    final l$phone = phone;
-    final l$token = token;
-    return Object.hashAll([
-      l$otp,
-      l$phone,
-      l$token,
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$Kyc_VerifyPhoneOtpInput<TRes> {
-  factory CopyWith$Input$Kyc_VerifyPhoneOtpInput(
-    Input$Kyc_VerifyPhoneOtpInput instance,
-    TRes Function(Input$Kyc_VerifyPhoneOtpInput) then,
-  ) = _CopyWithImpl$Input$Kyc_VerifyPhoneOtpInput;
-
-  factory CopyWith$Input$Kyc_VerifyPhoneOtpInput.stub(TRes res) =
-      _CopyWithStubImpl$Input$Kyc_VerifyPhoneOtpInput;
-
-  TRes call({
-    String? otp,
-    String? phone,
-    String? token,
-  });
-}
-
-class _CopyWithImpl$Input$Kyc_VerifyPhoneOtpInput<TRes>
-    implements CopyWith$Input$Kyc_VerifyPhoneOtpInput<TRes> {
-  _CopyWithImpl$Input$Kyc_VerifyPhoneOtpInput(
-    this._instance,
-    this._then,
-  );
-
-  final Input$Kyc_VerifyPhoneOtpInput _instance;
-
-  final TRes Function(Input$Kyc_VerifyPhoneOtpInput) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? otp = _undefined,
-    Object? phone = _undefined,
-    Object? token = _undefined,
-  }) =>
-      _then(Input$Kyc_VerifyPhoneOtpInput._({
-        ..._instance._$data,
-        if (otp != _undefined && otp != null) 'otp': (otp as String),
-        if (phone != _undefined && phone != null) 'phone': (phone as String),
-        if (token != _undefined && token != null) 'token': (token as String),
-      }));
-}
-
-class _CopyWithStubImpl$Input$Kyc_VerifyPhoneOtpInput<TRes>
-    implements CopyWith$Input$Kyc_VerifyPhoneOtpInput<TRes> {
-  _CopyWithStubImpl$Input$Kyc_VerifyPhoneOtpInput(this._res);
-
-  TRes _res;
-
-  call({
-    String? otp,
-    String? phone,
-    String? token,
-  }) =>
-      _res;
-}
-
-class Input$Kyc_sendCredentialsInput {
-  factory Input$Kyc_sendCredentialsInput({
+class Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput {
+  factory Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput({
     required String bvn,
     required Enum$Country country,
     required String dob,
@@ -3762,11 +3616,13 @@ class Input$Kyc_sendCredentialsInput {
     required String lastName,
     String? middleName,
     required String nin,
+    required String otp,
     required String phone,
     required String state,
     required String street,
+    required String token,
   }) =>
-      Input$Kyc_sendCredentialsInput._({
+      Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput._({
         r'bvn': bvn,
         r'country': country,
         r'dob': dob,
@@ -3775,14 +3631,17 @@ class Input$Kyc_sendCredentialsInput {
         r'lastName': lastName,
         if (middleName != null) r'middleName': middleName,
         r'nin': nin,
+        r'otp': otp,
         r'phone': phone,
         r'state': state,
         r'street': street,
+        r'token': token,
       });
 
-  Input$Kyc_sendCredentialsInput._(this._$data);
+  Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput._(this._$data);
 
-  factory Input$Kyc_sendCredentialsInput.fromJson(Map<String, dynamic> data) {
+  factory Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput.fromJson(
+      Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
     final l$bvn = data['bvn'];
     result$data['bvn'] = (l$bvn as String);
@@ -3802,13 +3661,17 @@ class Input$Kyc_sendCredentialsInput {
     }
     final l$nin = data['nin'];
     result$data['nin'] = (l$nin as String);
+    final l$otp = data['otp'];
+    result$data['otp'] = (l$otp as String);
     final l$phone = data['phone'];
     result$data['phone'] = (l$phone as String);
     final l$state = data['state'];
     result$data['state'] = (l$state as String);
     final l$street = data['street'];
     result$data['street'] = (l$street as String);
-    return Input$Kyc_sendCredentialsInput._(result$data);
+    final l$token = data['token'];
+    result$data['token'] = (l$token as String);
+    return Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput._(result$data);
   }
 
   Map<String, dynamic> _$data;
@@ -3829,11 +3692,15 @@ class Input$Kyc_sendCredentialsInput {
 
   String get nin => (_$data['nin'] as String);
 
+  String get otp => (_$data['otp'] as String);
+
   String get phone => (_$data['phone'] as String);
 
   String get state => (_$data['state'] as String);
 
   String get street => (_$data['street'] as String);
+
+  String get token => (_$data['token'] as String);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -3855,17 +3722,23 @@ class Input$Kyc_sendCredentialsInput {
     }
     final l$nin = nin;
     result$data['nin'] = l$nin;
+    final l$otp = otp;
+    result$data['otp'] = l$otp;
     final l$phone = phone;
     result$data['phone'] = l$phone;
     final l$state = state;
     result$data['state'] = l$state;
     final l$street = street;
     result$data['street'] = l$street;
+    final l$token = token;
+    result$data['token'] = l$token;
     return result$data;
   }
 
-  CopyWith$Input$Kyc_sendCredentialsInput<Input$Kyc_sendCredentialsInput>
-      get copyWith => CopyWith$Input$Kyc_sendCredentialsInput(
+  CopyWith$Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput<
+          Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput>
+      get copyWith =>
+          CopyWith$Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput(
             this,
             (i) => i,
           );
@@ -3875,7 +3748,7 @@ class Input$Kyc_sendCredentialsInput {
     if (identical(this, other)) {
       return true;
     }
-    if (other is! Input$Kyc_sendCredentialsInput ||
+    if (other is! Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -3923,6 +3796,11 @@ class Input$Kyc_sendCredentialsInput {
     if (l$nin != lOther$nin) {
       return false;
     }
+    final l$otp = otp;
+    final lOther$otp = other.otp;
+    if (l$otp != lOther$otp) {
+      return false;
+    }
     final l$phone = phone;
     final lOther$phone = other.phone;
     if (l$phone != lOther$phone) {
@@ -3938,6 +3816,11 @@ class Input$Kyc_sendCredentialsInput {
     if (l$street != lOther$street) {
       return false;
     }
+    final l$token = token;
+    final lOther$token = other.token;
+    if (l$token != lOther$token) {
+      return false;
+    }
     return true;
   }
 
@@ -3951,9 +3834,11 @@ class Input$Kyc_sendCredentialsInput {
     final l$lastName = lastName;
     final l$middleName = middleName;
     final l$nin = nin;
+    final l$otp = otp;
     final l$phone = phone;
     final l$state = state;
     final l$street = street;
+    final l$token = token;
     return Object.hashAll([
       l$bvn,
       l$country,
@@ -3963,21 +3848,25 @@ class Input$Kyc_sendCredentialsInput {
       l$lastName,
       _$data.containsKey('middleName') ? l$middleName : const {},
       l$nin,
+      l$otp,
       l$phone,
       l$state,
       l$street,
+      l$token,
     ]);
   }
 }
 
-abstract class CopyWith$Input$Kyc_sendCredentialsInput<TRes> {
-  factory CopyWith$Input$Kyc_sendCredentialsInput(
-    Input$Kyc_sendCredentialsInput instance,
-    TRes Function(Input$Kyc_sendCredentialsInput) then,
-  ) = _CopyWithImpl$Input$Kyc_sendCredentialsInput;
+abstract class CopyWith$Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput<
+    TRes> {
+  factory CopyWith$Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput(
+    Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput instance,
+    TRes Function(Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput) then,
+  ) = _CopyWithImpl$Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput;
 
-  factory CopyWith$Input$Kyc_sendCredentialsInput.stub(TRes res) =
-      _CopyWithStubImpl$Input$Kyc_sendCredentialsInput;
+  factory CopyWith$Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput.stub(
+          TRes res) =
+      _CopyWithStubImpl$Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput;
 
   TRes call({
     String? bvn,
@@ -3988,22 +3877,25 @@ abstract class CopyWith$Input$Kyc_sendCredentialsInput<TRes> {
     String? lastName,
     String? middleName,
     String? nin,
+    String? otp,
     String? phone,
     String? state,
     String? street,
+    String? token,
   });
 }
 
-class _CopyWithImpl$Input$Kyc_sendCredentialsInput<TRes>
-    implements CopyWith$Input$Kyc_sendCredentialsInput<TRes> {
-  _CopyWithImpl$Input$Kyc_sendCredentialsInput(
+class _CopyWithImpl$Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput<TRes>
+    implements
+        CopyWith$Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput<TRes> {
+  _CopyWithImpl$Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput(
     this._instance,
     this._then,
   );
 
-  final Input$Kyc_sendCredentialsInput _instance;
+  final Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput _instance;
 
-  final TRes Function(Input$Kyc_sendCredentialsInput) _then;
+  final TRes Function(Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -4016,11 +3908,13 @@ class _CopyWithImpl$Input$Kyc_sendCredentialsInput<TRes>
     Object? lastName = _undefined,
     Object? middleName = _undefined,
     Object? nin = _undefined,
+    Object? otp = _undefined,
     Object? phone = _undefined,
     Object? state = _undefined,
     Object? street = _undefined,
+    Object? token = _undefined,
   }) =>
-      _then(Input$Kyc_sendCredentialsInput._({
+      _then(Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput._({
         ..._instance._$data,
         if (bvn != _undefined && bvn != null) 'bvn': (bvn as String),
         if (country != _undefined && country != null)
@@ -4034,16 +3928,20 @@ class _CopyWithImpl$Input$Kyc_sendCredentialsInput<TRes>
           'lastName': (lastName as String),
         if (middleName != _undefined) 'middleName': (middleName as String?),
         if (nin != _undefined && nin != null) 'nin': (nin as String),
+        if (otp != _undefined && otp != null) 'otp': (otp as String),
         if (phone != _undefined && phone != null) 'phone': (phone as String),
         if (state != _undefined && state != null) 'state': (state as String),
         if (street != _undefined && street != null)
           'street': (street as String),
+        if (token != _undefined && token != null) 'token': (token as String),
       }));
 }
 
-class _CopyWithStubImpl$Input$Kyc_sendCredentialsInput<TRes>
-    implements CopyWith$Input$Kyc_sendCredentialsInput<TRes> {
-  _CopyWithStubImpl$Input$Kyc_sendCredentialsInput(this._res);
+class _CopyWithStubImpl$Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput<TRes>
+    implements
+        CopyWith$Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput<TRes> {
+  _CopyWithStubImpl$Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput(
+      this._res);
 
   TRes _res;
 
@@ -4056,9 +3954,11 @@ class _CopyWithStubImpl$Input$Kyc_sendCredentialsInput<TRes>
     String? lastName,
     String? middleName,
     String? nin,
+    String? otp,
     String? phone,
     String? state,
     String? street,
+    String? token,
   }) =>
       _res;
 }

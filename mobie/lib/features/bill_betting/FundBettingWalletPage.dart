@@ -8,14 +8,7 @@ import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/utils/exception.dart';
-import 'package:mobarter/widgets/amountToPay.dart';
-import 'package:mobarter/widgets/bottomSheet.dart';
-import 'package:mobarter/widgets/loading.dart';
-import 'package:mobarter/features/paymentToken/txn_summary_page.dart';
-import 'package:mobarter/widgets/btn.dart';
-import 'package:mobarter/widgets/listTile.dart';
-import 'package:mobarter/widgets/scaffold.dart';
-import 'package:mobarter/widgets/toast.dart';
+import 'package:mobarter/widgets/widgets.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class FundBettingBillsPage extends HookConsumerWidget {
@@ -116,7 +109,7 @@ class FundBettingBillsPage extends HookConsumerWidget {
                           SizedBox(height: 20),
                           // btn(title: "Send", onPressed: ),
                         ],
-                        send: (pin) async {
+                        send: (payload) async {
                           appToastErr(context, "Summary Page testing");
                         },
                       ),

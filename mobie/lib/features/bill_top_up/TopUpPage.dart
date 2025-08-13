@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/bill_top_up/logic/provider.dart';
 import 'package:mobarter/features/bill_top_up/presentation/airtime.dart';
@@ -11,12 +10,7 @@ import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/utils/logger.dart' show appLogger;
-import 'package:mobarter/widgets/amountToPay.dart';
-import 'package:mobarter/widgets/btn.dart';
-import 'package:mobarter/widgets/listTile.dart';
-import 'package:mobarter/widgets/scaffold.dart';
-import 'package:mobarter/widgets/toast.dart';
-import 'package:mobarter/features/paymentToken/txn_summary_page.dart';
+import 'package:mobarter/widgets/widgets.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 enum TopUpScreen { airtime, dataPlan, dataBundle }
@@ -30,7 +24,7 @@ class TopUpsPage extends HookConsumerWidget {
     Widget screenToDisplay;
     final data = topUpWatch(ref);
 
-    final result = useMutation$Utility_purchaseAirtime();
+    final purchaseAirtime = useMutation$Utility_purchaseAirtime();
 
     switch (data.screen!) {
       case TopUpScreen.airtime:
@@ -98,7 +92,7 @@ class TopUpsPage extends HookConsumerWidget {
                       SizedBox(height: 20),
                     ],
                     send: (paymentInfo) async {
-                      final response = await result
+                      final response = await purchaseAirtime
                           .runMutation(
                             Variables$Mutation$Utility_purchaseAirtime(
                               input: Input$Utilities_PurchaseAirtimeInput(

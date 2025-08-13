@@ -1,3 +1,4 @@
+
 input Auth_CreateAccountInput {
   country: Country!
   email: String!
@@ -337,17 +338,16 @@ type Kyc_Response {
   message: String!
 }
 
+type Kyc_SendOtpResponse {
+  message: String!
+  otpToken: String!
+}
+
 input Kyc_SendPhoneOtpInput {
   phone: String!
 }
 
-input Kyc_VerifyPhoneOtpInput {
-  otp: String!
-  phone: String!
-  token: String!
-}
-
-input Kyc_sendCredentialsInput {
+input Kyc_verifyPhoneOtpAndSubmitCredentialsInput {
   bvn: String!
   country: Country!
   dob: String!
@@ -356,9 +356,11 @@ input Kyc_sendCredentialsInput {
   lastName: String!
   middleName: String
   nin: String!
+  otp: String!
   phone: String!
   state: String!
   street: String!
+  token: String!
 }
 
 type Mutation {
@@ -403,9 +405,10 @@ type Mutation {
   kyc_addNames(input: Kyc_AddNamesInput!): Kyc_Response!
   kyc_addNin(input: Kyc_AddNinInput!): Kyc_AddNinResponse!
   kyc_createTransactionPin(input: Kyc_CreateTransactionPinInput!): Kyc_Response!
-  kyc_sendCredentials(input: Kyc_sendCredentialsInput!): Kyc_Response!
-  kyc_sendPhoneOtp(input: Kyc_SendPhoneOtpInput!): Kyc_Response!
-  kyc_verifyPhoneOtp(input: Kyc_VerifyPhoneOtpInput!): Kyc_Response!
+  kyc_sendPhoneOtp(input: Kyc_SendPhoneOtpInput!): Kyc_SendOtpResponse!
+  kyc_verifyPhoneOtpAndSubmitCredentials(
+    input: Kyc_verifyPhoneOtpAndSubmitCredentialsInput!
+  ): Kyc_Response!
   onchain_claim(
     input: Onchain_ClaimRewardsInput!
   ): Onchain_ClaimRewardsResponse!

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mobarter/features/profile/presentation/verify_phone_otp.dart';
-import 'package:mobarter/widgets/bottomSheet.dart';
-import 'package:mobarter/widgets/btn.dart';
-import 'package:mobarter/widgets/inputText.dart';
-import 'package:mobarter/widgets/scaffold.dart';
+import 'package:mobarter/graphql/schema/_docs.graphql.dart';
+import 'package:mobarter/graphql/schema/kyc.gql.dart';
+import 'package:mobarter/widgets/widgets.dart';
 
-class KycPage extends StatelessWidget {
+class KycPage extends HookWidget {
   KycPage({super.key});
   TextEditingController phone = TextEditingController();
   TextEditingController nin = TextEditingController();
@@ -20,6 +20,8 @@ class KycPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final kycSendPhoneOtp = useMutation$kyc_sendPhoneOtp();
+
     return appScaffold(
       context,
       title: "KYC Verification",
@@ -112,16 +114,51 @@ class KycPage extends StatelessWidget {
 
           btn(
             title: "Submit",
-            onPressed: () {
-              // todo
-              // validate form and display error where necessary
-              // sent phone no
-              // await with loading indicator
-              // retrieve otp token
-              // open bottomSheet
-              // todo
-              // display bottom sheet with OTP input
-              btmSheet(h: 0.65, ctx: context, w: VerifyPhoneOtp());
+            loading: kycSendPhoneOtp.result.isLoading,
+            onPressed: () async {
+              try {
+                final response = await kycSendPhoneOtp
+                    .runMutation(
+                      Variables$Mutation$kyc_sendPhoneOtp(
+                        input: Input$Kyc_SendPhoneOtpInput(phone: phone.text),
+                      ),
+                    )
+                    .networkResult;
+
+                final res = response!.parsedData?.kyc_sendPhoneOtp;
+
+                appToast(context, res!.message);
+                // todo
+                // validate form and display error where necessary
+                // send phone no
+                // await with loading indicator
+                // retrieve otp token
+                // open bottomSheet
+                // todo
+                // display bottom sheet with OTP input
+                btmSheet(
+                  h: 0.65,
+                  ctx: context,
+                  w: VerifyPhoneOtp(
+                    cred: Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput(
+                      country: Enum$Country.NG,
+                      firstName: firstName.text,
+                      houseAddress: homeAddress.text,
+                      lastName: lastName.text,
+                      dob: dob.text,
+                      nin: nin.text,
+                      bvn: bvn.text,
+                      phone: phone.text,
+                      state: stateAddress.text,
+                      street: homeAddress.text,
+                      otp: "",
+                      token: res.otpToken,
+                    ),
+                  ),
+                );
+              } catch (e) {
+                appToastErr(context, e.toString());
+              }
             },
           ),
         ],

@@ -5,12 +5,7 @@ import 'package:mobarter/features/bill_tv/presentation/smartCardNo.dart';
 import 'package:mobarter/features/bill_tv/presentation/bouquet.dart';
 import 'package:mobarter/features/bill_tv/presentation/providers.dart';
 import 'package:mobarter/utils/exception.dart';
-import 'package:mobarter/widgets/amountToPay.dart';
-import 'package:mobarter/features/paymentToken/txn_summary_page.dart';
-import 'package:mobarter/widgets/btn.dart';
-import 'package:mobarter/widgets/listTile.dart';
-import 'package:mobarter/widgets/scaffold.dart';
-import 'package:mobarter/widgets/toast.dart';
+import 'package:mobarter/widgets/widgets.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class TvBillsPage extends ConsumerWidget {
@@ -19,7 +14,6 @@ class TvBillsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final watch = tvBillWatch(ref);
-    final read = tvBillRead(ref);
 
     handleSubmit() {
       try {
