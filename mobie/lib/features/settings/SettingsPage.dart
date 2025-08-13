@@ -4,7 +4,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/auth/auth_service.dart';
 import 'package:mobarter/features/bank_account/BankAccountPage.dart';
 import 'package:mobarter/features/profile/profile_page.dart';
-import 'package:mobarter/features/settings/kyc_page.dart';
 import 'package:mobarter/features/settings/showLearn.dart';
 import 'package:mobarter/features/settings/showDocsLinks.dart';
 import 'package:mobarter/features/settings/showSocials.dart';
@@ -16,7 +15,7 @@ import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class SettingsPage extends HookConsumerWidget {
   SettingsPage({super.key});
-  final authSvc = AuthService(); 
+  final authSvc = AuthService();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -64,8 +63,6 @@ class SettingsPage extends HookConsumerWidget {
               );
             },
           ),
-          KYCTile(),
-
           listTile(
             context,
             title: "Bank Account",
@@ -80,14 +77,7 @@ class SettingsPage extends HookConsumerWidget {
               );
             },
           ),
-          // listTile(
-          //   title: "Bank Accounts",
-          //   subtitle: "Manage bank account details",
-          //   icon: Icons.money,
-          //   onTap: () {
-          //     btmSheet(ctx: context, w: ShowBankAccounts());
-          //   },
-          // ),
+
           // listTile(
           //   context,
           //   title: "Theme",
