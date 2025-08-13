@@ -19,6 +19,7 @@ query BankAccount_getAll {
     account_name
     account_no
     bank_name
+    bankCode
   }
 }
 

@@ -380,6 +380,32 @@ export type Kyc_Response = {
   message: Scalars['String']['output'];
 };
 
+export type Kyc_SendOtpResponse = {
+  __typename?: 'Kyc_SendOtpResponse';
+  message: Scalars['String']['output'];
+  otpToken: Scalars['String']['output'];
+};
+
+export type Kyc_SendPhoneOtpInput = {
+  phone: Scalars['String']['input'];
+};
+
+export type Kyc_VerifyPhoneOtpAndSubmitCredentialsInput = {
+  bvn: Scalars['String']['input'];
+  country: Country;
+  dob: Scalars['String']['input'];
+  firstName: Scalars['String']['input'];
+  houseAddress: Scalars['String']['input'];
+  lastName: Scalars['String']['input'];
+  middleName?: InputMaybe<Scalars['String']['input']>;
+  nin: Scalars['String']['input'];
+  otp: Scalars['String']['input'];
+  phone: Scalars['String']['input'];
+  state: Scalars['String']['input'];
+  street: Scalars['String']['input'];
+  token: Scalars['String']['input'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   auth_createAccount: Auth_CreateAccountResponse;
@@ -405,10 +431,11 @@ export type Mutation = {
   kyc_addNames: Kyc_Response;
   kyc_addNin: Kyc_AddNinResponse;
   kyc_createTransactionPin: Kyc_Response;
+  kyc_sendPhoneOtp: Kyc_SendOtpResponse;
+  kyc_verifyPhoneOtpAndSubmitCredentials: Kyc_Response;
   onchain_claim: Onchain_ClaimRewardsResponse;
   orders_Appeal: Order_Response;
   orders_Cancel: Order_Response;
-  orders_CreateBuy: Order_CreteBuyResponse;
   orders_CreateSell: Order_CreteSellResponse;
   orders_MoveCryptoToEscrow: Order_Response;
   tvBills_makePayment: TvBill_PaymentResponse;
@@ -536,6 +563,16 @@ export type MutationKyc_CreateTransactionPinArgs = {
 };
 
 
+export type MutationKyc_SendPhoneOtpArgs = {
+  input: Kyc_SendPhoneOtpInput;
+};
+
+
+export type MutationKyc_VerifyPhoneOtpAndSubmitCredentialsArgs = {
+  input: Kyc_VerifyPhoneOtpAndSubmitCredentialsInput;
+};
+
+
 export type MutationOnchain_ClaimArgs = {
   input: Onchain_ClaimRewardsInput;
 };
@@ -548,11 +585,6 @@ export type MutationOrders_AppealArgs = {
 
 export type MutationOrders_CancelArgs = {
   input: Order_CancelInput;
-};
-
-
-export type MutationOrders_CreateBuyArgs = {
-  input: Order_CreteBuyInput;
 };
 
 
@@ -616,11 +648,6 @@ export enum OrderActions {
   ReleaseCrypto = 'ReleaseCrypto'
 }
 
-export enum OrderMode {
-  Express = 'EXPRESS',
-  Market = 'MARKET'
-}
-
 export enum OrderStatus {
   Appeal = 'APPEAL',
   Cancel = 'CANCEL',
@@ -638,84 +665,19 @@ export type Order_CancelInput = {
   reason: Scalars['String']['input'];
 };
 
-export type Order_CreteBuyInput = {
-  action_merchant?: InputMaybe<OrderActions>;
-  action_user?: InputMaybe<OrderActions>;
-  amount_crypto: Scalars['Float']['input'];
-  amount_fiat: Scalars['Float']['input'];
-  bank_id: Scalars['Float']['input'];
-  currency_crypto: Scalars['String']['input'];
-  currency_fiat: Country;
-  currency_network: Scalars['String']['input'];
-  estimated_duration: Scalars['String']['input'];
-  merchant_id: Scalars['Float']['input'];
-  mode?: InputMaybe<OrderMode>;
-  status: OrderStatus;
-  trade_type: TradeType;
-  txn_hash?: InputMaybe<Scalars['String']['input']>;
-  wallet_customer: Scalars['String']['input'];
-  wallet_merchant: Scalars['String']['input'];
-};
-
-export type Order_CreteBuyResponse = {
-  __typename?: 'Order_CreteBuyResponse';
-  action_merchant?: Maybe<OrderActions>;
-  action_user?: Maybe<OrderActions>;
-  amount_crypto?: Maybe<Scalars['Float']['output']>;
-  amount_fiat?: Maybe<Scalars['Float']['output']>;
-  bank_id?: Maybe<Scalars['Float']['output']>;
-  currency_crypto?: Maybe<Scalars['String']['output']>;
-  currency_fiat?: Maybe<Country>;
-  currency_network?: Maybe<Scalars['String']['output']>;
-  estimated_duration?: Maybe<Scalars['String']['output']>;
-  id: Scalars['ID']['output'];
-  merchant_id?: Maybe<Scalars['Float']['output']>;
-  mode?: Maybe<OrderMode>;
-  status?: Maybe<OrderStatus>;
-  trade_type?: Maybe<TradeType>;
-  txn_hash?: Maybe<Scalars['String']['output']>;
-  wallet_customer?: Maybe<Scalars['String']['output']>;
-  wallet_merchant?: Maybe<Scalars['String']['output']>;
-};
-
 export type Order_CreteSellInput = {
   action_merchant?: InputMaybe<OrderActions>;
   action_user?: InputMaybe<OrderActions>;
-  amount_crypto: Scalars['Float']['input'];
-  amount_fiat: Scalars['Float']['input'];
   bank_id: Scalars['Float']['input'];
-  currency_crypto: Scalars['String']['input'];
   currency_fiat: Country;
-  currency_network: Scalars['String']['input'];
-  estimated_duration: Scalars['String']['input'];
-  merchant_id: Scalars['Float']['input'];
-  mode?: InputMaybe<OrderMode>;
+  payment: PaymentInput;
   status: OrderStatus;
   trade_type: TradeType;
-  txn_hash?: InputMaybe<Scalars['String']['input']>;
-  wallet_customer: Scalars['String']['input'];
-  wallet_merchant: Scalars['String']['input'];
 };
 
 export type Order_CreteSellResponse = {
   __typename?: 'Order_CreteSellResponse';
-  action_merchant?: Maybe<OrderActions>;
-  action_user?: Maybe<OrderActions>;
-  amount_crypto?: Maybe<Scalars['Float']['output']>;
-  amount_fiat?: Maybe<Scalars['Float']['output']>;
-  bank_id?: Maybe<Scalars['Float']['output']>;
-  currency_crypto?: Maybe<Scalars['String']['output']>;
-  currency_fiat?: Maybe<Country>;
-  currency_network?: Maybe<Scalars['String']['output']>;
-  estimated_duration?: Maybe<Scalars['String']['output']>;
-  id: Scalars['ID']['output'];
-  merchant_id?: Maybe<Scalars['Float']['output']>;
-  mode?: Maybe<OrderMode>;
-  status?: Maybe<OrderStatus>;
-  trade_type?: Maybe<TradeType>;
-  txn_hash?: Maybe<Scalars['String']['output']>;
-  wallet_customer?: Maybe<Scalars['String']['output']>;
-  wallet_merchant?: Maybe<Scalars['String']['output']>;
+  msg: Scalars['String']['output'];
 };
 
 export type Order_GetAllInput = {
@@ -740,21 +702,11 @@ export type Order_Response = {
   __typename?: 'Order_Response';
   action_merchant?: Maybe<OrderActions>;
   action_user?: Maybe<OrderActions>;
-  amount_crypto?: Maybe<Scalars['Float']['output']>;
-  amount_fiat?: Maybe<Scalars['Float']['output']>;
   bank_id?: Maybe<Scalars['Float']['output']>;
-  currency_crypto?: Maybe<Scalars['String']['output']>;
   currency_fiat?: Maybe<Country>;
-  currency_network?: Maybe<Scalars['String']['output']>;
-  estimated_duration?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
-  merchant_id?: Maybe<Scalars['Float']['output']>;
-  mode?: Maybe<OrderMode>;
   status?: Maybe<OrderStatus>;
   trade_type?: Maybe<TradeType>;
-  txn_hash?: Maybe<Scalars['String']['output']>;
-  wallet_customer?: Maybe<Scalars['String']['output']>;
-  wallet_merchant?: Maybe<Scalars['String']['output']>;
 };
 
 export enum OtpPurpose {
@@ -765,6 +717,7 @@ export enum OtpPurpose {
 export type PaymentInput = {
   amountCrypto: Scalars['Float']['input'];
   amountFiat: Scalars['Float']['input'];
+  fiatCurrency: Country;
   isNative?: InputMaybe<Scalars['Boolean']['input']>;
   tokenAddress: Scalars['String']['input'];
   tokenChain: Scalars['String']['input'];
@@ -1170,7 +1123,7 @@ export type BankAccount_CreateMutation = { __typename?: 'Mutation', bankAccount_
 export type BankAccount_GetAllQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type BankAccount_GetAllQuery = { __typename?: 'Query', bankAccount_getAll: Array<{ __typename?: 'BankAccount_Response', id: number, account_name: string, account_no: string, bank_name: string }> };
+export type BankAccount_GetAllQuery = { __typename?: 'Query', bankAccount_getAll: Array<{ __typename?: 'BankAccount_Response', id: number, account_name: string, account_no: string, bank_name: string, bankCode?: string | null }> };
 
 export type BankListQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1189,6 +1142,69 @@ export type FxRate_GetAllQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type FxRate_GetAllQuery = { __typename?: 'Query', fxRate_GetAll: { __typename?: 'ExchangeRate_Response', GH: number, NG: number, KE: number, UG: number, MW: number, TZ: number, ZA: number, USD: number, EUR: number } };
 
+export type Kyc_AddAddressInfoMutationVariables = Exact<{
+  input: Kyc_AddAddressInfoInput;
+}>;
+
+
+export type Kyc_AddAddressInfoMutation = { __typename?: 'Mutation', kyc_addAddressInfo: { __typename?: 'Kyc_Response', message: string } };
+
+export type Kyc_AddAddressProofMutationVariables = Exact<{
+  input: Kyc_AddAddressProofInput;
+}>;
+
+
+export type Kyc_AddAddressProofMutation = { __typename?: 'Mutation', kyc_addAddressProof: { __typename?: 'Kyc_Response', message: string } };
+
+export type Kyc_AddBvnMutationVariables = Exact<{
+  input: Kyc_AddBvnInput;
+}>;
+
+
+export type Kyc_AddBvnMutation = { __typename?: 'Mutation', kyc_addBvn: { __typename?: 'Kyc_AddBvnResponse', message: string } };
+
+export type Kyc_AddDobMutationVariables = Exact<{
+  input: Kyc_AddDobInput;
+}>;
+
+
+export type Kyc_AddDobMutation = { __typename?: 'Mutation', kyc_addDob: { __typename?: 'Kyc_Response', message: string } };
+
+export type Kyc_AddNamesMutationVariables = Exact<{
+  input: Kyc_AddNamesInput;
+}>;
+
+
+export type Kyc_AddNamesMutation = { __typename?: 'Mutation', kyc_addNames: { __typename?: 'Kyc_Response', message: string } };
+
+export type Kyc_AddNinMutationVariables = Exact<{
+  input: Kyc_AddNinInput;
+}>;
+
+
+export type Kyc_AddNinMutation = { __typename?: 'Mutation', kyc_addNin: { __typename?: 'Kyc_AddNinResponse', message?: string | null } };
+
+export type Kyc_CreateTransactionPinMutationVariables = Exact<{
+  input: Kyc_CreateTransactionPinInput;
+}>;
+
+
+export type Kyc_CreateTransactionPinMutation = { __typename?: 'Mutation', kyc_createTransactionPin: { __typename?: 'Kyc_Response', message: string } };
+
+export type Kyc_SendPhoneOtpMutationVariables = Exact<{
+  input: Kyc_SendPhoneOtpInput;
+}>;
+
+
+export type Kyc_SendPhoneOtpMutation = { __typename?: 'Mutation', kyc_sendPhoneOtp: { __typename?: 'Kyc_SendOtpResponse', message: string, otpToken: string } };
+
+export type Kyc_VerifyPhoneOtpAndSubmitCredentialsMutationVariables = Exact<{
+  input: Kyc_VerifyPhoneOtpAndSubmitCredentialsInput;
+}>;
+
+
+export type Kyc_VerifyPhoneOtpAndSubmitCredentialsMutation = { __typename?: 'Mutation', kyc_verifyPhoneOtpAndSubmitCredentials: { __typename?: 'Kyc_Response', message: string } };
+
 export type Onchain_ClaimMutationVariables = Exact<{
   input: Onchain_ClaimRewardsInput;
 }>;
@@ -1201,28 +1217,7 @@ export type Orders_CreateSellMutationVariables = Exact<{
 }>;
 
 
-export type Orders_CreateSellMutation = { __typename?: 'Mutation', orders_CreateSell: { __typename?: 'Order_CreteSellResponse', amount_fiat?: number | null, amount_crypto?: number | null, bank_id?: number | null, currency_fiat?: Country | null, currency_crypto?: string | null, estimated_duration?: string | null, merchant_id?: number | null, status?: OrderStatus | null, trade_type?: TradeType | null, wallet_customer?: string | null, wallet_merchant?: string | null, action_user?: OrderActions | null, action_merchant?: OrderActions | null, mode?: OrderMode | null, txn_hash?: string | null } };
-
-export type Orders_GetAllQueryVariables = Exact<{
-  input: Order_GetAllInput;
-}>;
-
-
-export type Orders_GetAllQuery = { __typename?: 'Query', orders_GetAll: Array<{ __typename?: 'Order_Response', id: string, action_user?: OrderActions | null, status?: OrderStatus | null, amount_fiat?: number | null, amount_crypto?: number | null, bank_id?: number | null, currency_fiat?: Country | null, currency_crypto?: string | null, estimated_duration?: string | null, merchant_id?: number | null, trade_type?: TradeType | null, wallet_customer?: string | null, wallet_merchant?: string | null, action_merchant?: OrderActions | null, mode?: OrderMode | null, txn_hash?: string | null }> };
-
-export type Orders_GetOneQueryVariables = Exact<{
-  input: Order_GetOneInput;
-}>;
-
-
-export type Orders_GetOneQuery = { __typename?: 'Query', orders_GetOne: { __typename?: 'Order_Response', id: string, action_user?: OrderActions | null, status?: OrderStatus | null, amount_fiat?: number | null, amount_crypto?: number | null, bank_id?: number | null, currency_fiat?: Country | null, estimated_duration?: string | null, merchant_id?: number | null, trade_type?: TradeType | null, wallet_customer?: string | null, wallet_merchant?: string | null, action_merchant?: OrderActions | null, mode?: OrderMode | null, txn_hash?: string | null } };
-
-export type Orders_GetAllForAdminQueryVariables = Exact<{
-  input: Order_GetAllInput;
-}>;
-
-
-export type Orders_GetAllForAdminQuery = { __typename?: 'Query', orders_GetAllForAdmin: Array<{ __typename?: 'Order_Response', id: string, action_user?: OrderActions | null, status?: OrderStatus | null, amount_fiat?: number | null, amount_crypto?: number | null, bank_id?: number | null, currency_fiat?: Country | null, currency_crypto?: string | null, estimated_duration?: string | null, merchant_id?: number | null, trade_type?: TradeType | null, wallet_customer?: string | null, wallet_merchant?: string | null, action_merchant?: OrderActions | null, mode?: OrderMode | null, txn_hash?: string | null }> };
+export type Orders_CreateSellMutation = { __typename?: 'Mutation', orders_CreateSell: { __typename?: 'Order_CreteSellResponse', msg: string } };
 
 export type Static_GetTokensQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1263,13 +1258,6 @@ export type Static_MiniAppsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type Static_MiniAppsQuery = { __typename?: 'Query', static_miniApps: Array<{ __typename?: 'Static_MiniAppsResponse', title: string, description: string, logo: string, url: string, aboutInfo?: string | null }> };
-
-export type Auth_TelegramLoginMutationVariables = Exact<{
-  input: Auth_TelegramLoginInput;
-}>;
-
-
-export type Auth_TelegramLoginMutation = { __typename?: 'Mutation', auth_loginTelegram: { __typename?: 'Auth_TelegramLoginResponse', token?: string | null, email?: string | null, firstname?: string | null, lastname?: string | null } };
 
 export type Utility_GetTopUpOperatorsQueryVariables = Exact<{
   input: Utilities_GetOperatorsInput;
@@ -1391,15 +1379,21 @@ export type WalletCrypto_MobileCreateMutation = { __typename?: 'Mutation', walle
 export const Auth_FirebaseLoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Auth_firebaseLogin"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Auth_FirebaseLoginInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"auth_firebaseLogin"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"token"}}]}}]}}]} as unknown as DocumentNode<Auth_FirebaseLoginMutation, Auth_FirebaseLoginMutationVariables>;
 export const BankAccount_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"BankAccount_delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BankAccount_DeleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"bankAccount_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<BankAccount_DeleteMutation, BankAccount_DeleteMutationVariables>;
 export const BankAccount_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"BankAccount_create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BankAccount_CreateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"bankAccount_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"account_no"}},{"kind":"Field","name":{"kind":"Name","value":"account_name"}},{"kind":"Field","name":{"kind":"Name","value":"bank_name"}}]}}]}}]} as unknown as DocumentNode<BankAccount_CreateMutation, BankAccount_CreateMutationVariables>;
-export const BankAccount_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"BankAccount_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"bankAccount_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"account_name"}},{"kind":"Field","name":{"kind":"Name","value":"account_no"}},{"kind":"Field","name":{"kind":"Name","value":"bank_name"}}]}}]}}]} as unknown as DocumentNode<BankAccount_GetAllQuery, BankAccount_GetAllQueryVariables>;
+export const BankAccount_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"BankAccount_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"bankAccount_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"account_name"}},{"kind":"Field","name":{"kind":"Name","value":"account_no"}},{"kind":"Field","name":{"kind":"Name","value":"bank_name"}},{"kind":"Field","name":{"kind":"Name","value":"bankCode"}}]}}]}}]} as unknown as DocumentNode<BankAccount_GetAllQuery, BankAccount_GetAllQueryVariables>;
 export const BankListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"BankList"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"bankList"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"bankCode"}},{"kind":"Field","name":{"kind":"Name","value":"bankName"}}]}}]}}]} as unknown as DocumentNode<BankListQuery, BankListQueryVariables>;
 export const Bank_VerifyAccountNoDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Bank_verifyAccountNo"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BankGetAccountName_Input"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"bank_verifyAccountNo"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"account_name"}},{"kind":"Field","name":{"kind":"Name","value":"account_number"}}]}}]}}]} as unknown as DocumentNode<Bank_VerifyAccountNoQuery, Bank_VerifyAccountNoQueryVariables>;
 export const FxRate_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"FxRate_GetAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fxRate_GetAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"GH"}},{"kind":"Field","name":{"kind":"Name","value":"NG"}},{"kind":"Field","name":{"kind":"Name","value":"KE"}},{"kind":"Field","name":{"kind":"Name","value":"UG"}},{"kind":"Field","name":{"kind":"Name","value":"MW"}},{"kind":"Field","name":{"kind":"Name","value":"TZ"}},{"kind":"Field","name":{"kind":"Name","value":"ZA"}},{"kind":"Field","name":{"kind":"Name","value":"USD"}},{"kind":"Field","name":{"kind":"Name","value":"EUR"}}]}}]}}]} as unknown as DocumentNode<FxRate_GetAllQuery, FxRate_GetAllQueryVariables>;
+export const Kyc_AddAddressInfoDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Kyc_addAddressInfo"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Kyc_AddAddressInfoInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"kyc_addAddressInfo"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<Kyc_AddAddressInfoMutation, Kyc_AddAddressInfoMutationVariables>;
+export const Kyc_AddAddressProofDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"kyc_addAddressProof"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Kyc_AddAddressProofInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"kyc_addAddressProof"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<Kyc_AddAddressProofMutation, Kyc_AddAddressProofMutationVariables>;
+export const Kyc_AddBvnDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"kyc_addBvn"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Kyc_AddBvnInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"kyc_addBvn"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<Kyc_AddBvnMutation, Kyc_AddBvnMutationVariables>;
+export const Kyc_AddDobDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"kyc_addDob"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Kyc_AddDobInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"kyc_addDob"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<Kyc_AddDobMutation, Kyc_AddDobMutationVariables>;
+export const Kyc_AddNamesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"kyc_addNames"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Kyc_AddNamesInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"kyc_addNames"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<Kyc_AddNamesMutation, Kyc_AddNamesMutationVariables>;
+export const Kyc_AddNinDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"kyc_addNin"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Kyc_AddNinInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"kyc_addNin"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<Kyc_AddNinMutation, Kyc_AddNinMutationVariables>;
+export const Kyc_CreateTransactionPinDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"kyc_createTransactionPin"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Kyc_CreateTransactionPinInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"kyc_createTransactionPin"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<Kyc_CreateTransactionPinMutation, Kyc_CreateTransactionPinMutationVariables>;
+export const Kyc_SendPhoneOtpDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"kyc_sendPhoneOtp"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Kyc_SendPhoneOtpInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"kyc_sendPhoneOtp"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}},{"kind":"Field","name":{"kind":"Name","value":"otpToken"}}]}}]}}]} as unknown as DocumentNode<Kyc_SendPhoneOtpMutation, Kyc_SendPhoneOtpMutationVariables>;
+export const Kyc_VerifyPhoneOtpAndSubmitCredentialsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"kyc_verifyPhoneOtpAndSubmitCredentials"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Kyc_verifyPhoneOtpAndSubmitCredentialsInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"kyc_verifyPhoneOtpAndSubmitCredentials"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<Kyc_VerifyPhoneOtpAndSubmitCredentialsMutation, Kyc_VerifyPhoneOtpAndSubmitCredentialsMutationVariables>;
 export const Onchain_ClaimDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Onchain_claim"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Onchain_ClaimRewardsInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"onchain_claim"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]} as unknown as DocumentNode<Onchain_ClaimMutation, Onchain_ClaimMutationVariables>;
-export const Orders_CreateSellDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Orders_CreateSell"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Order_CreteSellInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"orders_CreateSell"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount_fiat"}},{"kind":"Field","name":{"kind":"Name","value":"amount_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"bank_id"}},{"kind":"Field","name":{"kind":"Name","value":"amount_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"currency_fiat"}},{"kind":"Field","name":{"kind":"Name","value":"currency_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"estimated_duration"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_id"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"trade_type"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_customer"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_merchant"}},{"kind":"Field","name":{"kind":"Name","value":"action_user"}},{"kind":"Field","name":{"kind":"Name","value":"action_merchant"}},{"kind":"Field","name":{"kind":"Name","value":"mode"}},{"kind":"Field","name":{"kind":"Name","value":"txn_hash"}}]}}]}}]} as unknown as DocumentNode<Orders_CreateSellMutation, Orders_CreateSellMutationVariables>;
-export const Orders_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Orders_GetAll"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Order_GetAllInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"orders_GetAll"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"action_user"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"amount_fiat"}},{"kind":"Field","name":{"kind":"Name","value":"amount_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"bank_id"}},{"kind":"Field","name":{"kind":"Name","value":"amount_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"currency_fiat"}},{"kind":"Field","name":{"kind":"Name","value":"currency_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"estimated_duration"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_id"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"trade_type"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_customer"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_merchant"}},{"kind":"Field","name":{"kind":"Name","value":"action_user"}},{"kind":"Field","name":{"kind":"Name","value":"action_merchant"}},{"kind":"Field","name":{"kind":"Name","value":"mode"}},{"kind":"Field","name":{"kind":"Name","value":"txn_hash"}}]}}]}}]} as unknown as DocumentNode<Orders_GetAllQuery, Orders_GetAllQueryVariables>;
-export const Orders_GetOneDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Orders_GetOne"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Order_GetOneInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"orders_GetOne"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"action_user"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"amount_fiat"}},{"kind":"Field","name":{"kind":"Name","value":"amount_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"bank_id"}},{"kind":"Field","name":{"kind":"Name","value":"amount_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"currency_fiat"}},{"kind":"Field","name":{"kind":"Name","value":"estimated_duration"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_id"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"trade_type"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_customer"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_merchant"}},{"kind":"Field","name":{"kind":"Name","value":"action_user"}},{"kind":"Field","name":{"kind":"Name","value":"action_merchant"}},{"kind":"Field","name":{"kind":"Name","value":"mode"}},{"kind":"Field","name":{"kind":"Name","value":"txn_hash"}}]}}]}}]} as unknown as DocumentNode<Orders_GetOneQuery, Orders_GetOneQueryVariables>;
-export const Orders_GetAllForAdminDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Orders_GetAllForAdmin"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Order_GetAllInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"orders_GetAllForAdmin"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"action_user"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"amount_fiat"}},{"kind":"Field","name":{"kind":"Name","value":"amount_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"bank_id"}},{"kind":"Field","name":{"kind":"Name","value":"amount_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"currency_fiat"}},{"kind":"Field","name":{"kind":"Name","value":"currency_crypto"}},{"kind":"Field","name":{"kind":"Name","value":"estimated_duration"}},{"kind":"Field","name":{"kind":"Name","value":"merchant_id"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"trade_type"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_customer"}},{"kind":"Field","name":{"kind":"Name","value":"wallet_merchant"}},{"kind":"Field","name":{"kind":"Name","value":"action_user"}},{"kind":"Field","name":{"kind":"Name","value":"action_merchant"}},{"kind":"Field","name":{"kind":"Name","value":"mode"}},{"kind":"Field","name":{"kind":"Name","value":"txn_hash"}}]}}]}}]} as unknown as DocumentNode<Orders_GetAllForAdminQuery, Orders_GetAllForAdminQueryVariables>;
+export const Orders_CreateSellDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Orders_CreateSell"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Order_CreteSellInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"orders_CreateSell"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"msg"}}]}}]}}]} as unknown as DocumentNode<Orders_CreateSellMutation, Orders_CreateSellMutationVariables>;
 export const Static_GetTokensDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"static_getTokens"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"static_getTokens"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"decimals"}},{"kind":"Field","name":{"kind":"Name","value":"isBuyable"}},{"kind":"Field","name":{"kind":"Name","value":"isPayable"}},{"kind":"Field","name":{"kind":"Name","value":"symbol"}},{"kind":"Field","name":{"kind":"Name","value":"logoUrl"}},{"kind":"Field","name":{"kind":"Name","value":"chainId"}},{"kind":"Field","name":{"kind":"Name","value":"priceUSD"}},{"kind":"Field","name":{"kind":"Name","value":"priceNGN"}},{"kind":"Field","name":{"kind":"Name","value":"rpcUrl"}},{"kind":"Field","name":{"kind":"Name","value":"chainName"}}]}}]}}]} as unknown as DocumentNode<Static_GetTokensQuery, Static_GetTokensQueryVariables>;
 export const Static_GetLinksDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"static_getLinks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"static_getLinks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"desc"}},{"kind":"Field","name":{"kind":"Name","value":"imgLink"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"category"}},{"kind":"Field","name":{"kind":"Name","value":"group"}}]}}]}}]} as unknown as DocumentNode<Static_GetLinksQuery, Static_GetLinksQueryVariables>;
 export const Static_GetCountryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"static_getCountry"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"static_getCountries"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"isoName"}},{"kind":"Field","name":{"kind":"Name","value":"callingCodes"}},{"kind":"Field","name":{"kind":"Name","value":"continent"}},{"kind":"Field","name":{"kind":"Name","value":"currencyCode"}},{"kind":"Field","name":{"kind":"Name","value":"currencyName"}},{"kind":"Field","name":{"kind":"Name","value":"currencySymbol"}},{"kind":"Field","name":{"kind":"Name","value":"flag"}}]}}]}}]} as unknown as DocumentNode<Static_GetCountryQuery, Static_GetCountryQueryVariables>;
@@ -1408,7 +1402,6 @@ export const Static_GetFundCollectorsDocument = {"kind":"Document","definitions"
 export const Static_AppInfoDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"static_appInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"static_appInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"androidAppUrl"}},{"kind":"Field","name":{"kind":"Name","value":"iosAppUrl"}},{"kind":"Field","name":{"kind":"Name","value":"minBuild"}},{"kind":"Field","name":{"kind":"Name","value":"deployedBuild"}},{"kind":"Field","name":{"kind":"Name","value":"enableAirtime"}},{"kind":"Field","name":{"kind":"Name","value":"enableBetting"}},{"kind":"Field","name":{"kind":"Name","value":"enableDataPlan"}},{"kind":"Field","name":{"kind":"Name","value":"enableElectricityBillPayment"}},{"kind":"Field","name":{"kind":"Name","value":"enableTVBillPayment"}},{"kind":"Field","name":{"kind":"Name","value":"selfKycUrl"}},{"kind":"Field","name":{"kind":"Name","value":"transactionsPageUrl"}},{"kind":"Field","name":{"kind":"Name","value":"notificationsPageUrl"}}]}}]}}]} as unknown as DocumentNode<Static_AppInfoQuery, Static_AppInfoQueryVariables>;
 export const Static_SecretQuestionsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"static_secretQuestions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"static_secretQuestions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"text"}}]}}]}}]} as unknown as DocumentNode<Static_SecretQuestionsQuery, Static_SecretQuestionsQueryVariables>;
 export const Static_MiniAppsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"static_miniApps"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"static_miniApps"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"aboutInfo"}}]}}]}}]} as unknown as DocumentNode<Static_MiniAppsQuery, Static_MiniAppsQueryVariables>;
-export const Auth_TelegramLoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Auth_TelegramLogin"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Auth_TelegramLoginInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"auth_loginTelegram"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"token"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}}]}}]}}]} as unknown as DocumentNode<Auth_TelegramLoginMutation, Auth_TelegramLoginMutationVariables>;
 export const Utility_GetTopUpOperatorsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"utility_getTopUpOperators"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Utilities_GetOperatorsInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"utility_getTopUpOperators"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"airtime"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"suggestedAmounts"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"maxAmount"}},{"kind":"Field","name":{"kind":"Name","value":"minAmount"}},{"kind":"Field","name":{"kind":"Name","value":"operatorId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"dataPlan"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"operatorId"}},{"kind":"Field","name":{"kind":"Name","value":"plans"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"desc"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"dataBundles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"operatorId"}},{"kind":"Field","name":{"kind":"Name","value":"plans"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"desc"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Utility_GetTopUpOperatorsQuery, Utility_GetTopUpOperatorsQueryVariables>;
 export const Transactions_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Transactions_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"transactions_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"category"}},{"kind":"Field","name":{"kind":"Name","value":"mode"}},{"kind":"Field","name":{"kind":"Name","value":"note"}},{"kind":"Field","name":{"kind":"Name","value":"transaction_hash"}},{"kind":"Field","name":{"kind":"Name","value":"status"}}]}}]}}]} as unknown as DocumentNode<Transactions_GetAllQuery, Transactions_GetAllQueryVariables>;
 export const User_GetAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"User_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user_getAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"telegram_id"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"country_code"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]} as unknown as DocumentNode<User_GetAllQuery, User_GetAllQueryVariables>;

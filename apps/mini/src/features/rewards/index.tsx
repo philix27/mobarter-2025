@@ -9,7 +9,7 @@ import { Label } from "@/src/components/comps"
 import { ApolloClient, InMemoryCache } from "@apollo/client"
 import { useRouter } from 'next/router';
 import { IAppParams } from "../types/appParams"
-import { useClaimRewards } from "@/src/api"
+import { Country, useClaimRewards } from "@/src/api"
 import { useDarkMode } from "@/src/styles/mediaQueries"
 
 export const categories = [
@@ -87,7 +87,8 @@ export default function RewardsView() {
                         tokenAddress: "0x",
                         tokenChain: "CELO",
                         transaction_pin: pin,
-                        user_uid: params.uid
+                        user_uid: params.uid,
+                        fiatCurrency: Country.Ng
                     }
                 }
             },

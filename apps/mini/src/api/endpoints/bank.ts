@@ -4,8 +4,8 @@ import {
   BankAccount_DeleteResponse,
   BankAccount_DeleteDocument,
   Onchain_ClaimRewardsResponse,
-  Onchain_ClaimDocument,
   MutationOnchain_ClaimArgs,
+  Onchain_ClaimDocument,
 } from "../__generated__/graphql";
 
 export const useBankAccount_delete = () => {
