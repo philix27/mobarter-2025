@@ -36,14 +36,14 @@ Widget listTile(
             : null,
         leading: icon != null
             ? Container(
-                color: Theme.of(context).scaffoldBackgroundColor  ,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
+                  color: Theme.of(context).scaffoldBackgroundColor,
                 ),
                 padding: EdgeInsets.all(5),
                 child: Icon(
                   icon,
-                  size: 20,
+                  size: 17,
                   color: Theme.of(context).disabledColor,
                 ),
               )
@@ -52,16 +52,14 @@ Widget listTile(
                 borderRadius: BorderRadius.circular(
                   16,
                 ), // Change the radius as needed
-                child: imgUrl == null
-                    ? SizedBox.shrink()
-                    : CachedNetworkImage(
-                        imageUrl: imgUrl,
-                        placeholder: (context, url) => roundShimmerImg(context),
-                        errorWidget: (context, url, error) => SizedBox.shrink(),
-                        width: 25,
-                        height: 25,
-                        fit: BoxFit.cover,
-                      ),
+                child: CachedNetworkImage(
+                  imageUrl: imgUrl,
+                  placeholder: (context, url) => roundShimmerImg(context),
+                  errorWidget: (context, url, error) => SizedBox.shrink(),
+                  width: 25,
+                  height: 25,
+                  fit: BoxFit.cover,
+                ),
               )
             : leading,
         trailing: trailing,

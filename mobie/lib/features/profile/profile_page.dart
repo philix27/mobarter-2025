@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobarter/config/env.dart';
-import 'package:mobarter/widgets/btn.dart';
-import 'package:mobarter/widgets/listTile.dart';
-import 'package:mobarter/widgets/scaffold.dart';
+import 'package:mobarter/features/profile/presentation/kyc_page.dart';
+import 'package:mobarter/widgets/widgets.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -21,7 +21,19 @@ class ProfilePage extends StatelessWidget {
           listTile(context, title: "Date Of Birth"),
           listTile(context, title: "BVN"),
           listTile(context, title: "NIN"),
-          isDevEnv ? btn(title: "KYC") : SizedBox.shrink(),
+          isDevEnv
+              ? btn(
+                  title: "KYC",
+                  onPressed: () {
+                    pushScreen(
+                      context,
+                      screen: KycPage(),
+                      withNavBar: false,
+                      pageTransitionAnimation: PageTransitionAnimation.slideUp,
+                    );
+                  },
+                )
+              : SizedBox.shrink(),
         ],
       ),
     );
