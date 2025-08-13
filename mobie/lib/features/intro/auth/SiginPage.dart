@@ -37,7 +37,7 @@ class SignInPage extends StatelessWidget {
               ],
             ),
             SizedBox(height: 50),
-            btn(title: "Login", onPressed: () {}),
+            Btn(title: "Login", onPressed: () {}),
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

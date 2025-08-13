@@ -49,7 +49,7 @@ class TxnSummaryPage extends HookConsumerWidget {
             ...this.children,
             SelectPaymentToken(cryptoAmountToPay: cryptoAmountToPay),
             SizedBox(height: 20),
-            btn(
+            Btn(
               title: "Confirm",
               onPressed: watch.address == null
                   ? null
@@ -124,7 +124,7 @@ class _EnterPinAndSubmit extends ConsumerWidget {
             },
           ),
           SizedBox(height: 35),
-          btn(
+          Btn(
             title: "Send",
             onPressed: () async {
               try {

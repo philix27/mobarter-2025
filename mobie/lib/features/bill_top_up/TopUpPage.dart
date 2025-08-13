@@ -49,7 +49,7 @@ class TopUpsPage extends HookConsumerWidget {
           TopUpTabs(),
           screenToDisplay,
           CryptoAmountPay(amountFiat: data.amountFiat ?? 0),
-          btn(
+          Btn(
             title: "Submit",
             onPressed: () {
               try {

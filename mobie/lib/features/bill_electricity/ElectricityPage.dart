@@ -39,7 +39,7 @@ class ElectricityPage extends HookConsumerWidget {
                   subtitle: w.customerAddress,
                 )
               : SizedBox.shrink(),
-          btn(
+          Btn(
             title: "Submit",
             onPressed: () {
               if (w.providerName == null || w.providerName!.isEmpty) {

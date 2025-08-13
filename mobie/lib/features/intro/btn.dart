@@ -56,7 +56,7 @@ class _ConnectionButton extends HookWidget {
         updateServerToken(serverToken!);
       } catch (e) {
         appLogger.e("Login Err: $e");
-          appToastErr(context, e.toString());
+        appToastErr(context, e.toString());
       }
     }
 
@@ -117,13 +117,13 @@ class _ConnectionButton extends HookWidget {
     }
 
     if (svc.isLoggedIn()) {
-      return btn(title: "Welcome", onPressed: welcome);
+      return Btn(title: "Welcome", onPressed: welcome);
     } else {
-      return btn(title: "Sign In WIth Google", onPressed: loginWithGoogle);
+      return Btn(title: "Sign In WIth Google", onPressed: loginWithGoogle);
       // return Column(
       //   spacing: 10,
       //   children: [
-      //     btn(
+      //     Btn(
       //       title: "Login",
       //       onPressed: () {
       //         pushScreen(context, screen: SignInPage());

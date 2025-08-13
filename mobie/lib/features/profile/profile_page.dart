@@ -22,7 +22,7 @@ class ProfilePage extends StatelessWidget {
           listTile(context, title: "BVN"),
           listTile(context, title: "NIN"),
           isDevEnv
-              ? btn(
+              ? Btn(
                   title: "KYC",
                   onPressed: () {
                     pushScreen(

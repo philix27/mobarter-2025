@@ -44,7 +44,7 @@ class SelctDisplay extends HookWidget {
         title: "Connection Error",
         subtitle: "Kindly check your network connection and try again",
         activeIndex: 0,
-        button: btn(
+        button: Btn(
           title: "Restart",
           onPressed: () {
             Phoenix.rebirth(context);
@@ -73,7 +73,7 @@ class SelctDisplay extends HookWidget {
             subtitle:
                 "A new version is avaliable. Kindly visit the store to get the latest features.",
             activeIndex: 0,
-            button: btn(
+            button: Btn(
               title: "Update now",
               onPressed: () {
                 launchUrl(
@@ -84,7 +84,7 @@ class SelctDisplay extends HookWidget {
             ),
           );
         }
-        
+
         return LiquidSwipe(
           pages: [
             IntroScreen(

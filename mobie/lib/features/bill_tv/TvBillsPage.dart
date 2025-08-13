@@ -59,7 +59,7 @@ class TvBillsPage extends ConsumerWidget {
           TvBillsSmartCardNoField(),
           CryptoAmountPay(amountFiat: watch.amountFiat ?? 0),
           SizedBox(height: 10),
-          btn(title: "Submit", onPressed: handleSubmit),
+          Btn(title: "Submit", onPressed: handleSubmit),
         ],
       ),
     );

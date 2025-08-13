@@ -66,7 +66,7 @@ class FundBettingBillsPage extends HookConsumerWidget {
                 ),
                 ServiceIdField(),
                 listTile(
-                  context, 
+                  context,
                   title: data.amountFiat == null
                       ? "Select amount"
                       : "₦${data.amountFiat}",
@@ -81,7 +81,7 @@ class FundBettingBillsPage extends HookConsumerWidget {
                 CryptoAmountPay(amountFiat: data.amountFiat ?? 0),
                 SizedBox(height: 10),
 
-                btn(
+                Btn(
                   title: "Submit",
                   onPressed: () {
                     require(data.amountFiat, "Select price");
@@ -107,7 +107,7 @@ class FundBettingBillsPage extends HookConsumerWidget {
                           simpleRow(title: "Pay", subtitle: "amountToPay"),
                           // simpleRow(title: "Cashback bonus", subtitle: cashback),
                           SizedBox(height: 20),
-                          // btn(title: "Send", onPressed: ),
+                          // Btn(title: "Send", onPressed: ),
                         ],
                         send: (payload) async {
                           appToastErr(context, "Summary Page testing");

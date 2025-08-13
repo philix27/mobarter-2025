@@ -25,7 +25,7 @@ class OrdersSellCryptoPage extends HookConsumerWidget {
           SellAmount(),
           SelectBankAccount(),
           CryptoAmountPay(amountFiat: data.amountFiat ?? 0),
-          btn(
+          Btn(
             title: "Send",
             onPressed: () {
               try {

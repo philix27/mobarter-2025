@@ -1,21 +1,21 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/kyc.gql.dart';
 import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/widgets/widgets.dart';
 
-class VerifyPhoneOtp extends HookWidget {
+class VerifyPhoneOtp extends HookConsumerWidget {
   VerifyPhoneOtp({super.key, required this.cred});
   final Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput cred;
 
   final TextEditingController pin = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     final kyc_verifyPhoneOtp =
         useMutation$kyc_verifyPhoneOtpAndSubmitCredentials();
     return Padding(
@@ -45,7 +45,7 @@ class VerifyPhoneOtp extends HookWidget {
             },
           ),
           SizedBox(height: 35),
-          btn(
+          Btn(
             title: "Send",
             onPressed: () async {
               try {
@@ -92,5 +92,3 @@ class VerifyPhoneOtp extends HookWidget {
     );
   }
 }
-
- 

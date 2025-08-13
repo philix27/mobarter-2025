@@ -63,7 +63,7 @@ class AddBankAccountPage extends HookConsumerWidget {
           AccountNo(),
           w.accountName != null ? AccountName() : SizedBox.shrink(),
           SizedBox(height: 20),
-          btn(title: "Add", onPressed: submit),
+          Btn(title: "Add", onPressed: submit),
         ],
       ),
     );

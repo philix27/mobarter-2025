@@ -51,7 +51,7 @@ class WalletQrCodePage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 20),
-                  btn(
+                  Btn(
                     title: "Copy",
                     onPressed: () {
                       Clipboard.setData(ClipboardData(text: w)).then((_) {

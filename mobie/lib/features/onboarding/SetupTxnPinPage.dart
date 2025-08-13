@@ -161,7 +161,7 @@ class SetupTxnPinHook extends HookWidget {
               LengthLimitingTextInputFormatter(6), // Enforces the limit
             ],
           ),
-          btn(title: "Submit", onPressed: validate),
+          Btn(title: "Submit", onPressed: validate),
         ],
       ),
     );

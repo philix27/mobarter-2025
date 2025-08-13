@@ -24,7 +24,7 @@ class ResetPasswordPage extends StatelessWidget {
             SizedBox(height: 20),
             textField(context, label: "Confirm Password"),
             SizedBox(height: 20),
-            btn(title: "Reset", onPressed: () {}),
+            Btn(title: "Reset", onPressed: () {}),
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
