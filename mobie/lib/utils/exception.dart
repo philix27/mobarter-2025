@@ -3,7 +3,7 @@ class AppPlainException implements Exception {
   AppPlainException(this.message);
 
   @override
-  String toString() => "$message";
+  String toString() => message;
 }
 
 require(dynamic payload, String msg) {

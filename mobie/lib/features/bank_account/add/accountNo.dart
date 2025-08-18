@@ -35,7 +35,7 @@ class AccountNo extends ConsumerWidget {
       onChanged: (value) {
         if (value.length > len) {
           value = value.substring(0, len); // Limit to 11 digits
-          appToast(context, "Maximum ${len} digits allowed");
+          appToast(context, "Maximum $len digits allowed");
           return;
         }
         r.updateNo(value);

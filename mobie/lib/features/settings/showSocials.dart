@@ -15,7 +15,7 @@ class ShowSocials extends StatelessWidget {
 }
 
 class _SocialList extends HookWidget {
-  const _SocialList({super.key});
+  const _SocialList();
 
   @override
   Widget build(BuildContext context) {

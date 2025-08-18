@@ -91,6 +91,7 @@ class _CopyWithImpl$Variables$Mutation$Orders_CreateSell<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$Orders_CreateSell._({
         ..._instance._$data,
@@ -103,8 +104,9 @@ class _CopyWithStubImpl$Variables$Mutation$Orders_CreateSell<TRes>
     implements CopyWith$Variables$Mutation$Orders_CreateSell<TRes> {
   _CopyWithStubImpl$Variables$Mutation$Orders_CreateSell(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Input$Order_CreteSellInput? input}) => _res;
 }
 
@@ -115,11 +117,11 @@ class Mutation$Orders_CreateSell {
   });
 
   factory Mutation$Orders_CreateSell.fromJson(Map<String, dynamic> json) {
-    final l$orders_CreateSell = json['orders_CreateSell'];
+    final l$ordersCreatesell = json['orders_CreateSell'];
     final l$$__typename = json['__typename'];
     return Mutation$Orders_CreateSell(
       orders_CreateSell: Mutation$Orders_CreateSell$orders_CreateSell.fromJson(
-          (l$orders_CreateSell as Map<String, dynamic>)),
+          (l$ordersCreatesell as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -129,20 +131,20 @@ class Mutation$Orders_CreateSell {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$orders_CreateSell = orders_CreateSell;
-    _resultData['orders_CreateSell'] = l$orders_CreateSell.toJson();
+    final resultData = <String, dynamic>{};
+    final l$ordersCreatesell = orders_CreateSell;
+    resultData['orders_CreateSell'] = l$ordersCreatesell.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$orders_CreateSell = orders_CreateSell;
+    final l$ordersCreatesell = orders_CreateSell;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$orders_CreateSell,
+      l$ordersCreatesell,
       l$$__typename,
     ]);
   }
@@ -156,9 +158,9 @@ class Mutation$Orders_CreateSell {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$orders_CreateSell = orders_CreateSell;
-    final lOther$orders_CreateSell = other.orders_CreateSell;
-    if (l$orders_CreateSell != lOther$orders_CreateSell) {
+    final l$ordersCreatesell = orders_CreateSell;
+    final lother$ordersCreatesell = other.orders_CreateSell;
+    if (l$ordersCreatesell != lother$ordersCreatesell) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -209,6 +211,7 @@ class _CopyWithImpl$Mutation$Orders_CreateSell<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? orders_CreateSell = _undefined,
     Object? $__typename = _undefined,
@@ -224,11 +227,12 @@ class _CopyWithImpl$Mutation$Orders_CreateSell<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Mutation$Orders_CreateSell$orders_CreateSell<TRes>
       get orders_CreateSell {
-    final local$orders_CreateSell = _instance.orders_CreateSell;
+    final local$ordersCreatesell = _instance.orders_CreateSell;
     return CopyWith$Mutation$Orders_CreateSell$orders_CreateSell(
-        local$orders_CreateSell, (e) => call(orders_CreateSell: e));
+        local$ordersCreatesell, (e) => call(orders_CreateSell: e));
   }
 }
 
@@ -236,14 +240,16 @@ class _CopyWithStubImpl$Mutation$Orders_CreateSell<TRes>
     implements CopyWith$Mutation$Orders_CreateSell<TRes> {
   _CopyWithStubImpl$Mutation$Orders_CreateSell(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Mutation$Orders_CreateSell$orders_CreateSell? orders_CreateSell,
     String? $__typename,
   }) =>
       _res;
 
+  @override
   CopyWith$Mutation$Orders_CreateSell$orders_CreateSell<TRes>
       get orders_CreateSell =>
           CopyWith$Mutation$Orders_CreateSell$orders_CreateSell.stub(_res);
@@ -315,26 +321,21 @@ typedef OnMutationCompleted$Mutation$Orders_CreateSell = FutureOr<void>
 class Options$Mutation$Orders_CreateSell
     extends graphql.MutationOptions<Mutation$Orders_CreateSell> {
   Options$Mutation$Orders_CreateSell({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$Orders_CreateSell variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$Orders_CreateSell? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$Orders_CreateSell? onCompleted,
-    graphql.OnMutationUpdate<Mutation$Orders_CreateSell>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -343,8 +344,6 @@ class Options$Mutation$Orders_CreateSell
                         ? null
                         : _parserFn$Mutation$Orders_CreateSell(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationOrders_CreateSell,
           parserFn: _parserFn$Mutation$Orders_CreateSell,
         );
@@ -363,31 +362,22 @@ class Options$Mutation$Orders_CreateSell
 class WatchOptions$Mutation$Orders_CreateSell
     extends graphql.WatchQueryOptions<Mutation$Orders_CreateSell> {
   WatchOptions$Mutation$Orders_CreateSell({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$Orders_CreateSell variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$Orders_CreateSell? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeMutationOrders_CreateSell,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$Orders_CreateSell,
         );
 }
@@ -396,11 +386,11 @@ extension ClientExtension$Mutation$Orders_CreateSell on graphql.GraphQLClient {
   Future<graphql.QueryResult<Mutation$Orders_CreateSell>>
       mutate$Orders_CreateSell(
               Options$Mutation$Orders_CreateSell options) async =>
-          await this.mutate(options);
+          await mutate(options);
   graphql.ObservableQuery<Mutation$Orders_CreateSell>
       watchMutation$Orders_CreateSell(
               WatchOptions$Mutation$Orders_CreateSell options) =>
-          this.watchMutation(options);
+          watchMutation(options);
 }
 
 class Mutation$Orders_CreateSell$HookResult {
@@ -436,24 +426,19 @@ graphql.ObservableQuery<Mutation$Orders_CreateSell>
 class WidgetOptions$Mutation$Orders_CreateSell
     extends graphql.MutationOptions<Mutation$Orders_CreateSell> {
   WidgetOptions$Mutation$Orders_CreateSell({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$Orders_CreateSell? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$Orders_CreateSell? onCompleted,
-    graphql.OnMutationUpdate<Mutation$Orders_CreateSell>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -462,8 +447,6 @@ class WidgetOptions$Mutation$Orders_CreateSell
                         ? null
                         : _parserFn$Mutation$Orders_CreateSell(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationOrders_CreateSell,
           parserFn: _parserFn$Mutation$Orders_CreateSell,
         );
@@ -493,11 +476,10 @@ typedef Builder$Mutation$Orders_CreateSell = widgets.Widget Function(
 class Mutation$Orders_CreateSell$Widget
     extends graphql_flutter.Mutation<Mutation$Orders_CreateSell> {
   Mutation$Orders_CreateSell$Widget({
-    widgets.Key? key,
+    super.key,
     WidgetOptions$Mutation$Orders_CreateSell? options,
     required Builder$Mutation$Orders_CreateSell builder,
   }) : super(
-          key: key,
           options: options ?? WidgetOptions$Mutation$Orders_CreateSell(),
           builder: (
             run,
@@ -540,12 +522,12 @@ class Mutation$Orders_CreateSell$orders_CreateSell {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$msg = msg;
-    _resultData['msg'] = l$msg;
+    resultData['msg'] = l$msg;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -619,6 +601,7 @@ class _CopyWithImpl$Mutation$Orders_CreateSell$orders_CreateSell<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? msg = _undefined,
     Object? $__typename = _undefined,
@@ -635,8 +618,9 @@ class _CopyWithStubImpl$Mutation$Orders_CreateSell$orders_CreateSell<TRes>
     implements CopyWith$Mutation$Orders_CreateSell$orders_CreateSell<TRes> {
   _CopyWithStubImpl$Mutation$Orders_CreateSell$orders_CreateSell(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? msg,
     String? $__typename,

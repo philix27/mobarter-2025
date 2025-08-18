@@ -5,6 +5,8 @@ import 'package:mobarter/features/bill_top_up/TopUpPage.dart';
 import 'package:mobarter/features/bill_top_up/logic/provider.dart';
 
 class TopUpTabs extends ConsumerWidget {
+  const TopUpTabs({super.key});
+
   @override
   Widget build(BuildContext context, ref) {
     final data = topUpWatch(ref);

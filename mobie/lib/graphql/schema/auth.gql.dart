@@ -91,6 +91,7 @@ class _CopyWithImpl$Variables$Mutation$Auth_firebaseLogin<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$Auth_firebaseLogin._({
         ..._instance._$data,
@@ -103,8 +104,9 @@ class _CopyWithStubImpl$Variables$Mutation$Auth_firebaseLogin<TRes>
     implements CopyWith$Variables$Mutation$Auth_firebaseLogin<TRes> {
   _CopyWithStubImpl$Variables$Mutation$Auth_firebaseLogin(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Input$Auth_FirebaseLoginInput? input}) => _res;
 }
 
@@ -115,12 +117,12 @@ class Mutation$Auth_firebaseLogin {
   });
 
   factory Mutation$Auth_firebaseLogin.fromJson(Map<String, dynamic> json) {
-    final l$auth_firebaseLogin = json['auth_firebaseLogin'];
+    final l$authFirebaselogin = json['auth_firebaseLogin'];
     final l$$__typename = json['__typename'];
     return Mutation$Auth_firebaseLogin(
       auth_firebaseLogin:
           Mutation$Auth_firebaseLogin$auth_firebaseLogin.fromJson(
-              (l$auth_firebaseLogin as Map<String, dynamic>)),
+              (l$authFirebaselogin as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -130,20 +132,20 @@ class Mutation$Auth_firebaseLogin {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$auth_firebaseLogin = auth_firebaseLogin;
-    _resultData['auth_firebaseLogin'] = l$auth_firebaseLogin.toJson();
+    final resultData = <String, dynamic>{};
+    final l$authFirebaselogin = auth_firebaseLogin;
+    resultData['auth_firebaseLogin'] = l$authFirebaselogin.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$auth_firebaseLogin = auth_firebaseLogin;
+    final l$authFirebaselogin = auth_firebaseLogin;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$auth_firebaseLogin,
+      l$authFirebaselogin,
       l$$__typename,
     ]);
   }
@@ -157,9 +159,9 @@ class Mutation$Auth_firebaseLogin {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$auth_firebaseLogin = auth_firebaseLogin;
-    final lOther$auth_firebaseLogin = other.auth_firebaseLogin;
-    if (l$auth_firebaseLogin != lOther$auth_firebaseLogin) {
+    final l$authFirebaselogin = auth_firebaseLogin;
+    final lother$authFirebaselogin = other.auth_firebaseLogin;
+    if (l$authFirebaselogin != lother$authFirebaselogin) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -210,6 +212,7 @@ class _CopyWithImpl$Mutation$Auth_firebaseLogin<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? auth_firebaseLogin = _undefined,
     Object? $__typename = _undefined,
@@ -225,11 +228,12 @@ class _CopyWithImpl$Mutation$Auth_firebaseLogin<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Mutation$Auth_firebaseLogin$auth_firebaseLogin<TRes>
       get auth_firebaseLogin {
-    final local$auth_firebaseLogin = _instance.auth_firebaseLogin;
+    final local$authFirebaselogin = _instance.auth_firebaseLogin;
     return CopyWith$Mutation$Auth_firebaseLogin$auth_firebaseLogin(
-        local$auth_firebaseLogin, (e) => call(auth_firebaseLogin: e));
+        local$authFirebaselogin, (e) => call(auth_firebaseLogin: e));
   }
 }
 
@@ -237,14 +241,16 @@ class _CopyWithStubImpl$Mutation$Auth_firebaseLogin<TRes>
     implements CopyWith$Mutation$Auth_firebaseLogin<TRes> {
   _CopyWithStubImpl$Mutation$Auth_firebaseLogin(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Mutation$Auth_firebaseLogin$auth_firebaseLogin? auth_firebaseLogin,
     String? $__typename,
   }) =>
       _res;
 
+  @override
   CopyWith$Mutation$Auth_firebaseLogin$auth_firebaseLogin<TRes>
       get auth_firebaseLogin =>
           CopyWith$Mutation$Auth_firebaseLogin$auth_firebaseLogin.stub(_res);
@@ -344,26 +350,21 @@ typedef OnMutationCompleted$Mutation$Auth_firebaseLogin = FutureOr<void>
 class Options$Mutation$Auth_firebaseLogin
     extends graphql.MutationOptions<Mutation$Auth_firebaseLogin> {
   Options$Mutation$Auth_firebaseLogin({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$Auth_firebaseLogin variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$Auth_firebaseLogin? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$Auth_firebaseLogin? onCompleted,
-    graphql.OnMutationUpdate<Mutation$Auth_firebaseLogin>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -372,8 +373,6 @@ class Options$Mutation$Auth_firebaseLogin
                         ? null
                         : _parserFn$Mutation$Auth_firebaseLogin(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationAuth_firebaseLogin,
           parserFn: _parserFn$Mutation$Auth_firebaseLogin,
         );
@@ -392,31 +391,22 @@ class Options$Mutation$Auth_firebaseLogin
 class WatchOptions$Mutation$Auth_firebaseLogin
     extends graphql.WatchQueryOptions<Mutation$Auth_firebaseLogin> {
   WatchOptions$Mutation$Auth_firebaseLogin({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$Auth_firebaseLogin variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$Auth_firebaseLogin? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeMutationAuth_firebaseLogin,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$Auth_firebaseLogin,
         );
 }
@@ -425,11 +415,11 @@ extension ClientExtension$Mutation$Auth_firebaseLogin on graphql.GraphQLClient {
   Future<graphql.QueryResult<Mutation$Auth_firebaseLogin>>
       mutate$Auth_firebaseLogin(
               Options$Mutation$Auth_firebaseLogin options) async =>
-          await this.mutate(options);
+          await mutate(options);
   graphql.ObservableQuery<Mutation$Auth_firebaseLogin>
       watchMutation$Auth_firebaseLogin(
               WatchOptions$Mutation$Auth_firebaseLogin options) =>
-          this.watchMutation(options);
+          watchMutation(options);
 }
 
 class Mutation$Auth_firebaseLogin$HookResult {
@@ -465,24 +455,19 @@ graphql.ObservableQuery<Mutation$Auth_firebaseLogin>
 class WidgetOptions$Mutation$Auth_firebaseLogin
     extends graphql.MutationOptions<Mutation$Auth_firebaseLogin> {
   WidgetOptions$Mutation$Auth_firebaseLogin({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$Auth_firebaseLogin? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$Auth_firebaseLogin? onCompleted,
-    graphql.OnMutationUpdate<Mutation$Auth_firebaseLogin>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -491,8 +476,6 @@ class WidgetOptions$Mutation$Auth_firebaseLogin
                         ? null
                         : _parserFn$Mutation$Auth_firebaseLogin(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationAuth_firebaseLogin,
           parserFn: _parserFn$Mutation$Auth_firebaseLogin,
         );
@@ -522,11 +505,10 @@ typedef Builder$Mutation$Auth_firebaseLogin = widgets.Widget Function(
 class Mutation$Auth_firebaseLogin$Widget
     extends graphql_flutter.Mutation<Mutation$Auth_firebaseLogin> {
   Mutation$Auth_firebaseLogin$Widget({
-    widgets.Key? key,
+    super.key,
     WidgetOptions$Mutation$Auth_firebaseLogin? options,
     required Builder$Mutation$Auth_firebaseLogin builder,
   }) : super(
-          key: key,
           options: options ?? WidgetOptions$Mutation$Auth_firebaseLogin(),
           builder: (
             run,
@@ -589,20 +571,20 @@ class Mutation$Auth_firebaseLogin$auth_firebaseLogin {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$firstname = firstname;
-    _resultData['firstname'] = l$firstname;
+    resultData['firstname'] = l$firstname;
     final l$lastname = lastname;
-    _resultData['lastname'] = l$lastname;
+    resultData['lastname'] = l$lastname;
     final l$middlename = middlename;
-    _resultData['middlename'] = l$middlename;
+    resultData['middlename'] = l$middlename;
     final l$email = email;
-    _resultData['email'] = l$email;
+    resultData['email'] = l$email;
     final l$token = token;
-    _resultData['token'] = l$token;
+    resultData['token'] = l$token;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -709,6 +691,7 @@ class _CopyWithImpl$Mutation$Auth_firebaseLogin$auth_firebaseLogin<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? firstname = _undefined,
     Object? lastname = _undefined,
@@ -738,8 +721,9 @@ class _CopyWithStubImpl$Mutation$Auth_firebaseLogin$auth_firebaseLogin<TRes>
     implements CopyWith$Mutation$Auth_firebaseLogin$auth_firebaseLogin<TRes> {
   _CopyWithStubImpl$Mutation$Auth_firebaseLogin$auth_firebaseLogin(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? firstname,
     String? lastname,

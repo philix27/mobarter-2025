@@ -6,7 +6,7 @@ import 'package:mobarter/widgets/loading.dart';
 class CryptoAmountPay extends HookWidget {
   final double amountFiat;
 
-  CryptoAmountPay({required this.amountFiat});
+  const CryptoAmountPay({super.key, required this.amountFiat});
 
   @override
   Widget build(BuildContext context) {

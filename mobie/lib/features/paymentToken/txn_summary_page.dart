@@ -46,7 +46,7 @@ class TxnSummaryPage extends HookConsumerWidget {
         child: Column(
           spacing: 18,
           children: [
-            ...this.children,
+            ...children,
             SelectPaymentToken(cryptoAmountToPay: cryptoAmountToPay),
             SizedBox(height: 20),
             Btn(
@@ -67,7 +67,7 @@ class TxnSummaryPage extends HookConsumerWidget {
                         btmSheet(
                           h: 0.65,
                           ctx: context,
-                          w: _EnterPinAndSubmit(send: this.send),
+                          w: _EnterPinAndSubmit(send: send),
                         );
                       } catch (e) {
                         appToastErr(context, e.toString());
@@ -82,7 +82,7 @@ class TxnSummaryPage extends HookConsumerWidget {
 }
 
 class _EnterPinAndSubmit extends ConsumerWidget {
-  _EnterPinAndSubmit({super.key, required this.send});
+  _EnterPinAndSubmit({required this.send});
   Future<void> Function(SendPaymentInput paylod) send;
 
   final TextEditingController pin = TextEditingController();

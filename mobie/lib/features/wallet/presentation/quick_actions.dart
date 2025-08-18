@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/features/onboarding/SetupTxnPinPage.dart';
 import 'package:mobarter/features/orders_sell/OrderSellCryptoPage.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/features/wallet/WalletQRCodePage.dart';

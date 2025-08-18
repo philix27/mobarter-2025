@@ -44,7 +44,7 @@ Future<void> initiateCrashlytics() async {
 }
 
 class CrashlyticsPage extends StatefulWidget {
-  CrashlyticsPage({Key? key}) : super(key: key);
+  const CrashlyticsPage({super.key});
   @override
   _MyAppState createState() => _MyAppState();
 }

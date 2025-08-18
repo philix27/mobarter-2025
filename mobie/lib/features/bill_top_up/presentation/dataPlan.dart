@@ -64,7 +64,7 @@ class _SelectDataPlan extends HookWidget {
 }
 
 class PlanList extends HookConsumerWidget {
-  PlanList({
+  const PlanList({
     super.key,
     required this.dataPlanCollection,
     required this.dataBundleCollection,

@@ -12,7 +12,6 @@ class AppTheme {
   static final light = ThemeData(
     cardColor: Colors.grey.shade200,
     primaryColor: Colors.deepOrange,
-    indicatorColor: Colors.deepOrange,
     scaffoldBackgroundColor: Colors.white,
     canvasColor: Colors.white,
     highlightColor: colorPrimaryLight,
@@ -34,13 +33,12 @@ class AppTheme {
       style: ListTileStyle.list,
     ),
     hintColor: Colors.white,
-    iconTheme: IconThemeData(color: Colors.grey.shade200),
+    iconTheme: IconThemeData(color: Colors.grey.shade200), tabBarTheme: TabBarThemeData(indicatorColor: Colors.deepOrange),
   );
 
   static final dark = ThemeData(
     cardColor: Colors.grey.shade800,
     primaryColor: Colors.deepOrange,
-    indicatorColor: Colors.deepOrange,
     scaffoldBackgroundColor: Colors.grey.shade900,
     canvasColor: Colors.black54,
     highlightColor: colorPrimaryLight,
@@ -74,6 +72,6 @@ class AppTheme {
       labelStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
       floatingLabelStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w300),
     ),
-    iconTheme: IconThemeData(color: Colors.white70),
+    iconTheme: IconThemeData(color: Colors.white70), tabBarTheme: TabBarThemeData(indicatorColor: Colors.deepOrange),
   );
 }

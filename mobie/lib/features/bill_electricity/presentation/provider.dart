@@ -56,7 +56,7 @@ class _SelectDataPlan extends HookWidget {
 }
 
 class BillProvidersList extends ConsumerWidget {
-  BillProvidersList({super.key, required this.list});
+  const BillProvidersList({super.key, required this.list});
 
   final List<Query$ElectricityBill_getProviders$electricityBill_getProviders>?
   list;

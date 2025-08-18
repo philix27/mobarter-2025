@@ -12,10 +12,10 @@ class Query$User_getAll {
   });
 
   factory Query$User_getAll.fromJson(Map<String, dynamic> json) {
-    final l$user_getAll = json['user_getAll'];
+    final l$userGetall = json['user_getAll'];
     final l$$__typename = json['__typename'];
     return Query$User_getAll(
-      user_getAll: (l$user_getAll as List<dynamic>)
+      user_getAll: (l$userGetall as List<dynamic>)
           .map((e) => Query$User_getAll$user_getAll.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
@@ -28,20 +28,20 @@ class Query$User_getAll {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$user_getAll = user_getAll;
-    _resultData['user_getAll'] = l$user_getAll.map((e) => e.toJson()).toList();
+    final resultData = <String, dynamic>{};
+    final l$userGetall = user_getAll;
+    resultData['user_getAll'] = l$userGetall.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$user_getAll = user_getAll;
+    final l$userGetall = user_getAll;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$user_getAll.map((v) => v)),
+      Object.hashAll(l$userGetall.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -54,15 +54,15 @@ class Query$User_getAll {
     if (other is! Query$User_getAll || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$user_getAll = user_getAll;
-    final lOther$user_getAll = other.user_getAll;
-    if (l$user_getAll.length != lOther$user_getAll.length) {
+    final l$userGetall = user_getAll;
+    final lother$userGetall = other.user_getAll;
+    if (l$userGetall.length != lother$userGetall.length) {
       return false;
     }
-    for (int i = 0; i < l$user_getAll.length; i++) {
-      final l$user_getAll$entry = l$user_getAll[i];
-      final lOther$user_getAll$entry = lOther$user_getAll[i];
-      if (l$user_getAll$entry != lOther$user_getAll$entry) {
+    for (int i = 0; i < l$userGetall.length; i++) {
+      final l$userGetall$entry = l$userGetall[i];
+      final lother$userGetall$entry = lother$userGetall[i];
+      if (l$userGetall$entry != lother$userGetall$entry) {
         return false;
       }
     }
@@ -101,7 +101,7 @@ abstract class CopyWith$Query$User_getAll<TRes> {
               Iterable<
                   CopyWith$Query$User_getAll$user_getAll<
                       Query$User_getAll$user_getAll>>)
-          _fn);
+          fn);
 }
 
 class _CopyWithImpl$Query$User_getAll<TRes>
@@ -117,6 +117,7 @@ class _CopyWithImpl$Query$User_getAll<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? user_getAll = _undefined,
     Object? $__typename = _undefined,
@@ -130,14 +131,15 @@ class _CopyWithImpl$Query$User_getAll<TRes>
             : ($__typename as String),
       ));
 
+  @override
   TRes user_getAll(
           Iterable<Query$User_getAll$user_getAll> Function(
                   Iterable<
                       CopyWith$Query$User_getAll$user_getAll<
                           Query$User_getAll$user_getAll>>)
-              _fn) =>
+              fn) =>
       call(
-          user_getAll: _fn(_instance.user_getAll
+          user_getAll: fn(_instance.user_getAll
               .map((e) => CopyWith$Query$User_getAll$user_getAll(
                     e,
                     (i) => i,
@@ -148,15 +150,17 @@ class _CopyWithStubImpl$Query$User_getAll<TRes>
     implements CopyWith$Query$User_getAll<TRes> {
   _CopyWithStubImpl$Query$User_getAll(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     List<Query$User_getAll$user_getAll>? user_getAll,
     String? $__typename,
   }) =>
       _res;
 
-  user_getAll(_fn) => _res;
+  @override
+  user_getAll(fn) => _res;
 }
 
 const documentNodeQueryUser_getAll = DocumentNode(definitions: [
@@ -257,32 +261,25 @@ typedef OnQueryComplete$Query$User_getAll = FutureOr<void> Function(
 class Options$Query$User_getAll
     extends graphql.QueryOptions<Query$User_getAll> {
   Options$Query$User_getAll({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$User_getAll? typedOptimisticResult,
-    Duration? pollInterval,
-    graphql.Context? context,
+    super.pollInterval,
+    super.context,
     OnQueryComplete$Query$User_getAll? onComplete,
-    graphql.OnQueryError? onError,
+    super.onError,
   })  : onCompleteWithParsed = onComplete,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          pollInterval: pollInterval,
-          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
                     data,
                     data == null ? null : _parserFn$Query$User_getAll(data),
                   ),
-          onError: onError,
           document: documentNodeQueryUser_getAll,
           parserFn: _parserFn$Query$User_getAll,
         );
@@ -301,37 +298,27 @@ class Options$Query$User_getAll
 class WatchOptions$Query$User_getAll
     extends graphql.WatchQueryOptions<Query$User_getAll> {
   WatchOptions$Query$User_getAll({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$User_getAll? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeQueryUser_getAll,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Query$User_getAll,
         );
 }
 
 class FetchMoreOptions$Query$User_getAll extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$User_getAll({required graphql.UpdateQuery updateQuery})
+  FetchMoreOptions$Query$User_getAll({required super.updateQuery})
       : super(
-          updateQuery: updateQuery,
           document: documentNodeQueryUser_getAll,
         );
 }
@@ -339,15 +326,15 @@ class FetchMoreOptions$Query$User_getAll extends graphql.FetchMoreOptions {
 extension ClientExtension$Query$User_getAll on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$User_getAll>> query$User_getAll(
           [Options$Query$User_getAll? options]) async =>
-      await this.query(options ?? Options$Query$User_getAll());
+      await query(options ?? Options$Query$User_getAll());
   graphql.ObservableQuery<Query$User_getAll> watchQuery$User_getAll(
           [WatchOptions$Query$User_getAll? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$User_getAll());
+      watchQuery(options ?? WatchOptions$Query$User_getAll());
   void writeQuery$User_getAll({
     required Query$User_getAll data,
     bool broadcast = true,
   }) =>
-      this.writeQuery(
+      writeQuery(
         graphql.Request(
             operation:
                 graphql.Operation(document: documentNodeQueryUser_getAll)),
@@ -355,7 +342,7 @@ extension ClientExtension$Query$User_getAll on graphql.GraphQLClient {
         broadcast: broadcast,
       );
   Query$User_getAll? readQuery$User_getAll({bool optimistic = true}) {
-    final result = this.readQuery(
+    final result = readQuery(
       graphql.Request(
           operation: graphql.Operation(document: documentNodeQueryUser_getAll)),
       optimistic: optimistic,
@@ -374,13 +361,11 @@ graphql.ObservableQuery<Query$User_getAll> useWatchQuery$User_getAll(
 class Query$User_getAll$Widget
     extends graphql_flutter.Query<Query$User_getAll> {
   Query$User_getAll$Widget({
-    widgets.Key? key,
+    super.key,
     Options$Query$User_getAll? options,
-    required graphql_flutter.QueryBuilder<Query$User_getAll> builder,
+    required super.builder,
   }) : super(
-          key: key,
           options: options ?? Options$Query$User_getAll(),
-          builder: builder,
         );
 }
 
@@ -398,9 +383,9 @@ class Query$User_getAll$user_getAll {
   });
 
   factory Query$User_getAll$user_getAll.fromJson(Map<String, dynamic> json) {
-    final l$telegram_id = json['telegram_id'];
+    final l$telegramId = json['telegram_id'];
     final l$id = json['id'];
-    final l$country_code = json['country_code'];
+    final l$countryCode = json['country_code'];
     final l$phone = json['phone'];
     final l$firstname = json['firstname'];
     final l$lastname = json['lastname'];
@@ -408,11 +393,11 @@ class Query$User_getAll$user_getAll {
     final l$email = json['email'];
     final l$$__typename = json['__typename'];
     return Query$User_getAll$user_getAll(
-      telegram_id: (l$telegram_id as String?),
+      telegram_id: (l$telegramId as String?),
       id: (l$id as String),
-      country_code: l$country_code == null
+      country_code: l$countryCode == null
           ? null
-          : fromJson$Enum$Country((l$country_code as String)),
+          : fromJson$Enum$Country((l$countryCode as String)),
       phone: (l$phone as String?),
       firstname: (l$firstname as String?),
       lastname: (l$lastname as String?),
@@ -441,34 +426,34 @@ class Query$User_getAll$user_getAll {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$telegram_id = telegram_id;
-    _resultData['telegram_id'] = l$telegram_id;
+    final resultData = <String, dynamic>{};
+    final l$telegramId = telegram_id;
+    resultData['telegram_id'] = l$telegramId;
     final l$id = id;
-    _resultData['id'] = l$id;
-    final l$country_code = country_code;
-    _resultData['country_code'] =
-        l$country_code == null ? null : toJson$Enum$Country(l$country_code);
+    resultData['id'] = l$id;
+    final l$countryCode = country_code;
+    resultData['country_code'] =
+        l$countryCode == null ? null : toJson$Enum$Country(l$countryCode);
     final l$phone = phone;
-    _resultData['phone'] = l$phone;
+    resultData['phone'] = l$phone;
     final l$firstname = firstname;
-    _resultData['firstname'] = l$firstname;
+    resultData['firstname'] = l$firstname;
     final l$lastname = lastname;
-    _resultData['lastname'] = l$lastname;
+    resultData['lastname'] = l$lastname;
     final l$middlename = middlename;
-    _resultData['middlename'] = l$middlename;
+    resultData['middlename'] = l$middlename;
     final l$email = email;
-    _resultData['email'] = l$email;
+    resultData['email'] = l$email;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$telegram_id = telegram_id;
+    final l$telegramId = telegram_id;
     final l$id = id;
-    final l$country_code = country_code;
+    final l$countryCode = country_code;
     final l$phone = phone;
     final l$firstname = firstname;
     final l$lastname = lastname;
@@ -476,9 +461,9 @@ class Query$User_getAll$user_getAll {
     final l$email = email;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$telegram_id,
+      l$telegramId,
       l$id,
-      l$country_code,
+      l$countryCode,
       l$phone,
       l$firstname,
       l$lastname,
@@ -497,9 +482,9 @@ class Query$User_getAll$user_getAll {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$telegram_id = telegram_id;
-    final lOther$telegram_id = other.telegram_id;
-    if (l$telegram_id != lOther$telegram_id) {
+    final l$telegramId = telegram_id;
+    final lother$telegramId = other.telegram_id;
+    if (l$telegramId != lother$telegramId) {
       return false;
     }
     final l$id = id;
@@ -507,9 +492,9 @@ class Query$User_getAll$user_getAll {
     if (l$id != lOther$id) {
       return false;
     }
-    final l$country_code = country_code;
-    final lOther$country_code = other.country_code;
-    if (l$country_code != lOther$country_code) {
+    final l$countryCode = country_code;
+    final lother$countryCode = other.country_code;
+    if (l$countryCode != lother$countryCode) {
       return false;
     }
     final l$phone = phone;
@@ -590,6 +575,7 @@ class _CopyWithImpl$Query$User_getAll$user_getAll<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? telegram_id = _undefined,
     Object? id = _undefined,
@@ -629,8 +615,9 @@ class _CopyWithStubImpl$Query$User_getAll$user_getAll<TRes>
     implements CopyWith$Query$User_getAll$user_getAll<TRes> {
   _CopyWithStubImpl$Query$User_getAll$user_getAll(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? telegram_id,
     String? id,
@@ -652,11 +639,11 @@ class Query$user_get {
   });
 
   factory Query$user_get.fromJson(Map<String, dynamic> json) {
-    final l$user_get = json['user_get'];
+    final l$userGet = json['user_get'];
     final l$$__typename = json['__typename'];
     return Query$user_get(
       user_get: Query$user_get$user_get.fromJson(
-          (l$user_get as Map<String, dynamic>)),
+          (l$userGet as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -666,20 +653,20 @@ class Query$user_get {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$user_get = user_get;
-    _resultData['user_get'] = l$user_get.toJson();
+    final resultData = <String, dynamic>{};
+    final l$userGet = user_get;
+    resultData['user_get'] = l$userGet.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$user_get = user_get;
+    final l$userGet = user_get;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$user_get,
+      l$userGet,
       l$$__typename,
     ]);
   }
@@ -692,9 +679,9 @@ class Query$user_get {
     if (other is! Query$user_get || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$user_get = user_get;
-    final lOther$user_get = other.user_get;
-    if (l$user_get != lOther$user_get) {
+    final l$userGet = user_get;
+    final lother$userGet = other.user_get;
+    if (l$userGet != lother$userGet) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -743,6 +730,7 @@ class _CopyWithImpl$Query$user_get<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? user_get = _undefined,
     Object? $__typename = _undefined,
@@ -756,10 +744,11 @@ class _CopyWithImpl$Query$user_get<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Query$user_get$user_get<TRes> get user_get {
-    final local$user_get = _instance.user_get;
+    final local$userGet = _instance.user_get;
     return CopyWith$Query$user_get$user_get(
-        local$user_get, (e) => call(user_get: e));
+        local$userGet, (e) => call(user_get: e));
   }
 }
 
@@ -767,14 +756,16 @@ class _CopyWithStubImpl$Query$user_get<TRes>
     implements CopyWith$Query$user_get<TRes> {
   _CopyWithStubImpl$Query$user_get(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Query$user_get$user_get? user_get,
     String? $__typename,
   }) =>
       _res;
 
+  @override
   CopyWith$Query$user_get$user_get<TRes> get user_get =>
       CopyWith$Query$user_get$user_get.stub(_res);
 }
@@ -918,32 +909,25 @@ typedef OnQueryComplete$Query$user_get = FutureOr<void> Function(
 
 class Options$Query$user_get extends graphql.QueryOptions<Query$user_get> {
   Options$Query$user_get({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$user_get? typedOptimisticResult,
-    Duration? pollInterval,
-    graphql.Context? context,
+    super.pollInterval,
+    super.context,
     OnQueryComplete$Query$user_get? onComplete,
-    graphql.OnQueryError? onError,
+    super.onError,
   })  : onCompleteWithParsed = onComplete,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          pollInterval: pollInterval,
-          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
                     data,
                     data == null ? null : _parserFn$Query$user_get(data),
                   ),
-          onError: onError,
           document: documentNodeQueryuser_get,
           parserFn: _parserFn$Query$user_get,
         );
@@ -962,37 +946,27 @@ class Options$Query$user_get extends graphql.QueryOptions<Query$user_get> {
 class WatchOptions$Query$user_get
     extends graphql.WatchQueryOptions<Query$user_get> {
   WatchOptions$Query$user_get({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$user_get? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeQueryuser_get,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Query$user_get,
         );
 }
 
 class FetchMoreOptions$Query$user_get extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$user_get({required graphql.UpdateQuery updateQuery})
+  FetchMoreOptions$Query$user_get({required super.updateQuery})
       : super(
-          updateQuery: updateQuery,
           document: documentNodeQueryuser_get,
         );
 }
@@ -1000,22 +974,22 @@ class FetchMoreOptions$Query$user_get extends graphql.FetchMoreOptions {
 extension ClientExtension$Query$user_get on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$user_get>> query$user_get(
           [Options$Query$user_get? options]) async =>
-      await this.query(options ?? Options$Query$user_get());
+      await query(options ?? Options$Query$user_get());
   graphql.ObservableQuery<Query$user_get> watchQuery$user_get(
           [WatchOptions$Query$user_get? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$user_get());
+      watchQuery(options ?? WatchOptions$Query$user_get());
   void writeQuery$user_get({
     required Query$user_get data,
     bool broadcast = true,
   }) =>
-      this.writeQuery(
+      writeQuery(
         graphql.Request(
             operation: graphql.Operation(document: documentNodeQueryuser_get)),
         data: data.toJson(),
         broadcast: broadcast,
       );
   Query$user_get? readQuery$user_get({bool optimistic = true}) {
-    final result = this.readQuery(
+    final result = readQuery(
       graphql.Request(
           operation: graphql.Operation(document: documentNodeQueryuser_get)),
       optimistic: optimistic,
@@ -1033,13 +1007,11 @@ graphql.ObservableQuery<Query$user_get> useWatchQuery$user_get(
 
 class Query$user_get$Widget extends graphql_flutter.Query<Query$user_get> {
   Query$user_get$Widget({
-    widgets.Key? key,
+    super.key,
     Options$Query$user_get? options,
-    required graphql_flutter.QueryBuilder<Query$user_get> builder,
+    required super.builder,
   }) : super(
-          key: key,
           options: options ?? Options$Query$user_get(),
-          builder: builder,
         );
 }
 
@@ -1067,40 +1039,40 @@ class Query$user_get$user_get {
     final l$lastname = json['lastname'];
     final l$middlename = json['middlename'];
     final l$email = json['email'];
-    final l$country_code = json['country_code'];
+    final l$countryCode = json['country_code'];
     final l$phone = json['phone'];
     final l$bvn = json['bvn'];
-    final l$bvn_status = json['bvn_status'];
+    final l$bvnStatus = json['bvn_status'];
     final l$nin = json['nin'];
-    final l$nin_status = json['nin_status'];
+    final l$ninStatus = json['nin_status'];
     final l$state = json['state'];
     final l$dob = json['dob'];
-    final l$dob_status = json['dob_status'];
-    final l$home_address = json['home_address'];
+    final l$dobStatus = json['dob_status'];
+    final l$homeAddress = json['home_address'];
     final l$$__typename = json['__typename'];
     return Query$user_get$user_get(
       firstname: (l$firstname as String?),
       lastname: (l$lastname as String?),
       middlename: (l$middlename as String?),
       email: (l$email as String?),
-      country_code: l$country_code == null
+      country_code: l$countryCode == null
           ? null
-          : fromJson$Enum$Country((l$country_code as String)),
+          : fromJson$Enum$Country((l$countryCode as String)),
       phone: (l$phone as String?),
       bvn: (l$bvn as String?),
-      bvn_status: l$bvn_status == null
+      bvn_status: l$bvnStatus == null
           ? null
-          : fromJson$Enum$CredentialsStatus((l$bvn_status as String)),
+          : fromJson$Enum$CredentialsStatus((l$bvnStatus as String)),
       nin: (l$nin as String?),
-      nin_status: l$nin_status == null
+      nin_status: l$ninStatus == null
           ? null
-          : fromJson$Enum$CredentialsStatus((l$nin_status as String)),
+          : fromJson$Enum$CredentialsStatus((l$ninStatus as String)),
       state: (l$state as String?),
       dob: (l$dob as String?),
-      dob_status: l$dob_status == null
+      dob_status: l$dobStatus == null
           ? null
-          : fromJson$Enum$CredentialsStatus((l$dob_status as String)),
-      home_address: (l$home_address as String?),
+          : fromJson$Enum$CredentialsStatus((l$dobStatus as String)),
+      home_address: (l$homeAddress as String?),
       $__typename: (l$$__typename as String),
     );
   }
@@ -1136,45 +1108,45 @@ class Query$user_get$user_get {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$firstname = firstname;
-    _resultData['firstname'] = l$firstname;
+    resultData['firstname'] = l$firstname;
     final l$lastname = lastname;
-    _resultData['lastname'] = l$lastname;
+    resultData['lastname'] = l$lastname;
     final l$middlename = middlename;
-    _resultData['middlename'] = l$middlename;
+    resultData['middlename'] = l$middlename;
     final l$email = email;
-    _resultData['email'] = l$email;
-    final l$country_code = country_code;
-    _resultData['country_code'] =
-        l$country_code == null ? null : toJson$Enum$Country(l$country_code);
+    resultData['email'] = l$email;
+    final l$countryCode = country_code;
+    resultData['country_code'] =
+        l$countryCode == null ? null : toJson$Enum$Country(l$countryCode);
     final l$phone = phone;
-    _resultData['phone'] = l$phone;
+    resultData['phone'] = l$phone;
     final l$bvn = bvn;
-    _resultData['bvn'] = l$bvn;
-    final l$bvn_status = bvn_status;
-    _resultData['bvn_status'] = l$bvn_status == null
+    resultData['bvn'] = l$bvn;
+    final l$bvnStatus = bvn_status;
+    resultData['bvn_status'] = l$bvnStatus == null
         ? null
-        : toJson$Enum$CredentialsStatus(l$bvn_status);
+        : toJson$Enum$CredentialsStatus(l$bvnStatus);
     final l$nin = nin;
-    _resultData['nin'] = l$nin;
-    final l$nin_status = nin_status;
-    _resultData['nin_status'] = l$nin_status == null
+    resultData['nin'] = l$nin;
+    final l$ninStatus = nin_status;
+    resultData['nin_status'] = l$ninStatus == null
         ? null
-        : toJson$Enum$CredentialsStatus(l$nin_status);
+        : toJson$Enum$CredentialsStatus(l$ninStatus);
     final l$state = state;
-    _resultData['state'] = l$state;
+    resultData['state'] = l$state;
     final l$dob = dob;
-    _resultData['dob'] = l$dob;
-    final l$dob_status = dob_status;
-    _resultData['dob_status'] = l$dob_status == null
+    resultData['dob'] = l$dob;
+    final l$dobStatus = dob_status;
+    resultData['dob_status'] = l$dobStatus == null
         ? null
-        : toJson$Enum$CredentialsStatus(l$dob_status);
-    final l$home_address = home_address;
-    _resultData['home_address'] = l$home_address;
+        : toJson$Enum$CredentialsStatus(l$dobStatus);
+    final l$homeAddress = home_address;
+    resultData['home_address'] = l$homeAddress;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -1183,32 +1155,32 @@ class Query$user_get$user_get {
     final l$lastname = lastname;
     final l$middlename = middlename;
     final l$email = email;
-    final l$country_code = country_code;
+    final l$countryCode = country_code;
     final l$phone = phone;
     final l$bvn = bvn;
-    final l$bvn_status = bvn_status;
+    final l$bvnStatus = bvn_status;
     final l$nin = nin;
-    final l$nin_status = nin_status;
+    final l$ninStatus = nin_status;
     final l$state = state;
     final l$dob = dob;
-    final l$dob_status = dob_status;
-    final l$home_address = home_address;
+    final l$dobStatus = dob_status;
+    final l$homeAddress = home_address;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$firstname,
       l$lastname,
       l$middlename,
       l$email,
-      l$country_code,
+      l$countryCode,
       l$phone,
       l$bvn,
-      l$bvn_status,
+      l$bvnStatus,
       l$nin,
-      l$nin_status,
+      l$ninStatus,
       l$state,
       l$dob,
-      l$dob_status,
-      l$home_address,
+      l$dobStatus,
+      l$homeAddress,
       l$$__typename,
     ]);
   }
@@ -1241,9 +1213,9 @@ class Query$user_get$user_get {
     if (l$email != lOther$email) {
       return false;
     }
-    final l$country_code = country_code;
-    final lOther$country_code = other.country_code;
-    if (l$country_code != lOther$country_code) {
+    final l$countryCode = country_code;
+    final lother$countryCode = other.country_code;
+    if (l$countryCode != lother$countryCode) {
       return false;
     }
     final l$phone = phone;
@@ -1256,9 +1228,9 @@ class Query$user_get$user_get {
     if (l$bvn != lOther$bvn) {
       return false;
     }
-    final l$bvn_status = bvn_status;
-    final lOther$bvn_status = other.bvn_status;
-    if (l$bvn_status != lOther$bvn_status) {
+    final l$bvnStatus = bvn_status;
+    final lother$bvnStatus = other.bvn_status;
+    if (l$bvnStatus != lother$bvnStatus) {
       return false;
     }
     final l$nin = nin;
@@ -1266,9 +1238,9 @@ class Query$user_get$user_get {
     if (l$nin != lOther$nin) {
       return false;
     }
-    final l$nin_status = nin_status;
-    final lOther$nin_status = other.nin_status;
-    if (l$nin_status != lOther$nin_status) {
+    final l$ninStatus = nin_status;
+    final lother$ninStatus = other.nin_status;
+    if (l$ninStatus != lother$ninStatus) {
       return false;
     }
     final l$state = state;
@@ -1281,14 +1253,14 @@ class Query$user_get$user_get {
     if (l$dob != lOther$dob) {
       return false;
     }
-    final l$dob_status = dob_status;
-    final lOther$dob_status = other.dob_status;
-    if (l$dob_status != lOther$dob_status) {
+    final l$dobStatus = dob_status;
+    final lother$dobStatus = other.dob_status;
+    if (l$dobStatus != lother$dobStatus) {
       return false;
     }
-    final l$home_address = home_address;
-    final lOther$home_address = other.home_address;
-    if (l$home_address != lOther$home_address) {
+    final l$homeAddress = home_address;
+    final lother$homeAddress = other.home_address;
+    if (l$homeAddress != lother$homeAddress) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -1349,6 +1321,7 @@ class _CopyWithImpl$Query$user_get$user_get<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? firstname = _undefined,
     Object? lastname = _undefined,
@@ -1406,8 +1379,9 @@ class _CopyWithStubImpl$Query$user_get$user_get<TRes>
     implements CopyWith$Query$user_get$user_get<TRes> {
   _CopyWithStubImpl$Query$user_get$user_get(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? firstname,
     String? lastname,

@@ -91,6 +91,7 @@ class _CopyWithImpl$Variables$Mutation$Kyc_addAddressInfo<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$Kyc_addAddressInfo._({
         ..._instance._$data,
@@ -103,8 +104,9 @@ class _CopyWithStubImpl$Variables$Mutation$Kyc_addAddressInfo<TRes>
     implements CopyWith$Variables$Mutation$Kyc_addAddressInfo<TRes> {
   _CopyWithStubImpl$Variables$Mutation$Kyc_addAddressInfo(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Input$Kyc_AddAddressInfoInput? input}) => _res;
 }
 
@@ -115,12 +117,12 @@ class Mutation$Kyc_addAddressInfo {
   });
 
   factory Mutation$Kyc_addAddressInfo.fromJson(Map<String, dynamic> json) {
-    final l$kyc_addAddressInfo = json['kyc_addAddressInfo'];
+    final l$kycAddaddressinfo = json['kyc_addAddressInfo'];
     final l$$__typename = json['__typename'];
     return Mutation$Kyc_addAddressInfo(
       kyc_addAddressInfo:
           Mutation$Kyc_addAddressInfo$kyc_addAddressInfo.fromJson(
-              (l$kyc_addAddressInfo as Map<String, dynamic>)),
+              (l$kycAddaddressinfo as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -130,20 +132,20 @@ class Mutation$Kyc_addAddressInfo {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$kyc_addAddressInfo = kyc_addAddressInfo;
-    _resultData['kyc_addAddressInfo'] = l$kyc_addAddressInfo.toJson();
+    final resultData = <String, dynamic>{};
+    final l$kycAddaddressinfo = kyc_addAddressInfo;
+    resultData['kyc_addAddressInfo'] = l$kycAddaddressinfo.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$kyc_addAddressInfo = kyc_addAddressInfo;
+    final l$kycAddaddressinfo = kyc_addAddressInfo;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$kyc_addAddressInfo,
+      l$kycAddaddressinfo,
       l$$__typename,
     ]);
   }
@@ -157,9 +159,9 @@ class Mutation$Kyc_addAddressInfo {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$kyc_addAddressInfo = kyc_addAddressInfo;
-    final lOther$kyc_addAddressInfo = other.kyc_addAddressInfo;
-    if (l$kyc_addAddressInfo != lOther$kyc_addAddressInfo) {
+    final l$kycAddaddressinfo = kyc_addAddressInfo;
+    final lother$kycAddaddressinfo = other.kyc_addAddressInfo;
+    if (l$kycAddaddressinfo != lother$kycAddaddressinfo) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -210,6 +212,7 @@ class _CopyWithImpl$Mutation$Kyc_addAddressInfo<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? kyc_addAddressInfo = _undefined,
     Object? $__typename = _undefined,
@@ -225,11 +228,12 @@ class _CopyWithImpl$Mutation$Kyc_addAddressInfo<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Mutation$Kyc_addAddressInfo$kyc_addAddressInfo<TRes>
       get kyc_addAddressInfo {
-    final local$kyc_addAddressInfo = _instance.kyc_addAddressInfo;
+    final local$kycAddaddressinfo = _instance.kyc_addAddressInfo;
     return CopyWith$Mutation$Kyc_addAddressInfo$kyc_addAddressInfo(
-        local$kyc_addAddressInfo, (e) => call(kyc_addAddressInfo: e));
+        local$kycAddaddressinfo, (e) => call(kyc_addAddressInfo: e));
   }
 }
 
@@ -237,14 +241,16 @@ class _CopyWithStubImpl$Mutation$Kyc_addAddressInfo<TRes>
     implements CopyWith$Mutation$Kyc_addAddressInfo<TRes> {
   _CopyWithStubImpl$Mutation$Kyc_addAddressInfo(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Mutation$Kyc_addAddressInfo$kyc_addAddressInfo? kyc_addAddressInfo,
     String? $__typename,
   }) =>
       _res;
 
+  @override
   CopyWith$Mutation$Kyc_addAddressInfo$kyc_addAddressInfo<TRes>
       get kyc_addAddressInfo =>
           CopyWith$Mutation$Kyc_addAddressInfo$kyc_addAddressInfo.stub(_res);
@@ -316,26 +322,21 @@ typedef OnMutationCompleted$Mutation$Kyc_addAddressInfo = FutureOr<void>
 class Options$Mutation$Kyc_addAddressInfo
     extends graphql.MutationOptions<Mutation$Kyc_addAddressInfo> {
   Options$Mutation$Kyc_addAddressInfo({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$Kyc_addAddressInfo variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$Kyc_addAddressInfo? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$Kyc_addAddressInfo? onCompleted,
-    graphql.OnMutationUpdate<Mutation$Kyc_addAddressInfo>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -344,8 +345,6 @@ class Options$Mutation$Kyc_addAddressInfo
                         ? null
                         : _parserFn$Mutation$Kyc_addAddressInfo(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationKyc_addAddressInfo,
           parserFn: _parserFn$Mutation$Kyc_addAddressInfo,
         );
@@ -364,31 +363,22 @@ class Options$Mutation$Kyc_addAddressInfo
 class WatchOptions$Mutation$Kyc_addAddressInfo
     extends graphql.WatchQueryOptions<Mutation$Kyc_addAddressInfo> {
   WatchOptions$Mutation$Kyc_addAddressInfo({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$Kyc_addAddressInfo variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$Kyc_addAddressInfo? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeMutationKyc_addAddressInfo,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$Kyc_addAddressInfo,
         );
 }
@@ -397,11 +387,11 @@ extension ClientExtension$Mutation$Kyc_addAddressInfo on graphql.GraphQLClient {
   Future<graphql.QueryResult<Mutation$Kyc_addAddressInfo>>
       mutate$Kyc_addAddressInfo(
               Options$Mutation$Kyc_addAddressInfo options) async =>
-          await this.mutate(options);
+          await mutate(options);
   graphql.ObservableQuery<Mutation$Kyc_addAddressInfo>
       watchMutation$Kyc_addAddressInfo(
               WatchOptions$Mutation$Kyc_addAddressInfo options) =>
-          this.watchMutation(options);
+          watchMutation(options);
 }
 
 class Mutation$Kyc_addAddressInfo$HookResult {
@@ -437,24 +427,19 @@ graphql.ObservableQuery<Mutation$Kyc_addAddressInfo>
 class WidgetOptions$Mutation$Kyc_addAddressInfo
     extends graphql.MutationOptions<Mutation$Kyc_addAddressInfo> {
   WidgetOptions$Mutation$Kyc_addAddressInfo({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$Kyc_addAddressInfo? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$Kyc_addAddressInfo? onCompleted,
-    graphql.OnMutationUpdate<Mutation$Kyc_addAddressInfo>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -463,8 +448,6 @@ class WidgetOptions$Mutation$Kyc_addAddressInfo
                         ? null
                         : _parserFn$Mutation$Kyc_addAddressInfo(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationKyc_addAddressInfo,
           parserFn: _parserFn$Mutation$Kyc_addAddressInfo,
         );
@@ -494,11 +477,10 @@ typedef Builder$Mutation$Kyc_addAddressInfo = widgets.Widget Function(
 class Mutation$Kyc_addAddressInfo$Widget
     extends graphql_flutter.Mutation<Mutation$Kyc_addAddressInfo> {
   Mutation$Kyc_addAddressInfo$Widget({
-    widgets.Key? key,
+    super.key,
     WidgetOptions$Mutation$Kyc_addAddressInfo? options,
     required Builder$Mutation$Kyc_addAddressInfo builder,
   }) : super(
-          key: key,
           options: options ?? WidgetOptions$Mutation$Kyc_addAddressInfo(),
           builder: (
             run,
@@ -541,12 +523,12 @@ class Mutation$Kyc_addAddressInfo$kyc_addAddressInfo {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$message = message;
-    _resultData['message'] = l$message;
+    resultData['message'] = l$message;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -621,6 +603,7 @@ class _CopyWithImpl$Mutation$Kyc_addAddressInfo$kyc_addAddressInfo<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? message = _undefined,
     Object? $__typename = _undefined,
@@ -639,8 +622,9 @@ class _CopyWithStubImpl$Mutation$Kyc_addAddressInfo$kyc_addAddressInfo<TRes>
     implements CopyWith$Mutation$Kyc_addAddressInfo$kyc_addAddressInfo<TRes> {
   _CopyWithStubImpl$Mutation$Kyc_addAddressInfo$kyc_addAddressInfo(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? message,
     String? $__typename,
@@ -734,6 +718,7 @@ class _CopyWithImpl$Variables$Mutation$kyc_addAddressProof<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$kyc_addAddressProof._({
         ..._instance._$data,
@@ -746,8 +731,9 @@ class _CopyWithStubImpl$Variables$Mutation$kyc_addAddressProof<TRes>
     implements CopyWith$Variables$Mutation$kyc_addAddressProof<TRes> {
   _CopyWithStubImpl$Variables$Mutation$kyc_addAddressProof(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Input$Kyc_AddAddressProofInput? input}) => _res;
 }
 
@@ -758,12 +744,12 @@ class Mutation$kyc_addAddressProof {
   });
 
   factory Mutation$kyc_addAddressProof.fromJson(Map<String, dynamic> json) {
-    final l$kyc_addAddressProof = json['kyc_addAddressProof'];
+    final l$kycAddaddressproof = json['kyc_addAddressProof'];
     final l$$__typename = json['__typename'];
     return Mutation$kyc_addAddressProof(
       kyc_addAddressProof:
           Mutation$kyc_addAddressProof$kyc_addAddressProof.fromJson(
-              (l$kyc_addAddressProof as Map<String, dynamic>)),
+              (l$kycAddaddressproof as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -773,20 +759,20 @@ class Mutation$kyc_addAddressProof {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$kyc_addAddressProof = kyc_addAddressProof;
-    _resultData['kyc_addAddressProof'] = l$kyc_addAddressProof.toJson();
+    final resultData = <String, dynamic>{};
+    final l$kycAddaddressproof = kyc_addAddressProof;
+    resultData['kyc_addAddressProof'] = l$kycAddaddressproof.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$kyc_addAddressProof = kyc_addAddressProof;
+    final l$kycAddaddressproof = kyc_addAddressProof;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$kyc_addAddressProof,
+      l$kycAddaddressproof,
       l$$__typename,
     ]);
   }
@@ -800,9 +786,9 @@ class Mutation$kyc_addAddressProof {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$kyc_addAddressProof = kyc_addAddressProof;
-    final lOther$kyc_addAddressProof = other.kyc_addAddressProof;
-    if (l$kyc_addAddressProof != lOther$kyc_addAddressProof) {
+    final l$kycAddaddressproof = kyc_addAddressProof;
+    final lother$kycAddaddressproof = other.kyc_addAddressProof;
+    if (l$kycAddaddressproof != lother$kycAddaddressproof) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -853,6 +839,7 @@ class _CopyWithImpl$Mutation$kyc_addAddressProof<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? kyc_addAddressProof = _undefined,
     Object? $__typename = _undefined,
@@ -868,11 +855,12 @@ class _CopyWithImpl$Mutation$kyc_addAddressProof<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Mutation$kyc_addAddressProof$kyc_addAddressProof<TRes>
       get kyc_addAddressProof {
-    final local$kyc_addAddressProof = _instance.kyc_addAddressProof;
+    final local$kycAddaddressproof = _instance.kyc_addAddressProof;
     return CopyWith$Mutation$kyc_addAddressProof$kyc_addAddressProof(
-        local$kyc_addAddressProof, (e) => call(kyc_addAddressProof: e));
+        local$kycAddaddressproof, (e) => call(kyc_addAddressProof: e));
   }
 }
 
@@ -880,14 +868,16 @@ class _CopyWithStubImpl$Mutation$kyc_addAddressProof<TRes>
     implements CopyWith$Mutation$kyc_addAddressProof<TRes> {
   _CopyWithStubImpl$Mutation$kyc_addAddressProof(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Mutation$kyc_addAddressProof$kyc_addAddressProof? kyc_addAddressProof,
     String? $__typename,
   }) =>
       _res;
 
+  @override
   CopyWith$Mutation$kyc_addAddressProof$kyc_addAddressProof<TRes>
       get kyc_addAddressProof =>
           CopyWith$Mutation$kyc_addAddressProof$kyc_addAddressProof.stub(_res);
@@ -959,26 +949,21 @@ typedef OnMutationCompleted$Mutation$kyc_addAddressProof = FutureOr<void>
 class Options$Mutation$kyc_addAddressProof
     extends graphql.MutationOptions<Mutation$kyc_addAddressProof> {
   Options$Mutation$kyc_addAddressProof({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$kyc_addAddressProof variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_addAddressProof? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$kyc_addAddressProof? onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_addAddressProof>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -987,8 +972,6 @@ class Options$Mutation$kyc_addAddressProof
                         ? null
                         : _parserFn$Mutation$kyc_addAddressProof(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationkyc_addAddressProof,
           parserFn: _parserFn$Mutation$kyc_addAddressProof,
         );
@@ -1007,31 +990,22 @@ class Options$Mutation$kyc_addAddressProof
 class WatchOptions$Mutation$kyc_addAddressProof
     extends graphql.WatchQueryOptions<Mutation$kyc_addAddressProof> {
   WatchOptions$Mutation$kyc_addAddressProof({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$kyc_addAddressProof variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_addAddressProof? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeMutationkyc_addAddressProof,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$kyc_addAddressProof,
         );
 }
@@ -1041,11 +1015,11 @@ extension ClientExtension$Mutation$kyc_addAddressProof
   Future<graphql.QueryResult<Mutation$kyc_addAddressProof>>
       mutate$kyc_addAddressProof(
               Options$Mutation$kyc_addAddressProof options) async =>
-          await this.mutate(options);
+          await mutate(options);
   graphql.ObservableQuery<Mutation$kyc_addAddressProof>
       watchMutation$kyc_addAddressProof(
               WatchOptions$Mutation$kyc_addAddressProof options) =>
-          this.watchMutation(options);
+          watchMutation(options);
 }
 
 class Mutation$kyc_addAddressProof$HookResult {
@@ -1081,24 +1055,19 @@ graphql.ObservableQuery<Mutation$kyc_addAddressProof>
 class WidgetOptions$Mutation$kyc_addAddressProof
     extends graphql.MutationOptions<Mutation$kyc_addAddressProof> {
   WidgetOptions$Mutation$kyc_addAddressProof({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_addAddressProof? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$kyc_addAddressProof? onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_addAddressProof>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -1107,8 +1076,6 @@ class WidgetOptions$Mutation$kyc_addAddressProof
                         ? null
                         : _parserFn$Mutation$kyc_addAddressProof(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationkyc_addAddressProof,
           parserFn: _parserFn$Mutation$kyc_addAddressProof,
         );
@@ -1138,11 +1105,10 @@ typedef Builder$Mutation$kyc_addAddressProof = widgets.Widget Function(
 class Mutation$kyc_addAddressProof$Widget
     extends graphql_flutter.Mutation<Mutation$kyc_addAddressProof> {
   Mutation$kyc_addAddressProof$Widget({
-    widgets.Key? key,
+    super.key,
     WidgetOptions$Mutation$kyc_addAddressProof? options,
     required Builder$Mutation$kyc_addAddressProof builder,
   }) : super(
-          key: key,
           options: options ?? WidgetOptions$Mutation$kyc_addAddressProof(),
           builder: (
             run,
@@ -1185,12 +1151,12 @@ class Mutation$kyc_addAddressProof$kyc_addAddressProof {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$message = message;
-    _resultData['message'] = l$message;
+    resultData['message'] = l$message;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -1265,6 +1231,7 @@ class _CopyWithImpl$Mutation$kyc_addAddressProof$kyc_addAddressProof<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? message = _undefined,
     Object? $__typename = _undefined,
@@ -1283,8 +1250,9 @@ class _CopyWithStubImpl$Mutation$kyc_addAddressProof$kyc_addAddressProof<TRes>
     implements CopyWith$Mutation$kyc_addAddressProof$kyc_addAddressProof<TRes> {
   _CopyWithStubImpl$Mutation$kyc_addAddressProof$kyc_addAddressProof(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? message,
     String? $__typename,
@@ -1375,6 +1343,7 @@ class _CopyWithImpl$Variables$Mutation$kyc_addBvn<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$kyc_addBvn._({
         ..._instance._$data,
@@ -1387,8 +1356,9 @@ class _CopyWithStubImpl$Variables$Mutation$kyc_addBvn<TRes>
     implements CopyWith$Variables$Mutation$kyc_addBvn<TRes> {
   _CopyWithStubImpl$Variables$Mutation$kyc_addBvn(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Input$Kyc_AddBvnInput? input}) => _res;
 }
 
@@ -1399,11 +1369,11 @@ class Mutation$kyc_addBvn {
   });
 
   factory Mutation$kyc_addBvn.fromJson(Map<String, dynamic> json) {
-    final l$kyc_addBvn = json['kyc_addBvn'];
+    final l$kycAddbvn = json['kyc_addBvn'];
     final l$$__typename = json['__typename'];
     return Mutation$kyc_addBvn(
       kyc_addBvn: Mutation$kyc_addBvn$kyc_addBvn.fromJson(
-          (l$kyc_addBvn as Map<String, dynamic>)),
+          (l$kycAddbvn as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -1413,20 +1383,20 @@ class Mutation$kyc_addBvn {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$kyc_addBvn = kyc_addBvn;
-    _resultData['kyc_addBvn'] = l$kyc_addBvn.toJson();
+    final resultData = <String, dynamic>{};
+    final l$kycAddbvn = kyc_addBvn;
+    resultData['kyc_addBvn'] = l$kycAddbvn.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$kyc_addBvn = kyc_addBvn;
+    final l$kycAddbvn = kyc_addBvn;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$kyc_addBvn,
+      l$kycAddbvn,
       l$$__typename,
     ]);
   }
@@ -1439,9 +1409,9 @@ class Mutation$kyc_addBvn {
     if (other is! Mutation$kyc_addBvn || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$kyc_addBvn = kyc_addBvn;
-    final lOther$kyc_addBvn = other.kyc_addBvn;
-    if (l$kyc_addBvn != lOther$kyc_addBvn) {
+    final l$kycAddbvn = kyc_addBvn;
+    final lother$kycAddbvn = other.kyc_addBvn;
+    if (l$kycAddbvn != lother$kycAddbvn) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -1490,6 +1460,7 @@ class _CopyWithImpl$Mutation$kyc_addBvn<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? kyc_addBvn = _undefined,
     Object? $__typename = _undefined,
@@ -1503,10 +1474,11 @@ class _CopyWithImpl$Mutation$kyc_addBvn<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Mutation$kyc_addBvn$kyc_addBvn<TRes> get kyc_addBvn {
-    final local$kyc_addBvn = _instance.kyc_addBvn;
+    final local$kycAddbvn = _instance.kyc_addBvn;
     return CopyWith$Mutation$kyc_addBvn$kyc_addBvn(
-        local$kyc_addBvn, (e) => call(kyc_addBvn: e));
+        local$kycAddbvn, (e) => call(kyc_addBvn: e));
   }
 }
 
@@ -1514,14 +1486,16 @@ class _CopyWithStubImpl$Mutation$kyc_addBvn<TRes>
     implements CopyWith$Mutation$kyc_addBvn<TRes> {
   _CopyWithStubImpl$Mutation$kyc_addBvn(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Mutation$kyc_addBvn$kyc_addBvn? kyc_addBvn,
     String? $__typename,
   }) =>
       _res;
 
+  @override
   CopyWith$Mutation$kyc_addBvn$kyc_addBvn<TRes> get kyc_addBvn =>
       CopyWith$Mutation$kyc_addBvn$kyc_addBvn.stub(_res);
 }
@@ -1590,34 +1564,27 @@ typedef OnMutationCompleted$Mutation$kyc_addBvn = FutureOr<void> Function(
 class Options$Mutation$kyc_addBvn
     extends graphql.MutationOptions<Mutation$kyc_addBvn> {
   Options$Mutation$kyc_addBvn({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$kyc_addBvn variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_addBvn? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$kyc_addBvn? onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_addBvn>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
                     data,
                     data == null ? null : _parserFn$Mutation$kyc_addBvn(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationkyc_addBvn,
           parserFn: _parserFn$Mutation$kyc_addBvn,
         );
@@ -1636,31 +1603,22 @@ class Options$Mutation$kyc_addBvn
 class WatchOptions$Mutation$kyc_addBvn
     extends graphql.WatchQueryOptions<Mutation$kyc_addBvn> {
   WatchOptions$Mutation$kyc_addBvn({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$kyc_addBvn variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_addBvn? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeMutationkyc_addBvn,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$kyc_addBvn,
         );
 }
@@ -1668,10 +1626,10 @@ class WatchOptions$Mutation$kyc_addBvn
 extension ClientExtension$Mutation$kyc_addBvn on graphql.GraphQLClient {
   Future<graphql.QueryResult<Mutation$kyc_addBvn>> mutate$kyc_addBvn(
           Options$Mutation$kyc_addBvn options) async =>
-      await this.mutate(options);
+      await mutate(options);
   graphql.ObservableQuery<Mutation$kyc_addBvn> watchMutation$kyc_addBvn(
           WatchOptions$Mutation$kyc_addBvn options) =>
-      this.watchMutation(options);
+      watchMutation(options);
 }
 
 class Mutation$kyc_addBvn$HookResult {
@@ -1706,32 +1664,25 @@ graphql.ObservableQuery<Mutation$kyc_addBvn> useWatchMutation$kyc_addBvn(
 class WidgetOptions$Mutation$kyc_addBvn
     extends graphql.MutationOptions<Mutation$kyc_addBvn> {
   WidgetOptions$Mutation$kyc_addBvn({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_addBvn? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$kyc_addBvn? onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_addBvn>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
                     data,
                     data == null ? null : _parserFn$Mutation$kyc_addBvn(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationkyc_addBvn,
           parserFn: _parserFn$Mutation$kyc_addBvn,
         );
@@ -1761,11 +1712,10 @@ typedef Builder$Mutation$kyc_addBvn = widgets.Widget Function(
 class Mutation$kyc_addBvn$Widget
     extends graphql_flutter.Mutation<Mutation$kyc_addBvn> {
   Mutation$kyc_addBvn$Widget({
-    widgets.Key? key,
+    super.key,
     WidgetOptions$Mutation$kyc_addBvn? options,
     required Builder$Mutation$kyc_addBvn builder,
   }) : super(
-          key: key,
           options: options ?? WidgetOptions$Mutation$kyc_addBvn(),
           builder: (
             run,
@@ -1807,12 +1757,12 @@ class Mutation$kyc_addBvn$kyc_addBvn {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$message = message;
-    _resultData['message'] = l$message;
+    resultData['message'] = l$message;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -1885,6 +1835,7 @@ class _CopyWithImpl$Mutation$kyc_addBvn$kyc_addBvn<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? message = _undefined,
     Object? $__typename = _undefined,
@@ -1903,8 +1854,9 @@ class _CopyWithStubImpl$Mutation$kyc_addBvn$kyc_addBvn<TRes>
     implements CopyWith$Mutation$kyc_addBvn$kyc_addBvn<TRes> {
   _CopyWithStubImpl$Mutation$kyc_addBvn$kyc_addBvn(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? message,
     String? $__typename,
@@ -1995,6 +1947,7 @@ class _CopyWithImpl$Variables$Mutation$kyc_addDob<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$kyc_addDob._({
         ..._instance._$data,
@@ -2007,8 +1960,9 @@ class _CopyWithStubImpl$Variables$Mutation$kyc_addDob<TRes>
     implements CopyWith$Variables$Mutation$kyc_addDob<TRes> {
   _CopyWithStubImpl$Variables$Mutation$kyc_addDob(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Input$Kyc_AddDobInput? input}) => _res;
 }
 
@@ -2019,11 +1973,11 @@ class Mutation$kyc_addDob {
   });
 
   factory Mutation$kyc_addDob.fromJson(Map<String, dynamic> json) {
-    final l$kyc_addDob = json['kyc_addDob'];
+    final l$kycAdddob = json['kyc_addDob'];
     final l$$__typename = json['__typename'];
     return Mutation$kyc_addDob(
       kyc_addDob: Mutation$kyc_addDob$kyc_addDob.fromJson(
-          (l$kyc_addDob as Map<String, dynamic>)),
+          (l$kycAdddob as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -2033,20 +1987,20 @@ class Mutation$kyc_addDob {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$kyc_addDob = kyc_addDob;
-    _resultData['kyc_addDob'] = l$kyc_addDob.toJson();
+    final resultData = <String, dynamic>{};
+    final l$kycAdddob = kyc_addDob;
+    resultData['kyc_addDob'] = l$kycAdddob.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$kyc_addDob = kyc_addDob;
+    final l$kycAdddob = kyc_addDob;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$kyc_addDob,
+      l$kycAdddob,
       l$$__typename,
     ]);
   }
@@ -2059,9 +2013,9 @@ class Mutation$kyc_addDob {
     if (other is! Mutation$kyc_addDob || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$kyc_addDob = kyc_addDob;
-    final lOther$kyc_addDob = other.kyc_addDob;
-    if (l$kyc_addDob != lOther$kyc_addDob) {
+    final l$kycAdddob = kyc_addDob;
+    final lother$kycAdddob = other.kyc_addDob;
+    if (l$kycAdddob != lother$kycAdddob) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -2110,6 +2064,7 @@ class _CopyWithImpl$Mutation$kyc_addDob<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? kyc_addDob = _undefined,
     Object? $__typename = _undefined,
@@ -2123,10 +2078,11 @@ class _CopyWithImpl$Mutation$kyc_addDob<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Mutation$kyc_addDob$kyc_addDob<TRes> get kyc_addDob {
-    final local$kyc_addDob = _instance.kyc_addDob;
+    final local$kycAdddob = _instance.kyc_addDob;
     return CopyWith$Mutation$kyc_addDob$kyc_addDob(
-        local$kyc_addDob, (e) => call(kyc_addDob: e));
+        local$kycAdddob, (e) => call(kyc_addDob: e));
   }
 }
 
@@ -2134,14 +2090,16 @@ class _CopyWithStubImpl$Mutation$kyc_addDob<TRes>
     implements CopyWith$Mutation$kyc_addDob<TRes> {
   _CopyWithStubImpl$Mutation$kyc_addDob(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Mutation$kyc_addDob$kyc_addDob? kyc_addDob,
     String? $__typename,
   }) =>
       _res;
 
+  @override
   CopyWith$Mutation$kyc_addDob$kyc_addDob<TRes> get kyc_addDob =>
       CopyWith$Mutation$kyc_addDob$kyc_addDob.stub(_res);
 }
@@ -2210,34 +2168,27 @@ typedef OnMutationCompleted$Mutation$kyc_addDob = FutureOr<void> Function(
 class Options$Mutation$kyc_addDob
     extends graphql.MutationOptions<Mutation$kyc_addDob> {
   Options$Mutation$kyc_addDob({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$kyc_addDob variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_addDob? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$kyc_addDob? onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_addDob>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
                     data,
                     data == null ? null : _parserFn$Mutation$kyc_addDob(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationkyc_addDob,
           parserFn: _parserFn$Mutation$kyc_addDob,
         );
@@ -2256,31 +2207,22 @@ class Options$Mutation$kyc_addDob
 class WatchOptions$Mutation$kyc_addDob
     extends graphql.WatchQueryOptions<Mutation$kyc_addDob> {
   WatchOptions$Mutation$kyc_addDob({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$kyc_addDob variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_addDob? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeMutationkyc_addDob,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$kyc_addDob,
         );
 }
@@ -2288,10 +2230,10 @@ class WatchOptions$Mutation$kyc_addDob
 extension ClientExtension$Mutation$kyc_addDob on graphql.GraphQLClient {
   Future<graphql.QueryResult<Mutation$kyc_addDob>> mutate$kyc_addDob(
           Options$Mutation$kyc_addDob options) async =>
-      await this.mutate(options);
+      await mutate(options);
   graphql.ObservableQuery<Mutation$kyc_addDob> watchMutation$kyc_addDob(
           WatchOptions$Mutation$kyc_addDob options) =>
-      this.watchMutation(options);
+      watchMutation(options);
 }
 
 class Mutation$kyc_addDob$HookResult {
@@ -2326,32 +2268,25 @@ graphql.ObservableQuery<Mutation$kyc_addDob> useWatchMutation$kyc_addDob(
 class WidgetOptions$Mutation$kyc_addDob
     extends graphql.MutationOptions<Mutation$kyc_addDob> {
   WidgetOptions$Mutation$kyc_addDob({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_addDob? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$kyc_addDob? onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_addDob>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
                     data,
                     data == null ? null : _parserFn$Mutation$kyc_addDob(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationkyc_addDob,
           parserFn: _parserFn$Mutation$kyc_addDob,
         );
@@ -2381,11 +2316,10 @@ typedef Builder$Mutation$kyc_addDob = widgets.Widget Function(
 class Mutation$kyc_addDob$Widget
     extends graphql_flutter.Mutation<Mutation$kyc_addDob> {
   Mutation$kyc_addDob$Widget({
-    widgets.Key? key,
+    super.key,
     WidgetOptions$Mutation$kyc_addDob? options,
     required Builder$Mutation$kyc_addDob builder,
   }) : super(
-          key: key,
           options: options ?? WidgetOptions$Mutation$kyc_addDob(),
           builder: (
             run,
@@ -2427,12 +2361,12 @@ class Mutation$kyc_addDob$kyc_addDob {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$message = message;
-    _resultData['message'] = l$message;
+    resultData['message'] = l$message;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -2505,6 +2439,7 @@ class _CopyWithImpl$Mutation$kyc_addDob$kyc_addDob<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? message = _undefined,
     Object? $__typename = _undefined,
@@ -2523,8 +2458,9 @@ class _CopyWithStubImpl$Mutation$kyc_addDob$kyc_addDob<TRes>
     implements CopyWith$Mutation$kyc_addDob$kyc_addDob<TRes> {
   _CopyWithStubImpl$Mutation$kyc_addDob$kyc_addDob(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? message,
     String? $__typename,
@@ -2616,6 +2552,7 @@ class _CopyWithImpl$Variables$Mutation$kyc_addNames<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$kyc_addNames._({
         ..._instance._$data,
@@ -2628,8 +2565,9 @@ class _CopyWithStubImpl$Variables$Mutation$kyc_addNames<TRes>
     implements CopyWith$Variables$Mutation$kyc_addNames<TRes> {
   _CopyWithStubImpl$Variables$Mutation$kyc_addNames(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Input$Kyc_AddNamesInput? input}) => _res;
 }
 
@@ -2640,11 +2578,11 @@ class Mutation$kyc_addNames {
   });
 
   factory Mutation$kyc_addNames.fromJson(Map<String, dynamic> json) {
-    final l$kyc_addNames = json['kyc_addNames'];
+    final l$kycAddnames = json['kyc_addNames'];
     final l$$__typename = json['__typename'];
     return Mutation$kyc_addNames(
       kyc_addNames: Mutation$kyc_addNames$kyc_addNames.fromJson(
-          (l$kyc_addNames as Map<String, dynamic>)),
+          (l$kycAddnames as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -2654,20 +2592,20 @@ class Mutation$kyc_addNames {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$kyc_addNames = kyc_addNames;
-    _resultData['kyc_addNames'] = l$kyc_addNames.toJson();
+    final resultData = <String, dynamic>{};
+    final l$kycAddnames = kyc_addNames;
+    resultData['kyc_addNames'] = l$kycAddnames.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$kyc_addNames = kyc_addNames;
+    final l$kycAddnames = kyc_addNames;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$kyc_addNames,
+      l$kycAddnames,
       l$$__typename,
     ]);
   }
@@ -2680,9 +2618,9 @@ class Mutation$kyc_addNames {
     if (other is! Mutation$kyc_addNames || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$kyc_addNames = kyc_addNames;
-    final lOther$kyc_addNames = other.kyc_addNames;
-    if (l$kyc_addNames != lOther$kyc_addNames) {
+    final l$kycAddnames = kyc_addNames;
+    final lother$kycAddnames = other.kyc_addNames;
+    if (l$kycAddnames != lother$kycAddnames) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -2731,6 +2669,7 @@ class _CopyWithImpl$Mutation$kyc_addNames<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? kyc_addNames = _undefined,
     Object? $__typename = _undefined,
@@ -2744,10 +2683,11 @@ class _CopyWithImpl$Mutation$kyc_addNames<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Mutation$kyc_addNames$kyc_addNames<TRes> get kyc_addNames {
-    final local$kyc_addNames = _instance.kyc_addNames;
+    final local$kycAddnames = _instance.kyc_addNames;
     return CopyWith$Mutation$kyc_addNames$kyc_addNames(
-        local$kyc_addNames, (e) => call(kyc_addNames: e));
+        local$kycAddnames, (e) => call(kyc_addNames: e));
   }
 }
 
@@ -2755,14 +2695,16 @@ class _CopyWithStubImpl$Mutation$kyc_addNames<TRes>
     implements CopyWith$Mutation$kyc_addNames<TRes> {
   _CopyWithStubImpl$Mutation$kyc_addNames(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Mutation$kyc_addNames$kyc_addNames? kyc_addNames,
     String? $__typename,
   }) =>
       _res;
 
+  @override
   CopyWith$Mutation$kyc_addNames$kyc_addNames<TRes> get kyc_addNames =>
       CopyWith$Mutation$kyc_addNames$kyc_addNames.stub(_res);
 }
@@ -2832,34 +2774,27 @@ typedef OnMutationCompleted$Mutation$kyc_addNames = FutureOr<void> Function(
 class Options$Mutation$kyc_addNames
     extends graphql.MutationOptions<Mutation$kyc_addNames> {
   Options$Mutation$kyc_addNames({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$kyc_addNames variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_addNames? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$kyc_addNames? onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_addNames>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
                     data,
                     data == null ? null : _parserFn$Mutation$kyc_addNames(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationkyc_addNames,
           parserFn: _parserFn$Mutation$kyc_addNames,
         );
@@ -2878,31 +2813,22 @@ class Options$Mutation$kyc_addNames
 class WatchOptions$Mutation$kyc_addNames
     extends graphql.WatchQueryOptions<Mutation$kyc_addNames> {
   WatchOptions$Mutation$kyc_addNames({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$kyc_addNames variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_addNames? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeMutationkyc_addNames,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$kyc_addNames,
         );
 }
@@ -2910,10 +2836,10 @@ class WatchOptions$Mutation$kyc_addNames
 extension ClientExtension$Mutation$kyc_addNames on graphql.GraphQLClient {
   Future<graphql.QueryResult<Mutation$kyc_addNames>> mutate$kyc_addNames(
           Options$Mutation$kyc_addNames options) async =>
-      await this.mutate(options);
+      await mutate(options);
   graphql.ObservableQuery<Mutation$kyc_addNames> watchMutation$kyc_addNames(
           WatchOptions$Mutation$kyc_addNames options) =>
-      this.watchMutation(options);
+      watchMutation(options);
 }
 
 class Mutation$kyc_addNames$HookResult {
@@ -2948,32 +2874,25 @@ graphql.ObservableQuery<Mutation$kyc_addNames> useWatchMutation$kyc_addNames(
 class WidgetOptions$Mutation$kyc_addNames
     extends graphql.MutationOptions<Mutation$kyc_addNames> {
   WidgetOptions$Mutation$kyc_addNames({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_addNames? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$kyc_addNames? onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_addNames>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
                     data,
                     data == null ? null : _parserFn$Mutation$kyc_addNames(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationkyc_addNames,
           parserFn: _parserFn$Mutation$kyc_addNames,
         );
@@ -3003,11 +2922,10 @@ typedef Builder$Mutation$kyc_addNames = widgets.Widget Function(
 class Mutation$kyc_addNames$Widget
     extends graphql_flutter.Mutation<Mutation$kyc_addNames> {
   Mutation$kyc_addNames$Widget({
-    widgets.Key? key,
+    super.key,
     WidgetOptions$Mutation$kyc_addNames? options,
     required Builder$Mutation$kyc_addNames builder,
   }) : super(
-          key: key,
           options: options ?? WidgetOptions$Mutation$kyc_addNames(),
           builder: (
             run,
@@ -3050,12 +2968,12 @@ class Mutation$kyc_addNames$kyc_addNames {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$message = message;
-    _resultData['message'] = l$message;
+    resultData['message'] = l$message;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -3129,6 +3047,7 @@ class _CopyWithImpl$Mutation$kyc_addNames$kyc_addNames<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? message = _undefined,
     Object? $__typename = _undefined,
@@ -3147,8 +3066,9 @@ class _CopyWithStubImpl$Mutation$kyc_addNames$kyc_addNames<TRes>
     implements CopyWith$Mutation$kyc_addNames$kyc_addNames<TRes> {
   _CopyWithStubImpl$Mutation$kyc_addNames$kyc_addNames(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? message,
     String? $__typename,
@@ -3239,6 +3159,7 @@ class _CopyWithImpl$Variables$Mutation$kyc_addNin<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$kyc_addNin._({
         ..._instance._$data,
@@ -3251,8 +3172,9 @@ class _CopyWithStubImpl$Variables$Mutation$kyc_addNin<TRes>
     implements CopyWith$Variables$Mutation$kyc_addNin<TRes> {
   _CopyWithStubImpl$Variables$Mutation$kyc_addNin(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Input$Kyc_AddNinInput? input}) => _res;
 }
 
@@ -3263,11 +3185,11 @@ class Mutation$kyc_addNin {
   });
 
   factory Mutation$kyc_addNin.fromJson(Map<String, dynamic> json) {
-    final l$kyc_addNin = json['kyc_addNin'];
+    final l$kycAddnin = json['kyc_addNin'];
     final l$$__typename = json['__typename'];
     return Mutation$kyc_addNin(
       kyc_addNin: Mutation$kyc_addNin$kyc_addNin.fromJson(
-          (l$kyc_addNin as Map<String, dynamic>)),
+          (l$kycAddnin as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -3277,20 +3199,20 @@ class Mutation$kyc_addNin {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$kyc_addNin = kyc_addNin;
-    _resultData['kyc_addNin'] = l$kyc_addNin.toJson();
+    final resultData = <String, dynamic>{};
+    final l$kycAddnin = kyc_addNin;
+    resultData['kyc_addNin'] = l$kycAddnin.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$kyc_addNin = kyc_addNin;
+    final l$kycAddnin = kyc_addNin;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$kyc_addNin,
+      l$kycAddnin,
       l$$__typename,
     ]);
   }
@@ -3303,9 +3225,9 @@ class Mutation$kyc_addNin {
     if (other is! Mutation$kyc_addNin || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$kyc_addNin = kyc_addNin;
-    final lOther$kyc_addNin = other.kyc_addNin;
-    if (l$kyc_addNin != lOther$kyc_addNin) {
+    final l$kycAddnin = kyc_addNin;
+    final lother$kycAddnin = other.kyc_addNin;
+    if (l$kycAddnin != lother$kycAddnin) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -3354,6 +3276,7 @@ class _CopyWithImpl$Mutation$kyc_addNin<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? kyc_addNin = _undefined,
     Object? $__typename = _undefined,
@@ -3367,10 +3290,11 @@ class _CopyWithImpl$Mutation$kyc_addNin<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Mutation$kyc_addNin$kyc_addNin<TRes> get kyc_addNin {
-    final local$kyc_addNin = _instance.kyc_addNin;
+    final local$kycAddnin = _instance.kyc_addNin;
     return CopyWith$Mutation$kyc_addNin$kyc_addNin(
-        local$kyc_addNin, (e) => call(kyc_addNin: e));
+        local$kycAddnin, (e) => call(kyc_addNin: e));
   }
 }
 
@@ -3378,14 +3302,16 @@ class _CopyWithStubImpl$Mutation$kyc_addNin<TRes>
     implements CopyWith$Mutation$kyc_addNin<TRes> {
   _CopyWithStubImpl$Mutation$kyc_addNin(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Mutation$kyc_addNin$kyc_addNin? kyc_addNin,
     String? $__typename,
   }) =>
       _res;
 
+  @override
   CopyWith$Mutation$kyc_addNin$kyc_addNin<TRes> get kyc_addNin =>
       CopyWith$Mutation$kyc_addNin$kyc_addNin.stub(_res);
 }
@@ -3454,34 +3380,27 @@ typedef OnMutationCompleted$Mutation$kyc_addNin = FutureOr<void> Function(
 class Options$Mutation$kyc_addNin
     extends graphql.MutationOptions<Mutation$kyc_addNin> {
   Options$Mutation$kyc_addNin({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$kyc_addNin variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_addNin? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$kyc_addNin? onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_addNin>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
                     data,
                     data == null ? null : _parserFn$Mutation$kyc_addNin(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationkyc_addNin,
           parserFn: _parserFn$Mutation$kyc_addNin,
         );
@@ -3500,31 +3419,22 @@ class Options$Mutation$kyc_addNin
 class WatchOptions$Mutation$kyc_addNin
     extends graphql.WatchQueryOptions<Mutation$kyc_addNin> {
   WatchOptions$Mutation$kyc_addNin({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$kyc_addNin variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_addNin? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeMutationkyc_addNin,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$kyc_addNin,
         );
 }
@@ -3532,10 +3442,10 @@ class WatchOptions$Mutation$kyc_addNin
 extension ClientExtension$Mutation$kyc_addNin on graphql.GraphQLClient {
   Future<graphql.QueryResult<Mutation$kyc_addNin>> mutate$kyc_addNin(
           Options$Mutation$kyc_addNin options) async =>
-      await this.mutate(options);
+      await mutate(options);
   graphql.ObservableQuery<Mutation$kyc_addNin> watchMutation$kyc_addNin(
           WatchOptions$Mutation$kyc_addNin options) =>
-      this.watchMutation(options);
+      watchMutation(options);
 }
 
 class Mutation$kyc_addNin$HookResult {
@@ -3570,32 +3480,25 @@ graphql.ObservableQuery<Mutation$kyc_addNin> useWatchMutation$kyc_addNin(
 class WidgetOptions$Mutation$kyc_addNin
     extends graphql.MutationOptions<Mutation$kyc_addNin> {
   WidgetOptions$Mutation$kyc_addNin({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_addNin? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$kyc_addNin? onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_addNin>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
                     data,
                     data == null ? null : _parserFn$Mutation$kyc_addNin(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationkyc_addNin,
           parserFn: _parserFn$Mutation$kyc_addNin,
         );
@@ -3625,11 +3528,10 @@ typedef Builder$Mutation$kyc_addNin = widgets.Widget Function(
 class Mutation$kyc_addNin$Widget
     extends graphql_flutter.Mutation<Mutation$kyc_addNin> {
   Mutation$kyc_addNin$Widget({
-    widgets.Key? key,
+    super.key,
     WidgetOptions$Mutation$kyc_addNin? options,
     required Builder$Mutation$kyc_addNin builder,
   }) : super(
-          key: key,
           options: options ?? WidgetOptions$Mutation$kyc_addNin(),
           builder: (
             run,
@@ -3671,12 +3573,12 @@ class Mutation$kyc_addNin$kyc_addNin {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$message = message;
-    _resultData['message'] = l$message;
+    resultData['message'] = l$message;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -3749,6 +3651,7 @@ class _CopyWithImpl$Mutation$kyc_addNin$kyc_addNin<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? message = _undefined,
     Object? $__typename = _undefined,
@@ -3766,8 +3669,9 @@ class _CopyWithStubImpl$Mutation$kyc_addNin$kyc_addNin<TRes>
     implements CopyWith$Mutation$kyc_addNin$kyc_addNin<TRes> {
   _CopyWithStubImpl$Mutation$kyc_addNin$kyc_addNin(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? message,
     String? $__typename,
@@ -3861,6 +3765,7 @@ class _CopyWithImpl$Variables$Mutation$kyc_createTransactionPin<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$kyc_createTransactionPin._({
         ..._instance._$data,
@@ -3873,8 +3778,9 @@ class _CopyWithStubImpl$Variables$Mutation$kyc_createTransactionPin<TRes>
     implements CopyWith$Variables$Mutation$kyc_createTransactionPin<TRes> {
   _CopyWithStubImpl$Variables$Mutation$kyc_createTransactionPin(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Input$Kyc_CreateTransactionPinInput? input}) => _res;
 }
 
@@ -3886,12 +3792,12 @@ class Mutation$kyc_createTransactionPin {
 
   factory Mutation$kyc_createTransactionPin.fromJson(
       Map<String, dynamic> json) {
-    final l$kyc_createTransactionPin = json['kyc_createTransactionPin'];
+    final l$kycCreatetransactionpin = json['kyc_createTransactionPin'];
     final l$$__typename = json['__typename'];
     return Mutation$kyc_createTransactionPin(
       kyc_createTransactionPin:
           Mutation$kyc_createTransactionPin$kyc_createTransactionPin.fromJson(
-              (l$kyc_createTransactionPin as Map<String, dynamic>)),
+              (l$kycCreatetransactionpin as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -3902,21 +3808,21 @@ class Mutation$kyc_createTransactionPin {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$kyc_createTransactionPin = kyc_createTransactionPin;
-    _resultData['kyc_createTransactionPin'] =
-        l$kyc_createTransactionPin.toJson();
+    final resultData = <String, dynamic>{};
+    final l$kycCreatetransactionpin = kyc_createTransactionPin;
+    resultData['kyc_createTransactionPin'] =
+        l$kycCreatetransactionpin.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$kyc_createTransactionPin = kyc_createTransactionPin;
+    final l$kycCreatetransactionpin = kyc_createTransactionPin;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$kyc_createTransactionPin,
+      l$kycCreatetransactionpin,
       l$$__typename,
     ]);
   }
@@ -3930,9 +3836,9 @@ class Mutation$kyc_createTransactionPin {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$kyc_createTransactionPin = kyc_createTransactionPin;
-    final lOther$kyc_createTransactionPin = other.kyc_createTransactionPin;
-    if (l$kyc_createTransactionPin != lOther$kyc_createTransactionPin) {
+    final l$kycCreatetransactionpin = kyc_createTransactionPin;
+    final lother$kycCreatetransactionpin = other.kyc_createTransactionPin;
+    if (l$kycCreatetransactionpin != lother$kycCreatetransactionpin) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -3984,6 +3890,7 @@ class _CopyWithImpl$Mutation$kyc_createTransactionPin<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? kyc_createTransactionPin = _undefined,
     Object? $__typename = _undefined,
@@ -3999,11 +3906,12 @@ class _CopyWithImpl$Mutation$kyc_createTransactionPin<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Mutation$kyc_createTransactionPin$kyc_createTransactionPin<TRes>
       get kyc_createTransactionPin {
-    final local$kyc_createTransactionPin = _instance.kyc_createTransactionPin;
+    final local$kycCreatetransactionpin = _instance.kyc_createTransactionPin;
     return CopyWith$Mutation$kyc_createTransactionPin$kyc_createTransactionPin(
-        local$kyc_createTransactionPin,
+        local$kycCreatetransactionpin,
         (e) => call(kyc_createTransactionPin: e));
   }
 }
@@ -4012,8 +3920,9 @@ class _CopyWithStubImpl$Mutation$kyc_createTransactionPin<TRes>
     implements CopyWith$Mutation$kyc_createTransactionPin<TRes> {
   _CopyWithStubImpl$Mutation$kyc_createTransactionPin(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Mutation$kyc_createTransactionPin$kyc_createTransactionPin?
         kyc_createTransactionPin,
@@ -4021,6 +3930,7 @@ class _CopyWithStubImpl$Mutation$kyc_createTransactionPin<TRes>
   }) =>
       _res;
 
+  @override
   CopyWith$Mutation$kyc_createTransactionPin$kyc_createTransactionPin<TRes>
       get kyc_createTransactionPin =>
           CopyWith$Mutation$kyc_createTransactionPin$kyc_createTransactionPin
@@ -4093,26 +4003,21 @@ typedef OnMutationCompleted$Mutation$kyc_createTransactionPin = FutureOr<void>
 class Options$Mutation$kyc_createTransactionPin
     extends graphql.MutationOptions<Mutation$kyc_createTransactionPin> {
   Options$Mutation$kyc_createTransactionPin({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$kyc_createTransactionPin variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_createTransactionPin? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$kyc_createTransactionPin? onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_createTransactionPin>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -4121,8 +4026,6 @@ class Options$Mutation$kyc_createTransactionPin
                         ? null
                         : _parserFn$Mutation$kyc_createTransactionPin(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationkyc_createTransactionPin,
           parserFn: _parserFn$Mutation$kyc_createTransactionPin,
         );
@@ -4142,31 +4045,22 @@ class Options$Mutation$kyc_createTransactionPin
 class WatchOptions$Mutation$kyc_createTransactionPin
     extends graphql.WatchQueryOptions<Mutation$kyc_createTransactionPin> {
   WatchOptions$Mutation$kyc_createTransactionPin({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$kyc_createTransactionPin variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_createTransactionPin? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeMutationkyc_createTransactionPin,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$kyc_createTransactionPin,
         );
 }
@@ -4176,11 +4070,11 @@ extension ClientExtension$Mutation$kyc_createTransactionPin
   Future<graphql.QueryResult<Mutation$kyc_createTransactionPin>>
       mutate$kyc_createTransactionPin(
               Options$Mutation$kyc_createTransactionPin options) async =>
-          await this.mutate(options);
+          await mutate(options);
   graphql.ObservableQuery<Mutation$kyc_createTransactionPin>
       watchMutation$kyc_createTransactionPin(
               WatchOptions$Mutation$kyc_createTransactionPin options) =>
-          this.watchMutation(options);
+          watchMutation(options);
 }
 
 class Mutation$kyc_createTransactionPin$HookResult {
@@ -4217,24 +4111,19 @@ graphql.ObservableQuery<Mutation$kyc_createTransactionPin>
 class WidgetOptions$Mutation$kyc_createTransactionPin
     extends graphql.MutationOptions<Mutation$kyc_createTransactionPin> {
   WidgetOptions$Mutation$kyc_createTransactionPin({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_createTransactionPin? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$kyc_createTransactionPin? onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_createTransactionPin>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -4243,8 +4132,6 @@ class WidgetOptions$Mutation$kyc_createTransactionPin
                         ? null
                         : _parserFn$Mutation$kyc_createTransactionPin(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationkyc_createTransactionPin,
           parserFn: _parserFn$Mutation$kyc_createTransactionPin,
         );
@@ -4275,11 +4162,10 @@ typedef Builder$Mutation$kyc_createTransactionPin = widgets.Widget Function(
 class Mutation$kyc_createTransactionPin$Widget
     extends graphql_flutter.Mutation<Mutation$kyc_createTransactionPin> {
   Mutation$kyc_createTransactionPin$Widget({
-    widgets.Key? key,
+    super.key,
     WidgetOptions$Mutation$kyc_createTransactionPin? options,
     required Builder$Mutation$kyc_createTransactionPin builder,
   }) : super(
-          key: key,
           options: options ?? WidgetOptions$Mutation$kyc_createTransactionPin(),
           builder: (
             run,
@@ -4322,12 +4208,12 @@ class Mutation$kyc_createTransactionPin$kyc_createTransactionPin {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$message = message;
-    _resultData['message'] = l$message;
+    resultData['message'] = l$message;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -4409,6 +4295,7 @@ class _CopyWithImpl$Mutation$kyc_createTransactionPin$kyc_createTransactionPin<
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? message = _undefined,
     Object? $__typename = _undefined,
@@ -4431,8 +4318,9 @@ class _CopyWithStubImpl$Mutation$kyc_createTransactionPin$kyc_createTransactionP
   _CopyWithStubImpl$Mutation$kyc_createTransactionPin$kyc_createTransactionPin(
       this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? message,
     String? $__typename,
@@ -4526,6 +4414,7 @@ class _CopyWithImpl$Variables$Mutation$kyc_sendPhoneOtp<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$kyc_sendPhoneOtp._({
         ..._instance._$data,
@@ -4538,8 +4427,9 @@ class _CopyWithStubImpl$Variables$Mutation$kyc_sendPhoneOtp<TRes>
     implements CopyWith$Variables$Mutation$kyc_sendPhoneOtp<TRes> {
   _CopyWithStubImpl$Variables$Mutation$kyc_sendPhoneOtp(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Input$Kyc_SendPhoneOtpInput? input}) => _res;
 }
 
@@ -4550,11 +4440,11 @@ class Mutation$kyc_sendPhoneOtp {
   });
 
   factory Mutation$kyc_sendPhoneOtp.fromJson(Map<String, dynamic> json) {
-    final l$kyc_sendPhoneOtp = json['kyc_sendPhoneOtp'];
+    final l$kycSendphoneotp = json['kyc_sendPhoneOtp'];
     final l$$__typename = json['__typename'];
     return Mutation$kyc_sendPhoneOtp(
       kyc_sendPhoneOtp: Mutation$kyc_sendPhoneOtp$kyc_sendPhoneOtp.fromJson(
-          (l$kyc_sendPhoneOtp as Map<String, dynamic>)),
+          (l$kycSendphoneotp as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -4564,20 +4454,20 @@ class Mutation$kyc_sendPhoneOtp {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$kyc_sendPhoneOtp = kyc_sendPhoneOtp;
-    _resultData['kyc_sendPhoneOtp'] = l$kyc_sendPhoneOtp.toJson();
+    final resultData = <String, dynamic>{};
+    final l$kycSendphoneotp = kyc_sendPhoneOtp;
+    resultData['kyc_sendPhoneOtp'] = l$kycSendphoneotp.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$kyc_sendPhoneOtp = kyc_sendPhoneOtp;
+    final l$kycSendphoneotp = kyc_sendPhoneOtp;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$kyc_sendPhoneOtp,
+      l$kycSendphoneotp,
       l$$__typename,
     ]);
   }
@@ -4591,9 +4481,9 @@ class Mutation$kyc_sendPhoneOtp {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$kyc_sendPhoneOtp = kyc_sendPhoneOtp;
-    final lOther$kyc_sendPhoneOtp = other.kyc_sendPhoneOtp;
-    if (l$kyc_sendPhoneOtp != lOther$kyc_sendPhoneOtp) {
+    final l$kycSendphoneotp = kyc_sendPhoneOtp;
+    final lother$kycSendphoneotp = other.kyc_sendPhoneOtp;
+    if (l$kycSendphoneotp != lother$kycSendphoneotp) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -4644,6 +4534,7 @@ class _CopyWithImpl$Mutation$kyc_sendPhoneOtp<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? kyc_sendPhoneOtp = _undefined,
     Object? $__typename = _undefined,
@@ -4658,11 +4549,12 @@ class _CopyWithImpl$Mutation$kyc_sendPhoneOtp<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Mutation$kyc_sendPhoneOtp$kyc_sendPhoneOtp<TRes>
       get kyc_sendPhoneOtp {
-    final local$kyc_sendPhoneOtp = _instance.kyc_sendPhoneOtp;
+    final local$kycSendphoneotp = _instance.kyc_sendPhoneOtp;
     return CopyWith$Mutation$kyc_sendPhoneOtp$kyc_sendPhoneOtp(
-        local$kyc_sendPhoneOtp, (e) => call(kyc_sendPhoneOtp: e));
+        local$kycSendphoneotp, (e) => call(kyc_sendPhoneOtp: e));
   }
 }
 
@@ -4670,14 +4562,16 @@ class _CopyWithStubImpl$Mutation$kyc_sendPhoneOtp<TRes>
     implements CopyWith$Mutation$kyc_sendPhoneOtp<TRes> {
   _CopyWithStubImpl$Mutation$kyc_sendPhoneOtp(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Mutation$kyc_sendPhoneOtp$kyc_sendPhoneOtp? kyc_sendPhoneOtp,
     String? $__typename,
   }) =>
       _res;
 
+  @override
   CopyWith$Mutation$kyc_sendPhoneOtp$kyc_sendPhoneOtp<TRes>
       get kyc_sendPhoneOtp =>
           CopyWith$Mutation$kyc_sendPhoneOtp$kyc_sendPhoneOtp.stub(_res);
@@ -4755,26 +4649,21 @@ typedef OnMutationCompleted$Mutation$kyc_sendPhoneOtp = FutureOr<void> Function(
 class Options$Mutation$kyc_sendPhoneOtp
     extends graphql.MutationOptions<Mutation$kyc_sendPhoneOtp> {
   Options$Mutation$kyc_sendPhoneOtp({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$kyc_sendPhoneOtp variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_sendPhoneOtp? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$kyc_sendPhoneOtp? onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_sendPhoneOtp>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -4783,8 +4672,6 @@ class Options$Mutation$kyc_sendPhoneOtp
                         ? null
                         : _parserFn$Mutation$kyc_sendPhoneOtp(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationkyc_sendPhoneOtp,
           parserFn: _parserFn$Mutation$kyc_sendPhoneOtp,
         );
@@ -4803,31 +4690,22 @@ class Options$Mutation$kyc_sendPhoneOtp
 class WatchOptions$Mutation$kyc_sendPhoneOtp
     extends graphql.WatchQueryOptions<Mutation$kyc_sendPhoneOtp> {
   WatchOptions$Mutation$kyc_sendPhoneOtp({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$kyc_sendPhoneOtp variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_sendPhoneOtp? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeMutationkyc_sendPhoneOtp,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$kyc_sendPhoneOtp,
         );
 }
@@ -4836,11 +4714,11 @@ extension ClientExtension$Mutation$kyc_sendPhoneOtp on graphql.GraphQLClient {
   Future<graphql.QueryResult<Mutation$kyc_sendPhoneOtp>>
       mutate$kyc_sendPhoneOtp(
               Options$Mutation$kyc_sendPhoneOtp options) async =>
-          await this.mutate(options);
+          await mutate(options);
   graphql.ObservableQuery<Mutation$kyc_sendPhoneOtp>
       watchMutation$kyc_sendPhoneOtp(
               WatchOptions$Mutation$kyc_sendPhoneOtp options) =>
-          this.watchMutation(options);
+          watchMutation(options);
 }
 
 class Mutation$kyc_sendPhoneOtp$HookResult {
@@ -4876,24 +4754,19 @@ graphql.ObservableQuery<Mutation$kyc_sendPhoneOtp>
 class WidgetOptions$Mutation$kyc_sendPhoneOtp
     extends graphql.MutationOptions<Mutation$kyc_sendPhoneOtp> {
   WidgetOptions$Mutation$kyc_sendPhoneOtp({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_sendPhoneOtp? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$kyc_sendPhoneOtp? onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_sendPhoneOtp>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -4902,8 +4775,6 @@ class WidgetOptions$Mutation$kyc_sendPhoneOtp
                         ? null
                         : _parserFn$Mutation$kyc_sendPhoneOtp(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationkyc_sendPhoneOtp,
           parserFn: _parserFn$Mutation$kyc_sendPhoneOtp,
         );
@@ -4933,11 +4804,10 @@ typedef Builder$Mutation$kyc_sendPhoneOtp = widgets.Widget Function(
 class Mutation$kyc_sendPhoneOtp$Widget
     extends graphql_flutter.Mutation<Mutation$kyc_sendPhoneOtp> {
   Mutation$kyc_sendPhoneOtp$Widget({
-    widgets.Key? key,
+    super.key,
     WidgetOptions$Mutation$kyc_sendPhoneOtp? options,
     required Builder$Mutation$kyc_sendPhoneOtp builder,
   }) : super(
-          key: key,
           options: options ?? WidgetOptions$Mutation$kyc_sendPhoneOtp(),
           builder: (
             run,
@@ -4985,14 +4855,14 @@ class Mutation$kyc_sendPhoneOtp$kyc_sendPhoneOtp {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$message = message;
-    _resultData['message'] = l$message;
+    resultData['message'] = l$message;
     final l$otpToken = otpToken;
-    _resultData['otpToken'] = l$otpToken;
+    resultData['otpToken'] = l$otpToken;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -5074,6 +4944,7 @@ class _CopyWithImpl$Mutation$kyc_sendPhoneOtp$kyc_sendPhoneOtp<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? message = _undefined,
     Object? otpToken = _undefined,
@@ -5096,8 +4967,9 @@ class _CopyWithStubImpl$Mutation$kyc_sendPhoneOtp$kyc_sendPhoneOtp<TRes>
     implements CopyWith$Mutation$kyc_sendPhoneOtp$kyc_sendPhoneOtp<TRes> {
   _CopyWithStubImpl$Mutation$kyc_sendPhoneOtp$kyc_sendPhoneOtp(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? message,
     String? otpToken,
@@ -5202,6 +5074,7 @@ class _CopyWithImpl$Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials._({
         ..._instance._$data,
@@ -5218,8 +5091,9 @@ class _CopyWithStubImpl$Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredential
   _CopyWithStubImpl$Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
       this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput? input}) => _res;
 }
 
@@ -5231,13 +5105,13 @@ class Mutation$kyc_verifyPhoneOtpAndSubmitCredentials {
 
   factory Mutation$kyc_verifyPhoneOtpAndSubmitCredentials.fromJson(
       Map<String, dynamic> json) {
-    final l$kyc_verifyPhoneOtpAndSubmitCredentials =
+    final l$kycVerifyphoneotpandsubmitcredentials =
         json['kyc_verifyPhoneOtpAndSubmitCredentials'];
     final l$$__typename = json['__typename'];
     return Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
       kyc_verifyPhoneOtpAndSubmitCredentials:
           Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials
-              .fromJson((l$kyc_verifyPhoneOtpAndSubmitCredentials
+              .fromJson((l$kycVerifyphoneotpandsubmitcredentials
                   as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
@@ -5249,23 +5123,23 @@ class Mutation$kyc_verifyPhoneOtpAndSubmitCredentials {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$kyc_verifyPhoneOtpAndSubmitCredentials =
+    final resultData = <String, dynamic>{};
+    final l$kycVerifyphoneotpandsubmitcredentials =
         kyc_verifyPhoneOtpAndSubmitCredentials;
-    _resultData['kyc_verifyPhoneOtpAndSubmitCredentials'] =
-        l$kyc_verifyPhoneOtpAndSubmitCredentials.toJson();
+    resultData['kyc_verifyPhoneOtpAndSubmitCredentials'] =
+        l$kycVerifyphoneotpandsubmitcredentials.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$kyc_verifyPhoneOtpAndSubmitCredentials =
+    final l$kycVerifyphoneotpandsubmitcredentials =
         kyc_verifyPhoneOtpAndSubmitCredentials;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$kyc_verifyPhoneOtpAndSubmitCredentials,
+      l$kycVerifyphoneotpandsubmitcredentials,
       l$$__typename,
     ]);
   }
@@ -5279,12 +5153,12 @@ class Mutation$kyc_verifyPhoneOtpAndSubmitCredentials {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$kyc_verifyPhoneOtpAndSubmitCredentials =
+    final l$kycVerifyphoneotpandsubmitcredentials =
         kyc_verifyPhoneOtpAndSubmitCredentials;
-    final lOther$kyc_verifyPhoneOtpAndSubmitCredentials =
+    final lother$kycVerifyphoneotpandsubmitcredentials =
         other.kyc_verifyPhoneOtpAndSubmitCredentials;
-    if (l$kyc_verifyPhoneOtpAndSubmitCredentials !=
-        lOther$kyc_verifyPhoneOtpAndSubmitCredentials) {
+    if (l$kycVerifyphoneotpandsubmitcredentials !=
+        lother$kycVerifyphoneotpandsubmitcredentials) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -5338,6 +5212,7 @@ class _CopyWithImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? kyc_verifyPhoneOtpAndSubmitCredentials = _undefined,
     Object? $__typename = _undefined,
@@ -5354,12 +5229,13 @@ class _CopyWithImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials<
       TRes> get kyc_verifyPhoneOtpAndSubmitCredentials {
-    final local$kyc_verifyPhoneOtpAndSubmitCredentials =
+    final local$kycVerifyphoneotpandsubmitcredentials =
         _instance.kyc_verifyPhoneOtpAndSubmitCredentials;
     return CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials(
-        local$kyc_verifyPhoneOtpAndSubmitCredentials,
+        local$kycVerifyphoneotpandsubmitcredentials,
         (e) => call(kyc_verifyPhoneOtpAndSubmitCredentials: e));
   }
 }
@@ -5368,8 +5244,9 @@ class _CopyWithStubImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<TRes>
     implements CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<TRes> {
   _CopyWithStubImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials?
         kyc_verifyPhoneOtpAndSubmitCredentials,
@@ -5377,6 +5254,7 @@ class _CopyWithStubImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<TRes>
   }) =>
       _res;
 
+  @override
   CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials<
           TRes>
       get kyc_verifyPhoneOtpAndSubmitCredentials =>
@@ -5452,29 +5330,23 @@ typedef OnMutationCompleted$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
 class Options$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials extends graphql
     .MutationOptions<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials> {
   Options$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
         variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_verifyPhoneOtpAndSubmitCredentials? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials?
         onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials>?
-        update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -5484,8 +5356,6 @@ class Options$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials extends graphql
                         : _parserFn$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
                             data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationkyc_verifyPhoneOtpAndSubmitCredentials,
           parserFn: _parserFn$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials,
         );
@@ -5506,32 +5376,23 @@ class WatchOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
     extends graphql
     .WatchQueryOptions<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials> {
   WatchOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
         variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_verifyPhoneOtpAndSubmitCredentials? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeMutationkyc_verifyPhoneOtpAndSubmitCredentials,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials,
         );
 }
@@ -5542,12 +5403,12 @@ extension ClientExtension$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
       mutate$kyc_verifyPhoneOtpAndSubmitCredentials(
               Options$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
                   options) async =>
-          await this.mutate(options);
+          await mutate(options);
   graphql.ObservableQuery<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials>
       watchMutation$kyc_verifyPhoneOtpAndSubmitCredentials(
               WatchOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
                   options) =>
-          this.watchMutation(options);
+          watchMutation(options);
 }
 
 class Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$HookResult {
@@ -5588,26 +5449,20 @@ class WidgetOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
     extends graphql
     .MutationOptions<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials> {
   WidgetOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$kyc_verifyPhoneOtpAndSubmitCredentials? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials?
         onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials>?
-        update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -5617,8 +5472,6 @@ class WidgetOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
                         : _parserFn$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
                             data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationkyc_verifyPhoneOtpAndSubmitCredentials,
           parserFn: _parserFn$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials,
         );
@@ -5652,11 +5505,10 @@ class Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$Widget
     extends graphql_flutter
     .Mutation<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials> {
   Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$Widget({
-    widgets.Key? key,
+    super.key,
     WidgetOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials? options,
     required Builder$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials builder,
   }) : super(
-          key: key,
           options: options ??
               WidgetOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(),
           builder: (
@@ -5700,12 +5552,12 @@ class Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmi
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$message = message;
-    _resultData['message'] = l$message;
+    resultData['message'] = l$message;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -5792,6 +5644,7 @@ class _CopyWithImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPh
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? message = _undefined,
     Object? $__typename = _undefined,
@@ -5815,8 +5668,9 @@ class _CopyWithStubImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_veri
   _CopyWithStubImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials(
       this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? message,
     String? $__typename,

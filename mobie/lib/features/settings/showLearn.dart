@@ -15,7 +15,7 @@ class ShowLearn extends StatelessWidget {
 }
 
 class _LearnLinks extends HookWidget {
-  const _LearnLinks({super.key});
+  const _LearnLinks();
 
   @override
   Widget build(BuildContext context) {

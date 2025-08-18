@@ -91,6 +91,7 @@ class _CopyWithImpl$Variables$Mutation$BankAccount_delete<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$BankAccount_delete._({
         ..._instance._$data,
@@ -103,8 +104,9 @@ class _CopyWithStubImpl$Variables$Mutation$BankAccount_delete<TRes>
     implements CopyWith$Variables$Mutation$BankAccount_delete<TRes> {
   _CopyWithStubImpl$Variables$Mutation$BankAccount_delete(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Input$BankAccount_DeleteInput? input}) => _res;
 }
 
@@ -115,12 +117,12 @@ class Mutation$BankAccount_delete {
   });
 
   factory Mutation$BankAccount_delete.fromJson(Map<String, dynamic> json) {
-    final l$bankAccount_delete = json['bankAccount_delete'];
+    final l$bankaccountDelete = json['bankAccount_delete'];
     final l$$__typename = json['__typename'];
     return Mutation$BankAccount_delete(
       bankAccount_delete:
           Mutation$BankAccount_delete$bankAccount_delete.fromJson(
-              (l$bankAccount_delete as Map<String, dynamic>)),
+              (l$bankaccountDelete as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -130,20 +132,20 @@ class Mutation$BankAccount_delete {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$bankAccount_delete = bankAccount_delete;
-    _resultData['bankAccount_delete'] = l$bankAccount_delete.toJson();
+    final resultData = <String, dynamic>{};
+    final l$bankaccountDelete = bankAccount_delete;
+    resultData['bankAccount_delete'] = l$bankaccountDelete.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$bankAccount_delete = bankAccount_delete;
+    final l$bankaccountDelete = bankAccount_delete;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$bankAccount_delete,
+      l$bankaccountDelete,
       l$$__typename,
     ]);
   }
@@ -157,9 +159,9 @@ class Mutation$BankAccount_delete {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$bankAccount_delete = bankAccount_delete;
-    final lOther$bankAccount_delete = other.bankAccount_delete;
-    if (l$bankAccount_delete != lOther$bankAccount_delete) {
+    final l$bankaccountDelete = bankAccount_delete;
+    final lother$bankaccountDelete = other.bankAccount_delete;
+    if (l$bankaccountDelete != lother$bankaccountDelete) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -210,6 +212,7 @@ class _CopyWithImpl$Mutation$BankAccount_delete<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? bankAccount_delete = _undefined,
     Object? $__typename = _undefined,
@@ -225,11 +228,12 @@ class _CopyWithImpl$Mutation$BankAccount_delete<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Mutation$BankAccount_delete$bankAccount_delete<TRes>
       get bankAccount_delete {
-    final local$bankAccount_delete = _instance.bankAccount_delete;
+    final local$bankaccountDelete = _instance.bankAccount_delete;
     return CopyWith$Mutation$BankAccount_delete$bankAccount_delete(
-        local$bankAccount_delete, (e) => call(bankAccount_delete: e));
+        local$bankaccountDelete, (e) => call(bankAccount_delete: e));
   }
 }
 
@@ -237,14 +241,16 @@ class _CopyWithStubImpl$Mutation$BankAccount_delete<TRes>
     implements CopyWith$Mutation$BankAccount_delete<TRes> {
   _CopyWithStubImpl$Mutation$BankAccount_delete(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Mutation$BankAccount_delete$bankAccount_delete? bankAccount_delete,
     String? $__typename,
   }) =>
       _res;
 
+  @override
   CopyWith$Mutation$BankAccount_delete$bankAccount_delete<TRes>
       get bankAccount_delete =>
           CopyWith$Mutation$BankAccount_delete$bankAccount_delete.stub(_res);
@@ -316,26 +322,21 @@ typedef OnMutationCompleted$Mutation$BankAccount_delete = FutureOr<void>
 class Options$Mutation$BankAccount_delete
     extends graphql.MutationOptions<Mutation$BankAccount_delete> {
   Options$Mutation$BankAccount_delete({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$BankAccount_delete variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$BankAccount_delete? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$BankAccount_delete? onCompleted,
-    graphql.OnMutationUpdate<Mutation$BankAccount_delete>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -344,8 +345,6 @@ class Options$Mutation$BankAccount_delete
                         ? null
                         : _parserFn$Mutation$BankAccount_delete(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationBankAccount_delete,
           parserFn: _parserFn$Mutation$BankAccount_delete,
         );
@@ -364,31 +363,22 @@ class Options$Mutation$BankAccount_delete
 class WatchOptions$Mutation$BankAccount_delete
     extends graphql.WatchQueryOptions<Mutation$BankAccount_delete> {
   WatchOptions$Mutation$BankAccount_delete({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$BankAccount_delete variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$BankAccount_delete? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeMutationBankAccount_delete,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$BankAccount_delete,
         );
 }
@@ -397,11 +387,11 @@ extension ClientExtension$Mutation$BankAccount_delete on graphql.GraphQLClient {
   Future<graphql.QueryResult<Mutation$BankAccount_delete>>
       mutate$BankAccount_delete(
               Options$Mutation$BankAccount_delete options) async =>
-          await this.mutate(options);
+          await mutate(options);
   graphql.ObservableQuery<Mutation$BankAccount_delete>
       watchMutation$BankAccount_delete(
               WatchOptions$Mutation$BankAccount_delete options) =>
-          this.watchMutation(options);
+          watchMutation(options);
 }
 
 class Mutation$BankAccount_delete$HookResult {
@@ -437,24 +427,19 @@ graphql.ObservableQuery<Mutation$BankAccount_delete>
 class WidgetOptions$Mutation$BankAccount_delete
     extends graphql.MutationOptions<Mutation$BankAccount_delete> {
   WidgetOptions$Mutation$BankAccount_delete({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$BankAccount_delete? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$BankAccount_delete? onCompleted,
-    graphql.OnMutationUpdate<Mutation$BankAccount_delete>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -463,8 +448,6 @@ class WidgetOptions$Mutation$BankAccount_delete
                         ? null
                         : _parserFn$Mutation$BankAccount_delete(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationBankAccount_delete,
           parserFn: _parserFn$Mutation$BankAccount_delete,
         );
@@ -494,11 +477,10 @@ typedef Builder$Mutation$BankAccount_delete = widgets.Widget Function(
 class Mutation$BankAccount_delete$Widget
     extends graphql_flutter.Mutation<Mutation$BankAccount_delete> {
   Mutation$BankAccount_delete$Widget({
-    widgets.Key? key,
+    super.key,
     WidgetOptions$Mutation$BankAccount_delete? options,
     required Builder$Mutation$BankAccount_delete builder,
   }) : super(
-          key: key,
           options: options ?? WidgetOptions$Mutation$BankAccount_delete(),
           builder: (
             run,
@@ -541,12 +523,12 @@ class Mutation$BankAccount_delete$bankAccount_delete {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$message = message;
-    _resultData['message'] = l$message;
+    resultData['message'] = l$message;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -621,6 +603,7 @@ class _CopyWithImpl$Mutation$BankAccount_delete$bankAccount_delete<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? message = _undefined,
     Object? $__typename = _undefined,
@@ -639,8 +622,9 @@ class _CopyWithStubImpl$Mutation$BankAccount_delete$bankAccount_delete<TRes>
     implements CopyWith$Mutation$BankAccount_delete$bankAccount_delete<TRes> {
   _CopyWithStubImpl$Mutation$BankAccount_delete$bankAccount_delete(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? message,
     String? $__typename,
@@ -734,6 +718,7 @@ class _CopyWithImpl$Variables$Mutation$BankAccount_create<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$BankAccount_create._({
         ..._instance._$data,
@@ -746,8 +731,9 @@ class _CopyWithStubImpl$Variables$Mutation$BankAccount_create<TRes>
     implements CopyWith$Variables$Mutation$BankAccount_create<TRes> {
   _CopyWithStubImpl$Variables$Mutation$BankAccount_create(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Input$BankAccount_CreateInput? input}) => _res;
 }
 
@@ -758,12 +744,12 @@ class Mutation$BankAccount_create {
   });
 
   factory Mutation$BankAccount_create.fromJson(Map<String, dynamic> json) {
-    final l$bankAccount_create = json['bankAccount_create'];
+    final l$bankaccountCreate = json['bankAccount_create'];
     final l$$__typename = json['__typename'];
     return Mutation$BankAccount_create(
       bankAccount_create:
           Mutation$BankAccount_create$bankAccount_create.fromJson(
-              (l$bankAccount_create as Map<String, dynamic>)),
+              (l$bankaccountCreate as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -773,20 +759,20 @@ class Mutation$BankAccount_create {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$bankAccount_create = bankAccount_create;
-    _resultData['bankAccount_create'] = l$bankAccount_create.toJson();
+    final resultData = <String, dynamic>{};
+    final l$bankaccountCreate = bankAccount_create;
+    resultData['bankAccount_create'] = l$bankaccountCreate.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$bankAccount_create = bankAccount_create;
+    final l$bankaccountCreate = bankAccount_create;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$bankAccount_create,
+      l$bankaccountCreate,
       l$$__typename,
     ]);
   }
@@ -800,9 +786,9 @@ class Mutation$BankAccount_create {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$bankAccount_create = bankAccount_create;
-    final lOther$bankAccount_create = other.bankAccount_create;
-    if (l$bankAccount_create != lOther$bankAccount_create) {
+    final l$bankaccountCreate = bankAccount_create;
+    final lother$bankaccountCreate = other.bankAccount_create;
+    if (l$bankaccountCreate != lother$bankaccountCreate) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -853,6 +839,7 @@ class _CopyWithImpl$Mutation$BankAccount_create<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? bankAccount_create = _undefined,
     Object? $__typename = _undefined,
@@ -868,11 +855,12 @@ class _CopyWithImpl$Mutation$BankAccount_create<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Mutation$BankAccount_create$bankAccount_create<TRes>
       get bankAccount_create {
-    final local$bankAccount_create = _instance.bankAccount_create;
+    final local$bankaccountCreate = _instance.bankAccount_create;
     return CopyWith$Mutation$BankAccount_create$bankAccount_create(
-        local$bankAccount_create, (e) => call(bankAccount_create: e));
+        local$bankaccountCreate, (e) => call(bankAccount_create: e));
   }
 }
 
@@ -880,14 +868,16 @@ class _CopyWithStubImpl$Mutation$BankAccount_create<TRes>
     implements CopyWith$Mutation$BankAccount_create<TRes> {
   _CopyWithStubImpl$Mutation$BankAccount_create(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Mutation$BankAccount_create$bankAccount_create? bankAccount_create,
     String? $__typename,
   }) =>
       _res;
 
+  @override
   CopyWith$Mutation$BankAccount_create$bankAccount_create<TRes>
       get bankAccount_create =>
           CopyWith$Mutation$BankAccount_create$bankAccount_create.stub(_res);
@@ -980,26 +970,21 @@ typedef OnMutationCompleted$Mutation$BankAccount_create = FutureOr<void>
 class Options$Mutation$BankAccount_create
     extends graphql.MutationOptions<Mutation$BankAccount_create> {
   Options$Mutation$BankAccount_create({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$BankAccount_create variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$BankAccount_create? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$BankAccount_create? onCompleted,
-    graphql.OnMutationUpdate<Mutation$BankAccount_create>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -1008,8 +993,6 @@ class Options$Mutation$BankAccount_create
                         ? null
                         : _parserFn$Mutation$BankAccount_create(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationBankAccount_create,
           parserFn: _parserFn$Mutation$BankAccount_create,
         );
@@ -1028,31 +1011,22 @@ class Options$Mutation$BankAccount_create
 class WatchOptions$Mutation$BankAccount_create
     extends graphql.WatchQueryOptions<Mutation$BankAccount_create> {
   WatchOptions$Mutation$BankAccount_create({
-    String? operationName,
+    super.operationName,
     required Variables$Mutation$BankAccount_create variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$BankAccount_create? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeMutationBankAccount_create,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$BankAccount_create,
         );
 }
@@ -1061,11 +1035,11 @@ extension ClientExtension$Mutation$BankAccount_create on graphql.GraphQLClient {
   Future<graphql.QueryResult<Mutation$BankAccount_create>>
       mutate$BankAccount_create(
               Options$Mutation$BankAccount_create options) async =>
-          await this.mutate(options);
+          await mutate(options);
   graphql.ObservableQuery<Mutation$BankAccount_create>
       watchMutation$BankAccount_create(
               WatchOptions$Mutation$BankAccount_create options) =>
-          this.watchMutation(options);
+          watchMutation(options);
 }
 
 class Mutation$BankAccount_create$HookResult {
@@ -1101,24 +1075,19 @@ graphql.ObservableQuery<Mutation$BankAccount_create>
 class WidgetOptions$Mutation$BankAccount_create
     extends graphql.MutationOptions<Mutation$BankAccount_create> {
   WidgetOptions$Mutation$BankAccount_create({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$BankAccount_create? typedOptimisticResult,
-    graphql.Context? context,
+    super.context,
     OnMutationCompleted$Mutation$BankAccount_create? onCompleted,
-    graphql.OnMutationUpdate<Mutation$BankAccount_create>? update,
-    graphql.OnError? onError,
+    super.update,
+    super.onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -1127,8 +1096,6 @@ class WidgetOptions$Mutation$BankAccount_create
                         ? null
                         : _parserFn$Mutation$BankAccount_create(data),
                   ),
-          update: update,
-          onError: onError,
           document: documentNodeMutationBankAccount_create,
           parserFn: _parserFn$Mutation$BankAccount_create,
         );
@@ -1158,11 +1125,10 @@ typedef Builder$Mutation$BankAccount_create = widgets.Widget Function(
 class Mutation$BankAccount_create$Widget
     extends graphql_flutter.Mutation<Mutation$BankAccount_create> {
   Mutation$BankAccount_create$Widget({
-    widgets.Key? key,
+    super.key,
     WidgetOptions$Mutation$BankAccount_create? options,
     required Builder$Mutation$BankAccount_create builder,
   }) : super(
-          key: key,
           options: options ?? WidgetOptions$Mutation$BankAccount_create(),
           builder: (
             run,
@@ -1196,15 +1162,15 @@ class Mutation$BankAccount_create$bankAccount_create {
   factory Mutation$BankAccount_create$bankAccount_create.fromJson(
       Map<String, dynamic> json) {
     final l$id = json['id'];
-    final l$account_no = json['account_no'];
-    final l$account_name = json['account_name'];
-    final l$bank_name = json['bank_name'];
+    final l$accountNo = json['account_no'];
+    final l$accountName = json['account_name'];
+    final l$bankName = json['bank_name'];
     final l$$__typename = json['__typename'];
     return Mutation$BankAccount_create$bankAccount_create(
       id: (l$id as num).toDouble(),
-      account_no: (l$account_no as String),
-      account_name: (l$account_name as String),
-      bank_name: (l$bank_name as String),
+      account_no: (l$accountNo as String),
+      account_name: (l$accountName as String),
+      bank_name: (l$bankName as String),
       $__typename: (l$$__typename as String),
     );
   }
@@ -1220,32 +1186,32 @@ class Mutation$BankAccount_create$bankAccount_create {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$id = id;
-    _resultData['id'] = l$id;
-    final l$account_no = account_no;
-    _resultData['account_no'] = l$account_no;
-    final l$account_name = account_name;
-    _resultData['account_name'] = l$account_name;
-    final l$bank_name = bank_name;
-    _resultData['bank_name'] = l$bank_name;
+    resultData['id'] = l$id;
+    final l$accountNo = account_no;
+    resultData['account_no'] = l$accountNo;
+    final l$accountName = account_name;
+    resultData['account_name'] = l$accountName;
+    final l$bankName = bank_name;
+    resultData['bank_name'] = l$bankName;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
     final l$id = id;
-    final l$account_no = account_no;
-    final l$account_name = account_name;
-    final l$bank_name = bank_name;
+    final l$accountNo = account_no;
+    final l$accountName = account_name;
+    final l$bankName = bank_name;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
-      l$account_no,
-      l$account_name,
-      l$bank_name,
+      l$accountNo,
+      l$accountName,
+      l$bankName,
       l$$__typename,
     ]);
   }
@@ -1264,19 +1230,19 @@ class Mutation$BankAccount_create$bankAccount_create {
     if (l$id != lOther$id) {
       return false;
     }
-    final l$account_no = account_no;
-    final lOther$account_no = other.account_no;
-    if (l$account_no != lOther$account_no) {
+    final l$accountNo = account_no;
+    final lother$accountNo = other.account_no;
+    if (l$accountNo != lother$accountNo) {
       return false;
     }
-    final l$account_name = account_name;
-    final lOther$account_name = other.account_name;
-    if (l$account_name != lOther$account_name) {
+    final l$accountName = account_name;
+    final lother$accountName = other.account_name;
+    if (l$accountName != lother$accountName) {
       return false;
     }
-    final l$bank_name = bank_name;
-    final lOther$bank_name = other.bank_name;
-    if (l$bank_name != lOther$bank_name) {
+    final l$bankName = bank_name;
+    final lother$bankName = other.bank_name;
+    if (l$bankName != lother$bankName) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -1330,6 +1296,7 @@ class _CopyWithImpl$Mutation$BankAccount_create$bankAccount_create<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? id = _undefined,
     Object? account_no = _undefined,
@@ -1358,8 +1325,9 @@ class _CopyWithStubImpl$Mutation$BankAccount_create$bankAccount_create<TRes>
     implements CopyWith$Mutation$BankAccount_create$bankAccount_create<TRes> {
   _CopyWithStubImpl$Mutation$BankAccount_create$bankAccount_create(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     double? id,
     String? account_no,
@@ -1377,10 +1345,10 @@ class Query$BankAccount_getAll {
   });
 
   factory Query$BankAccount_getAll.fromJson(Map<String, dynamic> json) {
-    final l$bankAccount_getAll = json['bankAccount_getAll'];
+    final l$bankaccountGetall = json['bankAccount_getAll'];
     final l$$__typename = json['__typename'];
     return Query$BankAccount_getAll(
-      bankAccount_getAll: (l$bankAccount_getAll as List<dynamic>)
+      bankAccount_getAll: (l$bankaccountGetall as List<dynamic>)
           .map((e) => Query$BankAccount_getAll$bankAccount_getAll.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
@@ -1393,21 +1361,21 @@ class Query$BankAccount_getAll {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$bankAccount_getAll = bankAccount_getAll;
-    _resultData['bankAccount_getAll'] =
-        l$bankAccount_getAll.map((e) => e.toJson()).toList();
+    final resultData = <String, dynamic>{};
+    final l$bankaccountGetall = bankAccount_getAll;
+    resultData['bankAccount_getAll'] =
+        l$bankaccountGetall.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$bankAccount_getAll = bankAccount_getAll;
+    final l$bankaccountGetall = bankAccount_getAll;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$bankAccount_getAll.map((v) => v)),
+      Object.hashAll(l$bankaccountGetall.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -1421,15 +1389,15 @@ class Query$BankAccount_getAll {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$bankAccount_getAll = bankAccount_getAll;
-    final lOther$bankAccount_getAll = other.bankAccount_getAll;
-    if (l$bankAccount_getAll.length != lOther$bankAccount_getAll.length) {
+    final l$bankaccountGetall = bankAccount_getAll;
+    final lother$bankaccountGetall = other.bankAccount_getAll;
+    if (l$bankaccountGetall.length != lother$bankaccountGetall.length) {
       return false;
     }
-    for (int i = 0; i < l$bankAccount_getAll.length; i++) {
-      final l$bankAccount_getAll$entry = l$bankAccount_getAll[i];
-      final lOther$bankAccount_getAll$entry = lOther$bankAccount_getAll[i];
-      if (l$bankAccount_getAll$entry != lOther$bankAccount_getAll$entry) {
+    for (int i = 0; i < l$bankaccountGetall.length; i++) {
+      final l$bankaccountGetall$entry = l$bankaccountGetall[i];
+      final lother$bankaccountGetall$entry = lother$bankaccountGetall[i];
+      if (l$bankaccountGetall$entry != lother$bankaccountGetall$entry) {
         return false;
       }
     }
@@ -1469,7 +1437,7 @@ abstract class CopyWith$Query$BankAccount_getAll<TRes> {
               Iterable<
                   CopyWith$Query$BankAccount_getAll$bankAccount_getAll<
                       Query$BankAccount_getAll$bankAccount_getAll>>)
-          _fn);
+          fn);
 }
 
 class _CopyWithImpl$Query$BankAccount_getAll<TRes>
@@ -1485,6 +1453,7 @@ class _CopyWithImpl$Query$BankAccount_getAll<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? bankAccount_getAll = _undefined,
     Object? $__typename = _undefined,
@@ -1500,14 +1469,15 @@ class _CopyWithImpl$Query$BankAccount_getAll<TRes>
             : ($__typename as String),
       ));
 
+  @override
   TRes bankAccount_getAll(
           Iterable<Query$BankAccount_getAll$bankAccount_getAll> Function(
                   Iterable<
                       CopyWith$Query$BankAccount_getAll$bankAccount_getAll<
                           Query$BankAccount_getAll$bankAccount_getAll>>)
-              _fn) =>
+              fn) =>
       call(
-          bankAccount_getAll: _fn(_instance.bankAccount_getAll
+          bankAccount_getAll: fn(_instance.bankAccount_getAll
               .map((e) => CopyWith$Query$BankAccount_getAll$bankAccount_getAll(
                     e,
                     (i) => i,
@@ -1518,15 +1488,17 @@ class _CopyWithStubImpl$Query$BankAccount_getAll<TRes>
     implements CopyWith$Query$BankAccount_getAll<TRes> {
   _CopyWithStubImpl$Query$BankAccount_getAll(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     List<Query$BankAccount_getAll$bankAccount_getAll>? bankAccount_getAll,
     String? $__typename,
   }) =>
       _res;
 
-  bankAccount_getAll(_fn) => _res;
+  @override
+  bankAccount_getAll(fn) => _res;
 }
 
 const documentNodeQueryBankAccount_getAll = DocumentNode(definitions: [
@@ -1607,25 +1579,19 @@ typedef OnQueryComplete$Query$BankAccount_getAll = FutureOr<void> Function(
 class Options$Query$BankAccount_getAll
     extends graphql.QueryOptions<Query$BankAccount_getAll> {
   Options$Query$BankAccount_getAll({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$BankAccount_getAll? typedOptimisticResult,
-    Duration? pollInterval,
-    graphql.Context? context,
+    super.pollInterval,
+    super.context,
     OnQueryComplete$Query$BankAccount_getAll? onComplete,
-    graphql.OnQueryError? onError,
+    super.onError,
   })  : onCompleteWithParsed = onComplete,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          pollInterval: pollInterval,
-          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
@@ -1634,7 +1600,6 @@ class Options$Query$BankAccount_getAll
                         ? null
                         : _parserFn$Query$BankAccount_getAll(data),
                   ),
-          onError: onError,
           document: documentNodeQueryBankAccount_getAll,
           parserFn: _parserFn$Query$BankAccount_getAll,
         );
@@ -1653,29 +1618,20 @@ class Options$Query$BankAccount_getAll
 class WatchOptions$Query$BankAccount_getAll
     extends graphql.WatchQueryOptions<Query$BankAccount_getAll> {
   WatchOptions$Query$BankAccount_getAll({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$BankAccount_getAll? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeQueryBankAccount_getAll,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Query$BankAccount_getAll,
         );
 }
@@ -1683,9 +1639,8 @@ class WatchOptions$Query$BankAccount_getAll
 class FetchMoreOptions$Query$BankAccount_getAll
     extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$BankAccount_getAll(
-      {required graphql.UpdateQuery updateQuery})
+      {required super.updateQuery})
       : super(
-          updateQuery: updateQuery,
           document: documentNodeQueryBankAccount_getAll,
         );
 }
@@ -1694,16 +1649,16 @@ extension ClientExtension$Query$BankAccount_getAll on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$BankAccount_getAll>>
       query$BankAccount_getAll(
               [Options$Query$BankAccount_getAll? options]) async =>
-          await this.query(options ?? Options$Query$BankAccount_getAll());
+          await query(options ?? Options$Query$BankAccount_getAll());
   graphql.ObservableQuery<Query$BankAccount_getAll>
       watchQuery$BankAccount_getAll(
               [WatchOptions$Query$BankAccount_getAll? options]) =>
-          this.watchQuery(options ?? WatchOptions$Query$BankAccount_getAll());
+          watchQuery(options ?? WatchOptions$Query$BankAccount_getAll());
   void writeQuery$BankAccount_getAll({
     required Query$BankAccount_getAll data,
     bool broadcast = true,
   }) =>
-      this.writeQuery(
+      writeQuery(
         graphql.Request(
             operation: graphql.Operation(
                 document: documentNodeQueryBankAccount_getAll)),
@@ -1712,7 +1667,7 @@ extension ClientExtension$Query$BankAccount_getAll on graphql.GraphQLClient {
       );
   Query$BankAccount_getAll? readQuery$BankAccount_getAll(
       {bool optimistic = true}) {
-    final result = this.readQuery(
+    final result = readQuery(
       graphql.Request(
           operation:
               graphql.Operation(document: documentNodeQueryBankAccount_getAll)),
@@ -1734,13 +1689,11 @@ graphql.ObservableQuery<Query$BankAccount_getAll>
 class Query$BankAccount_getAll$Widget
     extends graphql_flutter.Query<Query$BankAccount_getAll> {
   Query$BankAccount_getAll$Widget({
-    widgets.Key? key,
+    super.key,
     Options$Query$BankAccount_getAll? options,
-    required graphql_flutter.QueryBuilder<Query$BankAccount_getAll> builder,
+    required super.builder,
   }) : super(
-          key: key,
           options: options ?? Options$Query$BankAccount_getAll(),
-          builder: builder,
         );
 }
 
@@ -1757,16 +1710,16 @@ class Query$BankAccount_getAll$bankAccount_getAll {
   factory Query$BankAccount_getAll$bankAccount_getAll.fromJson(
       Map<String, dynamic> json) {
     final l$id = json['id'];
-    final l$account_name = json['account_name'];
-    final l$account_no = json['account_no'];
-    final l$bank_name = json['bank_name'];
+    final l$accountName = json['account_name'];
+    final l$accountNo = json['account_no'];
+    final l$bankName = json['bank_name'];
     final l$bankCode = json['bankCode'];
     final l$$__typename = json['__typename'];
     return Query$BankAccount_getAll$bankAccount_getAll(
       id: (l$id as num).toDouble(),
-      account_name: (l$account_name as String),
-      account_no: (l$account_no as String),
-      bank_name: (l$bank_name as String),
+      account_name: (l$accountName as String),
+      account_no: (l$accountNo as String),
+      bank_name: (l$bankName as String),
       bankCode: (l$bankCode as String?),
       $__typename: (l$$__typename as String),
     );
@@ -1785,35 +1738,35 @@ class Query$BankAccount_getAll$bankAccount_getAll {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$id = id;
-    _resultData['id'] = l$id;
-    final l$account_name = account_name;
-    _resultData['account_name'] = l$account_name;
-    final l$account_no = account_no;
-    _resultData['account_no'] = l$account_no;
-    final l$bank_name = bank_name;
-    _resultData['bank_name'] = l$bank_name;
+    resultData['id'] = l$id;
+    final l$accountName = account_name;
+    resultData['account_name'] = l$accountName;
+    final l$accountNo = account_no;
+    resultData['account_no'] = l$accountNo;
+    final l$bankName = bank_name;
+    resultData['bank_name'] = l$bankName;
     final l$bankCode = bankCode;
-    _resultData['bankCode'] = l$bankCode;
+    resultData['bankCode'] = l$bankCode;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
     final l$id = id;
-    final l$account_name = account_name;
-    final l$account_no = account_no;
-    final l$bank_name = bank_name;
+    final l$accountName = account_name;
+    final l$accountNo = account_no;
+    final l$bankName = bank_name;
     final l$bankCode = bankCode;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
-      l$account_name,
-      l$account_no,
-      l$bank_name,
+      l$accountName,
+      l$accountNo,
+      l$bankName,
       l$bankCode,
       l$$__typename,
     ]);
@@ -1833,19 +1786,19 @@ class Query$BankAccount_getAll$bankAccount_getAll {
     if (l$id != lOther$id) {
       return false;
     }
-    final l$account_name = account_name;
-    final lOther$account_name = other.account_name;
-    if (l$account_name != lOther$account_name) {
+    final l$accountName = account_name;
+    final lother$accountName = other.account_name;
+    if (l$accountName != lother$accountName) {
       return false;
     }
-    final l$account_no = account_no;
-    final lOther$account_no = other.account_no;
-    if (l$account_no != lOther$account_no) {
+    final l$accountNo = account_no;
+    final lother$accountNo = other.account_no;
+    if (l$accountNo != lother$accountNo) {
       return false;
     }
-    final l$bank_name = bank_name;
-    final lOther$bank_name = other.bank_name;
-    if (l$bank_name != lOther$bank_name) {
+    final l$bankName = bank_name;
+    final lother$bankName = other.bank_name;
+    if (l$bankName != lother$bankName) {
       return false;
     }
     final l$bankCode = bankCode;
@@ -1904,6 +1857,7 @@ class _CopyWithImpl$Query$BankAccount_getAll$bankAccount_getAll<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? id = _undefined,
     Object? account_name = _undefined,
@@ -1935,8 +1889,9 @@ class _CopyWithStubImpl$Query$BankAccount_getAll$bankAccount_getAll<TRes>
     implements CopyWith$Query$BankAccount_getAll$bankAccount_getAll<TRes> {
   _CopyWithStubImpl$Query$BankAccount_getAll$bankAccount_getAll(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     double? id,
     String? account_name,
@@ -1971,12 +1926,12 @@ class Query$BankList {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$bankList = bankList;
-    _resultData['bankList'] = l$bankList.map((e) => e.toJson()).toList();
+    resultData['bankList'] = l$bankList.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -2043,7 +1998,7 @@ abstract class CopyWith$Query$BankList<TRes> {
       Iterable<Query$BankList$bankList> Function(
               Iterable<
                   CopyWith$Query$BankList$bankList<Query$BankList$bankList>>)
-          _fn);
+          fn);
 }
 
 class _CopyWithImpl$Query$BankList<TRes>
@@ -2059,6 +2014,7 @@ class _CopyWithImpl$Query$BankList<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? bankList = _undefined,
     Object? $__typename = _undefined,
@@ -2072,14 +2028,15 @@ class _CopyWithImpl$Query$BankList<TRes>
             : ($__typename as String),
       ));
 
+  @override
   TRes bankList(
           Iterable<Query$BankList$bankList> Function(
                   Iterable<
                       CopyWith$Query$BankList$bankList<
                           Query$BankList$bankList>>)
-              _fn) =>
+              fn) =>
       call(
-          bankList: _fn(
+          bankList: fn(
               _instance.bankList.map((e) => CopyWith$Query$BankList$bankList(
                     e,
                     (i) => i,
@@ -2090,15 +2047,17 @@ class _CopyWithStubImpl$Query$BankList<TRes>
     implements CopyWith$Query$BankList<TRes> {
   _CopyWithStubImpl$Query$BankList(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     List<Query$BankList$bankList>? bankList,
     String? $__typename,
   }) =>
       _res;
 
-  bankList(_fn) => _res;
+  @override
+  bankList(fn) => _res;
 }
 
 const documentNodeQueryBankList = DocumentNode(definitions: [
@@ -2156,32 +2115,25 @@ typedef OnQueryComplete$Query$BankList = FutureOr<void> Function(
 
 class Options$Query$BankList extends graphql.QueryOptions<Query$BankList> {
   Options$Query$BankList({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$BankList? typedOptimisticResult,
-    Duration? pollInterval,
-    graphql.Context? context,
+    super.pollInterval,
+    super.context,
     OnQueryComplete$Query$BankList? onComplete,
-    graphql.OnQueryError? onError,
+    super.onError,
   })  : onCompleteWithParsed = onComplete,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          pollInterval: pollInterval,
-          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
                     data,
                     data == null ? null : _parserFn$Query$BankList(data),
                   ),
-          onError: onError,
           document: documentNodeQueryBankList,
           parserFn: _parserFn$Query$BankList,
         );
@@ -2200,37 +2152,27 @@ class Options$Query$BankList extends graphql.QueryOptions<Query$BankList> {
 class WatchOptions$Query$BankList
     extends graphql.WatchQueryOptions<Query$BankList> {
   WatchOptions$Query$BankList({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$BankList? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeQueryBankList,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Query$BankList,
         );
 }
 
 class FetchMoreOptions$Query$BankList extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$BankList({required graphql.UpdateQuery updateQuery})
+  FetchMoreOptions$Query$BankList({required super.updateQuery})
       : super(
-          updateQuery: updateQuery,
           document: documentNodeQueryBankList,
         );
 }
@@ -2238,22 +2180,22 @@ class FetchMoreOptions$Query$BankList extends graphql.FetchMoreOptions {
 extension ClientExtension$Query$BankList on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$BankList>> query$BankList(
           [Options$Query$BankList? options]) async =>
-      await this.query(options ?? Options$Query$BankList());
+      await query(options ?? Options$Query$BankList());
   graphql.ObservableQuery<Query$BankList> watchQuery$BankList(
           [WatchOptions$Query$BankList? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$BankList());
+      watchQuery(options ?? WatchOptions$Query$BankList());
   void writeQuery$BankList({
     required Query$BankList data,
     bool broadcast = true,
   }) =>
-      this.writeQuery(
+      writeQuery(
         graphql.Request(
             operation: graphql.Operation(document: documentNodeQueryBankList)),
         data: data.toJson(),
         broadcast: broadcast,
       );
   Query$BankList? readQuery$BankList({bool optimistic = true}) {
-    final result = this.readQuery(
+    final result = readQuery(
       graphql.Request(
           operation: graphql.Operation(document: documentNodeQueryBankList)),
       optimistic: optimistic,
@@ -2271,13 +2213,11 @@ graphql.ObservableQuery<Query$BankList> useWatchQuery$BankList(
 
 class Query$BankList$Widget extends graphql_flutter.Query<Query$BankList> {
   Query$BankList$Widget({
-    widgets.Key? key,
+    super.key,
     Options$Query$BankList? options,
-    required graphql_flutter.QueryBuilder<Query$BankList> builder,
+    required super.builder,
   }) : super(
-          key: key,
           options: options ?? Options$Query$BankList(),
-          builder: builder,
         );
 }
 
@@ -2306,14 +2246,14 @@ class Query$BankList$bankList {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$bankCode = bankCode;
-    _resultData['bankCode'] = l$bankCode;
+    resultData['bankCode'] = l$bankCode;
     final l$bankName = bankName;
-    _resultData['bankName'] = l$bankName;
+    resultData['bankName'] = l$bankName;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -2392,6 +2332,7 @@ class _CopyWithImpl$Query$BankList$bankList<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? bankCode = _undefined,
     Object? bankName = _undefined,
@@ -2413,8 +2354,9 @@ class _CopyWithStubImpl$Query$BankList$bankList<TRes>
     implements CopyWith$Query$BankList$bankList<TRes> {
   _CopyWithStubImpl$Query$BankList$bankList(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? bankCode,
     String? bankName,
@@ -2509,6 +2451,7 @@ class _CopyWithImpl$Variables$Query$Bank_verifyAccountNo<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Query$Bank_verifyAccountNo._({
         ..._instance._$data,
@@ -2521,8 +2464,9 @@ class _CopyWithStubImpl$Variables$Query$Bank_verifyAccountNo<TRes>
     implements CopyWith$Variables$Query$Bank_verifyAccountNo<TRes> {
   _CopyWithStubImpl$Variables$Query$Bank_verifyAccountNo(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Input$BankGetAccountName_Input? input}) => _res;
 }
 
@@ -2533,12 +2477,12 @@ class Query$Bank_verifyAccountNo {
   });
 
   factory Query$Bank_verifyAccountNo.fromJson(Map<String, dynamic> json) {
-    final l$bank_verifyAccountNo = json['bank_verifyAccountNo'];
+    final l$bankVerifyaccountno = json['bank_verifyAccountNo'];
     final l$$__typename = json['__typename'];
     return Query$Bank_verifyAccountNo(
       bank_verifyAccountNo:
           Query$Bank_verifyAccountNo$bank_verifyAccountNo.fromJson(
-              (l$bank_verifyAccountNo as Map<String, dynamic>)),
+              (l$bankVerifyaccountno as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -2548,20 +2492,20 @@ class Query$Bank_verifyAccountNo {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$bank_verifyAccountNo = bank_verifyAccountNo;
-    _resultData['bank_verifyAccountNo'] = l$bank_verifyAccountNo.toJson();
+    final resultData = <String, dynamic>{};
+    final l$bankVerifyaccountno = bank_verifyAccountNo;
+    resultData['bank_verifyAccountNo'] = l$bankVerifyaccountno.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$bank_verifyAccountNo = bank_verifyAccountNo;
+    final l$bankVerifyaccountno = bank_verifyAccountNo;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$bank_verifyAccountNo,
+      l$bankVerifyaccountno,
       l$$__typename,
     ]);
   }
@@ -2575,9 +2519,9 @@ class Query$Bank_verifyAccountNo {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$bank_verifyAccountNo = bank_verifyAccountNo;
-    final lOther$bank_verifyAccountNo = other.bank_verifyAccountNo;
-    if (l$bank_verifyAccountNo != lOther$bank_verifyAccountNo) {
+    final l$bankVerifyaccountno = bank_verifyAccountNo;
+    final lother$bankVerifyaccountno = other.bank_verifyAccountNo;
+    if (l$bankVerifyaccountno != lother$bankVerifyaccountno) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -2628,6 +2572,7 @@ class _CopyWithImpl$Query$Bank_verifyAccountNo<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? bank_verifyAccountNo = _undefined,
     Object? $__typename = _undefined,
@@ -2643,11 +2588,12 @@ class _CopyWithImpl$Query$Bank_verifyAccountNo<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Query$Bank_verifyAccountNo$bank_verifyAccountNo<TRes>
       get bank_verifyAccountNo {
-    final local$bank_verifyAccountNo = _instance.bank_verifyAccountNo;
+    final local$bankVerifyaccountno = _instance.bank_verifyAccountNo;
     return CopyWith$Query$Bank_verifyAccountNo$bank_verifyAccountNo(
-        local$bank_verifyAccountNo, (e) => call(bank_verifyAccountNo: e));
+        local$bankVerifyaccountno, (e) => call(bank_verifyAccountNo: e));
   }
 }
 
@@ -2655,14 +2601,16 @@ class _CopyWithStubImpl$Query$Bank_verifyAccountNo<TRes>
     implements CopyWith$Query$Bank_verifyAccountNo<TRes> {
   _CopyWithStubImpl$Query$Bank_verifyAccountNo(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Query$Bank_verifyAccountNo$bank_verifyAccountNo? bank_verifyAccountNo,
     String? $__typename,
   }) =>
       _res;
 
+  @override
   CopyWith$Query$Bank_verifyAccountNo$bank_verifyAccountNo<TRes>
       get bank_verifyAccountNo =>
           CopyWith$Query$Bank_verifyAccountNo$bank_verifyAccountNo.stub(_res);
@@ -2740,27 +2688,21 @@ typedef OnQueryComplete$Query$Bank_verifyAccountNo = FutureOr<void> Function(
 class Options$Query$Bank_verifyAccountNo
     extends graphql.QueryOptions<Query$Bank_verifyAccountNo> {
   Options$Query$Bank_verifyAccountNo({
-    String? operationName,
+    super.operationName,
     required Variables$Query$Bank_verifyAccountNo variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$Bank_verifyAccountNo? typedOptimisticResult,
-    Duration? pollInterval,
-    graphql.Context? context,
+    super.pollInterval,
+    super.context,
     OnQueryComplete$Query$Bank_verifyAccountNo? onComplete,
-    graphql.OnQueryError? onError,
+    super.onError,
   })  : onCompleteWithParsed = onComplete,
         super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          pollInterval: pollInterval,
-          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
@@ -2769,7 +2711,6 @@ class Options$Query$Bank_verifyAccountNo
                         ? null
                         : _parserFn$Query$Bank_verifyAccountNo(data),
                   ),
-          onError: onError,
           document: documentNodeQueryBank_verifyAccountNo,
           parserFn: _parserFn$Query$Bank_verifyAccountNo,
         );
@@ -2788,31 +2729,22 @@ class Options$Query$Bank_verifyAccountNo
 class WatchOptions$Query$Bank_verifyAccountNo
     extends graphql.WatchQueryOptions<Query$Bank_verifyAccountNo> {
   WatchOptions$Query$Bank_verifyAccountNo({
-    String? operationName,
+    super.operationName,
     required Variables$Query$Bank_verifyAccountNo variables,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$Bank_verifyAccountNo? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
           variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeQueryBank_verifyAccountNo,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Query$Bank_verifyAccountNo,
         );
 }
@@ -2820,10 +2752,9 @@ class WatchOptions$Query$Bank_verifyAccountNo
 class FetchMoreOptions$Query$Bank_verifyAccountNo
     extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$Bank_verifyAccountNo({
-    required graphql.UpdateQuery updateQuery,
+    required super.updateQuery,
     required Variables$Query$Bank_verifyAccountNo variables,
   }) : super(
-          updateQuery: updateQuery,
           variables: variables.toJson(),
           document: documentNodeQueryBank_verifyAccountNo,
         );
@@ -2833,17 +2764,17 @@ extension ClientExtension$Query$Bank_verifyAccountNo on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$Bank_verifyAccountNo>>
       query$Bank_verifyAccountNo(
               Options$Query$Bank_verifyAccountNo options) async =>
-          await this.query(options);
+          await query(options);
   graphql.ObservableQuery<Query$Bank_verifyAccountNo>
       watchQuery$Bank_verifyAccountNo(
               WatchOptions$Query$Bank_verifyAccountNo options) =>
-          this.watchQuery(options);
+          watchQuery(options);
   void writeQuery$Bank_verifyAccountNo({
     required Query$Bank_verifyAccountNo data,
     required Variables$Query$Bank_verifyAccountNo variables,
     bool broadcast = true,
   }) =>
-      this.writeQuery(
+      writeQuery(
         graphql.Request(
           operation: graphql.Operation(
               document: documentNodeQueryBank_verifyAccountNo),
@@ -2856,7 +2787,7 @@ extension ClientExtension$Query$Bank_verifyAccountNo on graphql.GraphQLClient {
     required Variables$Query$Bank_verifyAccountNo variables,
     bool optimistic = true,
   }) {
-    final result = this.readQuery(
+    final result = readQuery(
       graphql.Request(
         operation:
             graphql.Operation(document: documentNodeQueryBank_verifyAccountNo),
@@ -2878,15 +2809,11 @@ graphql.ObservableQuery<Query$Bank_verifyAccountNo>
 
 class Query$Bank_verifyAccountNo$Widget
     extends graphql_flutter.Query<Query$Bank_verifyAccountNo> {
-  Query$Bank_verifyAccountNo$Widget({
-    widgets.Key? key,
-    required Options$Query$Bank_verifyAccountNo options,
-    required graphql_flutter.QueryBuilder<Query$Bank_verifyAccountNo> builder,
-  }) : super(
-          key: key,
-          options: options,
-          builder: builder,
-        );
+  const Query$Bank_verifyAccountNo$Widget({
+    super.key,
+    required Options$Query$Bank_verifyAccountNo super.options,
+    required super.builder,
+  });
 }
 
 class Query$Bank_verifyAccountNo$bank_verifyAccountNo {
@@ -2898,12 +2825,12 @@ class Query$Bank_verifyAccountNo$bank_verifyAccountNo {
 
   factory Query$Bank_verifyAccountNo$bank_verifyAccountNo.fromJson(
       Map<String, dynamic> json) {
-    final l$account_name = json['account_name'];
-    final l$account_number = json['account_number'];
+    final l$accountName = json['account_name'];
+    final l$accountNumber = json['account_number'];
     final l$$__typename = json['__typename'];
     return Query$Bank_verifyAccountNo$bank_verifyAccountNo(
-      account_name: (l$account_name as String),
-      account_number: (l$account_number as String),
+      account_name: (l$accountName as String),
+      account_number: (l$accountNumber as String),
       $__typename: (l$$__typename as String),
     );
   }
@@ -2915,24 +2842,24 @@ class Query$Bank_verifyAccountNo$bank_verifyAccountNo {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$account_name = account_name;
-    _resultData['account_name'] = l$account_name;
-    final l$account_number = account_number;
-    _resultData['account_number'] = l$account_number;
+    final resultData = <String, dynamic>{};
+    final l$accountName = account_name;
+    resultData['account_name'] = l$accountName;
+    final l$accountNumber = account_number;
+    resultData['account_number'] = l$accountNumber;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$account_name = account_name;
-    final l$account_number = account_number;
+    final l$accountName = account_name;
+    final l$accountNumber = account_number;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$account_name,
-      l$account_number,
+      l$accountName,
+      l$accountNumber,
       l$$__typename,
     ]);
   }
@@ -2946,14 +2873,14 @@ class Query$Bank_verifyAccountNo$bank_verifyAccountNo {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$account_name = account_name;
-    final lOther$account_name = other.account_name;
-    if (l$account_name != lOther$account_name) {
+    final l$accountName = account_name;
+    final lother$accountName = other.account_name;
+    if (l$accountName != lother$accountName) {
       return false;
     }
-    final l$account_number = account_number;
-    final lOther$account_number = other.account_number;
-    if (l$account_number != lOther$account_number) {
+    final l$accountNumber = account_number;
+    final lother$accountNumber = other.account_number;
+    if (l$accountNumber != lother$accountNumber) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -3005,6 +2932,7 @@ class _CopyWithImpl$Query$Bank_verifyAccountNo$bank_verifyAccountNo<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? account_name = _undefined,
     Object? account_number = _undefined,
@@ -3027,8 +2955,9 @@ class _CopyWithStubImpl$Query$Bank_verifyAccountNo$bank_verifyAccountNo<TRes>
     implements CopyWith$Query$Bank_verifyAccountNo$bank_verifyAccountNo<TRes> {
   _CopyWithStubImpl$Query$Bank_verifyAccountNo$bank_verifyAccountNo(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? account_name,
     String? account_number,

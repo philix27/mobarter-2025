@@ -12,10 +12,10 @@ class Query$static_getTokens {
   });
 
   factory Query$static_getTokens.fromJson(Map<String, dynamic> json) {
-    final l$static_getTokens = json['static_getTokens'];
+    final l$staticGettokens = json['static_getTokens'];
     final l$$__typename = json['__typename'];
     return Query$static_getTokens(
-      static_getTokens: (l$static_getTokens as List<dynamic>)
+      static_getTokens: (l$staticGettokens as List<dynamic>)
           .map((e) => Query$static_getTokens$static_getTokens.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
@@ -28,21 +28,21 @@ class Query$static_getTokens {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$static_getTokens = static_getTokens;
-    _resultData['static_getTokens'] =
-        l$static_getTokens.map((e) => e.toJson()).toList();
+    final resultData = <String, dynamic>{};
+    final l$staticGettokens = static_getTokens;
+    resultData['static_getTokens'] =
+        l$staticGettokens.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$static_getTokens = static_getTokens;
+    final l$staticGettokens = static_getTokens;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$static_getTokens.map((v) => v)),
+      Object.hashAll(l$staticGettokens.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -55,15 +55,15 @@ class Query$static_getTokens {
     if (other is! Query$static_getTokens || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$static_getTokens = static_getTokens;
-    final lOther$static_getTokens = other.static_getTokens;
-    if (l$static_getTokens.length != lOther$static_getTokens.length) {
+    final l$staticGettokens = static_getTokens;
+    final lother$staticGettokens = other.static_getTokens;
+    if (l$staticGettokens.length != lother$staticGettokens.length) {
       return false;
     }
-    for (int i = 0; i < l$static_getTokens.length; i++) {
-      final l$static_getTokens$entry = l$static_getTokens[i];
-      final lOther$static_getTokens$entry = lOther$static_getTokens[i];
-      if (l$static_getTokens$entry != lOther$static_getTokens$entry) {
+    for (int i = 0; i < l$staticGettokens.length; i++) {
+      final l$staticGettokens$entry = l$staticGettokens[i];
+      final lother$staticGettokens$entry = lother$staticGettokens[i];
+      if (l$staticGettokens$entry != lother$staticGettokens$entry) {
         return false;
       }
     }
@@ -102,7 +102,7 @@ abstract class CopyWith$Query$static_getTokens<TRes> {
               Iterable<
                   CopyWith$Query$static_getTokens$static_getTokens<
                       Query$static_getTokens$static_getTokens>>)
-          _fn);
+          fn);
 }
 
 class _CopyWithImpl$Query$static_getTokens<TRes>
@@ -118,6 +118,7 @@ class _CopyWithImpl$Query$static_getTokens<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? static_getTokens = _undefined,
     Object? $__typename = _undefined,
@@ -133,14 +134,15 @@ class _CopyWithImpl$Query$static_getTokens<TRes>
             : ($__typename as String),
       ));
 
+  @override
   TRes static_getTokens(
           Iterable<Query$static_getTokens$static_getTokens> Function(
                   Iterable<
                       CopyWith$Query$static_getTokens$static_getTokens<
                           Query$static_getTokens$static_getTokens>>)
-              _fn) =>
+              fn) =>
       call(
-          static_getTokens: _fn(_instance.static_getTokens
+          static_getTokens: fn(_instance.static_getTokens
               .map((e) => CopyWith$Query$static_getTokens$static_getTokens(
                     e,
                     (i) => i,
@@ -151,15 +153,17 @@ class _CopyWithStubImpl$Query$static_getTokens<TRes>
     implements CopyWith$Query$static_getTokens<TRes> {
   _CopyWithStubImpl$Query$static_getTokens(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     List<Query$static_getTokens$static_getTokens>? static_getTokens,
     String? $__typename,
   }) =>
       _res;
 
-  static_getTokens(_fn) => _res;
+  @override
+  static_getTokens(fn) => _res;
 }
 
 const documentNodeQuerystatic_getTokens = DocumentNode(definitions: [
@@ -289,25 +293,19 @@ typedef OnQueryComplete$Query$static_getTokens = FutureOr<void> Function(
 class Options$Query$static_getTokens
     extends graphql.QueryOptions<Query$static_getTokens> {
   Options$Query$static_getTokens({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$static_getTokens? typedOptimisticResult,
-    Duration? pollInterval,
-    graphql.Context? context,
+    super.pollInterval,
+    super.context,
     OnQueryComplete$Query$static_getTokens? onComplete,
-    graphql.OnQueryError? onError,
+    super.onError,
   })  : onCompleteWithParsed = onComplete,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          pollInterval: pollInterval,
-          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
@@ -316,7 +314,6 @@ class Options$Query$static_getTokens
                         ? null
                         : _parserFn$Query$static_getTokens(data),
                   ),
-          onError: onError,
           document: documentNodeQuerystatic_getTokens,
           parserFn: _parserFn$Query$static_getTokens,
         );
@@ -335,38 +332,28 @@ class Options$Query$static_getTokens
 class WatchOptions$Query$static_getTokens
     extends graphql.WatchQueryOptions<Query$static_getTokens> {
   WatchOptions$Query$static_getTokens({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$static_getTokens? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeQuerystatic_getTokens,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Query$static_getTokens,
         );
 }
 
 class FetchMoreOptions$Query$static_getTokens extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$static_getTokens(
-      {required graphql.UpdateQuery updateQuery})
+      {required super.updateQuery})
       : super(
-          updateQuery: updateQuery,
           document: documentNodeQuerystatic_getTokens,
         );
 }
@@ -374,15 +361,15 @@ class FetchMoreOptions$Query$static_getTokens extends graphql.FetchMoreOptions {
 extension ClientExtension$Query$static_getTokens on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$static_getTokens>> query$static_getTokens(
           [Options$Query$static_getTokens? options]) async =>
-      await this.query(options ?? Options$Query$static_getTokens());
+      await query(options ?? Options$Query$static_getTokens());
   graphql.ObservableQuery<Query$static_getTokens> watchQuery$static_getTokens(
           [WatchOptions$Query$static_getTokens? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$static_getTokens());
+      watchQuery(options ?? WatchOptions$Query$static_getTokens());
   void writeQuery$static_getTokens({
     required Query$static_getTokens data,
     bool broadcast = true,
   }) =>
-      this.writeQuery(
+      writeQuery(
         graphql.Request(
             operation:
                 graphql.Operation(document: documentNodeQuerystatic_getTokens)),
@@ -390,7 +377,7 @@ extension ClientExtension$Query$static_getTokens on graphql.GraphQLClient {
         broadcast: broadcast,
       );
   Query$static_getTokens? readQuery$static_getTokens({bool optimistic = true}) {
-    final result = this.readQuery(
+    final result = readQuery(
       graphql.Request(
           operation:
               graphql.Operation(document: documentNodeQuerystatic_getTokens)),
@@ -411,13 +398,11 @@ graphql.ObservableQuery<Query$static_getTokens> useWatchQuery$static_getTokens(
 class Query$static_getTokens$Widget
     extends graphql_flutter.Query<Query$static_getTokens> {
   Query$static_getTokens$Widget({
-    widgets.Key? key,
+    super.key,
     Options$Query$static_getTokens? options,
-    required graphql_flutter.QueryBuilder<Query$static_getTokens> builder,
+    required super.builder,
   }) : super(
-          key: key,
           options: options ?? Options$Query$static_getTokens(),
-          builder: builder,
         );
 }
 
@@ -497,34 +482,34 @@ class Query$static_getTokens$static_getTokens {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$name = name;
-    _resultData['name'] = l$name;
+    resultData['name'] = l$name;
     final l$address = address;
-    _resultData['address'] = l$address;
+    resultData['address'] = l$address;
     final l$decimals = decimals;
-    _resultData['decimals'] = l$decimals;
+    resultData['decimals'] = l$decimals;
     final l$isBuyable = isBuyable;
-    _resultData['isBuyable'] = l$isBuyable;
+    resultData['isBuyable'] = l$isBuyable;
     final l$isPayable = isPayable;
-    _resultData['isPayable'] = l$isPayable;
+    resultData['isPayable'] = l$isPayable;
     final l$symbol = symbol;
-    _resultData['symbol'] = l$symbol;
+    resultData['symbol'] = l$symbol;
     final l$logoUrl = logoUrl;
-    _resultData['logoUrl'] = l$logoUrl;
+    resultData['logoUrl'] = l$logoUrl;
     final l$chainId = chainId;
-    _resultData['chainId'] = l$chainId;
+    resultData['chainId'] = l$chainId;
     final l$priceUSD = priceUSD;
-    _resultData['priceUSD'] = l$priceUSD;
+    resultData['priceUSD'] = l$priceUSD;
     final l$priceNGN = priceNGN;
-    _resultData['priceNGN'] = l$priceNGN;
+    resultData['priceNGN'] = l$priceNGN;
     final l$rpcUrl = rpcUrl;
-    _resultData['rpcUrl'] = l$rpcUrl;
+    resultData['rpcUrl'] = l$rpcUrl;
     final l$chainName = chainName;
-    _resultData['chainName'] = l$chainName;
+    resultData['chainName'] = l$chainName;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -686,6 +671,7 @@ class _CopyWithImpl$Query$static_getTokens$static_getTokens<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? name = _undefined,
     Object? address = _undefined,
@@ -748,8 +734,9 @@ class _CopyWithStubImpl$Query$static_getTokens$static_getTokens<TRes>
     implements CopyWith$Query$static_getTokens$static_getTokens<TRes> {
   _CopyWithStubImpl$Query$static_getTokens$static_getTokens(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? name,
     String? address,
@@ -775,10 +762,10 @@ class Query$static_getLinks {
   });
 
   factory Query$static_getLinks.fromJson(Map<String, dynamic> json) {
-    final l$static_getLinks = json['static_getLinks'];
+    final l$staticGetlinks = json['static_getLinks'];
     final l$$__typename = json['__typename'];
     return Query$static_getLinks(
-      static_getLinks: (l$static_getLinks as List<dynamic>)
+      static_getLinks: (l$staticGetlinks as List<dynamic>)
           .map((e) => Query$static_getLinks$static_getLinks.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
@@ -791,21 +778,21 @@ class Query$static_getLinks {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$static_getLinks = static_getLinks;
-    _resultData['static_getLinks'] =
-        l$static_getLinks.map((e) => e.toJson()).toList();
+    final resultData = <String, dynamic>{};
+    final l$staticGetlinks = static_getLinks;
+    resultData['static_getLinks'] =
+        l$staticGetlinks.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$static_getLinks = static_getLinks;
+    final l$staticGetlinks = static_getLinks;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$static_getLinks.map((v) => v)),
+      Object.hashAll(l$staticGetlinks.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -818,15 +805,15 @@ class Query$static_getLinks {
     if (other is! Query$static_getLinks || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$static_getLinks = static_getLinks;
-    final lOther$static_getLinks = other.static_getLinks;
-    if (l$static_getLinks.length != lOther$static_getLinks.length) {
+    final l$staticGetlinks = static_getLinks;
+    final lother$staticGetlinks = other.static_getLinks;
+    if (l$staticGetlinks.length != lother$staticGetlinks.length) {
       return false;
     }
-    for (int i = 0; i < l$static_getLinks.length; i++) {
-      final l$static_getLinks$entry = l$static_getLinks[i];
-      final lOther$static_getLinks$entry = lOther$static_getLinks[i];
-      if (l$static_getLinks$entry != lOther$static_getLinks$entry) {
+    for (int i = 0; i < l$staticGetlinks.length; i++) {
+      final l$staticGetlinks$entry = l$staticGetlinks[i];
+      final lother$staticGetlinks$entry = lother$staticGetlinks[i];
+      if (l$staticGetlinks$entry != lother$staticGetlinks$entry) {
         return false;
       }
     }
@@ -865,7 +852,7 @@ abstract class CopyWith$Query$static_getLinks<TRes> {
               Iterable<
                   CopyWith$Query$static_getLinks$static_getLinks<
                       Query$static_getLinks$static_getLinks>>)
-          _fn);
+          fn);
 }
 
 class _CopyWithImpl$Query$static_getLinks<TRes>
@@ -881,6 +868,7 @@ class _CopyWithImpl$Query$static_getLinks<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? static_getLinks = _undefined,
     Object? $__typename = _undefined,
@@ -895,14 +883,15 @@ class _CopyWithImpl$Query$static_getLinks<TRes>
             : ($__typename as String),
       ));
 
+  @override
   TRes static_getLinks(
           Iterable<Query$static_getLinks$static_getLinks> Function(
                   Iterable<
                       CopyWith$Query$static_getLinks$static_getLinks<
                           Query$static_getLinks$static_getLinks>>)
-              _fn) =>
+              fn) =>
       call(
-          static_getLinks: _fn(_instance.static_getLinks
+          static_getLinks: fn(_instance.static_getLinks
               .map((e) => CopyWith$Query$static_getLinks$static_getLinks(
                     e,
                     (i) => i,
@@ -913,15 +902,17 @@ class _CopyWithStubImpl$Query$static_getLinks<TRes>
     implements CopyWith$Query$static_getLinks<TRes> {
   _CopyWithStubImpl$Query$static_getLinks(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     List<Query$static_getLinks$static_getLinks>? static_getLinks,
     String? $__typename,
   }) =>
       _res;
 
-  static_getLinks(_fn) => _res;
+  @override
+  static_getLinks(fn) => _res;
 }
 
 const documentNodeQuerystatic_getLinks = DocumentNode(definitions: [
@@ -1009,32 +1000,25 @@ typedef OnQueryComplete$Query$static_getLinks = FutureOr<void> Function(
 class Options$Query$static_getLinks
     extends graphql.QueryOptions<Query$static_getLinks> {
   Options$Query$static_getLinks({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$static_getLinks? typedOptimisticResult,
-    Duration? pollInterval,
-    graphql.Context? context,
+    super.pollInterval,
+    super.context,
     OnQueryComplete$Query$static_getLinks? onComplete,
-    graphql.OnQueryError? onError,
+    super.onError,
   })  : onCompleteWithParsed = onComplete,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          pollInterval: pollInterval,
-          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
                     data,
                     data == null ? null : _parserFn$Query$static_getLinks(data),
                   ),
-          onError: onError,
           document: documentNodeQuerystatic_getLinks,
           parserFn: _parserFn$Query$static_getLinks,
         );
@@ -1053,38 +1037,28 @@ class Options$Query$static_getLinks
 class WatchOptions$Query$static_getLinks
     extends graphql.WatchQueryOptions<Query$static_getLinks> {
   WatchOptions$Query$static_getLinks({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$static_getLinks? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeQuerystatic_getLinks,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Query$static_getLinks,
         );
 }
 
 class FetchMoreOptions$Query$static_getLinks extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$static_getLinks(
-      {required graphql.UpdateQuery updateQuery})
+      {required super.updateQuery})
       : super(
-          updateQuery: updateQuery,
           document: documentNodeQuerystatic_getLinks,
         );
 }
@@ -1092,15 +1066,15 @@ class FetchMoreOptions$Query$static_getLinks extends graphql.FetchMoreOptions {
 extension ClientExtension$Query$static_getLinks on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$static_getLinks>> query$static_getLinks(
           [Options$Query$static_getLinks? options]) async =>
-      await this.query(options ?? Options$Query$static_getLinks());
+      await query(options ?? Options$Query$static_getLinks());
   graphql.ObservableQuery<Query$static_getLinks> watchQuery$static_getLinks(
           [WatchOptions$Query$static_getLinks? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$static_getLinks());
+      watchQuery(options ?? WatchOptions$Query$static_getLinks());
   void writeQuery$static_getLinks({
     required Query$static_getLinks data,
     bool broadcast = true,
   }) =>
-      this.writeQuery(
+      writeQuery(
         graphql.Request(
             operation:
                 graphql.Operation(document: documentNodeQuerystatic_getLinks)),
@@ -1108,7 +1082,7 @@ extension ClientExtension$Query$static_getLinks on graphql.GraphQLClient {
         broadcast: broadcast,
       );
   Query$static_getLinks? readQuery$static_getLinks({bool optimistic = true}) {
-    final result = this.readQuery(
+    final result = readQuery(
       graphql.Request(
           operation:
               graphql.Operation(document: documentNodeQuerystatic_getLinks)),
@@ -1129,13 +1103,11 @@ graphql.ObservableQuery<Query$static_getLinks> useWatchQuery$static_getLinks(
 class Query$static_getLinks$Widget
     extends graphql_flutter.Query<Query$static_getLinks> {
   Query$static_getLinks$Widget({
-    widgets.Key? key,
+    super.key,
     Options$Query$static_getLinks? options,
-    required graphql_flutter.QueryBuilder<Query$static_getLinks> builder,
+    required super.builder,
   }) : super(
-          key: key,
           options: options ?? Options$Query$static_getLinks(),
-          builder: builder,
         );
 }
 
@@ -1185,22 +1157,22 @@ class Query$static_getLinks$static_getLinks {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$title = title;
-    _resultData['title'] = l$title;
+    resultData['title'] = l$title;
     final l$desc = desc;
-    _resultData['desc'] = l$desc;
+    resultData['desc'] = l$desc;
     final l$imgLink = imgLink;
-    _resultData['imgLink'] = l$imgLink;
+    resultData['imgLink'] = l$imgLink;
     final l$url = url;
-    _resultData['url'] = l$url;
+    resultData['url'] = l$url;
     final l$category = category;
-    _resultData['category'] = l$category;
+    resultData['category'] = l$category;
     final l$group = group;
-    _resultData['group'] = toJson$Enum$StaticLinkGroup(l$group);
+    resultData['group'] = toJson$Enum$StaticLinkGroup(l$group);
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -1314,6 +1286,7 @@ class _CopyWithImpl$Query$static_getLinks$static_getLinks<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? title = _undefined,
     Object? desc = _undefined,
@@ -1346,8 +1319,9 @@ class _CopyWithStubImpl$Query$static_getLinks$static_getLinks<TRes>
     implements CopyWith$Query$static_getLinks$static_getLinks<TRes> {
   _CopyWithStubImpl$Query$static_getLinks$static_getLinks(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? title,
     String? desc,
@@ -1367,10 +1341,10 @@ class Query$static_getCountry {
   });
 
   factory Query$static_getCountry.fromJson(Map<String, dynamic> json) {
-    final l$static_getCountries = json['static_getCountries'];
+    final l$staticGetcountries = json['static_getCountries'];
     final l$$__typename = json['__typename'];
     return Query$static_getCountry(
-      static_getCountries: (l$static_getCountries as List<dynamic>)
+      static_getCountries: (l$staticGetcountries as List<dynamic>)
           .map((e) => Query$static_getCountry$static_getCountries.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
@@ -1383,21 +1357,21 @@ class Query$static_getCountry {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$static_getCountries = static_getCountries;
-    _resultData['static_getCountries'] =
-        l$static_getCountries.map((e) => e.toJson()).toList();
+    final resultData = <String, dynamic>{};
+    final l$staticGetcountries = static_getCountries;
+    resultData['static_getCountries'] =
+        l$staticGetcountries.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$static_getCountries = static_getCountries;
+    final l$staticGetcountries = static_getCountries;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$static_getCountries.map((v) => v)),
+      Object.hashAll(l$staticGetcountries.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -1410,15 +1384,15 @@ class Query$static_getCountry {
     if (other is! Query$static_getCountry || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$static_getCountries = static_getCountries;
-    final lOther$static_getCountries = other.static_getCountries;
-    if (l$static_getCountries.length != lOther$static_getCountries.length) {
+    final l$staticGetcountries = static_getCountries;
+    final lother$staticGetcountries = other.static_getCountries;
+    if (l$staticGetcountries.length != lother$staticGetcountries.length) {
       return false;
     }
-    for (int i = 0; i < l$static_getCountries.length; i++) {
-      final l$static_getCountries$entry = l$static_getCountries[i];
-      final lOther$static_getCountries$entry = lOther$static_getCountries[i];
-      if (l$static_getCountries$entry != lOther$static_getCountries$entry) {
+    for (int i = 0; i < l$staticGetcountries.length; i++) {
+      final l$staticGetcountries$entry = l$staticGetcountries[i];
+      final lother$staticGetcountries$entry = lother$staticGetcountries[i];
+      if (l$staticGetcountries$entry != lother$staticGetcountries$entry) {
         return false;
       }
     }
@@ -1457,7 +1431,7 @@ abstract class CopyWith$Query$static_getCountry<TRes> {
               Iterable<
                   CopyWith$Query$static_getCountry$static_getCountries<
                       Query$static_getCountry$static_getCountries>>)
-          _fn);
+          fn);
 }
 
 class _CopyWithImpl$Query$static_getCountry<TRes>
@@ -1473,6 +1447,7 @@ class _CopyWithImpl$Query$static_getCountry<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? static_getCountries = _undefined,
     Object? $__typename = _undefined,
@@ -1488,14 +1463,15 @@ class _CopyWithImpl$Query$static_getCountry<TRes>
             : ($__typename as String),
       ));
 
+  @override
   TRes static_getCountries(
           Iterable<Query$static_getCountry$static_getCountries> Function(
                   Iterable<
                       CopyWith$Query$static_getCountry$static_getCountries<
                           Query$static_getCountry$static_getCountries>>)
-              _fn) =>
+              fn) =>
       call(
-          static_getCountries: _fn(_instance.static_getCountries
+          static_getCountries: fn(_instance.static_getCountries
               .map((e) => CopyWith$Query$static_getCountry$static_getCountries(
                     e,
                     (i) => i,
@@ -1506,15 +1482,17 @@ class _CopyWithStubImpl$Query$static_getCountry<TRes>
     implements CopyWith$Query$static_getCountry<TRes> {
   _CopyWithStubImpl$Query$static_getCountry(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     List<Query$static_getCountry$static_getCountries>? static_getCountries,
     String? $__typename,
   }) =>
       _res;
 
-  static_getCountries(_fn) => _res;
+  @override
+  static_getCountries(fn) => _res;
 }
 
 const documentNodeQuerystatic_getCountry = DocumentNode(definitions: [
@@ -1616,25 +1594,19 @@ typedef OnQueryComplete$Query$static_getCountry = FutureOr<void> Function(
 class Options$Query$static_getCountry
     extends graphql.QueryOptions<Query$static_getCountry> {
   Options$Query$static_getCountry({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$static_getCountry? typedOptimisticResult,
-    Duration? pollInterval,
-    graphql.Context? context,
+    super.pollInterval,
+    super.context,
     OnQueryComplete$Query$static_getCountry? onComplete,
-    graphql.OnQueryError? onError,
+    super.onError,
   })  : onCompleteWithParsed = onComplete,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          pollInterval: pollInterval,
-          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
@@ -1643,7 +1615,6 @@ class Options$Query$static_getCountry
                         ? null
                         : _parserFn$Query$static_getCountry(data),
                   ),
-          onError: onError,
           document: documentNodeQuerystatic_getCountry,
           parserFn: _parserFn$Query$static_getCountry,
         );
@@ -1662,29 +1633,20 @@ class Options$Query$static_getCountry
 class WatchOptions$Query$static_getCountry
     extends graphql.WatchQueryOptions<Query$static_getCountry> {
   WatchOptions$Query$static_getCountry({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$static_getCountry? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeQuerystatic_getCountry,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Query$static_getCountry,
         );
 }
@@ -1692,9 +1654,8 @@ class WatchOptions$Query$static_getCountry
 class FetchMoreOptions$Query$static_getCountry
     extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$static_getCountry(
-      {required graphql.UpdateQuery updateQuery})
+      {required super.updateQuery})
       : super(
-          updateQuery: updateQuery,
           document: documentNodeQuerystatic_getCountry,
         );
 }
@@ -1702,15 +1663,15 @@ class FetchMoreOptions$Query$static_getCountry
 extension ClientExtension$Query$static_getCountry on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$static_getCountry>> query$static_getCountry(
           [Options$Query$static_getCountry? options]) async =>
-      await this.query(options ?? Options$Query$static_getCountry());
+      await query(options ?? Options$Query$static_getCountry());
   graphql.ObservableQuery<Query$static_getCountry> watchQuery$static_getCountry(
           [WatchOptions$Query$static_getCountry? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$static_getCountry());
+      watchQuery(options ?? WatchOptions$Query$static_getCountry());
   void writeQuery$static_getCountry({
     required Query$static_getCountry data,
     bool broadcast = true,
   }) =>
-      this.writeQuery(
+      writeQuery(
         graphql.Request(
             operation: graphql.Operation(
                 document: documentNodeQuerystatic_getCountry)),
@@ -1719,7 +1680,7 @@ extension ClientExtension$Query$static_getCountry on graphql.GraphQLClient {
       );
   Query$static_getCountry? readQuery$static_getCountry(
       {bool optimistic = true}) {
-    final result = this.readQuery(
+    final result = readQuery(
       graphql.Request(
           operation:
               graphql.Operation(document: documentNodeQuerystatic_getCountry)),
@@ -1741,13 +1702,11 @@ graphql.ObservableQuery<Query$static_getCountry>
 class Query$static_getCountry$Widget
     extends graphql_flutter.Query<Query$static_getCountry> {
   Query$static_getCountry$Widget({
-    widgets.Key? key,
+    super.key,
     Options$Query$static_getCountry? options,
-    required graphql_flutter.QueryBuilder<Query$static_getCountry> builder,
+    required super.builder,
   }) : super(
-          key: key,
           options: options ?? Options$Query$static_getCountry(),
-          builder: builder,
         );
 }
 
@@ -1807,26 +1766,26 @@ class Query$static_getCountry$static_getCountries {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$name = name;
-    _resultData['name'] = l$name;
+    resultData['name'] = l$name;
     final l$isoName = isoName;
-    _resultData['isoName'] = toJson$Enum$Country(l$isoName);
+    resultData['isoName'] = toJson$Enum$Country(l$isoName);
     final l$callingCodes = callingCodes;
-    _resultData['callingCodes'] = l$callingCodes;
+    resultData['callingCodes'] = l$callingCodes;
     final l$continent = continent;
-    _resultData['continent'] = l$continent;
+    resultData['continent'] = l$continent;
     final l$currencyCode = currencyCode;
-    _resultData['currencyCode'] = l$currencyCode;
+    resultData['currencyCode'] = l$currencyCode;
     final l$currencyName = currencyName;
-    _resultData['currencyName'] = l$currencyName;
+    resultData['currencyName'] = l$currencyName;
     final l$currencySymbol = currencySymbol;
-    _resultData['currencySymbol'] = l$currencySymbol;
+    resultData['currencySymbol'] = l$currencySymbol;
     final l$flag = flag;
-    _resultData['flag'] = l$flag;
+    resultData['flag'] = l$flag;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -1956,6 +1915,7 @@ class _CopyWithImpl$Query$static_getCountry$static_getCountries<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? name = _undefined,
     Object? isoName = _undefined,
@@ -2002,8 +1962,9 @@ class _CopyWithStubImpl$Query$static_getCountry$static_getCountries<TRes>
     implements CopyWith$Query$static_getCountry$static_getCountries<TRes> {
   _CopyWithStubImpl$Query$static_getCountry$static_getCountries(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? name,
     Enum$Country? isoName,
@@ -2025,10 +1986,10 @@ class Query$static_getChain {
   });
 
   factory Query$static_getChain.fromJson(Map<String, dynamic> json) {
-    final l$static_getChains = json['static_getChains'];
+    final l$staticGetchains = json['static_getChains'];
     final l$$__typename = json['__typename'];
     return Query$static_getChain(
-      static_getChains: (l$static_getChains as List<dynamic>)
+      static_getChains: (l$staticGetchains as List<dynamic>)
           .map((e) => Query$static_getChain$static_getChains.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
@@ -2041,21 +2002,21 @@ class Query$static_getChain {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$static_getChains = static_getChains;
-    _resultData['static_getChains'] =
-        l$static_getChains.map((e) => e.toJson()).toList();
+    final resultData = <String, dynamic>{};
+    final l$staticGetchains = static_getChains;
+    resultData['static_getChains'] =
+        l$staticGetchains.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$static_getChains = static_getChains;
+    final l$staticGetchains = static_getChains;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$static_getChains.map((v) => v)),
+      Object.hashAll(l$staticGetchains.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -2068,15 +2029,15 @@ class Query$static_getChain {
     if (other is! Query$static_getChain || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$static_getChains = static_getChains;
-    final lOther$static_getChains = other.static_getChains;
-    if (l$static_getChains.length != lOther$static_getChains.length) {
+    final l$staticGetchains = static_getChains;
+    final lother$staticGetchains = other.static_getChains;
+    if (l$staticGetchains.length != lother$staticGetchains.length) {
       return false;
     }
-    for (int i = 0; i < l$static_getChains.length; i++) {
-      final l$static_getChains$entry = l$static_getChains[i];
-      final lOther$static_getChains$entry = lOther$static_getChains[i];
-      if (l$static_getChains$entry != lOther$static_getChains$entry) {
+    for (int i = 0; i < l$staticGetchains.length; i++) {
+      final l$staticGetchains$entry = l$staticGetchains[i];
+      final lother$staticGetchains$entry = lother$staticGetchains[i];
+      if (l$staticGetchains$entry != lother$staticGetchains$entry) {
         return false;
       }
     }
@@ -2115,7 +2076,7 @@ abstract class CopyWith$Query$static_getChain<TRes> {
               Iterable<
                   CopyWith$Query$static_getChain$static_getChains<
                       Query$static_getChain$static_getChains>>)
-          _fn);
+          fn);
 }
 
 class _CopyWithImpl$Query$static_getChain<TRes>
@@ -2131,6 +2092,7 @@ class _CopyWithImpl$Query$static_getChain<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? static_getChains = _undefined,
     Object? $__typename = _undefined,
@@ -2146,14 +2108,15 @@ class _CopyWithImpl$Query$static_getChain<TRes>
             : ($__typename as String),
       ));
 
+  @override
   TRes static_getChains(
           Iterable<Query$static_getChain$static_getChains> Function(
                   Iterable<
                       CopyWith$Query$static_getChain$static_getChains<
                           Query$static_getChain$static_getChains>>)
-              _fn) =>
+              fn) =>
       call(
-          static_getChains: _fn(_instance.static_getChains
+          static_getChains: fn(_instance.static_getChains
               .map((e) => CopyWith$Query$static_getChain$static_getChains(
                     e,
                     (i) => i,
@@ -2164,15 +2127,17 @@ class _CopyWithStubImpl$Query$static_getChain<TRes>
     implements CopyWith$Query$static_getChain<TRes> {
   _CopyWithStubImpl$Query$static_getChain(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     List<Query$static_getChain$static_getChains>? static_getChains,
     String? $__typename,
   }) =>
       _res;
 
-  static_getChains(_fn) => _res;
+  @override
+  static_getChains(fn) => _res;
 }
 
 const documentNodeQuerystatic_getChain = DocumentNode(definitions: [
@@ -2260,32 +2225,25 @@ typedef OnQueryComplete$Query$static_getChain = FutureOr<void> Function(
 class Options$Query$static_getChain
     extends graphql.QueryOptions<Query$static_getChain> {
   Options$Query$static_getChain({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$static_getChain? typedOptimisticResult,
-    Duration? pollInterval,
-    graphql.Context? context,
+    super.pollInterval,
+    super.context,
     OnQueryComplete$Query$static_getChain? onComplete,
-    graphql.OnQueryError? onError,
+    super.onError,
   })  : onCompleteWithParsed = onComplete,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          pollInterval: pollInterval,
-          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
                     data,
                     data == null ? null : _parserFn$Query$static_getChain(data),
                   ),
-          onError: onError,
           document: documentNodeQuerystatic_getChain,
           parserFn: _parserFn$Query$static_getChain,
         );
@@ -2304,38 +2262,28 @@ class Options$Query$static_getChain
 class WatchOptions$Query$static_getChain
     extends graphql.WatchQueryOptions<Query$static_getChain> {
   WatchOptions$Query$static_getChain({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$static_getChain? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeQuerystatic_getChain,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Query$static_getChain,
         );
 }
 
 class FetchMoreOptions$Query$static_getChain extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$static_getChain(
-      {required graphql.UpdateQuery updateQuery})
+      {required super.updateQuery})
       : super(
-          updateQuery: updateQuery,
           document: documentNodeQuerystatic_getChain,
         );
 }
@@ -2343,15 +2291,15 @@ class FetchMoreOptions$Query$static_getChain extends graphql.FetchMoreOptions {
 extension ClientExtension$Query$static_getChain on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$static_getChain>> query$static_getChain(
           [Options$Query$static_getChain? options]) async =>
-      await this.query(options ?? Options$Query$static_getChain());
+      await query(options ?? Options$Query$static_getChain());
   graphql.ObservableQuery<Query$static_getChain> watchQuery$static_getChain(
           [WatchOptions$Query$static_getChain? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$static_getChain());
+      watchQuery(options ?? WatchOptions$Query$static_getChain());
   void writeQuery$static_getChain({
     required Query$static_getChain data,
     bool broadcast = true,
   }) =>
-      this.writeQuery(
+      writeQuery(
         graphql.Request(
             operation:
                 graphql.Operation(document: documentNodeQuerystatic_getChain)),
@@ -2359,7 +2307,7 @@ extension ClientExtension$Query$static_getChain on graphql.GraphQLClient {
         broadcast: broadcast,
       );
   Query$static_getChain? readQuery$static_getChain({bool optimistic = true}) {
-    final result = this.readQuery(
+    final result = readQuery(
       graphql.Request(
           operation:
               graphql.Operation(document: documentNodeQuerystatic_getChain)),
@@ -2380,13 +2328,11 @@ graphql.ObservableQuery<Query$static_getChain> useWatchQuery$static_getChain(
 class Query$static_getChain$Widget
     extends graphql_flutter.Query<Query$static_getChain> {
   Query$static_getChain$Widget({
-    widgets.Key? key,
+    super.key,
     Options$Query$static_getChain? options,
-    required graphql_flutter.QueryBuilder<Query$static_getChain> builder,
+    required super.builder,
   }) : super(
-          key: key,
           options: options ?? Options$Query$static_getChain(),
-          builder: builder,
         );
 }
 
@@ -2436,22 +2382,22 @@ class Query$static_getChain$static_getChains {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$name = name;
-    _resultData['name'] = l$name;
+    resultData['name'] = l$name;
     final l$rpcUrl = rpcUrl;
-    _resultData['rpcUrl'] = l$rpcUrl;
+    resultData['rpcUrl'] = l$rpcUrl;
     final l$chainId = chainId;
-    _resultData['chainId'] = l$chainId;
+    resultData['chainId'] = l$chainId;
     final l$explorerUrl = explorerUrl;
-    _resultData['explorerUrl'] = l$explorerUrl;
+    resultData['explorerUrl'] = l$explorerUrl;
     final l$explorerApiUrl = explorerApiUrl;
-    _resultData['explorerApiUrl'] = l$explorerApiUrl;
+    resultData['explorerApiUrl'] = l$explorerApiUrl;
     final l$logoUrl = logoUrl;
-    _resultData['logoUrl'] = l$logoUrl;
+    resultData['logoUrl'] = l$logoUrl;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -2565,6 +2511,7 @@ class _CopyWithImpl$Query$static_getChain$static_getChains<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? name = _undefined,
     Object? rpcUrl = _undefined,
@@ -2603,8 +2550,9 @@ class _CopyWithStubImpl$Query$static_getChain$static_getChains<TRes>
     implements CopyWith$Query$static_getChain$static_getChains<TRes> {
   _CopyWithStubImpl$Query$static_getChain$static_getChains(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? name,
     String? rpcUrl,
@@ -2624,12 +2572,12 @@ class Query$static_getFundCollectors {
   });
 
   factory Query$static_getFundCollectors.fromJson(Map<String, dynamic> json) {
-    final l$static_getFundCollectors = json['static_getFundCollectors'];
+    final l$staticGetfundcollectors = json['static_getFundCollectors'];
     final l$$__typename = json['__typename'];
     return Query$static_getFundCollectors(
       static_getFundCollectors:
           Query$static_getFundCollectors$static_getFundCollectors.fromJson(
-              (l$static_getFundCollectors as Map<String, dynamic>)),
+              (l$staticGetfundcollectors as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -2640,21 +2588,21 @@ class Query$static_getFundCollectors {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$static_getFundCollectors = static_getFundCollectors;
-    _resultData['static_getFundCollectors'] =
-        l$static_getFundCollectors.toJson();
+    final resultData = <String, dynamic>{};
+    final l$staticGetfundcollectors = static_getFundCollectors;
+    resultData['static_getFundCollectors'] =
+        l$staticGetfundcollectors.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$static_getFundCollectors = static_getFundCollectors;
+    final l$staticGetfundcollectors = static_getFundCollectors;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$static_getFundCollectors,
+      l$staticGetfundcollectors,
       l$$__typename,
     ]);
   }
@@ -2668,9 +2616,9 @@ class Query$static_getFundCollectors {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$static_getFundCollectors = static_getFundCollectors;
-    final lOther$static_getFundCollectors = other.static_getFundCollectors;
-    if (l$static_getFundCollectors != lOther$static_getFundCollectors) {
+    final l$staticGetfundcollectors = static_getFundCollectors;
+    final lother$staticGetfundcollectors = other.static_getFundCollectors;
+    if (l$staticGetfundcollectors != lother$staticGetfundcollectors) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -2722,6 +2670,7 @@ class _CopyWithImpl$Query$static_getFundCollectors<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? static_getFundCollectors = _undefined,
     Object? $__typename = _undefined,
@@ -2737,11 +2686,12 @@ class _CopyWithImpl$Query$static_getFundCollectors<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Query$static_getFundCollectors$static_getFundCollectors<TRes>
       get static_getFundCollectors {
-    final local$static_getFundCollectors = _instance.static_getFundCollectors;
+    final local$staticGetfundcollectors = _instance.static_getFundCollectors;
     return CopyWith$Query$static_getFundCollectors$static_getFundCollectors(
-        local$static_getFundCollectors,
+        local$staticGetfundcollectors,
         (e) => call(static_getFundCollectors: e));
   }
 }
@@ -2750,8 +2700,9 @@ class _CopyWithStubImpl$Query$static_getFundCollectors<TRes>
     implements CopyWith$Query$static_getFundCollectors<TRes> {
   _CopyWithStubImpl$Query$static_getFundCollectors(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Query$static_getFundCollectors$static_getFundCollectors?
         static_getFundCollectors,
@@ -2759,6 +2710,7 @@ class _CopyWithStubImpl$Query$static_getFundCollectors<TRes>
   }) =>
       _res;
 
+  @override
   CopyWith$Query$static_getFundCollectors$static_getFundCollectors<TRes>
       get static_getFundCollectors =>
           CopyWith$Query$static_getFundCollectors$static_getFundCollectors.stub(
@@ -2851,25 +2803,19 @@ typedef OnQueryComplete$Query$static_getFundCollectors = FutureOr<void>
 class Options$Query$static_getFundCollectors
     extends graphql.QueryOptions<Query$static_getFundCollectors> {
   Options$Query$static_getFundCollectors({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$static_getFundCollectors? typedOptimisticResult,
-    Duration? pollInterval,
-    graphql.Context? context,
+    super.pollInterval,
+    super.context,
     OnQueryComplete$Query$static_getFundCollectors? onComplete,
-    graphql.OnQueryError? onError,
+    super.onError,
   })  : onCompleteWithParsed = onComplete,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          pollInterval: pollInterval,
-          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
@@ -2878,7 +2824,6 @@ class Options$Query$static_getFundCollectors
                         ? null
                         : _parserFn$Query$static_getFundCollectors(data),
                   ),
-          onError: onError,
           document: documentNodeQuerystatic_getFundCollectors,
           parserFn: _parserFn$Query$static_getFundCollectors,
         );
@@ -2897,29 +2842,20 @@ class Options$Query$static_getFundCollectors
 class WatchOptions$Query$static_getFundCollectors
     extends graphql.WatchQueryOptions<Query$static_getFundCollectors> {
   WatchOptions$Query$static_getFundCollectors({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$static_getFundCollectors? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeQuerystatic_getFundCollectors,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Query$static_getFundCollectors,
         );
 }
@@ -2927,9 +2863,8 @@ class WatchOptions$Query$static_getFundCollectors
 class FetchMoreOptions$Query$static_getFundCollectors
     extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$static_getFundCollectors(
-      {required graphql.UpdateQuery updateQuery})
+      {required super.updateQuery})
       : super(
-          updateQuery: updateQuery,
           document: documentNodeQuerystatic_getFundCollectors,
         );
 }
@@ -2939,16 +2874,16 @@ extension ClientExtension$Query$static_getFundCollectors
   Future<graphql.QueryResult<Query$static_getFundCollectors>>
       query$static_getFundCollectors(
               [Options$Query$static_getFundCollectors? options]) async =>
-          await this.query(options ?? Options$Query$static_getFundCollectors());
+          await query(options ?? Options$Query$static_getFundCollectors());
   graphql.ObservableQuery<
       Query$static_getFundCollectors> watchQuery$static_getFundCollectors(
           [WatchOptions$Query$static_getFundCollectors? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$static_getFundCollectors());
+      watchQuery(options ?? WatchOptions$Query$static_getFundCollectors());
   void writeQuery$static_getFundCollectors({
     required Query$static_getFundCollectors data,
     bool broadcast = true,
   }) =>
-      this.writeQuery(
+      writeQuery(
         graphql.Request(
             operation: graphql.Operation(
                 document: documentNodeQuerystatic_getFundCollectors)),
@@ -2957,7 +2892,7 @@ extension ClientExtension$Query$static_getFundCollectors
       );
   Query$static_getFundCollectors? readQuery$static_getFundCollectors(
       {bool optimistic = true}) {
-    final result = this.readQuery(
+    final result = readQuery(
       graphql.Request(
           operation: graphql.Operation(
               document: documentNodeQuerystatic_getFundCollectors)),
@@ -2983,14 +2918,11 @@ graphql.ObservableQuery<Query$static_getFundCollectors>
 class Query$static_getFundCollectors$Widget
     extends graphql_flutter.Query<Query$static_getFundCollectors> {
   Query$static_getFundCollectors$Widget({
-    widgets.Key? key,
+    super.key,
     Options$Query$static_getFundCollectors? options,
-    required graphql_flutter.QueryBuilder<Query$static_getFundCollectors>
-        builder,
+    required super.builder,
   }) : super(
-          key: key,
           options: options ?? Options$Query$static_getFundCollectors(),
-          builder: builder,
         );
 }
 
@@ -3011,7 +2943,7 @@ class Query$static_getFundCollectors$static_getFundCollectors {
     final l$ElectricityBills = json['ElectricityBills'];
     final l$FundBetting = json['FundBetting'];
     final l$OffRamping = json['OffRamping'];
-    final l$TV_Bills = json['TV_Bills'];
+    final l$tvBills = json['TV_Bills'];
     final l$WaterBills = json['WaterBills'];
     final l$$__typename = json['__typename'];
     return Query$static_getFundCollectors$static_getFundCollectors(
@@ -3019,7 +2951,7 @@ class Query$static_getFundCollectors$static_getFundCollectors {
       ElectricityBills: (l$ElectricityBills as String),
       FundBetting: (l$FundBetting as String),
       OffRamping: (l$OffRamping as String),
-      TV_Bills: (l$TV_Bills as String),
+      TV_Bills: (l$tvBills as String),
       WaterBills: (l$WaterBills as String),
       $__typename: (l$$__typename as String),
     );
@@ -3040,22 +2972,22 @@ class Query$static_getFundCollectors$static_getFundCollectors {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$TopUp = TopUp;
-    _resultData['TopUp'] = l$TopUp;
+    resultData['TopUp'] = l$TopUp;
     final l$ElectricityBills = ElectricityBills;
-    _resultData['ElectricityBills'] = l$ElectricityBills;
+    resultData['ElectricityBills'] = l$ElectricityBills;
     final l$FundBetting = FundBetting;
-    _resultData['FundBetting'] = l$FundBetting;
+    resultData['FundBetting'] = l$FundBetting;
     final l$OffRamping = OffRamping;
-    _resultData['OffRamping'] = l$OffRamping;
-    final l$TV_Bills = TV_Bills;
-    _resultData['TV_Bills'] = l$TV_Bills;
+    resultData['OffRamping'] = l$OffRamping;
+    final l$tvBills = TV_Bills;
+    resultData['TV_Bills'] = l$tvBills;
     final l$WaterBills = WaterBills;
-    _resultData['WaterBills'] = l$WaterBills;
+    resultData['WaterBills'] = l$WaterBills;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -3064,7 +2996,7 @@ class Query$static_getFundCollectors$static_getFundCollectors {
     final l$ElectricityBills = ElectricityBills;
     final l$FundBetting = FundBetting;
     final l$OffRamping = OffRamping;
-    final l$TV_Bills = TV_Bills;
+    final l$tvBills = TV_Bills;
     final l$WaterBills = WaterBills;
     final l$$__typename = $__typename;
     return Object.hashAll([
@@ -3072,7 +3004,7 @@ class Query$static_getFundCollectors$static_getFundCollectors {
       l$ElectricityBills,
       l$FundBetting,
       l$OffRamping,
-      l$TV_Bills,
+      l$tvBills,
       l$WaterBills,
       l$$__typename,
     ]);
@@ -3107,9 +3039,9 @@ class Query$static_getFundCollectors$static_getFundCollectors {
     if (l$OffRamping != lOther$OffRamping) {
       return false;
     }
-    final l$TV_Bills = TV_Bills;
-    final lOther$TV_Bills = other.TV_Bills;
-    if (l$TV_Bills != lOther$TV_Bills) {
+    final l$tvBills = TV_Bills;
+    final lother$tvBills = other.TV_Bills;
+    if (l$tvBills != lother$tvBills) {
       return false;
     }
     final l$WaterBills = WaterBills;
@@ -3175,6 +3107,7 @@ class _CopyWithImpl$Query$static_getFundCollectors$static_getFundCollectors<
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? TopUp = _undefined,
     Object? ElectricityBills = _undefined,
@@ -3217,8 +3150,9 @@ class _CopyWithStubImpl$Query$static_getFundCollectors$static_getFundCollectors<
   _CopyWithStubImpl$Query$static_getFundCollectors$static_getFundCollectors(
       this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? TopUp,
     String? ElectricityBills,
@@ -3238,11 +3172,11 @@ class Query$static_appInfo {
   });
 
   factory Query$static_appInfo.fromJson(Map<String, dynamic> json) {
-    final l$static_appInfo = json['static_appInfo'];
+    final l$staticAppinfo = json['static_appInfo'];
     final l$$__typename = json['__typename'];
     return Query$static_appInfo(
       static_appInfo: Query$static_appInfo$static_appInfo.fromJson(
-          (l$static_appInfo as Map<String, dynamic>)),
+          (l$staticAppinfo as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -3252,20 +3186,20 @@ class Query$static_appInfo {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$static_appInfo = static_appInfo;
-    _resultData['static_appInfo'] = l$static_appInfo.toJson();
+    final resultData = <String, dynamic>{};
+    final l$staticAppinfo = static_appInfo;
+    resultData['static_appInfo'] = l$staticAppinfo.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$static_appInfo = static_appInfo;
+    final l$staticAppinfo = static_appInfo;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$static_appInfo,
+      l$staticAppinfo,
       l$$__typename,
     ]);
   }
@@ -3278,9 +3212,9 @@ class Query$static_appInfo {
     if (other is! Query$static_appInfo || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$static_appInfo = static_appInfo;
-    final lOther$static_appInfo = other.static_appInfo;
-    if (l$static_appInfo != lOther$static_appInfo) {
+    final l$staticAppinfo = static_appInfo;
+    final lother$staticAppinfo = other.static_appInfo;
+    if (l$staticAppinfo != lother$staticAppinfo) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -3329,6 +3263,7 @@ class _CopyWithImpl$Query$static_appInfo<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? static_appInfo = _undefined,
     Object? $__typename = _undefined,
@@ -3342,10 +3277,11 @@ class _CopyWithImpl$Query$static_appInfo<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Query$static_appInfo$static_appInfo<TRes> get static_appInfo {
-    final local$static_appInfo = _instance.static_appInfo;
+    final local$staticAppinfo = _instance.static_appInfo;
     return CopyWith$Query$static_appInfo$static_appInfo(
-        local$static_appInfo, (e) => call(static_appInfo: e));
+        local$staticAppinfo, (e) => call(static_appInfo: e));
   }
 }
 
@@ -3353,14 +3289,16 @@ class _CopyWithStubImpl$Query$static_appInfo<TRes>
     implements CopyWith$Query$static_appInfo<TRes> {
   _CopyWithStubImpl$Query$static_appInfo(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Query$static_appInfo$static_appInfo? static_appInfo,
     String? $__typename,
   }) =>
       _res;
 
+  @override
   CopyWith$Query$static_appInfo$static_appInfo<TRes> get static_appInfo =>
       CopyWith$Query$static_appInfo$static_appInfo.stub(_res);
 }
@@ -3492,32 +3430,25 @@ typedef OnQueryComplete$Query$static_appInfo = FutureOr<void> Function(
 class Options$Query$static_appInfo
     extends graphql.QueryOptions<Query$static_appInfo> {
   Options$Query$static_appInfo({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$static_appInfo? typedOptimisticResult,
-    Duration? pollInterval,
-    graphql.Context? context,
+    super.pollInterval,
+    super.context,
     OnQueryComplete$Query$static_appInfo? onComplete,
-    graphql.OnQueryError? onError,
+    super.onError,
   })  : onCompleteWithParsed = onComplete,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          pollInterval: pollInterval,
-          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
                     data,
                     data == null ? null : _parserFn$Query$static_appInfo(data),
                   ),
-          onError: onError,
           document: documentNodeQuerystatic_appInfo,
           parserFn: _parserFn$Query$static_appInfo,
         );
@@ -3536,38 +3467,28 @@ class Options$Query$static_appInfo
 class WatchOptions$Query$static_appInfo
     extends graphql.WatchQueryOptions<Query$static_appInfo> {
   WatchOptions$Query$static_appInfo({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$static_appInfo? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeQuerystatic_appInfo,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Query$static_appInfo,
         );
 }
 
 class FetchMoreOptions$Query$static_appInfo extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$static_appInfo(
-      {required graphql.UpdateQuery updateQuery})
+      {required super.updateQuery})
       : super(
-          updateQuery: updateQuery,
           document: documentNodeQuerystatic_appInfo,
         );
 }
@@ -3575,15 +3496,15 @@ class FetchMoreOptions$Query$static_appInfo extends graphql.FetchMoreOptions {
 extension ClientExtension$Query$static_appInfo on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$static_appInfo>> query$static_appInfo(
           [Options$Query$static_appInfo? options]) async =>
-      await this.query(options ?? Options$Query$static_appInfo());
+      await query(options ?? Options$Query$static_appInfo());
   graphql.ObservableQuery<Query$static_appInfo> watchQuery$static_appInfo(
           [WatchOptions$Query$static_appInfo? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$static_appInfo());
+      watchQuery(options ?? WatchOptions$Query$static_appInfo());
   void writeQuery$static_appInfo({
     required Query$static_appInfo data,
     bool broadcast = true,
   }) =>
-      this.writeQuery(
+      writeQuery(
         graphql.Request(
             operation:
                 graphql.Operation(document: documentNodeQuerystatic_appInfo)),
@@ -3591,7 +3512,7 @@ extension ClientExtension$Query$static_appInfo on graphql.GraphQLClient {
         broadcast: broadcast,
       );
   Query$static_appInfo? readQuery$static_appInfo({bool optimistic = true}) {
-    final result = this.readQuery(
+    final result = readQuery(
       graphql.Request(
           operation:
               graphql.Operation(document: documentNodeQuerystatic_appInfo)),
@@ -3612,13 +3533,11 @@ graphql.ObservableQuery<Query$static_appInfo> useWatchQuery$static_appInfo(
 class Query$static_appInfo$Widget
     extends graphql_flutter.Query<Query$static_appInfo> {
   Query$static_appInfo$Widget({
-    widgets.Key? key,
+    super.key,
     Options$Query$static_appInfo? options,
-    required graphql_flutter.QueryBuilder<Query$static_appInfo> builder,
+    required super.builder,
   }) : super(
-          key: key,
           options: options ?? Options$Query$static_appInfo(),
-          builder: builder,
         );
 }
 
@@ -3698,35 +3617,35 @@ class Query$static_appInfo$static_appInfo {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$androidAppUrl = androidAppUrl;
-    _resultData['androidAppUrl'] = l$androidAppUrl;
+    resultData['androidAppUrl'] = l$androidAppUrl;
     final l$iosAppUrl = iosAppUrl;
-    _resultData['iosAppUrl'] = l$iosAppUrl;
+    resultData['iosAppUrl'] = l$iosAppUrl;
     final l$minBuild = minBuild;
-    _resultData['minBuild'] = l$minBuild;
+    resultData['minBuild'] = l$minBuild;
     final l$deployedBuild = deployedBuild;
-    _resultData['deployedBuild'] = l$deployedBuild;
+    resultData['deployedBuild'] = l$deployedBuild;
     final l$enableAirtime = enableAirtime;
-    _resultData['enableAirtime'] = l$enableAirtime;
+    resultData['enableAirtime'] = l$enableAirtime;
     final l$enableBetting = enableBetting;
-    _resultData['enableBetting'] = l$enableBetting;
+    resultData['enableBetting'] = l$enableBetting;
     final l$enableDataPlan = enableDataPlan;
-    _resultData['enableDataPlan'] = l$enableDataPlan;
+    resultData['enableDataPlan'] = l$enableDataPlan;
     final l$enableElectricityBillPayment = enableElectricityBillPayment;
-    _resultData['enableElectricityBillPayment'] =
+    resultData['enableElectricityBillPayment'] =
         l$enableElectricityBillPayment;
     final l$enableTVBillPayment = enableTVBillPayment;
-    _resultData['enableTVBillPayment'] = l$enableTVBillPayment;
+    resultData['enableTVBillPayment'] = l$enableTVBillPayment;
     final l$selfKycUrl = selfKycUrl;
-    _resultData['selfKycUrl'] = l$selfKycUrl;
+    resultData['selfKycUrl'] = l$selfKycUrl;
     final l$transactionsPageUrl = transactionsPageUrl;
-    _resultData['transactionsPageUrl'] = l$transactionsPageUrl;
+    resultData['transactionsPageUrl'] = l$transactionsPageUrl;
     final l$notificationsPageUrl = notificationsPageUrl;
-    _resultData['notificationsPageUrl'] = l$notificationsPageUrl;
+    resultData['notificationsPageUrl'] = l$notificationsPageUrl;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -3889,6 +3808,7 @@ class _CopyWithImpl$Query$static_appInfo$static_appInfo<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? androidAppUrl = _undefined,
     Object? iosAppUrl = _undefined,
@@ -3956,8 +3876,9 @@ class _CopyWithStubImpl$Query$static_appInfo$static_appInfo<TRes>
     implements CopyWith$Query$static_appInfo$static_appInfo<TRes> {
   _CopyWithStubImpl$Query$static_appInfo$static_appInfo(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? androidAppUrl,
     String? iosAppUrl,
@@ -3983,10 +3904,10 @@ class Query$static_secretQuestions {
   });
 
   factory Query$static_secretQuestions.fromJson(Map<String, dynamic> json) {
-    final l$static_secretQuestions = json['static_secretQuestions'];
+    final l$staticSecretquestions = json['static_secretQuestions'];
     final l$$__typename = json['__typename'];
     return Query$static_secretQuestions(
-      static_secretQuestions: (l$static_secretQuestions as List<dynamic>)
+      static_secretQuestions: (l$staticSecretquestions as List<dynamic>)
           .map((e) =>
               Query$static_secretQuestions$static_secretQuestions.fromJson(
                   (e as Map<String, dynamic>)))
@@ -4001,21 +3922,21 @@ class Query$static_secretQuestions {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$static_secretQuestions = static_secretQuestions;
-    _resultData['static_secretQuestions'] =
-        l$static_secretQuestions.map((e) => e.toJson()).toList();
+    final resultData = <String, dynamic>{};
+    final l$staticSecretquestions = static_secretQuestions;
+    resultData['static_secretQuestions'] =
+        l$staticSecretquestions.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$static_secretQuestions = static_secretQuestions;
+    final l$staticSecretquestions = static_secretQuestions;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$static_secretQuestions.map((v) => v)),
+      Object.hashAll(l$staticSecretquestions.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -4029,18 +3950,18 @@ class Query$static_secretQuestions {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$static_secretQuestions = static_secretQuestions;
-    final lOther$static_secretQuestions = other.static_secretQuestions;
-    if (l$static_secretQuestions.length !=
-        lOther$static_secretQuestions.length) {
+    final l$staticSecretquestions = static_secretQuestions;
+    final lother$staticSecretquestions = other.static_secretQuestions;
+    if (l$staticSecretquestions.length !=
+        lother$staticSecretquestions.length) {
       return false;
     }
-    for (int i = 0; i < l$static_secretQuestions.length; i++) {
-      final l$static_secretQuestions$entry = l$static_secretQuestions[i];
-      final lOther$static_secretQuestions$entry =
-          lOther$static_secretQuestions[i];
-      if (l$static_secretQuestions$entry !=
-          lOther$static_secretQuestions$entry) {
+    for (int i = 0; i < l$staticSecretquestions.length; i++) {
+      final l$staticSecretquestions$entry = l$staticSecretquestions[i];
+      final lother$staticSecretquestions$entry =
+          lother$staticSecretquestions[i];
+      if (l$staticSecretquestions$entry !=
+          lother$staticSecretquestions$entry) {
         return false;
       }
     }
@@ -4081,7 +4002,7 @@ abstract class CopyWith$Query$static_secretQuestions<TRes> {
               Iterable<
                   CopyWith$Query$static_secretQuestions$static_secretQuestions<
                       Query$static_secretQuestions$static_secretQuestions>>)
-          _fn);
+          fn);
 }
 
 class _CopyWithImpl$Query$static_secretQuestions<TRes>
@@ -4097,6 +4018,7 @@ class _CopyWithImpl$Query$static_secretQuestions<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? static_secretQuestions = _undefined,
     Object? $__typename = _undefined,
@@ -4112,14 +4034,15 @@ class _CopyWithImpl$Query$static_secretQuestions<TRes>
             : ($__typename as String),
       ));
 
+  @override
   TRes static_secretQuestions(
           Iterable<Query$static_secretQuestions$static_secretQuestions> Function(
                   Iterable<
                       CopyWith$Query$static_secretQuestions$static_secretQuestions<
                           Query$static_secretQuestions$static_secretQuestions>>)
-              _fn) =>
+              fn) =>
       call(
-          static_secretQuestions: _fn(_instance.static_secretQuestions.map(
+          static_secretQuestions: fn(_instance.static_secretQuestions.map(
               (e) =>
                   CopyWith$Query$static_secretQuestions$static_secretQuestions(
                     e,
@@ -4131,8 +4054,9 @@ class _CopyWithStubImpl$Query$static_secretQuestions<TRes>
     implements CopyWith$Query$static_secretQuestions<TRes> {
   _CopyWithStubImpl$Query$static_secretQuestions(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     List<Query$static_secretQuestions$static_secretQuestions>?
         static_secretQuestions,
@@ -4140,7 +4064,8 @@ class _CopyWithStubImpl$Query$static_secretQuestions<TRes>
   }) =>
       _res;
 
-  static_secretQuestions(_fn) => _res;
+  @override
+  static_secretQuestions(fn) => _res;
 }
 
 const documentNodeQuerystatic_secretQuestions = DocumentNode(definitions: [
@@ -4193,25 +4118,19 @@ typedef OnQueryComplete$Query$static_secretQuestions = FutureOr<void> Function(
 class Options$Query$static_secretQuestions
     extends graphql.QueryOptions<Query$static_secretQuestions> {
   Options$Query$static_secretQuestions({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$static_secretQuestions? typedOptimisticResult,
-    Duration? pollInterval,
-    graphql.Context? context,
+    super.pollInterval,
+    super.context,
     OnQueryComplete$Query$static_secretQuestions? onComplete,
-    graphql.OnQueryError? onError,
+    super.onError,
   })  : onCompleteWithParsed = onComplete,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          pollInterval: pollInterval,
-          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
@@ -4220,7 +4139,6 @@ class Options$Query$static_secretQuestions
                         ? null
                         : _parserFn$Query$static_secretQuestions(data),
                   ),
-          onError: onError,
           document: documentNodeQuerystatic_secretQuestions,
           parserFn: _parserFn$Query$static_secretQuestions,
         );
@@ -4239,29 +4157,20 @@ class Options$Query$static_secretQuestions
 class WatchOptions$Query$static_secretQuestions
     extends graphql.WatchQueryOptions<Query$static_secretQuestions> {
   WatchOptions$Query$static_secretQuestions({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$static_secretQuestions? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeQuerystatic_secretQuestions,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Query$static_secretQuestions,
         );
 }
@@ -4269,9 +4178,8 @@ class WatchOptions$Query$static_secretQuestions
 class FetchMoreOptions$Query$static_secretQuestions
     extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$static_secretQuestions(
-      {required graphql.UpdateQuery updateQuery})
+      {required super.updateQuery})
       : super(
-          updateQuery: updateQuery,
           document: documentNodeQuerystatic_secretQuestions,
         );
 }
@@ -4281,16 +4189,16 @@ extension ClientExtension$Query$static_secretQuestions
   Future<graphql.QueryResult<Query$static_secretQuestions>>
       query$static_secretQuestions(
               [Options$Query$static_secretQuestions? options]) async =>
-          await this.query(options ?? Options$Query$static_secretQuestions());
+          await query(options ?? Options$Query$static_secretQuestions());
   graphql.ObservableQuery<
       Query$static_secretQuestions> watchQuery$static_secretQuestions(
           [WatchOptions$Query$static_secretQuestions? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$static_secretQuestions());
+      watchQuery(options ?? WatchOptions$Query$static_secretQuestions());
   void writeQuery$static_secretQuestions({
     required Query$static_secretQuestions data,
     bool broadcast = true,
   }) =>
-      this.writeQuery(
+      writeQuery(
         graphql.Request(
             operation: graphql.Operation(
                 document: documentNodeQuerystatic_secretQuestions)),
@@ -4299,7 +4207,7 @@ extension ClientExtension$Query$static_secretQuestions
       );
   Query$static_secretQuestions? readQuery$static_secretQuestions(
       {bool optimistic = true}) {
-    final result = this.readQuery(
+    final result = readQuery(
       graphql.Request(
           operation: graphql.Operation(
               document: documentNodeQuerystatic_secretQuestions)),
@@ -4325,13 +4233,11 @@ graphql.ObservableQuery<Query$static_secretQuestions>
 class Query$static_secretQuestions$Widget
     extends graphql_flutter.Query<Query$static_secretQuestions> {
   Query$static_secretQuestions$Widget({
-    widgets.Key? key,
+    super.key,
     Options$Query$static_secretQuestions? options,
-    required graphql_flutter.QueryBuilder<Query$static_secretQuestions> builder,
+    required super.builder,
   }) : super(
-          key: key,
           options: options ?? Options$Query$static_secretQuestions(),
-          builder: builder,
         );
 }
 
@@ -4356,12 +4262,12 @@ class Query$static_secretQuestions$static_secretQuestions {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$text = text;
-    _resultData['text'] = l$text;
+    resultData['text'] = l$text;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -4440,6 +4346,7 @@ class _CopyWithImpl$Query$static_secretQuestions$static_secretQuestions<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? text = _undefined,
     Object? $__typename = _undefined,
@@ -4461,8 +4368,9 @@ class _CopyWithStubImpl$Query$static_secretQuestions$static_secretQuestions<
   _CopyWithStubImpl$Query$static_secretQuestions$static_secretQuestions(
       this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? text,
     String? $__typename,
@@ -4477,10 +4385,10 @@ class Query$static_miniApps {
   });
 
   factory Query$static_miniApps.fromJson(Map<String, dynamic> json) {
-    final l$static_miniApps = json['static_miniApps'];
+    final l$staticMiniapps = json['static_miniApps'];
     final l$$__typename = json['__typename'];
     return Query$static_miniApps(
-      static_miniApps: (l$static_miniApps as List<dynamic>)
+      static_miniApps: (l$staticMiniapps as List<dynamic>)
           .map((e) => Query$static_miniApps$static_miniApps.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
@@ -4493,21 +4401,21 @@ class Query$static_miniApps {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$static_miniApps = static_miniApps;
-    _resultData['static_miniApps'] =
-        l$static_miniApps.map((e) => e.toJson()).toList();
+    final resultData = <String, dynamic>{};
+    final l$staticMiniapps = static_miniApps;
+    resultData['static_miniApps'] =
+        l$staticMiniapps.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$static_miniApps = static_miniApps;
+    final l$staticMiniapps = static_miniApps;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$static_miniApps.map((v) => v)),
+      Object.hashAll(l$staticMiniapps.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -4520,15 +4428,15 @@ class Query$static_miniApps {
     if (other is! Query$static_miniApps || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$static_miniApps = static_miniApps;
-    final lOther$static_miniApps = other.static_miniApps;
-    if (l$static_miniApps.length != lOther$static_miniApps.length) {
+    final l$staticMiniapps = static_miniApps;
+    final lother$staticMiniapps = other.static_miniApps;
+    if (l$staticMiniapps.length != lother$staticMiniapps.length) {
       return false;
     }
-    for (int i = 0; i < l$static_miniApps.length; i++) {
-      final l$static_miniApps$entry = l$static_miniApps[i];
-      final lOther$static_miniApps$entry = lOther$static_miniApps[i];
-      if (l$static_miniApps$entry != lOther$static_miniApps$entry) {
+    for (int i = 0; i < l$staticMiniapps.length; i++) {
+      final l$staticMiniapps$entry = l$staticMiniapps[i];
+      final lother$staticMiniapps$entry = lother$staticMiniapps[i];
+      if (l$staticMiniapps$entry != lother$staticMiniapps$entry) {
         return false;
       }
     }
@@ -4567,7 +4475,7 @@ abstract class CopyWith$Query$static_miniApps<TRes> {
               Iterable<
                   CopyWith$Query$static_miniApps$static_miniApps<
                       Query$static_miniApps$static_miniApps>>)
-          _fn);
+          fn);
 }
 
 class _CopyWithImpl$Query$static_miniApps<TRes>
@@ -4583,6 +4491,7 @@ class _CopyWithImpl$Query$static_miniApps<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? static_miniApps = _undefined,
     Object? $__typename = _undefined,
@@ -4597,14 +4506,15 @@ class _CopyWithImpl$Query$static_miniApps<TRes>
             : ($__typename as String),
       ));
 
+  @override
   TRes static_miniApps(
           Iterable<Query$static_miniApps$static_miniApps> Function(
                   Iterable<
                       CopyWith$Query$static_miniApps$static_miniApps<
                           Query$static_miniApps$static_miniApps>>)
-              _fn) =>
+              fn) =>
       call(
-          static_miniApps: _fn(_instance.static_miniApps
+          static_miniApps: fn(_instance.static_miniApps
               .map((e) => CopyWith$Query$static_miniApps$static_miniApps(
                     e,
                     (i) => i,
@@ -4615,15 +4525,17 @@ class _CopyWithStubImpl$Query$static_miniApps<TRes>
     implements CopyWith$Query$static_miniApps<TRes> {
   _CopyWithStubImpl$Query$static_miniApps(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     List<Query$static_miniApps$static_miniApps>? static_miniApps,
     String? $__typename,
   }) =>
       _res;
 
-  static_miniApps(_fn) => _res;
+  @override
+  static_miniApps(fn) => _res;
 }
 
 const documentNodeQuerystatic_miniApps = DocumentNode(definitions: [
@@ -4704,32 +4616,25 @@ typedef OnQueryComplete$Query$static_miniApps = FutureOr<void> Function(
 class Options$Query$static_miniApps
     extends graphql.QueryOptions<Query$static_miniApps> {
   Options$Query$static_miniApps({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$static_miniApps? typedOptimisticResult,
-    Duration? pollInterval,
-    graphql.Context? context,
+    super.pollInterval,
+    super.context,
     OnQueryComplete$Query$static_miniApps? onComplete,
-    graphql.OnQueryError? onError,
+    super.onError,
   })  : onCompleteWithParsed = onComplete,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          pollInterval: pollInterval,
-          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
                     data,
                     data == null ? null : _parserFn$Query$static_miniApps(data),
                   ),
-          onError: onError,
           document: documentNodeQuerystatic_miniApps,
           parserFn: _parserFn$Query$static_miniApps,
         );
@@ -4748,38 +4653,28 @@ class Options$Query$static_miniApps
 class WatchOptions$Query$static_miniApps
     extends graphql.WatchQueryOptions<Query$static_miniApps> {
   WatchOptions$Query$static_miniApps({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$static_miniApps? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeQuerystatic_miniApps,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Query$static_miniApps,
         );
 }
 
 class FetchMoreOptions$Query$static_miniApps extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$static_miniApps(
-      {required graphql.UpdateQuery updateQuery})
+      {required super.updateQuery})
       : super(
-          updateQuery: updateQuery,
           document: documentNodeQuerystatic_miniApps,
         );
 }
@@ -4787,15 +4682,15 @@ class FetchMoreOptions$Query$static_miniApps extends graphql.FetchMoreOptions {
 extension ClientExtension$Query$static_miniApps on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$static_miniApps>> query$static_miniApps(
           [Options$Query$static_miniApps? options]) async =>
-      await this.query(options ?? Options$Query$static_miniApps());
+      await query(options ?? Options$Query$static_miniApps());
   graphql.ObservableQuery<Query$static_miniApps> watchQuery$static_miniApps(
           [WatchOptions$Query$static_miniApps? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$static_miniApps());
+      watchQuery(options ?? WatchOptions$Query$static_miniApps());
   void writeQuery$static_miniApps({
     required Query$static_miniApps data,
     bool broadcast = true,
   }) =>
-      this.writeQuery(
+      writeQuery(
         graphql.Request(
             operation:
                 graphql.Operation(document: documentNodeQuerystatic_miniApps)),
@@ -4803,7 +4698,7 @@ extension ClientExtension$Query$static_miniApps on graphql.GraphQLClient {
         broadcast: broadcast,
       );
   Query$static_miniApps? readQuery$static_miniApps({bool optimistic = true}) {
-    final result = this.readQuery(
+    final result = readQuery(
       graphql.Request(
           operation:
               graphql.Operation(document: documentNodeQuerystatic_miniApps)),
@@ -4824,13 +4719,11 @@ graphql.ObservableQuery<Query$static_miniApps> useWatchQuery$static_miniApps(
 class Query$static_miniApps$Widget
     extends graphql_flutter.Query<Query$static_miniApps> {
   Query$static_miniApps$Widget({
-    widgets.Key? key,
+    super.key,
     Options$Query$static_miniApps? options,
-    required graphql_flutter.QueryBuilder<Query$static_miniApps> builder,
+    required super.builder,
   }) : super(
-          key: key,
           options: options ?? Options$Query$static_miniApps(),
-          builder: builder,
         );
 }
 
@@ -4875,20 +4768,20 @@ class Query$static_miniApps$static_miniApps {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$title = title;
-    _resultData['title'] = l$title;
+    resultData['title'] = l$title;
     final l$description = description;
-    _resultData['description'] = l$description;
+    resultData['description'] = l$description;
     final l$logo = logo;
-    _resultData['logo'] = l$logo;
+    resultData['logo'] = l$logo;
     final l$url = url;
-    _resultData['url'] = l$url;
+    resultData['url'] = l$url;
     final l$aboutInfo = aboutInfo;
-    _resultData['aboutInfo'] = l$aboutInfo;
+    resultData['aboutInfo'] = l$aboutInfo;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -4994,6 +4887,7 @@ class _CopyWithImpl$Query$static_miniApps$static_miniApps<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? title = _undefined,
     Object? description = _undefined,
@@ -5026,8 +4920,9 @@ class _CopyWithStubImpl$Query$static_miniApps$static_miniApps<TRes>
     implements CopyWith$Query$static_miniApps$static_miniApps<TRes> {
   _CopyWithStubImpl$Query$static_miniApps$static_miniApps(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? title,
     String? description,

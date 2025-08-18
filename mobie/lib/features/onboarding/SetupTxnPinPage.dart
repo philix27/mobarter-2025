@@ -34,7 +34,7 @@ class _SetupTxnPinPageState extends State<SetupTxnPinPage> {
 class SetupTxnPinHook extends HookWidget {
   final void Function(String text) stateUpdater;
   final String questionSelected;
-  SetupTxnPinHook({required this.stateUpdater, required this.questionSelected});
+  SetupTxnPinHook({super.key, required this.stateUpdater, required this.questionSelected});
 
   TextEditingController answer = TextEditingController();
   TextEditingController txnPin = TextEditingController();
@@ -102,7 +102,7 @@ class SetupTxnPinHook extends HookWidget {
             title: questionSelected.isEmpty
                 ? "Pick a secret question"
                 : questionSelected,
-            subtitle: !questionSelected.isEmpty
+            subtitle: questionSelected.isNotEmpty
                 ? "Pick a secret question"
                 : null,
             onTap: () {

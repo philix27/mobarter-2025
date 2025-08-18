@@ -15,7 +15,7 @@ class DocsLinks extends StatelessWidget {
 }
 
 class _DocsList extends HookWidget {
-  const _DocsList({super.key});
+  const _DocsList();
 
   @override
   Widget build(BuildContext context) {

@@ -18,7 +18,7 @@ class ElectricityPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _makePayment = useMutation$ElectricityBill_makePayment();
+    final makePayment = useMutation$ElectricityBill_makePayment();
     final w = electricBillWatch(ref);
 
     return appScaffold(
@@ -32,7 +32,7 @@ class ElectricityPage extends HookConsumerWidget {
           AccountNo(),
           ElectricityAmount(),
           CryptoAmountPay(amountFiat: w.amountFiat ?? 0),
-          w.customerName != null && !w.customerName!.isEmpty
+          w.customerName != null && w.customerName!.isNotEmpty
               ? listTile(
                   context,
                   title: w.customerName!,
@@ -92,7 +92,7 @@ class ElectricityPage extends HookConsumerWidget {
                       require(w.amountFiat, "Customer credentials needed");
                       require(w.amountCrypto, "Customer credentials needed");
 
-                      final response = await _makePayment
+                      final response = await makePayment
                           .runMutation(
                             Variables$Mutation$ElectricityBill_makePayment(
                               input: Input$ElectricityBill_PaymentInput(
@@ -131,7 +131,7 @@ class ElectricityPage extends HookConsumerWidget {
                         subtitle: "Payment made successfully",
                       );
                     } catch (e) {
-                      appToastErr(context, "${e}");
+                      appToastErr(context, "$e");
                     }
                   },
                 ),

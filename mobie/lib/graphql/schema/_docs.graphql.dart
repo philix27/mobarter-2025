@@ -173,6 +173,7 @@ class _CopyWithImpl$Input$Auth_CreateAccountInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? country = _undefined,
     Object? email = _undefined,
@@ -200,8 +201,9 @@ class _CopyWithStubImpl$Input$Auth_CreateAccountInput<TRes>
     implements CopyWith$Input$Auth_CreateAccountInput<TRes> {
   _CopyWithStubImpl$Input$Auth_CreateAccountInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Enum$Country? country,
     String? email,
@@ -294,6 +296,7 @@ class _CopyWithImpl$Input$Auth_FirebaseLoginInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? idToken = _undefined}) =>
       _then(Input$Auth_FirebaseLoginInput._({
         ..._instance._$data,
@@ -306,8 +309,9 @@ class _CopyWithStubImpl$Input$Auth_FirebaseLoginInput<TRes>
     implements CopyWith$Input$Auth_FirebaseLoginInput<TRes> {
   _CopyWithStubImpl$Input$Auth_FirebaseLoginInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({String? idToken}) => _res;
 }
 
@@ -413,6 +417,7 @@ class _CopyWithImpl$Input$Auth_LoginInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? email = _undefined,
     Object? password = _undefined,
@@ -429,8 +434,9 @@ class _CopyWithStubImpl$Input$Auth_LoginInput<TRes>
     implements CopyWith$Input$Auth_LoginInput<TRes> {
   _CopyWithStubImpl$Input$Auth_LoginInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? email,
     String? password,
@@ -519,6 +525,7 @@ class _CopyWithImpl$Input$Auth_LoginMinipayInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? walletAddress = _undefined}) =>
       _then(Input$Auth_LoginMinipayInput._({
         ..._instance._$data,
@@ -531,8 +538,9 @@ class _CopyWithStubImpl$Input$Auth_LoginMinipayInput<TRes>
     implements CopyWith$Input$Auth_LoginMinipayInput<TRes> {
   _CopyWithStubImpl$Input$Auth_LoginMinipayInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({String? walletAddress}) => _res;
 }
 
@@ -616,6 +624,7 @@ class _CopyWithImpl$Input$Auth_LogoutInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? email = _undefined}) => _then(Input$Auth_LogoutInput._({
         ..._instance._$data,
         if (email != _undefined && email != null) 'email': (email as String),
@@ -626,8 +635,9 @@ class _CopyWithStubImpl$Input$Auth_LogoutInput<TRes>
     implements CopyWith$Input$Auth_LogoutInput<TRes> {
   _CopyWithStubImpl$Input$Auth_LogoutInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({String? email}) => _res;
 }
 
@@ -736,6 +746,7 @@ class _CopyWithImpl$Input$Auth_MinipayCreateAccountInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? email = _undefined,
     Object? walletAddress = _undefined,
@@ -752,8 +763,9 @@ class _CopyWithStubImpl$Input$Auth_MinipayCreateAccountInput<TRes>
     implements CopyWith$Input$Auth_MinipayCreateAccountInput<TRes> {
   _CopyWithStubImpl$Input$Auth_MinipayCreateAccountInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? email,
     String? walletAddress,
@@ -880,6 +892,7 @@ class _CopyWithImpl$Input$Auth_ResetPasswordInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? confirmPassword = _undefined,
     Object? email = _undefined,
@@ -899,8 +912,9 @@ class _CopyWithStubImpl$Input$Auth_ResetPasswordInput<TRes>
     implements CopyWith$Input$Auth_ResetPasswordInput<TRes> {
   _CopyWithStubImpl$Input$Auth_ResetPasswordInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? confirmPassword,
     String? email,
@@ -1012,6 +1026,7 @@ class _CopyWithImpl$Input$Auth_TelegramLoginInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? telegramUserId = _undefined,
     Object? walletAddress = _undefined,
@@ -1029,8 +1044,9 @@ class _CopyWithStubImpl$Input$Auth_TelegramLoginInput<TRes>
     implements CopyWith$Input$Auth_TelegramLoginInput<TRes> {
   _CopyWithStubImpl$Input$Auth_TelegramLoginInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? telegramUserId,
     String? walletAddress,
@@ -1157,6 +1173,7 @@ class _CopyWithImpl$Input$Auth_ThirdwebLoginInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? email = _undefined,
     Object? payload = _undefined,
@@ -1176,8 +1193,9 @@ class _CopyWithStubImpl$Input$Auth_ThirdwebLoginInput<TRes>
     implements CopyWith$Input$Auth_ThirdwebLoginInput<TRes> {
   _CopyWithStubImpl$Input$Auth_ThirdwebLoginInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? email,
     String? payload,
@@ -1289,6 +1307,7 @@ class _CopyWithImpl$Input$Auth_sendEmailOtpInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? email = _undefined,
     Object? purpose = _undefined,
@@ -1305,8 +1324,9 @@ class _CopyWithStubImpl$Input$Auth_sendEmailOtpInput<TRes>
     implements CopyWith$Input$Auth_sendEmailOtpInput<TRes> {
   _CopyWithStubImpl$Input$Auth_sendEmailOtpInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? email,
     Enum$OtpPurpose? purpose,
@@ -1433,6 +1453,7 @@ class _CopyWithImpl$Input$Auth_verifyEmailOtpInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? email = _undefined,
     Object? otp = _undefined,
@@ -1450,8 +1471,9 @@ class _CopyWithStubImpl$Input$Auth_verifyEmailOtpInput<TRes>
     implements CopyWith$Input$Auth_verifyEmailOtpInput<TRes> {
   _CopyWithStubImpl$Input$Auth_verifyEmailOtpInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? email,
     String? otp,
@@ -1603,6 +1625,7 @@ class _CopyWithImpl$Input$BankAccount_CreateInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? accountName = _undefined,
     Object? accountNo = _undefined,
@@ -1625,8 +1648,9 @@ class _CopyWithStubImpl$Input$BankAccount_CreateInput<TRes>
     implements CopyWith$Input$BankAccount_CreateInput<TRes> {
   _CopyWithStubImpl$Input$BankAccount_CreateInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? accountName,
     String? accountNo,
@@ -1717,6 +1741,7 @@ class _CopyWithImpl$Input$BankAccount_DeleteInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? accountId = _undefined}) =>
       _then(Input$BankAccount_DeleteInput._({
         ..._instance._$data,
@@ -1729,8 +1754,9 @@ class _CopyWithStubImpl$Input$BankAccount_DeleteInput<TRes>
     implements CopyWith$Input$BankAccount_DeleteInput<TRes> {
   _CopyWithStubImpl$Input$BankAccount_DeleteInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({double? accountId}) => _res;
 }
 
@@ -1845,6 +1871,7 @@ class _CopyWithImpl$Input$BankGetAccountName_Input<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? accountNo = _undefined,
     Object? bankCode = _undefined,
@@ -1861,8 +1888,9 @@ class _CopyWithStubImpl$Input$BankGetAccountName_Input<TRes>
     implements CopyWith$Input$BankGetAccountName_Input<TRes> {
   _CopyWithStubImpl$Input$BankGetAccountName_Input(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? accountNo,
     String? bankCode,
@@ -1891,13 +1919,13 @@ class Input$BettingPaymentInput {
     final l$countryCode = data['countryCode'];
     result$data['countryCode'] =
         fromJson$Enum$Country((l$countryCode as String));
-    final l$customer_id = data['customer_id'];
-    result$data['customer_id'] = (l$customer_id as String);
+    final l$customerId = data['customer_id'];
+    result$data['customer_id'] = (l$customerId as String);
     final l$payment = data['payment'];
     result$data['payment'] =
         Input$PaymentInput.fromJson((l$payment as Map<String, dynamic>));
-    final l$service_id = data['service_id'];
-    result$data['service_id'] = (l$service_id as String);
+    final l$serviceId = data['service_id'];
+    result$data['service_id'] = (l$serviceId as String);
     return Input$BettingPaymentInput._(result$data);
   }
 
@@ -1915,12 +1943,12 @@ class Input$BettingPaymentInput {
     final result$data = <String, dynamic>{};
     final l$countryCode = countryCode;
     result$data['countryCode'] = toJson$Enum$Country(l$countryCode);
-    final l$customer_id = customer_id;
-    result$data['customer_id'] = l$customer_id;
+    final l$customerId = customer_id;
+    result$data['customer_id'] = l$customerId;
     final l$payment = payment;
     result$data['payment'] = l$payment.toJson();
-    final l$service_id = service_id;
-    result$data['service_id'] = l$service_id;
+    final l$serviceId = service_id;
+    result$data['service_id'] = l$serviceId;
     return result$data;
   }
 
@@ -1944,9 +1972,9 @@ class Input$BettingPaymentInput {
     if (l$countryCode != lOther$countryCode) {
       return false;
     }
-    final l$customer_id = customer_id;
-    final lOther$customer_id = other.customer_id;
-    if (l$customer_id != lOther$customer_id) {
+    final l$customerId = customer_id;
+    final lother$customerId = other.customer_id;
+    if (l$customerId != lother$customerId) {
       return false;
     }
     final l$payment = payment;
@@ -1954,9 +1982,9 @@ class Input$BettingPaymentInput {
     if (l$payment != lOther$payment) {
       return false;
     }
-    final l$service_id = service_id;
-    final lOther$service_id = other.service_id;
-    if (l$service_id != lOther$service_id) {
+    final l$serviceId = service_id;
+    final lother$serviceId = other.service_id;
+    if (l$serviceId != lother$serviceId) {
       return false;
     }
     return true;
@@ -1965,14 +1993,14 @@ class Input$BettingPaymentInput {
   @override
   int get hashCode {
     final l$countryCode = countryCode;
-    final l$customer_id = customer_id;
+    final l$customerId = customer_id;
     final l$payment = payment;
-    final l$service_id = service_id;
+    final l$serviceId = service_id;
     return Object.hashAll([
       l$countryCode,
-      l$customer_id,
+      l$customerId,
       l$payment,
-      l$service_id,
+      l$serviceId,
     ]);
   }
 }
@@ -2008,6 +2036,7 @@ class _CopyWithImpl$Input$BettingPaymentInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? countryCode = _undefined,
     Object? customer_id = _undefined,
@@ -2026,6 +2055,7 @@ class _CopyWithImpl$Input$BettingPaymentInput<TRes>
           'service_id': (service_id as String),
       }));
 
+  @override
   CopyWith$Input$PaymentInput<TRes> get payment {
     final local$payment = _instance.payment;
     return CopyWith$Input$PaymentInput(local$payment, (e) => call(payment: e));
@@ -2036,8 +2066,9 @@ class _CopyWithStubImpl$Input$BettingPaymentInput<TRes>
     implements CopyWith$Input$BettingPaymentInput<TRes> {
   _CopyWithStubImpl$Input$BettingPaymentInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Enum$Country? countryCode,
     String? customer_id,
@@ -2046,6 +2077,7 @@ class _CopyWithStubImpl$Input$BettingPaymentInput<TRes>
   }) =>
       _res;
 
+  @override
   CopyWith$Input$PaymentInput<TRes> get payment =>
       CopyWith$Input$PaymentInput.stub(_res);
 }
@@ -2132,6 +2164,7 @@ class _CopyWithImpl$Input$BettingProvidersInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? countryCode = _undefined}) =>
       _then(Input$BettingProvidersInput._({
         ..._instance._$data,
@@ -2144,8 +2177,9 @@ class _CopyWithStubImpl$Input$BettingProvidersInput<TRes>
     implements CopyWith$Input$BettingProvidersInput<TRes> {
   _CopyWithStubImpl$Input$BettingProvidersInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Enum$Country? countryCode}) => _res;
 }
 
@@ -2369,6 +2403,7 @@ class _CopyWithImpl$Input$ElectricityBill_PaymentInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? amount = _undefined,
     Object? countryCode = _undefined,
@@ -2401,6 +2436,7 @@ class _CopyWithImpl$Input$ElectricityBill_PaymentInput<TRes>
           'service': (service as String),
       }));
 
+  @override
   CopyWith$Input$PaymentInput<TRes> get payment {
     final local$payment = _instance.payment;
     return CopyWith$Input$PaymentInput(local$payment, (e) => call(payment: e));
@@ -2411,8 +2447,9 @@ class _CopyWithStubImpl$Input$ElectricityBill_PaymentInput<TRes>
     implements CopyWith$Input$ElectricityBill_PaymentInput<TRes> {
   _CopyWithStubImpl$Input$ElectricityBill_PaymentInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     int? amount,
     Enum$Country? countryCode,
@@ -2426,6 +2463,7 @@ class _CopyWithStubImpl$Input$ElectricityBill_PaymentInput<TRes>
   }) =>
       _res;
 
+  @override
   CopyWith$Input$PaymentInput<TRes> get payment =>
       CopyWith$Input$PaymentInput.stub(_res);
 }
@@ -2515,6 +2553,7 @@ class _CopyWithImpl$Input$ElectricityBill_ProviderInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? countryCode = _undefined}) =>
       _then(Input$ElectricityBill_ProviderInput._({
         ..._instance._$data,
@@ -2527,8 +2566,9 @@ class _CopyWithStubImpl$Input$ElectricityBill_ProviderInput<TRes>
     implements CopyWith$Input$ElectricityBill_ProviderInput<TRes> {
   _CopyWithStubImpl$Input$ElectricityBill_ProviderInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Enum$Country? countryCode}) => _res;
 }
 
@@ -2670,6 +2710,7 @@ class _CopyWithImpl$Input$ElectricityBill_ValidateAccountInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? countryCode = _undefined,
     Object? meterNumber = _undefined,
@@ -2693,8 +2734,9 @@ class _CopyWithStubImpl$Input$ElectricityBill_ValidateAccountInput<TRes>
     implements CopyWith$Input$ElectricityBill_ValidateAccountInput<TRes> {
   _CopyWithStubImpl$Input$ElectricityBill_ValidateAccountInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Enum$Country? countryCode,
     String? meterNumber,
@@ -2839,6 +2881,7 @@ class _CopyWithImpl$Input$Kyc_AddAddressInfoInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? country = _undefined,
     Object? houseAddress = _undefined,
@@ -2861,8 +2904,9 @@ class _CopyWithStubImpl$Input$Kyc_AddAddressInfoInput<TRes>
     implements CopyWith$Input$Kyc_AddAddressInfoInput<TRes> {
   _CopyWithStubImpl$Input$Kyc_AddAddressInfoInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Enum$Country? country,
     String? houseAddress,
@@ -2953,6 +2997,7 @@ class _CopyWithImpl$Input$Kyc_AddAddressProofInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? proofOfAddressUrl = _undefined}) =>
       _then(Input$Kyc_AddAddressProofInput._({
         ..._instance._$data,
@@ -2965,8 +3010,9 @@ class _CopyWithStubImpl$Input$Kyc_AddAddressProofInput<TRes>
     implements CopyWith$Input$Kyc_AddAddressProofInput<TRes> {
   _CopyWithStubImpl$Input$Kyc_AddAddressProofInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({String? proofOfAddressUrl}) => _res;
 }
 
@@ -3050,6 +3096,7 @@ class _CopyWithImpl$Input$Kyc_AddBvnInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? bvn = _undefined}) => _then(Input$Kyc_AddBvnInput._({
         ..._instance._$data,
         if (bvn != _undefined && bvn != null) 'bvn': (bvn as String),
@@ -3060,8 +3107,9 @@ class _CopyWithStubImpl$Input$Kyc_AddBvnInput<TRes>
     implements CopyWith$Input$Kyc_AddBvnInput<TRes> {
   _CopyWithStubImpl$Input$Kyc_AddBvnInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({String? bvn}) => _res;
 }
 
@@ -3145,6 +3193,7 @@ class _CopyWithImpl$Input$Kyc_AddDobInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? dob = _undefined}) => _then(Input$Kyc_AddDobInput._({
         ..._instance._$data,
         if (dob != _undefined && dob != null) 'dob': (dob as String),
@@ -3155,8 +3204,9 @@ class _CopyWithStubImpl$Input$Kyc_AddDobInput<TRes>
     implements CopyWith$Input$Kyc_AddDobInput<TRes> {
   _CopyWithStubImpl$Input$Kyc_AddDobInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({String? dob}) => _res;
 }
 
@@ -3286,6 +3336,7 @@ class _CopyWithImpl$Input$Kyc_AddNamesInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? firstName = _undefined,
     Object? lastName = _undefined,
@@ -3305,8 +3356,9 @@ class _CopyWithStubImpl$Input$Kyc_AddNamesInput<TRes>
     implements CopyWith$Input$Kyc_AddNamesInput<TRes> {
   _CopyWithStubImpl$Input$Kyc_AddNamesInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? firstName,
     String? lastName,
@@ -3395,6 +3447,7 @@ class _CopyWithImpl$Input$Kyc_AddNinInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? nin = _undefined}) => _then(Input$Kyc_AddNinInput._({
         ..._instance._$data,
         if (nin != _undefined && nin != null) 'nin': (nin as String),
@@ -3405,8 +3458,9 @@ class _CopyWithStubImpl$Input$Kyc_AddNinInput<TRes>
     implements CopyWith$Input$Kyc_AddNinInput<TRes> {
   _CopyWithStubImpl$Input$Kyc_AddNinInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({String? nin}) => _res;
 }
 
@@ -3493,6 +3547,7 @@ class _CopyWithImpl$Input$Kyc_CreateTransactionPinInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? pin = _undefined}) =>
       _then(Input$Kyc_CreateTransactionPinInput._({
         ..._instance._$data,
@@ -3504,8 +3559,9 @@ class _CopyWithStubImpl$Input$Kyc_CreateTransactionPinInput<TRes>
     implements CopyWith$Input$Kyc_CreateTransactionPinInput<TRes> {
   _CopyWithStubImpl$Input$Kyc_CreateTransactionPinInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({String? pin}) => _res;
 }
 
@@ -3590,6 +3646,7 @@ class _CopyWithImpl$Input$Kyc_SendPhoneOtpInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? phone = _undefined}) =>
       _then(Input$Kyc_SendPhoneOtpInput._({
         ..._instance._$data,
@@ -3601,8 +3658,9 @@ class _CopyWithStubImpl$Input$Kyc_SendPhoneOtpInput<TRes>
     implements CopyWith$Input$Kyc_SendPhoneOtpInput<TRes> {
   _CopyWithStubImpl$Input$Kyc_SendPhoneOtpInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({String? phone}) => _res;
 }
 
@@ -3899,6 +3957,7 @@ class _CopyWithImpl$Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? bvn = _undefined,
     Object? country = _undefined,
@@ -3943,8 +4002,9 @@ class _CopyWithStubImpl$Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput<TRes>
   _CopyWithStubImpl$Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput(
       this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? bvn,
     Enum$Country? country,
@@ -4116,6 +4176,7 @@ class _CopyWithImpl$Input$Onchain_ClaimRewardsInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? category = _undefined,
     Object? claimTokenAddress = _undefined,
@@ -4133,6 +4194,7 @@ class _CopyWithImpl$Input$Onchain_ClaimRewardsInput<TRes>
           'payment': (payment as Input$PaymentInput),
       }));
 
+  @override
   CopyWith$Input$PaymentInput<TRes> get payment {
     final local$payment = _instance.payment;
     return CopyWith$Input$PaymentInput(local$payment, (e) => call(payment: e));
@@ -4143,8 +4205,9 @@ class _CopyWithStubImpl$Input$Onchain_ClaimRewardsInput<TRes>
     implements CopyWith$Input$Onchain_ClaimRewardsInput<TRes> {
   _CopyWithStubImpl$Input$Onchain_ClaimRewardsInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? category,
     String? claimTokenAddress,
@@ -4153,6 +4216,7 @@ class _CopyWithStubImpl$Input$Onchain_ClaimRewardsInput<TRes>
   }) =>
       _res;
 
+  @override
   CopyWith$Input$PaymentInput<TRes> get payment =>
       CopyWith$Input$PaymentInput.stub(_res);
 }
@@ -4259,6 +4323,7 @@ class _CopyWithImpl$Input$Order_AppealInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? id = _undefined,
     Object? reason = _undefined,
@@ -4275,8 +4340,9 @@ class _CopyWithStubImpl$Input$Order_AppealInput<TRes>
     implements CopyWith$Input$Order_AppealInput<TRes> {
   _CopyWithStubImpl$Input$Order_AppealInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? id,
     String? reason,
@@ -4386,6 +4452,7 @@ class _CopyWithImpl$Input$Order_CancelInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? id = _undefined,
     Object? reason = _undefined,
@@ -4402,8 +4469,9 @@ class _CopyWithStubImpl$Input$Order_CancelInput<TRes>
     implements CopyWith$Input$Order_CancelInput<TRes> {
   _CopyWithStubImpl$Input$Order_CancelInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? id,
     String? reason,
@@ -4436,30 +4504,30 @@ class Input$Order_CreteSellInput {
   factory Input$Order_CreteSellInput.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
     if (data.containsKey('action_merchant')) {
-      final l$action_merchant = data['action_merchant'];
-      result$data['action_merchant'] = l$action_merchant == null
+      final l$actionMerchant = data['action_merchant'];
+      result$data['action_merchant'] = l$actionMerchant == null
           ? null
-          : fromJson$Enum$OrderActions((l$action_merchant as String));
+          : fromJson$Enum$OrderActions((l$actionMerchant as String));
     }
     if (data.containsKey('action_user')) {
-      final l$action_user = data['action_user'];
-      result$data['action_user'] = l$action_user == null
+      final l$actionUser = data['action_user'];
+      result$data['action_user'] = l$actionUser == null
           ? null
-          : fromJson$Enum$OrderActions((l$action_user as String));
+          : fromJson$Enum$OrderActions((l$actionUser as String));
     }
-    final l$bank_id = data['bank_id'];
-    result$data['bank_id'] = (l$bank_id as num).toDouble();
-    final l$currency_fiat = data['currency_fiat'];
+    final l$bankId = data['bank_id'];
+    result$data['bank_id'] = (l$bankId as num).toDouble();
+    final l$currencyFiat = data['currency_fiat'];
     result$data['currency_fiat'] =
-        fromJson$Enum$Country((l$currency_fiat as String));
+        fromJson$Enum$Country((l$currencyFiat as String));
     final l$payment = data['payment'];
     result$data['payment'] =
         Input$PaymentInput.fromJson((l$payment as Map<String, dynamic>));
     final l$status = data['status'];
     result$data['status'] = fromJson$Enum$OrderStatus((l$status as String));
-    final l$trade_type = data['trade_type'];
+    final l$tradeType = data['trade_type'];
     result$data['trade_type'] =
-        fromJson$Enum$TradeType((l$trade_type as String));
+        fromJson$Enum$TradeType((l$tradeType as String));
     return Input$Order_CreteSellInput._(result$data);
   }
 
@@ -4484,27 +4552,27 @@ class Input$Order_CreteSellInput {
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('action_merchant')) {
-      final l$action_merchant = action_merchant;
-      result$data['action_merchant'] = l$action_merchant == null
+      final l$actionMerchant = action_merchant;
+      result$data['action_merchant'] = l$actionMerchant == null
           ? null
-          : toJson$Enum$OrderActions(l$action_merchant);
+          : toJson$Enum$OrderActions(l$actionMerchant);
     }
     if (_$data.containsKey('action_user')) {
-      final l$action_user = action_user;
-      result$data['action_user'] = l$action_user == null
+      final l$actionUser = action_user;
+      result$data['action_user'] = l$actionUser == null
           ? null
-          : toJson$Enum$OrderActions(l$action_user);
+          : toJson$Enum$OrderActions(l$actionUser);
     }
-    final l$bank_id = bank_id;
-    result$data['bank_id'] = l$bank_id;
-    final l$currency_fiat = currency_fiat;
-    result$data['currency_fiat'] = toJson$Enum$Country(l$currency_fiat);
+    final l$bankId = bank_id;
+    result$data['bank_id'] = l$bankId;
+    final l$currencyFiat = currency_fiat;
+    result$data['currency_fiat'] = toJson$Enum$Country(l$currencyFiat);
     final l$payment = payment;
     result$data['payment'] = l$payment.toJson();
     final l$status = status;
     result$data['status'] = toJson$Enum$OrderStatus(l$status);
-    final l$trade_type = trade_type;
-    result$data['trade_type'] = toJson$Enum$TradeType(l$trade_type);
+    final l$tradeType = trade_type;
+    result$data['trade_type'] = toJson$Enum$TradeType(l$tradeType);
     return result$data;
   }
 
@@ -4523,32 +4591,32 @@ class Input$Order_CreteSellInput {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$action_merchant = action_merchant;
-    final lOther$action_merchant = other.action_merchant;
+    final l$actionMerchant = action_merchant;
+    final lother$actionMerchant = other.action_merchant;
     if (_$data.containsKey('action_merchant') !=
         other._$data.containsKey('action_merchant')) {
       return false;
     }
-    if (l$action_merchant != lOther$action_merchant) {
+    if (l$actionMerchant != lother$actionMerchant) {
       return false;
     }
-    final l$action_user = action_user;
-    final lOther$action_user = other.action_user;
+    final l$actionUser = action_user;
+    final lother$actionUser = other.action_user;
     if (_$data.containsKey('action_user') !=
         other._$data.containsKey('action_user')) {
       return false;
     }
-    if (l$action_user != lOther$action_user) {
+    if (l$actionUser != lother$actionUser) {
       return false;
     }
-    final l$bank_id = bank_id;
-    final lOther$bank_id = other.bank_id;
-    if (l$bank_id != lOther$bank_id) {
+    final l$bankId = bank_id;
+    final lother$bankId = other.bank_id;
+    if (l$bankId != lother$bankId) {
       return false;
     }
-    final l$currency_fiat = currency_fiat;
-    final lOther$currency_fiat = other.currency_fiat;
-    if (l$currency_fiat != lOther$currency_fiat) {
+    final l$currencyFiat = currency_fiat;
+    final lother$currencyFiat = other.currency_fiat;
+    if (l$currencyFiat != lother$currencyFiat) {
       return false;
     }
     final l$payment = payment;
@@ -4561,9 +4629,9 @@ class Input$Order_CreteSellInput {
     if (l$status != lOther$status) {
       return false;
     }
-    final l$trade_type = trade_type;
-    final lOther$trade_type = other.trade_type;
-    if (l$trade_type != lOther$trade_type) {
+    final l$tradeType = trade_type;
+    final lother$tradeType = other.trade_type;
+    if (l$tradeType != lother$tradeType) {
       return false;
     }
     return true;
@@ -4571,21 +4639,21 @@ class Input$Order_CreteSellInput {
 
   @override
   int get hashCode {
-    final l$action_merchant = action_merchant;
-    final l$action_user = action_user;
-    final l$bank_id = bank_id;
-    final l$currency_fiat = currency_fiat;
+    final l$actionMerchant = action_merchant;
+    final l$actionUser = action_user;
+    final l$bankId = bank_id;
+    final l$currencyFiat = currency_fiat;
     final l$payment = payment;
     final l$status = status;
-    final l$trade_type = trade_type;
+    final l$tradeType = trade_type;
     return Object.hashAll([
-      _$data.containsKey('action_merchant') ? l$action_merchant : const {},
-      _$data.containsKey('action_user') ? l$action_user : const {},
-      l$bank_id,
-      l$currency_fiat,
+      _$data.containsKey('action_merchant') ? l$actionMerchant : const {},
+      _$data.containsKey('action_user') ? l$actionUser : const {},
+      l$bankId,
+      l$currencyFiat,
       l$payment,
       l$status,
-      l$trade_type,
+      l$tradeType,
     ]);
   }
 }
@@ -4624,6 +4692,7 @@ class _CopyWithImpl$Input$Order_CreteSellInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? action_merchant = _undefined,
     Object? action_user = _undefined,
@@ -4651,6 +4720,7 @@ class _CopyWithImpl$Input$Order_CreteSellInput<TRes>
           'trade_type': (trade_type as Enum$TradeType),
       }));
 
+  @override
   CopyWith$Input$PaymentInput<TRes> get payment {
     final local$payment = _instance.payment;
     return CopyWith$Input$PaymentInput(local$payment, (e) => call(payment: e));
@@ -4661,8 +4731,9 @@ class _CopyWithStubImpl$Input$Order_CreteSellInput<TRes>
     implements CopyWith$Input$Order_CreteSellInput<TRes> {
   _CopyWithStubImpl$Input$Order_CreteSellInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Enum$OrderActions? action_merchant,
     Enum$OrderActions? action_user,
@@ -4674,6 +4745,7 @@ class _CopyWithStubImpl$Input$Order_CreteSellInput<TRes>
   }) =>
       _res;
 
+  @override
   CopyWith$Input$PaymentInput<TRes> get payment =>
       CopyWith$Input$PaymentInput.stub(_res);
 }
@@ -4697,14 +4769,14 @@ class Input$Order_GetAllInput {
   factory Input$Order_GetAllInput.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
     if (data.containsKey('currency_crypto')) {
-      final l$currency_crypto = data['currency_crypto'];
-      result$data['currency_crypto'] = (l$currency_crypto as String?);
+      final l$currencyCrypto = data['currency_crypto'];
+      result$data['currency_crypto'] = (l$currencyCrypto as String?);
     }
     if (data.containsKey('currency_fiat')) {
-      final l$currency_fiat = data['currency_fiat'];
-      result$data['currency_fiat'] = l$currency_fiat == null
+      final l$currencyFiat = data['currency_fiat'];
+      result$data['currency_fiat'] = l$currencyFiat == null
           ? null
-          : fromJson$Enum$Country((l$currency_fiat as String));
+          : fromJson$Enum$Country((l$currencyFiat as String));
     }
     if (data.containsKey('status')) {
       final l$status = data['status'];
@@ -4713,10 +4785,10 @@ class Input$Order_GetAllInput {
           : fromJson$Enum$OrderStatus((l$status as String));
     }
     if (data.containsKey('trade_type')) {
-      final l$trade_type = data['trade_type'];
-      result$data['trade_type'] = l$trade_type == null
+      final l$tradeType = data['trade_type'];
+      result$data['trade_type'] = l$tradeType == null
           ? null
-          : fromJson$Enum$TradeType((l$trade_type as String));
+          : fromJson$Enum$TradeType((l$tradeType as String));
     }
     return Input$Order_GetAllInput._(result$data);
   }
@@ -4734,13 +4806,13 @@ class Input$Order_GetAllInput {
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('currency_crypto')) {
-      final l$currency_crypto = currency_crypto;
-      result$data['currency_crypto'] = l$currency_crypto;
+      final l$currencyCrypto = currency_crypto;
+      result$data['currency_crypto'] = l$currencyCrypto;
     }
     if (_$data.containsKey('currency_fiat')) {
-      final l$currency_fiat = currency_fiat;
+      final l$currencyFiat = currency_fiat;
       result$data['currency_fiat'] =
-          l$currency_fiat == null ? null : toJson$Enum$Country(l$currency_fiat);
+          l$currencyFiat == null ? null : toJson$Enum$Country(l$currencyFiat);
     }
     if (_$data.containsKey('status')) {
       final l$status = status;
@@ -4748,9 +4820,9 @@ class Input$Order_GetAllInput {
           l$status == null ? null : toJson$Enum$OrderStatus(l$status);
     }
     if (_$data.containsKey('trade_type')) {
-      final l$trade_type = trade_type;
+      final l$tradeType = trade_type;
       result$data['trade_type'] =
-          l$trade_type == null ? null : toJson$Enum$TradeType(l$trade_type);
+          l$tradeType == null ? null : toJson$Enum$TradeType(l$tradeType);
     }
     return result$data;
   }
@@ -4769,22 +4841,22 @@ class Input$Order_GetAllInput {
     if (other is! Input$Order_GetAllInput || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$currency_crypto = currency_crypto;
-    final lOther$currency_crypto = other.currency_crypto;
+    final l$currencyCrypto = currency_crypto;
+    final lother$currencyCrypto = other.currency_crypto;
     if (_$data.containsKey('currency_crypto') !=
         other._$data.containsKey('currency_crypto')) {
       return false;
     }
-    if (l$currency_crypto != lOther$currency_crypto) {
+    if (l$currencyCrypto != lother$currencyCrypto) {
       return false;
     }
-    final l$currency_fiat = currency_fiat;
-    final lOther$currency_fiat = other.currency_fiat;
+    final l$currencyFiat = currency_fiat;
+    final lother$currencyFiat = other.currency_fiat;
     if (_$data.containsKey('currency_fiat') !=
         other._$data.containsKey('currency_fiat')) {
       return false;
     }
-    if (l$currency_fiat != lOther$currency_fiat) {
+    if (l$currencyFiat != lother$currencyFiat) {
       return false;
     }
     final l$status = status;
@@ -4795,13 +4867,13 @@ class Input$Order_GetAllInput {
     if (l$status != lOther$status) {
       return false;
     }
-    final l$trade_type = trade_type;
-    final lOther$trade_type = other.trade_type;
+    final l$tradeType = trade_type;
+    final lother$tradeType = other.trade_type;
     if (_$data.containsKey('trade_type') !=
         other._$data.containsKey('trade_type')) {
       return false;
     }
-    if (l$trade_type != lOther$trade_type) {
+    if (l$tradeType != lother$tradeType) {
       return false;
     }
     return true;
@@ -4809,15 +4881,15 @@ class Input$Order_GetAllInput {
 
   @override
   int get hashCode {
-    final l$currency_crypto = currency_crypto;
-    final l$currency_fiat = currency_fiat;
+    final l$currencyCrypto = currency_crypto;
+    final l$currencyFiat = currency_fiat;
     final l$status = status;
-    final l$trade_type = trade_type;
+    final l$tradeType = trade_type;
     return Object.hashAll([
-      _$data.containsKey('currency_crypto') ? l$currency_crypto : const {},
-      _$data.containsKey('currency_fiat') ? l$currency_fiat : const {},
+      _$data.containsKey('currency_crypto') ? l$currencyCrypto : const {},
+      _$data.containsKey('currency_fiat') ? l$currencyFiat : const {},
       _$data.containsKey('status') ? l$status : const {},
-      _$data.containsKey('trade_type') ? l$trade_type : const {},
+      _$data.containsKey('trade_type') ? l$tradeType : const {},
     ]);
   }
 }
@@ -4852,6 +4924,7 @@ class _CopyWithImpl$Input$Order_GetAllInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? currency_crypto = _undefined,
     Object? currency_fiat = _undefined,
@@ -4874,8 +4947,9 @@ class _CopyWithStubImpl$Input$Order_GetAllInput<TRes>
     implements CopyWith$Input$Order_GetAllInput<TRes> {
   _CopyWithStubImpl$Input$Order_GetAllInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? currency_crypto,
     Enum$Country? currency_fiat,
@@ -4965,6 +5039,7 @@ class _CopyWithImpl$Input$Order_GetOneInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? id = _undefined}) => _then(Input$Order_GetOneInput._({
         ..._instance._$data,
         if (id != _undefined && id != null) 'id': (id as String),
@@ -4975,8 +5050,9 @@ class _CopyWithStubImpl$Input$Order_GetOneInput<TRes>
     implements CopyWith$Input$Order_GetOneInput<TRes> {
   _CopyWithStubImpl$Input$Order_GetOneInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({String? id}) => _res;
 }
 
@@ -5117,6 +5193,7 @@ class _CopyWithImpl$Input$Order_MoveCryptoToEscrowInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? action = _undefined,
     Object? amountCrypto = _undefined,
@@ -5139,8 +5216,9 @@ class _CopyWithStubImpl$Input$Order_MoveCryptoToEscrowInput<TRes>
     implements CopyWith$Input$Order_MoveCryptoToEscrowInput<TRes> {
   _CopyWithStubImpl$Input$Order_MoveCryptoToEscrowInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Enum$OrderActions? action,
     int? amountCrypto,
@@ -5191,10 +5269,10 @@ class Input$PaymentInput {
     result$data['tokenAddress'] = (l$tokenAddress as String);
     final l$tokenChain = data['tokenChain'];
     result$data['tokenChain'] = (l$tokenChain as String);
-    final l$transaction_pin = data['transaction_pin'];
-    result$data['transaction_pin'] = (l$transaction_pin as String);
-    final l$user_uid = data['user_uid'];
-    result$data['user_uid'] = (l$user_uid as String);
+    final l$transactionPin = data['transaction_pin'];
+    result$data['transaction_pin'] = (l$transactionPin as String);
+    final l$userUid = data['user_uid'];
+    result$data['user_uid'] = (l$userUid as String);
     return Input$PaymentInput._(result$data);
   }
 
@@ -5232,10 +5310,10 @@ class Input$PaymentInput {
     result$data['tokenAddress'] = l$tokenAddress;
     final l$tokenChain = tokenChain;
     result$data['tokenChain'] = l$tokenChain;
-    final l$transaction_pin = transaction_pin;
-    result$data['transaction_pin'] = l$transaction_pin;
-    final l$user_uid = user_uid;
-    result$data['user_uid'] = l$user_uid;
+    final l$transactionPin = transaction_pin;
+    result$data['transaction_pin'] = l$transactionPin;
+    final l$userUid = user_uid;
+    result$data['user_uid'] = l$userUid;
     return result$data;
   }
 
@@ -5287,14 +5365,14 @@ class Input$PaymentInput {
     if (l$tokenChain != lOther$tokenChain) {
       return false;
     }
-    final l$transaction_pin = transaction_pin;
-    final lOther$transaction_pin = other.transaction_pin;
-    if (l$transaction_pin != lOther$transaction_pin) {
+    final l$transactionPin = transaction_pin;
+    final lother$transactionPin = other.transaction_pin;
+    if (l$transactionPin != lother$transactionPin) {
       return false;
     }
-    final l$user_uid = user_uid;
-    final lOther$user_uid = other.user_uid;
-    if (l$user_uid != lOther$user_uid) {
+    final l$userUid = user_uid;
+    final lother$userUid = other.user_uid;
+    if (l$userUid != lother$userUid) {
       return false;
     }
     return true;
@@ -5308,8 +5386,8 @@ class Input$PaymentInput {
     final l$isNative = isNative;
     final l$tokenAddress = tokenAddress;
     final l$tokenChain = tokenChain;
-    final l$transaction_pin = transaction_pin;
-    final l$user_uid = user_uid;
+    final l$transactionPin = transaction_pin;
+    final l$userUid = user_uid;
     return Object.hashAll([
       l$amountCrypto,
       l$amountFiat,
@@ -5317,8 +5395,8 @@ class Input$PaymentInput {
       _$data.containsKey('isNative') ? l$isNative : const {},
       l$tokenAddress,
       l$tokenChain,
-      l$transaction_pin,
-      l$user_uid,
+      l$transactionPin,
+      l$userUid,
     ]);
   }
 }
@@ -5357,6 +5435,7 @@ class _CopyWithImpl$Input$PaymentInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? amountCrypto = _undefined,
     Object? amountFiat = _undefined,
@@ -5391,8 +5470,9 @@ class _CopyWithStubImpl$Input$PaymentInput<TRes>
     implements CopyWith$Input$PaymentInput<TRes> {
   _CopyWithStubImpl$Input$PaymentInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     double? amountCrypto,
     double? amountFiat,
@@ -5487,6 +5567,7 @@ class _CopyWithImpl$Input$Transaction_GetOneInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? id = _undefined}) =>
       _then(Input$Transaction_GetOneInput._({
         ..._instance._$data,
@@ -5498,8 +5579,9 @@ class _CopyWithStubImpl$Input$Transaction_GetOneInput<TRes>
     implements CopyWith$Input$Transaction_GetOneInput<TRes> {
   _CopyWithStubImpl$Input$Transaction_GetOneInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({int? id}) => _res;
 }
 
@@ -5607,6 +5689,7 @@ class _CopyWithImpl$Input$TvBill_GetTVBouquetInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? countryCode = _undefined,
     Object? service = _undefined,
@@ -5624,8 +5707,9 @@ class _CopyWithStubImpl$Input$TvBill_GetTVBouquetInput<TRes>
     implements CopyWith$Input$TvBill_GetTVBouquetInput<TRes> {
   _CopyWithStubImpl$Input$TvBill_GetTVBouquetInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Enum$Country? countryCode,
     String? service,
@@ -5716,6 +5800,7 @@ class _CopyWithImpl$Input$TvBill_GetTVProvidersInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? countryCode = _undefined}) =>
       _then(Input$TvBill_GetTVProvidersInput._({
         ..._instance._$data,
@@ -5728,8 +5813,9 @@ class _CopyWithStubImpl$Input$TvBill_GetTVProvidersInput<TRes>
     implements CopyWith$Input$TvBill_GetTVProvidersInput<TRes> {
   _CopyWithStubImpl$Input$TvBill_GetTVProvidersInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Enum$Country? countryCode}) => _res;
 }
 
@@ -5935,6 +6021,7 @@ class _CopyWithImpl$Input$TvBill_PaymentInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? amount = _undefined,
     Object? countryCode = _undefined,
@@ -5965,6 +6052,7 @@ class _CopyWithImpl$Input$TvBill_PaymentInput<TRes>
           'smartCardNumber': (smartCardNumber as String),
       }));
 
+  @override
   CopyWith$Input$PaymentInput<TRes> get payment {
     final local$payment = _instance.payment;
     return CopyWith$Input$PaymentInput(local$payment, (e) => call(payment: e));
@@ -5975,8 +6063,9 @@ class _CopyWithStubImpl$Input$TvBill_PaymentInput<TRes>
     implements CopyWith$Input$TvBill_PaymentInput<TRes> {
   _CopyWithStubImpl$Input$TvBill_PaymentInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? amount,
     Enum$Country? countryCode,
@@ -5989,6 +6078,7 @@ class _CopyWithStubImpl$Input$TvBill_PaymentInput<TRes>
   }) =>
       _res;
 
+  @override
   CopyWith$Input$PaymentInput<TRes> get payment =>
       CopyWith$Input$PaymentInput.stub(_res);
 }
@@ -6097,6 +6187,7 @@ class _CopyWithImpl$Input$TvBill_ValidateAccountInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? service = _undefined,
     Object? smartCardNumber = _undefined,
@@ -6114,8 +6205,9 @@ class _CopyWithStubImpl$Input$TvBill_ValidateAccountInput<TRes>
     implements CopyWith$Input$TvBill_ValidateAccountInput<TRes> {
   _CopyWithStubImpl$Input$TvBill_ValidateAccountInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? service,
     String? smartCardNumber,
@@ -6207,6 +6299,7 @@ class _CopyWithImpl$Input$Utilities_GetOperatorsInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({Object? countryCode = _undefined}) =>
       _then(Input$Utilities_GetOperatorsInput._({
         ..._instance._$data,
@@ -6219,8 +6312,9 @@ class _CopyWithStubImpl$Input$Utilities_GetOperatorsInput<TRes>
     implements CopyWith$Input$Utilities_GetOperatorsInput<TRes> {
   _CopyWithStubImpl$Input$Utilities_GetOperatorsInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({Enum$Country? countryCode}) => _res;
 }
 
@@ -6380,6 +6474,7 @@ class _CopyWithImpl$Input$Utilities_PurchaseAirtimeInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? amount = _undefined,
     Object? countryCode = _undefined,
@@ -6401,6 +6496,7 @@ class _CopyWithImpl$Input$Utilities_PurchaseAirtimeInput<TRes>
           'phoneNo': (phoneNo as String),
       }));
 
+  @override
   CopyWith$Input$PaymentInput<TRes> get payment {
     final local$payment = _instance.payment;
     return CopyWith$Input$PaymentInput(local$payment, (e) => call(payment: e));
@@ -6411,8 +6507,9 @@ class _CopyWithStubImpl$Input$Utilities_PurchaseAirtimeInput<TRes>
     implements CopyWith$Input$Utilities_PurchaseAirtimeInput<TRes> {
   _CopyWithStubImpl$Input$Utilities_PurchaseAirtimeInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     double? amount,
     Enum$Country? countryCode,
@@ -6422,6 +6519,7 @@ class _CopyWithStubImpl$Input$Utilities_PurchaseAirtimeInput<TRes>
   }) =>
       _res;
 
+  @override
   CopyWith$Input$PaymentInput<TRes> get payment =>
       CopyWith$Input$PaymentInput.stub(_res);
 }
@@ -6582,6 +6680,7 @@ class _CopyWithImpl$Input$Utilities_PurchaseDataBundleInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? amount = _undefined,
     Object? countryCode = _undefined,
@@ -6603,6 +6702,7 @@ class _CopyWithImpl$Input$Utilities_PurchaseDataBundleInput<TRes>
           'phoneNo': (phoneNo as String),
       }));
 
+  @override
   CopyWith$Input$PaymentInput<TRes> get payment {
     final local$payment = _instance.payment;
     return CopyWith$Input$PaymentInput(local$payment, (e) => call(payment: e));
@@ -6613,8 +6713,9 @@ class _CopyWithStubImpl$Input$Utilities_PurchaseDataBundleInput<TRes>
     implements CopyWith$Input$Utilities_PurchaseDataBundleInput<TRes> {
   _CopyWithStubImpl$Input$Utilities_PurchaseDataBundleInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     double? amount,
     Enum$Country? countryCode,
@@ -6624,6 +6725,7 @@ class _CopyWithStubImpl$Input$Utilities_PurchaseDataBundleInput<TRes>
   }) =>
       _res;
 
+  @override
   CopyWith$Input$PaymentInput<TRes> get payment =>
       CopyWith$Input$PaymentInput.stub(_res);
 }
@@ -6652,8 +6754,8 @@ class Input$Wallet_CreateInput {
     result$data['pin'] = (l$pin as String);
     final l$question = data['question'];
     result$data['question'] = (l$question as String);
-    final l$user_uid = data['user_uid'];
-    result$data['user_uid'] = (l$user_uid as String);
+    final l$userUid = data['user_uid'];
+    result$data['user_uid'] = (l$userUid as String);
     return Input$Wallet_CreateInput._(result$data);
   }
 
@@ -6675,8 +6777,8 @@ class Input$Wallet_CreateInput {
     result$data['pin'] = l$pin;
     final l$question = question;
     result$data['question'] = l$question;
-    final l$user_uid = user_uid;
-    result$data['user_uid'] = l$user_uid;
+    final l$userUid = user_uid;
+    result$data['user_uid'] = l$userUid;
     return result$data;
   }
 
@@ -6710,9 +6812,9 @@ class Input$Wallet_CreateInput {
     if (l$question != lOther$question) {
       return false;
     }
-    final l$user_uid = user_uid;
-    final lOther$user_uid = other.user_uid;
-    if (l$user_uid != lOther$user_uid) {
+    final l$userUid = user_uid;
+    final lother$userUid = other.user_uid;
+    if (l$userUid != lother$userUid) {
       return false;
     }
     return true;
@@ -6723,12 +6825,12 @@ class Input$Wallet_CreateInput {
     final l$answer = answer;
     final l$pin = pin;
     final l$question = question;
-    final l$user_uid = user_uid;
+    final l$userUid = user_uid;
     return Object.hashAll([
       l$answer,
       l$pin,
       l$question,
-      l$user_uid,
+      l$userUid,
     ]);
   }
 }
@@ -6763,6 +6865,7 @@ class _CopyWithImpl$Input$Wallet_CreateInput<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? answer = _undefined,
     Object? pin = _undefined,
@@ -6785,8 +6888,9 @@ class _CopyWithStubImpl$Input$Wallet_CreateInput<TRes>
     implements CopyWith$Input$Wallet_CreateInput<TRes> {
   _CopyWithStubImpl$Input$Wallet_CreateInput(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     String? answer,
     String? pin,

@@ -5,7 +5,7 @@ import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/widgets/widgets.dart';
 
 class BettingProvidersList extends ConsumerWidget {
-  const BettingProvidersList({required this.list});
+  const BettingProvidersList({super.key, required this.list});
   final List<Query$fundBetting_getProviders$fundBetting_getProviders> list;
   @override
   Widget build(BuildContext context, ref) {

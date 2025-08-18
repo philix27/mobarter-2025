@@ -27,7 +27,7 @@ class ConnectionButton extends ConsumerWidget {
 }
 
 class _ConnectionButton extends HookWidget {
-  _ConnectionButton({super.key, required this.updateServerToken});
+  _ConnectionButton({required this.updateServerToken});
   Function(String) updateServerToken;
 
   final svc = AuthService();
@@ -63,7 +63,7 @@ class _ConnectionButton extends HookWidget {
     welcome() async {
       await walletSvc.userWalletAddress();
 
-      final user = await svc.user();
+      final user = svc.user();
 
       if (user == null) {
         appToast(context, "User not found", type: ToastificationType.info);

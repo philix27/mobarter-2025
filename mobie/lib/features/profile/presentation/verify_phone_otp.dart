@@ -16,7 +16,7 @@ class VerifyPhoneOtp extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final kyc_verifyPhoneOtp =
+    final kycVerifyphoneotp =
         useMutation$kyc_verifyPhoneOtpAndSubmitCredentials();
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
@@ -53,7 +53,7 @@ class VerifyPhoneOtp extends HookConsumerWidget {
                 // send info to backend
                 require(pin.text.length == 6, "Invalid pin");
 
-                final response = await kyc_verifyPhoneOtp
+                final response = await kycVerifyphoneotp
                     .runMutation(
                       Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
                         input:

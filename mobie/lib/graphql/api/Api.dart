@@ -26,15 +26,15 @@ final _httpLink = isDevEnv
 // }
 
 ValueNotifier<GraphQLClient> getGqlClientNotifier(String? token) {
-  final _authLink = AuthLink(getToken: () async => 'Bearer $token');
+  final authLink = AuthLink(getToken: () async => 'Bearer $token');
 
-  Link _link = _authLink.concat(_httpLink);
+  Link link = authLink.concat(_httpLink);
 
   final GraphQLClient gqlClient = GraphQLClient(
     /// **NOTE** The default store is the InMemoryStore, which does NOT persist to disk
     cache: GraphQLCache(),
     // cache: GraphQLCache(store: HiveStore()),
-    link: _link,
+    link: link,
   );
 
   return ValueNotifier(gqlClient);

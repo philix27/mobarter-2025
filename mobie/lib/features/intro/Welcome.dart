@@ -54,7 +54,7 @@ class SelctDisplay extends HookWidget {
       );
     }
 
-    final _url = Platform.isIOS ? appInfo.iosAppUrl : appInfo.androidAppUrl;
+    final url = Platform.isIOS ? appInfo.iosAppUrl : appInfo.androidAppUrl;
 
     return FutureBuilder<UpdateStatus>(
       future: UpdateRepository().checktUpdateStatus(
@@ -77,7 +77,7 @@ class SelctDisplay extends HookWidget {
               title: "Update now",
               onPressed: () {
                 launchUrl(
-                  Uri.parse(_url),
+                  Uri.parse(url),
                   mode: LaunchMode.externalApplication,
                 );
               },

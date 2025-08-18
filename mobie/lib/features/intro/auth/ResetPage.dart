@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/features/intro/auth/SigUpPage.dart';
 import 'package:mobarter/features/intro/auth/SiginPage.dart';
 import 'package:mobarter/widgets/btn.dart';
 import 'package:mobarter/widgets/inputText.dart';

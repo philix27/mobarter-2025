@@ -7,6 +7,8 @@ import 'package:mobarter/widgets/webview.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class KYCTile extends HookWidget {
+  const KYCTile({super.key});
+
 
   @override
   Widget build(BuildContext context) {

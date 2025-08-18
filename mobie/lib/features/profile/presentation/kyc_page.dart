@@ -1,16 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/profile/logic/formatter.dart';
-import 'package:mobarter/features/profile/logic/model.dart';
 import 'package:mobarter/features/profile/logic/provider.dart';
-import 'package:mobarter/features/profile/presentation/1enter_names.dart';
-import 'package:mobarter/features/profile/presentation/2select_dob.dart';
-import 'package:mobarter/features/profile/presentation/3nin.dart';
-import 'package:mobarter/features/profile/presentation/4bvn.dart';
-import 'package:mobarter/features/profile/presentation/5address.dart';
-import 'package:mobarter/features/profile/presentation/6phone.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
-import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/kyc.gql.dart';
 import 'package:mobarter/widgets/widgets.dart';
 

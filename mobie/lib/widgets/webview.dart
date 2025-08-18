@@ -41,7 +41,7 @@ class AppWebView extends ConsumerWidget {
       final server = cred.serverToken;
 
       final fullString =
-          "${this.url}?wallet=${wallet}&displayName=${displayName}&email=${email}&uid=${uid}&serverToken=${server}&idToken=${idToken}&${server}&isDark=${themeState.isDarkModeEnabled}";
+          "${url}?wallet=$wallet&displayName=$displayName&email=$email&uid=$uid&serverToken=$server&idToken=$idToken&$server&isDark=${themeState.isDarkModeEnabled}";
 
       return fullString;
     }
@@ -64,7 +64,6 @@ class _AppWebView extends StatefulWidget {
   final String title;
   final String info;
   const _AppWebView({
-    super.key,
     required this.url,
     required this.title,
     required this.info,
@@ -148,7 +147,7 @@ Page resource error:
           ).showSnackBar(SnackBar(content: Text(message.message)));
         },
       )
-      ..loadRequest(Uri.parse(this.url));
+      ..loadRequest(Uri.parse(url));
 
     if (controller.platform is AndroidWebViewController) {
       AndroidWebViewController.enableDebugging(true);

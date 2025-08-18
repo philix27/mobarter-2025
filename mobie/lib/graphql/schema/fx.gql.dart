@@ -11,11 +11,11 @@ class Query$FxRate_GetAll {
   });
 
   factory Query$FxRate_GetAll.fromJson(Map<String, dynamic> json) {
-    final l$fxRate_GetAll = json['fxRate_GetAll'];
+    final l$fxrateGetall = json['fxRate_GetAll'];
     final l$$__typename = json['__typename'];
     return Query$FxRate_GetAll(
       fxRate_GetAll: Query$FxRate_GetAll$fxRate_GetAll.fromJson(
-          (l$fxRate_GetAll as Map<String, dynamic>)),
+          (l$fxrateGetall as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -25,20 +25,20 @@ class Query$FxRate_GetAll {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$fxRate_GetAll = fxRate_GetAll;
-    _resultData['fxRate_GetAll'] = l$fxRate_GetAll.toJson();
+    final resultData = <String, dynamic>{};
+    final l$fxrateGetall = fxRate_GetAll;
+    resultData['fxRate_GetAll'] = l$fxrateGetall.toJson();
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
   int get hashCode {
-    final l$fxRate_GetAll = fxRate_GetAll;
+    final l$fxrateGetall = fxRate_GetAll;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$fxRate_GetAll,
+      l$fxrateGetall,
       l$$__typename,
     ]);
   }
@@ -51,9 +51,9 @@ class Query$FxRate_GetAll {
     if (other is! Query$FxRate_GetAll || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$fxRate_GetAll = fxRate_GetAll;
-    final lOther$fxRate_GetAll = other.fxRate_GetAll;
-    if (l$fxRate_GetAll != lOther$fxRate_GetAll) {
+    final l$fxrateGetall = fxRate_GetAll;
+    final lother$fxrateGetall = other.fxRate_GetAll;
+    if (l$fxrateGetall != lother$fxrateGetall) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -102,6 +102,7 @@ class _CopyWithImpl$Query$FxRate_GetAll<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? fxRate_GetAll = _undefined,
     Object? $__typename = _undefined,
@@ -115,10 +116,11 @@ class _CopyWithImpl$Query$FxRate_GetAll<TRes>
             : ($__typename as String),
       ));
 
+  @override
   CopyWith$Query$FxRate_GetAll$fxRate_GetAll<TRes> get fxRate_GetAll {
-    final local$fxRate_GetAll = _instance.fxRate_GetAll;
+    final local$fxrateGetall = _instance.fxRate_GetAll;
     return CopyWith$Query$FxRate_GetAll$fxRate_GetAll(
-        local$fxRate_GetAll, (e) => call(fxRate_GetAll: e));
+        local$fxrateGetall, (e) => call(fxRate_GetAll: e));
   }
 }
 
@@ -126,14 +128,16 @@ class _CopyWithStubImpl$Query$FxRate_GetAll<TRes>
     implements CopyWith$Query$FxRate_GetAll<TRes> {
   _CopyWithStubImpl$Query$FxRate_GetAll(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     Query$FxRate_GetAll$fxRate_GetAll? fxRate_GetAll,
     String? $__typename,
   }) =>
       _res;
 
+  @override
   CopyWith$Query$FxRate_GetAll$fxRate_GetAll<TRes> get fxRate_GetAll =>
       CopyWith$Query$FxRate_GetAll$fxRate_GetAll.stub(_res);
 }
@@ -243,32 +247,25 @@ typedef OnQueryComplete$Query$FxRate_GetAll = FutureOr<void> Function(
 class Options$Query$FxRate_GetAll
     extends graphql.QueryOptions<Query$FxRate_GetAll> {
   Options$Query$FxRate_GetAll({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$FxRate_GetAll? typedOptimisticResult,
-    Duration? pollInterval,
-    graphql.Context? context,
+    super.pollInterval,
+    super.context,
     OnQueryComplete$Query$FxRate_GetAll? onComplete,
-    graphql.OnQueryError? onError,
+    super.onError,
   })  : onCompleteWithParsed = onComplete,
         super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          pollInterval: pollInterval,
-          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
                     data,
                     data == null ? null : _parserFn$Query$FxRate_GetAll(data),
                   ),
-          onError: onError,
           document: documentNodeQueryFxRate_GetAll,
           parserFn: _parserFn$Query$FxRate_GetAll,
         );
@@ -287,38 +284,28 @@ class Options$Query$FxRate_GetAll
 class WatchOptions$Query$FxRate_GetAll
     extends graphql.WatchQueryOptions<Query$FxRate_GetAll> {
   WatchOptions$Query$FxRate_GetAll({
-    String? operationName,
-    graphql.FetchPolicy? fetchPolicy,
-    graphql.ErrorPolicy? errorPolicy,
-    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    super.operationName,
+    super.fetchPolicy,
+    super.errorPolicy,
+    super.cacheRereadPolicy,
     Object? optimisticResult,
     Query$FxRate_GetAll? typedOptimisticResult,
-    graphql.Context? context,
-    Duration? pollInterval,
-    bool? eagerlyFetchResults,
-    bool carryForwardDataOnException = true,
-    bool fetchResults = false,
+    super.context,
+    super.pollInterval,
+    super.eagerlyFetchResults,
+    super.carryForwardDataOnException,
+    super.fetchResults,
   }) : super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
           document: documentNodeQueryFxRate_GetAll,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
           parserFn: _parserFn$Query$FxRate_GetAll,
         );
 }
 
 class FetchMoreOptions$Query$FxRate_GetAll extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$FxRate_GetAll(
-      {required graphql.UpdateQuery updateQuery})
+      {required super.updateQuery})
       : super(
-          updateQuery: updateQuery,
           document: documentNodeQueryFxRate_GetAll,
         );
 }
@@ -326,15 +313,15 @@ class FetchMoreOptions$Query$FxRate_GetAll extends graphql.FetchMoreOptions {
 extension ClientExtension$Query$FxRate_GetAll on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$FxRate_GetAll>> query$FxRate_GetAll(
           [Options$Query$FxRate_GetAll? options]) async =>
-      await this.query(options ?? Options$Query$FxRate_GetAll());
+      await query(options ?? Options$Query$FxRate_GetAll());
   graphql.ObservableQuery<Query$FxRate_GetAll> watchQuery$FxRate_GetAll(
           [WatchOptions$Query$FxRate_GetAll? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$FxRate_GetAll());
+      watchQuery(options ?? WatchOptions$Query$FxRate_GetAll());
   void writeQuery$FxRate_GetAll({
     required Query$FxRate_GetAll data,
     bool broadcast = true,
   }) =>
-      this.writeQuery(
+      writeQuery(
         graphql.Request(
             operation:
                 graphql.Operation(document: documentNodeQueryFxRate_GetAll)),
@@ -342,7 +329,7 @@ extension ClientExtension$Query$FxRate_GetAll on graphql.GraphQLClient {
         broadcast: broadcast,
       );
   Query$FxRate_GetAll? readQuery$FxRate_GetAll({bool optimistic = true}) {
-    final result = this.readQuery(
+    final result = readQuery(
       graphql.Request(
           operation:
               graphql.Operation(document: documentNodeQueryFxRate_GetAll)),
@@ -363,13 +350,11 @@ graphql.ObservableQuery<Query$FxRate_GetAll> useWatchQuery$FxRate_GetAll(
 class Query$FxRate_GetAll$Widget
     extends graphql_flutter.Query<Query$FxRate_GetAll> {
   Query$FxRate_GetAll$Widget({
-    widgets.Key? key,
+    super.key,
     Options$Query$FxRate_GetAll? options,
-    required graphql_flutter.QueryBuilder<Query$FxRate_GetAll> builder,
+    required super.builder,
   }) : super(
-          key: key,
           options: options ?? Options$Query$FxRate_GetAll(),
-          builder: builder,
         );
 }
 
@@ -434,28 +419,28 @@ class Query$FxRate_GetAll$fxRate_GetAll {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
+    final resultData = <String, dynamic>{};
     final l$GH = GH;
-    _resultData['GH'] = l$GH;
+    resultData['GH'] = l$GH;
     final l$NG = NG;
-    _resultData['NG'] = l$NG;
+    resultData['NG'] = l$NG;
     final l$KE = KE;
-    _resultData['KE'] = l$KE;
+    resultData['KE'] = l$KE;
     final l$UG = UG;
-    _resultData['UG'] = l$UG;
+    resultData['UG'] = l$UG;
     final l$MW = MW;
-    _resultData['MW'] = l$MW;
+    resultData['MW'] = l$MW;
     final l$TZ = TZ;
-    _resultData['TZ'] = l$TZ;
+    resultData['TZ'] = l$TZ;
     final l$ZA = ZA;
-    _resultData['ZA'] = l$ZA;
+    resultData['ZA'] = l$ZA;
     final l$USD = USD;
-    _resultData['USD'] = l$USD;
+    resultData['USD'] = l$USD;
     final l$EUR = EUR;
-    _resultData['EUR'] = l$EUR;
+    resultData['EUR'] = l$EUR;
     final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
+    resultData['__typename'] = l$$__typename;
+    return resultData;
   }
 
   @override
@@ -592,6 +577,7 @@ class _CopyWithImpl$Query$FxRate_GetAll$fxRate_GetAll<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
+  @override
   TRes call({
     Object? GH = _undefined,
     Object? NG = _undefined,
@@ -624,8 +610,9 @@ class _CopyWithStubImpl$Query$FxRate_GetAll$fxRate_GetAll<TRes>
     implements CopyWith$Query$FxRate_GetAll$fxRate_GetAll<TRes> {
   _CopyWithStubImpl$Query$FxRate_GetAll$fxRate_GetAll(this._res);
 
-  TRes _res;
+  final TRes _res;
 
+  @override
   call({
     double? GH,
     double? NG,
