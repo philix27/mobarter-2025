@@ -42,23 +42,23 @@ class EnterBvnNin3 extends HookConsumerWidget {
         textField(
           context,
           label: 'National Identity Number (NIN)',
-          maxLength: 12,
+          maxLength: 11,
           controller: nin,
           keyboardType: TextInputType.number,
           inputFormatters: [
             FilteringTextInputFormatter.digitsOnly, // Allow digits only
-            LengthLimitingTextInputFormatter(6), // Enforces the limit
+            LengthLimitingTextInputFormatter(11), // Enforces the limit
           ],
         ),
         textField(
           context,
           label: 'Bank Verification No (BVN)',
-          maxLength: 12,
+          maxLength: 11,
           controller: bvn,
           keyboardType: TextInputType.number,
           inputFormatters: [
             FilteringTextInputFormatter.digitsOnly, // Allow digits only
-            LengthLimitingTextInputFormatter(12), // Enforces the limit
+            LengthLimitingTextInputFormatter(11), // Enforces the limit
           ],
         ),
         Btn(title: "Submit", onPressed: () => submit()),

@@ -4592,3 +4592,772 @@ class _CopyWithStubImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_veri
   }) =>
       _res;
 }
+
+class Query$kyc_profile {
+  Query$kyc_profile({
+    required this.kyc_profile,
+    this.$__typename = 'Query',
+  });
+
+  factory Query$kyc_profile.fromJson(Map<String, dynamic> json) {
+    final l$kyc_profile = json['kyc_profile'];
+    final l$$__typename = json['__typename'];
+    return Query$kyc_profile(
+      kyc_profile: Query$kyc_profile$kyc_profile.fromJson(
+          (l$kyc_profile as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Query$kyc_profile$kyc_profile kyc_profile;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$kyc_profile = kyc_profile;
+    _resultData['kyc_profile'] = l$kyc_profile.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$kyc_profile = kyc_profile;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$kyc_profile,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$kyc_profile || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$kyc_profile = kyc_profile;
+    final lOther$kyc_profile = other.kyc_profile;
+    if (l$kyc_profile != lOther$kyc_profile) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$kyc_profile on Query$kyc_profile {
+  CopyWith$Query$kyc_profile<Query$kyc_profile> get copyWith =>
+      CopyWith$Query$kyc_profile(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Query$kyc_profile<TRes> {
+  factory CopyWith$Query$kyc_profile(
+    Query$kyc_profile instance,
+    TRes Function(Query$kyc_profile) then,
+  ) = _CopyWithImpl$Query$kyc_profile;
+
+  factory CopyWith$Query$kyc_profile.stub(TRes res) =
+      _CopyWithStubImpl$Query$kyc_profile;
+
+  TRes call({
+    Query$kyc_profile$kyc_profile? kyc_profile,
+    String? $__typename,
+  });
+  CopyWith$Query$kyc_profile$kyc_profile<TRes> get kyc_profile;
+}
+
+class _CopyWithImpl$Query$kyc_profile<TRes>
+    implements CopyWith$Query$kyc_profile<TRes> {
+  _CopyWithImpl$Query$kyc_profile(
+    this._instance,
+    this._then,
+  );
+
+  final Query$kyc_profile _instance;
+
+  final TRes Function(Query$kyc_profile) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? kyc_profile = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$kyc_profile(
+        kyc_profile: kyc_profile == _undefined || kyc_profile == null
+            ? _instance.kyc_profile
+            : (kyc_profile as Query$kyc_profile$kyc_profile),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Query$kyc_profile$kyc_profile<TRes> get kyc_profile {
+    final local$kyc_profile = _instance.kyc_profile;
+    return CopyWith$Query$kyc_profile$kyc_profile(
+        local$kyc_profile, (e) => call(kyc_profile: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$kyc_profile<TRes>
+    implements CopyWith$Query$kyc_profile<TRes> {
+  _CopyWithStubImpl$Query$kyc_profile(this._res);
+
+  TRes _res;
+
+  call({
+    Query$kyc_profile$kyc_profile? kyc_profile,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Query$kyc_profile$kyc_profile<TRes> get kyc_profile =>
+      CopyWith$Query$kyc_profile$kyc_profile.stub(_res);
+}
+
+const documentNodeQuerykyc_profile = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'kyc_profile'),
+    variableDefinitions: [],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'kyc_profile'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'bvn'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'bvn_status'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'nin'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'nin_status'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'middlename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'gender'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'lastname'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'firstname'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'country_code'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'dob'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'email'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'phone'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'role'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'state'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+]);
+Query$kyc_profile _parserFn$Query$kyc_profile(Map<String, dynamic> data) =>
+    Query$kyc_profile.fromJson(data);
+typedef OnQueryComplete$Query$kyc_profile = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$kyc_profile?,
+);
+
+class Options$Query$kyc_profile
+    extends graphql.QueryOptions<Query$kyc_profile> {
+  Options$Query$kyc_profile({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$kyc_profile? typedOptimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+    OnQueryComplete$Query$kyc_profile? onComplete,
+    graphql.OnQueryError? onError,
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null ? null : _parserFn$Query$kyc_profile(data),
+                  ),
+          onError: onError,
+          document: documentNodeQuerykyc_profile,
+          parserFn: _parserFn$Query$kyc_profile,
+        );
+
+  final OnQueryComplete$Query$kyc_profile? onCompleteWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
+}
+
+class WatchOptions$Query$kyc_profile
+    extends graphql.WatchQueryOptions<Query$kyc_profile> {
+  WatchOptions$Query$kyc_profile({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$kyc_profile? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQuerykyc_profile,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$kyc_profile,
+        );
+}
+
+class FetchMoreOptions$Query$kyc_profile extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$kyc_profile({required graphql.UpdateQuery updateQuery})
+      : super(
+          updateQuery: updateQuery,
+          document: documentNodeQuerykyc_profile,
+        );
+}
+
+extension ClientExtension$Query$kyc_profile on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$kyc_profile>> query$kyc_profile(
+          [Options$Query$kyc_profile? options]) async =>
+      await this.query(options ?? Options$Query$kyc_profile());
+  graphql.ObservableQuery<Query$kyc_profile> watchQuery$kyc_profile(
+          [WatchOptions$Query$kyc_profile? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$kyc_profile());
+  void writeQuery$kyc_profile({
+    required Query$kyc_profile data,
+    bool broadcast = true,
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+            operation:
+                graphql.Operation(document: documentNodeQuerykyc_profile)),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$kyc_profile? readQuery$kyc_profile({bool optimistic = true}) {
+    final result = this.readQuery(
+      graphql.Request(
+          operation: graphql.Operation(document: documentNodeQuerykyc_profile)),
+      optimistic: optimistic,
+    );
+    return result == null ? null : Query$kyc_profile.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$kyc_profile> useQuery$kyc_profile(
+        [Options$Query$kyc_profile? options]) =>
+    graphql_flutter.useQuery(options ?? Options$Query$kyc_profile());
+graphql.ObservableQuery<Query$kyc_profile> useWatchQuery$kyc_profile(
+        [WatchOptions$Query$kyc_profile? options]) =>
+    graphql_flutter.useWatchQuery(options ?? WatchOptions$Query$kyc_profile());
+
+class Query$kyc_profile$Widget
+    extends graphql_flutter.Query<Query$kyc_profile> {
+  Query$kyc_profile$Widget({
+    widgets.Key? key,
+    Options$Query$kyc_profile? options,
+    required graphql_flutter.QueryBuilder<Query$kyc_profile> builder,
+  }) : super(
+          key: key,
+          options: options ?? Options$Query$kyc_profile(),
+          builder: builder,
+        );
+}
+
+class Query$kyc_profile$kyc_profile {
+  Query$kyc_profile$kyc_profile({
+    this.bvn,
+    this.bvn_status,
+    this.nin,
+    this.nin_status,
+    this.middlename,
+    this.gender,
+    this.lastname,
+    this.firstname,
+    this.country_code,
+    this.dob,
+    this.email,
+    this.phone,
+    this.role,
+    this.state,
+    this.$__typename = 'Kyc_UserResponse',
+  });
+
+  factory Query$kyc_profile$kyc_profile.fromJson(Map<String, dynamic> json) {
+    final l$bvn = json['bvn'];
+    final l$bvn_status = json['bvn_status'];
+    final l$nin = json['nin'];
+    final l$nin_status = json['nin_status'];
+    final l$middlename = json['middlename'];
+    final l$gender = json['gender'];
+    final l$lastname = json['lastname'];
+    final l$firstname = json['firstname'];
+    final l$country_code = json['country_code'];
+    final l$dob = json['dob'];
+    final l$email = json['email'];
+    final l$phone = json['phone'];
+    final l$role = json['role'];
+    final l$state = json['state'];
+    final l$$__typename = json['__typename'];
+    return Query$kyc_profile$kyc_profile(
+      bvn: (l$bvn as String?),
+      bvn_status: (l$bvn_status as String?),
+      nin: (l$nin as String?),
+      nin_status: (l$nin_status as String?),
+      middlename: (l$middlename as String?),
+      gender: (l$gender as String?),
+      lastname: (l$lastname as String?),
+      firstname: (l$firstname as String?),
+      country_code: (l$country_code as String?),
+      dob: (l$dob as String?),
+      email: (l$email as String?),
+      phone: (l$phone as String?),
+      role: (l$role as String?),
+      state: (l$state as String?),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String? bvn;
+
+  final String? bvn_status;
+
+  final String? nin;
+
+  final String? nin_status;
+
+  final String? middlename;
+
+  final String? gender;
+
+  final String? lastname;
+
+  final String? firstname;
+
+  final String? country_code;
+
+  final String? dob;
+
+  final String? email;
+
+  final String? phone;
+
+  final String? role;
+
+  final String? state;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$bvn = bvn;
+    _resultData['bvn'] = l$bvn;
+    final l$bvn_status = bvn_status;
+    _resultData['bvn_status'] = l$bvn_status;
+    final l$nin = nin;
+    _resultData['nin'] = l$nin;
+    final l$nin_status = nin_status;
+    _resultData['nin_status'] = l$nin_status;
+    final l$middlename = middlename;
+    _resultData['middlename'] = l$middlename;
+    final l$gender = gender;
+    _resultData['gender'] = l$gender;
+    final l$lastname = lastname;
+    _resultData['lastname'] = l$lastname;
+    final l$firstname = firstname;
+    _resultData['firstname'] = l$firstname;
+    final l$country_code = country_code;
+    _resultData['country_code'] = l$country_code;
+    final l$dob = dob;
+    _resultData['dob'] = l$dob;
+    final l$email = email;
+    _resultData['email'] = l$email;
+    final l$phone = phone;
+    _resultData['phone'] = l$phone;
+    final l$role = role;
+    _resultData['role'] = l$role;
+    final l$state = state;
+    _resultData['state'] = l$state;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$bvn = bvn;
+    final l$bvn_status = bvn_status;
+    final l$nin = nin;
+    final l$nin_status = nin_status;
+    final l$middlename = middlename;
+    final l$gender = gender;
+    final l$lastname = lastname;
+    final l$firstname = firstname;
+    final l$country_code = country_code;
+    final l$dob = dob;
+    final l$email = email;
+    final l$phone = phone;
+    final l$role = role;
+    final l$state = state;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$bvn,
+      l$bvn_status,
+      l$nin,
+      l$nin_status,
+      l$middlename,
+      l$gender,
+      l$lastname,
+      l$firstname,
+      l$country_code,
+      l$dob,
+      l$email,
+      l$phone,
+      l$role,
+      l$state,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$kyc_profile$kyc_profile ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$bvn = bvn;
+    final lOther$bvn = other.bvn;
+    if (l$bvn != lOther$bvn) {
+      return false;
+    }
+    final l$bvn_status = bvn_status;
+    final lOther$bvn_status = other.bvn_status;
+    if (l$bvn_status != lOther$bvn_status) {
+      return false;
+    }
+    final l$nin = nin;
+    final lOther$nin = other.nin;
+    if (l$nin != lOther$nin) {
+      return false;
+    }
+    final l$nin_status = nin_status;
+    final lOther$nin_status = other.nin_status;
+    if (l$nin_status != lOther$nin_status) {
+      return false;
+    }
+    final l$middlename = middlename;
+    final lOther$middlename = other.middlename;
+    if (l$middlename != lOther$middlename) {
+      return false;
+    }
+    final l$gender = gender;
+    final lOther$gender = other.gender;
+    if (l$gender != lOther$gender) {
+      return false;
+    }
+    final l$lastname = lastname;
+    final lOther$lastname = other.lastname;
+    if (l$lastname != lOther$lastname) {
+      return false;
+    }
+    final l$firstname = firstname;
+    final lOther$firstname = other.firstname;
+    if (l$firstname != lOther$firstname) {
+      return false;
+    }
+    final l$country_code = country_code;
+    final lOther$country_code = other.country_code;
+    if (l$country_code != lOther$country_code) {
+      return false;
+    }
+    final l$dob = dob;
+    final lOther$dob = other.dob;
+    if (l$dob != lOther$dob) {
+      return false;
+    }
+    final l$email = email;
+    final lOther$email = other.email;
+    if (l$email != lOther$email) {
+      return false;
+    }
+    final l$phone = phone;
+    final lOther$phone = other.phone;
+    if (l$phone != lOther$phone) {
+      return false;
+    }
+    final l$role = role;
+    final lOther$role = other.role;
+    if (l$role != lOther$role) {
+      return false;
+    }
+    final l$state = state;
+    final lOther$state = other.state;
+    if (l$state != lOther$state) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$kyc_profile$kyc_profile
+    on Query$kyc_profile$kyc_profile {
+  CopyWith$Query$kyc_profile$kyc_profile<Query$kyc_profile$kyc_profile>
+      get copyWith => CopyWith$Query$kyc_profile$kyc_profile(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$kyc_profile$kyc_profile<TRes> {
+  factory CopyWith$Query$kyc_profile$kyc_profile(
+    Query$kyc_profile$kyc_profile instance,
+    TRes Function(Query$kyc_profile$kyc_profile) then,
+  ) = _CopyWithImpl$Query$kyc_profile$kyc_profile;
+
+  factory CopyWith$Query$kyc_profile$kyc_profile.stub(TRes res) =
+      _CopyWithStubImpl$Query$kyc_profile$kyc_profile;
+
+  TRes call({
+    String? bvn,
+    String? bvn_status,
+    String? nin,
+    String? nin_status,
+    String? middlename,
+    String? gender,
+    String? lastname,
+    String? firstname,
+    String? country_code,
+    String? dob,
+    String? email,
+    String? phone,
+    String? role,
+    String? state,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Query$kyc_profile$kyc_profile<TRes>
+    implements CopyWith$Query$kyc_profile$kyc_profile<TRes> {
+  _CopyWithImpl$Query$kyc_profile$kyc_profile(
+    this._instance,
+    this._then,
+  );
+
+  final Query$kyc_profile$kyc_profile _instance;
+
+  final TRes Function(Query$kyc_profile$kyc_profile) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? bvn = _undefined,
+    Object? bvn_status = _undefined,
+    Object? nin = _undefined,
+    Object? nin_status = _undefined,
+    Object? middlename = _undefined,
+    Object? gender = _undefined,
+    Object? lastname = _undefined,
+    Object? firstname = _undefined,
+    Object? country_code = _undefined,
+    Object? dob = _undefined,
+    Object? email = _undefined,
+    Object? phone = _undefined,
+    Object? role = _undefined,
+    Object? state = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$kyc_profile$kyc_profile(
+        bvn: bvn == _undefined ? _instance.bvn : (bvn as String?),
+        bvn_status: bvn_status == _undefined
+            ? _instance.bvn_status
+            : (bvn_status as String?),
+        nin: nin == _undefined ? _instance.nin : (nin as String?),
+        nin_status: nin_status == _undefined
+            ? _instance.nin_status
+            : (nin_status as String?),
+        middlename: middlename == _undefined
+            ? _instance.middlename
+            : (middlename as String?),
+        gender: gender == _undefined ? _instance.gender : (gender as String?),
+        lastname:
+            lastname == _undefined ? _instance.lastname : (lastname as String?),
+        firstname: firstname == _undefined
+            ? _instance.firstname
+            : (firstname as String?),
+        country_code: country_code == _undefined
+            ? _instance.country_code
+            : (country_code as String?),
+        dob: dob == _undefined ? _instance.dob : (dob as String?),
+        email: email == _undefined ? _instance.email : (email as String?),
+        phone: phone == _undefined ? _instance.phone : (phone as String?),
+        role: role == _undefined ? _instance.role : (role as String?),
+        state: state == _undefined ? _instance.state : (state as String?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Query$kyc_profile$kyc_profile<TRes>
+    implements CopyWith$Query$kyc_profile$kyc_profile<TRes> {
+  _CopyWithStubImpl$Query$kyc_profile$kyc_profile(this._res);
+
+  TRes _res;
+
+  call({
+    String? bvn,
+    String? bvn_status,
+    String? nin,
+    String? nin_status,
+    String? middlename,
+    String? gender,
+    String? lastname,
+    String? firstname,
+    String? country_code,
+    String? dob,
+    String? email,
+    String? phone,
+    String? role,
+    String? state,
+    String? $__typename,
+  }) =>
+      _res;
+}

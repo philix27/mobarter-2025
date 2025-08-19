@@ -207,6 +207,9 @@ enum CredentialsStatus {
   VALID
 }
 
+# A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+scalar DateTime
+
 input ElectricityBill_PaymentInput {
   amount: Int!
   countryCode: Country!
@@ -336,6 +339,26 @@ type Kyc_SendOtpResponse {
 
 input Kyc_SendPhoneOtpInput {
   phone: String!
+}
+
+type Kyc_UserResponse {
+  bvn: String
+  bvn_status: String
+  country_code: String
+  created_at: DateTime
+  dob: String
+  email: String
+  firstname: String
+  gender: String
+  id: Float
+  lastname: String
+  middlename: String
+  nin: String
+  nin_status: String
+  phone: String
+  role: String
+  state: String
+  telegram_id: String
 }
 
 input Kyc_verifyPhoneOtpAndSubmitCredentialsInput {
@@ -535,6 +558,7 @@ type Query {
     input: BettingProvidersInput!
   ): [BettingProvidersResponse!]!
   fxRate_GetAll: ExchangeRate_Response!
+  kyc_profile: Kyc_UserResponse!
   orders_GetAll(input: Order_GetAllInput!): [Order_Response!]!
   orders_GetAllAsMerchant(input: Order_GetAllInput!): [Order_Response!]!
   orders_GetAllForAdmin(input: Order_GetAllInput!): [Order_Response!]!

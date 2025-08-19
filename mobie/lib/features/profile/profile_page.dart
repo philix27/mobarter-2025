@@ -1,19 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/profile/presentation/1enter_names.dart';
 import 'package:mobarter/features/profile/presentation/3nin_bvn.dart';
 import 'package:mobarter/features/profile/presentation/5address.dart';
 import 'package:mobarter/features/profile/presentation/6phone.dart';
 import 'package:mobarter/features/profile/presentation/kyc_page.dart';
+import 'package:mobarter/graphql/schema/kyc.gql.dart';
 import 'package:mobarter/widgets/widgets.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends HookConsumerWidget {
   const ProfilePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    return appScaffold(context, title: "Profile", body: DisplayProfile());
+  }
+}
+
+class DisplayProfile extends HookConsumerWidget {
+  const DisplayProfile({super.key});
+
+  @override
+  Widget build(BuildContext context, ref) {
     final mainTitleStyle = TextStyle(fontSize: 13, fontWeight: FontWeight.w400);
     final subTitleStyle = TextStyle(fontSize: 12, fontWeight: FontWeight.w700);
+    final result = useQuery$kyc_profile(Options$Query$kyc_profile());
+
+    if (result.result.isLoading) {
+      return const LoadingIndicator();
+    }
+
+    final profile = result.result.parsedData?.kyc_profile;
+
     openPage(String title, Widget child) {
       pushScreen(
         context,
@@ -55,7 +74,7 @@ class ProfilePage extends StatelessWidget {
     row(String title, String title2) {
       return Container(
         decoration: BoxDecoration(color: Theme.of(context).cardColor),
-        padding: EdgeInsets.symmetric(horizontal: 10 , vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -66,40 +85,33 @@ class ProfilePage extends StatelessWidget {
       );
     }
 
-    return appScaffold(
-      context,
-      title: "Profile",
-      body: Column(
-        spacing: 0,
-        children: [
-          // listTile(title: "Email", subtitle: user.email),
-          section("Personal", () => openPage("Personal Info", EnterNames1())),
-          row("Names", "-"),
-          row("Gender", "-"),
-          row("Date of Birth", "-"),
+    return Column(
+      spacing: 0,
+      children: [
+        // listTile(title: "Email", subtitle: user.email),
+        section("Personal", () => openPage("Personal Info", EnterNames1())),
+        row("First name", "${profile?.firstname}"),
+        row("Last name", "${profile?.lastname}"),
+        profile?.middlename != null
+            ? row("Middle name", "${profile?.middlename}")
+            : SizedBox.shrink(),
+        row("Gender", "${profile?.gender}"),
+        row("Date of Birth", "${profile?.dob}"),
 
-          SizedBox(height: 30),
-          section(
-            "Phone number",
-            () => openPage("Phone number", EnterPhone6()),
-          ),
-          row("Phone", "-"),
+        SizedBox(height: 30),
+        section("Phone number", () => openPage("Phone number", EnterPhone6())),
+        row("Phone", "${profile?.phone}"),
 
-          SizedBox(height: 30),
-          section(
-            "Banking Info",
-            () => openPage("Banking Info", EnterBvnNin3()),
-          ),
-          row("BVN", "-"),
-          row("NIN", "-"),
+        SizedBox(height: 30),
+        section("Banking Info", () => openPage("Banking Info", EnterBvnNin3())),
+        row("BVN", "${profile?.bvn}"),
+        row("NIN", "${profile?.nin}"),
 
-          SizedBox(height: 30),
-          section("Address", () => openPage("Home Address", HomeAddress5())),
-          row("State", "-"),
-          row("Street", "-"),
-          row("Country", "-"),
-        ],
-      ),
+        SizedBox(height: 30),
+        section("Address", () => openPage("Home Address", HomeAddress5())),
+        row("State", "${profile?.state}"),
+        row("Country", "${profile?.country_code}"),
+      ],
     );
   }
 }

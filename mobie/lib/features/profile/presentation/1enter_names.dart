@@ -38,7 +38,6 @@ class EnterNames1 extends HookConsumerWidget {
               ),
             )
             .networkResult;
-
         appToast(context, "Record submitted");
         Navigator.of(context).pop();
       } catch (e) {
