@@ -28,13 +28,11 @@ class EnterPhone6 extends ConsumerWidget {
             LengthLimitingTextInputFormatter(11), // Enforces the limit
           ],
         ),
-        BtnRow(
-          onPrevPressed: () {
-            read.updateStep(KycSteps.address5);
-          },
-          onNextPressed: () {
-            read.updateDob(phone.text);
-            read.updateStep(KycSteps.summary7);
+        Btn(
+          title: "Submit",
+          onPressed: () {
+            appToast(context, "Submitted successfully");
+            Navigator.of(context).pop();
           },
         ),
       ],

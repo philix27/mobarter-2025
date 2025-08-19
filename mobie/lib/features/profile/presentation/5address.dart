@@ -30,16 +30,11 @@ class HomeAddress5 extends ConsumerWidget {
           controller: homeAddress,
           keyboardType: TextInputType.streetAddress,
         ),
-        BtnRow(
-          onPrevPressed: () {
-            read.updateStep(KycSteps.bvn4);
-          },
-          onNextPressed: () {
-            read.updateAddress(
-              street: homeAddress.text,
-              addressState: stateAddress.text,
-            );
-            read.updateStep(KycSteps.phone6);
+         Btn(
+          title: "Submit",
+          onPressed: () {
+            appToast(context, "Submitted successfully");
+            Navigator.of(context).pop();
           },
         ),
       ],

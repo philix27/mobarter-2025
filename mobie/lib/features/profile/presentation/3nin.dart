@@ -6,9 +6,10 @@ import 'package:mobarter/features/profile/logic/provider.dart';
 import 'package:mobarter/features/profile/presentation/row_btn.dart';
 import 'package:mobarter/widgets/widgets.dart';
 
-class EnterNin3 extends ConsumerWidget {
-  EnterNin3({super.key});
+class EnterBvnNin3 extends ConsumerWidget {
+  EnterBvnNin3({super.key});
   TextEditingController nin = TextEditingController();
+  TextEditingController bvn = TextEditingController();
 
   @override
   Widget build(BuildContext context, ref) {
@@ -26,13 +27,22 @@ class EnterNin3 extends ConsumerWidget {
             LengthLimitingTextInputFormatter(6), // Enforces the limit
           ],
         ),
-        BtnRow(
-          onPrevPressed: () {
-            read.updateStep(KycSteps.selectDob2);
-          },
-          onNextPressed: () {
-            read.updateDob(nin.text);
-            read.updateStep(KycSteps.bvn4);
+         textField(
+          context,
+          label: 'Bank Verification No (BVN)',
+          maxLength: 12,
+          controller: bvn,
+          keyboardType: TextInputType.number,
+          inputFormatters: [
+            FilteringTextInputFormatter.digitsOnly, // Allow digits only
+            LengthLimitingTextInputFormatter(12), // Enforces the limit
+          ],
+        ),
+        Btn(
+          title: "Submit",
+          onPressed: () {
+            appToast(context, "Submitted successfully");
+            Navigator.of(context).pop();
           },
         ),
       ],

@@ -30,7 +30,7 @@ class BankItem extends HookWidget {
           .networkResult;
 
       
-      if (kDebugMode) {
+         if (kDebugMode) {
         appLogger.d("Delete Bank Account");
       }
 

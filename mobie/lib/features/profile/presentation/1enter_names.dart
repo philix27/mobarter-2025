@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mobarter/features/profile/logic/model.dart';
 import 'package:mobarter/features/profile/logic/provider.dart';
 import 'package:mobarter/widgets/widgets.dart';
 
@@ -9,6 +9,8 @@ class EnterNames1 extends ConsumerWidget {
   TextEditingController firstName = TextEditingController();
   TextEditingController lastName = TextEditingController();
   TextEditingController middleName = TextEditingController();
+  TextEditingController dob = TextEditingController();
+
   @override
   Widget build(BuildContext context, ref) {
     final read = kycFormRead(ref);
@@ -36,15 +38,22 @@ class EnterNames1 extends ConsumerWidget {
           controller: middleName,
           keyboardType: TextInputType.name,
         ),
+        textField(
+          context,
+          label: 'Date of Birth',
+          maxLength: 6,
+          controller: dob,
+          keyboardType: TextInputType.number,
+          inputFormatters: [
+            FilteringTextInputFormatter.digitsOnly, // Allow digits only
+            LengthLimitingTextInputFormatter(6), // Enforces the limit
+          ],
+        ),
         Btn(
-          title: "Next",
+          title: "Submit",
           onPressed: () {
-            read.updateNames(
-              firstName: firstName.text,
-              lastName: lastName.text,
-              middleName: middleName.text,
-            );
-            read.updateStep(KycSteps.selectDob2);
+            appToast(context, "Submitted successfully");
+            Navigator.of(context).pop();
           },
         ),
       ],
