@@ -12,10 +12,10 @@ class Query$Transactions_getAll {
   });
 
   factory Query$Transactions_getAll.fromJson(Map<String, dynamic> json) {
-    final l$transactionsGetall = json['transactions_getAll'];
+    final l$transactions_getAll = json['transactions_getAll'];
     final l$$__typename = json['__typename'];
     return Query$Transactions_getAll(
-      transactions_getAll: (l$transactionsGetall as List<dynamic>)
+      transactions_getAll: (l$transactions_getAll as List<dynamic>)
           .map((e) => Query$Transactions_getAll$transactions_getAll.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
@@ -28,21 +28,21 @@ class Query$Transactions_getAll {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
-    final l$transactionsGetall = transactions_getAll;
-    resultData['transactions_getAll'] =
-        l$transactionsGetall.map((e) => e.toJson()).toList();
+    final _resultData = <String, dynamic>{};
+    final l$transactions_getAll = transactions_getAll;
+    _resultData['transactions_getAll'] =
+        l$transactions_getAll.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
-    final l$transactionsGetall = transactions_getAll;
+    final l$transactions_getAll = transactions_getAll;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$transactionsGetall.map((v) => v)),
+      Object.hashAll(l$transactions_getAll.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -56,15 +56,15 @@ class Query$Transactions_getAll {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$transactionsGetall = transactions_getAll;
-    final lother$transactionsGetall = other.transactions_getAll;
-    if (l$transactionsGetall.length != lother$transactionsGetall.length) {
+    final l$transactions_getAll = transactions_getAll;
+    final lOther$transactions_getAll = other.transactions_getAll;
+    if (l$transactions_getAll.length != lOther$transactions_getAll.length) {
       return false;
     }
-    for (int i = 0; i < l$transactionsGetall.length; i++) {
-      final l$transactionsGetall$entry = l$transactionsGetall[i];
-      final lother$transactionsGetall$entry = lother$transactionsGetall[i];
-      if (l$transactionsGetall$entry != lother$transactionsGetall$entry) {
+    for (int i = 0; i < l$transactions_getAll.length; i++) {
+      final l$transactions_getAll$entry = l$transactions_getAll[i];
+      final lOther$transactions_getAll$entry = lOther$transactions_getAll[i];
+      if (l$transactions_getAll$entry != lOther$transactions_getAll$entry) {
         return false;
       }
     }
@@ -104,7 +104,7 @@ abstract class CopyWith$Query$Transactions_getAll<TRes> {
               Iterable<
                   CopyWith$Query$Transactions_getAll$transactions_getAll<
                       Query$Transactions_getAll$transactions_getAll>>)
-          fn);
+          _fn);
 }
 
 class _CopyWithImpl$Query$Transactions_getAll<TRes>
@@ -120,7 +120,6 @@ class _CopyWithImpl$Query$Transactions_getAll<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? transactions_getAll = _undefined,
     Object? $__typename = _undefined,
@@ -136,15 +135,14 @@ class _CopyWithImpl$Query$Transactions_getAll<TRes>
             : ($__typename as String),
       ));
 
-  @override
   TRes transactions_getAll(
           Iterable<Query$Transactions_getAll$transactions_getAll> Function(
                   Iterable<
                       CopyWith$Query$Transactions_getAll$transactions_getAll<
                           Query$Transactions_getAll$transactions_getAll>>)
-              fn) =>
+              _fn) =>
       call(
-          transactions_getAll: fn(_instance.transactions_getAll.map(
+          transactions_getAll: _fn(_instance.transactions_getAll.map(
               (e) => CopyWith$Query$Transactions_getAll$transactions_getAll(
                     e,
                     (i) => i,
@@ -155,17 +153,15 @@ class _CopyWithStubImpl$Query$Transactions_getAll<TRes>
     implements CopyWith$Query$Transactions_getAll<TRes> {
   _CopyWithStubImpl$Query$Transactions_getAll(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     List<Query$Transactions_getAll$transactions_getAll>? transactions_getAll,
     String? $__typename,
   }) =>
       _res;
 
-  @override
-  transactions_getAll(fn) => _res;
+  transactions_getAll(_fn) => _res;
 }
 
 const documentNodeQueryTransactions_getAll = DocumentNode(definitions: [
@@ -253,19 +249,25 @@ typedef OnQueryComplete$Query$Transactions_getAll = FutureOr<void> Function(
 class Options$Query$Transactions_getAll
     extends graphql.QueryOptions<Query$Transactions_getAll> {
   Options$Query$Transactions_getAll({
-    super.operationName,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Query$Transactions_getAll? typedOptimisticResult,
-    super.pollInterval,
-    super.context,
+    Duration? pollInterval,
+    graphql.Context? context,
     OnQueryComplete$Query$Transactions_getAll? onComplete,
-    super.onError,
+    graphql.OnQueryError? onError,
   })  : onCompleteWithParsed = onComplete,
         super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
@@ -274,6 +276,7 @@ class Options$Query$Transactions_getAll
                         ? null
                         : _parserFn$Query$Transactions_getAll(data),
                   ),
+          onError: onError,
           document: documentNodeQueryTransactions_getAll,
           parserFn: _parserFn$Query$Transactions_getAll,
         );
@@ -292,20 +295,29 @@ class Options$Query$Transactions_getAll
 class WatchOptions$Query$Transactions_getAll
     extends graphql.WatchQueryOptions<Query$Transactions_getAll> {
   WatchOptions$Query$Transactions_getAll({
-    super.operationName,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Query$Transactions_getAll? typedOptimisticResult,
-    super.context,
-    super.pollInterval,
-    super.eagerlyFetchResults,
-    super.carryForwardDataOnException,
-    super.fetchResults,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
   }) : super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           document: documentNodeQueryTransactions_getAll,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
           parserFn: _parserFn$Query$Transactions_getAll,
         );
 }
@@ -313,8 +325,9 @@ class WatchOptions$Query$Transactions_getAll
 class FetchMoreOptions$Query$Transactions_getAll
     extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$Transactions_getAll(
-      {required super.updateQuery})
+      {required graphql.UpdateQuery updateQuery})
       : super(
+          updateQuery: updateQuery,
           document: documentNodeQueryTransactions_getAll,
         );
 }
@@ -323,16 +336,16 @@ extension ClientExtension$Query$Transactions_getAll on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$Transactions_getAll>>
       query$Transactions_getAll(
               [Options$Query$Transactions_getAll? options]) async =>
-          await query(options ?? Options$Query$Transactions_getAll());
+          await this.query(options ?? Options$Query$Transactions_getAll());
   graphql.ObservableQuery<Query$Transactions_getAll>
       watchQuery$Transactions_getAll(
               [WatchOptions$Query$Transactions_getAll? options]) =>
-          watchQuery(options ?? WatchOptions$Query$Transactions_getAll());
+          this.watchQuery(options ?? WatchOptions$Query$Transactions_getAll());
   void writeQuery$Transactions_getAll({
     required Query$Transactions_getAll data,
     bool broadcast = true,
   }) =>
-      writeQuery(
+      this.writeQuery(
         graphql.Request(
             operation: graphql.Operation(
                 document: documentNodeQueryTransactions_getAll)),
@@ -341,7 +354,7 @@ extension ClientExtension$Query$Transactions_getAll on graphql.GraphQLClient {
       );
   Query$Transactions_getAll? readQuery$Transactions_getAll(
       {bool optimistic = true}) {
-    final result = readQuery(
+    final result = this.readQuery(
       graphql.Request(
           operation: graphql.Operation(
               document: documentNodeQueryTransactions_getAll)),
@@ -365,11 +378,13 @@ graphql.ObservableQuery<Query$Transactions_getAll>
 class Query$Transactions_getAll$Widget
     extends graphql_flutter.Query<Query$Transactions_getAll> {
   Query$Transactions_getAll$Widget({
-    super.key,
+    widgets.Key? key,
     Options$Query$Transactions_getAll? options,
-    required super.builder,
+    required graphql_flutter.QueryBuilder<Query$Transactions_getAll> builder,
   }) : super(
+          key: key,
           options: options ?? Options$Query$Transactions_getAll(),
+          builder: builder,
         );
 }
 
@@ -390,7 +405,7 @@ class Query$Transactions_getAll$transactions_getAll {
     final l$category = json['category'];
     final l$mode = json['mode'];
     final l$note = json['note'];
-    final l$transactionHash = json['transaction_hash'];
+    final l$transaction_hash = json['transaction_hash'];
     final l$status = json['status'];
     final l$$__typename = json['__typename'];
     return Query$Transactions_getAll$transactions_getAll(
@@ -398,7 +413,7 @@ class Query$Transactions_getAll$transactions_getAll {
       category: fromJson$Enum$TransactionCategory((l$category as String)),
       mode: fromJson$Enum$TransactionsMode((l$mode as String)),
       note: (l$note as String),
-      transaction_hash: (l$transactionHash as String?),
+      transaction_hash: (l$transaction_hash as String?),
       status: fromJson$Enum$TransactionStatus((l$status as String)),
       $__typename: (l$$__typename as String),
     );
@@ -419,22 +434,22 @@ class Query$Transactions_getAll$transactions_getAll {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$amount = amount;
-    resultData['amount'] = l$amount;
+    _resultData['amount'] = l$amount;
     final l$category = category;
-    resultData['category'] = toJson$Enum$TransactionCategory(l$category);
+    _resultData['category'] = toJson$Enum$TransactionCategory(l$category);
     final l$mode = mode;
-    resultData['mode'] = toJson$Enum$TransactionsMode(l$mode);
+    _resultData['mode'] = toJson$Enum$TransactionsMode(l$mode);
     final l$note = note;
-    resultData['note'] = l$note;
-    final l$transactionHash = transaction_hash;
-    resultData['transaction_hash'] = l$transactionHash;
+    _resultData['note'] = l$note;
+    final l$transaction_hash = transaction_hash;
+    _resultData['transaction_hash'] = l$transaction_hash;
     final l$status = status;
-    resultData['status'] = toJson$Enum$TransactionStatus(l$status);
+    _resultData['status'] = toJson$Enum$TransactionStatus(l$status);
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -443,7 +458,7 @@ class Query$Transactions_getAll$transactions_getAll {
     final l$category = category;
     final l$mode = mode;
     final l$note = note;
-    final l$transactionHash = transaction_hash;
+    final l$transaction_hash = transaction_hash;
     final l$status = status;
     final l$$__typename = $__typename;
     return Object.hashAll([
@@ -451,7 +466,7 @@ class Query$Transactions_getAll$transactions_getAll {
       l$category,
       l$mode,
       l$note,
-      l$transactionHash,
+      l$transaction_hash,
       l$status,
       l$$__typename,
     ]);
@@ -486,9 +501,9 @@ class Query$Transactions_getAll$transactions_getAll {
     if (l$note != lOther$note) {
       return false;
     }
-    final l$transactionHash = transaction_hash;
-    final lother$transactionHash = other.transaction_hash;
-    if (l$transactionHash != lother$transactionHash) {
+    final l$transaction_hash = transaction_hash;
+    final lOther$transaction_hash = other.transaction_hash;
+    if (l$transaction_hash != lOther$transaction_hash) {
       return false;
     }
     final l$status = status;
@@ -549,7 +564,6 @@ class _CopyWithImpl$Query$Transactions_getAll$transactions_getAll<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? amount = _undefined,
     Object? category = _undefined,
@@ -588,9 +602,8 @@ class _CopyWithStubImpl$Query$Transactions_getAll$transactions_getAll<TRes>
     implements CopyWith$Query$Transactions_getAll$transactions_getAll<TRes> {
   _CopyWithStubImpl$Query$Transactions_getAll$transactions_getAll(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     double? amount,
     Enum$TransactionCategory? category,

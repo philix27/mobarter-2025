@@ -12,10 +12,10 @@ class Mutation$WalletCrypto_create {
   });
 
   factory Mutation$WalletCrypto_create.fromJson(Map<String, dynamic> json) {
-    final l$walletcryptoCreate = json['walletCrypto_create'];
+    final l$walletCrypto_create = json['walletCrypto_create'];
     final l$$__typename = json['__typename'];
     return Mutation$WalletCrypto_create(
-      walletCrypto_create: (l$walletcryptoCreate as List<dynamic>)
+      walletCrypto_create: (l$walletCrypto_create as List<dynamic>)
           .map((e) => Mutation$WalletCrypto_create$walletCrypto_create.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
@@ -29,21 +29,21 @@ class Mutation$WalletCrypto_create {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
-    final l$walletcryptoCreate = walletCrypto_create;
-    resultData['walletCrypto_create'] =
-        l$walletcryptoCreate.map((e) => e.toJson()).toList();
+    final _resultData = <String, dynamic>{};
+    final l$walletCrypto_create = walletCrypto_create;
+    _resultData['walletCrypto_create'] =
+        l$walletCrypto_create.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
-    final l$walletcryptoCreate = walletCrypto_create;
+    final l$walletCrypto_create = walletCrypto_create;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$walletcryptoCreate.map((v) => v)),
+      Object.hashAll(l$walletCrypto_create.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -57,15 +57,15 @@ class Mutation$WalletCrypto_create {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$walletcryptoCreate = walletCrypto_create;
-    final lother$walletcryptoCreate = other.walletCrypto_create;
-    if (l$walletcryptoCreate.length != lother$walletcryptoCreate.length) {
+    final l$walletCrypto_create = walletCrypto_create;
+    final lOther$walletCrypto_create = other.walletCrypto_create;
+    if (l$walletCrypto_create.length != lOther$walletCrypto_create.length) {
       return false;
     }
-    for (int i = 0; i < l$walletcryptoCreate.length; i++) {
-      final l$walletcryptoCreate$entry = l$walletcryptoCreate[i];
-      final lother$walletcryptoCreate$entry = lother$walletcryptoCreate[i];
-      if (l$walletcryptoCreate$entry != lother$walletcryptoCreate$entry) {
+    for (int i = 0; i < l$walletCrypto_create.length; i++) {
+      final l$walletCrypto_create$entry = l$walletCrypto_create[i];
+      final lOther$walletCrypto_create$entry = lOther$walletCrypto_create[i];
+      if (l$walletCrypto_create$entry != lOther$walletCrypto_create$entry) {
         return false;
       }
     }
@@ -105,7 +105,7 @@ abstract class CopyWith$Mutation$WalletCrypto_create<TRes> {
               Iterable<
                   CopyWith$Mutation$WalletCrypto_create$walletCrypto_create<
                       Mutation$WalletCrypto_create$walletCrypto_create>>)
-          fn);
+          _fn);
 }
 
 class _CopyWithImpl$Mutation$WalletCrypto_create<TRes>
@@ -121,7 +121,6 @@ class _CopyWithImpl$Mutation$WalletCrypto_create<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? walletCrypto_create = _undefined,
     Object? $__typename = _undefined,
@@ -137,15 +136,14 @@ class _CopyWithImpl$Mutation$WalletCrypto_create<TRes>
             : ($__typename as String),
       ));
 
-  @override
   TRes walletCrypto_create(
           Iterable<Mutation$WalletCrypto_create$walletCrypto_create> Function(
                   Iterable<
                       CopyWith$Mutation$WalletCrypto_create$walletCrypto_create<
                           Mutation$WalletCrypto_create$walletCrypto_create>>)
-              fn) =>
+              _fn) =>
       call(
-          walletCrypto_create: fn(_instance.walletCrypto_create.map(
+          walletCrypto_create: _fn(_instance.walletCrypto_create.map(
               (e) => CopyWith$Mutation$WalletCrypto_create$walletCrypto_create(
                     e,
                     (i) => i,
@@ -156,17 +154,15 @@ class _CopyWithStubImpl$Mutation$WalletCrypto_create<TRes>
     implements CopyWith$Mutation$WalletCrypto_create<TRes> {
   _CopyWithStubImpl$Mutation$WalletCrypto_create(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     List<Mutation$WalletCrypto_create$walletCrypto_create>? walletCrypto_create,
     String? $__typename,
   }) =>
       _res;
 
-  @override
-  walletCrypto_create(fn) => _res;
+  walletCrypto_create(_fn) => _res;
 }
 
 const documentNodeMutationWalletCrypto_create = DocumentNode(definitions: [
@@ -241,19 +237,24 @@ typedef OnMutationCompleted$Mutation$WalletCrypto_create = FutureOr<void>
 class Options$Mutation$WalletCrypto_create
     extends graphql.MutationOptions<Mutation$WalletCrypto_create> {
   Options$Mutation$WalletCrypto_create({
-    super.operationName,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$WalletCrypto_create? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$WalletCrypto_create? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$WalletCrypto_create>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -262,6 +263,8 @@ class Options$Mutation$WalletCrypto_create
                         ? null
                         : _parserFn$Mutation$WalletCrypto_create(data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationWalletCrypto_create,
           parserFn: _parserFn$Mutation$WalletCrypto_create,
         );
@@ -280,20 +283,29 @@ class Options$Mutation$WalletCrypto_create
 class WatchOptions$Mutation$WalletCrypto_create
     extends graphql.WatchQueryOptions<Mutation$WalletCrypto_create> {
   WatchOptions$Mutation$WalletCrypto_create({
-    super.operationName,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$WalletCrypto_create? typedOptimisticResult,
-    super.context,
-    super.pollInterval,
-    super.eagerlyFetchResults,
-    super.carryForwardDataOnException,
-    super.fetchResults,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
   }) : super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           document: documentNodeMutationWalletCrypto_create,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$WalletCrypto_create,
         );
 }
@@ -303,11 +315,11 @@ extension ClientExtension$Mutation$WalletCrypto_create
   Future<graphql.QueryResult<Mutation$WalletCrypto_create>>
       mutate$WalletCrypto_create(
               [Options$Mutation$WalletCrypto_create? options]) async =>
-          await mutate(options ?? Options$Mutation$WalletCrypto_create());
+          await this.mutate(options ?? Options$Mutation$WalletCrypto_create());
   graphql.ObservableQuery<Mutation$WalletCrypto_create>
       watchMutation$WalletCrypto_create(
               [WatchOptions$Mutation$WalletCrypto_create? options]) =>
-          watchMutation(
+          this.watchMutation(
               options ?? WatchOptions$Mutation$WalletCrypto_create());
 }
 
@@ -344,19 +356,24 @@ graphql.ObservableQuery<Mutation$WalletCrypto_create>
 class WidgetOptions$Mutation$WalletCrypto_create
     extends graphql.MutationOptions<Mutation$WalletCrypto_create> {
   WidgetOptions$Mutation$WalletCrypto_create({
-    super.operationName,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$WalletCrypto_create? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$WalletCrypto_create? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$WalletCrypto_create>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -365,6 +382,8 @@ class WidgetOptions$Mutation$WalletCrypto_create
                         ? null
                         : _parserFn$Mutation$WalletCrypto_create(data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationWalletCrypto_create,
           parserFn: _parserFn$Mutation$WalletCrypto_create,
         );
@@ -393,10 +412,11 @@ typedef Builder$Mutation$WalletCrypto_create = widgets.Widget Function(
 class Mutation$WalletCrypto_create$Widget
     extends graphql_flutter.Mutation<Mutation$WalletCrypto_create> {
   Mutation$WalletCrypto_create$Widget({
-    super.key,
+    widgets.Key? key,
     WidgetOptions$Mutation$WalletCrypto_create? options,
     required Builder$Mutation$WalletCrypto_create builder,
   }) : super(
+          key: key,
           options: options ?? WidgetOptions$Mutation$WalletCrypto_create(),
           builder: (
             run,
@@ -431,13 +451,13 @@ class Mutation$WalletCrypto_create$walletCrypto_create {
     final l$address = json['address'];
     final l$chainType = json['chainType'];
     final l$id = json['id'];
-    final l$walletId = json['wallet_id'];
+    final l$wallet_id = json['wallet_id'];
     final l$$__typename = json['__typename'];
     return Mutation$WalletCrypto_create$walletCrypto_create(
       address: (l$address as String),
       chainType: fromJson$Enum$ChainType((l$chainType as String)),
       id: (l$id as num).toDouble(),
-      wallet_id: (l$walletId as String?),
+      wallet_id: (l$wallet_id as String?),
       $__typename: (l$$__typename as String),
     );
   }
@@ -453,18 +473,18 @@ class Mutation$WalletCrypto_create$walletCrypto_create {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$address = address;
-    resultData['address'] = l$address;
+    _resultData['address'] = l$address;
     final l$chainType = chainType;
-    resultData['chainType'] = toJson$Enum$ChainType(l$chainType);
+    _resultData['chainType'] = toJson$Enum$ChainType(l$chainType);
     final l$id = id;
-    resultData['id'] = l$id;
-    final l$walletId = wallet_id;
-    resultData['wallet_id'] = l$walletId;
+    _resultData['id'] = l$id;
+    final l$wallet_id = wallet_id;
+    _resultData['wallet_id'] = l$wallet_id;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -472,13 +492,13 @@ class Mutation$WalletCrypto_create$walletCrypto_create {
     final l$address = address;
     final l$chainType = chainType;
     final l$id = id;
-    final l$walletId = wallet_id;
+    final l$wallet_id = wallet_id;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$address,
       l$chainType,
       l$id,
-      l$walletId,
+      l$wallet_id,
       l$$__typename,
     ]);
   }
@@ -507,9 +527,9 @@ class Mutation$WalletCrypto_create$walletCrypto_create {
     if (l$id != lOther$id) {
       return false;
     }
-    final l$walletId = wallet_id;
-    final lother$walletId = other.wallet_id;
-    if (l$walletId != lother$walletId) {
+    final l$wallet_id = wallet_id;
+    final lOther$wallet_id = other.wallet_id;
+    if (l$wallet_id != lOther$wallet_id) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -563,7 +583,6 @@ class _CopyWithImpl$Mutation$WalletCrypto_create$walletCrypto_create<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? address = _undefined,
     Object? chainType = _undefined,
@@ -592,9 +611,8 @@ class _CopyWithStubImpl$Mutation$WalletCrypto_create$walletCrypto_create<TRes>
     implements CopyWith$Mutation$WalletCrypto_create$walletCrypto_create<TRes> {
   _CopyWithStubImpl$Mutation$WalletCrypto_create$walletCrypto_create(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     String? address,
     Enum$ChainType? chainType,
@@ -612,10 +630,10 @@ class Query$WalletCrypto_getAll {
   });
 
   factory Query$WalletCrypto_getAll.fromJson(Map<String, dynamic> json) {
-    final l$walletcryptoGetall = json['walletCrypto_getAll'];
+    final l$walletCrypto_getAll = json['walletCrypto_getAll'];
     final l$$__typename = json['__typename'];
     return Query$WalletCrypto_getAll(
-      walletCrypto_getAll: (l$walletcryptoGetall as List<dynamic>)
+      walletCrypto_getAll: (l$walletCrypto_getAll as List<dynamic>)
           .map((e) => Query$WalletCrypto_getAll$walletCrypto_getAll.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
@@ -628,21 +646,21 @@ class Query$WalletCrypto_getAll {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
-    final l$walletcryptoGetall = walletCrypto_getAll;
-    resultData['walletCrypto_getAll'] =
-        l$walletcryptoGetall.map((e) => e.toJson()).toList();
+    final _resultData = <String, dynamic>{};
+    final l$walletCrypto_getAll = walletCrypto_getAll;
+    _resultData['walletCrypto_getAll'] =
+        l$walletCrypto_getAll.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
-    final l$walletcryptoGetall = walletCrypto_getAll;
+    final l$walletCrypto_getAll = walletCrypto_getAll;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$walletcryptoGetall.map((v) => v)),
+      Object.hashAll(l$walletCrypto_getAll.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -656,15 +674,15 @@ class Query$WalletCrypto_getAll {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$walletcryptoGetall = walletCrypto_getAll;
-    final lother$walletcryptoGetall = other.walletCrypto_getAll;
-    if (l$walletcryptoGetall.length != lother$walletcryptoGetall.length) {
+    final l$walletCrypto_getAll = walletCrypto_getAll;
+    final lOther$walletCrypto_getAll = other.walletCrypto_getAll;
+    if (l$walletCrypto_getAll.length != lOther$walletCrypto_getAll.length) {
       return false;
     }
-    for (int i = 0; i < l$walletcryptoGetall.length; i++) {
-      final l$walletcryptoGetall$entry = l$walletcryptoGetall[i];
-      final lother$walletcryptoGetall$entry = lother$walletcryptoGetall[i];
-      if (l$walletcryptoGetall$entry != lother$walletcryptoGetall$entry) {
+    for (int i = 0; i < l$walletCrypto_getAll.length; i++) {
+      final l$walletCrypto_getAll$entry = l$walletCrypto_getAll[i];
+      final lOther$walletCrypto_getAll$entry = lOther$walletCrypto_getAll[i];
+      if (l$walletCrypto_getAll$entry != lOther$walletCrypto_getAll$entry) {
         return false;
       }
     }
@@ -704,7 +722,7 @@ abstract class CopyWith$Query$WalletCrypto_getAll<TRes> {
               Iterable<
                   CopyWith$Query$WalletCrypto_getAll$walletCrypto_getAll<
                       Query$WalletCrypto_getAll$walletCrypto_getAll>>)
-          fn);
+          _fn);
 }
 
 class _CopyWithImpl$Query$WalletCrypto_getAll<TRes>
@@ -720,7 +738,6 @@ class _CopyWithImpl$Query$WalletCrypto_getAll<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? walletCrypto_getAll = _undefined,
     Object? $__typename = _undefined,
@@ -736,15 +753,14 @@ class _CopyWithImpl$Query$WalletCrypto_getAll<TRes>
             : ($__typename as String),
       ));
 
-  @override
   TRes walletCrypto_getAll(
           Iterable<Query$WalletCrypto_getAll$walletCrypto_getAll> Function(
                   Iterable<
                       CopyWith$Query$WalletCrypto_getAll$walletCrypto_getAll<
                           Query$WalletCrypto_getAll$walletCrypto_getAll>>)
-              fn) =>
+              _fn) =>
       call(
-          walletCrypto_getAll: fn(_instance.walletCrypto_getAll.map(
+          walletCrypto_getAll: _fn(_instance.walletCrypto_getAll.map(
               (e) => CopyWith$Query$WalletCrypto_getAll$walletCrypto_getAll(
                     e,
                     (i) => i,
@@ -755,17 +771,15 @@ class _CopyWithStubImpl$Query$WalletCrypto_getAll<TRes>
     implements CopyWith$Query$WalletCrypto_getAll<TRes> {
   _CopyWithStubImpl$Query$WalletCrypto_getAll(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     List<Query$WalletCrypto_getAll$walletCrypto_getAll>? walletCrypto_getAll,
     String? $__typename,
   }) =>
       _res;
 
-  @override
-  walletCrypto_getAll(fn) => _res;
+  walletCrypto_getAll(_fn) => _res;
 }
 
 const documentNodeQueryWalletCrypto_getAll = DocumentNode(definitions: [
@@ -839,19 +853,25 @@ typedef OnQueryComplete$Query$WalletCrypto_getAll = FutureOr<void> Function(
 class Options$Query$WalletCrypto_getAll
     extends graphql.QueryOptions<Query$WalletCrypto_getAll> {
   Options$Query$WalletCrypto_getAll({
-    super.operationName,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Query$WalletCrypto_getAll? typedOptimisticResult,
-    super.pollInterval,
-    super.context,
+    Duration? pollInterval,
+    graphql.Context? context,
     OnQueryComplete$Query$WalletCrypto_getAll? onComplete,
-    super.onError,
+    graphql.OnQueryError? onError,
   })  : onCompleteWithParsed = onComplete,
         super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
@@ -860,6 +880,7 @@ class Options$Query$WalletCrypto_getAll
                         ? null
                         : _parserFn$Query$WalletCrypto_getAll(data),
                   ),
+          onError: onError,
           document: documentNodeQueryWalletCrypto_getAll,
           parserFn: _parserFn$Query$WalletCrypto_getAll,
         );
@@ -878,20 +899,29 @@ class Options$Query$WalletCrypto_getAll
 class WatchOptions$Query$WalletCrypto_getAll
     extends graphql.WatchQueryOptions<Query$WalletCrypto_getAll> {
   WatchOptions$Query$WalletCrypto_getAll({
-    super.operationName,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Query$WalletCrypto_getAll? typedOptimisticResult,
-    super.context,
-    super.pollInterval,
-    super.eagerlyFetchResults,
-    super.carryForwardDataOnException,
-    super.fetchResults,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
   }) : super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           document: documentNodeQueryWalletCrypto_getAll,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
           parserFn: _parserFn$Query$WalletCrypto_getAll,
         );
 }
@@ -899,8 +929,9 @@ class WatchOptions$Query$WalletCrypto_getAll
 class FetchMoreOptions$Query$WalletCrypto_getAll
     extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$WalletCrypto_getAll(
-      {required super.updateQuery})
+      {required graphql.UpdateQuery updateQuery})
       : super(
+          updateQuery: updateQuery,
           document: documentNodeQueryWalletCrypto_getAll,
         );
 }
@@ -909,16 +940,16 @@ extension ClientExtension$Query$WalletCrypto_getAll on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$WalletCrypto_getAll>>
       query$WalletCrypto_getAll(
               [Options$Query$WalletCrypto_getAll? options]) async =>
-          await query(options ?? Options$Query$WalletCrypto_getAll());
+          await this.query(options ?? Options$Query$WalletCrypto_getAll());
   graphql.ObservableQuery<Query$WalletCrypto_getAll>
       watchQuery$WalletCrypto_getAll(
               [WatchOptions$Query$WalletCrypto_getAll? options]) =>
-          watchQuery(options ?? WatchOptions$Query$WalletCrypto_getAll());
+          this.watchQuery(options ?? WatchOptions$Query$WalletCrypto_getAll());
   void writeQuery$WalletCrypto_getAll({
     required Query$WalletCrypto_getAll data,
     bool broadcast = true,
   }) =>
-      writeQuery(
+      this.writeQuery(
         graphql.Request(
             operation: graphql.Operation(
                 document: documentNodeQueryWalletCrypto_getAll)),
@@ -927,7 +958,7 @@ extension ClientExtension$Query$WalletCrypto_getAll on graphql.GraphQLClient {
       );
   Query$WalletCrypto_getAll? readQuery$WalletCrypto_getAll(
       {bool optimistic = true}) {
-    final result = readQuery(
+    final result = this.readQuery(
       graphql.Request(
           operation: graphql.Operation(
               document: documentNodeQueryWalletCrypto_getAll)),
@@ -951,11 +982,13 @@ graphql.ObservableQuery<Query$WalletCrypto_getAll>
 class Query$WalletCrypto_getAll$Widget
     extends graphql_flutter.Query<Query$WalletCrypto_getAll> {
   Query$WalletCrypto_getAll$Widget({
-    super.key,
+    widgets.Key? key,
     Options$Query$WalletCrypto_getAll? options,
-    required super.builder,
+    required graphql_flutter.QueryBuilder<Query$WalletCrypto_getAll> builder,
   }) : super(
+          key: key,
           options: options ?? Options$Query$WalletCrypto_getAll(),
+          builder: builder,
         );
 }
 
@@ -973,13 +1006,13 @@ class Query$WalletCrypto_getAll$walletCrypto_getAll {
     final l$address = json['address'];
     final l$chainType = json['chainType'];
     final l$id = json['id'];
-    final l$walletId = json['wallet_id'];
+    final l$wallet_id = json['wallet_id'];
     final l$$__typename = json['__typename'];
     return Query$WalletCrypto_getAll$walletCrypto_getAll(
       address: (l$address as String),
       chainType: fromJson$Enum$ChainType((l$chainType as String)),
       id: (l$id as num).toDouble(),
-      wallet_id: (l$walletId as String?),
+      wallet_id: (l$wallet_id as String?),
       $__typename: (l$$__typename as String),
     );
   }
@@ -995,18 +1028,18 @@ class Query$WalletCrypto_getAll$walletCrypto_getAll {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$address = address;
-    resultData['address'] = l$address;
+    _resultData['address'] = l$address;
     final l$chainType = chainType;
-    resultData['chainType'] = toJson$Enum$ChainType(l$chainType);
+    _resultData['chainType'] = toJson$Enum$ChainType(l$chainType);
     final l$id = id;
-    resultData['id'] = l$id;
-    final l$walletId = wallet_id;
-    resultData['wallet_id'] = l$walletId;
+    _resultData['id'] = l$id;
+    final l$wallet_id = wallet_id;
+    _resultData['wallet_id'] = l$wallet_id;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -1014,13 +1047,13 @@ class Query$WalletCrypto_getAll$walletCrypto_getAll {
     final l$address = address;
     final l$chainType = chainType;
     final l$id = id;
-    final l$walletId = wallet_id;
+    final l$wallet_id = wallet_id;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$address,
       l$chainType,
       l$id,
-      l$walletId,
+      l$wallet_id,
       l$$__typename,
     ]);
   }
@@ -1049,9 +1082,9 @@ class Query$WalletCrypto_getAll$walletCrypto_getAll {
     if (l$id != lOther$id) {
       return false;
     }
-    final l$walletId = wallet_id;
-    final lother$walletId = other.wallet_id;
-    if (l$walletId != lother$walletId) {
+    final l$wallet_id = wallet_id;
+    final lOther$wallet_id = other.wallet_id;
+    if (l$wallet_id != lOther$wallet_id) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -1105,7 +1138,6 @@ class _CopyWithImpl$Query$WalletCrypto_getAll$walletCrypto_getAll<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? address = _undefined,
     Object? chainType = _undefined,
@@ -1134,9 +1166,8 @@ class _CopyWithStubImpl$Query$WalletCrypto_getAll$walletCrypto_getAll<TRes>
     implements CopyWith$Query$WalletCrypto_getAll$walletCrypto_getAll<TRes> {
   _CopyWithStubImpl$Query$WalletCrypto_getAll$walletCrypto_getAll(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     String? address,
     Enum$ChainType? chainType,
@@ -1233,7 +1264,6 @@ class _CopyWithImpl$Variables$Mutation$WalletCrypto_mobileCreate<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$WalletCrypto_mobileCreate._({
         ..._instance._$data,
@@ -1246,9 +1276,8 @@ class _CopyWithStubImpl$Variables$Mutation$WalletCrypto_mobileCreate<TRes>
     implements CopyWith$Variables$Mutation$WalletCrypto_mobileCreate<TRes> {
   _CopyWithStubImpl$Variables$Mutation$WalletCrypto_mobileCreate(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({Input$Wallet_CreateInput? input}) => _res;
 }
 
@@ -1260,12 +1289,12 @@ class Mutation$WalletCrypto_mobileCreate {
 
   factory Mutation$WalletCrypto_mobileCreate.fromJson(
       Map<String, dynamic> json) {
-    final l$walletcryptoMobilecreate = json['walletCrypto_mobileCreate'];
+    final l$walletCrypto_mobileCreate = json['walletCrypto_mobileCreate'];
     final l$$__typename = json['__typename'];
     return Mutation$WalletCrypto_mobileCreate(
       walletCrypto_mobileCreate:
           Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate.fromJson(
-              (l$walletcryptoMobilecreate as Map<String, dynamic>)),
+              (l$walletCrypto_mobileCreate as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -1276,21 +1305,21 @@ class Mutation$WalletCrypto_mobileCreate {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
-    final l$walletcryptoMobilecreate = walletCrypto_mobileCreate;
-    resultData['walletCrypto_mobileCreate'] =
-        l$walletcryptoMobilecreate.toJson();
+    final _resultData = <String, dynamic>{};
+    final l$walletCrypto_mobileCreate = walletCrypto_mobileCreate;
+    _resultData['walletCrypto_mobileCreate'] =
+        l$walletCrypto_mobileCreate.toJson();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
-    final l$walletcryptoMobilecreate = walletCrypto_mobileCreate;
+    final l$walletCrypto_mobileCreate = walletCrypto_mobileCreate;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$walletcryptoMobilecreate,
+      l$walletCrypto_mobileCreate,
       l$$__typename,
     ]);
   }
@@ -1304,9 +1333,9 @@ class Mutation$WalletCrypto_mobileCreate {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$walletcryptoMobilecreate = walletCrypto_mobileCreate;
-    final lother$walletcryptoMobilecreate = other.walletCrypto_mobileCreate;
-    if (l$walletcryptoMobilecreate != lother$walletcryptoMobilecreate) {
+    final l$walletCrypto_mobileCreate = walletCrypto_mobileCreate;
+    final lOther$walletCrypto_mobileCreate = other.walletCrypto_mobileCreate;
+    if (l$walletCrypto_mobileCreate != lOther$walletCrypto_mobileCreate) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -1359,7 +1388,6 @@ class _CopyWithImpl$Mutation$WalletCrypto_mobileCreate<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? walletCrypto_mobileCreate = _undefined,
     Object? $__typename = _undefined,
@@ -1375,12 +1403,11 @@ class _CopyWithImpl$Mutation$WalletCrypto_mobileCreate<TRes>
             : ($__typename as String),
       ));
 
-  @override
   CopyWith$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate<TRes>
       get walletCrypto_mobileCreate {
-    final local$walletcryptoMobilecreate = _instance.walletCrypto_mobileCreate;
+    final local$walletCrypto_mobileCreate = _instance.walletCrypto_mobileCreate;
     return CopyWith$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate(
-        local$walletcryptoMobilecreate,
+        local$walletCrypto_mobileCreate,
         (e) => call(walletCrypto_mobileCreate: e));
   }
 }
@@ -1389,9 +1416,8 @@ class _CopyWithStubImpl$Mutation$WalletCrypto_mobileCreate<TRes>
     implements CopyWith$Mutation$WalletCrypto_mobileCreate<TRes> {
   _CopyWithStubImpl$Mutation$WalletCrypto_mobileCreate(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate?
         walletCrypto_mobileCreate,
@@ -1399,7 +1425,6 @@ class _CopyWithStubImpl$Mutation$WalletCrypto_mobileCreate<TRes>
   }) =>
       _res;
 
-  @override
   CopyWith$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate<TRes>
       get walletCrypto_mobileCreate =>
           CopyWith$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate
@@ -1473,21 +1498,26 @@ typedef OnMutationCompleted$Mutation$WalletCrypto_mobileCreate = FutureOr<void>
 class Options$Mutation$WalletCrypto_mobileCreate
     extends graphql.MutationOptions<Mutation$WalletCrypto_mobileCreate> {
   Options$Mutation$WalletCrypto_mobileCreate({
-    super.operationName,
+    String? operationName,
     required Variables$Mutation$WalletCrypto_mobileCreate variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$WalletCrypto_mobileCreate? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$WalletCrypto_mobileCreate? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$WalletCrypto_mobileCreate>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -1496,6 +1526,8 @@ class Options$Mutation$WalletCrypto_mobileCreate
                         ? null
                         : _parserFn$Mutation$WalletCrypto_mobileCreate(data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationWalletCrypto_mobileCreate,
           parserFn: _parserFn$Mutation$WalletCrypto_mobileCreate,
         );
@@ -1515,22 +1547,31 @@ class Options$Mutation$WalletCrypto_mobileCreate
 class WatchOptions$Mutation$WalletCrypto_mobileCreate
     extends graphql.WatchQueryOptions<Mutation$WalletCrypto_mobileCreate> {
   WatchOptions$Mutation$WalletCrypto_mobileCreate({
-    super.operationName,
+    String? operationName,
     required Variables$Mutation$WalletCrypto_mobileCreate variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$WalletCrypto_mobileCreate? typedOptimisticResult,
-    super.context,
-    super.pollInterval,
-    super.eagerlyFetchResults,
-    super.carryForwardDataOnException,
-    super.fetchResults,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
   }) : super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           document: documentNodeMutationWalletCrypto_mobileCreate,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$WalletCrypto_mobileCreate,
         );
 }
@@ -1540,11 +1581,11 @@ extension ClientExtension$Mutation$WalletCrypto_mobileCreate
   Future<graphql.QueryResult<Mutation$WalletCrypto_mobileCreate>>
       mutate$WalletCrypto_mobileCreate(
               Options$Mutation$WalletCrypto_mobileCreate options) async =>
-          await mutate(options);
+          await this.mutate(options);
   graphql.ObservableQuery<Mutation$WalletCrypto_mobileCreate>
       watchMutation$WalletCrypto_mobileCreate(
               WatchOptions$Mutation$WalletCrypto_mobileCreate options) =>
-          watchMutation(options);
+          this.watchMutation(options);
 }
 
 class Mutation$WalletCrypto_mobileCreate$HookResult {
@@ -1581,19 +1622,24 @@ graphql.ObservableQuery<Mutation$WalletCrypto_mobileCreate>
 class WidgetOptions$Mutation$WalletCrypto_mobileCreate
     extends graphql.MutationOptions<Mutation$WalletCrypto_mobileCreate> {
   WidgetOptions$Mutation$WalletCrypto_mobileCreate({
-    super.operationName,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$WalletCrypto_mobileCreate? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$WalletCrypto_mobileCreate? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$WalletCrypto_mobileCreate>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -1602,6 +1648,8 @@ class WidgetOptions$Mutation$WalletCrypto_mobileCreate
                         ? null
                         : _parserFn$Mutation$WalletCrypto_mobileCreate(data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationWalletCrypto_mobileCreate,
           parserFn: _parserFn$Mutation$WalletCrypto_mobileCreate,
         );
@@ -1632,10 +1680,11 @@ typedef Builder$Mutation$WalletCrypto_mobileCreate = widgets.Widget Function(
 class Mutation$WalletCrypto_mobileCreate$Widget
     extends graphql_flutter.Mutation<Mutation$WalletCrypto_mobileCreate> {
   Mutation$WalletCrypto_mobileCreate$Widget({
-    super.key,
+    widgets.Key? key,
     WidgetOptions$Mutation$WalletCrypto_mobileCreate? options,
     required Builder$Mutation$WalletCrypto_mobileCreate builder,
   }) : super(
+          key: key,
           options:
               options ?? WidgetOptions$Mutation$WalletCrypto_mobileCreate(),
           builder: (
@@ -1679,12 +1728,12 @@ class Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$message = message;
-    resultData['message'] = l$message;
+    _resultData['message'] = l$message;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -1767,7 +1816,6 @@ class _CopyWithImpl$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? message = _undefined,
     Object? $__typename = _undefined,
@@ -1790,9 +1838,8 @@ class _CopyWithStubImpl$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCr
   _CopyWithStubImpl$Mutation$WalletCrypto_mobileCreate$walletCrypto_mobileCreate(
       this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     String? message,
     String? $__typename,

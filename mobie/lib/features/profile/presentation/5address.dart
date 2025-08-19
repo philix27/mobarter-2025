@@ -1,18 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mobarter/features/profile/logic/model.dart';
-import 'package:mobarter/features/profile/logic/provider.dart';
-import 'package:mobarter/features/profile/presentation/row_btn.dart';
+import 'package:mobarter/graphql/schema/_docs.graphql.dart';
+import 'package:mobarter/graphql/schema/kyc.gql.dart';
+import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/widgets/widgets.dart';
 
-class HomeAddress5 extends ConsumerWidget {
+class HomeAddress5 extends HookConsumerWidget {
   HomeAddress5({super.key});
   TextEditingController homeAddress = TextEditingController();
   TextEditingController stateAddress = TextEditingController();
+  TextEditingController street = TextEditingController();
 
   @override
   Widget build(BuildContext context, ref) {
-    final read = kycFormRead(ref);
+    final mutation = useMutation$Kyc_addAddressInfo();
+
+    submit() async {
+      try {
+        require(homeAddress.text, "Home Address needed");
+        require(stateAddress.text, "State Address needed");
+        require(street.text, "Street needed");
+
+        await mutation
+            .runMutation(
+              Variables$Mutation$Kyc_addAddressInfo(
+                input: Input$Kyc_AddAddressInfoInput(
+                  country: Enum$Country.NG,
+                  houseAddress: homeAddress.text,
+                  state: stateAddress.text,
+                  street: street.text,
+                ),
+              ),
+            )
+            .networkResult;
+
+        appToast(context, "Record submitted");
+        Navigator.of(context).pop();
+      } catch (e) {
+        appToastErr(context, e.toString());
+      }
+    }
+
     return Column(
       spacing: 20,
       children: [
@@ -25,12 +53,19 @@ class HomeAddress5 extends ConsumerWidget {
         ),
         textField(
           context,
+          label: 'Street',
+          maxLength: 100,
+          controller: street,
+          keyboardType: TextInputType.streetAddress,
+        ),
+        textField(
+          context,
           label: 'Home Address',
           maxLength: 100,
           controller: homeAddress,
           keyboardType: TextInputType.streetAddress,
         ),
-         Btn(
+        Btn(
           title: "Submit",
           onPressed: () {
             appToast(context, "Submitted successfully");

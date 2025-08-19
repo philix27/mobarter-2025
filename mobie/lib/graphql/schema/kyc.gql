@@ -10,15 +10,8 @@ mutation kyc_addAddressProof($input: Kyc_AddAddressProofInput!) {
   }
 }
 
-mutation kyc_addBvn($input: Kyc_AddBvnInput!) {
-  kyc_addBvn(input:$input) {
-     message
-  }
-}
-
-
-mutation kyc_addDob($input: Kyc_AddDobInput!) {
-  kyc_addDob(input:$input) {
+mutation kyc_addBvnNin($input: Kyc_AddBvnNinInput!) {
+  kyc_addBvnNin(input:$input) {
      message
   }
 }
@@ -32,12 +25,6 @@ mutation kyc_addNames($input: Kyc_AddNamesInput!) {
 }
 
 
-
-mutation kyc_addNin($input: Kyc_AddNinInput!) {
-  kyc_addNin(input:$input) {
-     message
-  }
-}
 
 
 mutation kyc_createTransactionPin($input: Kyc_CreateTransactionPinInput!) {

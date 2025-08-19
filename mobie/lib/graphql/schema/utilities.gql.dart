@@ -91,7 +91,6 @@ class _CopyWithImpl$Variables$Mutation$Utility_purchaseAirtime<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$Utility_purchaseAirtime._({
         ..._instance._$data,
@@ -104,9 +103,8 @@ class _CopyWithStubImpl$Variables$Mutation$Utility_purchaseAirtime<TRes>
     implements CopyWith$Variables$Mutation$Utility_purchaseAirtime<TRes> {
   _CopyWithStubImpl$Variables$Mutation$Utility_purchaseAirtime(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({Input$Utilities_PurchaseAirtimeInput? input}) => _res;
 }
 
@@ -117,12 +115,12 @@ class Mutation$Utility_purchaseAirtime {
   });
 
   factory Mutation$Utility_purchaseAirtime.fromJson(Map<String, dynamic> json) {
-    final l$utilityPurchaseairtime = json['utility_purchaseAirtime'];
+    final l$utility_purchaseAirtime = json['utility_purchaseAirtime'];
     final l$$__typename = json['__typename'];
     return Mutation$Utility_purchaseAirtime(
       utility_purchaseAirtime:
           Mutation$Utility_purchaseAirtime$utility_purchaseAirtime.fromJson(
-              (l$utilityPurchaseairtime as Map<String, dynamic>)),
+              (l$utility_purchaseAirtime as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -133,20 +131,20 @@ class Mutation$Utility_purchaseAirtime {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
-    final l$utilityPurchaseairtime = utility_purchaseAirtime;
-    resultData['utility_purchaseAirtime'] = l$utilityPurchaseairtime.toJson();
+    final _resultData = <String, dynamic>{};
+    final l$utility_purchaseAirtime = utility_purchaseAirtime;
+    _resultData['utility_purchaseAirtime'] = l$utility_purchaseAirtime.toJson();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
-    final l$utilityPurchaseairtime = utility_purchaseAirtime;
+    final l$utility_purchaseAirtime = utility_purchaseAirtime;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$utilityPurchaseairtime,
+      l$utility_purchaseAirtime,
       l$$__typename,
     ]);
   }
@@ -160,9 +158,9 @@ class Mutation$Utility_purchaseAirtime {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$utilityPurchaseairtime = utility_purchaseAirtime;
-    final lother$utilityPurchaseairtime = other.utility_purchaseAirtime;
-    if (l$utilityPurchaseairtime != lother$utilityPurchaseairtime) {
+    final l$utility_purchaseAirtime = utility_purchaseAirtime;
+    final lOther$utility_purchaseAirtime = other.utility_purchaseAirtime;
+    if (l$utility_purchaseAirtime != lOther$utility_purchaseAirtime) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -214,7 +212,6 @@ class _CopyWithImpl$Mutation$Utility_purchaseAirtime<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? utility_purchaseAirtime = _undefined,
     Object? $__typename = _undefined,
@@ -230,12 +227,11 @@ class _CopyWithImpl$Mutation$Utility_purchaseAirtime<TRes>
             : ($__typename as String),
       ));
 
-  @override
   CopyWith$Mutation$Utility_purchaseAirtime$utility_purchaseAirtime<TRes>
       get utility_purchaseAirtime {
-    final local$utilityPurchaseairtime = _instance.utility_purchaseAirtime;
+    final local$utility_purchaseAirtime = _instance.utility_purchaseAirtime;
     return CopyWith$Mutation$Utility_purchaseAirtime$utility_purchaseAirtime(
-        local$utilityPurchaseairtime, (e) => call(utility_purchaseAirtime: e));
+        local$utility_purchaseAirtime, (e) => call(utility_purchaseAirtime: e));
   }
 }
 
@@ -243,9 +239,8 @@ class _CopyWithStubImpl$Mutation$Utility_purchaseAirtime<TRes>
     implements CopyWith$Mutation$Utility_purchaseAirtime<TRes> {
   _CopyWithStubImpl$Mutation$Utility_purchaseAirtime(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     Mutation$Utility_purchaseAirtime$utility_purchaseAirtime?
         utility_purchaseAirtime,
@@ -253,7 +248,6 @@ class _CopyWithStubImpl$Mutation$Utility_purchaseAirtime<TRes>
   }) =>
       _res;
 
-  @override
   CopyWith$Mutation$Utility_purchaseAirtime$utility_purchaseAirtime<TRes>
       get utility_purchaseAirtime =>
           CopyWith$Mutation$Utility_purchaseAirtime$utility_purchaseAirtime
@@ -333,21 +327,26 @@ typedef OnMutationCompleted$Mutation$Utility_purchaseAirtime = FutureOr<void>
 class Options$Mutation$Utility_purchaseAirtime
     extends graphql.MutationOptions<Mutation$Utility_purchaseAirtime> {
   Options$Mutation$Utility_purchaseAirtime({
-    super.operationName,
+    String? operationName,
     required Variables$Mutation$Utility_purchaseAirtime variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$Utility_purchaseAirtime? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$Utility_purchaseAirtime? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$Utility_purchaseAirtime>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -356,6 +355,8 @@ class Options$Mutation$Utility_purchaseAirtime
                         ? null
                         : _parserFn$Mutation$Utility_purchaseAirtime(data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationUtility_purchaseAirtime,
           parserFn: _parserFn$Mutation$Utility_purchaseAirtime,
         );
@@ -375,22 +376,31 @@ class Options$Mutation$Utility_purchaseAirtime
 class WatchOptions$Mutation$Utility_purchaseAirtime
     extends graphql.WatchQueryOptions<Mutation$Utility_purchaseAirtime> {
   WatchOptions$Mutation$Utility_purchaseAirtime({
-    super.operationName,
+    String? operationName,
     required Variables$Mutation$Utility_purchaseAirtime variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$Utility_purchaseAirtime? typedOptimisticResult,
-    super.context,
-    super.pollInterval,
-    super.eagerlyFetchResults,
-    super.carryForwardDataOnException,
-    super.fetchResults,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
   }) : super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           document: documentNodeMutationUtility_purchaseAirtime,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$Utility_purchaseAirtime,
         );
 }
@@ -400,11 +410,11 @@ extension ClientExtension$Mutation$Utility_purchaseAirtime
   Future<graphql.QueryResult<Mutation$Utility_purchaseAirtime>>
       mutate$Utility_purchaseAirtime(
               Options$Mutation$Utility_purchaseAirtime options) async =>
-          await mutate(options);
+          await this.mutate(options);
   graphql.ObservableQuery<Mutation$Utility_purchaseAirtime>
       watchMutation$Utility_purchaseAirtime(
               WatchOptions$Mutation$Utility_purchaseAirtime options) =>
-          watchMutation(options);
+          this.watchMutation(options);
 }
 
 class Mutation$Utility_purchaseAirtime$HookResult {
@@ -440,19 +450,24 @@ graphql.ObservableQuery<Mutation$Utility_purchaseAirtime>
 class WidgetOptions$Mutation$Utility_purchaseAirtime
     extends graphql.MutationOptions<Mutation$Utility_purchaseAirtime> {
   WidgetOptions$Mutation$Utility_purchaseAirtime({
-    super.operationName,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$Utility_purchaseAirtime? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$Utility_purchaseAirtime? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$Utility_purchaseAirtime>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -461,6 +476,8 @@ class WidgetOptions$Mutation$Utility_purchaseAirtime
                         ? null
                         : _parserFn$Mutation$Utility_purchaseAirtime(data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationUtility_purchaseAirtime,
           parserFn: _parserFn$Mutation$Utility_purchaseAirtime,
         );
@@ -491,10 +508,11 @@ typedef Builder$Mutation$Utility_purchaseAirtime = widgets.Widget Function(
 class Mutation$Utility_purchaseAirtime$Widget
     extends graphql_flutter.Mutation<Mutation$Utility_purchaseAirtime> {
   Mutation$Utility_purchaseAirtime$Widget({
-    super.key,
+    widgets.Key? key,
     WidgetOptions$Mutation$Utility_purchaseAirtime? options,
     required Builder$Mutation$Utility_purchaseAirtime builder,
   }) : super(
+          key: key,
           options: options ?? WidgetOptions$Mutation$Utility_purchaseAirtime(),
           builder: (
             run,
@@ -542,14 +560,14 @@ class Mutation$Utility_purchaseAirtime$utility_purchaseAirtime {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$title = title;
-    resultData['title'] = l$title;
+    _resultData['title'] = l$title;
     final l$subtitle = subtitle;
-    resultData['subtitle'] = l$subtitle;
+    _resultData['subtitle'] = l$subtitle;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -639,7 +657,6 @@ class _CopyWithImpl$Mutation$Utility_purchaseAirtime$utility_purchaseAirtime<
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? title = _undefined,
     Object? subtitle = _undefined,
@@ -666,9 +683,8 @@ class _CopyWithStubImpl$Mutation$Utility_purchaseAirtime$utility_purchaseAirtime
   _CopyWithStubImpl$Mutation$Utility_purchaseAirtime$utility_purchaseAirtime(
       this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     String? title,
     String? subtitle,
@@ -764,7 +780,6 @@ class _CopyWithImpl$Variables$Mutation$Utility_purchaseDataBundle<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$Utility_purchaseDataBundle._({
         ..._instance._$data,
@@ -777,9 +792,8 @@ class _CopyWithStubImpl$Variables$Mutation$Utility_purchaseDataBundle<TRes>
     implements CopyWith$Variables$Mutation$Utility_purchaseDataBundle<TRes> {
   _CopyWithStubImpl$Variables$Mutation$Utility_purchaseDataBundle(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({Input$Utilities_PurchaseDataBundleInput? input}) => _res;
 }
 
@@ -791,12 +805,12 @@ class Mutation$Utility_purchaseDataBundle {
 
   factory Mutation$Utility_purchaseDataBundle.fromJson(
       Map<String, dynamic> json) {
-    final l$utilityPurchasedatabundle = json['utility_purchaseDataBundle'];
+    final l$utility_purchaseDataBundle = json['utility_purchaseDataBundle'];
     final l$$__typename = json['__typename'];
     return Mutation$Utility_purchaseDataBundle(
       utility_purchaseDataBundle:
           Mutation$Utility_purchaseDataBundle$utility_purchaseDataBundle
-              .fromJson((l$utilityPurchasedatabundle as Map<String, dynamic>)),
+              .fromJson((l$utility_purchaseDataBundle as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -807,21 +821,21 @@ class Mutation$Utility_purchaseDataBundle {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
-    final l$utilityPurchasedatabundle = utility_purchaseDataBundle;
-    resultData['utility_purchaseDataBundle'] =
-        l$utilityPurchasedatabundle.toJson();
+    final _resultData = <String, dynamic>{};
+    final l$utility_purchaseDataBundle = utility_purchaseDataBundle;
+    _resultData['utility_purchaseDataBundle'] =
+        l$utility_purchaseDataBundle.toJson();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
-    final l$utilityPurchasedatabundle = utility_purchaseDataBundle;
+    final l$utility_purchaseDataBundle = utility_purchaseDataBundle;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$utilityPurchasedatabundle,
+      l$utility_purchaseDataBundle,
       l$$__typename,
     ]);
   }
@@ -835,9 +849,9 @@ class Mutation$Utility_purchaseDataBundle {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$utilityPurchasedatabundle = utility_purchaseDataBundle;
-    final lother$utilityPurchasedatabundle = other.utility_purchaseDataBundle;
-    if (l$utilityPurchasedatabundle != lother$utilityPurchasedatabundle) {
+    final l$utility_purchaseDataBundle = utility_purchaseDataBundle;
+    final lOther$utility_purchaseDataBundle = other.utility_purchaseDataBundle;
+    if (l$utility_purchaseDataBundle != lOther$utility_purchaseDataBundle) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -890,7 +904,6 @@ class _CopyWithImpl$Mutation$Utility_purchaseDataBundle<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? utility_purchaseDataBundle = _undefined,
     Object? $__typename = _undefined,
@@ -906,13 +919,12 @@ class _CopyWithImpl$Mutation$Utility_purchaseDataBundle<TRes>
             : ($__typename as String),
       ));
 
-  @override
   CopyWith$Mutation$Utility_purchaseDataBundle$utility_purchaseDataBundle<TRes>
       get utility_purchaseDataBundle {
-    final local$utilityPurchasedatabundle =
+    final local$utility_purchaseDataBundle =
         _instance.utility_purchaseDataBundle;
     return CopyWith$Mutation$Utility_purchaseDataBundle$utility_purchaseDataBundle(
-        local$utilityPurchasedatabundle,
+        local$utility_purchaseDataBundle,
         (e) => call(utility_purchaseDataBundle: e));
   }
 }
@@ -921,9 +933,8 @@ class _CopyWithStubImpl$Mutation$Utility_purchaseDataBundle<TRes>
     implements CopyWith$Mutation$Utility_purchaseDataBundle<TRes> {
   _CopyWithStubImpl$Mutation$Utility_purchaseDataBundle(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     Mutation$Utility_purchaseDataBundle$utility_purchaseDataBundle?
         utility_purchaseDataBundle,
@@ -931,7 +942,6 @@ class _CopyWithStubImpl$Mutation$Utility_purchaseDataBundle<TRes>
   }) =>
       _res;
 
-  @override
   CopyWith$Mutation$Utility_purchaseDataBundle$utility_purchaseDataBundle<TRes>
       get utility_purchaseDataBundle =>
           CopyWith$Mutation$Utility_purchaseDataBundle$utility_purchaseDataBundle
@@ -1012,21 +1022,26 @@ typedef OnMutationCompleted$Mutation$Utility_purchaseDataBundle = FutureOr<void>
 class Options$Mutation$Utility_purchaseDataBundle
     extends graphql.MutationOptions<Mutation$Utility_purchaseDataBundle> {
   Options$Mutation$Utility_purchaseDataBundle({
-    super.operationName,
+    String? operationName,
     required Variables$Mutation$Utility_purchaseDataBundle variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$Utility_purchaseDataBundle? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$Utility_purchaseDataBundle? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$Utility_purchaseDataBundle>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -1035,6 +1050,8 @@ class Options$Mutation$Utility_purchaseDataBundle
                         ? null
                         : _parserFn$Mutation$Utility_purchaseDataBundle(data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationUtility_purchaseDataBundle,
           parserFn: _parserFn$Mutation$Utility_purchaseDataBundle,
         );
@@ -1054,22 +1071,31 @@ class Options$Mutation$Utility_purchaseDataBundle
 class WatchOptions$Mutation$Utility_purchaseDataBundle
     extends graphql.WatchQueryOptions<Mutation$Utility_purchaseDataBundle> {
   WatchOptions$Mutation$Utility_purchaseDataBundle({
-    super.operationName,
+    String? operationName,
     required Variables$Mutation$Utility_purchaseDataBundle variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$Utility_purchaseDataBundle? typedOptimisticResult,
-    super.context,
-    super.pollInterval,
-    super.eagerlyFetchResults,
-    super.carryForwardDataOnException,
-    super.fetchResults,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
   }) : super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           document: documentNodeMutationUtility_purchaseDataBundle,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$Utility_purchaseDataBundle,
         );
 }
@@ -1079,11 +1105,11 @@ extension ClientExtension$Mutation$Utility_purchaseDataBundle
   Future<graphql.QueryResult<Mutation$Utility_purchaseDataBundle>>
       mutate$Utility_purchaseDataBundle(
               Options$Mutation$Utility_purchaseDataBundle options) async =>
-          await mutate(options);
+          await this.mutate(options);
   graphql.ObservableQuery<Mutation$Utility_purchaseDataBundle>
       watchMutation$Utility_purchaseDataBundle(
               WatchOptions$Mutation$Utility_purchaseDataBundle options) =>
-          watchMutation(options);
+          this.watchMutation(options);
 }
 
 class Mutation$Utility_purchaseDataBundle$HookResult {
@@ -1120,19 +1146,24 @@ graphql.ObservableQuery<Mutation$Utility_purchaseDataBundle>
 class WidgetOptions$Mutation$Utility_purchaseDataBundle
     extends graphql.MutationOptions<Mutation$Utility_purchaseDataBundle> {
   WidgetOptions$Mutation$Utility_purchaseDataBundle({
-    super.operationName,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$Utility_purchaseDataBundle? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$Utility_purchaseDataBundle? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$Utility_purchaseDataBundle>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -1141,6 +1172,8 @@ class WidgetOptions$Mutation$Utility_purchaseDataBundle
                         ? null
                         : _parserFn$Mutation$Utility_purchaseDataBundle(data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationUtility_purchaseDataBundle,
           parserFn: _parserFn$Mutation$Utility_purchaseDataBundle,
         );
@@ -1171,10 +1204,11 @@ typedef Builder$Mutation$Utility_purchaseDataBundle = widgets.Widget Function(
 class Mutation$Utility_purchaseDataBundle$Widget
     extends graphql_flutter.Mutation<Mutation$Utility_purchaseDataBundle> {
   Mutation$Utility_purchaseDataBundle$Widget({
-    super.key,
+    widgets.Key? key,
     WidgetOptions$Mutation$Utility_purchaseDataBundle? options,
     required Builder$Mutation$Utility_purchaseDataBundle builder,
   }) : super(
+          key: key,
           options:
               options ?? WidgetOptions$Mutation$Utility_purchaseDataBundle(),
           builder: (
@@ -1223,14 +1257,14 @@ class Mutation$Utility_purchaseDataBundle$utility_purchaseDataBundle {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$title = title;
-    resultData['title'] = l$title;
+    _resultData['title'] = l$title;
     final l$subtitle = subtitle;
-    resultData['subtitle'] = l$subtitle;
+    _resultData['subtitle'] = l$subtitle;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -1323,7 +1357,6 @@ class _CopyWithImpl$Mutation$Utility_purchaseDataBundle$utility_purchaseDataBund
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? title = _undefined,
     Object? subtitle = _undefined,
@@ -1350,9 +1383,8 @@ class _CopyWithStubImpl$Mutation$Utility_purchaseDataBundle$utility_purchaseData
   _CopyWithStubImpl$Mutation$Utility_purchaseDataBundle$utility_purchaseDataBundle(
       this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     String? title,
     String? subtitle,
@@ -1447,7 +1479,6 @@ class _CopyWithImpl$Variables$Query$ElectricityBill_getProviders<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Query$ElectricityBill_getProviders._({
         ..._instance._$data,
@@ -1460,9 +1491,8 @@ class _CopyWithStubImpl$Variables$Query$ElectricityBill_getProviders<TRes>
     implements CopyWith$Variables$Query$ElectricityBill_getProviders<TRes> {
   _CopyWithStubImpl$Variables$Query$ElectricityBill_getProviders(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({Input$ElectricityBill_ProviderInput? input}) => _res;
 }
 
@@ -1474,10 +1504,10 @@ class Query$ElectricityBill_getProviders {
 
   factory Query$ElectricityBill_getProviders.fromJson(
       Map<String, dynamic> json) {
-    final l$electricitybillGetproviders = json['electricityBill_getProviders'];
+    final l$electricityBill_getProviders = json['electricityBill_getProviders'];
     final l$$__typename = json['__typename'];
     return Query$ElectricityBill_getProviders(
-      electricityBill_getProviders: (l$electricitybillGetproviders
+      electricityBill_getProviders: (l$electricityBill_getProviders
               as List<dynamic>)
           .map((e) =>
               Query$ElectricityBill_getProviders$electricityBill_getProviders
@@ -1493,21 +1523,21 @@ class Query$ElectricityBill_getProviders {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
-    final l$electricitybillGetproviders = electricityBill_getProviders;
-    resultData['electricityBill_getProviders'] =
-        l$electricitybillGetproviders.map((e) => e.toJson()).toList();
+    final _resultData = <String, dynamic>{};
+    final l$electricityBill_getProviders = electricityBill_getProviders;
+    _resultData['electricityBill_getProviders'] =
+        l$electricityBill_getProviders.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
-    final l$electricitybillGetproviders = electricityBill_getProviders;
+    final l$electricityBill_getProviders = electricityBill_getProviders;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$electricitybillGetproviders.map((v) => v)),
+      Object.hashAll(l$electricityBill_getProviders.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -1521,20 +1551,20 @@ class Query$ElectricityBill_getProviders {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$electricitybillGetproviders = electricityBill_getProviders;
-    final lother$electricitybillGetproviders =
+    final l$electricityBill_getProviders = electricityBill_getProviders;
+    final lOther$electricityBill_getProviders =
         other.electricityBill_getProviders;
-    if (l$electricitybillGetproviders.length !=
-        lother$electricitybillGetproviders.length) {
+    if (l$electricityBill_getProviders.length !=
+        lOther$electricityBill_getProviders.length) {
       return false;
     }
-    for (int i = 0; i < l$electricitybillGetproviders.length; i++) {
-      final l$electricitybillGetproviders$entry =
-          l$electricitybillGetproviders[i];
-      final lother$electricitybillGetproviders$entry =
-          lother$electricitybillGetproviders[i];
-      if (l$electricitybillGetproviders$entry !=
-          lother$electricitybillGetproviders$entry) {
+    for (int i = 0; i < l$electricityBill_getProviders.length; i++) {
+      final l$electricityBill_getProviders$entry =
+          l$electricityBill_getProviders[i];
+      final lOther$electricityBill_getProviders$entry =
+          lOther$electricityBill_getProviders[i];
+      if (l$electricityBill_getProviders$entry !=
+          lOther$electricityBill_getProviders$entry) {
         return false;
       }
     }
@@ -1576,7 +1606,7 @@ abstract class CopyWith$Query$ElectricityBill_getProviders<TRes> {
               Iterable<
                   CopyWith$Query$ElectricityBill_getProviders$electricityBill_getProviders<
                       Query$ElectricityBill_getProviders$electricityBill_getProviders>>)
-          fn);
+          _fn);
 }
 
 class _CopyWithImpl$Query$ElectricityBill_getProviders<TRes>
@@ -1592,7 +1622,6 @@ class _CopyWithImpl$Query$ElectricityBill_getProviders<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? electricityBill_getProviders = _undefined,
     Object? $__typename = _undefined,
@@ -1609,15 +1638,14 @@ class _CopyWithImpl$Query$ElectricityBill_getProviders<TRes>
             : ($__typename as String),
       ));
 
-  @override
   TRes electricityBill_getProviders(
           Iterable<Query$ElectricityBill_getProviders$electricityBill_getProviders> Function(
                   Iterable<
                       CopyWith$Query$ElectricityBill_getProviders$electricityBill_getProviders<
                           Query$ElectricityBill_getProviders$electricityBill_getProviders>>)
-              fn) =>
+              _fn) =>
       call(
-          electricityBill_getProviders: fn(
+          electricityBill_getProviders: _fn(
               _instance.electricityBill_getProviders.map((e) =>
                   CopyWith$Query$ElectricityBill_getProviders$electricityBill_getProviders(
                     e,
@@ -1629,9 +1657,8 @@ class _CopyWithStubImpl$Query$ElectricityBill_getProviders<TRes>
     implements CopyWith$Query$ElectricityBill_getProviders<TRes> {
   _CopyWithStubImpl$Query$ElectricityBill_getProviders(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     List<Query$ElectricityBill_getProviders$electricityBill_getProviders>?
         electricityBill_getProviders,
@@ -1639,8 +1666,7 @@ class _CopyWithStubImpl$Query$ElectricityBill_getProviders<TRes>
   }) =>
       _res;
 
-  @override
-  electricityBill_getProviders(fn) => _res;
+  electricityBill_getProviders(_fn) => _res;
 }
 
 const documentNodeQueryElectricityBill_getProviders =
@@ -1724,21 +1750,27 @@ typedef OnQueryComplete$Query$ElectricityBill_getProviders = FutureOr<void>
 class Options$Query$ElectricityBill_getProviders
     extends graphql.QueryOptions<Query$ElectricityBill_getProviders> {
   Options$Query$ElectricityBill_getProviders({
-    super.operationName,
+    String? operationName,
     required Variables$Query$ElectricityBill_getProviders variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Query$ElectricityBill_getProviders? typedOptimisticResult,
-    super.pollInterval,
-    super.context,
+    Duration? pollInterval,
+    graphql.Context? context,
     OnQueryComplete$Query$ElectricityBill_getProviders? onComplete,
-    super.onError,
+    graphql.OnQueryError? onError,
   })  : onCompleteWithParsed = onComplete,
         super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
@@ -1747,6 +1779,7 @@ class Options$Query$ElectricityBill_getProviders
                         ? null
                         : _parserFn$Query$ElectricityBill_getProviders(data),
                   ),
+          onError: onError,
           document: documentNodeQueryElectricityBill_getProviders,
           parserFn: _parserFn$Query$ElectricityBill_getProviders,
         );
@@ -1766,22 +1799,31 @@ class Options$Query$ElectricityBill_getProviders
 class WatchOptions$Query$ElectricityBill_getProviders
     extends graphql.WatchQueryOptions<Query$ElectricityBill_getProviders> {
   WatchOptions$Query$ElectricityBill_getProviders({
-    super.operationName,
+    String? operationName,
     required Variables$Query$ElectricityBill_getProviders variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Query$ElectricityBill_getProviders? typedOptimisticResult,
-    super.context,
-    super.pollInterval,
-    super.eagerlyFetchResults,
-    super.carryForwardDataOnException,
-    super.fetchResults,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
   }) : super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           document: documentNodeQueryElectricityBill_getProviders,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
           parserFn: _parserFn$Query$ElectricityBill_getProviders,
         );
 }
@@ -1789,9 +1831,10 @@ class WatchOptions$Query$ElectricityBill_getProviders
 class FetchMoreOptions$Query$ElectricityBill_getProviders
     extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$ElectricityBill_getProviders({
-    required super.updateQuery,
+    required graphql.UpdateQuery updateQuery,
     required Variables$Query$ElectricityBill_getProviders variables,
   }) : super(
+          updateQuery: updateQuery,
           variables: variables.toJson(),
           document: documentNodeQueryElectricityBill_getProviders,
         );
@@ -1802,17 +1845,17 @@ extension ClientExtension$Query$ElectricityBill_getProviders
   Future<graphql.QueryResult<Query$ElectricityBill_getProviders>>
       query$ElectricityBill_getProviders(
               Options$Query$ElectricityBill_getProviders options) async =>
-          await query(options);
+          await this.query(options);
   graphql.ObservableQuery<Query$ElectricityBill_getProviders>
       watchQuery$ElectricityBill_getProviders(
               WatchOptions$Query$ElectricityBill_getProviders options) =>
-          watchQuery(options);
+          this.watchQuery(options);
   void writeQuery$ElectricityBill_getProviders({
     required Query$ElectricityBill_getProviders data,
     required Variables$Query$ElectricityBill_getProviders variables,
     bool broadcast = true,
   }) =>
-      writeQuery(
+      this.writeQuery(
         graphql.Request(
           operation: graphql.Operation(
               document: documentNodeQueryElectricityBill_getProviders),
@@ -1825,7 +1868,7 @@ extension ClientExtension$Query$ElectricityBill_getProviders
     required Variables$Query$ElectricityBill_getProviders variables,
     bool optimistic = true,
   }) {
-    final result = readQuery(
+    final result = this.readQuery(
       graphql.Request(
         operation: graphql.Operation(
             document: documentNodeQueryElectricityBill_getProviders),
@@ -1850,11 +1893,16 @@ graphql.ObservableQuery<Query$ElectricityBill_getProviders>
 
 class Query$ElectricityBill_getProviders$Widget
     extends graphql_flutter.Query<Query$ElectricityBill_getProviders> {
-  const Query$ElectricityBill_getProviders$Widget({
-    super.key,
-    required Options$Query$ElectricityBill_getProviders super.options,
-    required super.builder,
-  });
+  Query$ElectricityBill_getProviders$Widget({
+    widgets.Key? key,
+    required Options$Query$ElectricityBill_getProviders options,
+    required graphql_flutter.QueryBuilder<Query$ElectricityBill_getProviders>
+        builder,
+  }) : super(
+          key: key,
+          options: options,
+          builder: builder,
+        );
 }
 
 class Query$ElectricityBill_getProviders$electricityBill_getProviders {
@@ -1888,16 +1936,16 @@ class Query$ElectricityBill_getProviders$electricityBill_getProviders {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$name = name;
-    resultData['name'] = l$name;
+    _resultData['name'] = l$name;
     final l$logo = logo;
-    resultData['logo'] = l$logo;
+    _resultData['logo'] = l$logo;
     final l$category = category;
-    resultData['category'] = l$category;
+    _resultData['category'] = l$category;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -1998,7 +2046,6 @@ class _CopyWithImpl$Query$ElectricityBill_getProviders$electricityBill_getProvid
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? name = _undefined,
     Object? logo = _undefined,
@@ -2029,9 +2076,8 @@ class _CopyWithStubImpl$Query$ElectricityBill_getProviders$electricityBill_getPr
   _CopyWithStubImpl$Query$ElectricityBill_getProviders$electricityBill_getProviders(
       this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     String? name,
     String? logo,
@@ -2128,7 +2174,6 @@ class _CopyWithImpl$Variables$Mutation$ElectricityBill_verifyAccount<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$ElectricityBill_verifyAccount._({
         ..._instance._$data,
@@ -2141,9 +2186,8 @@ class _CopyWithStubImpl$Variables$Mutation$ElectricityBill_verifyAccount<TRes>
     implements CopyWith$Variables$Mutation$ElectricityBill_verifyAccount<TRes> {
   _CopyWithStubImpl$Variables$Mutation$ElectricityBill_verifyAccount(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({Input$ElectricityBill_ValidateAccountInput? input}) => _res;
 }
 
@@ -2155,14 +2199,14 @@ class Mutation$ElectricityBill_verifyAccount {
 
   factory Mutation$ElectricityBill_verifyAccount.fromJson(
       Map<String, dynamic> json) {
-    final l$electricitybillVerifyaccount =
+    final l$electricityBill_verifyAccount =
         json['electricityBill_verifyAccount'];
     final l$$__typename = json['__typename'];
     return Mutation$ElectricityBill_verifyAccount(
       electricityBill_verifyAccount:
           Mutation$ElectricityBill_verifyAccount$electricityBill_verifyAccount
               .fromJson(
-                  (l$electricitybillVerifyaccount as Map<String, dynamic>)),
+                  (l$electricityBill_verifyAccount as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -2173,21 +2217,21 @@ class Mutation$ElectricityBill_verifyAccount {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
-    final l$electricitybillVerifyaccount = electricityBill_verifyAccount;
-    resultData['electricityBill_verifyAccount'] =
-        l$electricitybillVerifyaccount.toJson();
+    final _resultData = <String, dynamic>{};
+    final l$electricityBill_verifyAccount = electricityBill_verifyAccount;
+    _resultData['electricityBill_verifyAccount'] =
+        l$electricityBill_verifyAccount.toJson();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
-    final l$electricitybillVerifyaccount = electricityBill_verifyAccount;
+    final l$electricityBill_verifyAccount = electricityBill_verifyAccount;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$electricitybillVerifyaccount,
+      l$electricityBill_verifyAccount,
       l$$__typename,
     ]);
   }
@@ -2201,11 +2245,11 @@ class Mutation$ElectricityBill_verifyAccount {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$electricitybillVerifyaccount = electricityBill_verifyAccount;
-    final lother$electricitybillVerifyaccount =
+    final l$electricityBill_verifyAccount = electricityBill_verifyAccount;
+    final lOther$electricityBill_verifyAccount =
         other.electricityBill_verifyAccount;
-    if (l$electricitybillVerifyaccount !=
-        lother$electricitybillVerifyaccount) {
+    if (l$electricityBill_verifyAccount !=
+        lOther$electricityBill_verifyAccount) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -2258,7 +2302,6 @@ class _CopyWithImpl$Mutation$ElectricityBill_verifyAccount<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? electricityBill_verifyAccount = _undefined,
     Object? $__typename = _undefined,
@@ -2275,13 +2318,12 @@ class _CopyWithImpl$Mutation$ElectricityBill_verifyAccount<TRes>
             : ($__typename as String),
       ));
 
-  @override
   CopyWith$Mutation$ElectricityBill_verifyAccount$electricityBill_verifyAccount<
       TRes> get electricityBill_verifyAccount {
-    final local$electricitybillVerifyaccount =
+    final local$electricityBill_verifyAccount =
         _instance.electricityBill_verifyAccount;
     return CopyWith$Mutation$ElectricityBill_verifyAccount$electricityBill_verifyAccount(
-        local$electricitybillVerifyaccount,
+        local$electricityBill_verifyAccount,
         (e) => call(electricityBill_verifyAccount: e));
   }
 }
@@ -2290,9 +2332,8 @@ class _CopyWithStubImpl$Mutation$ElectricityBill_verifyAccount<TRes>
     implements CopyWith$Mutation$ElectricityBill_verifyAccount<TRes> {
   _CopyWithStubImpl$Mutation$ElectricityBill_verifyAccount(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     Mutation$ElectricityBill_verifyAccount$electricityBill_verifyAccount?
         electricityBill_verifyAccount,
@@ -2300,7 +2341,6 @@ class _CopyWithStubImpl$Mutation$ElectricityBill_verifyAccount<TRes>
   }) =>
       _res;
 
-  @override
   CopyWith$Mutation$ElectricityBill_verifyAccount$electricityBill_verifyAccount<
           TRes>
       get electricityBill_verifyAccount =>
@@ -2404,21 +2444,26 @@ typedef OnMutationCompleted$Mutation$ElectricityBill_verifyAccount
 class Options$Mutation$ElectricityBill_verifyAccount
     extends graphql.MutationOptions<Mutation$ElectricityBill_verifyAccount> {
   Options$Mutation$ElectricityBill_verifyAccount({
-    super.operationName,
+    String? operationName,
     required Variables$Mutation$ElectricityBill_verifyAccount variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$ElectricityBill_verifyAccount? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$ElectricityBill_verifyAccount? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$ElectricityBill_verifyAccount>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -2428,6 +2473,8 @@ class Options$Mutation$ElectricityBill_verifyAccount
                         : _parserFn$Mutation$ElectricityBill_verifyAccount(
                             data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationElectricityBill_verifyAccount,
           parserFn: _parserFn$Mutation$ElectricityBill_verifyAccount,
         );
@@ -2447,22 +2494,31 @@ class Options$Mutation$ElectricityBill_verifyAccount
 class WatchOptions$Mutation$ElectricityBill_verifyAccount
     extends graphql.WatchQueryOptions<Mutation$ElectricityBill_verifyAccount> {
   WatchOptions$Mutation$ElectricityBill_verifyAccount({
-    super.operationName,
+    String? operationName,
     required Variables$Mutation$ElectricityBill_verifyAccount variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$ElectricityBill_verifyAccount? typedOptimisticResult,
-    super.context,
-    super.pollInterval,
-    super.eagerlyFetchResults,
-    super.carryForwardDataOnException,
-    super.fetchResults,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
   }) : super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           document: documentNodeMutationElectricityBill_verifyAccount,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$ElectricityBill_verifyAccount,
         );
 }
@@ -2472,11 +2528,11 @@ extension ClientExtension$Mutation$ElectricityBill_verifyAccount
   Future<graphql.QueryResult<Mutation$ElectricityBill_verifyAccount>>
       mutate$ElectricityBill_verifyAccount(
               Options$Mutation$ElectricityBill_verifyAccount options) async =>
-          await mutate(options);
+          await this.mutate(options);
   graphql.ObservableQuery<Mutation$ElectricityBill_verifyAccount>
       watchMutation$ElectricityBill_verifyAccount(
               WatchOptions$Mutation$ElectricityBill_verifyAccount options) =>
-          watchMutation(options);
+          this.watchMutation(options);
 }
 
 class Mutation$ElectricityBill_verifyAccount$HookResult {
@@ -2513,19 +2569,24 @@ graphql.ObservableQuery<Mutation$ElectricityBill_verifyAccount>
 class WidgetOptions$Mutation$ElectricityBill_verifyAccount
     extends graphql.MutationOptions<Mutation$ElectricityBill_verifyAccount> {
   WidgetOptions$Mutation$ElectricityBill_verifyAccount({
-    super.operationName,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$ElectricityBill_verifyAccount? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$ElectricityBill_verifyAccount? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$ElectricityBill_verifyAccount>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -2535,6 +2596,8 @@ class WidgetOptions$Mutation$ElectricityBill_verifyAccount
                         : _parserFn$Mutation$ElectricityBill_verifyAccount(
                             data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationElectricityBill_verifyAccount,
           parserFn: _parserFn$Mutation$ElectricityBill_verifyAccount,
         );
@@ -2567,10 +2630,11 @@ typedef Builder$Mutation$ElectricityBill_verifyAccount = widgets.Widget
 class Mutation$ElectricityBill_verifyAccount$Widget
     extends graphql_flutter.Mutation<Mutation$ElectricityBill_verifyAccount> {
   Mutation$ElectricityBill_verifyAccount$Widget({
-    super.key,
+    widgets.Key? key,
     WidgetOptions$Mutation$ElectricityBill_verifyAccount? options,
     required Builder$Mutation$ElectricityBill_verifyAccount builder,
   }) : super(
+          key: key,
           options:
               options ?? WidgetOptions$Mutation$ElectricityBill_verifyAccount(),
           builder: (
@@ -2634,20 +2698,20 @@ class Mutation$ElectricityBill_verifyAccount$electricityBill_verifyAccount {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$customerAddress = customerAddress;
-    resultData['customerAddress'] = l$customerAddress;
+    _resultData['customerAddress'] = l$customerAddress;
     final l$customerName = customerName;
-    resultData['customerName'] = l$customerName;
+    _resultData['customerName'] = l$customerName;
     final l$meterNumber = meterNumber;
-    resultData['meterNumber'] = l$meterNumber;
+    _resultData['meterNumber'] = l$meterNumber;
     final l$meterType = meterType;
-    resultData['meterType'] = l$meterType;
+    _resultData['meterType'] = l$meterType;
     final l$minimuVendAmount = minimuVendAmount;
-    resultData['minimuVendAmount'] = l$minimuVendAmount;
+    _resultData['minimuVendAmount'] = l$minimuVendAmount;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -2766,7 +2830,6 @@ class _CopyWithImpl$Mutation$ElectricityBill_verifyAccount$electricityBill_verif
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? customerAddress = _undefined,
     Object? customerName = _undefined,
@@ -2808,9 +2871,8 @@ class _CopyWithStubImpl$Mutation$ElectricityBill_verifyAccount$electricityBill_v
   _CopyWithStubImpl$Mutation$ElectricityBill_verifyAccount$electricityBill_verifyAccount(
       this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     String? customerAddress,
     String? customerName,
@@ -2909,7 +2971,6 @@ class _CopyWithImpl$Variables$Mutation$ElectricityBill_makePayment<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$ElectricityBill_makePayment._({
         ..._instance._$data,
@@ -2922,9 +2983,8 @@ class _CopyWithStubImpl$Variables$Mutation$ElectricityBill_makePayment<TRes>
     implements CopyWith$Variables$Mutation$ElectricityBill_makePayment<TRes> {
   _CopyWithStubImpl$Variables$Mutation$ElectricityBill_makePayment(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({Input$ElectricityBill_PaymentInput? input}) => _res;
 }
 
@@ -2936,13 +2996,13 @@ class Mutation$ElectricityBill_makePayment {
 
   factory Mutation$ElectricityBill_makePayment.fromJson(
       Map<String, dynamic> json) {
-    final l$electricitybillMakepayment = json['electricityBill_makePayment'];
+    final l$electricityBill_makePayment = json['electricityBill_makePayment'];
     final l$$__typename = json['__typename'];
     return Mutation$ElectricityBill_makePayment(
       electricityBill_makePayment:
           Mutation$ElectricityBill_makePayment$electricityBill_makePayment
               .fromJson(
-                  (l$electricitybillMakepayment as Map<String, dynamic>)),
+                  (l$electricityBill_makePayment as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -2953,21 +3013,21 @@ class Mutation$ElectricityBill_makePayment {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
-    final l$electricitybillMakepayment = electricityBill_makePayment;
-    resultData['electricityBill_makePayment'] =
-        l$electricitybillMakepayment.toJson();
+    final _resultData = <String, dynamic>{};
+    final l$electricityBill_makePayment = electricityBill_makePayment;
+    _resultData['electricityBill_makePayment'] =
+        l$electricityBill_makePayment.toJson();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
-    final l$electricitybillMakepayment = electricityBill_makePayment;
+    final l$electricityBill_makePayment = electricityBill_makePayment;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$electricitybillMakepayment,
+      l$electricityBill_makePayment,
       l$$__typename,
     ]);
   }
@@ -2981,10 +3041,10 @@ class Mutation$ElectricityBill_makePayment {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$electricitybillMakepayment = electricityBill_makePayment;
-    final lother$electricitybillMakepayment =
+    final l$electricityBill_makePayment = electricityBill_makePayment;
+    final lOther$electricityBill_makePayment =
         other.electricityBill_makePayment;
-    if (l$electricitybillMakepayment != lother$electricitybillMakepayment) {
+    if (l$electricityBill_makePayment != lOther$electricityBill_makePayment) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -3037,7 +3097,6 @@ class _CopyWithImpl$Mutation$ElectricityBill_makePayment<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? electricityBill_makePayment = _undefined,
     Object? $__typename = _undefined,
@@ -3054,13 +3113,12 @@ class _CopyWithImpl$Mutation$ElectricityBill_makePayment<TRes>
             : ($__typename as String),
       ));
 
-  @override
   CopyWith$Mutation$ElectricityBill_makePayment$electricityBill_makePayment<
       TRes> get electricityBill_makePayment {
-    final local$electricitybillMakepayment =
+    final local$electricityBill_makePayment =
         _instance.electricityBill_makePayment;
     return CopyWith$Mutation$ElectricityBill_makePayment$electricityBill_makePayment(
-        local$electricitybillMakepayment,
+        local$electricityBill_makePayment,
         (e) => call(electricityBill_makePayment: e));
   }
 }
@@ -3069,9 +3127,8 @@ class _CopyWithStubImpl$Mutation$ElectricityBill_makePayment<TRes>
     implements CopyWith$Mutation$ElectricityBill_makePayment<TRes> {
   _CopyWithStubImpl$Mutation$ElectricityBill_makePayment(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     Mutation$ElectricityBill_makePayment$electricityBill_makePayment?
         electricityBill_makePayment,
@@ -3079,7 +3136,6 @@ class _CopyWithStubImpl$Mutation$ElectricityBill_makePayment<TRes>
   }) =>
       _res;
 
-  @override
   CopyWith$Mutation$ElectricityBill_makePayment$electricityBill_makePayment<
           TRes>
       get electricityBill_makePayment =>
@@ -3203,21 +3259,26 @@ typedef OnMutationCompleted$Mutation$ElectricityBill_makePayment
 class Options$Mutation$ElectricityBill_makePayment
     extends graphql.MutationOptions<Mutation$ElectricityBill_makePayment> {
   Options$Mutation$ElectricityBill_makePayment({
-    super.operationName,
+    String? operationName,
     required Variables$Mutation$ElectricityBill_makePayment variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$ElectricityBill_makePayment? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$ElectricityBill_makePayment? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$ElectricityBill_makePayment>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -3226,6 +3287,8 @@ class Options$Mutation$ElectricityBill_makePayment
                         ? null
                         : _parserFn$Mutation$ElectricityBill_makePayment(data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationElectricityBill_makePayment,
           parserFn: _parserFn$Mutation$ElectricityBill_makePayment,
         );
@@ -3245,22 +3308,31 @@ class Options$Mutation$ElectricityBill_makePayment
 class WatchOptions$Mutation$ElectricityBill_makePayment
     extends graphql.WatchQueryOptions<Mutation$ElectricityBill_makePayment> {
   WatchOptions$Mutation$ElectricityBill_makePayment({
-    super.operationName,
+    String? operationName,
     required Variables$Mutation$ElectricityBill_makePayment variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$ElectricityBill_makePayment? typedOptimisticResult,
-    super.context,
-    super.pollInterval,
-    super.eagerlyFetchResults,
-    super.carryForwardDataOnException,
-    super.fetchResults,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
   }) : super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           document: documentNodeMutationElectricityBill_makePayment,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$ElectricityBill_makePayment,
         );
 }
@@ -3270,11 +3342,11 @@ extension ClientExtension$Mutation$ElectricityBill_makePayment
   Future<graphql.QueryResult<Mutation$ElectricityBill_makePayment>>
       mutate$ElectricityBill_makePayment(
               Options$Mutation$ElectricityBill_makePayment options) async =>
-          await mutate(options);
+          await this.mutate(options);
   graphql.ObservableQuery<Mutation$ElectricityBill_makePayment>
       watchMutation$ElectricityBill_makePayment(
               WatchOptions$Mutation$ElectricityBill_makePayment options) =>
-          watchMutation(options);
+          this.watchMutation(options);
 }
 
 class Mutation$ElectricityBill_makePayment$HookResult {
@@ -3311,19 +3383,24 @@ graphql.ObservableQuery<Mutation$ElectricityBill_makePayment>
 class WidgetOptions$Mutation$ElectricityBill_makePayment
     extends graphql.MutationOptions<Mutation$ElectricityBill_makePayment> {
   WidgetOptions$Mutation$ElectricityBill_makePayment({
-    super.operationName,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$ElectricityBill_makePayment? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$ElectricityBill_makePayment? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$ElectricityBill_makePayment>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -3332,6 +3409,8 @@ class WidgetOptions$Mutation$ElectricityBill_makePayment
                         ? null
                         : _parserFn$Mutation$ElectricityBill_makePayment(data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationElectricityBill_makePayment,
           parserFn: _parserFn$Mutation$ElectricityBill_makePayment,
         );
@@ -3362,10 +3441,11 @@ typedef Builder$Mutation$ElectricityBill_makePayment = widgets.Widget Function(
 class Mutation$ElectricityBill_makePayment$Widget
     extends graphql_flutter.Mutation<Mutation$ElectricityBill_makePayment> {
   Mutation$ElectricityBill_makePayment$Widget({
-    super.key,
+    widgets.Key? key,
     WidgetOptions$Mutation$ElectricityBill_makePayment? options,
     required Builder$Mutation$ElectricityBill_makePayment builder,
   }) : super(
+          key: key,
           options:
               options ?? WidgetOptions$Mutation$ElectricityBill_makePayment(),
           builder: (
@@ -3444,26 +3524,26 @@ class Mutation$ElectricityBill_makePayment$electricityBill_makePayment {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$amount = amount;
-    resultData['amount'] = l$amount;
+    _resultData['amount'] = l$amount;
     final l$biller = biller;
-    resultData['biller'] = l$biller;
+    _resultData['biller'] = l$biller;
     final l$bonusToken = bonusToken;
-    resultData['bonusToken'] = l$bonusToken;
+    _resultData['bonusToken'] = l$bonusToken;
     final l$chargedAmount = chargedAmount;
-    resultData['chargedAmount'] = l$chargedAmount;
+    _resultData['chargedAmount'] = l$chargedAmount;
     final l$commission = commission;
-    resultData['commission'] = l$commission;
+    _resultData['commission'] = l$commission;
     final l$customerId = customerId;
-    resultData['customerId'] = l$customerId;
+    _resultData['customerId'] = l$customerId;
     final l$transactionDate = transactionDate;
-    resultData['transactionDate'] = l$transactionDate;
+    _resultData['transactionDate'] = l$transactionDate;
     final l$unit = unit;
-    resultData['unit'] = l$unit;
+    _resultData['unit'] = l$unit;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -3604,7 +3684,6 @@ class _CopyWithImpl$Mutation$ElectricityBill_makePayment$electricityBill_makePay
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? amount = _undefined,
     Object? biller = _undefined,
@@ -3656,9 +3735,8 @@ class _CopyWithStubImpl$Mutation$ElectricityBill_makePayment$electricityBill_mak
   _CopyWithStubImpl$Mutation$ElectricityBill_makePayment$electricityBill_makePayment(
       this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     String? amount,
     String? biller,
@@ -3759,7 +3837,6 @@ class _CopyWithImpl$Variables$Query$tvBills_getProviders<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Query$tvBills_getProviders._({
         ..._instance._$data,
@@ -3772,9 +3849,8 @@ class _CopyWithStubImpl$Variables$Query$tvBills_getProviders<TRes>
     implements CopyWith$Variables$Query$tvBills_getProviders<TRes> {
   _CopyWithStubImpl$Variables$Query$tvBills_getProviders(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({Input$TvBill_GetTVProvidersInput? input}) => _res;
 }
 
@@ -3785,10 +3861,10 @@ class Query$tvBills_getProviders {
   });
 
   factory Query$tvBills_getProviders.fromJson(Map<String, dynamic> json) {
-    final l$tvbillsGetproviders = json['tvBills_getProviders'];
+    final l$tvBills_getProviders = json['tvBills_getProviders'];
     final l$$__typename = json['__typename'];
     return Query$tvBills_getProviders(
-      tvBills_getProviders: (l$tvbillsGetproviders as List<dynamic>)
+      tvBills_getProviders: (l$tvBills_getProviders as List<dynamic>)
           .map((e) => Query$tvBills_getProviders$tvBills_getProviders.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
@@ -3802,21 +3878,21 @@ class Query$tvBills_getProviders {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
-    final l$tvbillsGetproviders = tvBills_getProviders;
-    resultData['tvBills_getProviders'] =
-        l$tvbillsGetproviders.map((e) => e.toJson()).toList();
+    final _resultData = <String, dynamic>{};
+    final l$tvBills_getProviders = tvBills_getProviders;
+    _resultData['tvBills_getProviders'] =
+        l$tvBills_getProviders.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
-    final l$tvbillsGetproviders = tvBills_getProviders;
+    final l$tvBills_getProviders = tvBills_getProviders;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$tvbillsGetproviders.map((v) => v)),
+      Object.hashAll(l$tvBills_getProviders.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -3830,15 +3906,15 @@ class Query$tvBills_getProviders {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$tvbillsGetproviders = tvBills_getProviders;
-    final lother$tvbillsGetproviders = other.tvBills_getProviders;
-    if (l$tvbillsGetproviders.length != lother$tvbillsGetproviders.length) {
+    final l$tvBills_getProviders = tvBills_getProviders;
+    final lOther$tvBills_getProviders = other.tvBills_getProviders;
+    if (l$tvBills_getProviders.length != lOther$tvBills_getProviders.length) {
       return false;
     }
-    for (int i = 0; i < l$tvbillsGetproviders.length; i++) {
-      final l$tvbillsGetproviders$entry = l$tvbillsGetproviders[i];
-      final lother$tvbillsGetproviders$entry = lother$tvbillsGetproviders[i];
-      if (l$tvbillsGetproviders$entry != lother$tvbillsGetproviders$entry) {
+    for (int i = 0; i < l$tvBills_getProviders.length; i++) {
+      final l$tvBills_getProviders$entry = l$tvBills_getProviders[i];
+      final lOther$tvBills_getProviders$entry = lOther$tvBills_getProviders[i];
+      if (l$tvBills_getProviders$entry != lOther$tvBills_getProviders$entry) {
         return false;
       }
     }
@@ -3878,7 +3954,7 @@ abstract class CopyWith$Query$tvBills_getProviders<TRes> {
               Iterable<
                   CopyWith$Query$tvBills_getProviders$tvBills_getProviders<
                       Query$tvBills_getProviders$tvBills_getProviders>>)
-          fn);
+          _fn);
 }
 
 class _CopyWithImpl$Query$tvBills_getProviders<TRes>
@@ -3894,7 +3970,6 @@ class _CopyWithImpl$Query$tvBills_getProviders<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? tvBills_getProviders = _undefined,
     Object? $__typename = _undefined,
@@ -3910,15 +3985,14 @@ class _CopyWithImpl$Query$tvBills_getProviders<TRes>
             : ($__typename as String),
       ));
 
-  @override
   TRes tvBills_getProviders(
           Iterable<Query$tvBills_getProviders$tvBills_getProviders> Function(
                   Iterable<
                       CopyWith$Query$tvBills_getProviders$tvBills_getProviders<
                           Query$tvBills_getProviders$tvBills_getProviders>>)
-              fn) =>
+              _fn) =>
       call(
-          tvBills_getProviders: fn(_instance.tvBills_getProviders.map(
+          tvBills_getProviders: _fn(_instance.tvBills_getProviders.map(
               (e) => CopyWith$Query$tvBills_getProviders$tvBills_getProviders(
                     e,
                     (i) => i,
@@ -3929,17 +4003,15 @@ class _CopyWithStubImpl$Query$tvBills_getProviders<TRes>
     implements CopyWith$Query$tvBills_getProviders<TRes> {
   _CopyWithStubImpl$Query$tvBills_getProviders(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     List<Query$tvBills_getProviders$tvBills_getProviders>? tvBills_getProviders,
     String? $__typename,
   }) =>
       _res;
 
-  @override
-  tvBills_getProviders(fn) => _res;
+  tvBills_getProviders(_fn) => _res;
 }
 
 const documentNodeQuerytvBills_getProviders = DocumentNode(definitions: [
@@ -4028,21 +4100,27 @@ typedef OnQueryComplete$Query$tvBills_getProviders = FutureOr<void> Function(
 class Options$Query$tvBills_getProviders
     extends graphql.QueryOptions<Query$tvBills_getProviders> {
   Options$Query$tvBills_getProviders({
-    super.operationName,
+    String? operationName,
     required Variables$Query$tvBills_getProviders variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Query$tvBills_getProviders? typedOptimisticResult,
-    super.pollInterval,
-    super.context,
+    Duration? pollInterval,
+    graphql.Context? context,
     OnQueryComplete$Query$tvBills_getProviders? onComplete,
-    super.onError,
+    graphql.OnQueryError? onError,
   })  : onCompleteWithParsed = onComplete,
         super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
@@ -4051,6 +4129,7 @@ class Options$Query$tvBills_getProviders
                         ? null
                         : _parserFn$Query$tvBills_getProviders(data),
                   ),
+          onError: onError,
           document: documentNodeQuerytvBills_getProviders,
           parserFn: _parserFn$Query$tvBills_getProviders,
         );
@@ -4069,22 +4148,31 @@ class Options$Query$tvBills_getProviders
 class WatchOptions$Query$tvBills_getProviders
     extends graphql.WatchQueryOptions<Query$tvBills_getProviders> {
   WatchOptions$Query$tvBills_getProviders({
-    super.operationName,
+    String? operationName,
     required Variables$Query$tvBills_getProviders variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Query$tvBills_getProviders? typedOptimisticResult,
-    super.context,
-    super.pollInterval,
-    super.eagerlyFetchResults,
-    super.carryForwardDataOnException,
-    super.fetchResults,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
   }) : super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           document: documentNodeQuerytvBills_getProviders,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
           parserFn: _parserFn$Query$tvBills_getProviders,
         );
 }
@@ -4092,9 +4180,10 @@ class WatchOptions$Query$tvBills_getProviders
 class FetchMoreOptions$Query$tvBills_getProviders
     extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$tvBills_getProviders({
-    required super.updateQuery,
+    required graphql.UpdateQuery updateQuery,
     required Variables$Query$tvBills_getProviders variables,
   }) : super(
+          updateQuery: updateQuery,
           variables: variables.toJson(),
           document: documentNodeQuerytvBills_getProviders,
         );
@@ -4104,17 +4193,17 @@ extension ClientExtension$Query$tvBills_getProviders on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$tvBills_getProviders>>
       query$tvBills_getProviders(
               Options$Query$tvBills_getProviders options) async =>
-          await query(options);
+          await this.query(options);
   graphql.ObservableQuery<Query$tvBills_getProviders>
       watchQuery$tvBills_getProviders(
               WatchOptions$Query$tvBills_getProviders options) =>
-          watchQuery(options);
+          this.watchQuery(options);
   void writeQuery$tvBills_getProviders({
     required Query$tvBills_getProviders data,
     required Variables$Query$tvBills_getProviders variables,
     bool broadcast = true,
   }) =>
-      writeQuery(
+      this.writeQuery(
         graphql.Request(
           operation: graphql.Operation(
               document: documentNodeQuerytvBills_getProviders),
@@ -4127,7 +4216,7 @@ extension ClientExtension$Query$tvBills_getProviders on graphql.GraphQLClient {
     required Variables$Query$tvBills_getProviders variables,
     bool optimistic = true,
   }) {
-    final result = readQuery(
+    final result = this.readQuery(
       graphql.Request(
         operation:
             graphql.Operation(document: documentNodeQuerytvBills_getProviders),
@@ -4149,11 +4238,15 @@ graphql.ObservableQuery<Query$tvBills_getProviders>
 
 class Query$tvBills_getProviders$Widget
     extends graphql_flutter.Query<Query$tvBills_getProviders> {
-  const Query$tvBills_getProviders$Widget({
-    super.key,
-    required Options$Query$tvBills_getProviders super.options,
-    required super.builder,
-  });
+  Query$tvBills_getProviders$Widget({
+    widgets.Key? key,
+    required Options$Query$tvBills_getProviders options,
+    required graphql_flutter.QueryBuilder<Query$tvBills_getProviders> builder,
+  }) : super(
+          key: key,
+          options: options,
+          builder: builder,
+        );
 }
 
 class Query$tvBills_getProviders$tvBills_getProviders {
@@ -4192,18 +4285,18 @@ class Query$tvBills_getProviders$tvBills_getProviders {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$logo = logo;
-    resultData['logo'] = l$logo;
+    _resultData['logo'] = l$logo;
     final l$category = category;
-    resultData['category'] = l$category;
+    _resultData['category'] = l$category;
     final l$name = name;
-    resultData['name'] = l$name;
+    _resultData['name'] = l$name;
     final l$slug = slug;
-    resultData['slug'] = l$slug;
+    _resultData['slug'] = l$slug;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -4302,7 +4395,6 @@ class _CopyWithImpl$Query$tvBills_getProviders$tvBills_getProviders<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? logo = _undefined,
     Object? category = _undefined,
@@ -4333,9 +4425,8 @@ class _CopyWithStubImpl$Query$tvBills_getProviders$tvBills_getProviders<TRes>
     implements CopyWith$Query$tvBills_getProviders$tvBills_getProviders<TRes> {
   _CopyWithStubImpl$Query$tvBills_getProviders$tvBills_getProviders(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     String? logo,
     String? category,
@@ -4432,7 +4523,6 @@ class _CopyWithImpl$Variables$Query$tvBills_getBouquet<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Query$tvBills_getBouquet._({
         ..._instance._$data,
@@ -4445,9 +4535,8 @@ class _CopyWithStubImpl$Variables$Query$tvBills_getBouquet<TRes>
     implements CopyWith$Variables$Query$tvBills_getBouquet<TRes> {
   _CopyWithStubImpl$Variables$Query$tvBills_getBouquet(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({Input$TvBill_GetTVBouquetInput? input}) => _res;
 }
 
@@ -4458,10 +4547,10 @@ class Query$tvBills_getBouquet {
   });
 
   factory Query$tvBills_getBouquet.fromJson(Map<String, dynamic> json) {
-    final l$tvbillsGetbouquet = json['tvBills_getBouquet'];
+    final l$tvBills_getBouquet = json['tvBills_getBouquet'];
     final l$$__typename = json['__typename'];
     return Query$tvBills_getBouquet(
-      tvBills_getBouquet: (l$tvbillsGetbouquet as List<dynamic>)
+      tvBills_getBouquet: (l$tvBills_getBouquet as List<dynamic>)
           .map((e) => Query$tvBills_getBouquet$tvBills_getBouquet.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
@@ -4474,21 +4563,21 @@ class Query$tvBills_getBouquet {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
-    final l$tvbillsGetbouquet = tvBills_getBouquet;
-    resultData['tvBills_getBouquet'] =
-        l$tvbillsGetbouquet.map((e) => e.toJson()).toList();
+    final _resultData = <String, dynamic>{};
+    final l$tvBills_getBouquet = tvBills_getBouquet;
+    _resultData['tvBills_getBouquet'] =
+        l$tvBills_getBouquet.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
-    final l$tvbillsGetbouquet = tvBills_getBouquet;
+    final l$tvBills_getBouquet = tvBills_getBouquet;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$tvbillsGetbouquet.map((v) => v)),
+      Object.hashAll(l$tvBills_getBouquet.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -4502,15 +4591,15 @@ class Query$tvBills_getBouquet {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$tvbillsGetbouquet = tvBills_getBouquet;
-    final lother$tvbillsGetbouquet = other.tvBills_getBouquet;
-    if (l$tvbillsGetbouquet.length != lother$tvbillsGetbouquet.length) {
+    final l$tvBills_getBouquet = tvBills_getBouquet;
+    final lOther$tvBills_getBouquet = other.tvBills_getBouquet;
+    if (l$tvBills_getBouquet.length != lOther$tvBills_getBouquet.length) {
       return false;
     }
-    for (int i = 0; i < l$tvbillsGetbouquet.length; i++) {
-      final l$tvbillsGetbouquet$entry = l$tvbillsGetbouquet[i];
-      final lother$tvbillsGetbouquet$entry = lother$tvbillsGetbouquet[i];
-      if (l$tvbillsGetbouquet$entry != lother$tvbillsGetbouquet$entry) {
+    for (int i = 0; i < l$tvBills_getBouquet.length; i++) {
+      final l$tvBills_getBouquet$entry = l$tvBills_getBouquet[i];
+      final lOther$tvBills_getBouquet$entry = lOther$tvBills_getBouquet[i];
+      if (l$tvBills_getBouquet$entry != lOther$tvBills_getBouquet$entry) {
         return false;
       }
     }
@@ -4550,7 +4639,7 @@ abstract class CopyWith$Query$tvBills_getBouquet<TRes> {
               Iterable<
                   CopyWith$Query$tvBills_getBouquet$tvBills_getBouquet<
                       Query$tvBills_getBouquet$tvBills_getBouquet>>)
-          fn);
+          _fn);
 }
 
 class _CopyWithImpl$Query$tvBills_getBouquet<TRes>
@@ -4566,7 +4655,6 @@ class _CopyWithImpl$Query$tvBills_getBouquet<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? tvBills_getBouquet = _undefined,
     Object? $__typename = _undefined,
@@ -4582,15 +4670,14 @@ class _CopyWithImpl$Query$tvBills_getBouquet<TRes>
             : ($__typename as String),
       ));
 
-  @override
   TRes tvBills_getBouquet(
           Iterable<Query$tvBills_getBouquet$tvBills_getBouquet> Function(
                   Iterable<
                       CopyWith$Query$tvBills_getBouquet$tvBills_getBouquet<
                           Query$tvBills_getBouquet$tvBills_getBouquet>>)
-              fn) =>
+              _fn) =>
       call(
-          tvBills_getBouquet: fn(_instance.tvBills_getBouquet
+          tvBills_getBouquet: _fn(_instance.tvBills_getBouquet
               .map((e) => CopyWith$Query$tvBills_getBouquet$tvBills_getBouquet(
                     e,
                     (i) => i,
@@ -4601,17 +4688,15 @@ class _CopyWithStubImpl$Query$tvBills_getBouquet<TRes>
     implements CopyWith$Query$tvBills_getBouquet<TRes> {
   _CopyWithStubImpl$Query$tvBills_getBouquet(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     List<Query$tvBills_getBouquet$tvBills_getBouquet>? tvBills_getBouquet,
     String? $__typename,
   }) =>
       _res;
 
-  @override
-  tvBills_getBouquet(fn) => _res;
+  tvBills_getBouquet(_fn) => _res;
 }
 
 const documentNodeQuerytvBills_getBouquet = DocumentNode(definitions: [
@@ -4693,21 +4778,27 @@ typedef OnQueryComplete$Query$tvBills_getBouquet = FutureOr<void> Function(
 class Options$Query$tvBills_getBouquet
     extends graphql.QueryOptions<Query$tvBills_getBouquet> {
   Options$Query$tvBills_getBouquet({
-    super.operationName,
+    String? operationName,
     required Variables$Query$tvBills_getBouquet variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Query$tvBills_getBouquet? typedOptimisticResult,
-    super.pollInterval,
-    super.context,
+    Duration? pollInterval,
+    graphql.Context? context,
     OnQueryComplete$Query$tvBills_getBouquet? onComplete,
-    super.onError,
+    graphql.OnQueryError? onError,
   })  : onCompleteWithParsed = onComplete,
         super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
@@ -4716,6 +4807,7 @@ class Options$Query$tvBills_getBouquet
                         ? null
                         : _parserFn$Query$tvBills_getBouquet(data),
                   ),
+          onError: onError,
           document: documentNodeQuerytvBills_getBouquet,
           parserFn: _parserFn$Query$tvBills_getBouquet,
         );
@@ -4734,22 +4826,31 @@ class Options$Query$tvBills_getBouquet
 class WatchOptions$Query$tvBills_getBouquet
     extends graphql.WatchQueryOptions<Query$tvBills_getBouquet> {
   WatchOptions$Query$tvBills_getBouquet({
-    super.operationName,
+    String? operationName,
     required Variables$Query$tvBills_getBouquet variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Query$tvBills_getBouquet? typedOptimisticResult,
-    super.context,
-    super.pollInterval,
-    super.eagerlyFetchResults,
-    super.carryForwardDataOnException,
-    super.fetchResults,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
   }) : super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           document: documentNodeQuerytvBills_getBouquet,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
           parserFn: _parserFn$Query$tvBills_getBouquet,
         );
 }
@@ -4757,9 +4858,10 @@ class WatchOptions$Query$tvBills_getBouquet
 class FetchMoreOptions$Query$tvBills_getBouquet
     extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$tvBills_getBouquet({
-    required super.updateQuery,
+    required graphql.UpdateQuery updateQuery,
     required Variables$Query$tvBills_getBouquet variables,
   }) : super(
+          updateQuery: updateQuery,
           variables: variables.toJson(),
           document: documentNodeQuerytvBills_getBouquet,
         );
@@ -4769,17 +4871,17 @@ extension ClientExtension$Query$tvBills_getBouquet on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$tvBills_getBouquet>>
       query$tvBills_getBouquet(
               Options$Query$tvBills_getBouquet options) async =>
-          await query(options);
+          await this.query(options);
   graphql.ObservableQuery<Query$tvBills_getBouquet>
       watchQuery$tvBills_getBouquet(
               WatchOptions$Query$tvBills_getBouquet options) =>
-          watchQuery(options);
+          this.watchQuery(options);
   void writeQuery$tvBills_getBouquet({
     required Query$tvBills_getBouquet data,
     required Variables$Query$tvBills_getBouquet variables,
     bool broadcast = true,
   }) =>
-      writeQuery(
+      this.writeQuery(
         graphql.Request(
           operation:
               graphql.Operation(document: documentNodeQuerytvBills_getBouquet),
@@ -4792,7 +4894,7 @@ extension ClientExtension$Query$tvBills_getBouquet on graphql.GraphQLClient {
     required Variables$Query$tvBills_getBouquet variables,
     bool optimistic = true,
   }) {
-    final result = readQuery(
+    final result = this.readQuery(
       graphql.Request(
         operation:
             graphql.Operation(document: documentNodeQuerytvBills_getBouquet),
@@ -4814,11 +4916,15 @@ graphql.ObservableQuery<Query$tvBills_getBouquet>
 
 class Query$tvBills_getBouquet$Widget
     extends graphql_flutter.Query<Query$tvBills_getBouquet> {
-  const Query$tvBills_getBouquet$Widget({
-    super.key,
-    required Options$Query$tvBills_getBouquet super.options,
-    required super.builder,
-  });
+  Query$tvBills_getBouquet$Widget({
+    widgets.Key? key,
+    required Options$Query$tvBills_getBouquet options,
+    required graphql_flutter.QueryBuilder<Query$tvBills_getBouquet> builder,
+  }) : super(
+          key: key,
+          options: options,
+          builder: builder,
+        );
 }
 
 class Query$tvBills_getBouquet$tvBills_getBouquet {
@@ -4852,16 +4958,16 @@ class Query$tvBills_getBouquet$tvBills_getBouquet {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$code = code;
-    resultData['code'] = l$code;
+    _resultData['code'] = l$code;
     final l$description = description;
-    resultData['description'] = l$description;
+    _resultData['description'] = l$description;
     final l$price = price;
-    resultData['price'] = l$price;
+    _resultData['price'] = l$price;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -4951,7 +5057,6 @@ class _CopyWithImpl$Query$tvBills_getBouquet$tvBills_getBouquet<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? code = _undefined,
     Object? description = _undefined,
@@ -4978,9 +5083,8 @@ class _CopyWithStubImpl$Query$tvBills_getBouquet$tvBills_getBouquet<TRes>
     implements CopyWith$Query$tvBills_getBouquet$tvBills_getBouquet<TRes> {
   _CopyWithStubImpl$Query$tvBills_getBouquet$tvBills_getBouquet(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     String? code,
     String? description,
@@ -5076,7 +5180,6 @@ class _CopyWithImpl$Variables$Mutation$tvBills_validateAccount<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$tvBills_validateAccount._({
         ..._instance._$data,
@@ -5089,9 +5192,8 @@ class _CopyWithStubImpl$Variables$Mutation$tvBills_validateAccount<TRes>
     implements CopyWith$Variables$Mutation$tvBills_validateAccount<TRes> {
   _CopyWithStubImpl$Variables$Mutation$tvBills_validateAccount(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({Input$TvBill_ValidateAccountInput? input}) => _res;
 }
 
@@ -5102,12 +5204,12 @@ class Mutation$tvBills_validateAccount {
   });
 
   factory Mutation$tvBills_validateAccount.fromJson(Map<String, dynamic> json) {
-    final l$tvbillsValidateaccount = json['tvBills_validateAccount'];
+    final l$tvBills_validateAccount = json['tvBills_validateAccount'];
     final l$$__typename = json['__typename'];
     return Mutation$tvBills_validateAccount(
       tvBills_validateAccount:
           Mutation$tvBills_validateAccount$tvBills_validateAccount.fromJson(
-              (l$tvbillsValidateaccount as Map<String, dynamic>)),
+              (l$tvBills_validateAccount as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -5118,20 +5220,20 @@ class Mutation$tvBills_validateAccount {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
-    final l$tvbillsValidateaccount = tvBills_validateAccount;
-    resultData['tvBills_validateAccount'] = l$tvbillsValidateaccount.toJson();
+    final _resultData = <String, dynamic>{};
+    final l$tvBills_validateAccount = tvBills_validateAccount;
+    _resultData['tvBills_validateAccount'] = l$tvBills_validateAccount.toJson();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
-    final l$tvbillsValidateaccount = tvBills_validateAccount;
+    final l$tvBills_validateAccount = tvBills_validateAccount;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$tvbillsValidateaccount,
+      l$tvBills_validateAccount,
       l$$__typename,
     ]);
   }
@@ -5145,9 +5247,9 @@ class Mutation$tvBills_validateAccount {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$tvbillsValidateaccount = tvBills_validateAccount;
-    final lother$tvbillsValidateaccount = other.tvBills_validateAccount;
-    if (l$tvbillsValidateaccount != lother$tvbillsValidateaccount) {
+    final l$tvBills_validateAccount = tvBills_validateAccount;
+    final lOther$tvBills_validateAccount = other.tvBills_validateAccount;
+    if (l$tvBills_validateAccount != lOther$tvBills_validateAccount) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -5199,7 +5301,6 @@ class _CopyWithImpl$Mutation$tvBills_validateAccount<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? tvBills_validateAccount = _undefined,
     Object? $__typename = _undefined,
@@ -5215,12 +5316,11 @@ class _CopyWithImpl$Mutation$tvBills_validateAccount<TRes>
             : ($__typename as String),
       ));
 
-  @override
   CopyWith$Mutation$tvBills_validateAccount$tvBills_validateAccount<TRes>
       get tvBills_validateAccount {
-    final local$tvbillsValidateaccount = _instance.tvBills_validateAccount;
+    final local$tvBills_validateAccount = _instance.tvBills_validateAccount;
     return CopyWith$Mutation$tvBills_validateAccount$tvBills_validateAccount(
-        local$tvbillsValidateaccount, (e) => call(tvBills_validateAccount: e));
+        local$tvBills_validateAccount, (e) => call(tvBills_validateAccount: e));
   }
 }
 
@@ -5228,9 +5328,8 @@ class _CopyWithStubImpl$Mutation$tvBills_validateAccount<TRes>
     implements CopyWith$Mutation$tvBills_validateAccount<TRes> {
   _CopyWithStubImpl$Mutation$tvBills_validateAccount(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     Mutation$tvBills_validateAccount$tvBills_validateAccount?
         tvBills_validateAccount,
@@ -5238,7 +5337,6 @@ class _CopyWithStubImpl$Mutation$tvBills_validateAccount<TRes>
   }) =>
       _res;
 
-  @override
   CopyWith$Mutation$tvBills_validateAccount$tvBills_validateAccount<TRes>
       get tvBills_validateAccount =>
           CopyWith$Mutation$tvBills_validateAccount$tvBills_validateAccount
@@ -5325,21 +5423,26 @@ typedef OnMutationCompleted$Mutation$tvBills_validateAccount = FutureOr<void>
 class Options$Mutation$tvBills_validateAccount
     extends graphql.MutationOptions<Mutation$tvBills_validateAccount> {
   Options$Mutation$tvBills_validateAccount({
-    super.operationName,
+    String? operationName,
     required Variables$Mutation$tvBills_validateAccount variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$tvBills_validateAccount? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$tvBills_validateAccount? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$tvBills_validateAccount>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -5348,6 +5451,8 @@ class Options$Mutation$tvBills_validateAccount
                         ? null
                         : _parserFn$Mutation$tvBills_validateAccount(data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationtvBills_validateAccount,
           parserFn: _parserFn$Mutation$tvBills_validateAccount,
         );
@@ -5367,22 +5472,31 @@ class Options$Mutation$tvBills_validateAccount
 class WatchOptions$Mutation$tvBills_validateAccount
     extends graphql.WatchQueryOptions<Mutation$tvBills_validateAccount> {
   WatchOptions$Mutation$tvBills_validateAccount({
-    super.operationName,
+    String? operationName,
     required Variables$Mutation$tvBills_validateAccount variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$tvBills_validateAccount? typedOptimisticResult,
-    super.context,
-    super.pollInterval,
-    super.eagerlyFetchResults,
-    super.carryForwardDataOnException,
-    super.fetchResults,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
   }) : super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           document: documentNodeMutationtvBills_validateAccount,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$tvBills_validateAccount,
         );
 }
@@ -5392,11 +5506,11 @@ extension ClientExtension$Mutation$tvBills_validateAccount
   Future<graphql.QueryResult<Mutation$tvBills_validateAccount>>
       mutate$tvBills_validateAccount(
               Options$Mutation$tvBills_validateAccount options) async =>
-          await mutate(options);
+          await this.mutate(options);
   graphql.ObservableQuery<Mutation$tvBills_validateAccount>
       watchMutation$tvBills_validateAccount(
               WatchOptions$Mutation$tvBills_validateAccount options) =>
-          watchMutation(options);
+          this.watchMutation(options);
 }
 
 class Mutation$tvBills_validateAccount$HookResult {
@@ -5432,19 +5546,24 @@ graphql.ObservableQuery<Mutation$tvBills_validateAccount>
 class WidgetOptions$Mutation$tvBills_validateAccount
     extends graphql.MutationOptions<Mutation$tvBills_validateAccount> {
   WidgetOptions$Mutation$tvBills_validateAccount({
-    super.operationName,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$tvBills_validateAccount? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$tvBills_validateAccount? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$tvBills_validateAccount>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -5453,6 +5572,8 @@ class WidgetOptions$Mutation$tvBills_validateAccount
                         ? null
                         : _parserFn$Mutation$tvBills_validateAccount(data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationtvBills_validateAccount,
           parserFn: _parserFn$Mutation$tvBills_validateAccount,
         );
@@ -5483,10 +5604,11 @@ typedef Builder$Mutation$tvBills_validateAccount = widgets.Widget Function(
 class Mutation$tvBills_validateAccount$Widget
     extends graphql_flutter.Mutation<Mutation$tvBills_validateAccount> {
   Mutation$tvBills_validateAccount$Widget({
-    super.key,
+    widgets.Key? key,
     WidgetOptions$Mutation$tvBills_validateAccount? options,
     required Builder$Mutation$tvBills_validateAccount builder,
   }) : super(
+          key: key,
           options: options ?? WidgetOptions$Mutation$tvBills_validateAccount(),
           builder: (
             run,
@@ -5539,16 +5661,16 @@ class Mutation$tvBills_validateAccount$tvBills_validateAccount {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$customerName = customerName;
-    resultData['customerName'] = l$customerName;
+    _resultData['customerName'] = l$customerName;
     final l$service = service;
-    resultData['service'] = l$service;
+    _resultData['service'] = l$service;
     final l$smartCardNumber = smartCardNumber;
-    resultData['smartCardNumber'] = l$smartCardNumber;
+    _resultData['smartCardNumber'] = l$smartCardNumber;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -5646,7 +5768,6 @@ class _CopyWithImpl$Mutation$tvBills_validateAccount$tvBills_validateAccount<
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? customerName = _undefined,
     Object? service = _undefined,
@@ -5678,9 +5799,8 @@ class _CopyWithStubImpl$Mutation$tvBills_validateAccount$tvBills_validateAccount
   _CopyWithStubImpl$Mutation$tvBills_validateAccount$tvBills_validateAccount(
       this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     String? customerName,
     String? service,
@@ -5776,7 +5896,6 @@ class _CopyWithImpl$Variables$Mutation$tvBills_makePayment<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$tvBills_makePayment._({
         ..._instance._$data,
@@ -5789,9 +5908,8 @@ class _CopyWithStubImpl$Variables$Mutation$tvBills_makePayment<TRes>
     implements CopyWith$Variables$Mutation$tvBills_makePayment<TRes> {
   _CopyWithStubImpl$Variables$Mutation$tvBills_makePayment(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({Input$TvBill_PaymentInput? input}) => _res;
 }
 
@@ -5802,12 +5920,12 @@ class Mutation$tvBills_makePayment {
   });
 
   factory Mutation$tvBills_makePayment.fromJson(Map<String, dynamic> json) {
-    final l$tvbillsMakepayment = json['tvBills_makePayment'];
+    final l$tvBills_makePayment = json['tvBills_makePayment'];
     final l$$__typename = json['__typename'];
     return Mutation$tvBills_makePayment(
       tvBills_makePayment:
           Mutation$tvBills_makePayment$tvBills_makePayment.fromJson(
-              (l$tvbillsMakepayment as Map<String, dynamic>)),
+              (l$tvBills_makePayment as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -5817,20 +5935,20 @@ class Mutation$tvBills_makePayment {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
-    final l$tvbillsMakepayment = tvBills_makePayment;
-    resultData['tvBills_makePayment'] = l$tvbillsMakepayment.toJson();
+    final _resultData = <String, dynamic>{};
+    final l$tvBills_makePayment = tvBills_makePayment;
+    _resultData['tvBills_makePayment'] = l$tvBills_makePayment.toJson();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
-    final l$tvbillsMakepayment = tvBills_makePayment;
+    final l$tvBills_makePayment = tvBills_makePayment;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$tvbillsMakepayment,
+      l$tvBills_makePayment,
       l$$__typename,
     ]);
   }
@@ -5844,9 +5962,9 @@ class Mutation$tvBills_makePayment {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$tvbillsMakepayment = tvBills_makePayment;
-    final lother$tvbillsMakepayment = other.tvBills_makePayment;
-    if (l$tvbillsMakepayment != lother$tvbillsMakepayment) {
+    final l$tvBills_makePayment = tvBills_makePayment;
+    final lOther$tvBills_makePayment = other.tvBills_makePayment;
+    if (l$tvBills_makePayment != lOther$tvBills_makePayment) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -5897,7 +6015,6 @@ class _CopyWithImpl$Mutation$tvBills_makePayment<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? tvBills_makePayment = _undefined,
     Object? $__typename = _undefined,
@@ -5913,12 +6030,11 @@ class _CopyWithImpl$Mutation$tvBills_makePayment<TRes>
             : ($__typename as String),
       ));
 
-  @override
   CopyWith$Mutation$tvBills_makePayment$tvBills_makePayment<TRes>
       get tvBills_makePayment {
-    final local$tvbillsMakepayment = _instance.tvBills_makePayment;
+    final local$tvBills_makePayment = _instance.tvBills_makePayment;
     return CopyWith$Mutation$tvBills_makePayment$tvBills_makePayment(
-        local$tvbillsMakepayment, (e) => call(tvBills_makePayment: e));
+        local$tvBills_makePayment, (e) => call(tvBills_makePayment: e));
   }
 }
 
@@ -5926,16 +6042,14 @@ class _CopyWithStubImpl$Mutation$tvBills_makePayment<TRes>
     implements CopyWith$Mutation$tvBills_makePayment<TRes> {
   _CopyWithStubImpl$Mutation$tvBills_makePayment(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     Mutation$tvBills_makePayment$tvBills_makePayment? tvBills_makePayment,
     String? $__typename,
   }) =>
       _res;
 
-  @override
   CopyWith$Mutation$tvBills_makePayment$tvBills_makePayment<TRes>
       get tvBills_makePayment =>
           CopyWith$Mutation$tvBills_makePayment$tvBills_makePayment.stub(_res);
@@ -6049,21 +6163,26 @@ typedef OnMutationCompleted$Mutation$tvBills_makePayment = FutureOr<void>
 class Options$Mutation$tvBills_makePayment
     extends graphql.MutationOptions<Mutation$tvBills_makePayment> {
   Options$Mutation$tvBills_makePayment({
-    super.operationName,
+    String? operationName,
     required Variables$Mutation$tvBills_makePayment variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$tvBills_makePayment? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$tvBills_makePayment? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$tvBills_makePayment>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -6072,6 +6191,8 @@ class Options$Mutation$tvBills_makePayment
                         ? null
                         : _parserFn$Mutation$tvBills_makePayment(data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationtvBills_makePayment,
           parserFn: _parserFn$Mutation$tvBills_makePayment,
         );
@@ -6090,22 +6211,31 @@ class Options$Mutation$tvBills_makePayment
 class WatchOptions$Mutation$tvBills_makePayment
     extends graphql.WatchQueryOptions<Mutation$tvBills_makePayment> {
   WatchOptions$Mutation$tvBills_makePayment({
-    super.operationName,
+    String? operationName,
     required Variables$Mutation$tvBills_makePayment variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$tvBills_makePayment? typedOptimisticResult,
-    super.context,
-    super.pollInterval,
-    super.eagerlyFetchResults,
-    super.carryForwardDataOnException,
-    super.fetchResults,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
   }) : super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           document: documentNodeMutationtvBills_makePayment,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$tvBills_makePayment,
         );
 }
@@ -6115,11 +6245,11 @@ extension ClientExtension$Mutation$tvBills_makePayment
   Future<graphql.QueryResult<Mutation$tvBills_makePayment>>
       mutate$tvBills_makePayment(
               Options$Mutation$tvBills_makePayment options) async =>
-          await mutate(options);
+          await this.mutate(options);
   graphql.ObservableQuery<Mutation$tvBills_makePayment>
       watchMutation$tvBills_makePayment(
               WatchOptions$Mutation$tvBills_makePayment options) =>
-          watchMutation(options);
+          this.watchMutation(options);
 }
 
 class Mutation$tvBills_makePayment$HookResult {
@@ -6155,19 +6285,24 @@ graphql.ObservableQuery<Mutation$tvBills_makePayment>
 class WidgetOptions$Mutation$tvBills_makePayment
     extends graphql.MutationOptions<Mutation$tvBills_makePayment> {
   WidgetOptions$Mutation$tvBills_makePayment({
-    super.operationName,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$tvBills_makePayment? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$tvBills_makePayment? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$tvBills_makePayment>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -6176,6 +6311,8 @@ class WidgetOptions$Mutation$tvBills_makePayment
                         ? null
                         : _parserFn$Mutation$tvBills_makePayment(data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationtvBills_makePayment,
           parserFn: _parserFn$Mutation$tvBills_makePayment,
         );
@@ -6205,10 +6342,11 @@ typedef Builder$Mutation$tvBills_makePayment = widgets.Widget Function(
 class Mutation$tvBills_makePayment$Widget
     extends graphql_flutter.Mutation<Mutation$tvBills_makePayment> {
   Mutation$tvBills_makePayment$Widget({
-    super.key,
+    widgets.Key? key,
     WidgetOptions$Mutation$tvBills_makePayment? options,
     required Builder$Mutation$tvBills_makePayment builder,
   }) : super(
+          key: key,
           options: options ?? WidgetOptions$Mutation$tvBills_makePayment(),
           builder: (
             run,
@@ -6276,22 +6414,22 @@ class Mutation$tvBills_makePayment$tvBills_makePayment {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$amount = amount;
-    resultData['amount'] = l$amount;
+    _resultData['amount'] = l$amount;
     final l$biller = biller;
-    resultData['biller'] = l$biller;
+    _resultData['biller'] = l$biller;
     final l$commission = commission;
-    resultData['commission'] = l$commission;
+    _resultData['commission'] = l$commission;
     final l$customerId = customerId;
-    resultData['customerId'] = l$customerId;
+    _resultData['customerId'] = l$customerId;
     final l$transactionId = transactionId;
-    resultData['transactionId'] = l$transactionId;
+    _resultData['transactionId'] = l$transactionId;
     final l$transactionDate = transactionDate;
-    resultData['transactionDate'] = l$transactionDate;
+    _resultData['transactionDate'] = l$transactionDate;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -6406,7 +6544,6 @@ class _CopyWithImpl$Mutation$tvBills_makePayment$tvBills_makePayment<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? amount = _undefined,
     Object? biller = _undefined,
@@ -6446,9 +6583,8 @@ class _CopyWithStubImpl$Mutation$tvBills_makePayment$tvBills_makePayment<TRes>
     implements CopyWith$Mutation$tvBills_makePayment$tvBills_makePayment<TRes> {
   _CopyWithStubImpl$Mutation$tvBills_makePayment$tvBills_makePayment(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     int? amount,
     String? biller,
@@ -6547,7 +6683,6 @@ class _CopyWithImpl$Variables$Query$fundBetting_getProviders<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Query$fundBetting_getProviders._({
         ..._instance._$data,
@@ -6560,9 +6695,8 @@ class _CopyWithStubImpl$Variables$Query$fundBetting_getProviders<TRes>
     implements CopyWith$Variables$Query$fundBetting_getProviders<TRes> {
   _CopyWithStubImpl$Variables$Query$fundBetting_getProviders(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({Input$BettingProvidersInput? input}) => _res;
 }
 
@@ -6574,16 +6708,16 @@ class Query$fundBetting_getProviders {
   });
 
   factory Query$fundBetting_getProviders.fromJson(Map<String, dynamic> json) {
-    final l$fundbettingGetproviders = json['fundBetting_getProviders'];
-    final l$fundbettingGetpricelist = json['fundBetting_getPriceList'];
+    final l$fundBetting_getProviders = json['fundBetting_getProviders'];
+    final l$fundBetting_getPriceList = json['fundBetting_getPriceList'];
     final l$$__typename = json['__typename'];
     return Query$fundBetting_getProviders(
-      fundBetting_getProviders: (l$fundbettingGetproviders as List<dynamic>)
+      fundBetting_getProviders: (l$fundBetting_getProviders as List<dynamic>)
           .map((e) =>
               Query$fundBetting_getProviders$fundBetting_getProviders.fromJson(
                   (e as Map<String, dynamic>)))
           .toList(),
-      fundBetting_getPriceList: (l$fundbettingGetpricelist as List<dynamic>)
+      fundBetting_getPriceList: (l$fundBetting_getPriceList as List<dynamic>)
           .map((e) =>
               Query$fundBetting_getProviders$fundBetting_getPriceList.fromJson(
                   (e as Map<String, dynamic>)))
@@ -6601,26 +6735,26 @@ class Query$fundBetting_getProviders {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
-    final l$fundbettingGetproviders = fundBetting_getProviders;
-    resultData['fundBetting_getProviders'] =
-        l$fundbettingGetproviders.map((e) => e.toJson()).toList();
-    final l$fundbettingGetpricelist = fundBetting_getPriceList;
-    resultData['fundBetting_getPriceList'] =
-        l$fundbettingGetpricelist.map((e) => e.toJson()).toList();
+    final _resultData = <String, dynamic>{};
+    final l$fundBetting_getProviders = fundBetting_getProviders;
+    _resultData['fundBetting_getProviders'] =
+        l$fundBetting_getProviders.map((e) => e.toJson()).toList();
+    final l$fundBetting_getPriceList = fundBetting_getPriceList;
+    _resultData['fundBetting_getPriceList'] =
+        l$fundBetting_getPriceList.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
-    final l$fundbettingGetproviders = fundBetting_getProviders;
-    final l$fundbettingGetpricelist = fundBetting_getPriceList;
+    final l$fundBetting_getProviders = fundBetting_getProviders;
+    final l$fundBetting_getPriceList = fundBetting_getPriceList;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$fundbettingGetproviders.map((v) => v)),
-      Object.hashAll(l$fundbettingGetpricelist.map((v) => v)),
+      Object.hashAll(l$fundBetting_getProviders.map((v) => v)),
+      Object.hashAll(l$fundBetting_getPriceList.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -6634,33 +6768,33 @@ class Query$fundBetting_getProviders {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$fundbettingGetproviders = fundBetting_getProviders;
-    final lother$fundbettingGetproviders = other.fundBetting_getProviders;
-    if (l$fundbettingGetproviders.length !=
-        lother$fundbettingGetproviders.length) {
+    final l$fundBetting_getProviders = fundBetting_getProviders;
+    final lOther$fundBetting_getProviders = other.fundBetting_getProviders;
+    if (l$fundBetting_getProviders.length !=
+        lOther$fundBetting_getProviders.length) {
       return false;
     }
-    for (int i = 0; i < l$fundbettingGetproviders.length; i++) {
-      final l$fundbettingGetproviders$entry = l$fundbettingGetproviders[i];
-      final lother$fundbettingGetproviders$entry =
-          lother$fundbettingGetproviders[i];
-      if (l$fundbettingGetproviders$entry !=
-          lother$fundbettingGetproviders$entry) {
+    for (int i = 0; i < l$fundBetting_getProviders.length; i++) {
+      final l$fundBetting_getProviders$entry = l$fundBetting_getProviders[i];
+      final lOther$fundBetting_getProviders$entry =
+          lOther$fundBetting_getProviders[i];
+      if (l$fundBetting_getProviders$entry !=
+          lOther$fundBetting_getProviders$entry) {
         return false;
       }
     }
-    final l$fundbettingGetpricelist = fundBetting_getPriceList;
-    final lother$fundbettingGetpricelist = other.fundBetting_getPriceList;
-    if (l$fundbettingGetpricelist.length !=
-        lother$fundbettingGetpricelist.length) {
+    final l$fundBetting_getPriceList = fundBetting_getPriceList;
+    final lOther$fundBetting_getPriceList = other.fundBetting_getPriceList;
+    if (l$fundBetting_getPriceList.length !=
+        lOther$fundBetting_getPriceList.length) {
       return false;
     }
-    for (int i = 0; i < l$fundbettingGetpricelist.length; i++) {
-      final l$fundbettingGetpricelist$entry = l$fundbettingGetpricelist[i];
-      final lother$fundbettingGetpricelist$entry =
-          lother$fundbettingGetpricelist[i];
-      if (l$fundbettingGetpricelist$entry !=
-          lother$fundbettingGetpricelist$entry) {
+    for (int i = 0; i < l$fundBetting_getPriceList.length; i++) {
+      final l$fundBetting_getPriceList$entry = l$fundBetting_getPriceList[i];
+      final lOther$fundBetting_getPriceList$entry =
+          lOther$fundBetting_getPriceList[i];
+      if (l$fundBetting_getPriceList$entry !=
+          lOther$fundBetting_getPriceList$entry) {
         return false;
       }
     }
@@ -6703,13 +6837,13 @@ abstract class CopyWith$Query$fundBetting_getProviders<TRes> {
               Iterable<
                   CopyWith$Query$fundBetting_getProviders$fundBetting_getProviders<
                       Query$fundBetting_getProviders$fundBetting_getProviders>>)
-          fn);
+          _fn);
   TRes fundBetting_getPriceList(
       Iterable<Query$fundBetting_getProviders$fundBetting_getPriceList> Function(
               Iterable<
                   CopyWith$Query$fundBetting_getProviders$fundBetting_getPriceList<
                       Query$fundBetting_getProviders$fundBetting_getPriceList>>)
-          fn);
+          _fn);
 }
 
 class _CopyWithImpl$Query$fundBetting_getProviders<TRes>
@@ -6725,7 +6859,6 @@ class _CopyWithImpl$Query$fundBetting_getProviders<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? fundBetting_getProviders = _undefined,
     Object? fundBetting_getPriceList = _undefined,
@@ -6747,30 +6880,28 @@ class _CopyWithImpl$Query$fundBetting_getProviders<TRes>
             : ($__typename as String),
       ));
 
-  @override
   TRes fundBetting_getProviders(
           Iterable<Query$fundBetting_getProviders$fundBetting_getProviders> Function(
                   Iterable<
                       CopyWith$Query$fundBetting_getProviders$fundBetting_getProviders<
                           Query$fundBetting_getProviders$fundBetting_getProviders>>)
-              fn) =>
+              _fn) =>
       call(
-          fundBetting_getProviders: fn(_instance.fundBetting_getProviders.map(
+          fundBetting_getProviders: _fn(_instance.fundBetting_getProviders.map(
               (e) =>
                   CopyWith$Query$fundBetting_getProviders$fundBetting_getProviders(
                     e,
                     (i) => i,
                   ))).toList());
 
-  @override
   TRes fundBetting_getPriceList(
           Iterable<Query$fundBetting_getProviders$fundBetting_getPriceList> Function(
                   Iterable<
                       CopyWith$Query$fundBetting_getProviders$fundBetting_getPriceList<
                           Query$fundBetting_getProviders$fundBetting_getPriceList>>)
-              fn) =>
+              _fn) =>
       call(
-          fundBetting_getPriceList: fn(_instance.fundBetting_getPriceList.map(
+          fundBetting_getPriceList: _fn(_instance.fundBetting_getPriceList.map(
               (e) =>
                   CopyWith$Query$fundBetting_getProviders$fundBetting_getPriceList(
                     e,
@@ -6782,9 +6913,8 @@ class _CopyWithStubImpl$Query$fundBetting_getProviders<TRes>
     implements CopyWith$Query$fundBetting_getProviders<TRes> {
   _CopyWithStubImpl$Query$fundBetting_getProviders(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     List<Query$fundBetting_getProviders$fundBetting_getProviders>?
         fundBetting_getProviders,
@@ -6794,11 +6924,9 @@ class _CopyWithStubImpl$Query$fundBetting_getProviders<TRes>
   }) =>
       _res;
 
-  @override
-  fundBetting_getProviders(fn) => _res;
+  fundBetting_getProviders(_fn) => _res;
 
-  @override
-  fundBetting_getPriceList(fn) => _res;
+  fundBetting_getPriceList(_fn) => _res;
 }
 
 const documentNodeQueryfundBetting_getProviders = DocumentNode(definitions: [
@@ -6901,21 +7029,27 @@ typedef OnQueryComplete$Query$fundBetting_getProviders = FutureOr<void>
 class Options$Query$fundBetting_getProviders
     extends graphql.QueryOptions<Query$fundBetting_getProviders> {
   Options$Query$fundBetting_getProviders({
-    super.operationName,
+    String? operationName,
     required Variables$Query$fundBetting_getProviders variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Query$fundBetting_getProviders? typedOptimisticResult,
-    super.pollInterval,
-    super.context,
+    Duration? pollInterval,
+    graphql.Context? context,
     OnQueryComplete$Query$fundBetting_getProviders? onComplete,
-    super.onError,
+    graphql.OnQueryError? onError,
   })  : onCompleteWithParsed = onComplete,
         super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
@@ -6924,6 +7058,7 @@ class Options$Query$fundBetting_getProviders
                         ? null
                         : _parserFn$Query$fundBetting_getProviders(data),
                   ),
+          onError: onError,
           document: documentNodeQueryfundBetting_getProviders,
           parserFn: _parserFn$Query$fundBetting_getProviders,
         );
@@ -6942,22 +7077,31 @@ class Options$Query$fundBetting_getProviders
 class WatchOptions$Query$fundBetting_getProviders
     extends graphql.WatchQueryOptions<Query$fundBetting_getProviders> {
   WatchOptions$Query$fundBetting_getProviders({
-    super.operationName,
+    String? operationName,
     required Variables$Query$fundBetting_getProviders variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Query$fundBetting_getProviders? typedOptimisticResult,
-    super.context,
-    super.pollInterval,
-    super.eagerlyFetchResults,
-    super.carryForwardDataOnException,
-    super.fetchResults,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
   }) : super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           document: documentNodeQueryfundBetting_getProviders,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
           parserFn: _parserFn$Query$fundBetting_getProviders,
         );
 }
@@ -6965,9 +7109,10 @@ class WatchOptions$Query$fundBetting_getProviders
 class FetchMoreOptions$Query$fundBetting_getProviders
     extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$fundBetting_getProviders({
-    required super.updateQuery,
+    required graphql.UpdateQuery updateQuery,
     required Variables$Query$fundBetting_getProviders variables,
   }) : super(
+          updateQuery: updateQuery,
           variables: variables.toJson(),
           document: documentNodeQueryfundBetting_getProviders,
         );
@@ -6978,17 +7123,17 @@ extension ClientExtension$Query$fundBetting_getProviders
   Future<graphql.QueryResult<Query$fundBetting_getProviders>>
       query$fundBetting_getProviders(
               Options$Query$fundBetting_getProviders options) async =>
-          await query(options);
+          await this.query(options);
   graphql.ObservableQuery<Query$fundBetting_getProviders>
       watchQuery$fundBetting_getProviders(
               WatchOptions$Query$fundBetting_getProviders options) =>
-          watchQuery(options);
+          this.watchQuery(options);
   void writeQuery$fundBetting_getProviders({
     required Query$fundBetting_getProviders data,
     required Variables$Query$fundBetting_getProviders variables,
     bool broadcast = true,
   }) =>
-      writeQuery(
+      this.writeQuery(
         graphql.Request(
           operation: graphql.Operation(
               document: documentNodeQueryfundBetting_getProviders),
@@ -7001,7 +7146,7 @@ extension ClientExtension$Query$fundBetting_getProviders
     required Variables$Query$fundBetting_getProviders variables,
     bool optimistic = true,
   }) {
-    final result = readQuery(
+    final result = this.readQuery(
       graphql.Request(
         operation: graphql.Operation(
             document: documentNodeQueryfundBetting_getProviders),
@@ -7026,11 +7171,16 @@ graphql.ObservableQuery<Query$fundBetting_getProviders>
 
 class Query$fundBetting_getProviders$Widget
     extends graphql_flutter.Query<Query$fundBetting_getProviders> {
-  const Query$fundBetting_getProviders$Widget({
-    super.key,
-    required Options$Query$fundBetting_getProviders super.options,
-    required super.builder,
-  });
+  Query$fundBetting_getProviders$Widget({
+    widgets.Key? key,
+    required Options$Query$fundBetting_getProviders options,
+    required graphql_flutter.QueryBuilder<Query$fundBetting_getProviders>
+        builder,
+  }) : super(
+          key: key,
+          options: options,
+          builder: builder,
+        );
 }
 
 class Query$fundBetting_getProviders$fundBetting_getProviders {
@@ -7059,14 +7209,14 @@ class Query$fundBetting_getProviders$fundBetting_getProviders {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$logo = logo;
-    resultData['logo'] = l$logo;
+    _resultData['logo'] = l$logo;
     final l$name = name;
-    resultData['name'] = l$name;
+    _resultData['name'] = l$name;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -7154,7 +7304,6 @@ class _CopyWithImpl$Query$fundBetting_getProviders$fundBetting_getProviders<
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? logo = _undefined,
     Object? name = _undefined,
@@ -7180,9 +7329,8 @@ class _CopyWithStubImpl$Query$fundBetting_getProviders$fundBetting_getProviders<
   _CopyWithStubImpl$Query$fundBetting_getProviders$fundBetting_getProviders(
       this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     String? logo,
     String? name,
@@ -7212,12 +7360,12 @@ class Query$fundBetting_getProviders$fundBetting_getPriceList {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$amount = amount;
-    resultData['amount'] = l$amount;
+    _resultData['amount'] = l$amount;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -7297,7 +7445,6 @@ class _CopyWithImpl$Query$fundBetting_getProviders$fundBetting_getPriceList<
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? amount = _undefined,
     Object? $__typename = _undefined,
@@ -7319,9 +7466,8 @@ class _CopyWithStubImpl$Query$fundBetting_getProviders$fundBetting_getPriceList<
   _CopyWithStubImpl$Query$fundBetting_getProviders$fundBetting_getPriceList(
       this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     double? amount,
     String? $__typename,
@@ -7415,7 +7561,6 @@ class _CopyWithImpl$Variables$Mutation$fundBetting_makePayment<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Mutation$fundBetting_makePayment._({
         ..._instance._$data,
@@ -7428,9 +7573,8 @@ class _CopyWithStubImpl$Variables$Mutation$fundBetting_makePayment<TRes>
     implements CopyWith$Variables$Mutation$fundBetting_makePayment<TRes> {
   _CopyWithStubImpl$Variables$Mutation$fundBetting_makePayment(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({Input$BettingPaymentInput? input}) => _res;
 }
 
@@ -7441,12 +7585,12 @@ class Mutation$fundBetting_makePayment {
   });
 
   factory Mutation$fundBetting_makePayment.fromJson(Map<String, dynamic> json) {
-    final l$fundbettingMakepayment = json['fundBetting_makePayment'];
+    final l$fundBetting_makePayment = json['fundBetting_makePayment'];
     final l$$__typename = json['__typename'];
     return Mutation$fundBetting_makePayment(
       fundBetting_makePayment:
           Mutation$fundBetting_makePayment$fundBetting_makePayment.fromJson(
-              (l$fundbettingMakepayment as Map<String, dynamic>)),
+              (l$fundBetting_makePayment as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -7457,20 +7601,20 @@ class Mutation$fundBetting_makePayment {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
-    final l$fundbettingMakepayment = fundBetting_makePayment;
-    resultData['fundBetting_makePayment'] = l$fundbettingMakepayment.toJson();
+    final _resultData = <String, dynamic>{};
+    final l$fundBetting_makePayment = fundBetting_makePayment;
+    _resultData['fundBetting_makePayment'] = l$fundBetting_makePayment.toJson();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
-    final l$fundbettingMakepayment = fundBetting_makePayment;
+    final l$fundBetting_makePayment = fundBetting_makePayment;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$fundbettingMakepayment,
+      l$fundBetting_makePayment,
       l$$__typename,
     ]);
   }
@@ -7484,9 +7628,9 @@ class Mutation$fundBetting_makePayment {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$fundbettingMakepayment = fundBetting_makePayment;
-    final lother$fundbettingMakepayment = other.fundBetting_makePayment;
-    if (l$fundbettingMakepayment != lother$fundbettingMakepayment) {
+    final l$fundBetting_makePayment = fundBetting_makePayment;
+    final lOther$fundBetting_makePayment = other.fundBetting_makePayment;
+    if (l$fundBetting_makePayment != lOther$fundBetting_makePayment) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -7538,7 +7682,6 @@ class _CopyWithImpl$Mutation$fundBetting_makePayment<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? fundBetting_makePayment = _undefined,
     Object? $__typename = _undefined,
@@ -7554,12 +7697,11 @@ class _CopyWithImpl$Mutation$fundBetting_makePayment<TRes>
             : ($__typename as String),
       ));
 
-  @override
   CopyWith$Mutation$fundBetting_makePayment$fundBetting_makePayment<TRes>
       get fundBetting_makePayment {
-    final local$fundbettingMakepayment = _instance.fundBetting_makePayment;
+    final local$fundBetting_makePayment = _instance.fundBetting_makePayment;
     return CopyWith$Mutation$fundBetting_makePayment$fundBetting_makePayment(
-        local$fundbettingMakepayment, (e) => call(fundBetting_makePayment: e));
+        local$fundBetting_makePayment, (e) => call(fundBetting_makePayment: e));
   }
 }
 
@@ -7567,9 +7709,8 @@ class _CopyWithStubImpl$Mutation$fundBetting_makePayment<TRes>
     implements CopyWith$Mutation$fundBetting_makePayment<TRes> {
   _CopyWithStubImpl$Mutation$fundBetting_makePayment(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     Mutation$fundBetting_makePayment$fundBetting_makePayment?
         fundBetting_makePayment,
@@ -7577,7 +7718,6 @@ class _CopyWithStubImpl$Mutation$fundBetting_makePayment<TRes>
   }) =>
       _res;
 
-  @override
   CopyWith$Mutation$fundBetting_makePayment$fundBetting_makePayment<TRes>
       get fundBetting_makePayment =>
           CopyWith$Mutation$fundBetting_makePayment$fundBetting_makePayment
@@ -7699,21 +7839,26 @@ typedef OnMutationCompleted$Mutation$fundBetting_makePayment = FutureOr<void>
 class Options$Mutation$fundBetting_makePayment
     extends graphql.MutationOptions<Mutation$fundBetting_makePayment> {
   Options$Mutation$fundBetting_makePayment({
-    super.operationName,
+    String? operationName,
     required Variables$Mutation$fundBetting_makePayment variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$fundBetting_makePayment? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$fundBetting_makePayment? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$fundBetting_makePayment>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -7722,6 +7867,8 @@ class Options$Mutation$fundBetting_makePayment
                         ? null
                         : _parserFn$Mutation$fundBetting_makePayment(data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationfundBetting_makePayment,
           parserFn: _parserFn$Mutation$fundBetting_makePayment,
         );
@@ -7741,22 +7888,31 @@ class Options$Mutation$fundBetting_makePayment
 class WatchOptions$Mutation$fundBetting_makePayment
     extends graphql.WatchQueryOptions<Mutation$fundBetting_makePayment> {
   WatchOptions$Mutation$fundBetting_makePayment({
-    super.operationName,
+    String? operationName,
     required Variables$Mutation$fundBetting_makePayment variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$fundBetting_makePayment? typedOptimisticResult,
-    super.context,
-    super.pollInterval,
-    super.eagerlyFetchResults,
-    super.carryForwardDataOnException,
-    super.fetchResults,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
   }) : super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           document: documentNodeMutationfundBetting_makePayment,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
           parserFn: _parserFn$Mutation$fundBetting_makePayment,
         );
 }
@@ -7766,11 +7922,11 @@ extension ClientExtension$Mutation$fundBetting_makePayment
   Future<graphql.QueryResult<Mutation$fundBetting_makePayment>>
       mutate$fundBetting_makePayment(
               Options$Mutation$fundBetting_makePayment options) async =>
-          await mutate(options);
+          await this.mutate(options);
   graphql.ObservableQuery<Mutation$fundBetting_makePayment>
       watchMutation$fundBetting_makePayment(
               WatchOptions$Mutation$fundBetting_makePayment options) =>
-          watchMutation(options);
+          this.watchMutation(options);
 }
 
 class Mutation$fundBetting_makePayment$HookResult {
@@ -7806,19 +7962,24 @@ graphql.ObservableQuery<Mutation$fundBetting_makePayment>
 class WidgetOptions$Mutation$fundBetting_makePayment
     extends graphql.MutationOptions<Mutation$fundBetting_makePayment> {
   WidgetOptions$Mutation$fundBetting_makePayment({
-    super.operationName,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Mutation$fundBetting_makePayment? typedOptimisticResult,
-    super.context,
+    graphql.Context? context,
     OnMutationCompleted$Mutation$fundBetting_makePayment? onCompleted,
-    super.update,
-    super.onError,
+    graphql.OnMutationUpdate<Mutation$fundBetting_makePayment>? update,
+    graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           onCompleted: onCompleted == null
               ? null
               : (data) => onCompleted(
@@ -7827,6 +7988,8 @@ class WidgetOptions$Mutation$fundBetting_makePayment
                         ? null
                         : _parserFn$Mutation$fundBetting_makePayment(data),
                   ),
+          update: update,
+          onError: onError,
           document: documentNodeMutationfundBetting_makePayment,
           parserFn: _parserFn$Mutation$fundBetting_makePayment,
         );
@@ -7857,10 +8020,11 @@ typedef Builder$Mutation$fundBetting_makePayment = widgets.Widget Function(
 class Mutation$fundBetting_makePayment$Widget
     extends graphql_flutter.Mutation<Mutation$fundBetting_makePayment> {
   Mutation$fundBetting_makePayment$Widget({
-    super.key,
+    widgets.Key? key,
     WidgetOptions$Mutation$fundBetting_makePayment? options,
     required Builder$Mutation$fundBetting_makePayment builder,
   }) : super(
+          key: key,
           options: options ?? WidgetOptions$Mutation$fundBetting_makePayment(),
           builder: (
             run,
@@ -7898,23 +8062,23 @@ class Mutation$fundBetting_makePayment$fundBetting_makePayment {
   factory Mutation$fundBetting_makePayment$fundBetting_makePayment.fromJson(
       Map<String, dynamic> json) {
     final l$amount = json['amount'];
-    final l$customerName = json['customer_name'];
-    final l$customerUsername = json['customer_username'];
-    final l$customerPhoneNumber = json['customer_phone_number'];
-    final l$customerEmailAddress = json['customer_email_address'];
-    final l$orderId = json['order_id'];
-    final l$serviceName = json['service_name'];
-    final l$requestId = json['request_id'];
+    final l$customer_name = json['customer_name'];
+    final l$customer_username = json['customer_username'];
+    final l$customer_phone_number = json['customer_phone_number'];
+    final l$customer_email_address = json['customer_email_address'];
+    final l$order_id = json['order_id'];
+    final l$service_name = json['service_name'];
+    final l$request_id = json['request_id'];
     final l$$__typename = json['__typename'];
     return Mutation$fundBetting_makePayment$fundBetting_makePayment(
       amount: (l$amount as int),
-      customer_name: (l$customerName as String),
-      customer_username: (l$customerUsername as String),
-      customer_phone_number: (l$customerPhoneNumber as String),
-      customer_email_address: (l$customerEmailAddress as String),
-      order_id: (l$orderId as int),
-      service_name: (l$serviceName as String),
-      request_id: (l$requestId as String),
+      customer_name: (l$customer_name as String),
+      customer_username: (l$customer_username as String),
+      customer_phone_number: (l$customer_phone_number as String),
+      customer_email_address: (l$customer_email_address as String),
+      order_id: (l$order_id as int),
+      service_name: (l$service_name as String),
+      request_id: (l$request_id as String),
       $__typename: (l$$__typename as String),
     );
   }
@@ -7938,48 +8102,48 @@ class Mutation$fundBetting_makePayment$fundBetting_makePayment {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$amount = amount;
-    resultData['amount'] = l$amount;
-    final l$customerName = customer_name;
-    resultData['customer_name'] = l$customerName;
-    final l$customerUsername = customer_username;
-    resultData['customer_username'] = l$customerUsername;
-    final l$customerPhoneNumber = customer_phone_number;
-    resultData['customer_phone_number'] = l$customerPhoneNumber;
-    final l$customerEmailAddress = customer_email_address;
-    resultData['customer_email_address'] = l$customerEmailAddress;
-    final l$orderId = order_id;
-    resultData['order_id'] = l$orderId;
-    final l$serviceName = service_name;
-    resultData['service_name'] = l$serviceName;
-    final l$requestId = request_id;
-    resultData['request_id'] = l$requestId;
+    _resultData['amount'] = l$amount;
+    final l$customer_name = customer_name;
+    _resultData['customer_name'] = l$customer_name;
+    final l$customer_username = customer_username;
+    _resultData['customer_username'] = l$customer_username;
+    final l$customer_phone_number = customer_phone_number;
+    _resultData['customer_phone_number'] = l$customer_phone_number;
+    final l$customer_email_address = customer_email_address;
+    _resultData['customer_email_address'] = l$customer_email_address;
+    final l$order_id = order_id;
+    _resultData['order_id'] = l$order_id;
+    final l$service_name = service_name;
+    _resultData['service_name'] = l$service_name;
+    final l$request_id = request_id;
+    _resultData['request_id'] = l$request_id;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
     final l$amount = amount;
-    final l$customerName = customer_name;
-    final l$customerUsername = customer_username;
-    final l$customerPhoneNumber = customer_phone_number;
-    final l$customerEmailAddress = customer_email_address;
-    final l$orderId = order_id;
-    final l$serviceName = service_name;
-    final l$requestId = request_id;
+    final l$customer_name = customer_name;
+    final l$customer_username = customer_username;
+    final l$customer_phone_number = customer_phone_number;
+    final l$customer_email_address = customer_email_address;
+    final l$order_id = order_id;
+    final l$service_name = service_name;
+    final l$request_id = request_id;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$amount,
-      l$customerName,
-      l$customerUsername,
-      l$customerPhoneNumber,
-      l$customerEmailAddress,
-      l$orderId,
-      l$serviceName,
-      l$requestId,
+      l$customer_name,
+      l$customer_username,
+      l$customer_phone_number,
+      l$customer_email_address,
+      l$order_id,
+      l$service_name,
+      l$request_id,
       l$$__typename,
     ]);
   }
@@ -7998,39 +8162,39 @@ class Mutation$fundBetting_makePayment$fundBetting_makePayment {
     if (l$amount != lOther$amount) {
       return false;
     }
-    final l$customerName = customer_name;
-    final lother$customerName = other.customer_name;
-    if (l$customerName != lother$customerName) {
+    final l$customer_name = customer_name;
+    final lOther$customer_name = other.customer_name;
+    if (l$customer_name != lOther$customer_name) {
       return false;
     }
-    final l$customerUsername = customer_username;
-    final lother$customerUsername = other.customer_username;
-    if (l$customerUsername != lother$customerUsername) {
+    final l$customer_username = customer_username;
+    final lOther$customer_username = other.customer_username;
+    if (l$customer_username != lOther$customer_username) {
       return false;
     }
-    final l$customerPhoneNumber = customer_phone_number;
-    final lother$customerPhoneNumber = other.customer_phone_number;
-    if (l$customerPhoneNumber != lother$customerPhoneNumber) {
+    final l$customer_phone_number = customer_phone_number;
+    final lOther$customer_phone_number = other.customer_phone_number;
+    if (l$customer_phone_number != lOther$customer_phone_number) {
       return false;
     }
-    final l$customerEmailAddress = customer_email_address;
-    final lother$customerEmailAddress = other.customer_email_address;
-    if (l$customerEmailAddress != lother$customerEmailAddress) {
+    final l$customer_email_address = customer_email_address;
+    final lOther$customer_email_address = other.customer_email_address;
+    if (l$customer_email_address != lOther$customer_email_address) {
       return false;
     }
-    final l$orderId = order_id;
-    final lother$orderId = other.order_id;
-    if (l$orderId != lother$orderId) {
+    final l$order_id = order_id;
+    final lOther$order_id = other.order_id;
+    if (l$order_id != lOther$order_id) {
       return false;
     }
-    final l$serviceName = service_name;
-    final lother$serviceName = other.service_name;
-    if (l$serviceName != lother$serviceName) {
+    final l$service_name = service_name;
+    final lOther$service_name = other.service_name;
+    if (l$service_name != lOther$service_name) {
       return false;
     }
-    final l$requestId = request_id;
-    final lother$requestId = other.request_id;
-    if (l$requestId != lother$requestId) {
+    final l$request_id = request_id;
+    final lOther$request_id = other.request_id;
+    if (l$request_id != lOther$request_id) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -8095,7 +8259,6 @@ class _CopyWithImpl$Mutation$fundBetting_makePayment$fundBetting_makePayment<
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? amount = _undefined,
     Object? customer_name = _undefined,
@@ -8149,9 +8312,8 @@ class _CopyWithStubImpl$Mutation$fundBetting_makePayment$fundBetting_makePayment
   _CopyWithStubImpl$Mutation$fundBetting_makePayment$fundBetting_makePayment(
       this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     int? amount,
     String? customer_name,

@@ -304,30 +304,21 @@ input Kyc_AddAddressProofInput {
   proofOfAddressUrl: String!
 }
 
-input Kyc_AddBvnInput {
+input Kyc_AddBvnNinInput {
   bvn: String!
+  nin: String!
 }
 
 type Kyc_AddBvnResponse {
   message: String!
 }
 
-input Kyc_AddDobInput {
-  dob: String!
-}
-
 input Kyc_AddNamesInput {
+  dob: String
   firstName: String!
+  isMale: Boolean
   lastName: String!
   middleName: String
-}
-
-input Kyc_AddNinInput {
-  nin: String!
-}
-
-type Kyc_AddNinResponse {
-  message: String
 }
 
 input Kyc_CreateTransactionPinInput {
@@ -400,10 +391,8 @@ type Mutation {
   fundBetting_makePayment(input: BettingPaymentInput!): BettingPaymentResponse!
   kyc_addAddressInfo(input: Kyc_AddAddressInfoInput!): Kyc_Response!
   kyc_addAddressProof(input: Kyc_AddAddressProofInput!): Kyc_Response!
-  kyc_addBvn(input: Kyc_AddBvnInput!): Kyc_AddBvnResponse!
-  kyc_addDob(input: Kyc_AddDobInput!): Kyc_Response!
+  kyc_addBvnNin(input: Kyc_AddBvnNinInput!): Kyc_AddBvnResponse!
   kyc_addNames(input: Kyc_AddNamesInput!): Kyc_Response!
-  kyc_addNin(input: Kyc_AddNinInput!): Kyc_AddNinResponse!
   kyc_createTransactionPin(input: Kyc_CreateTransactionPinInput!): Kyc_Response!
   kyc_sendPhoneOtp(input: Kyc_SendPhoneOtpInput!): Kyc_SendOtpResponse!
   kyc_verifyPhoneOtpAndSubmitCredentials(

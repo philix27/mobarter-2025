@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mobarter/config/env.dart';
 import 'package:mobarter/features/profile/presentation/1enter_names.dart';
-import 'package:mobarter/features/profile/presentation/3nin.dart';
+import 'package:mobarter/features/profile/presentation/3nin_bvn.dart';
 import 'package:mobarter/features/profile/presentation/5address.dart';
 import 'package:mobarter/features/profile/presentation/6phone.dart';
 import 'package:mobarter/features/profile/presentation/kyc_page.dart';
-import 'package:mobarter/utils/size.dart';
 import 'package:mobarter/widgets/widgets.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 

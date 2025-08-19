@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobarter/features/profile/logic/model.dart';
 import 'package:mobarter/features/profile/presentation/1enter_names.dart';
-import 'package:mobarter/features/profile/presentation/3nin.dart';
+import 'package:mobarter/features/profile/presentation/3nin_bvn.dart';
 import 'package:mobarter/features/profile/presentation/5address.dart';
 import 'package:mobarter/features/profile/presentation/6phone.dart';
 

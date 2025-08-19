@@ -91,7 +91,6 @@ class _CopyWithImpl$Variables$Query$utility_getTopUpOperators<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({Object? input = _undefined}) =>
       _then(Variables$Query$utility_getTopUpOperators._({
         ..._instance._$data,
@@ -104,9 +103,8 @@ class _CopyWithStubImpl$Variables$Query$utility_getTopUpOperators<TRes>
     implements CopyWith$Variables$Query$utility_getTopUpOperators<TRes> {
   _CopyWithStubImpl$Variables$Query$utility_getTopUpOperators(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({Input$Utilities_GetOperatorsInput? input}) => _res;
 }
 
@@ -117,12 +115,12 @@ class Query$utility_getTopUpOperators {
   });
 
   factory Query$utility_getTopUpOperators.fromJson(Map<String, dynamic> json) {
-    final l$utilityGettopupoperators = json['utility_getTopUpOperators'];
+    final l$utility_getTopUpOperators = json['utility_getTopUpOperators'];
     final l$$__typename = json['__typename'];
     return Query$utility_getTopUpOperators(
       utility_getTopUpOperators:
           Query$utility_getTopUpOperators$utility_getTopUpOperators.fromJson(
-              (l$utilityGettopupoperators as Map<String, dynamic>)),
+              (l$utility_getTopUpOperators as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -133,21 +131,21 @@ class Query$utility_getTopUpOperators {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
-    final l$utilityGettopupoperators = utility_getTopUpOperators;
-    resultData['utility_getTopUpOperators'] =
-        l$utilityGettopupoperators.toJson();
+    final _resultData = <String, dynamic>{};
+    final l$utility_getTopUpOperators = utility_getTopUpOperators;
+    _resultData['utility_getTopUpOperators'] =
+        l$utility_getTopUpOperators.toJson();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
   int get hashCode {
-    final l$utilityGettopupoperators = utility_getTopUpOperators;
+    final l$utility_getTopUpOperators = utility_getTopUpOperators;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$utilityGettopupoperators,
+      l$utility_getTopUpOperators,
       l$$__typename,
     ]);
   }
@@ -161,9 +159,9 @@ class Query$utility_getTopUpOperators {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$utilityGettopupoperators = utility_getTopUpOperators;
-    final lother$utilityGettopupoperators = other.utility_getTopUpOperators;
-    if (l$utilityGettopupoperators != lother$utilityGettopupoperators) {
+    final l$utility_getTopUpOperators = utility_getTopUpOperators;
+    final lOther$utility_getTopUpOperators = other.utility_getTopUpOperators;
+    if (l$utility_getTopUpOperators != lOther$utility_getTopUpOperators) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -215,7 +213,6 @@ class _CopyWithImpl$Query$utility_getTopUpOperators<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? utility_getTopUpOperators = _undefined,
     Object? $__typename = _undefined,
@@ -231,12 +228,11 @@ class _CopyWithImpl$Query$utility_getTopUpOperators<TRes>
             : ($__typename as String),
       ));
 
-  @override
   CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators<TRes>
       get utility_getTopUpOperators {
-    final local$utilityGettopupoperators = _instance.utility_getTopUpOperators;
+    final local$utility_getTopUpOperators = _instance.utility_getTopUpOperators;
     return CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators(
-        local$utilityGettopupoperators,
+        local$utility_getTopUpOperators,
         (e) => call(utility_getTopUpOperators: e));
   }
 }
@@ -245,9 +241,8 @@ class _CopyWithStubImpl$Query$utility_getTopUpOperators<TRes>
     implements CopyWith$Query$utility_getTopUpOperators<TRes> {
   _CopyWithStubImpl$Query$utility_getTopUpOperators(this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     Query$utility_getTopUpOperators$utility_getTopUpOperators?
         utility_getTopUpOperators,
@@ -255,7 +250,6 @@ class _CopyWithStubImpl$Query$utility_getTopUpOperators<TRes>
   }) =>
       _res;
 
-  @override
   CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators<TRes>
       get utility_getTopUpOperators =>
           CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators
@@ -508,21 +502,27 @@ typedef OnQueryComplete$Query$utility_getTopUpOperators = FutureOr<void>
 class Options$Query$utility_getTopUpOperators
     extends graphql.QueryOptions<Query$utility_getTopUpOperators> {
   Options$Query$utility_getTopUpOperators({
-    super.operationName,
+    String? operationName,
     required Variables$Query$utility_getTopUpOperators variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Query$utility_getTopUpOperators? typedOptimisticResult,
-    super.pollInterval,
-    super.context,
+    Duration? pollInterval,
+    graphql.Context? context,
     OnQueryComplete$Query$utility_getTopUpOperators? onComplete,
-    super.onError,
+    graphql.OnQueryError? onError,
   })  : onCompleteWithParsed = onComplete,
         super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
           onComplete: onComplete == null
               ? null
               : (data) => onComplete(
@@ -531,6 +531,7 @@ class Options$Query$utility_getTopUpOperators
                         ? null
                         : _parserFn$Query$utility_getTopUpOperators(data),
                   ),
+          onError: onError,
           document: documentNodeQueryutility_getTopUpOperators,
           parserFn: _parserFn$Query$utility_getTopUpOperators,
         );
@@ -549,22 +550,31 @@ class Options$Query$utility_getTopUpOperators
 class WatchOptions$Query$utility_getTopUpOperators
     extends graphql.WatchQueryOptions<Query$utility_getTopUpOperators> {
   WatchOptions$Query$utility_getTopUpOperators({
-    super.operationName,
+    String? operationName,
     required Variables$Query$utility_getTopUpOperators variables,
-    super.fetchPolicy,
-    super.errorPolicy,
-    super.cacheRereadPolicy,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
     Query$utility_getTopUpOperators? typedOptimisticResult,
-    super.context,
-    super.pollInterval,
-    super.eagerlyFetchResults,
-    super.carryForwardDataOnException,
-    super.fetchResults,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
   }) : super(
           variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
           document: documentNodeQueryutility_getTopUpOperators,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
           parserFn: _parserFn$Query$utility_getTopUpOperators,
         );
 }
@@ -572,9 +582,10 @@ class WatchOptions$Query$utility_getTopUpOperators
 class FetchMoreOptions$Query$utility_getTopUpOperators
     extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$utility_getTopUpOperators({
-    required super.updateQuery,
+    required graphql.UpdateQuery updateQuery,
     required Variables$Query$utility_getTopUpOperators variables,
   }) : super(
+          updateQuery: updateQuery,
           variables: variables.toJson(),
           document: documentNodeQueryutility_getTopUpOperators,
         );
@@ -585,17 +596,17 @@ extension ClientExtension$Query$utility_getTopUpOperators
   Future<graphql.QueryResult<Query$utility_getTopUpOperators>>
       query$utility_getTopUpOperators(
               Options$Query$utility_getTopUpOperators options) async =>
-          await query(options);
+          await this.query(options);
   graphql.ObservableQuery<Query$utility_getTopUpOperators>
       watchQuery$utility_getTopUpOperators(
               WatchOptions$Query$utility_getTopUpOperators options) =>
-          watchQuery(options);
+          this.watchQuery(options);
   void writeQuery$utility_getTopUpOperators({
     required Query$utility_getTopUpOperators data,
     required Variables$Query$utility_getTopUpOperators variables,
     bool broadcast = true,
   }) =>
-      writeQuery(
+      this.writeQuery(
         graphql.Request(
           operation: graphql.Operation(
               document: documentNodeQueryutility_getTopUpOperators),
@@ -608,7 +619,7 @@ extension ClientExtension$Query$utility_getTopUpOperators
     required Variables$Query$utility_getTopUpOperators variables,
     bool optimistic = true,
   }) {
-    final result = readQuery(
+    final result = this.readQuery(
       graphql.Request(
         operation: graphql.Operation(
             document: documentNodeQueryutility_getTopUpOperators),
@@ -633,11 +644,16 @@ graphql.ObservableQuery<Query$utility_getTopUpOperators>
 
 class Query$utility_getTopUpOperators$Widget
     extends graphql_flutter.Query<Query$utility_getTopUpOperators> {
-  const Query$utility_getTopUpOperators$Widget({
-    super.key,
-    required Options$Query$utility_getTopUpOperators super.options,
-    required super.builder,
-  });
+  Query$utility_getTopUpOperators$Widget({
+    widgets.Key? key,
+    required Options$Query$utility_getTopUpOperators options,
+    required graphql_flutter.QueryBuilder<Query$utility_getTopUpOperators>
+        builder,
+  }) : super(
+          key: key,
+          options: options,
+          builder: builder,
+        );
 }
 
 class Query$utility_getTopUpOperators$utility_getTopUpOperators {
@@ -687,16 +703,16 @@ class Query$utility_getTopUpOperators$utility_getTopUpOperators {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$airtime = airtime;
-    resultData['airtime'] = l$airtime.map((e) => e.toJson()).toList();
+    _resultData['airtime'] = l$airtime.map((e) => e.toJson()).toList();
     final l$dataPlan = dataPlan;
-    resultData['dataPlan'] = l$dataPlan.map((e) => e.toJson()).toList();
+    _resultData['dataPlan'] = l$dataPlan.map((e) => e.toJson()).toList();
     final l$dataBundles = dataBundles;
-    resultData['dataBundles'] = l$dataBundles.map((e) => e.toJson()).toList();
+    _resultData['dataBundles'] = l$dataBundles.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -804,19 +820,19 @@ abstract class CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperator
               Iterable<
                   CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators$airtime<
                       Query$utility_getTopUpOperators$utility_getTopUpOperators$airtime>>)
-          fn);
+          _fn);
   TRes dataPlan(
       Iterable<Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan> Function(
               Iterable<
                   CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan<
                       Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan>>)
-          fn);
+          _fn);
   TRes dataBundles(
       Iterable<Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles> Function(
               Iterable<
                   CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles<
                       Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles>>)
-          fn);
+          _fn);
 }
 
 class _CopyWithImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators<
@@ -836,7 +852,6 @@ class _CopyWithImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators<
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? airtime = _undefined,
     Object? dataPlan = _undefined,
@@ -861,43 +876,40 @@ class _CopyWithImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators<
             : ($__typename as String),
       ));
 
-  @override
   TRes airtime(
           Iterable<Query$utility_getTopUpOperators$utility_getTopUpOperators$airtime> Function(
                   Iterable<
                       CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators$airtime<
                           Query$utility_getTopUpOperators$utility_getTopUpOperators$airtime>>)
-              fn) =>
+              _fn) =>
       call(
-          airtime: fn(_instance.airtime.map((e) =>
+          airtime: _fn(_instance.airtime.map((e) =>
               CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators$airtime(
                 e,
                 (i) => i,
               ))).toList());
 
-  @override
   TRes dataPlan(
           Iterable<Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan> Function(
                   Iterable<
                       CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan<
                           Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan>>)
-              fn) =>
+              _fn) =>
       call(
-          dataPlan: fn(_instance.dataPlan.map((e) =>
+          dataPlan: _fn(_instance.dataPlan.map((e) =>
               CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan(
                 e,
                 (i) => i,
               ))).toList());
 
-  @override
   TRes dataBundles(
           Iterable<Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles> Function(
                   Iterable<
                       CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles<
                           Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles>>)
-              fn) =>
+              _fn) =>
       call(
-          dataBundles: fn(_instance.dataBundles.map((e) =>
+          dataBundles: _fn(_instance.dataBundles.map((e) =>
               CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles(
                 e,
                 (i) => i,
@@ -912,9 +924,8 @@ class _CopyWithStubImpl$Query$utility_getTopUpOperators$utility_getTopUpOperator
   _CopyWithStubImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators(
       this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     List<Query$utility_getTopUpOperators$utility_getTopUpOperators$airtime>?
         airtime,
@@ -926,14 +937,11 @@ class _CopyWithStubImpl$Query$utility_getTopUpOperators$utility_getTopUpOperator
   }) =>
       _res;
 
-  @override
-  airtime(fn) => _res;
+  airtime(_fn) => _res;
 
-  @override
-  dataPlan(fn) => _res;
+  dataPlan(_fn) => _res;
 
-  @override
-  dataBundles(fn) => _res;
+  dataBundles(_fn) => _res;
 }
 
 class Query$utility_getTopUpOperators$utility_getTopUpOperators$airtime {
@@ -984,23 +992,23 @@ class Query$utility_getTopUpOperators$utility_getTopUpOperators$airtime {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$name = name;
-    resultData['name'] = l$name;
+    _resultData['name'] = l$name;
     final l$suggestedAmounts = suggestedAmounts;
-    resultData['suggestedAmounts'] =
+    _resultData['suggestedAmounts'] =
         l$suggestedAmounts?.map((e) => e).toList();
     final l$logo = logo;
-    resultData['logo'] = l$logo;
+    _resultData['logo'] = l$logo;
     final l$maxAmount = maxAmount;
-    resultData['maxAmount'] = l$maxAmount;
+    _resultData['maxAmount'] = l$maxAmount;
     final l$minAmount = minAmount;
-    resultData['minAmount'] = l$minAmount;
+    _resultData['minAmount'] = l$minAmount;
     final l$operatorId = operatorId;
-    resultData['operatorId'] = l$operatorId;
+    _resultData['operatorId'] = l$operatorId;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -1138,7 +1146,6 @@ class _CopyWithImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators$ai
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? name = _undefined,
     Object? suggestedAmounts = _undefined,
@@ -1179,9 +1186,8 @@ class _CopyWithStubImpl$Query$utility_getTopUpOperators$utility_getTopUpOperator
   _CopyWithStubImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators$airtime(
       this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     String? name,
     List<int>? suggestedAmounts,
@@ -1236,18 +1242,18 @@ class Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$name = name;
-    resultData['name'] = l$name;
+    _resultData['name'] = l$name;
     final l$logo = logo;
-    resultData['logo'] = l$logo;
+    _resultData['logo'] = l$logo;
     final l$operatorId = operatorId;
-    resultData['operatorId'] = l$operatorId;
+    _resultData['operatorId'] = l$operatorId;
     final l$plans = plans;
-    resultData['plans'] = l$plans?.map((e) => e.toJson()).toList();
+    _resultData['plans'] = l$plans?.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -1353,7 +1359,7 @@ abstract class CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperator
               Iterable<
                   CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan$plans<
                       Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan$plans>>?)
-          fn);
+          _fn);
 }
 
 class _CopyWithImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan<
@@ -1374,7 +1380,6 @@ class _CopyWithImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators$da
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? name = _undefined,
     Object? logo = _undefined,
@@ -1401,15 +1406,14 @@ class _CopyWithImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators$da
             : ($__typename as String),
       ));
 
-  @override
   TRes plans(
           Iterable<Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan$plans>? Function(
                   Iterable<
                       CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan$plans<
                           Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan$plans>>?)
-              fn) =>
+              _fn) =>
       call(
-          plans: fn(_instance.plans?.map((e) =>
+          plans: _fn(_instance.plans?.map((e) =>
               CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan$plans(
                 e,
                 (i) => i,
@@ -1424,9 +1428,8 @@ class _CopyWithStubImpl$Query$utility_getTopUpOperators$utility_getTopUpOperator
   _CopyWithStubImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan(
       this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     String? name,
     String? logo,
@@ -1437,8 +1440,7 @@ class _CopyWithStubImpl$Query$utility_getTopUpOperators$utility_getTopUpOperator
   }) =>
       _res;
 
-  @override
-  plans(fn) => _res;
+  plans(_fn) => _res;
 }
 
 class Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan$plans {
@@ -1467,14 +1469,14 @@ class Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan$plans {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$amount = amount;
-    resultData['amount'] = l$amount;
+    _resultData['amount'] = l$amount;
     final l$desc = desc;
-    resultData['desc'] = l$desc;
+    _resultData['desc'] = l$desc;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -1569,7 +1571,6 @@ class _CopyWithImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators$da
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? amount = _undefined,
     Object? desc = _undefined,
@@ -1597,9 +1598,8 @@ class _CopyWithStubImpl$Query$utility_getTopUpOperators$utility_getTopUpOperator
   _CopyWithStubImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataPlan$plans(
       this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     int? amount,
     String? desc,
@@ -1650,18 +1650,18 @@ class Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles {
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$name = name;
-    resultData['name'] = l$name;
+    _resultData['name'] = l$name;
     final l$logo = logo;
-    resultData['logo'] = l$logo;
+    _resultData['logo'] = l$logo;
     final l$operatorId = operatorId;
-    resultData['operatorId'] = l$operatorId;
+    _resultData['operatorId'] = l$operatorId;
     final l$plans = plans;
-    resultData['plans'] = l$plans?.map((e) => e.toJson()).toList();
+    _resultData['plans'] = l$plans?.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -1768,7 +1768,7 @@ abstract class CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperator
               Iterable<
                   CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles$plans<
                       Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles$plans>>?)
-          fn);
+          _fn);
 }
 
 class _CopyWithImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles<
@@ -1790,7 +1790,6 @@ class _CopyWithImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators$da
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? name = _undefined,
     Object? logo = _undefined,
@@ -1818,15 +1817,14 @@ class _CopyWithImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators$da
             : ($__typename as String),
       ));
 
-  @override
   TRes plans(
           Iterable<Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles$plans>? Function(
                   Iterable<
                       CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles$plans<
                           Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles$plans>>?)
-              fn) =>
+              _fn) =>
       call(
-          plans: fn(_instance.plans?.map((e) =>
+          plans: _fn(_instance.plans?.map((e) =>
               CopyWith$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles$plans(
                 e,
                 (i) => i,
@@ -1841,9 +1839,8 @@ class _CopyWithStubImpl$Query$utility_getTopUpOperators$utility_getTopUpOperator
   _CopyWithStubImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles(
       this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     String? name,
     String? logo,
@@ -1854,8 +1851,7 @@ class _CopyWithStubImpl$Query$utility_getTopUpOperators$utility_getTopUpOperator
   }) =>
       _res;
 
-  @override
-  plans(fn) => _res;
+  plans(_fn) => _res;
 }
 
 class Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles$plans {
@@ -1884,14 +1880,14 @@ class Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles$plan
   final String $__typename;
 
   Map<String, dynamic> toJson() {
-    final resultData = <String, dynamic>{};
+    final _resultData = <String, dynamic>{};
     final l$amount = amount;
-    resultData['amount'] = l$amount;
+    _resultData['amount'] = l$amount;
     final l$desc = desc;
-    resultData['desc'] = l$desc;
+    _resultData['desc'] = l$desc;
     final l$$__typename = $__typename;
-    resultData['__typename'] = l$$__typename;
-    return resultData;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
   }
 
   @override
@@ -1986,7 +1982,6 @@ class _CopyWithImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators$da
 
   static const _undefined = <dynamic, dynamic>{};
 
-  @override
   TRes call({
     Object? amount = _undefined,
     Object? desc = _undefined,
@@ -2014,9 +2009,8 @@ class _CopyWithStubImpl$Query$utility_getTopUpOperators$utility_getTopUpOperator
   _CopyWithStubImpl$Query$utility_getTopUpOperators$utility_getTopUpOperators$dataBundles$plans(
       this._res);
 
-  final TRes _res;
+  TRes _res;
 
-  @override
   call({
     int? amount,
     String? desc,

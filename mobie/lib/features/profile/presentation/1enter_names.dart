@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/profile/logic/provider.dart';
+import 'package:mobarter/graphql/schema/_docs.graphql.dart';
+import 'package:mobarter/graphql/schema/kyc.gql.dart';
+import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/widgets/widgets.dart';
 
-class EnterNames1 extends ConsumerWidget {
+class EnterNames1 extends HookConsumerWidget {
   EnterNames1({super.key});
   TextEditingController firstName = TextEditingController();
   TextEditingController lastName = TextEditingController();
@@ -13,7 +16,36 @@ class EnterNames1 extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final read = kycFormRead(ref);
+    final mutation = useMutation$kyc_addNames();
+
+    submit() async {
+      try {
+        require(firstName.text, "First name needed");
+        require(lastName.text, "Last name needed");
+        require(dob.text, "Date of Birth name needed");
+        // require(firstName.text, "Gender name needed");
+
+        await mutation
+            .runMutation(
+              Variables$Mutation$kyc_addNames(
+                input: Input$Kyc_AddNamesInput(
+                  firstName: firstName.text,
+                  lastName: lastName.text,
+                  middleName: middleName.text,
+                  dob: dob.text,
+                  isMale: true,
+                ),
+              ),
+            )
+            .networkResult;
+
+        appToast(context, "Record submitted");
+        Navigator.of(context).pop();
+      } catch (e) {
+        appToastErr(context, e.toString());
+      }
+    }
+
     return Column(
       spacing: 20,
       children: [
@@ -49,13 +81,7 @@ class EnterNames1 extends ConsumerWidget {
             LengthLimitingTextInputFormatter(6), // Enforces the limit
           ],
         ),
-        Btn(
-          title: "Submit",
-          onPressed: () {
-            appToast(context, "Submitted successfully");
-            Navigator.of(context).pop();
-          },
-        ),
+        Btn(title: "Submit", onPressed: () => submit()),
       ],
     );
   }
