@@ -63,6 +63,8 @@ class _NetworkList extends HookConsumerWidget {
         return listTile(
           context,
           title: item.name,
+          subtitle: "Network Provider",
+          imgUrl: item.logo,
           onTap: () {
             topUpdata.updateNetwork(item.name, item.operatorId);
             Navigator.pop(context);

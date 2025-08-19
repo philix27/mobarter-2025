@@ -40,8 +40,7 @@ class AddBankAccountPage extends HookConsumerWidget {
             .networkResult;
 
         if (kDebugMode) {
-          appLogger.e("Add Bank Account $response");
-          return;
+          appLogger.d("Add Bank Account $response");
         }
 
         // final msg = response!.parsedData?.bankAccount_create;

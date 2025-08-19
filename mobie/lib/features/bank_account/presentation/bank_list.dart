@@ -7,7 +7,7 @@ import 'package:mobarter/widgets/loading.dart';
 
 class BankAccountList extends HookWidget {
   BankAccountList({super.key, this.onAddBank});
- void Function(BankAccountModel bank)? onAddBank;
+  void Function(BankAccountModel bank)? onAddBank;
 
   @override
   Widget build(BuildContext context) {

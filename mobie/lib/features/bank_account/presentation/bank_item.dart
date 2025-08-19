@@ -1,10 +1,16 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:mobarter/features/bank_account/logic/model.dart';
+import 'package:mobarter/features/theme/themeHandlers.dart';
+import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/bankAccount.gql.dart';
+import 'package:mobarter/utils/logger.dart';
 import 'package:mobarter/widgets/listTile.dart';
+import 'package:mobarter/widgets/toast.dart';
 
-class BankItem extends StatelessWidget {
+class BankItem extends HookWidget {
   BankItem({super.key, required this.item, this.onAddBank});
   final Query$BankAccount_getAll$bankAccount_getAll item;
 
@@ -12,6 +18,25 @@ class BankItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deleteBankAccount = useMutation$BankAccount_delete();
+
+    removeAccount(double accountId) async {
+      final response = await deleteBankAccount
+          .runMutation(
+            Variables$Mutation$BankAccount_delete(
+              input: Input$BankAccount_DeleteInput(accountId: accountId),
+            ),
+          )
+          .networkResult;
+
+      
+      if (kDebugMode) {
+        appLogger.d("Delete Bank Account");
+      }
+
+      appToast(context, "Account added successfully");
+    }
+
     return Slidable(
       // Specify a key if the Slidable is dismissible.
       key: const ValueKey(0),
@@ -58,11 +83,16 @@ class BankItem extends StatelessWidget {
           //   label: 'Archive',
           // ),
           SlidableAction(
-            onPressed: (BuildContext context) {},
-            backgroundColor: Color.fromARGB(255, 207, 34, 3),
+            onPressed: (BuildContext context) {
+              removeAccount(item.id);
+            },
+            backgroundColor: Color.fromARGB(255, 245, 56, 23),
             foregroundColor: Colors.white,
             icon: Icons.save,
-            label: 'Save',
+            label: 'Delete',
+            spacing: 5,
+            borderRadius: BorderRadius.all(Radius.circular(15)),
+            padding: EdgeInsets.all(5),
           ),
         ],
       ),
@@ -72,8 +102,8 @@ class BankItem extends StatelessWidget {
       child: listTile(
         context,
         title: item.account_name,
-        subtitle: item.bank_name,
-        imgUrl: item.account_no,
+        subtitle: item.account_no,
+        trailing: Text(item.bank_name, style: textTheme(context).bodySmall),
         onTap: () {
           if (onAddBank != null) {
             onAddBank!(

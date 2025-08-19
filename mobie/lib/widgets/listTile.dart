@@ -28,7 +28,7 @@ Widget listTile(
         isThreeLine: false,
         // splashColor: colorPrimaryLight,
         // tileColor: colorCard,
-        // tileColor: tileColor,
+        tileColor: Theme.of(context).cardColor,
         // isThreeLine: subtitle != null,
         title: Text(title, style: textTheme(context).bodyMedium),
         subtitle: subtitle != null

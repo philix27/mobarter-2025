@@ -25,7 +25,7 @@ class ProfilePage extends StatelessWidget {
               ? Btn(
                   title: "KYC",
                   onPressed: () {
-                    pushScreen(
+                    pushScreen(           
                       context,
                       screen: KycPage(),
                       withNavBar: false,
