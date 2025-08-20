@@ -47,31 +47,25 @@ class HomeAddress5 extends HookConsumerWidget {
         textField(
           context,
           label: 'State',
-          maxLength: 100,
+          maxLength: 70,
           controller: stateAddress,
           keyboardType: TextInputType.streetAddress,
         ),
         textField(
           context,
           label: 'Street',
-          maxLength: 100,
+          maxLength: 70,
           controller: street,
           keyboardType: TextInputType.streetAddress,
         ),
         textField(
           context,
           label: 'Home Address',
-          maxLength: 100,
+          maxLength: 70,
           controller: homeAddress,
           keyboardType: TextInputType.streetAddress,
         ),
-        Btn(
-          title: "Submit",
-          onPressed: () {
-            appToast(context, "Submitted successfully");
-            Navigator.of(context).pop();
-          },
-        ),
+        Btn(title: "Submit", onPressed: () => submit()),
       ],
     );
   }

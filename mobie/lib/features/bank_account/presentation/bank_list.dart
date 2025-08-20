@@ -35,3 +35,4 @@ class BankAccountList extends HookWidget {
     );
   }
 }
+

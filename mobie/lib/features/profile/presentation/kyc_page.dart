@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mobarter/features/profile/logic/formatter.dart';
-import 'package:mobarter/features/profile/logic/provider.dart';
-import 'package:mobarter/features/theme/themeHandlers.dart';
-import 'package:mobarter/graphql/schema/kyc.gql.dart';
 import 'package:mobarter/widgets/widgets.dart';
 
 class KycPage extends HookConsumerWidget {

@@ -15,6 +15,7 @@ class KycFormNotifier extends StateNotifier<KycModel> {
           phone: null,
           street: null,
           state: null,
+          gender: null,
         ),
       );
 
@@ -22,6 +23,9 @@ class KycFormNotifier extends StateNotifier<KycModel> {
     state = state.copyWith(street: street, state: addressState);
   }
 
+  void updateGender(Gender gender) {
+    state = state.copyWith(gender: gender);
+  }
   void updateStep(KycSteps step) {
     state = state.copyWith(step: step);
   }

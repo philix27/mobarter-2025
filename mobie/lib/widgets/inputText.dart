@@ -9,7 +9,9 @@ Widget textField(
   List<TextInputFormatter>? inputFormatters,
   int? maxLength,
   String? helperText,
+  String? hintText,
   TextEditingController? controller,
+  String? errorText,
   Function(String)? onChanged,
 }) {
   return Column(
@@ -22,19 +24,30 @@ Widget textField(
         inputFormatters: inputFormatters,
         controller: controller,
         onChanged: onChanged,
-        style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+
+        style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
         decoration: InputDecoration(
           // labelText: label,
           helperText: helperText,
           fillColor: Theme.of(context).cardColor,
-          focusColor: Colors.deepOrange,
-          contentPadding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
-          border: OutlineInputBorder(
-            borderSide: BorderSide(
-              width: 1,
-              color: Theme.of(context).cardColor,
-            ),
+          focusColor: Theme.of(context).cardColor,
+          contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8),
+          errorText: errorText,
+          hintText: hintText,
+          hintStyle: TextStyle(
+            color: Theme.of(context).disabledColor,
+            fontSize: 15,
+            fontWeight: FontWeight.w400,
           ),
+          border: InputBorder.none,
+          // border: OutlineInputBorder(
+          //   borderRadius: BorderRadius.circular(5),
+          //   borderSide: BorderSide(
+          //     width: 0.2,
+          //     style: BorderStyle.none,
+          //     color: Theme.of(context).disabledColor,
+          //   ),
+          // ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(width: 1, color: Colors.deepOrange),
           ),

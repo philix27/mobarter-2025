@@ -26,7 +26,7 @@ Widget listTile(
         dense: true,
         onTap: onTap,
         isThreeLine: false,
-        // splashColor: colorPrimaryLight,
+        splashColor: Theme.of(context).highlightColor,
         // tileColor: colorCard,
         tileColor: Theme.of(context).cardColor,
         // isThreeLine: subtitle != null,
@@ -39,7 +39,7 @@ Widget listTile(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   color: Theme.of(context).scaffoldBackgroundColor,
-                ),
+                ),  
                 padding: EdgeInsets.all(5),
                 child: Icon(
                   icon,

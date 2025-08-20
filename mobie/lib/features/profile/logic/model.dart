@@ -8,7 +8,9 @@ enum KycSteps {
   summary7,
   phoneOtp8,
 }
-
+enum Gender {
+  Male, Female
+}
 class KycModel {
   final KycSteps? step;
   final String? firstName;
@@ -20,6 +22,7 @@ class KycModel {
   final String? street;
   final String? state;
   final String? phone;
+  final Gender? gender;
 
   KycModel({
     required this.step,
@@ -32,6 +35,7 @@ class KycModel {
     required this.street,
     required this.state,
     required this.phone,
+    required this.gender,
   });
 
   KycModel copyWith({
@@ -45,6 +49,7 @@ class KycModel {
     String? street,
     String? state,
     String? phone,
+    Gender? gender,
   }) {
     return KycModel(
       step: step ?? step,
@@ -57,6 +62,7 @@ class KycModel {
       street: street ?? street,
       state: state ?? state,
       phone: phone ?? phone,
+      gender: gender ?? gender,
     );
   }
 }

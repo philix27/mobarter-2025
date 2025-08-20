@@ -61,25 +61,29 @@ class _ConnectionButton extends HookWidget {
     }
 
     welcome() async {
-      await walletSvc.userWalletAddress();
+      try {
+        await walletSvc.userWalletAddress();
 
-      final user = svc.user();
+        final user = svc.user();
 
-      if (user == null) {
-        appToast(context, "User not found", type: ToastificationType.info);
-        return;
+        if (user == null) {
+          appToast(context, "User not found", type: ToastificationType.info);
+          return;
+        }
+
+        final hasWallet = await walletSvc.doesWalletExist(user.uid);
+
+        await getServerToken(user);
+
+        if (!hasWallet) {
+          Navigator.of(context).pushNamed("/setup-pin");
+          return;
+        }
+
+        Navigator.of(context).pushNamed("/home");
+      } catch (e) {
+        appToastErr(context, e.toString());
       }
-
-      final hasWallet = await walletSvc.doesWalletExist(user.uid);
-
-      await getServerToken(user);
-
-      if (!hasWallet) {
-        Navigator.of(context).pushNamed("/setup-pin");
-        return;
-      }
-
-      Navigator.of(context).pushNamed("/home");
     }
 
     int attempt = 0;
