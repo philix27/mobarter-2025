@@ -54,14 +54,14 @@ class SettingsPage extends HookConsumerWidget {
             title: user.displayName!,
             subtitle: user.email,
             imgUrl: user.photoURL,
-            onTap: () async {
-              pushScreen(
-                context,
-                screen: ProfilePage(),
-                withNavBar: false,
-                pageTransitionAnimation: PageTransitionAnimation.slideUp,
-              );
-            },
+            // onTap: () async {
+            //   pushScreen(
+            //     context,
+            //     screen: ProfilePage(),
+            //     withNavBar: false,
+            //     pageTransitionAnimation: PageTransitionAnimation.slideUp,
+            //   );
+            // },
           ),
           listTile(
             context,

@@ -46,7 +46,7 @@ class AddBankAccountPage extends HookConsumerWidget {
         // final msg = response!.parsedData?.bankAccount_create;
         r.clear();
         appToast(context, "Account added successfully");
-        Navigator.of(context).pop();
+        Navigator.of(context).pushNamed("/home");
       } catch (e) {
         appToastErr(context, e.toString());
       }

@@ -6,7 +6,6 @@ import 'package:mobarter/features/profile/logic/provider.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/kyc.gql.dart';
 import 'package:mobarter/utils/exception.dart';
-import 'package:mobarter/utils/size.dart';
 import 'package:mobarter/widgets/widgets.dart';
 
 class EnterNames1 extends HookConsumerWidget {
@@ -14,7 +13,6 @@ class EnterNames1 extends HookConsumerWidget {
   TextEditingController firstName = TextEditingController();
   TextEditingController lastName = TextEditingController();
   TextEditingController middleName = TextEditingController();
-  TextEditingController dob = TextEditingController();
 
   @override
   Widget build(BuildContext context, ref) {
@@ -26,8 +24,8 @@ class EnterNames1 extends HookConsumerWidget {
       try {
         require(firstName.text, "First name needed");
         require(lastName.text, "Last name needed");
-        require(dob.text, "Date of Birth name needed");
-        require(w.gender != null, "Select gender");
+        require(w.dob, "Date of Birth needed");
+        require(w.gender, "Select gender");
 
         await mutation
             .runMutation(
@@ -36,14 +34,14 @@ class EnterNames1 extends HookConsumerWidget {
                   firstName: firstName.text,
                   lastName: lastName.text,
                   middleName: middleName.text,
-                  dob: dob.text,
+                  dob: w.dob,
                   isMale: w.gender == Gender.Male,
                 ),
               ),
             )
             .networkResult;
         appToast(context, "Record submitted");
-        Navigator.of(context).pop();
+        Navigator.of(context).pushNamed("/home");
       } catch (e) {
         appToastErr(context, e.toString());
       }
@@ -79,52 +77,80 @@ class EnterNames1 extends HookConsumerWidget {
             LengthLimitingTextInputFormatter(35), // Enforces the limit
           ],
         ),
-        textField(
-          context,
-          label: 'Date of Birth',
-          hintText: "DY/MO/YR",
-          maxLength: 6,
-          controller: dob,
-          keyboardType: TextInputType.number,
-          inputFormatters: [
-            FilteringTextInputFormatter.digitsOnly, // Allow digits only
-            LengthLimitingTextInputFormatter(6), // Enforces the limit
-          ],
-        ),
+        DatePicker(),
+
         listTile(
           context,
+          label: "Gender",
           title: w.gender == null
               ? "Select Gender"
               : w.gender!.name.toUpperCase(),
           onTap: () {
-            btmSheet(
-              ctx: context,
-              // h: getH(context, 0.3),
-              w: Column(
-                children: [
-                  listTile(
-                    context,
-                    title: "MALE",
-                    onTap: () {
-                      r.updateGender(Gender.Male);
-                    },
-                  ),
-                  listTile(
-                    context,
-                    title: "FEMALE",
-                    onTap: () {
-                      r.updateGender(Gender.Female);
-                    },
-                  ),
-                  SizedBox(height: 40),
-                ],
-              ),
-            );
+            btmSheet(ctx: context, w: PickGender());
           },
         ),
         SizedBox(height: 20),
         Btn(title: "Submit", onPressed: () => submit()),
       ],
+    );
+  }
+}
+
+class PickGender extends ConsumerWidget {
+  const PickGender({super.key});
+  @override
+  Widget build(BuildContext context, ref) {
+    final r = kycFormRead(ref);
+    return Column(
+      children: [
+        listTile(
+          context,
+          title: "MALE",
+          onTap: () {
+            r.updateGender(Gender.Male);
+            Navigator.of(context).pop();
+          },
+        ),
+        listTile(
+          context,
+          title: "FEMALE",
+          onTap: () {
+            r.updateGender(Gender.Female);
+            Navigator.of(context).pop();
+          },
+        ),
+        SizedBox(height: 40),
+      ],
+    );
+  }
+}
+
+class DatePicker extends ConsumerWidget {
+  DateTime? picked;
+  @override
+  Widget build(BuildContext context, ref) {
+    final r = kycFormRead(ref);
+    final w = kycFormWatch(ref);
+
+    // Function to show date picker
+    Future<void> pickDate(BuildContext context) async {
+      picked = await showDatePicker(
+        context: context,
+        initialDate: picked ?? DateTime(1998, 07, 27), // default date
+        firstDate: DateTime(1950), // earliest allowed date
+        lastDate: DateTime(2010), // latest allowed date
+      );
+
+      if (picked != null) {
+        r.updateDob("${picked?.toLocal()}".split(' ').first);
+      }
+    }
+
+    return listTile(
+      context,
+      label: "Date of Birth",
+      onTap: () => pickDate(context),
+      title: w.dob ?? "No date selected",
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/kyc.gql.dart';
@@ -47,23 +48,29 @@ class HomeAddress5 extends HookConsumerWidget {
         textField(
           context,
           label: 'State',
-          maxLength: 70,
           controller: stateAddress,
           keyboardType: TextInputType.streetAddress,
+          inputFormatters: [
+            LengthLimitingTextInputFormatter(35), // Enforces the limit
+          ],
         ),
         textField(
           context,
           label: 'Street',
-          maxLength: 70,
           controller: street,
           keyboardType: TextInputType.streetAddress,
+          inputFormatters: [
+            LengthLimitingTextInputFormatter(35), // Enforces the limit
+          ],
         ),
         textField(
           context,
           label: 'Home Address',
-          maxLength: 70,
           controller: homeAddress,
           keyboardType: TextInputType.streetAddress,
+          inputFormatters: [
+            LengthLimitingTextInputFormatter(35), // Enforces the limit
+          ],
         ),
         Btn(title: "Submit", onPressed: () => submit()),
       ],

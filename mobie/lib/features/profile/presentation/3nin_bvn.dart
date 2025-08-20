@@ -31,7 +31,7 @@ class EnterBvnNin3 extends HookConsumerWidget {
             .networkResult;
 
         appToast(context, "Record submitted");
-        Navigator.of(context).pop();
+        Navigator.of(context).pushNamed("/home");
       } catch (e) {
         appToastErr(context, e.toString());
       }

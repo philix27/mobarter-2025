@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mobarter/features/auth/auth_service.dart';
 import 'package:mobarter/features/profile/presentation/1enter_names.dart';
 import 'package:mobarter/features/profile/presentation/3nin_bvn.dart';
 import 'package:mobarter/features/profile/presentation/5address.dart';
@@ -19,10 +20,12 @@ class ProfilePage extends HookConsumerWidget {
 }
 
 class DisplayProfile extends HookConsumerWidget {
-  const DisplayProfile({super.key});
+  DisplayProfile({super.key});
+  final authSvc = AuthService();
 
   @override
   Widget build(BuildContext context, ref) {
+    final user = authSvc.user();
     final mainTitleStyle = TextStyle(fontSize: 13, fontWeight: FontWeight.w400);
     final subTitleStyle = TextStyle(fontSize: 12, fontWeight: FontWeight.w700);
     final result = useQuery$kyc_profile(Options$Query$kyc_profile());
@@ -42,7 +45,7 @@ class DisplayProfile extends HookConsumerWidget {
       );
     }
 
-    section(String title, Function()? onTap) {
+    section(String title, Function()? onTap, bool? hasValue) {
       return Container(
         margin: EdgeInsets.only(bottom: 1),
         decoration: BoxDecoration(
@@ -57,15 +60,22 @@ class DisplayProfile extends HookConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(title, style: mainTitleStyle),
-            InkWell(
-              onTap: onTap,
-              child: Text(
-                "UPDATE",
-                style: subTitleStyle.copyWith(
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
-            ),
+            hasValue == null || hasValue == false
+                ? InkWell(
+                    onTap: onTap,
+                    child: Text(
+                      "UPDATE",
+                      style: subTitleStyle.copyWith(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                  )
+                : Text(
+                    "INFO",
+                    style: subTitleStyle.copyWith(
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
           ],
         ),
       );
@@ -89,28 +99,45 @@ class DisplayProfile extends HookConsumerWidget {
       spacing: 0,
       children: [
         // listTile(title: "Email", subtitle: user.email),
-        section("Personal", () => openPage("Personal Info", EnterNames1())),
-        row("First name", "${profile?.firstname}"),
-        row("Last name", "${profile?.lastname}"),
+        section(
+          user?.email ?? "-",
+          () => openPage("Personal Info", EnterNames1()),
+          false,
+          // profile!.firstname?.isNotEmpty,
+        ),
+        row("First name", profile?.firstname ?? "-"),
+        row("Last name", profile?.lastname ?? "-"),
         profile?.middlename != null
-            ? row("Middle name", "${profile?.middlename}")
+            ? row("Middle name", profile?.middlename ?? "-")
             : SizedBox.shrink(),
-        row("Gender", "${profile?.gender}"),
-        row("Date of Birth", "${profile?.dob}"),
+        row("Gender", profile?.gender ?? "-"),
+        row("Date of Birth", profile?.dob ?? "-"),
 
         SizedBox(height: 30),
-        section("Phone number", () => openPage("Phone number", EnterPhone6())),
-        row("Phone", "${profile?.phone}"),
+        section(
+          "Phone number",
+          () => openPage("Phone number", EnterPhone6()),
+          profile?.phone?.isNotEmpty,
+        ),
+        row("Phone", profile?.phone ?? "-"),
 
         SizedBox(height: 30),
-        section("Banking Info", () => openPage("Banking Info", EnterBvnNin3())),
-        row("BVN", "${profile?.bvn}"),
-        row("NIN", "${profile?.nin}"),
+        section(
+          "Banking Info",
+          () => openPage("Banking Info", EnterBvnNin3()),
+          profile?.bvn?.isNotEmpty,
+        ),
+        row("BVN", profile?.bvn ?? "-"),
+        row("NIN", profile?.nin ?? "-"),
 
         SizedBox(height: 30),
-        section("Address", () => openPage("Home Address", HomeAddress5())),
-        row("State", "${profile?.state}"),
-        row("Country", "${profile?.country_code}"),
+        section(
+          "Address",
+          () => openPage("Home Address", HomeAddress5()),
+          profile?.state?.isNotEmpty,
+        ),
+        row("State", profile?.state ?? "-"),
+        row("Country", profile?.country_code ?? "-"),
       ],
     );
   }
