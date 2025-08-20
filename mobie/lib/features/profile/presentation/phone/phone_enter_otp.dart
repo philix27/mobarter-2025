@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mobarter/features/profile/logic/provider.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/kyc.gql.dart';
 import 'package:mobarter/utils/exception.dart';
-import 'package:mobarter/widgets/widgets.dart';
+import 'package:mobarter/widgets/btn.dart';
+import 'package:mobarter/widgets/inputText.dart';
+import 'package:mobarter/widgets/toast.dart';
 
-class EnterPhone6 extends HookConsumerWidget {
-  EnterPhone6({super.key});
+class SendPhoneOtp extends HookConsumerWidget {
+  SendPhoneOtp({super.key});
   TextEditingController phone = TextEditingController();
 
   @override
   Widget build(BuildContext context, ref) {
     final mutation = useMutation$kyc_sendPhoneOtp();
-
+    final w = kycFormWatch(ref);
+    final r = kycFormRead(ref);
     submit() async {
       try {
         require(phone.text, "BVN needed");
-        require(phone.text.length !=  11, "BVN needed");
+        require(phone.text.length != 11, "BVN needed");
 
         await mutation
             .runMutation(
@@ -27,6 +31,7 @@ class EnterPhone6 extends HookConsumerWidget {
             )
             .networkResult;
 
+        r.updatePhone(phone.text);
         appToast(context, "Record submitted");
         Navigator.of(context).pop();
       } catch (e) {
@@ -40,7 +45,6 @@ class EnterPhone6 extends HookConsumerWidget {
         textField(
           context,
           label: 'Phone number',
-          // helperText: "Will be verified in the next step",
           maxLength: 11,
           controller: phone,
           keyboardType: TextInputType.number,

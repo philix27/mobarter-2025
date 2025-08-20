@@ -7,6 +7,7 @@ class KycModel {
   final String? state;
   final String? phone;
   final String? dob;
+  final String? phoneToken;
   final Gender? gender;
 
   KycModel({
@@ -16,6 +17,7 @@ class KycModel {
     required this.street,
     required this.state,
     required this.phone,
+    required this.phoneToken,
     required this.gender,
   });
 
@@ -26,6 +28,7 @@ class KycModel {
     String? street,
     String? state,
     String? phone,
+    String? phoneToken,
     Gender? gender,
   }) {
     return KycModel(
@@ -35,6 +38,7 @@ class KycModel {
       street: street ?? this.street,
       state: state ?? this.state,
       phone: phone ?? this.phone,
+      phoneToken: phoneToken ?? this.phoneToken,
       gender: gender ?? this.gender,
     );
   }

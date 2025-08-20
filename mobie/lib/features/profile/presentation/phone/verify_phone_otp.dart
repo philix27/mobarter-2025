@@ -9,15 +9,14 @@ import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/widgets/widgets.dart';
 
 class VerifyPhoneOtp extends HookConsumerWidget {
-  VerifyPhoneOtp({super.key, required this.cred});
-  final Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput cred;
-
+  VerifyPhoneOtp({super.key, required this.phone, required this.token});
+  final String token;
+  final String phone;
   final TextEditingController pin = TextEditingController();
 
   @override
   Widget build(BuildContext context, ref) {
-    final kycVerifyphoneotp =
-        useMutation$kyc_verifyPhoneOtpAndSubmitCredentials();
+    final kycVerifyphoneotp = useMutation$Kyc_verifyPhoneOtp();
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
       child: Column(
@@ -55,29 +54,17 @@ class VerifyPhoneOtp extends HookConsumerWidget {
 
                 final response = await kycVerifyphoneotp
                     .runMutation(
-                      Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
-                        input:
-                            Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput(
-                              bvn: cred.bvn,
-                              country: Enum$Country.NG,
-                              dob: cred.dob,
-                              firstName: cred.firstName,
-                              houseAddress: cred.houseAddress,
-                              lastName: cred.lastName,
-                              nin: cred.nin,
-                              otp: cred.otp,
-                              phone: cred.phone,
-                              state: cred.state,
-                              street: cred.street,
-                              token: pin.text,
-                            ),
+                      Variables$Mutation$Kyc_verifyPhoneOtp(
+                        input: Input$Kyc_verifyPhoneOtpAndInput(
+                          otp: pin.text,
+                          phone: pin.text,
+                          token: pin.text,
+                        ),
                       ),
                     )
                     .networkResult;
 
-                final res = response!
-                    .parsedData
-                    ?.kyc_verifyPhoneOtpAndSubmitCredentials;
+                final res = response!.parsedData?.Kyc_verifyPhoneOtp;
 
                 appToast(context, res!.message);
 

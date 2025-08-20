@@ -4,7 +4,7 @@ import 'package:mobarter/features/auth/auth_service.dart';
 import 'package:mobarter/features/profile/presentation/1enter_names.dart';
 import 'package:mobarter/features/profile/presentation/3nin_bvn.dart';
 import 'package:mobarter/features/profile/presentation/5address.dart';
-import 'package:mobarter/features/profile/presentation/6phone.dart';
+import 'package:mobarter/features/profile/presentation/phone/6phone.dart';
 import 'package:mobarter/features/profile/presentation/kyc_page.dart';
 import 'package:mobarter/graphql/schema/kyc.gql.dart';
 import 'package:mobarter/widgets/widgets.dart';

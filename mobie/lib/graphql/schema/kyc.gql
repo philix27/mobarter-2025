@@ -42,8 +42,8 @@ mutation kyc_sendPhoneOtp($input: Kyc_SendPhoneOtpInput!) {
 }
 
 
-mutation kyc_verifyPhoneOtpAndSubmitCredentials($input: Kyc_verifyPhoneOtpAndSubmitCredentialsInput!) {
-  kyc_verifyPhoneOtpAndSubmitCredentials(input: $input) {
+mutation Kyc_verifyPhoneOtp($input: Kyc_verifyPhoneOtpAndInput!) {
+  Kyc_verifyPhoneOtp(input: $input) {
     message
   }
 }

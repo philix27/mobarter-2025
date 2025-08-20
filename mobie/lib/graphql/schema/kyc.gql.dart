@@ -3875,30 +3875,28 @@ class _CopyWithStubImpl$Mutation$kyc_sendPhoneOtp$kyc_sendPhoneOtp<TRes>
       _res;
 }
 
-class Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials {
-  factory Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
-          {required Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput input}) =>
-      Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials._({
+class Variables$Mutation$Kyc_verifyPhoneOtp {
+  factory Variables$Mutation$Kyc_verifyPhoneOtp(
+          {required Input$Kyc_verifyPhoneOtpAndInput input}) =>
+      Variables$Mutation$Kyc_verifyPhoneOtp._({
         r'input': input,
       });
 
-  Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials._(this._$data);
+  Variables$Mutation$Kyc_verifyPhoneOtp._(this._$data);
 
-  factory Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials.fromJson(
+  factory Variables$Mutation$Kyc_verifyPhoneOtp.fromJson(
       Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
     final l$input = data['input'];
-    result$data['input'] =
-        Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput.fromJson(
-            (l$input as Map<String, dynamic>));
-    return Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials._(
-        result$data);
+    result$data['input'] = Input$Kyc_verifyPhoneOtpAndInput.fromJson(
+        (l$input as Map<String, dynamic>));
+    return Variables$Mutation$Kyc_verifyPhoneOtp._(result$data);
   }
 
   Map<String, dynamic> _$data;
 
-  Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput get input =>
-      (_$data['input'] as Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput);
+  Input$Kyc_verifyPhoneOtpAndInput get input =>
+      (_$data['input'] as Input$Kyc_verifyPhoneOtpAndInput);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -3907,10 +3905,9 @@ class Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials {
     return result$data;
   }
 
-  CopyWith$Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<
-          Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials>
-      get copyWith =>
-          CopyWith$Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
+  CopyWith$Variables$Mutation$Kyc_verifyPhoneOtp<
+          Variables$Mutation$Kyc_verifyPhoneOtp>
+      get copyWith => CopyWith$Variables$Mutation$Kyc_verifyPhoneOtp(
             this,
             (i) => i,
           );
@@ -3920,7 +3917,7 @@ class Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials {
     if (identical(this, other)) {
       return true;
     }
-    if (other is! Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials ||
+    if (other is! Variables$Mutation$Kyc_verifyPhoneOtp ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -3939,90 +3936,73 @@ class Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials {
   }
 }
 
-abstract class CopyWith$Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<
-    TRes> {
-  factory CopyWith$Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
-    Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials instance,
-    TRes Function(Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials)
-        then,
-  ) = _CopyWithImpl$Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials;
+abstract class CopyWith$Variables$Mutation$Kyc_verifyPhoneOtp<TRes> {
+  factory CopyWith$Variables$Mutation$Kyc_verifyPhoneOtp(
+    Variables$Mutation$Kyc_verifyPhoneOtp instance,
+    TRes Function(Variables$Mutation$Kyc_verifyPhoneOtp) then,
+  ) = _CopyWithImpl$Variables$Mutation$Kyc_verifyPhoneOtp;
 
-  factory CopyWith$Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials.stub(
-          TRes res) =
-      _CopyWithStubImpl$Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials;
+  factory CopyWith$Variables$Mutation$Kyc_verifyPhoneOtp.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$Kyc_verifyPhoneOtp;
 
-  TRes call({Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput? input});
+  TRes call({Input$Kyc_verifyPhoneOtpAndInput? input});
 }
 
-class _CopyWithImpl$Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<
-        TRes>
-    implements
-        CopyWith$Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<
-            TRes> {
-  _CopyWithImpl$Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
+class _CopyWithImpl$Variables$Mutation$Kyc_verifyPhoneOtp<TRes>
+    implements CopyWith$Variables$Mutation$Kyc_verifyPhoneOtp<TRes> {
+  _CopyWithImpl$Variables$Mutation$Kyc_verifyPhoneOtp(
     this._instance,
     this._then,
   );
 
-  final Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials _instance;
+  final Variables$Mutation$Kyc_verifyPhoneOtp _instance;
 
-  final TRes Function(Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials)
-      _then;
+  final TRes Function(Variables$Mutation$Kyc_verifyPhoneOtp) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({Object? input = _undefined}) =>
-      _then(Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials._({
+      _then(Variables$Mutation$Kyc_verifyPhoneOtp._({
         ..._instance._$data,
         if (input != _undefined && input != null)
-          'input': (input as Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput),
+          'input': (input as Input$Kyc_verifyPhoneOtpAndInput),
       }));
 }
 
-class _CopyWithStubImpl$Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<
-        TRes>
-    implements
-        CopyWith$Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<
-            TRes> {
-  _CopyWithStubImpl$Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
-      this._res);
+class _CopyWithStubImpl$Variables$Mutation$Kyc_verifyPhoneOtp<TRes>
+    implements CopyWith$Variables$Mutation$Kyc_verifyPhoneOtp<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$Kyc_verifyPhoneOtp(this._res);
 
   TRes _res;
 
-  call({Input$Kyc_verifyPhoneOtpAndSubmitCredentialsInput? input}) => _res;
+  call({Input$Kyc_verifyPhoneOtpAndInput? input}) => _res;
 }
 
-class Mutation$kyc_verifyPhoneOtpAndSubmitCredentials {
-  Mutation$kyc_verifyPhoneOtpAndSubmitCredentials({
-    required this.kyc_verifyPhoneOtpAndSubmitCredentials,
+class Mutation$Kyc_verifyPhoneOtp {
+  Mutation$Kyc_verifyPhoneOtp({
+    required this.Kyc_verifyPhoneOtp,
     this.$__typename = 'Mutation',
   });
 
-  factory Mutation$kyc_verifyPhoneOtpAndSubmitCredentials.fromJson(
-      Map<String, dynamic> json) {
-    final l$kyc_verifyPhoneOtpAndSubmitCredentials =
-        json['kyc_verifyPhoneOtpAndSubmitCredentials'];
+  factory Mutation$Kyc_verifyPhoneOtp.fromJson(Map<String, dynamic> json) {
+    final l$Kyc_verifyPhoneOtp = json['Kyc_verifyPhoneOtp'];
     final l$$__typename = json['__typename'];
-    return Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
-      kyc_verifyPhoneOtpAndSubmitCredentials:
-          Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials
-              .fromJson((l$kyc_verifyPhoneOtpAndSubmitCredentials
-                  as Map<String, dynamic>)),
+    return Mutation$Kyc_verifyPhoneOtp(
+      Kyc_verifyPhoneOtp:
+          Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp.fromJson(
+              (l$Kyc_verifyPhoneOtp as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials
-      kyc_verifyPhoneOtpAndSubmitCredentials;
+  final Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp Kyc_verifyPhoneOtp;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$kyc_verifyPhoneOtpAndSubmitCredentials =
-        kyc_verifyPhoneOtpAndSubmitCredentials;
-    _resultData['kyc_verifyPhoneOtpAndSubmitCredentials'] =
-        l$kyc_verifyPhoneOtpAndSubmitCredentials.toJson();
+    final l$Kyc_verifyPhoneOtp = Kyc_verifyPhoneOtp;
+    _resultData['Kyc_verifyPhoneOtp'] = l$Kyc_verifyPhoneOtp.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -4030,11 +4010,10 @@ class Mutation$kyc_verifyPhoneOtpAndSubmitCredentials {
 
   @override
   int get hashCode {
-    final l$kyc_verifyPhoneOtpAndSubmitCredentials =
-        kyc_verifyPhoneOtpAndSubmitCredentials;
+    final l$Kyc_verifyPhoneOtp = Kyc_verifyPhoneOtp;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$kyc_verifyPhoneOtpAndSubmitCredentials,
+      l$Kyc_verifyPhoneOtp,
       l$$__typename,
     ]);
   }
@@ -4044,16 +4023,13 @@ class Mutation$kyc_verifyPhoneOtpAndSubmitCredentials {
     if (identical(this, other)) {
       return true;
     }
-    if (other is! Mutation$kyc_verifyPhoneOtpAndSubmitCredentials ||
+    if (other is! Mutation$Kyc_verifyPhoneOtp ||
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$kyc_verifyPhoneOtpAndSubmitCredentials =
-        kyc_verifyPhoneOtpAndSubmitCredentials;
-    final lOther$kyc_verifyPhoneOtpAndSubmitCredentials =
-        other.kyc_verifyPhoneOtpAndSubmitCredentials;
-    if (l$kyc_verifyPhoneOtpAndSubmitCredentials !=
-        lOther$kyc_verifyPhoneOtpAndSubmitCredentials) {
+    final l$Kyc_verifyPhoneOtp = Kyc_verifyPhoneOtp;
+    final lOther$Kyc_verifyPhoneOtp = other.Kyc_verifyPhoneOtp;
+    if (l$Kyc_verifyPhoneOtp != lOther$Kyc_verifyPhoneOtp) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -4065,104 +4041,94 @@ class Mutation$kyc_verifyPhoneOtpAndSubmitCredentials {
   }
 }
 
-extension UtilityExtension$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
-    on Mutation$kyc_verifyPhoneOtpAndSubmitCredentials {
-  CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<
-          Mutation$kyc_verifyPhoneOtpAndSubmitCredentials>
-      get copyWith => CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
+extension UtilityExtension$Mutation$Kyc_verifyPhoneOtp
+    on Mutation$Kyc_verifyPhoneOtp {
+  CopyWith$Mutation$Kyc_verifyPhoneOtp<Mutation$Kyc_verifyPhoneOtp>
+      get copyWith => CopyWith$Mutation$Kyc_verifyPhoneOtp(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<TRes> {
-  factory CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
-    Mutation$kyc_verifyPhoneOtpAndSubmitCredentials instance,
-    TRes Function(Mutation$kyc_verifyPhoneOtpAndSubmitCredentials) then,
-  ) = _CopyWithImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials;
+abstract class CopyWith$Mutation$Kyc_verifyPhoneOtp<TRes> {
+  factory CopyWith$Mutation$Kyc_verifyPhoneOtp(
+    Mutation$Kyc_verifyPhoneOtp instance,
+    TRes Function(Mutation$Kyc_verifyPhoneOtp) then,
+  ) = _CopyWithImpl$Mutation$Kyc_verifyPhoneOtp;
 
-  factory CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials.stub(
-          TRes res) =
-      _CopyWithStubImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials;
+  factory CopyWith$Mutation$Kyc_verifyPhoneOtp.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$Kyc_verifyPhoneOtp;
 
   TRes call({
-    Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials?
-        kyc_verifyPhoneOtpAndSubmitCredentials,
+    Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp? Kyc_verifyPhoneOtp,
     String? $__typename,
   });
-  CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials<
-      TRes> get kyc_verifyPhoneOtpAndSubmitCredentials;
+  CopyWith$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp<TRes>
+      get Kyc_verifyPhoneOtp;
 }
 
-class _CopyWithImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<TRes>
-    implements CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<TRes> {
-  _CopyWithImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
+class _CopyWithImpl$Mutation$Kyc_verifyPhoneOtp<TRes>
+    implements CopyWith$Mutation$Kyc_verifyPhoneOtp<TRes> {
+  _CopyWithImpl$Mutation$Kyc_verifyPhoneOtp(
     this._instance,
     this._then,
   );
 
-  final Mutation$kyc_verifyPhoneOtpAndSubmitCredentials _instance;
+  final Mutation$Kyc_verifyPhoneOtp _instance;
 
-  final TRes Function(Mutation$kyc_verifyPhoneOtpAndSubmitCredentials) _then;
+  final TRes Function(Mutation$Kyc_verifyPhoneOtp) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? kyc_verifyPhoneOtpAndSubmitCredentials = _undefined,
+    Object? Kyc_verifyPhoneOtp = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
-        kyc_verifyPhoneOtpAndSubmitCredentials:
-            kyc_verifyPhoneOtpAndSubmitCredentials == _undefined ||
-                    kyc_verifyPhoneOtpAndSubmitCredentials == null
-                ? _instance.kyc_verifyPhoneOtpAndSubmitCredentials
-                : (kyc_verifyPhoneOtpAndSubmitCredentials
-                    as Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials),
+      _then(Mutation$Kyc_verifyPhoneOtp(
+        Kyc_verifyPhoneOtp:
+            Kyc_verifyPhoneOtp == _undefined || Kyc_verifyPhoneOtp == null
+                ? _instance.Kyc_verifyPhoneOtp
+                : (Kyc_verifyPhoneOtp
+                    as Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials<
-      TRes> get kyc_verifyPhoneOtpAndSubmitCredentials {
-    final local$kyc_verifyPhoneOtpAndSubmitCredentials =
-        _instance.kyc_verifyPhoneOtpAndSubmitCredentials;
-    return CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials(
-        local$kyc_verifyPhoneOtpAndSubmitCredentials,
-        (e) => call(kyc_verifyPhoneOtpAndSubmitCredentials: e));
+  CopyWith$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp<TRes>
+      get Kyc_verifyPhoneOtp {
+    final local$Kyc_verifyPhoneOtp = _instance.Kyc_verifyPhoneOtp;
+    return CopyWith$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp(
+        local$Kyc_verifyPhoneOtp, (e) => call(Kyc_verifyPhoneOtp: e));
   }
 }
 
-class _CopyWithStubImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<TRes>
-    implements CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials<TRes> {
-  _CopyWithStubImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(this._res);
+class _CopyWithStubImpl$Mutation$Kyc_verifyPhoneOtp<TRes>
+    implements CopyWith$Mutation$Kyc_verifyPhoneOtp<TRes> {
+  _CopyWithStubImpl$Mutation$Kyc_verifyPhoneOtp(this._res);
 
   TRes _res;
 
   call({
-    Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials?
-        kyc_verifyPhoneOtpAndSubmitCredentials,
+    Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp? Kyc_verifyPhoneOtp,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials<
-          TRes>
-      get kyc_verifyPhoneOtpAndSubmitCredentials =>
-          CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials
-              .stub(_res);
+  CopyWith$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp<TRes>
+      get Kyc_verifyPhoneOtp =>
+          CopyWith$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp.stub(_res);
 }
 
-const documentNodeMutationkyc_verifyPhoneOtpAndSubmitCredentials =
-    DocumentNode(definitions: [
+const documentNodeMutationKyc_verifyPhoneOtp = DocumentNode(definitions: [
   OperationDefinitionNode(
     type: OperationType.mutation,
-    name: NameNode(value: 'kyc_verifyPhoneOtpAndSubmitCredentials'),
+    name: NameNode(value: 'Kyc_verifyPhoneOtp'),
     variableDefinitions: [
       VariableDefinitionNode(
         variable: VariableNode(name: NameNode(value: 'input')),
         type: NamedTypeNode(
-          name: NameNode(value: 'Kyc_verifyPhoneOtpAndSubmitCredentialsInput'),
+          name: NameNode(value: 'Kyc_verifyPhoneOtpAndInput'),
           isNonNull: true,
         ),
         defaultValue: DefaultValueNode(value: null),
@@ -4172,7 +4138,7 @@ const documentNodeMutationkyc_verifyPhoneOtpAndSubmitCredentials =
     directives: [],
     selectionSet: SelectionSetNode(selections: [
       FieldNode(
-        name: NameNode(value: 'kyc_verifyPhoneOtpAndSubmitCredentials'),
+        name: NameNode(value: 'Kyc_verifyPhoneOtp'),
         alias: null,
         arguments: [
           ArgumentNode(
@@ -4208,32 +4174,28 @@ const documentNodeMutationkyc_verifyPhoneOtpAndSubmitCredentials =
     ]),
   ),
 ]);
-Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
-    _parserFn$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
-            Map<String, dynamic> data) =>
-        Mutation$kyc_verifyPhoneOtpAndSubmitCredentials.fromJson(data);
-typedef OnMutationCompleted$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
-    = FutureOr<void> Function(
+Mutation$Kyc_verifyPhoneOtp _parserFn$Mutation$Kyc_verifyPhoneOtp(
+        Map<String, dynamic> data) =>
+    Mutation$Kyc_verifyPhoneOtp.fromJson(data);
+typedef OnMutationCompleted$Mutation$Kyc_verifyPhoneOtp = FutureOr<void>
+    Function(
   Map<String, dynamic>?,
-  Mutation$kyc_verifyPhoneOtpAndSubmitCredentials?,
+  Mutation$Kyc_verifyPhoneOtp?,
 );
 
-class Options$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials extends graphql
-    .MutationOptions<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials> {
-  Options$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials({
+class Options$Mutation$Kyc_verifyPhoneOtp
+    extends graphql.MutationOptions<Mutation$Kyc_verifyPhoneOtp> {
+  Options$Mutation$Kyc_verifyPhoneOtp({
     String? operationName,
-    required Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
-        variables,
+    required Variables$Mutation$Kyc_verifyPhoneOtp variables,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
-    Mutation$kyc_verifyPhoneOtpAndSubmitCredentials? typedOptimisticResult,
+    Mutation$Kyc_verifyPhoneOtp? typedOptimisticResult,
     graphql.Context? context,
-    OnMutationCompleted$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials?
-        onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials>?
-        update,
+    OnMutationCompleted$Mutation$Kyc_verifyPhoneOtp? onCompleted,
+    graphql.OnMutationUpdate<Mutation$Kyc_verifyPhoneOtp>? update,
     graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
@@ -4250,17 +4212,15 @@ class Options$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials extends graphql
                     data,
                     data == null
                         ? null
-                        : _parserFn$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
-                            data),
+                        : _parserFn$Mutation$Kyc_verifyPhoneOtp(data),
                   ),
           update: update,
           onError: onError,
-          document: documentNodeMutationkyc_verifyPhoneOtpAndSubmitCredentials,
-          parserFn: _parserFn$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials,
+          document: documentNodeMutationKyc_verifyPhoneOtp,
+          parserFn: _parserFn$Mutation$Kyc_verifyPhoneOtp,
         );
 
-  final OnMutationCompleted$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials?
-      onCompletedWithParsed;
+  final OnMutationCompleted$Mutation$Kyc_verifyPhoneOtp? onCompletedWithParsed;
 
   @override
   List<Object?> get properties => [
@@ -4271,18 +4231,16 @@ class Options$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials extends graphql
       ];
 }
 
-class WatchOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
-    extends graphql
-    .WatchQueryOptions<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials> {
-  WatchOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials({
+class WatchOptions$Mutation$Kyc_verifyPhoneOtp
+    extends graphql.WatchQueryOptions<Mutation$Kyc_verifyPhoneOtp> {
+  WatchOptions$Mutation$Kyc_verifyPhoneOtp({
     String? operationName,
-    required Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
-        variables,
+    required Variables$Mutation$Kyc_verifyPhoneOtp variables,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
-    Mutation$kyc_verifyPhoneOtpAndSubmitCredentials? typedOptimisticResult,
+    Mutation$Kyc_verifyPhoneOtp? typedOptimisticResult,
     graphql.Context? context,
     Duration? pollInterval,
     bool? eagerlyFetchResults,
@@ -4296,48 +4254,42 @@ class WatchOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
           cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
           context: context,
-          document: documentNodeMutationkyc_verifyPhoneOtpAndSubmitCredentials,
+          document: documentNodeMutationKyc_verifyPhoneOtp,
           pollInterval: pollInterval,
           eagerlyFetchResults: eagerlyFetchResults,
           carryForwardDataOnException: carryForwardDataOnException,
           fetchResults: fetchResults,
-          parserFn: _parserFn$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials,
+          parserFn: _parserFn$Mutation$Kyc_verifyPhoneOtp,
         );
 }
 
-extension ClientExtension$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
-    on graphql.GraphQLClient {
-  Future<graphql.QueryResult<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials>>
-      mutate$kyc_verifyPhoneOtpAndSubmitCredentials(
-              Options$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
-                  options) async =>
+extension ClientExtension$Mutation$Kyc_verifyPhoneOtp on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$Kyc_verifyPhoneOtp>>
+      mutate$Kyc_verifyPhoneOtp(
+              Options$Mutation$Kyc_verifyPhoneOtp options) async =>
           await this.mutate(options);
-  graphql.ObservableQuery<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials>
-      watchMutation$kyc_verifyPhoneOtpAndSubmitCredentials(
-              WatchOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
-                  options) =>
+  graphql.ObservableQuery<Mutation$Kyc_verifyPhoneOtp>
+      watchMutation$Kyc_verifyPhoneOtp(
+              WatchOptions$Mutation$Kyc_verifyPhoneOtp options) =>
           this.watchMutation(options);
 }
 
-class Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$HookResult {
-  Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$HookResult(
+class Mutation$Kyc_verifyPhoneOtp$HookResult {
+  Mutation$Kyc_verifyPhoneOtp$HookResult(
     this.runMutation,
     this.result,
   );
 
-  final RunMutation$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials runMutation;
+  final RunMutation$Mutation$Kyc_verifyPhoneOtp runMutation;
 
-  final graphql.QueryResult<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials>
-      result;
+  final graphql.QueryResult<Mutation$Kyc_verifyPhoneOtp> result;
 }
 
-Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$HookResult
-    useMutation$kyc_verifyPhoneOtpAndSubmitCredentials(
-        [WidgetOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials?
-            options]) {
-  final result = graphql_flutter.useMutation(options ??
-      WidgetOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials());
-  return Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$HookResult(
+Mutation$Kyc_verifyPhoneOtp$HookResult useMutation$Kyc_verifyPhoneOtp(
+    [WidgetOptions$Mutation$Kyc_verifyPhoneOtp? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$Kyc_verifyPhoneOtp());
+  return Mutation$Kyc_verifyPhoneOtp$HookResult(
     (variables, {optimisticResult, typedOptimisticResult}) =>
         result.runMutation(
       variables.toJson(),
@@ -4347,27 +4299,23 @@ Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$HookResult
   );
 }
 
-graphql.ObservableQuery<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials>
-    useWatchMutation$kyc_verifyPhoneOtpAndSubmitCredentials(
-            WatchOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
-                options) =>
+graphql.ObservableQuery<Mutation$Kyc_verifyPhoneOtp>
+    useWatchMutation$Kyc_verifyPhoneOtp(
+            WatchOptions$Mutation$Kyc_verifyPhoneOtp options) =>
         graphql_flutter.useWatchMutation(options);
 
-class WidgetOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
-    extends graphql
-    .MutationOptions<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials> {
-  WidgetOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials({
+class WidgetOptions$Mutation$Kyc_verifyPhoneOtp
+    extends graphql.MutationOptions<Mutation$Kyc_verifyPhoneOtp> {
+  WidgetOptions$Mutation$Kyc_verifyPhoneOtp({
     String? operationName,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
-    Mutation$kyc_verifyPhoneOtpAndSubmitCredentials? typedOptimisticResult,
+    Mutation$Kyc_verifyPhoneOtp? typedOptimisticResult,
     graphql.Context? context,
-    OnMutationCompleted$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials?
-        onCompleted,
-    graphql.OnMutationUpdate<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials>?
-        update,
+    OnMutationCompleted$Mutation$Kyc_verifyPhoneOtp? onCompleted,
+    graphql.OnMutationUpdate<Mutation$Kyc_verifyPhoneOtp>? update,
     graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
@@ -4383,17 +4331,15 @@ class WidgetOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
                     data,
                     data == null
                         ? null
-                        : _parserFn$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(
-                            data),
+                        : _parserFn$Mutation$Kyc_verifyPhoneOtp(data),
                   ),
           update: update,
           onError: onError,
-          document: documentNodeMutationkyc_verifyPhoneOtpAndSubmitCredentials,
-          parserFn: _parserFn$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials,
+          document: documentNodeMutationKyc_verifyPhoneOtp,
+          parserFn: _parserFn$Mutation$Kyc_verifyPhoneOtp,
         );
 
-  final OnMutationCompleted$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials?
-      onCompletedWithParsed;
+  final OnMutationCompleted$Mutation$Kyc_verifyPhoneOtp? onCompletedWithParsed;
 
   @override
   List<Object?> get properties => [
@@ -4404,30 +4350,26 @@ class WidgetOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
       ];
 }
 
-typedef RunMutation$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials
-    = graphql.MultiSourceResult<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials>
-        Function(
-  Variables$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials, {
+typedef RunMutation$Mutation$Kyc_verifyPhoneOtp
+    = graphql.MultiSourceResult<Mutation$Kyc_verifyPhoneOtp> Function(
+  Variables$Mutation$Kyc_verifyPhoneOtp, {
   Object? optimisticResult,
-  Mutation$kyc_verifyPhoneOtpAndSubmitCredentials? typedOptimisticResult,
+  Mutation$Kyc_verifyPhoneOtp? typedOptimisticResult,
 });
-typedef Builder$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials = widgets.Widget
-    Function(
-  RunMutation$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials,
-  graphql.QueryResult<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials>?,
+typedef Builder$Mutation$Kyc_verifyPhoneOtp = widgets.Widget Function(
+  RunMutation$Mutation$Kyc_verifyPhoneOtp,
+  graphql.QueryResult<Mutation$Kyc_verifyPhoneOtp>?,
 );
 
-class Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$Widget
-    extends graphql_flutter
-    .Mutation<Mutation$kyc_verifyPhoneOtpAndSubmitCredentials> {
-  Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$Widget({
+class Mutation$Kyc_verifyPhoneOtp$Widget
+    extends graphql_flutter.Mutation<Mutation$Kyc_verifyPhoneOtp> {
+  Mutation$Kyc_verifyPhoneOtp$Widget({
     widgets.Key? key,
-    WidgetOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials? options,
-    required Builder$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials builder,
+    WidgetOptions$Mutation$Kyc_verifyPhoneOtp? options,
+    required Builder$Mutation$Kyc_verifyPhoneOtp builder,
   }) : super(
           key: key,
-          options: options ??
-              WidgetOptions$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials(),
+          options: options ?? WidgetOptions$Mutation$Kyc_verifyPhoneOtp(),
           builder: (
             run,
             result,
@@ -4448,17 +4390,17 @@ class Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$Widget
         );
 }
 
-class Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials {
-  Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials({
+class Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp {
+  Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp({
     required this.message,
     this.$__typename = 'Kyc_Response',
   });
 
-  factory Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials.fromJson(
+  factory Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp.fromJson(
       Map<String, dynamic> json) {
     final l$message = json['message'];
     final l$$__typename = json['__typename'];
-    return Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials(
+    return Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp(
       message: (l$message as String),
       $__typename: (l$$__typename as String),
     );
@@ -4492,8 +4434,7 @@ class Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmi
     if (identical(this, other)) {
       return true;
     }
-    if (other
-            is! Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials ||
+    if (other is! Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -4511,30 +4452,25 @@ class Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmi
   }
 }
 
-extension UtilityExtension$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials
-    on Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials {
-  CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials<
-          Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials>
-      get copyWith =>
-          CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials(
+extension UtilityExtension$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp
+    on Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp {
+  CopyWith$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp<
+          Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp>
+      get copyWith => CopyWith$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials<
-    TRes> {
-  factory CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials(
-    Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials
-        instance,
-    TRes Function(
-            Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials)
-        then,
-  ) = _CopyWithImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials;
+abstract class CopyWith$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp<TRes> {
+  factory CopyWith$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp(
+    Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp instance,
+    TRes Function(Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp) then,
+  ) = _CopyWithImpl$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp;
 
-  factory CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials.stub(
+  factory CopyWith$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials;
+      _CopyWithStubImpl$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp;
 
   TRes call({
     String? message,
@@ -4542,22 +4478,16 @@ abstract class CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_veri
   });
 }
 
-class _CopyWithImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials<
-        TRes>
-    implements
-        CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials<
-            TRes> {
-  _CopyWithImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials(
+class _CopyWithImpl$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp<TRes>
+    implements CopyWith$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp<TRes> {
+  _CopyWithImpl$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp(
     this._instance,
     this._then,
   );
 
-  final Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials
-      _instance;
+  final Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp _instance;
 
-  final TRes Function(
-          Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials)
-      _then;
+  final TRes Function(Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -4565,8 +4495,7 @@ class _CopyWithImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPh
     Object? message = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(
-          Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials(
+      _then(Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp(
         message: message == _undefined || message == null
             ? _instance.message
             : (message as String),
@@ -4576,13 +4505,9 @@ class _CopyWithImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPh
       ));
 }
 
-class _CopyWithStubImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials<
-        TRes>
-    implements
-        CopyWith$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials<
-            TRes> {
-  _CopyWithStubImpl$Mutation$kyc_verifyPhoneOtpAndSubmitCredentials$kyc_verifyPhoneOtpAndSubmitCredentials(
-      this._res);
+class _CopyWithStubImpl$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp<TRes>
+    implements CopyWith$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp<TRes> {
+  _CopyWithStubImpl$Mutation$Kyc_verifyPhoneOtp$Kyc_verifyPhoneOtp(this._res);
 
   TRes _res;
 

@@ -11,6 +11,7 @@ class KycFormNotifier extends StateNotifier<KycModel> {
           phone: null,
           street: null,
           state: null,
+          phoneToken: null,
           gender: null,
         ),
       );

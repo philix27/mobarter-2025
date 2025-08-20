@@ -361,23 +361,14 @@ type Kyc_UserResponse {
   telegram_id: String
 }
 
-input Kyc_verifyPhoneOtpAndSubmitCredentialsInput {
-  bvn: String!
-  country: Country!
-  dob: String!
-  firstName: String!
-  houseAddress: String!
-  lastName: String!
-  middleName: String
-  nin: String!
+input Kyc_verifyPhoneOtpAndInput {
   otp: String!
   phone: String!
-  state: String!
-  street: String!
   token: String!
 }
 
 type Mutation {
+  Kyc_verifyPhoneOtp(input: Kyc_verifyPhoneOtpAndInput!): Kyc_Response!
   auth_createAccount(
     input: Auth_CreateAccountInput!
   ): Auth_CreateAccountResponse!
@@ -418,9 +409,6 @@ type Mutation {
   kyc_addNames(input: Kyc_AddNamesInput!): Kyc_Response!
   kyc_createTransactionPin(input: Kyc_CreateTransactionPinInput!): Kyc_Response!
   kyc_sendPhoneOtp(input: Kyc_SendPhoneOtpInput!): Kyc_SendOtpResponse!
-  kyc_verifyPhoneOtpAndSubmitCredentials(
-    input: Kyc_verifyPhoneOtpAndSubmitCredentialsInput!
-  ): Kyc_Response!
   onchain_claim(
     input: Onchain_ClaimRewardsInput!
   ): Onchain_ClaimRewardsResponse!
