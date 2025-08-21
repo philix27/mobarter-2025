@@ -8,6 +8,7 @@ import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/utils/exception.dart';
+import 'package:mobarter/utils/size.dart';
 import 'package:mobarter/widgets/widgets.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
@@ -43,7 +44,14 @@ class FundBettingBillsPage extends HookConsumerWidget {
       context,
       title: "Fund Betting Wallet",
       body: isNull
-          ? Column(children: [Center(child: LoadingIndicator())])
+          ? Column(
+              children: [
+                SizedBox(
+                  height: getH(context, 0.6),
+                  child: Center(child: LoadingIndicator()),
+                ),
+              ],
+            )
           : Column(
               spacing: 20,
               children: [

@@ -9,13 +9,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/config/crashlytics.dart';
 import 'package:mobarter/features/app/logic/provider.dart';
 import 'package:mobarter/features/intro/Welcome.dart';
-import 'package:mobarter/features/onboarding/SetupTxnPinPage.dart';
-import 'package:mobarter/features/orders/OrderPage.dart';
 import 'package:mobarter/features/theme/app_theme.dart';
 import 'package:mobarter/features/theme/themes_provider.dart';
 import 'package:mobarter/graphql/api/Api.dart';
-import 'package:mobarter/pages/HomeLayout.dart';
-import 'package:mobarter/features/wallet/WalletPage.dart';
+import 'package:mobarter/routes.dart';
 import 'package:toastification/toastification.dart';
 
 void main() async {
@@ -79,14 +76,7 @@ class InitiateGql extends HookConsumerWidget {
           darkTheme: AppTheme.dark,
           theme: AppTheme.light,
           home: WelcomePage(),
-          routes: {
-            "/home": (context) => const HomePageLayout(),
-            "/auth": (context) => const WalletPage(),
-            "/interactive": (context) => const WalletPage(),
-            "/setup-pin": (context) => const SetupTxnPinPage(),
-            "/welcome": (context) => const WelcomePage(),
-            "/orders": (context) => const OrdersPage(),
-          },
+          routes: routes,
         ),
       ),
     );
