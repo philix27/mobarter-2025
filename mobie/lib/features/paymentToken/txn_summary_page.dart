@@ -26,12 +26,14 @@ class TxnSummaryPage extends HookConsumerWidget {
   final List<Widget> children;
   final double cryptoAmountToPay;
   Future<void> Function(SendPaymentInput input) send;
+  final String? pushTo;
 
   TxnSummaryPage({
     super.key,
     required this.children,
     required this.send,
     required this.cryptoAmountToPay,
+    this.pushTo,
   });
 
   @override
@@ -67,7 +69,7 @@ class TxnSummaryPage extends HookConsumerWidget {
                         btmSheet(
                           h: 0.65,
                           ctx: context,
-                          w: _EnterPinAndSubmit(send: send),
+                          w: _EnterPinAndSubmit(send: send, pushTo: pushTo),
                         );
                       } catch (e) {
                         appToastErr(context, e.toString());
@@ -82,8 +84,9 @@ class TxnSummaryPage extends HookConsumerWidget {
 }
 
 class _EnterPinAndSubmit extends ConsumerWidget {
-  _EnterPinAndSubmit({required this.send});
+  _EnterPinAndSubmit({required this.send, this.pushTo});
   Future<void> Function(SendPaymentInput paylod) send;
+  final String? pushTo;
 
   final TextEditingController pin = TextEditingController();
   final AuthService auth = AuthService();
@@ -138,9 +141,12 @@ class _EnterPinAndSubmit extends ConsumerWidget {
                     tokenChain: watch.chain!,
                     user_uid: user!.uid,
                   ),
-                ).then((onValu) {
-                  Navigator.of(context).pop();
-                });
+                );
+                Navigator.of(context).pop();
+
+                if (pushTo != null) {
+                  Navigator.of(context).popAndPushNamed(pushTo!);
+                }
               } catch (e) {
                 appToastErr(context, e.toString());
               }

@@ -38,33 +38,7 @@ class OrdersSellCrypto extends HookConsumerWidget {
                 withNavBar: false,
                 screen: TxnSummaryPage(
                   cryptoAmountToPay: data.amountCrypto!,
-                  children: [
-                    simpleRow(
-                      title: "You receive",
-                      subtitle: data.amountFiat != null
-                          ? "₦ ${data.amountFiat.toString()}"
-                          : "0",
-                    ),
-                    simpleRow(
-                      title: "Pay",
-                      subtitle: "USD ${data.amountCrypto!.toStringAsFixed(3)}",
-                    ),
-                    simpleRow(
-                      title: "Account name",
-                      subtitle: data.bankAccount?.accountName,
-                    ),
-                    simpleRow(
-                      title: "Account no.",
-                      subtitle: data.bankAccount?.accountNo,
-                    ),
-                    simpleRow(
-                      title: "Bank name",
-                      subtitle: data.bankAccount?.bankName,
-                    ),
-
-                    // simpleRow(title: "Cashback bonus", subtitle: cashback),
-                    SizedBox(height: 20),
-                  ],
+                  pushTo: "/orders",
                   send: (paymentInfo) async {
                     final response = await result
                         .runMutation(
@@ -93,9 +67,35 @@ class OrdersSellCrypto extends HookConsumerWidget {
 
                     final msg = response!.parsedData?.orders_CreateSell.message;
 
-                    Navigator.of(context).popAndPushNamed("/");
                     appToast(context, msg!);
                   },
+                  children: [
+                    simpleRow(
+                      title: "You receive",
+                      subtitle: data.amountFiat != null
+                          ? "₦ ${data.amountFiat.toString()}"
+                          : "0",
+                    ),
+                    simpleRow(
+                      title: "Pay",
+                      subtitle: "USD ${data.amountCrypto!.toStringAsFixed(3)}",
+                    ),
+                    simpleRow(
+                      title: "Account name",
+                      subtitle: data.bankAccount?.accountName,
+                    ),
+                    simpleRow(
+                      title: "Account no.",
+                      subtitle: data.bankAccount?.accountNo,
+                    ),
+                    simpleRow(
+                      title: "Bank name",
+                      subtitle: data.bankAccount?.bankName,
+                    ),
+
+                    // simpleRow(title: "Cashback bonus", subtitle: cashback),
+                    SizedBox(height: 20),
+                  ],
                 ),
               );
             } catch (e) {

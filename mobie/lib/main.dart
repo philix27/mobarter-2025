@@ -10,6 +10,7 @@ import 'package:mobarter/config/crashlytics.dart';
 import 'package:mobarter/features/app/logic/provider.dart';
 import 'package:mobarter/features/intro/Welcome.dart';
 import 'package:mobarter/features/onboarding/SetupTxnPinPage.dart';
+import 'package:mobarter/features/orders/OrderPage.dart';
 import 'package:mobarter/features/theme/app_theme.dart';
 import 'package:mobarter/features/theme/themes_provider.dart';
 import 'package:mobarter/graphql/api/Api.dart';
@@ -84,6 +85,7 @@ class InitiateGql extends HookConsumerWidget {
             "/interactive": (context) => const WalletPage(),
             "/setup-pin": (context) => const SetupTxnPinPage(),
             "/welcome": (context) => const WelcomePage(),
+            "/orders": (context) => const OrdersPage(),
           },
         ),
       ),
