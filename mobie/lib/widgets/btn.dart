@@ -30,7 +30,7 @@ class Btn extends StatelessWidget {
                   ? Theme.of(context).highlightColor
                   : Theme.of(context).primaryColor, // Background color
               foregroundColor: Colors.white, // Text (foreground) color
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
               ),

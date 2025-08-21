@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mobarter/features/profile/logic/model.dart';
 import 'package:mobarter/features/profile/logic/provider.dart';
-import 'package:mobarter/features/profile/presentation/phone/phone_enter_otp.dart';
+import 'package:mobarter/features/profile/presentation/phone/phone_no.dart';
 import 'package:mobarter/features/profile/presentation/phone/verify_phone_otp.dart';
 
 class EnterPhone6 extends ConsumerWidget {
@@ -11,14 +12,13 @@ class EnterPhone6 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final w = kycFormWatch(ref);
-    final r = kycFormRead(ref);
 
     return Column(
       spacing: 20,
       children: [
-        w.phone == null || w.phone!.isEmpty || w.phoneToken == null
+        w.phoneValidationStep == PhoneValidationStep.enterPhoneNo
             ? SendPhoneOtp()
-            : VerifyPhoneOtp(phone: '', token: ''),
+            : VerifyPhoneOtp(),
       ],
     );
   }

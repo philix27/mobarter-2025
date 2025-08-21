@@ -102,8 +102,7 @@ class DisplayProfile extends HookConsumerWidget {
         section(
           user?.email ?? "-",
           () => openPage("Personal Info", EnterNames1()),
-          false,
-          // profile!.firstname?.isNotEmpty,
+          profile!.firstname?.isNotEmpty,
         ),
         row("First name", profile?.firstname ?? "-"),
         row("Last name", profile?.lastname ?? "-"),

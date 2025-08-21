@@ -147,7 +147,7 @@ class SettingsPage extends HookConsumerWidget {
                   .signOut()
                   .then((value) {
                     appLogger.i("User logged out successfully");
-                    Navigator.of(context).pushNamed("/");
+                    Navigator.of(context).pushNamed("/welcome");
                     Phoenix.rebirth(context);
                     // Navigator.of(context).pushNamed("/welcome");
                   })

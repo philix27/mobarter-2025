@@ -1,5 +1,7 @@
 enum Gender { Male, Female }
 
+enum PhoneValidationStep { enterPhoneNo, enterOtp }
+
 class KycModel {
   final String? nin;
   final String? bvn;
@@ -9,6 +11,7 @@ class KycModel {
   final String? dob;
   final String? phoneToken;
   final Gender? gender;
+  final PhoneValidationStep? phoneValidationStep;
 
   KycModel({
     required this.dob,
@@ -19,6 +22,7 @@ class KycModel {
     required this.phone,
     required this.phoneToken,
     required this.gender,
+    required this.phoneValidationStep,
   });
 
   KycModel copyWith({
@@ -30,6 +34,7 @@ class KycModel {
     String? phone,
     String? phoneToken,
     Gender? gender,
+    PhoneValidationStep? phoneValidationStep,
   }) {
     return KycModel(
       dob: dob ?? this.dob,
@@ -40,6 +45,7 @@ class KycModel {
       phone: phone ?? this.phone,
       phoneToken: phoneToken ?? this.phoneToken,
       gender: gender ?? this.gender,
+      phoneValidationStep: phoneValidationStep ?? this.phoneValidationStep,
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mobarter/features/profile/logic/model.dart';
 import 'package:mobarter/features/profile/logic/provider.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
@@ -10,14 +11,14 @@ import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/widgets/widgets.dart';
 
 class VerifyPhoneOtp extends HookConsumerWidget {
-  VerifyPhoneOtp({super.key, required this.phone, required this.token});
-  final String token;
-  final String phone;
+  VerifyPhoneOtp({super.key});
+
   final TextEditingController pin = TextEditingController();
 
   @override
   Widget build(BuildContext context, ref) {
     final r = kycFormRead(ref);
+    final w = kycFormWatch(ref);
     final kycVerifyphoneotp = useMutation$Kyc_verifyPhoneOtp();
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
@@ -34,7 +35,7 @@ class VerifyPhoneOtp extends HookConsumerWidget {
             length: 6,
             controller: pin,
             keyboardType: TextInputType.number,
-            obscureText: true,
+            obscureText: false,
             inputFormatters: [
               FilteringTextInputFormatter.digitsOnly, // Allow digits only
               LengthLimitingTextInputFormatter(6), // Enforces the limit
@@ -46,40 +47,52 @@ class VerifyPhoneOtp extends HookConsumerWidget {
             },
           ),
           SizedBox(height: 35),
-          Btn(
-            title: "Send",
-            onPressed: () async {
-              try {
-                // todo
-                // send info to backend
-                require(pin.text.length == 6, "Invalid pin");
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Btn(
+                title: "Back",
+                isSecondary: true,
+                onPressed: () {
+                  r.updatePhoneValidation(PhoneValidationStep.enterPhoneNo);
+                },
+              ),
+              Btn(
+                title: "Send",
+                onPressed: () async {
+                  try {
+                    // todo
+                    // send info to backend
+                    require(w.phone, "Phone no needed");
+                    require(w.phoneToken, "Phone no needed");
+                    require(pin.text.length == 6, "Invalid pin");
 
-                final response = await kycVerifyphoneotp
-                    .runMutation(
-                      Variables$Mutation$Kyc_verifyPhoneOtp(
-                        input: Input$Kyc_verifyPhoneOtpAndInput(
-                          otp: pin.text,
-                          phone: pin.text,
-                          token: pin.text,
-                        ),
-                      ),
-                    )
-                    .networkResult;
+                    final response = await kycVerifyphoneotp
+                        .runMutation(
+                          Variables$Mutation$Kyc_verifyPhoneOtp(
+                            input: Input$Kyc_verifyPhoneOtpAndInput(
+                              otp: pin.text,
+                              phone: w.phone!,
+                              token: w.phoneToken!,
+                            ),
+                          ),
+                        )
+                        .networkResult;
 
-                validateGqlQuery(response);
+                    validateGqlQuery(response);
 
-                final res = response!.parsedData?.Kyc_verifyPhoneOtp;
+                    final res = response!.parsedData?.Kyc_verifyPhoneOtp;
 
-                r.clearPhone();
+                    r.clearPhone();
 
-                appToast(context, res!.message);
-                Navigator.of(context).pop();
-              } catch (e) {
-                print("ErrX4 Result");
-                print(e);
-                appToastErr(context, e.toString());
-              }
-            },
+                    appToast(context, res!.message);
+                    Navigator.of(context).pop();
+                  } catch (e) {
+                    appToastErr(context, e.toString());
+                  }
+                },
+              ),
+            ],
           ),
         ],
       ),

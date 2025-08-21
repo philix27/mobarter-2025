@@ -13,6 +13,7 @@ class KycFormNotifier extends StateNotifier<KycModel> {
           state: null,
           phoneToken: null,
           gender: null,
+          phoneValidationStep: null,
         ),
       );
 
@@ -36,8 +37,20 @@ class KycFormNotifier extends StateNotifier<KycModel> {
     state = state.copyWith(dob: dob);
   }
 
-  void updatePhone(String phone, String otp) {
-    state = state.copyWith(phone: phone, phoneToken: otp);
+  void updatePhone({
+    required String phone,
+    required String otp,
+    required PhoneValidationStep step,
+  }) {
+    state = state.copyWith(
+      phone: phone,
+      phoneToken: otp,
+      phoneValidationStep: step,
+    );
+  }
+
+  void updatePhoneValidation(PhoneValidationStep step) {
+    state = state.copyWith(phoneValidationStep: step);
   }
 
   void clearPhone() {

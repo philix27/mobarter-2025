@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mobarter/features/profile/logic/model.dart';
 import 'package:mobarter/features/profile/logic/provider.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/kyc.gql.dart';
 import 'package:mobarter/utils/exception.dart';
-import 'package:mobarter/widgets/btn.dart';
-import 'package:mobarter/widgets/inputText.dart';
-import 'package:mobarter/widgets/toast.dart';
+import 'package:mobarter/widgets/widgets.dart';
 
 class SendPhoneOtp extends HookConsumerWidget {
   SendPhoneOtp({super.key});
@@ -16,8 +15,8 @@ class SendPhoneOtp extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final mutation = useMutation$kyc_sendPhoneOtp();
-    final w = kycFormWatch(ref);
     final r = kycFormRead(ref);
+
     submit() async {
       try {
         require(phone.text, "Phone no needed");
@@ -30,9 +29,16 @@ class SendPhoneOtp extends HookConsumerWidget {
               ),
             )
             .networkResult;
+
         validateGqlQuery(response);
+
         final otp = response!.parsedData?.kyc_sendPhoneOtp.otpToken;
-        r.updatePhone(phone.text, otp!);
+
+        r.updatePhone(
+          phone: phone.text,
+          otp: otp!,
+          step: PhoneValidationStep.enterOtp,
+        );
       } catch (e) {
         appToastErr(context, e.toString());
       }
