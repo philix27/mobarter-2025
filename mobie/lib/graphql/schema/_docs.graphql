@@ -493,6 +493,18 @@ input Order_GetAllInput {
   trade_type: TradeType
 }
 
+type Order_GetAllResponse {
+  action_merchant: OrderActions
+  action_user: OrderActions
+  amount_crypto: Float!
+  amount_fiat: Float!
+  bank_id: Float!
+  currency_fiat: Country!
+  id: ID!
+  status: OrderStatus!
+  trade_type: TradeType!
+}
+
 input Order_GetOneInput {
   id: ID!
 }
@@ -547,7 +559,7 @@ type Query {
   ): [BettingProvidersResponse!]!
   fxRate_GetAll: ExchangeRate_Response!
   kyc_profile: Kyc_UserResponse!
-  orders_GetAll(input: Order_GetAllInput!): [Order_Response!]!
+  orders_GetAll(input: Order_GetAllInput!): [Order_GetAllResponse!]!
   orders_GetAllAsMerchant(input: Order_GetAllInput!): [Order_Response!]!
   orders_GetAllForAdmin(input: Order_GetAllInput!): [Order_Response!]!
   orders_GetOne(input: Order_GetOneInput!): Order_Response!

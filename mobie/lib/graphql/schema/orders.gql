@@ -15,9 +15,10 @@ query Orders_GetAll($input: Order_GetAllInput!) {
     trade_type
     action_user
     action_merchant
+    amount_crypto
+    amount_fiat
   }
 }
-
 # query Orders_GetOne($input: Order_GetOneInput!) {
 #   orders_GetOne(input: $input) {
 #     id

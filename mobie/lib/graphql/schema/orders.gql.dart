@@ -994,6 +994,20 @@ const documentNodeQueryOrders_GetAll = DocumentNode(definitions: [
             selectionSet: null,
           ),
           FieldNode(
+            name: NameNode(value: 'amount_crypto'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'amount_fiat'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
             name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
@@ -1168,12 +1182,14 @@ class Query$Orders_GetAll$orders_GetAll {
   Query$Orders_GetAll$orders_GetAll({
     required this.id,
     this.action_user,
-    this.status,
-    this.bank_id,
-    this.currency_fiat,
-    this.trade_type,
+    required this.status,
+    required this.bank_id,
+    required this.currency_fiat,
+    required this.trade_type,
     this.action_merchant,
-    this.$__typename = 'Order_Response',
+    required this.amount_crypto,
+    required this.amount_fiat,
+    this.$__typename = 'Order_GetAllResponse',
   });
 
   factory Query$Orders_GetAll$orders_GetAll.fromJson(
@@ -1185,25 +1201,23 @@ class Query$Orders_GetAll$orders_GetAll {
     final l$currency_fiat = json['currency_fiat'];
     final l$trade_type = json['trade_type'];
     final l$action_merchant = json['action_merchant'];
+    final l$amount_crypto = json['amount_crypto'];
+    final l$amount_fiat = json['amount_fiat'];
     final l$$__typename = json['__typename'];
     return Query$Orders_GetAll$orders_GetAll(
       id: (l$id as String),
       action_user: l$action_user == null
           ? null
           : fromJson$Enum$OrderActions((l$action_user as String)),
-      status: l$status == null
-          ? null
-          : fromJson$Enum$OrderStatus((l$status as String)),
-      bank_id: (l$bank_id as num?)?.toDouble(),
-      currency_fiat: l$currency_fiat == null
-          ? null
-          : fromJson$Enum$Country((l$currency_fiat as String)),
-      trade_type: l$trade_type == null
-          ? null
-          : fromJson$Enum$TradeType((l$trade_type as String)),
+      status: fromJson$Enum$OrderStatus((l$status as String)),
+      bank_id: (l$bank_id as num).toDouble(),
+      currency_fiat: fromJson$Enum$Country((l$currency_fiat as String)),
+      trade_type: fromJson$Enum$TradeType((l$trade_type as String)),
       action_merchant: l$action_merchant == null
           ? null
           : fromJson$Enum$OrderActions((l$action_merchant as String)),
+      amount_crypto: (l$amount_crypto as num).toDouble(),
+      amount_fiat: (l$amount_fiat as num).toDouble(),
       $__typename: (l$$__typename as String),
     );
   }
@@ -1212,15 +1226,19 @@ class Query$Orders_GetAll$orders_GetAll {
 
   final Enum$OrderActions? action_user;
 
-  final Enum$OrderStatus? status;
+  final Enum$OrderStatus status;
 
-  final double? bank_id;
+  final double bank_id;
 
-  final Enum$Country? currency_fiat;
+  final Enum$Country currency_fiat;
 
-  final Enum$TradeType? trade_type;
+  final Enum$TradeType trade_type;
 
   final Enum$OrderActions? action_merchant;
+
+  final double amount_crypto;
+
+  final double amount_fiat;
 
   final String $__typename;
 
@@ -1232,20 +1250,21 @@ class Query$Orders_GetAll$orders_GetAll {
     _resultData['action_user'] =
         l$action_user == null ? null : toJson$Enum$OrderActions(l$action_user);
     final l$status = status;
-    _resultData['status'] =
-        l$status == null ? null : toJson$Enum$OrderStatus(l$status);
+    _resultData['status'] = toJson$Enum$OrderStatus(l$status);
     final l$bank_id = bank_id;
     _resultData['bank_id'] = l$bank_id;
     final l$currency_fiat = currency_fiat;
-    _resultData['currency_fiat'] =
-        l$currency_fiat == null ? null : toJson$Enum$Country(l$currency_fiat);
+    _resultData['currency_fiat'] = toJson$Enum$Country(l$currency_fiat);
     final l$trade_type = trade_type;
-    _resultData['trade_type'] =
-        l$trade_type == null ? null : toJson$Enum$TradeType(l$trade_type);
+    _resultData['trade_type'] = toJson$Enum$TradeType(l$trade_type);
     final l$action_merchant = action_merchant;
     _resultData['action_merchant'] = l$action_merchant == null
         ? null
         : toJson$Enum$OrderActions(l$action_merchant);
+    final l$amount_crypto = amount_crypto;
+    _resultData['amount_crypto'] = l$amount_crypto;
+    final l$amount_fiat = amount_fiat;
+    _resultData['amount_fiat'] = l$amount_fiat;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -1260,6 +1279,8 @@ class Query$Orders_GetAll$orders_GetAll {
     final l$currency_fiat = currency_fiat;
     final l$trade_type = trade_type;
     final l$action_merchant = action_merchant;
+    final l$amount_crypto = amount_crypto;
+    final l$amount_fiat = amount_fiat;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
@@ -1269,6 +1290,8 @@ class Query$Orders_GetAll$orders_GetAll {
       l$currency_fiat,
       l$trade_type,
       l$action_merchant,
+      l$amount_crypto,
+      l$amount_fiat,
       l$$__typename,
     ]);
   }
@@ -1317,6 +1340,16 @@ class Query$Orders_GetAll$orders_GetAll {
     if (l$action_merchant != lOther$action_merchant) {
       return false;
     }
+    final l$amount_crypto = amount_crypto;
+    final lOther$amount_crypto = other.amount_crypto;
+    if (l$amount_crypto != lOther$amount_crypto) {
+      return false;
+    }
+    final l$amount_fiat = amount_fiat;
+    final lOther$amount_fiat = other.amount_fiat;
+    if (l$amount_fiat != lOther$amount_fiat) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -1352,6 +1385,8 @@ abstract class CopyWith$Query$Orders_GetAll$orders_GetAll<TRes> {
     Enum$Country? currency_fiat,
     Enum$TradeType? trade_type,
     Enum$OrderActions? action_merchant,
+    double? amount_crypto,
+    double? amount_fiat,
     String? $__typename,
   });
 }
@@ -1377,6 +1412,8 @@ class _CopyWithImpl$Query$Orders_GetAll$orders_GetAll<TRes>
     Object? currency_fiat = _undefined,
     Object? trade_type = _undefined,
     Object? action_merchant = _undefined,
+    Object? amount_crypto = _undefined,
+    Object? amount_fiat = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Query$Orders_GetAll$orders_GetAll(
@@ -1384,20 +1421,27 @@ class _CopyWithImpl$Query$Orders_GetAll$orders_GetAll<TRes>
         action_user: action_user == _undefined
             ? _instance.action_user
             : (action_user as Enum$OrderActions?),
-        status: status == _undefined
+        status: status == _undefined || status == null
             ? _instance.status
-            : (status as Enum$OrderStatus?),
-        bank_id:
-            bank_id == _undefined ? _instance.bank_id : (bank_id as double?),
-        currency_fiat: currency_fiat == _undefined
+            : (status as Enum$OrderStatus),
+        bank_id: bank_id == _undefined || bank_id == null
+            ? _instance.bank_id
+            : (bank_id as double),
+        currency_fiat: currency_fiat == _undefined || currency_fiat == null
             ? _instance.currency_fiat
-            : (currency_fiat as Enum$Country?),
-        trade_type: trade_type == _undefined
+            : (currency_fiat as Enum$Country),
+        trade_type: trade_type == _undefined || trade_type == null
             ? _instance.trade_type
-            : (trade_type as Enum$TradeType?),
+            : (trade_type as Enum$TradeType),
         action_merchant: action_merchant == _undefined
             ? _instance.action_merchant
             : (action_merchant as Enum$OrderActions?),
+        amount_crypto: amount_crypto == _undefined || amount_crypto == null
+            ? _instance.amount_crypto
+            : (amount_crypto as double),
+        amount_fiat: amount_fiat == _undefined || amount_fiat == null
+            ? _instance.amount_fiat
+            : (amount_fiat as double),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -1418,6 +1462,8 @@ class _CopyWithStubImpl$Query$Orders_GetAll$orders_GetAll<TRes>
     Enum$Country? currency_fiat,
     Enum$TradeType? trade_type,
     Enum$OrderActions? action_merchant,
+    double? amount_crypto,
+    double? amount_fiat,
     String? $__typename,
   }) =>
       _res;
