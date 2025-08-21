@@ -22,7 +22,7 @@ class HomeAddress5 extends HookConsumerWidget {
         require(stateAddress.text, "State Address needed");
         require(street.text, "Street needed");
 
-        await mutation
+        final response = await mutation
             .runMutation(
               Variables$Mutation$Kyc_addAddressInfo(
                 input: Input$Kyc_AddAddressInfoInput(
@@ -34,7 +34,7 @@ class HomeAddress5 extends HookConsumerWidget {
               ),
             )
             .networkResult;
-
+        validateGqlQuery(response);
         appToast(context, "Record submitted");
         Navigator.of(context).pop();
       } catch (e) {

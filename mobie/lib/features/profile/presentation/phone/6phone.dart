@@ -16,10 +16,9 @@ class EnterPhone6 extends ConsumerWidget {
     return Column(
       spacing: 20,
       children: [
-        SendPhoneOtp(),
-        w.phone!.isNotEmpty && w.phoneToken!.isNotEmpty
-            ? VerifyPhoneOtp(phone: '', token: '')
-            : SizedBox.shrink(),
+        w.phone == null || w.phone!.isEmpty || w.phoneToken == null
+            ? SendPhoneOtp()
+            : VerifyPhoneOtp(phone: '', token: ''),
       ],
     );
   }

@@ -20,20 +20,19 @@ class SendPhoneOtp extends HookConsumerWidget {
     final r = kycFormRead(ref);
     submit() async {
       try {
-        require(phone.text, "BVN needed");
-        require(phone.text.length != 11, "BVN needed");
+        require(phone.text, "Phone no needed");
+        require(phone.text.length == 11, "Phone no needed");
 
-        await mutation
+        final response = await mutation
             .runMutation(
               Variables$Mutation$kyc_sendPhoneOtp(
                 input: Input$Kyc_SendPhoneOtpInput(phone: phone.text),
               ),
             )
             .networkResult;
-
-        r.updatePhone(phone.text);
-        appToast(context, "Record submitted");
-        Navigator.of(context).pop();
+        validateGqlQuery(response);
+        final otp = response!.parsedData?.kyc_sendPhoneOtp.otpToken;
+        r.updatePhone(phone.text, otp!);
       } catch (e) {
         appToastErr(context, e.toString());
       }
@@ -45,6 +44,7 @@ class SendPhoneOtp extends HookConsumerWidget {
         textField(
           context,
           label: 'Phone number',
+          hintText: "08101234567",
           maxLength: 11,
           controller: phone,
           keyboardType: TextInputType.number,
@@ -53,13 +53,7 @@ class SendPhoneOtp extends HookConsumerWidget {
             LengthLimitingTextInputFormatter(11), // Enforces the limit
           ],
         ),
-        Btn(
-          title: "Submit",
-          onPressed: () {
-            appToast(context, "Submitted successfully");
-            Navigator.of(context).pop();
-          },
-        ),
+        Btn(title: "Submit", onPressed: submit),
       ],
     );
   }

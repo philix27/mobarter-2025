@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/bill_electricity/logic/provider.dart';
 import 'package:mobarter/features/bill_electricity/presentation/accountNo.dart';
@@ -119,7 +118,7 @@ class ElectricityPage extends HookConsumerWidget {
                             ),
                           )
                           .networkResult;
-
+                      validateGqlQuery(response);
                       appLogger.e("Pay electricity bill $response");
 
                       final msg =

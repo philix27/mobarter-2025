@@ -27,7 +27,7 @@ class EnterNames1 extends HookConsumerWidget {
         require(w.dob, "Date of Birth needed");
         require(w.gender, "Select gender");
 
-        await mutation
+        final response = await mutation
             .runMutation(
               Variables$Mutation$kyc_addNames(
                 input: Input$Kyc_AddNamesInput(
@@ -40,6 +40,7 @@ class EnterNames1 extends HookConsumerWidget {
               ),
             )
             .networkResult;
+        validateGqlQuery(response);
         appToast(context, "Record submitted");
         Navigator.of(context).pushNamed("/home");
       } catch (e) {

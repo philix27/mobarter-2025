@@ -113,7 +113,7 @@ class TopUpsPage extends HookConsumerWidget {
                             ),
                           )
                           .networkResult;
-
+                      validateGqlQuery(response);
                       appLogger.e("Purchase airtime $response");
 
                       final msg = response!.parsedData?.utility_purchaseAirtime;

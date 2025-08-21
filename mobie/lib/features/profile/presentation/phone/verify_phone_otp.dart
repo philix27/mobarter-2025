@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mobarter/features/profile/logic/provider.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/kyc.gql.dart';
@@ -16,6 +17,7 @@ class VerifyPhoneOtp extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    final r = kycFormRead(ref);
     final kycVerifyphoneotp = useMutation$Kyc_verifyPhoneOtp();
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
@@ -64,12 +66,17 @@ class VerifyPhoneOtp extends HookConsumerWidget {
                     )
                     .networkResult;
 
+                validateGqlQuery(response);
+
                 final res = response!.parsedData?.Kyc_verifyPhoneOtp;
 
-                appToast(context, res!.message);
+                r.clearPhone();
 
+                appToast(context, res!.message);
                 Navigator.of(context).pop();
               } catch (e) {
+                print("ErrX4 Result");
+                print(e);
                 appToastErr(context, e.toString());
               }
             },

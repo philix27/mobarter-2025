@@ -41,7 +41,7 @@ class AccountNo extends HookConsumerWidget {
               ),
             )
             .networkResult;
-
+        validateGqlQuery(response);
         appLogger.e("Purchase airtime $response");
 
         final result = response!.parsedData?.electricityBill_verifyAccount;

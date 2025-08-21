@@ -5,6 +5,7 @@ import 'package:mobarter/features/auth/auth_service.dart';
 import 'package:mobarter/features/onboarding/questionsList.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/wallet.gql.dart';
+import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/utils/logger.dart';
 import 'package:mobarter/widgets/widgets.dart';
 
@@ -34,7 +35,11 @@ class _SetupTxnPinPageState extends State<SetupTxnPinPage> {
 class SetupTxnPinHook extends HookWidget {
   final void Function(String text) stateUpdater;
   final String questionSelected;
-  SetupTxnPinHook({super.key, required this.stateUpdater, required this.questionSelected});
+  SetupTxnPinHook({
+    super.key,
+    required this.stateUpdater,
+    required this.questionSelected,
+  });
 
   TextEditingController answer = TextEditingController();
   TextEditingController txnPin = TextEditingController();
@@ -78,7 +83,7 @@ class SetupTxnPinHook extends HookWidget {
               ),
             )
             .networkResult;
-
+        validateGqlQuery(response);
         final msg = response!.parsedData?.walletCrypto_mobileCreate.message;
 
         appToast(context, "Your pin has been setup successfully");

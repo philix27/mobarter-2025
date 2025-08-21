@@ -6,6 +6,7 @@ import 'package:mobarter/features/bank_account/logic/model.dart';
 import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/bankAccount.gql.dart';
+import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/utils/logger.dart';
 import 'package:mobarter/widgets/listTile.dart';
 import 'package:mobarter/widgets/toast.dart';
@@ -29,8 +30,8 @@ class BankItem extends HookWidget {
           )
           .networkResult;
 
-      
-         if (kDebugMode) {
+      validateGqlQuery(response);
+      if (kDebugMode) {
         appLogger.d("Delete Bank Account");
       }
 

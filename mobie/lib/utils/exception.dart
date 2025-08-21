@@ -1,3 +1,5 @@
+import 'package:graphql_flutter/graphql_flutter.dart';
+
 class AppPlainException implements Exception {
   final String message;
   AppPlainException(this.message);
@@ -32,5 +34,14 @@ require(dynamic payload, String msg) {
     if (payload.isInfinite) throw AppPlainException(msg);
     if (payload == 0) throw AppPlainException(msg);
     return;
+  }
+}
+
+
+validateGqlQuery(QueryResult? response) {
+  if (response == null) throw "No response found";
+
+  if (response.hasException) {
+    throw response.exception!.graphqlErrors[0].message;
   }
 }

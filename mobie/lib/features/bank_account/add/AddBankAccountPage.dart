@@ -39,6 +39,8 @@ class AddBankAccountPage extends HookConsumerWidget {
             )
             .networkResult;
 
+        validateGqlQuery(response);
+
         if (kDebugMode) {
           appLogger.d("Add Bank Account $response");
         }

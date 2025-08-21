@@ -92,7 +92,7 @@ class OrdersSellCryptoPage extends HookConsumerWidget {
                             ),
                           )
                           .networkResult;
-
+                      validateGqlQuery(response);
                       final msg = response!.parsedData?.orders_CreateSell;
 
                       appToast(context, "Sent successful");

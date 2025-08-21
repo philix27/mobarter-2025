@@ -36,7 +36,11 @@ class KycFormNotifier extends StateNotifier<KycModel> {
     state = state.copyWith(dob: dob);
   }
 
-  void updatePhone(String phone) {
-    state = state.copyWith(phone: phone);
+  void updatePhone(String phone, String otp) {
+    state = state.copyWith(phone: phone, phoneToken: otp);
+  }
+
+  void clearPhone() {
+    state = state.copyWith(phone: null, phoneToken: null);
   }
 }

@@ -22,13 +22,15 @@ class EnterBvnNin3 extends HookConsumerWidget {
         require(nin.text, "NIN needed");
         require(nin.text.length == 11, "Enter a valid NIN");
 
-        await mutation
+        final response = await mutation
             .runMutation(
               Variables$Mutation$kyc_addBvnNin(
                 input: Input$Kyc_AddBvnNinInput(bvn: bvn.text, nin: nin.text),
               ),
             )
             .networkResult;
+            
+        validateGqlQuery(response);
 
         appToast(context, "Record submitted");
         Navigator.of(context).pushNamed("/home");

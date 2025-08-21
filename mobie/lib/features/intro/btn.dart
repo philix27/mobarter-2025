@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -8,6 +9,7 @@ import 'package:mobarter/features/app/logic/provider.dart';
 import 'package:mobarter/features/firestore/wallet.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/auth.gql.dart';
+import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/utils/logger.dart';
 import 'package:mobarter/features/auth/auth_service.dart';
 import 'package:mobarter/widgets/widgets.dart';
@@ -40,19 +42,23 @@ class _ConnectionButton extends HookWidget {
     Future<void> getServerToken(User user) async {
       try {
         final idToken = await user.getIdToken();
-        printWrapped("IdToken $idToken");
+        if (kDebugMode) {
+          printWrapped("IdToken $idToken");
+        }
 
-        final res = result.runMutation(
-          Variables$Mutation$Auth_firebaseLogin(
-            input: Input$Auth_FirebaseLoginInput(idToken: idToken!),
-          ),
-        );
+        final response = await result
+            .runMutation(
+              Variables$Mutation$Auth_firebaseLogin(
+                input: Input$Auth_FirebaseLoginInput(idToken: idToken!),
+              ),
+            )
+            .networkResult;
 
-        final tokenData = await res.networkResult;
+        validateGqlQuery(response);
 
-        appLogger.e("Login tokenData: $tokenData");
+        appLogger.e("Login tokenData: $response");
 
-        final serverToken = tokenData!.parsedData?.auth_firebaseLogin.token;
+        final serverToken = response!.parsedData?.auth_firebaseLogin.token;
         updateServerToken(serverToken!);
       } catch (e) {
         appLogger.e("Login Err: $e");

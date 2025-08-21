@@ -31,6 +31,9 @@ class TvBillsSmartCardNoField extends HookConsumerWidget {
             ),
           )
           .networkResult;
+
+      validateGqlQuery(response);
+      
       if (response?.data != null) {
         final customerName =
             response!.parsedData?.tvBills_validateAccount.customerName;
