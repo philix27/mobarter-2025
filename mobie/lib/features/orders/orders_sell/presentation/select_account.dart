@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/bank_account/presentation/bank_list.dart';
-import 'package:mobarter/features/orders_sell/logic/provider.dart';
+import 'package:mobarter/features/orders/orders_sell/logic/provider.dart';
 import 'package:mobarter/widgets/widgets.dart';
 
 class SelectBankAccount extends HookConsumerWidget {

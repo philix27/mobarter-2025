@@ -278,7 +278,7 @@ const documentNodeMutationOrders_CreateSell = DocumentNode(definitions: [
         directives: [],
         selectionSet: SelectionSetNode(selections: [
           FieldNode(
-            name: NameNode(value: 'msg'),
+            name: NameNode(value: 'message'),
             alias: null,
             arguments: [],
             directives: [],
@@ -521,28 +521,28 @@ class Mutation$Orders_CreateSell$Widget
 
 class Mutation$Orders_CreateSell$orders_CreateSell {
   Mutation$Orders_CreateSell$orders_CreateSell({
-    required this.msg,
+    required this.message,
     this.$__typename = 'Order_CreteSellResponse',
   });
 
   factory Mutation$Orders_CreateSell$orders_CreateSell.fromJson(
       Map<String, dynamic> json) {
-    final l$msg = json['msg'];
+    final l$message = json['message'];
     final l$$__typename = json['__typename'];
     return Mutation$Orders_CreateSell$orders_CreateSell(
-      msg: (l$msg as String),
+      message: (l$message as String),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final String msg;
+  final String message;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$msg = msg;
-    _resultData['msg'] = l$msg;
+    final l$message = message;
+    _resultData['message'] = l$message;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -550,10 +550,10 @@ class Mutation$Orders_CreateSell$orders_CreateSell {
 
   @override
   int get hashCode {
-    final l$msg = msg;
+    final l$message = message;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$msg,
+      l$message,
       l$$__typename,
     ]);
   }
@@ -567,9 +567,9 @@ class Mutation$Orders_CreateSell$orders_CreateSell {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$msg = msg;
-    final lOther$msg = other.msg;
-    if (l$msg != lOther$msg) {
+    final l$message = message;
+    final lOther$message = other.message;
+    if (l$message != lOther$message) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -601,7 +601,7 @@ abstract class CopyWith$Mutation$Orders_CreateSell$orders_CreateSell<TRes> {
       _CopyWithStubImpl$Mutation$Orders_CreateSell$orders_CreateSell;
 
   TRes call({
-    String? msg,
+    String? message,
     String? $__typename,
   });
 }
@@ -620,11 +620,13 @@ class _CopyWithImpl$Mutation$Orders_CreateSell$orders_CreateSell<TRes>
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? msg = _undefined,
+    Object? message = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Mutation$Orders_CreateSell$orders_CreateSell(
-        msg: msg == _undefined || msg == null ? _instance.msg : (msg as String),
+        message: message == _undefined || message == null
+            ? _instance.message
+            : (message as String),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -638,7 +640,7 @@ class _CopyWithStubImpl$Mutation$Orders_CreateSell$orders_CreateSell<TRes>
   TRes _res;
 
   call({
-    String? msg,
+    String? message,
     String? $__typename,
   }) =>
       _res;

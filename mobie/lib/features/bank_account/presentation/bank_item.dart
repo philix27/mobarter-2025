@@ -109,6 +109,7 @@ class BankItem extends HookWidget {
           if (onAddBank != null) {
             onAddBank!(
               BankAccountModel(
+                id: item.id,
                 accountNo: item.account_no,
                 accountName: item.account_name,
                 bankName: item.bank_name,

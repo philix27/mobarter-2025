@@ -63,7 +63,7 @@ class TxnSummaryPage extends HookConsumerWidget {
                           watch.name,
                           "Please select token you wish to use for payment",
                         );
-
+                        // set to this height because of the keyboard overlap
                         btmSheet(
                           h: 0.65,
                           ctx: context,
@@ -140,7 +140,6 @@ class _EnterPinAndSubmit extends ConsumerWidget {
                   ),
                 ).then((onValu) {
                   Navigator.of(context).pop();
-                  // Navigator.of(context).pop();
                 });
               } catch (e) {
                 appToastErr(context, e.toString());

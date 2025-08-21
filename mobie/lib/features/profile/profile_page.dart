@@ -107,7 +107,7 @@ class DisplayProfile extends HookConsumerWidget {
         row("First name", profile?.firstname ?? "-"),
         row("Last name", profile?.lastname ?? "-"),
         profile?.middlename != null
-            ? row("Middle name", profile?.middlename ?? "-")
+            ? row("Middle name", profile.middlename ?? "-")
             : SizedBox.shrink(),
         row("Gender", profile?.gender ?? "-"),
         row("Date of Birth", profile?.dob ?? "-"),

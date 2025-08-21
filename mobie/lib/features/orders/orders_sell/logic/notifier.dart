@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobarter/features/bank_account/logic/model.dart';
-import 'package:mobarter/features/orders_sell/logic/model.dart';
+import 'package:mobarter/features/orders/orders_sell/logic/model.dart';
 
 class OrderSellNotifier extends StateNotifier<OrderSell> {
   OrderSellNotifier()

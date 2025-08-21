@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobarter/features/orders_sell/logic/model.dart';
-import 'package:mobarter/features/orders_sell/logic/notifier.dart';
+import 'package:mobarter/features/orders/orders_sell/logic/model.dart';
+import 'package:mobarter/features/orders/orders_sell/logic/notifier.dart';
 
 final orderSellProvider =
     StateNotifierProvider<OrderSellNotifier, OrderSell>((ref) {

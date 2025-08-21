@@ -1,11 +1,12 @@
-
 class BankAccountModel {
+  final double? id;
   final String? accountNo;
   final String? accountName;
   final String? bankName;
   final String? bankCode;
 
   BankAccountModel({
+    required this.id,
     required this.accountNo,
     required this.accountName,
     required this.bankName,
@@ -13,6 +14,7 @@ class BankAccountModel {
   });
 
   BankAccountModel copyWith({
+    double? id,
     String? accountNo,
     String? accountName,
     String? bankName,
@@ -23,6 +25,7 @@ class BankAccountModel {
       accountNo: accountNo ?? this.accountNo,
       bankCode: bankCode ?? this.bankCode,
       bankName: bankName ?? this.bankName,
+      id: id ?? this.id,
     );
   }
 }

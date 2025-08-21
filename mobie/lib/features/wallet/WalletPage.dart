@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:mobarter/features/orders/OrderPage.dart';
+import 'package:mobarter/features/orders/orders_sell/OrderSellCrypto.dart';
 import 'package:mobarter/features/profile/profile_page.dart';
 import 'package:mobarter/features/updates/presenation/optional_update_card.dart';
+import 'package:mobarter/features/wallet/WalletQRCodePage.dart';
 import 'package:mobarter/features/wallet/presentation/TokensList.dart';
 import 'package:mobarter/features/wallet/presentation/quick_actions.dart';
 import 'package:mobarter/features/wallet/presentation/total_balance.dart';
 import 'package:mobarter/utils/size.dart';
 import 'package:mobarter/widgets/scaffold.dart';
+import 'package:mobarter/widgets/toast.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
+import 'package:toastification/toastification.dart';
 
 class WalletPage extends StatelessWidget {
   const WalletPage({super.key});
@@ -39,22 +44,75 @@ class WalletPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           OptionalUpdateCard(),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Column(
-              children: [
-                Container(
-                  color: Theme.of(context).cardColor,
-                  height: getH(context, 0.12),
-                  child: Center(child: TotalBalance()),
+          TopCard(
+            boxes: [
+              box(
+                context,
+                item: QuickActionsModel(
+                  title: "Send",
+                  icon: Icons.send,
+                  onPressed: () => appToast(
+                    context,
+                    "Coming soon",
+                    type: ToastificationType.info,
+                  ),
                 ),
-                // kDebugMode ? QuickActions() : SizedBox.shrink(),
-                QuickActions(),
-              ],
-            ),
+              ),
+              box(
+                context,
+                item: QuickActionsModel(
+                  title: "Receive",
+                  icon: Icons.qr_code,
+                  onPressed: () {
+                    pushScreen(
+                      context,
+                      screen: WalletQrCodePage(),
+                      withNavBar: false,
+                      pageTransitionAnimation: PageTransitionAnimation.slideUp,
+                    );
+                  },
+                ),
+              ),
+              box(
+                context,
+                item: QuickActionsModel(
+                  title: "Orders",
+                  icon: Icons.arrow_upward,
+                  onPressed: () {
+                    pushScreen(
+                      context,
+                      screen: OrdersPage(),
+                      withNavBar: false,
+                      pageTransitionAnimation: PageTransitionAnimation.slideUp,
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
           SizedBox(height: 20),
           SizedBox(height: getH(context, 0.7), child: TokensList()),
+        ],
+      ),
+    );
+  }
+}
+
+class TopCard extends StatelessWidget {
+  TopCard({super.key, required this.boxes});
+  final List<Widget> boxes;
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: Column(
+        children: [
+          Container(
+            color: Theme.of(context).cardColor,
+            height: getH(context, 0.12),
+            child: Center(child: TotalBalance()),
+          ),
+          QuickActions(boxes: boxes),
         ],
       ),
     );

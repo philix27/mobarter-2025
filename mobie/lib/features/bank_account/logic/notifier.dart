@@ -5,6 +5,7 @@ class BankAccountNotifier extends StateNotifier<BankAccountModel> {
   BankAccountNotifier()
     : super(
         BankAccountModel(
+          id: null,
           accountNo: null,
           accountName: null,
           bankName: null,
@@ -28,6 +29,7 @@ class BankAccountNotifier extends StateNotifier<BankAccountModel> {
   void clear() {
     // if (amountCrypto <= 0) return;
     state = state.copyWith(
+      id: null,
       accountNo: null,
       accountName: null,
       bankName: null,

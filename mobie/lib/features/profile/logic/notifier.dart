@@ -54,6 +54,10 @@ class KycFormNotifier extends StateNotifier<KycModel> {
   }
 
   void clearPhone() {
-    state = state.copyWith(phone: null, phoneToken: null);
+    state = state.copyWith(
+      phone: null,
+      phoneToken: null,
+      phoneValidationStep: PhoneValidationStep.enterPhoneNo,
+    );
   }
 }

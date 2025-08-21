@@ -1,6 +1,6 @@
 mutation Orders_CreateSell($input: Order_CreteSellInput!) {
   orders_CreateSell(input: $input) {
-    msg
+    message
   }
 }
 
