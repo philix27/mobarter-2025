@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobarter/features/bill_betting/logic/provider.dart';
-import 'package:mobarter/widgets/inputText.dart';
-import 'package:mobarter/widgets/toast.dart';
+import 'package:mobarter/widgets/widgets.dart';
 
 class ServiceIdField extends ConsumerWidget {
   ServiceIdField({super.key});
@@ -30,7 +29,7 @@ class ServiceIdField extends ConsumerWidget {
           return;
         }
         // text.text = value;
-        provider.updateAccountNo(value);
+        provider.updateCustomerId(value);
       },
     );
   }

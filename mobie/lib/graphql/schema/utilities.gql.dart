@@ -6703,23 +6703,16 @@ class _CopyWithStubImpl$Variables$Query$fundBetting_getProviders<TRes>
 class Query$fundBetting_getProviders {
   Query$fundBetting_getProviders({
     required this.fundBetting_getProviders,
-    required this.fundBetting_getPriceList,
     this.$__typename = 'Query',
   });
 
   factory Query$fundBetting_getProviders.fromJson(Map<String, dynamic> json) {
     final l$fundBetting_getProviders = json['fundBetting_getProviders'];
-    final l$fundBetting_getPriceList = json['fundBetting_getPriceList'];
     final l$$__typename = json['__typename'];
     return Query$fundBetting_getProviders(
       fundBetting_getProviders: (l$fundBetting_getProviders as List<dynamic>)
           .map((e) =>
               Query$fundBetting_getProviders$fundBetting_getProviders.fromJson(
-                  (e as Map<String, dynamic>)))
-          .toList(),
-      fundBetting_getPriceList: (l$fundBetting_getPriceList as List<dynamic>)
-          .map((e) =>
-              Query$fundBetting_getProviders$fundBetting_getPriceList.fromJson(
                   (e as Map<String, dynamic>)))
           .toList(),
       $__typename: (l$$__typename as String),
@@ -6729,9 +6722,6 @@ class Query$fundBetting_getProviders {
   final List<Query$fundBetting_getProviders$fundBetting_getProviders>
       fundBetting_getProviders;
 
-  final List<Query$fundBetting_getProviders$fundBetting_getPriceList>
-      fundBetting_getPriceList;
-
   final String $__typename;
 
   Map<String, dynamic> toJson() {
@@ -6739,9 +6729,6 @@ class Query$fundBetting_getProviders {
     final l$fundBetting_getProviders = fundBetting_getProviders;
     _resultData['fundBetting_getProviders'] =
         l$fundBetting_getProviders.map((e) => e.toJson()).toList();
-    final l$fundBetting_getPriceList = fundBetting_getPriceList;
-    _resultData['fundBetting_getPriceList'] =
-        l$fundBetting_getPriceList.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -6750,11 +6737,9 @@ class Query$fundBetting_getProviders {
   @override
   int get hashCode {
     final l$fundBetting_getProviders = fundBetting_getProviders;
-    final l$fundBetting_getPriceList = fundBetting_getPriceList;
     final l$$__typename = $__typename;
     return Object.hashAll([
       Object.hashAll(l$fundBetting_getProviders.map((v) => v)),
-      Object.hashAll(l$fundBetting_getPriceList.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -6780,21 +6765,6 @@ class Query$fundBetting_getProviders {
           lOther$fundBetting_getProviders[i];
       if (l$fundBetting_getProviders$entry !=
           lOther$fundBetting_getProviders$entry) {
-        return false;
-      }
-    }
-    final l$fundBetting_getPriceList = fundBetting_getPriceList;
-    final lOther$fundBetting_getPriceList = other.fundBetting_getPriceList;
-    if (l$fundBetting_getPriceList.length !=
-        lOther$fundBetting_getPriceList.length) {
-      return false;
-    }
-    for (int i = 0; i < l$fundBetting_getPriceList.length; i++) {
-      final l$fundBetting_getPriceList$entry = l$fundBetting_getPriceList[i];
-      final lOther$fundBetting_getPriceList$entry =
-          lOther$fundBetting_getPriceList[i];
-      if (l$fundBetting_getPriceList$entry !=
-          lOther$fundBetting_getPriceList$entry) {
         return false;
       }
     }
@@ -6828,8 +6798,6 @@ abstract class CopyWith$Query$fundBetting_getProviders<TRes> {
   TRes call({
     List<Query$fundBetting_getProviders$fundBetting_getProviders>?
         fundBetting_getProviders,
-    List<Query$fundBetting_getProviders$fundBetting_getPriceList>?
-        fundBetting_getPriceList,
     String? $__typename,
   });
   TRes fundBetting_getProviders(
@@ -6837,12 +6805,6 @@ abstract class CopyWith$Query$fundBetting_getProviders<TRes> {
               Iterable<
                   CopyWith$Query$fundBetting_getProviders$fundBetting_getProviders<
                       Query$fundBetting_getProviders$fundBetting_getProviders>>)
-          _fn);
-  TRes fundBetting_getPriceList(
-      Iterable<Query$fundBetting_getProviders$fundBetting_getPriceList> Function(
-              Iterable<
-                  CopyWith$Query$fundBetting_getProviders$fundBetting_getPriceList<
-                      Query$fundBetting_getProviders$fundBetting_getPriceList>>)
           _fn);
 }
 
@@ -6861,7 +6823,6 @@ class _CopyWithImpl$Query$fundBetting_getProviders<TRes>
 
   TRes call({
     Object? fundBetting_getProviders = _undefined,
-    Object? fundBetting_getPriceList = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Query$fundBetting_getProviders(
@@ -6870,11 +6831,6 @@ class _CopyWithImpl$Query$fundBetting_getProviders<TRes>
             ? _instance.fundBetting_getProviders
             : (fundBetting_getProviders as List<
                 Query$fundBetting_getProviders$fundBetting_getProviders>),
-        fundBetting_getPriceList: fundBetting_getPriceList == _undefined ||
-                fundBetting_getPriceList == null
-            ? _instance.fundBetting_getPriceList
-            : (fundBetting_getPriceList as List<
-                Query$fundBetting_getProviders$fundBetting_getPriceList>),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -6893,20 +6849,6 @@ class _CopyWithImpl$Query$fundBetting_getProviders<TRes>
                     e,
                     (i) => i,
                   ))).toList());
-
-  TRes fundBetting_getPriceList(
-          Iterable<Query$fundBetting_getProviders$fundBetting_getPriceList> Function(
-                  Iterable<
-                      CopyWith$Query$fundBetting_getProviders$fundBetting_getPriceList<
-                          Query$fundBetting_getProviders$fundBetting_getPriceList>>)
-              _fn) =>
-      call(
-          fundBetting_getPriceList: _fn(_instance.fundBetting_getPriceList.map(
-              (e) =>
-                  CopyWith$Query$fundBetting_getProviders$fundBetting_getPriceList(
-                    e,
-                    (i) => i,
-                  ))).toList());
 }
 
 class _CopyWithStubImpl$Query$fundBetting_getProviders<TRes>
@@ -6918,15 +6860,11 @@ class _CopyWithStubImpl$Query$fundBetting_getProviders<TRes>
   call({
     List<Query$fundBetting_getProviders$fundBetting_getProviders>?
         fundBetting_getProviders,
-    List<Query$fundBetting_getProviders$fundBetting_getPriceList>?
-        fundBetting_getPriceList,
     String? $__typename,
   }) =>
       _res;
 
   fundBetting_getProviders(_fn) => _res;
-
-  fundBetting_getPriceList(_fn) => _res;
 }
 
 const documentNodeQueryfundBetting_getProviders = DocumentNode(definitions: [
@@ -6966,33 +6904,6 @@ const documentNodeQueryfundBetting_getProviders = DocumentNode(definitions: [
           ),
           FieldNode(
             name: NameNode(value: 'name'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: '__typename'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-        ]),
-      ),
-      FieldNode(
-        name: NameNode(value: 'fundBetting_getPriceList'),
-        alias: null,
-        arguments: [
-          ArgumentNode(
-            name: NameNode(value: 'input'),
-            value: VariableNode(name: NameNode(value: 'input')),
-          )
-        ],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-            name: NameNode(value: 'amount'),
             alias: null,
             arguments: [],
             directives: [],
@@ -7339,17 +7250,507 @@ class _CopyWithStubImpl$Query$fundBetting_getProviders$fundBetting_getProviders<
       _res;
 }
 
-class Query$fundBetting_getProviders$fundBetting_getPriceList {
-  Query$fundBetting_getProviders$fundBetting_getPriceList({
+class Variables$Query$fundBetting_getPriceList {
+  factory Variables$Query$fundBetting_getPriceList(
+          {required Input$BettingProvidersInput input}) =>
+      Variables$Query$fundBetting_getPriceList._({
+        r'input': input,
+      });
+
+  Variables$Query$fundBetting_getPriceList._(this._$data);
+
+  factory Variables$Query$fundBetting_getPriceList.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$input = data['input'];
+    result$data['input'] =
+        Input$BettingProvidersInput.fromJson((l$input as Map<String, dynamic>));
+    return Variables$Query$fundBetting_getPriceList._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$BettingProvidersInput get input =>
+      (_$data['input'] as Input$BettingProvidersInput);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$input = input;
+    result$data['input'] = l$input.toJson();
+    return result$data;
+  }
+
+  CopyWith$Variables$Query$fundBetting_getPriceList<
+          Variables$Query$fundBetting_getPriceList>
+      get copyWith => CopyWith$Variables$Query$fundBetting_getPriceList(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Variables$Query$fundBetting_getPriceList ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$input = input;
+    final lOther$input = other.input;
+    if (l$input != lOther$input) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$input = input;
+    return Object.hashAll([l$input]);
+  }
+}
+
+abstract class CopyWith$Variables$Query$fundBetting_getPriceList<TRes> {
+  factory CopyWith$Variables$Query$fundBetting_getPriceList(
+    Variables$Query$fundBetting_getPriceList instance,
+    TRes Function(Variables$Query$fundBetting_getPriceList) then,
+  ) = _CopyWithImpl$Variables$Query$fundBetting_getPriceList;
+
+  factory CopyWith$Variables$Query$fundBetting_getPriceList.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$fundBetting_getPriceList;
+
+  TRes call({Input$BettingProvidersInput? input});
+}
+
+class _CopyWithImpl$Variables$Query$fundBetting_getPriceList<TRes>
+    implements CopyWith$Variables$Query$fundBetting_getPriceList<TRes> {
+  _CopyWithImpl$Variables$Query$fundBetting_getPriceList(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Query$fundBetting_getPriceList _instance;
+
+  final TRes Function(Variables$Query$fundBetting_getPriceList) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({Object? input = _undefined}) =>
+      _then(Variables$Query$fundBetting_getPriceList._({
+        ..._instance._$data,
+        if (input != _undefined && input != null)
+          'input': (input as Input$BettingProvidersInput),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Query$fundBetting_getPriceList<TRes>
+    implements CopyWith$Variables$Query$fundBetting_getPriceList<TRes> {
+  _CopyWithStubImpl$Variables$Query$fundBetting_getPriceList(this._res);
+
+  TRes _res;
+
+  call({Input$BettingProvidersInput? input}) => _res;
+}
+
+class Query$fundBetting_getPriceList {
+  Query$fundBetting_getPriceList({
+    required this.fundBetting_getPriceList,
+    this.$__typename = 'Query',
+  });
+
+  factory Query$fundBetting_getPriceList.fromJson(Map<String, dynamic> json) {
+    final l$fundBetting_getPriceList = json['fundBetting_getPriceList'];
+    final l$$__typename = json['__typename'];
+    return Query$fundBetting_getPriceList(
+      fundBetting_getPriceList: (l$fundBetting_getPriceList as List<dynamic>)
+          .map((e) =>
+              Query$fundBetting_getPriceList$fundBetting_getPriceList.fromJson(
+                  (e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Query$fundBetting_getPriceList$fundBetting_getPriceList>
+      fundBetting_getPriceList;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$fundBetting_getPriceList = fundBetting_getPriceList;
+    _resultData['fundBetting_getPriceList'] =
+        l$fundBetting_getPriceList.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$fundBetting_getPriceList = fundBetting_getPriceList;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$fundBetting_getPriceList.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$fundBetting_getPriceList ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$fundBetting_getPriceList = fundBetting_getPriceList;
+    final lOther$fundBetting_getPriceList = other.fundBetting_getPriceList;
+    if (l$fundBetting_getPriceList.length !=
+        lOther$fundBetting_getPriceList.length) {
+      return false;
+    }
+    for (int i = 0; i < l$fundBetting_getPriceList.length; i++) {
+      final l$fundBetting_getPriceList$entry = l$fundBetting_getPriceList[i];
+      final lOther$fundBetting_getPriceList$entry =
+          lOther$fundBetting_getPriceList[i];
+      if (l$fundBetting_getPriceList$entry !=
+          lOther$fundBetting_getPriceList$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$fundBetting_getPriceList
+    on Query$fundBetting_getPriceList {
+  CopyWith$Query$fundBetting_getPriceList<Query$fundBetting_getPriceList>
+      get copyWith => CopyWith$Query$fundBetting_getPriceList(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$fundBetting_getPriceList<TRes> {
+  factory CopyWith$Query$fundBetting_getPriceList(
+    Query$fundBetting_getPriceList instance,
+    TRes Function(Query$fundBetting_getPriceList) then,
+  ) = _CopyWithImpl$Query$fundBetting_getPriceList;
+
+  factory CopyWith$Query$fundBetting_getPriceList.stub(TRes res) =
+      _CopyWithStubImpl$Query$fundBetting_getPriceList;
+
+  TRes call({
+    List<Query$fundBetting_getPriceList$fundBetting_getPriceList>?
+        fundBetting_getPriceList,
+    String? $__typename,
+  });
+  TRes fundBetting_getPriceList(
+      Iterable<Query$fundBetting_getPriceList$fundBetting_getPriceList> Function(
+              Iterable<
+                  CopyWith$Query$fundBetting_getPriceList$fundBetting_getPriceList<
+                      Query$fundBetting_getPriceList$fundBetting_getPriceList>>)
+          _fn);
+}
+
+class _CopyWithImpl$Query$fundBetting_getPriceList<TRes>
+    implements CopyWith$Query$fundBetting_getPriceList<TRes> {
+  _CopyWithImpl$Query$fundBetting_getPriceList(
+    this._instance,
+    this._then,
+  );
+
+  final Query$fundBetting_getPriceList _instance;
+
+  final TRes Function(Query$fundBetting_getPriceList) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? fundBetting_getPriceList = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$fundBetting_getPriceList(
+        fundBetting_getPriceList: fundBetting_getPriceList == _undefined ||
+                fundBetting_getPriceList == null
+            ? _instance.fundBetting_getPriceList
+            : (fundBetting_getPriceList as List<
+                Query$fundBetting_getPriceList$fundBetting_getPriceList>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes fundBetting_getPriceList(
+          Iterable<Query$fundBetting_getPriceList$fundBetting_getPriceList> Function(
+                  Iterable<
+                      CopyWith$Query$fundBetting_getPriceList$fundBetting_getPriceList<
+                          Query$fundBetting_getPriceList$fundBetting_getPriceList>>)
+              _fn) =>
+      call(
+          fundBetting_getPriceList: _fn(_instance.fundBetting_getPriceList.map(
+              (e) =>
+                  CopyWith$Query$fundBetting_getPriceList$fundBetting_getPriceList(
+                    e,
+                    (i) => i,
+                  ))).toList());
+}
+
+class _CopyWithStubImpl$Query$fundBetting_getPriceList<TRes>
+    implements CopyWith$Query$fundBetting_getPriceList<TRes> {
+  _CopyWithStubImpl$Query$fundBetting_getPriceList(this._res);
+
+  TRes _res;
+
+  call({
+    List<Query$fundBetting_getPriceList$fundBetting_getPriceList>?
+        fundBetting_getPriceList,
+    String? $__typename,
+  }) =>
+      _res;
+
+  fundBetting_getPriceList(_fn) => _res;
+}
+
+const documentNodeQueryfundBetting_getPriceList = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'fundBetting_getPriceList'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'input')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'BettingProvidersInput'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'fundBetting_getPriceList'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'input'),
+            value: VariableNode(name: NameNode(value: 'input')),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'amount'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+]);
+Query$fundBetting_getPriceList _parserFn$Query$fundBetting_getPriceList(
+        Map<String, dynamic> data) =>
+    Query$fundBetting_getPriceList.fromJson(data);
+typedef OnQueryComplete$Query$fundBetting_getPriceList = FutureOr<void>
+    Function(
+  Map<String, dynamic>?,
+  Query$fundBetting_getPriceList?,
+);
+
+class Options$Query$fundBetting_getPriceList
+    extends graphql.QueryOptions<Query$fundBetting_getPriceList> {
+  Options$Query$fundBetting_getPriceList({
+    String? operationName,
+    required Variables$Query$fundBetting_getPriceList variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$fundBetting_getPriceList? typedOptimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+    OnQueryComplete$Query$fundBetting_getPriceList? onComplete,
+    graphql.OnQueryError? onError,
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Query$fundBetting_getPriceList(data),
+                  ),
+          onError: onError,
+          document: documentNodeQueryfundBetting_getPriceList,
+          parserFn: _parserFn$Query$fundBetting_getPriceList,
+        );
+
+  final OnQueryComplete$Query$fundBetting_getPriceList? onCompleteWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
+}
+
+class WatchOptions$Query$fundBetting_getPriceList
+    extends graphql.WatchQueryOptions<Query$fundBetting_getPriceList> {
+  WatchOptions$Query$fundBetting_getPriceList({
+    String? operationName,
+    required Variables$Query$fundBetting_getPriceList variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$fundBetting_getPriceList? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQueryfundBetting_getPriceList,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$fundBetting_getPriceList,
+        );
+}
+
+class FetchMoreOptions$Query$fundBetting_getPriceList
+    extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$fundBetting_getPriceList({
+    required graphql.UpdateQuery updateQuery,
+    required Variables$Query$fundBetting_getPriceList variables,
+  }) : super(
+          updateQuery: updateQuery,
+          variables: variables.toJson(),
+          document: documentNodeQueryfundBetting_getPriceList,
+        );
+}
+
+extension ClientExtension$Query$fundBetting_getPriceList
+    on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$fundBetting_getPriceList>>
+      query$fundBetting_getPriceList(
+              Options$Query$fundBetting_getPriceList options) async =>
+          await this.query(options);
+  graphql.ObservableQuery<Query$fundBetting_getPriceList>
+      watchQuery$fundBetting_getPriceList(
+              WatchOptions$Query$fundBetting_getPriceList options) =>
+          this.watchQuery(options);
+  void writeQuery$fundBetting_getPriceList({
+    required Query$fundBetting_getPriceList data,
+    required Variables$Query$fundBetting_getPriceList variables,
+    bool broadcast = true,
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+          operation: graphql.Operation(
+              document: documentNodeQueryfundBetting_getPriceList),
+          variables: variables.toJson(),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$fundBetting_getPriceList? readQuery$fundBetting_getPriceList({
+    required Variables$Query$fundBetting_getPriceList variables,
+    bool optimistic = true,
+  }) {
+    final result = this.readQuery(
+      graphql.Request(
+        operation: graphql.Operation(
+            document: documentNodeQueryfundBetting_getPriceList),
+        variables: variables.toJson(),
+      ),
+      optimistic: optimistic,
+    );
+    return result == null
+        ? null
+        : Query$fundBetting_getPriceList.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$fundBetting_getPriceList>
+    useQuery$fundBetting_getPriceList(
+            Options$Query$fundBetting_getPriceList options) =>
+        graphql_flutter.useQuery(options);
+graphql.ObservableQuery<Query$fundBetting_getPriceList>
+    useWatchQuery$fundBetting_getPriceList(
+            WatchOptions$Query$fundBetting_getPriceList options) =>
+        graphql_flutter.useWatchQuery(options);
+
+class Query$fundBetting_getPriceList$Widget
+    extends graphql_flutter.Query<Query$fundBetting_getPriceList> {
+  Query$fundBetting_getPriceList$Widget({
+    widgets.Key? key,
+    required Options$Query$fundBetting_getPriceList options,
+    required graphql_flutter.QueryBuilder<Query$fundBetting_getPriceList>
+        builder,
+  }) : super(
+          key: key,
+          options: options,
+          builder: builder,
+        );
+}
+
+class Query$fundBetting_getPriceList$fundBetting_getPriceList {
+  Query$fundBetting_getPriceList$fundBetting_getPriceList({
     required this.amount,
     this.$__typename = 'BettingPricesResponse',
   });
 
-  factory Query$fundBetting_getProviders$fundBetting_getPriceList.fromJson(
+  factory Query$fundBetting_getPriceList$fundBetting_getPriceList.fromJson(
       Map<String, dynamic> json) {
     final l$amount = json['amount'];
     final l$$__typename = json['__typename'];
-    return Query$fundBetting_getProviders$fundBetting_getPriceList(
+    return Query$fundBetting_getPriceList$fundBetting_getPriceList(
       amount: (l$amount as num).toDouble(),
       $__typename: (l$$__typename as String),
     );
@@ -7383,7 +7784,7 @@ class Query$fundBetting_getProviders$fundBetting_getPriceList {
     if (identical(this, other)) {
       return true;
     }
-    if (other is! Query$fundBetting_getProviders$fundBetting_getPriceList ||
+    if (other is! Query$fundBetting_getPriceList$fundBetting_getPriceList ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -7401,27 +7802,27 @@ class Query$fundBetting_getProviders$fundBetting_getPriceList {
   }
 }
 
-extension UtilityExtension$Query$fundBetting_getProviders$fundBetting_getPriceList
-    on Query$fundBetting_getProviders$fundBetting_getPriceList {
-  CopyWith$Query$fundBetting_getProviders$fundBetting_getPriceList<
-          Query$fundBetting_getProviders$fundBetting_getPriceList>
+extension UtilityExtension$Query$fundBetting_getPriceList$fundBetting_getPriceList
+    on Query$fundBetting_getPriceList$fundBetting_getPriceList {
+  CopyWith$Query$fundBetting_getPriceList$fundBetting_getPriceList<
+          Query$fundBetting_getPriceList$fundBetting_getPriceList>
       get copyWith =>
-          CopyWith$Query$fundBetting_getProviders$fundBetting_getPriceList(
+          CopyWith$Query$fundBetting_getPriceList$fundBetting_getPriceList(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$fundBetting_getProviders$fundBetting_getPriceList<
+abstract class CopyWith$Query$fundBetting_getPriceList$fundBetting_getPriceList<
     TRes> {
-  factory CopyWith$Query$fundBetting_getProviders$fundBetting_getPriceList(
-    Query$fundBetting_getProviders$fundBetting_getPriceList instance,
-    TRes Function(Query$fundBetting_getProviders$fundBetting_getPriceList) then,
-  ) = _CopyWithImpl$Query$fundBetting_getProviders$fundBetting_getPriceList;
+  factory CopyWith$Query$fundBetting_getPriceList$fundBetting_getPriceList(
+    Query$fundBetting_getPriceList$fundBetting_getPriceList instance,
+    TRes Function(Query$fundBetting_getPriceList$fundBetting_getPriceList) then,
+  ) = _CopyWithImpl$Query$fundBetting_getPriceList$fundBetting_getPriceList;
 
-  factory CopyWith$Query$fundBetting_getProviders$fundBetting_getPriceList.stub(
+  factory CopyWith$Query$fundBetting_getPriceList$fundBetting_getPriceList.stub(
           TRes res) =
-      _CopyWithStubImpl$Query$fundBetting_getProviders$fundBetting_getPriceList;
+      _CopyWithStubImpl$Query$fundBetting_getPriceList$fundBetting_getPriceList;
 
   TRes call({
     double? amount,
@@ -7429,18 +7830,18 @@ abstract class CopyWith$Query$fundBetting_getProviders$fundBetting_getPriceList<
   });
 }
 
-class _CopyWithImpl$Query$fundBetting_getProviders$fundBetting_getPriceList<
+class _CopyWithImpl$Query$fundBetting_getPriceList$fundBetting_getPriceList<
         TRes>
     implements
-        CopyWith$Query$fundBetting_getProviders$fundBetting_getPriceList<TRes> {
-  _CopyWithImpl$Query$fundBetting_getProviders$fundBetting_getPriceList(
+        CopyWith$Query$fundBetting_getPriceList$fundBetting_getPriceList<TRes> {
+  _CopyWithImpl$Query$fundBetting_getPriceList$fundBetting_getPriceList(
     this._instance,
     this._then,
   );
 
-  final Query$fundBetting_getProviders$fundBetting_getPriceList _instance;
+  final Query$fundBetting_getPriceList$fundBetting_getPriceList _instance;
 
-  final TRes Function(Query$fundBetting_getProviders$fundBetting_getPriceList)
+  final TRes Function(Query$fundBetting_getPriceList$fundBetting_getPriceList)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -7449,7 +7850,7 @@ class _CopyWithImpl$Query$fundBetting_getProviders$fundBetting_getPriceList<
     Object? amount = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$fundBetting_getProviders$fundBetting_getPriceList(
+      _then(Query$fundBetting_getPriceList$fundBetting_getPriceList(
         amount: amount == _undefined || amount == null
             ? _instance.amount
             : (amount as double),
@@ -7459,11 +7860,11 @@ class _CopyWithImpl$Query$fundBetting_getProviders$fundBetting_getPriceList<
       ));
 }
 
-class _CopyWithStubImpl$Query$fundBetting_getProviders$fundBetting_getPriceList<
+class _CopyWithStubImpl$Query$fundBetting_getPriceList$fundBetting_getPriceList<
         TRes>
     implements
-        CopyWith$Query$fundBetting_getProviders$fundBetting_getPriceList<TRes> {
-  _CopyWithStubImpl$Query$fundBetting_getProviders$fundBetting_getPriceList(
+        CopyWith$Query$fundBetting_getPriceList$fundBetting_getPriceList<TRes> {
+  _CopyWithStubImpl$Query$fundBetting_getPriceList$fundBetting_getPriceList(
       this._res);
 
   TRes _res;

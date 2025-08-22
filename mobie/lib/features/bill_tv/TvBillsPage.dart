@@ -40,7 +40,7 @@ class TvBillsPage extends ConsumerWidget {
             simpleRow(title: "Smart Card No", subtitle: watch.smartCardNo),
             simpleRow(
               title: "Crypto Amount",
-              subtitle: watch.amountCrypto.toString(),
+              subtitle: watch.amountCrypto.toString(), 
             ),
             SizedBox(height: 20),
           ],

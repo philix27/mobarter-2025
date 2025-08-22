@@ -34,7 +34,7 @@ class BettingProvidersList extends ConsumerWidget {
                 title: item.name,
                 imgUrl: item.logo,
                 onTap: () {
-                  r.updateBilerType(item.name, item.logo);
+                  r.updateProviderInfo(name: item.name, img: item.logo);
                   Navigator.of(context).pop();
                 },
               );

@@ -1,0 +1,5 @@
+mutation onchain_transferToken($input: Onchain_TransferTokenInput!) {
+  onchain_transferToken(input: $input) {
+    message
+  }
+}

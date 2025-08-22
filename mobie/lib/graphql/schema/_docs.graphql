@@ -412,6 +412,9 @@ type Mutation {
   onchain_claim(
     input: Onchain_ClaimRewardsInput!
   ): Onchain_ClaimRewardsResponse!
+  onchain_transferToken(
+    input: Onchain_TransferTokenInput!
+  ): Onchain_TransferTokenResponse!
   orders_Appeal(input: Order_AppealInput!): Order_Response!
   orders_Cancel(input: Order_CancelInput!): Order_Response!
   orders_CreateSell(input: Order_CreteSellInput!): Order_CreteSellResponse!
@@ -443,6 +446,15 @@ input Onchain_ClaimRewardsInput {
 }
 
 type Onchain_ClaimRewardsResponse {
+  message: String!
+}
+
+input Onchain_TransferTokenInput {
+  payment: PaymentInput!
+  recipient: String!
+}
+
+type Onchain_TransferTokenResponse {
   message: String!
 }
 

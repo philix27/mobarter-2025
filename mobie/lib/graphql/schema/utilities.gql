@@ -85,7 +85,9 @@ query fundBetting_getProviders($input: BettingProvidersInput!) {
     logo
     name
   }
-  
+}
+
+query fundBetting_getPriceList($input: BettingProvidersInput!) {
   fundBetting_getPriceList(input: $input) {
     amount
   }

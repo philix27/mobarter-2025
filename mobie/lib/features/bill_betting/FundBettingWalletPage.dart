@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/bill_betting/logic/provider.dart';
-import 'package:mobarter/features/bill_betting/presentation/accountNo.dart';
+import 'package:mobarter/features/bill_betting/presentation/customerId.dart';
 import 'package:mobarter/features/bill_betting/presentation/bettingAmount.dart';
 import 'package:mobarter/features/bill_betting/presentation/providers.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
@@ -28,13 +28,8 @@ class FundBettingBillsPage extends HookConsumerWidget {
     );
 
     final providersList = result.result.parsedData?.fundBetting_getProviders;
-    final priceList = result.result.parsedData?.fundBetting_getPriceList;
 
-    final isNull =
-        providersList == null ||
-        providersList.isEmpty ||
-        priceList == null ||
-        result.result.isLoading;
+    final isNull = providersList == null || providersList.isEmpty;
 
     return appScaffold(
       context,
@@ -60,11 +55,7 @@ class FundBettingBillsPage extends HookConsumerWidget {
                       ? "Select amount"
                       : "₦${w.amountFiat}",
                   onTap: () {
-                    btmSheet(
-                      ctx: context,
-                      w: BettingPriceList(list: priceList),
-                      h: 0.5,
-                    );
+                    btmSheet(ctx: context, w: BettingPriceList(), h: 0.5);
                   },
                 ),
                 CryptoAmountPay(amountFiat: w.amountFiat ?? 0),
@@ -76,9 +67,8 @@ class FundBettingBillsPage extends HookConsumerWidget {
                     try {
                       require(w.amountFiat, "Select price");
                       require(w.customerId, "Customer credentials needed");
-                      require(w.serviceId, "Select a service");
+                      require(w.providerName, "Select a service");
                       require(w.amountFiat, "Enter a valid amount");
-                      require(w.amountCrypto, "Enter a valid amount");
 
                       pushScreen(
                         context,
@@ -87,21 +77,25 @@ class FundBettingBillsPage extends HookConsumerWidget {
                           cryptoAmountToPay: w.amountCrypto!,
                           children: [
                             simpleRow(
-                              title: "Recipient number",
-                              subtitle: "recipientPhone",
+                              title: "Customer ID",
+                              subtitle: w.customerId,
                             ),
                             simpleRow(
-                              title: "Network Provider",
-                              subtitle: "networkProvider",
+                              title: "Provider",
+                              subtitle: w.providerName,
                             ),
                             simpleRow(
                               title: "Amount",
-                              subtitle: "amountOfProduct",
+                              subtitle: w.amountFiat != null
+                                  ? "₦ ${w.amountFiat.toString()}"
+                                  : "0",
                             ),
-                            simpleRow(title: "Pay", subtitle: "amountToPay"),
-                            // simpleRow(title: "Cashback bonus", subtitle: cashback),
+                            simpleRow(
+                              title: "Pay",
+                              subtitle:
+                                  "USD ${w.amountCrypto!.toStringAsFixed(3)}",
+                            ),
                             SizedBox(height: 20),
-                            // Btn(title: "Send", onPressed: ),
                           ],
                           send: (paymentInfo) async {
                             try {
@@ -111,7 +105,7 @@ class FundBettingBillsPage extends HookConsumerWidget {
                                       input: Input$BettingPaymentInput(
                                         countryCode: Enum$Country.NG,
                                         customer_id: w.customerId!,
-                                        service_id: w.serviceId!,
+                                        service_id: w.providerName!,
                                         payment: Input$PaymentInput(
                                           amountCrypto: w.amountCrypto!,
                                           amountFiat: w.amountFiat!,

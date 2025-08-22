@@ -3840,6 +3840,145 @@ class _CopyWithStubImpl$Input$Onchain_ClaimRewardsInput<TRes>
       CopyWith$Input$PaymentInput.stub(_res);
 }
 
+class Input$Onchain_TransferTokenInput {
+  factory Input$Onchain_TransferTokenInput({
+    required Input$PaymentInput payment,
+    required String recipient,
+  }) =>
+      Input$Onchain_TransferTokenInput._({
+        r'payment': payment,
+        r'recipient': recipient,
+      });
+
+  Input$Onchain_TransferTokenInput._(this._$data);
+
+  factory Input$Onchain_TransferTokenInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$payment = data['payment'];
+    result$data['payment'] =
+        Input$PaymentInput.fromJson((l$payment as Map<String, dynamic>));
+    final l$recipient = data['recipient'];
+    result$data['recipient'] = (l$recipient as String);
+    return Input$Onchain_TransferTokenInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$PaymentInput get payment => (_$data['payment'] as Input$PaymentInput);
+
+  String get recipient => (_$data['recipient'] as String);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$payment = payment;
+    result$data['payment'] = l$payment.toJson();
+    final l$recipient = recipient;
+    result$data['recipient'] = l$recipient;
+    return result$data;
+  }
+
+  CopyWith$Input$Onchain_TransferTokenInput<Input$Onchain_TransferTokenInput>
+      get copyWith => CopyWith$Input$Onchain_TransferTokenInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$Onchain_TransferTokenInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$payment = payment;
+    final lOther$payment = other.payment;
+    if (l$payment != lOther$payment) {
+      return false;
+    }
+    final l$recipient = recipient;
+    final lOther$recipient = other.recipient;
+    if (l$recipient != lOther$recipient) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$payment = payment;
+    final l$recipient = recipient;
+    return Object.hashAll([
+      l$payment,
+      l$recipient,
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$Onchain_TransferTokenInput<TRes> {
+  factory CopyWith$Input$Onchain_TransferTokenInput(
+    Input$Onchain_TransferTokenInput instance,
+    TRes Function(Input$Onchain_TransferTokenInput) then,
+  ) = _CopyWithImpl$Input$Onchain_TransferTokenInput;
+
+  factory CopyWith$Input$Onchain_TransferTokenInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$Onchain_TransferTokenInput;
+
+  TRes call({
+    Input$PaymentInput? payment,
+    String? recipient,
+  });
+  CopyWith$Input$PaymentInput<TRes> get payment;
+}
+
+class _CopyWithImpl$Input$Onchain_TransferTokenInput<TRes>
+    implements CopyWith$Input$Onchain_TransferTokenInput<TRes> {
+  _CopyWithImpl$Input$Onchain_TransferTokenInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$Onchain_TransferTokenInput _instance;
+
+  final TRes Function(Input$Onchain_TransferTokenInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? payment = _undefined,
+    Object? recipient = _undefined,
+  }) =>
+      _then(Input$Onchain_TransferTokenInput._({
+        ..._instance._$data,
+        if (payment != _undefined && payment != null)
+          'payment': (payment as Input$PaymentInput),
+        if (recipient != _undefined && recipient != null)
+          'recipient': (recipient as String),
+      }));
+
+  CopyWith$Input$PaymentInput<TRes> get payment {
+    final local$payment = _instance.payment;
+    return CopyWith$Input$PaymentInput(local$payment, (e) => call(payment: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$Onchain_TransferTokenInput<TRes>
+    implements CopyWith$Input$Onchain_TransferTokenInput<TRes> {
+  _CopyWithStubImpl$Input$Onchain_TransferTokenInput(this._res);
+
+  TRes _res;
+
+  call({
+    Input$PaymentInput? payment,
+    String? recipient,
+  }) =>
+      _res;
+
+  CopyWith$Input$PaymentInput<TRes> get payment =>
+      CopyWith$Input$PaymentInput.stub(_res);
+}
+
 class Input$Order_AppealInput {
   factory Input$Order_AppealInput({
     required String id,

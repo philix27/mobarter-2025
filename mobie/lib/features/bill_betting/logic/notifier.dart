@@ -10,14 +10,12 @@ class FundBettingWalletDataNotifier
           amountCrypto: null,
           providerName: null,
           providerImg: null,
-          accountNo: null,
           customerId: null,
-          serviceId: null,
         ),
       );
 
-  void updateAccountNo(String accountNo) {
-    state = state.copyWith(accountNo: accountNo);
+  void updateCustomerId(String customerId) {
+    state = state.copyWith(customerId: customerId);
   }
 
   void updateAmountFiat(double amountFiat) {
@@ -28,7 +26,7 @@ class FundBettingWalletDataNotifier
     state = state.copyWith(amountCrypto: amountCrypto);
   }
 
-  void updateBilerType(String providerName, String img) {
-    state = state.copyWith(providerName: providerName, providerImg: img);
+  void updateProviderInfo({required String name, required String img}) {
+    state = state.copyWith(providerName: name, providerImg: img);
   }
 }
