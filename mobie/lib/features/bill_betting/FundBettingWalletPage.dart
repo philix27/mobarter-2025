@@ -8,6 +8,7 @@ import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/utils/exception.dart';
 import 'package:mobarter/utils/size.dart';
+import 'package:mobarter/utils/symbols.dart';
 import 'package:mobarter/widgets/widgets.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
@@ -67,8 +68,13 @@ class FundBettingBillsPage extends HookConsumerWidget {
                     try {
                       require(w.amountFiat, "Select price");
                       require(w.customerId, "Customer credentials needed");
+                      require(
+                        w.customerId!.length >= 4,
+                        "Enter a valid customer ID ",
+                      );
                       require(w.providerName, "Select a service");
                       require(w.amountFiat, "Enter a valid amount");
+                      require(w.amountCrypto, "Enter a valid amount");
 
                       pushScreen(
                         context,
@@ -87,7 +93,7 @@ class FundBettingBillsPage extends HookConsumerWidget {
                             simpleRow(
                               title: "Amount",
                               subtitle: w.amountFiat != null
-                                  ? "₦ ${w.amountFiat.toString()}"
+                                  ? "${AppSymbols.naira} ${w.amountFiat.toString()}"
                                   : "0",
                             ),
                             simpleRow(

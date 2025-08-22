@@ -18,12 +18,11 @@ class FundBettingWalletDataNotifier
     state = state.copyWith(customerId: customerId);
   }
 
-  void updateAmountFiat(double amountFiat) {
-    state = state.copyWith(amountFiat: amountFiat);
-  }
-
-  void updateAmountCrypto(double amountCrypto) {
-    state = state.copyWith(amountCrypto: amountCrypto);
+  void updateAmount({
+    required double amountFiat,
+    required double amountCrypto,
+  }) {
+    state = state.copyWith(amountFiat: amountFiat, amountCrypto: amountCrypto);
   }
 
   void updateProviderInfo({required String name, required String img}) {
