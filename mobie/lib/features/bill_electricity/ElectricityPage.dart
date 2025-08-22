@@ -41,20 +41,10 @@ class ElectricityPage extends HookConsumerWidget {
           Btn(
             title: "Submit",
             onPressed: () {
-              if (w.providerName == null || w.providerName!.isEmpty) {
-                appToast(context, "Select a network provider");
-                return;
-              }
-
-              if (w.amountCrypto == null || w.amountFiat == null) {
-                appToast(context, "Select/Enter and amount");
-                return;
-              }
-
-              if (w.amountFiat! < 50.0) {
-                appToast(context, "Minimum of ₦50");
-                return;
-              }
+              require(w.providerName, "Select a provider");
+              require(w.amountFiat, "Amount needed");
+              require(w.amountFiat, "Amount needed");
+              require(w.amountFiat! > 50.0, "Minimum of ₦50");
 
               pushScreen(
                 context,
@@ -88,8 +78,8 @@ class ElectricityPage extends HookConsumerWidget {
                       require(w.accountNo, "Account No. needed");
                       require(w.customerName, "Customer credentials needed");
                       require(w.customerAddress, "Customer credentials needed");
-                      require(w.amountFiat, "Customer credentials needed");
-                      require(w.amountCrypto, "Customer credentials needed");
+                      require(w.amountFiat, "Amount needed");
+                      require(w.amountFiat, "Amount needed");
 
                       final response = await makePayment
                           .runMutation(

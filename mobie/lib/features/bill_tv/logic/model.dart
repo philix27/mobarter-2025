@@ -3,7 +3,9 @@ class TvBillsData {
   final double? amountCrypto;
   final String? providerName;
   final String? providerImg;
-  final String? bouquetName;
+  final String? bouquetDescription;
+  final double? bouquetPrice;
+  final String? bouquetCode;
   final String? smartCardNo;
   final String? customerName;
 
@@ -13,7 +15,9 @@ class TvBillsData {
     required this.providerName,
     required this.providerImg,
     required this.smartCardNo,
-    required this.bouquetName,
+    required this.bouquetPrice,
+    required this.bouquetDescription,
+    required this.bouquetCode,
     required this.customerName,
   });
 
@@ -22,7 +26,9 @@ class TvBillsData {
     double? amountCrypto,
     String? providerName,
     String? providerImg,
-    String? bouquetName,
+    String? bouquetDescription,
+    double? bouquetPrice,
+    String? bouquetCode,
     String? smartCardNo,
     String? customerName,
   }) {
@@ -32,8 +38,10 @@ class TvBillsData {
       providerName: providerName ?? this.providerName,
       providerImg: providerImg ?? this.providerImg,
       smartCardNo: smartCardNo ?? this.smartCardNo,
-      bouquetName: bouquetName ?? this.bouquetName,
       customerName: customerName ?? this.customerName,
+      bouquetCode: bouquetCode ?? this.bouquetCode,
+      bouquetDescription: bouquetDescription ?? this.bouquetDescription,
+      bouquetPrice: bouquetPrice ?? this.bouquetPrice,
     );
   }
 }

@@ -18,13 +18,15 @@ class TvBillsBouquet extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final data = tvBillWatch(ref);
 
+    final isNull = data.bouquetDescription == null ? true : false;
     return listTile(
       context,
-      title: data.bouquetName ?? "Select Bouquet",
+      title: data.bouquetDescription ?? "Select Bouquet",
+      subtitle: data.customerName,
       tileColor: colorCard,
       // imgUrl: data.providerImg,
       trailing: Text(
-        "Bouquet",
+        isNull ? "${data.bouquetPrice.toString()}" : "Bouquet",
         style: TextStyle(fontSize: 12, color: colorText),
       ),
       onTap: () {
@@ -90,11 +92,15 @@ class _BouquetList extends HookConsumerWidget {
           trailing: Text(item.price, style: textTheme(context).bodySmall),
           subtitle: item.code,
           onTap: () {
-            final amt = double.tryParse(item.price) ?? 0;
-            dataRead.updateBouquet(item.description);
+            final price = double.tryParse(item.price) ?? 0;
+            dataRead.updateBouquet(
+              price: price,
+              desc: item.description,
+              code: item.code,
+            );
             dataRead.updateAmountCrypto(
-              amountFia: amt,
-              amountCrypto: calcPrice(amt),
+              amountFia: price,
+              amountCrypto: calcPrice(price),
             );
             Navigator.of(context).pop();
           },

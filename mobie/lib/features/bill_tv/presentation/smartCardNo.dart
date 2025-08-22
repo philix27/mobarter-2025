@@ -5,8 +5,7 @@ import 'package:mobarter/features/bill_tv/logic/provider.dart';
 import 'package:mobarter/graphql/schema/_docs.graphql.dart';
 import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/utils/exception.dart';
-import 'package:mobarter/widgets/inputText.dart';
-import 'package:mobarter/widgets/toast.dart';
+import 'package:mobarter/widgets/widgets.dart';
 
 class TvBillsSmartCardNoField extends HookConsumerWidget {
   TvBillsSmartCardNoField({super.key});
@@ -19,28 +18,33 @@ class TvBillsSmartCardNoField extends HookConsumerWidget {
     final result = useMutation$tvBills_validateAccount();
 
     validateInfo(String smartCardNumber) async {
-      require(watch.bouquetName, "Select a bouquet");
+      try {
+        require(watch.bouquetDescription, "Select a bouquet");
+        require(watch.smartCardNo, "Select a bouquet");
 
-      final response = await result
-          .runMutation(
-            Variables$Mutation$tvBills_validateAccount(
-              input: Input$TvBill_ValidateAccountInput(
-                service: watch.bouquetName!,
-                smartCardNumber: '',
+        final response = await result
+            .runMutation(
+              Variables$Mutation$tvBills_validateAccount(
+                input: Input$TvBill_ValidateAccountInput(
+                  service: watch.bouquetDescription!,
+                  smartCardNumber: watch.smartCardNo!,
+                ),
               ),
-            ),
-          )
-          .networkResult;
+            )
+            .networkResult;
 
-      validateGqlQuery(response);
-      
-      if (response?.data != null) {
-        final customerName =
-            response!.parsedData?.tvBills_validateAccount.customerName;
+        validateGqlQuery(response);
 
-        if (customerName!.isNotEmpty) {
-          read.updateSmartCardNo(customerName);
+        if (response?.data != null) {
+          final customerName =
+              response!.parsedData?.tvBills_validateAccount.customerName;
+
+          if (customerName!.isNotEmpty) {
+            read.updateSmartCardNo(customerName);
+          }
         }
+      } catch (e) {
+        appToastErr(context, e.toString());
       }
     }
 

@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobarter/features/bill_tv/logic/notifier.dart';
-import 'package:mobarter/features/bill_tv/model/data.dart';
+import 'package:mobarter/features/bill_tv/logic/model.dart';
 
 final tvBillProvider = StateNotifierProvider<TvBillsDataNotifier, TvBillsData>((
   ref,

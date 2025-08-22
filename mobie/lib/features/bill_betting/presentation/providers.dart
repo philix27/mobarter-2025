@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobarter/features/bill_betting/logic/provider.dart';
+import 'package:mobarter/features/theme/themeHandlers.dart';
 import 'package:mobarter/graphql/schema/utilities.gql.dart';
 import 'package:mobarter/widgets/widgets.dart';
 
@@ -9,24 +10,36 @@ class BettingProvidersList extends ConsumerWidget {
   final List<Query$fundBetting_getProviders$fundBetting_getProviders> list;
   @override
   Widget build(BuildContext context, ref) {
-    final data = bettingWatch(ref);
-    final dataRead = bettingRead(ref);
+    final w = bettingWatch(ref);
+    final r = bettingRead(ref);
 
-    return ListView.builder(
-      primary: true,
-      itemCount: list.length,
-      shrinkWrap: true,
-      itemBuilder: (ctx, i) {
-        final item = list[i];
+    return listTile(
+      context,
+      title: w.providerName ?? "Select Providers",
+      imgUrl: w.providerImg,
+      trailing: Text("Service ID", style: textTheme(context).bodySmall),
+      onTap: () {
+        btmSheet(
+          ctx: context,
+          h: 0.5,
+          w: ListView.builder(
+            primary: true,
+            itemCount: list.length,
+            shrinkWrap: true,
+            itemBuilder: (ctx, i) {
+              final item = list[i];
 
-        return listTile(
-          context,
-          title: item.name,
-          imgUrl: item.logo,
-          onTap: () {
-            dataRead.updateBilerType(item.name, item.logo);
-            Navigator.of(context).pop();
-          },
+              return listTile(
+                context,
+                title: item.name,
+                imgUrl: item.logo,
+                onTap: () {
+                  r.updateBilerType(item.name, item.logo);
+                  Navigator.of(context).pop();
+                },
+              );
+            },
+          ),
         );
       },
     );
