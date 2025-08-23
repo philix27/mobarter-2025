@@ -4233,6 +4233,296 @@ class _CopyWithStubImpl$Input$Order_CancelInput<TRes>
       _res;
 }
 
+class Input$Order_CreteBuyInput {
+  factory Input$Order_CreteBuyInput({
+    required String accountName,
+    required String accountNo,
+    required double amountCrypto,
+    required double amountFiat,
+    required String bankName,
+    required Enum$Country fiatCurrency,
+    required String tokenAddress,
+    required String tokenChain,
+    required String transaction_pin,
+    required String user_uid,
+  }) =>
+      Input$Order_CreteBuyInput._({
+        r'accountName': accountName,
+        r'accountNo': accountNo,
+        r'amountCrypto': amountCrypto,
+        r'amountFiat': amountFiat,
+        r'bankName': bankName,
+        r'fiatCurrency': fiatCurrency,
+        r'tokenAddress': tokenAddress,
+        r'tokenChain': tokenChain,
+        r'transaction_pin': transaction_pin,
+        r'user_uid': user_uid,
+      });
+
+  Input$Order_CreteBuyInput._(this._$data);
+
+  factory Input$Order_CreteBuyInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$accountName = data['accountName'];
+    result$data['accountName'] = (l$accountName as String);
+    final l$accountNo = data['accountNo'];
+    result$data['accountNo'] = (l$accountNo as String);
+    final l$amountCrypto = data['amountCrypto'];
+    result$data['amountCrypto'] = (l$amountCrypto as num).toDouble();
+    final l$amountFiat = data['amountFiat'];
+    result$data['amountFiat'] = (l$amountFiat as num).toDouble();
+    final l$bankName = data['bankName'];
+    result$data['bankName'] = (l$bankName as String);
+    final l$fiatCurrency = data['fiatCurrency'];
+    result$data['fiatCurrency'] =
+        fromJson$Enum$Country((l$fiatCurrency as String));
+    final l$tokenAddress = data['tokenAddress'];
+    result$data['tokenAddress'] = (l$tokenAddress as String);
+    final l$tokenChain = data['tokenChain'];
+    result$data['tokenChain'] = (l$tokenChain as String);
+    final l$transaction_pin = data['transaction_pin'];
+    result$data['transaction_pin'] = (l$transaction_pin as String);
+    final l$user_uid = data['user_uid'];
+    result$data['user_uid'] = (l$user_uid as String);
+    return Input$Order_CreteBuyInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get accountName => (_$data['accountName'] as String);
+
+  String get accountNo => (_$data['accountNo'] as String);
+
+  double get amountCrypto => (_$data['amountCrypto'] as double);
+
+  double get amountFiat => (_$data['amountFiat'] as double);
+
+  String get bankName => (_$data['bankName'] as String);
+
+  Enum$Country get fiatCurrency => (_$data['fiatCurrency'] as Enum$Country);
+
+  String get tokenAddress => (_$data['tokenAddress'] as String);
+
+  String get tokenChain => (_$data['tokenChain'] as String);
+
+  String get transaction_pin => (_$data['transaction_pin'] as String);
+
+  String get user_uid => (_$data['user_uid'] as String);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$accountName = accountName;
+    result$data['accountName'] = l$accountName;
+    final l$accountNo = accountNo;
+    result$data['accountNo'] = l$accountNo;
+    final l$amountCrypto = amountCrypto;
+    result$data['amountCrypto'] = l$amountCrypto;
+    final l$amountFiat = amountFiat;
+    result$data['amountFiat'] = l$amountFiat;
+    final l$bankName = bankName;
+    result$data['bankName'] = l$bankName;
+    final l$fiatCurrency = fiatCurrency;
+    result$data['fiatCurrency'] = toJson$Enum$Country(l$fiatCurrency);
+    final l$tokenAddress = tokenAddress;
+    result$data['tokenAddress'] = l$tokenAddress;
+    final l$tokenChain = tokenChain;
+    result$data['tokenChain'] = l$tokenChain;
+    final l$transaction_pin = transaction_pin;
+    result$data['transaction_pin'] = l$transaction_pin;
+    final l$user_uid = user_uid;
+    result$data['user_uid'] = l$user_uid;
+    return result$data;
+  }
+
+  CopyWith$Input$Order_CreteBuyInput<Input$Order_CreteBuyInput> get copyWith =>
+      CopyWith$Input$Order_CreteBuyInput(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$Order_CreteBuyInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$accountName = accountName;
+    final lOther$accountName = other.accountName;
+    if (l$accountName != lOther$accountName) {
+      return false;
+    }
+    final l$accountNo = accountNo;
+    final lOther$accountNo = other.accountNo;
+    if (l$accountNo != lOther$accountNo) {
+      return false;
+    }
+    final l$amountCrypto = amountCrypto;
+    final lOther$amountCrypto = other.amountCrypto;
+    if (l$amountCrypto != lOther$amountCrypto) {
+      return false;
+    }
+    final l$amountFiat = amountFiat;
+    final lOther$amountFiat = other.amountFiat;
+    if (l$amountFiat != lOther$amountFiat) {
+      return false;
+    }
+    final l$bankName = bankName;
+    final lOther$bankName = other.bankName;
+    if (l$bankName != lOther$bankName) {
+      return false;
+    }
+    final l$fiatCurrency = fiatCurrency;
+    final lOther$fiatCurrency = other.fiatCurrency;
+    if (l$fiatCurrency != lOther$fiatCurrency) {
+      return false;
+    }
+    final l$tokenAddress = tokenAddress;
+    final lOther$tokenAddress = other.tokenAddress;
+    if (l$tokenAddress != lOther$tokenAddress) {
+      return false;
+    }
+    final l$tokenChain = tokenChain;
+    final lOther$tokenChain = other.tokenChain;
+    if (l$tokenChain != lOther$tokenChain) {
+      return false;
+    }
+    final l$transaction_pin = transaction_pin;
+    final lOther$transaction_pin = other.transaction_pin;
+    if (l$transaction_pin != lOther$transaction_pin) {
+      return false;
+    }
+    final l$user_uid = user_uid;
+    final lOther$user_uid = other.user_uid;
+    if (l$user_uid != lOther$user_uid) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$accountName = accountName;
+    final l$accountNo = accountNo;
+    final l$amountCrypto = amountCrypto;
+    final l$amountFiat = amountFiat;
+    final l$bankName = bankName;
+    final l$fiatCurrency = fiatCurrency;
+    final l$tokenAddress = tokenAddress;
+    final l$tokenChain = tokenChain;
+    final l$transaction_pin = transaction_pin;
+    final l$user_uid = user_uid;
+    return Object.hashAll([
+      l$accountName,
+      l$accountNo,
+      l$amountCrypto,
+      l$amountFiat,
+      l$bankName,
+      l$fiatCurrency,
+      l$tokenAddress,
+      l$tokenChain,
+      l$transaction_pin,
+      l$user_uid,
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$Order_CreteBuyInput<TRes> {
+  factory CopyWith$Input$Order_CreteBuyInput(
+    Input$Order_CreteBuyInput instance,
+    TRes Function(Input$Order_CreteBuyInput) then,
+  ) = _CopyWithImpl$Input$Order_CreteBuyInput;
+
+  factory CopyWith$Input$Order_CreteBuyInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$Order_CreteBuyInput;
+
+  TRes call({
+    String? accountName,
+    String? accountNo,
+    double? amountCrypto,
+    double? amountFiat,
+    String? bankName,
+    Enum$Country? fiatCurrency,
+    String? tokenAddress,
+    String? tokenChain,
+    String? transaction_pin,
+    String? user_uid,
+  });
+}
+
+class _CopyWithImpl$Input$Order_CreteBuyInput<TRes>
+    implements CopyWith$Input$Order_CreteBuyInput<TRes> {
+  _CopyWithImpl$Input$Order_CreteBuyInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$Order_CreteBuyInput _instance;
+
+  final TRes Function(Input$Order_CreteBuyInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? accountName = _undefined,
+    Object? accountNo = _undefined,
+    Object? amountCrypto = _undefined,
+    Object? amountFiat = _undefined,
+    Object? bankName = _undefined,
+    Object? fiatCurrency = _undefined,
+    Object? tokenAddress = _undefined,
+    Object? tokenChain = _undefined,
+    Object? transaction_pin = _undefined,
+    Object? user_uid = _undefined,
+  }) =>
+      _then(Input$Order_CreteBuyInput._({
+        ..._instance._$data,
+        if (accountName != _undefined && accountName != null)
+          'accountName': (accountName as String),
+        if (accountNo != _undefined && accountNo != null)
+          'accountNo': (accountNo as String),
+        if (amountCrypto != _undefined && amountCrypto != null)
+          'amountCrypto': (amountCrypto as double),
+        if (amountFiat != _undefined && amountFiat != null)
+          'amountFiat': (amountFiat as double),
+        if (bankName != _undefined && bankName != null)
+          'bankName': (bankName as String),
+        if (fiatCurrency != _undefined && fiatCurrency != null)
+          'fiatCurrency': (fiatCurrency as Enum$Country),
+        if (tokenAddress != _undefined && tokenAddress != null)
+          'tokenAddress': (tokenAddress as String),
+        if (tokenChain != _undefined && tokenChain != null)
+          'tokenChain': (tokenChain as String),
+        if (transaction_pin != _undefined && transaction_pin != null)
+          'transaction_pin': (transaction_pin as String),
+        if (user_uid != _undefined && user_uid != null)
+          'user_uid': (user_uid as String),
+      }));
+}
+
+class _CopyWithStubImpl$Input$Order_CreteBuyInput<TRes>
+    implements CopyWith$Input$Order_CreteBuyInput<TRes> {
+  _CopyWithStubImpl$Input$Order_CreteBuyInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? accountName,
+    String? accountNo,
+    double? amountCrypto,
+    double? amountFiat,
+    String? bankName,
+    Enum$Country? fiatCurrency,
+    String? tokenAddress,
+    String? tokenChain,
+    String? transaction_pin,
+    String? user_uid,
+  }) =>
+      _res;
+}
+
 class Input$Order_CreteSellInput {
   factory Input$Order_CreteSellInput({
     Enum$OrderActions? action_merchant,

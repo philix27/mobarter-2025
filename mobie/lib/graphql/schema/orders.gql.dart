@@ -1468,3 +1468,1197 @@ class _CopyWithStubImpl$Query$Orders_GetAll$orders_GetAll<TRes>
   }) =>
       _res;
 }
+
+class Variables$Mutation$Orders_CreateBuy {
+  factory Variables$Mutation$Orders_CreateBuy(
+          {required Input$Order_CreteBuyInput input}) =>
+      Variables$Mutation$Orders_CreateBuy._({
+        r'input': input,
+      });
+
+  Variables$Mutation$Orders_CreateBuy._(this._$data);
+
+  factory Variables$Mutation$Orders_CreateBuy.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$input = data['input'];
+    result$data['input'] =
+        Input$Order_CreteBuyInput.fromJson((l$input as Map<String, dynamic>));
+    return Variables$Mutation$Orders_CreateBuy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$Order_CreteBuyInput get input =>
+      (_$data['input'] as Input$Order_CreteBuyInput);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$input = input;
+    result$data['input'] = l$input.toJson();
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$Orders_CreateBuy<
+          Variables$Mutation$Orders_CreateBuy>
+      get copyWith => CopyWith$Variables$Mutation$Orders_CreateBuy(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Variables$Mutation$Orders_CreateBuy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$input = input;
+    final lOther$input = other.input;
+    if (l$input != lOther$input) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$input = input;
+    return Object.hashAll([l$input]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$Orders_CreateBuy<TRes> {
+  factory CopyWith$Variables$Mutation$Orders_CreateBuy(
+    Variables$Mutation$Orders_CreateBuy instance,
+    TRes Function(Variables$Mutation$Orders_CreateBuy) then,
+  ) = _CopyWithImpl$Variables$Mutation$Orders_CreateBuy;
+
+  factory CopyWith$Variables$Mutation$Orders_CreateBuy.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$Orders_CreateBuy;
+
+  TRes call({Input$Order_CreteBuyInput? input});
+}
+
+class _CopyWithImpl$Variables$Mutation$Orders_CreateBuy<TRes>
+    implements CopyWith$Variables$Mutation$Orders_CreateBuy<TRes> {
+  _CopyWithImpl$Variables$Mutation$Orders_CreateBuy(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Mutation$Orders_CreateBuy _instance;
+
+  final TRes Function(Variables$Mutation$Orders_CreateBuy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({Object? input = _undefined}) =>
+      _then(Variables$Mutation$Orders_CreateBuy._({
+        ..._instance._$data,
+        if (input != _undefined && input != null)
+          'input': (input as Input$Order_CreteBuyInput),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$Orders_CreateBuy<TRes>
+    implements CopyWith$Variables$Mutation$Orders_CreateBuy<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$Orders_CreateBuy(this._res);
+
+  TRes _res;
+
+  call({Input$Order_CreteBuyInput? input}) => _res;
+}
+
+class Mutation$Orders_CreateBuy {
+  Mutation$Orders_CreateBuy({
+    required this.orders_CreateBuy,
+    this.$__typename = 'Mutation',
+  });
+
+  factory Mutation$Orders_CreateBuy.fromJson(Map<String, dynamic> json) {
+    final l$orders_CreateBuy = json['orders_CreateBuy'];
+    final l$$__typename = json['__typename'];
+    return Mutation$Orders_CreateBuy(
+      orders_CreateBuy: Mutation$Orders_CreateBuy$orders_CreateBuy.fromJson(
+          (l$orders_CreateBuy as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Mutation$Orders_CreateBuy$orders_CreateBuy orders_CreateBuy;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$orders_CreateBuy = orders_CreateBuy;
+    _resultData['orders_CreateBuy'] = l$orders_CreateBuy.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$orders_CreateBuy = orders_CreateBuy;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$orders_CreateBuy,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Mutation$Orders_CreateBuy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$orders_CreateBuy = orders_CreateBuy;
+    final lOther$orders_CreateBuy = other.orders_CreateBuy;
+    if (l$orders_CreateBuy != lOther$orders_CreateBuy) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$Orders_CreateBuy
+    on Mutation$Orders_CreateBuy {
+  CopyWith$Mutation$Orders_CreateBuy<Mutation$Orders_CreateBuy> get copyWith =>
+      CopyWith$Mutation$Orders_CreateBuy(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Mutation$Orders_CreateBuy<TRes> {
+  factory CopyWith$Mutation$Orders_CreateBuy(
+    Mutation$Orders_CreateBuy instance,
+    TRes Function(Mutation$Orders_CreateBuy) then,
+  ) = _CopyWithImpl$Mutation$Orders_CreateBuy;
+
+  factory CopyWith$Mutation$Orders_CreateBuy.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$Orders_CreateBuy;
+
+  TRes call({
+    Mutation$Orders_CreateBuy$orders_CreateBuy? orders_CreateBuy,
+    String? $__typename,
+  });
+  CopyWith$Mutation$Orders_CreateBuy$orders_CreateBuy<TRes>
+      get orders_CreateBuy;
+}
+
+class _CopyWithImpl$Mutation$Orders_CreateBuy<TRes>
+    implements CopyWith$Mutation$Orders_CreateBuy<TRes> {
+  _CopyWithImpl$Mutation$Orders_CreateBuy(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$Orders_CreateBuy _instance;
+
+  final TRes Function(Mutation$Orders_CreateBuy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? orders_CreateBuy = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$Orders_CreateBuy(
+        orders_CreateBuy: orders_CreateBuy == _undefined ||
+                orders_CreateBuy == null
+            ? _instance.orders_CreateBuy
+            : (orders_CreateBuy as Mutation$Orders_CreateBuy$orders_CreateBuy),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Mutation$Orders_CreateBuy$orders_CreateBuy<TRes>
+      get orders_CreateBuy {
+    final local$orders_CreateBuy = _instance.orders_CreateBuy;
+    return CopyWith$Mutation$Orders_CreateBuy$orders_CreateBuy(
+        local$orders_CreateBuy, (e) => call(orders_CreateBuy: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$Orders_CreateBuy<TRes>
+    implements CopyWith$Mutation$Orders_CreateBuy<TRes> {
+  _CopyWithStubImpl$Mutation$Orders_CreateBuy(this._res);
+
+  TRes _res;
+
+  call({
+    Mutation$Orders_CreateBuy$orders_CreateBuy? orders_CreateBuy,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Mutation$Orders_CreateBuy$orders_CreateBuy<TRes>
+      get orders_CreateBuy =>
+          CopyWith$Mutation$Orders_CreateBuy$orders_CreateBuy.stub(_res);
+}
+
+const documentNodeMutationOrders_CreateBuy = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'Orders_CreateBuy'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'input')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Order_CreteBuyInput'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'orders_CreateBuy'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'input'),
+            value: VariableNode(name: NameNode(value: 'input')),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'message'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+]);
+Mutation$Orders_CreateBuy _parserFn$Mutation$Orders_CreateBuy(
+        Map<String, dynamic> data) =>
+    Mutation$Orders_CreateBuy.fromJson(data);
+typedef OnMutationCompleted$Mutation$Orders_CreateBuy = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Mutation$Orders_CreateBuy?,
+);
+
+class Options$Mutation$Orders_CreateBuy
+    extends graphql.MutationOptions<Mutation$Orders_CreateBuy> {
+  Options$Mutation$Orders_CreateBuy({
+    String? operationName,
+    required Variables$Mutation$Orders_CreateBuy variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$Orders_CreateBuy? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$Orders_CreateBuy? onCompleted,
+    graphql.OnMutationUpdate<Mutation$Orders_CreateBuy>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$Orders_CreateBuy(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationOrders_CreateBuy,
+          parserFn: _parserFn$Mutation$Orders_CreateBuy,
+        );
+
+  final OnMutationCompleted$Mutation$Orders_CreateBuy? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+class WatchOptions$Mutation$Orders_CreateBuy
+    extends graphql.WatchQueryOptions<Mutation$Orders_CreateBuy> {
+  WatchOptions$Mutation$Orders_CreateBuy({
+    String? operationName,
+    required Variables$Mutation$Orders_CreateBuy variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$Orders_CreateBuy? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeMutationOrders_CreateBuy,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$Orders_CreateBuy,
+        );
+}
+
+extension ClientExtension$Mutation$Orders_CreateBuy on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$Orders_CreateBuy>>
+      mutate$Orders_CreateBuy(
+              Options$Mutation$Orders_CreateBuy options) async =>
+          await this.mutate(options);
+  graphql.ObservableQuery<Mutation$Orders_CreateBuy>
+      watchMutation$Orders_CreateBuy(
+              WatchOptions$Mutation$Orders_CreateBuy options) =>
+          this.watchMutation(options);
+}
+
+class Mutation$Orders_CreateBuy$HookResult {
+  Mutation$Orders_CreateBuy$HookResult(
+    this.runMutation,
+    this.result,
+  );
+
+  final RunMutation$Mutation$Orders_CreateBuy runMutation;
+
+  final graphql.QueryResult<Mutation$Orders_CreateBuy> result;
+}
+
+Mutation$Orders_CreateBuy$HookResult useMutation$Orders_CreateBuy(
+    [WidgetOptions$Mutation$Orders_CreateBuy? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$Orders_CreateBuy());
+  return Mutation$Orders_CreateBuy$HookResult(
+    (variables, {optimisticResult, typedOptimisticResult}) =>
+        result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$Orders_CreateBuy>
+    useWatchMutation$Orders_CreateBuy(
+            WatchOptions$Mutation$Orders_CreateBuy options) =>
+        graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$Orders_CreateBuy
+    extends graphql.MutationOptions<Mutation$Orders_CreateBuy> {
+  WidgetOptions$Mutation$Orders_CreateBuy({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$Orders_CreateBuy? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$Orders_CreateBuy? onCompleted,
+    graphql.OnMutationUpdate<Mutation$Orders_CreateBuy>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$Orders_CreateBuy(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationOrders_CreateBuy,
+          parserFn: _parserFn$Mutation$Orders_CreateBuy,
+        );
+
+  final OnMutationCompleted$Mutation$Orders_CreateBuy? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+typedef RunMutation$Mutation$Orders_CreateBuy
+    = graphql.MultiSourceResult<Mutation$Orders_CreateBuy> Function(
+  Variables$Mutation$Orders_CreateBuy, {
+  Object? optimisticResult,
+  Mutation$Orders_CreateBuy? typedOptimisticResult,
+});
+typedef Builder$Mutation$Orders_CreateBuy = widgets.Widget Function(
+  RunMutation$Mutation$Orders_CreateBuy,
+  graphql.QueryResult<Mutation$Orders_CreateBuy>?,
+);
+
+class Mutation$Orders_CreateBuy$Widget
+    extends graphql_flutter.Mutation<Mutation$Orders_CreateBuy> {
+  Mutation$Orders_CreateBuy$Widget({
+    widgets.Key? key,
+    WidgetOptions$Mutation$Orders_CreateBuy? options,
+    required Builder$Mutation$Orders_CreateBuy builder,
+  }) : super(
+          key: key,
+          options: options ?? WidgetOptions$Mutation$Orders_CreateBuy(),
+          builder: (
+            run,
+            result,
+          ) =>
+              builder(
+            (
+              variables, {
+              optimisticResult,
+              typedOptimisticResult,
+            }) =>
+                run(
+              variables.toJson(),
+              optimisticResult:
+                  optimisticResult ?? typedOptimisticResult?.toJson(),
+            ),
+            result,
+          ),
+        );
+}
+
+class Mutation$Orders_CreateBuy$orders_CreateBuy {
+  Mutation$Orders_CreateBuy$orders_CreateBuy({
+    required this.message,
+    this.$__typename = 'Order_CreteBuyResponse',
+  });
+
+  factory Mutation$Orders_CreateBuy$orders_CreateBuy.fromJson(
+      Map<String, dynamic> json) {
+    final l$message = json['message'];
+    final l$$__typename = json['__typename'];
+    return Mutation$Orders_CreateBuy$orders_CreateBuy(
+      message: (l$message as String),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String message;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$message = message;
+    _resultData['message'] = l$message;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$message = message;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$message,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Mutation$Orders_CreateBuy$orders_CreateBuy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$message = message;
+    final lOther$message = other.message;
+    if (l$message != lOther$message) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$Orders_CreateBuy$orders_CreateBuy
+    on Mutation$Orders_CreateBuy$orders_CreateBuy {
+  CopyWith$Mutation$Orders_CreateBuy$orders_CreateBuy<
+          Mutation$Orders_CreateBuy$orders_CreateBuy>
+      get copyWith => CopyWith$Mutation$Orders_CreateBuy$orders_CreateBuy(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$Orders_CreateBuy$orders_CreateBuy<TRes> {
+  factory CopyWith$Mutation$Orders_CreateBuy$orders_CreateBuy(
+    Mutation$Orders_CreateBuy$orders_CreateBuy instance,
+    TRes Function(Mutation$Orders_CreateBuy$orders_CreateBuy) then,
+  ) = _CopyWithImpl$Mutation$Orders_CreateBuy$orders_CreateBuy;
+
+  factory CopyWith$Mutation$Orders_CreateBuy$orders_CreateBuy.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$Orders_CreateBuy$orders_CreateBuy;
+
+  TRes call({
+    String? message,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Mutation$Orders_CreateBuy$orders_CreateBuy<TRes>
+    implements CopyWith$Mutation$Orders_CreateBuy$orders_CreateBuy<TRes> {
+  _CopyWithImpl$Mutation$Orders_CreateBuy$orders_CreateBuy(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$Orders_CreateBuy$orders_CreateBuy _instance;
+
+  final TRes Function(Mutation$Orders_CreateBuy$orders_CreateBuy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? message = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$Orders_CreateBuy$orders_CreateBuy(
+        message: message == _undefined || message == null
+            ? _instance.message
+            : (message as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Mutation$Orders_CreateBuy$orders_CreateBuy<TRes>
+    implements CopyWith$Mutation$Orders_CreateBuy$orders_CreateBuy<TRes> {
+  _CopyWithStubImpl$Mutation$Orders_CreateBuy$orders_CreateBuy(this._res);
+
+  TRes _res;
+
+  call({
+    String? message,
+    String? $__typename,
+  }) =>
+      _res;
+}
+
+class Query$orders_GetTransferAccount {
+  Query$orders_GetTransferAccount({
+    required this.orders_GetTransferAccount,
+    this.$__typename = 'Query',
+  });
+
+  factory Query$orders_GetTransferAccount.fromJson(Map<String, dynamic> json) {
+    final l$orders_GetTransferAccount = json['orders_GetTransferAccount'];
+    final l$$__typename = json['__typename'];
+    return Query$orders_GetTransferAccount(
+      orders_GetTransferAccount: (l$orders_GetTransferAccount as List<dynamic>)
+          .map((e) => Query$orders_GetTransferAccount$orders_GetTransferAccount
+              .fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Query$orders_GetTransferAccount$orders_GetTransferAccount>
+      orders_GetTransferAccount;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$orders_GetTransferAccount = orders_GetTransferAccount;
+    _resultData['orders_GetTransferAccount'] =
+        l$orders_GetTransferAccount.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$orders_GetTransferAccount = orders_GetTransferAccount;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$orders_GetTransferAccount.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$orders_GetTransferAccount ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$orders_GetTransferAccount = orders_GetTransferAccount;
+    final lOther$orders_GetTransferAccount = other.orders_GetTransferAccount;
+    if (l$orders_GetTransferAccount.length !=
+        lOther$orders_GetTransferAccount.length) {
+      return false;
+    }
+    for (int i = 0; i < l$orders_GetTransferAccount.length; i++) {
+      final l$orders_GetTransferAccount$entry = l$orders_GetTransferAccount[i];
+      final lOther$orders_GetTransferAccount$entry =
+          lOther$orders_GetTransferAccount[i];
+      if (l$orders_GetTransferAccount$entry !=
+          lOther$orders_GetTransferAccount$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$orders_GetTransferAccount
+    on Query$orders_GetTransferAccount {
+  CopyWith$Query$orders_GetTransferAccount<Query$orders_GetTransferAccount>
+      get copyWith => CopyWith$Query$orders_GetTransferAccount(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$orders_GetTransferAccount<TRes> {
+  factory CopyWith$Query$orders_GetTransferAccount(
+    Query$orders_GetTransferAccount instance,
+    TRes Function(Query$orders_GetTransferAccount) then,
+  ) = _CopyWithImpl$Query$orders_GetTransferAccount;
+
+  factory CopyWith$Query$orders_GetTransferAccount.stub(TRes res) =
+      _CopyWithStubImpl$Query$orders_GetTransferAccount;
+
+  TRes call({
+    List<Query$orders_GetTransferAccount$orders_GetTransferAccount>?
+        orders_GetTransferAccount,
+    String? $__typename,
+  });
+  TRes orders_GetTransferAccount(
+      Iterable<Query$orders_GetTransferAccount$orders_GetTransferAccount> Function(
+              Iterable<
+                  CopyWith$Query$orders_GetTransferAccount$orders_GetTransferAccount<
+                      Query$orders_GetTransferAccount$orders_GetTransferAccount>>)
+          _fn);
+}
+
+class _CopyWithImpl$Query$orders_GetTransferAccount<TRes>
+    implements CopyWith$Query$orders_GetTransferAccount<TRes> {
+  _CopyWithImpl$Query$orders_GetTransferAccount(
+    this._instance,
+    this._then,
+  );
+
+  final Query$orders_GetTransferAccount _instance;
+
+  final TRes Function(Query$orders_GetTransferAccount) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? orders_GetTransferAccount = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$orders_GetTransferAccount(
+        orders_GetTransferAccount: orders_GetTransferAccount == _undefined ||
+                orders_GetTransferAccount == null
+            ? _instance.orders_GetTransferAccount
+            : (orders_GetTransferAccount as List<
+                Query$orders_GetTransferAccount$orders_GetTransferAccount>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes orders_GetTransferAccount(
+          Iterable<Query$orders_GetTransferAccount$orders_GetTransferAccount> Function(
+                  Iterable<
+                      CopyWith$Query$orders_GetTransferAccount$orders_GetTransferAccount<
+                          Query$orders_GetTransferAccount$orders_GetTransferAccount>>)
+              _fn) =>
+      call(
+          orders_GetTransferAccount: _fn(_instance.orders_GetTransferAccount
+              .map((e) =>
+                  CopyWith$Query$orders_GetTransferAccount$orders_GetTransferAccount(
+                    e,
+                    (i) => i,
+                  ))).toList());
+}
+
+class _CopyWithStubImpl$Query$orders_GetTransferAccount<TRes>
+    implements CopyWith$Query$orders_GetTransferAccount<TRes> {
+  _CopyWithStubImpl$Query$orders_GetTransferAccount(this._res);
+
+  TRes _res;
+
+  call({
+    List<Query$orders_GetTransferAccount$orders_GetTransferAccount>?
+        orders_GetTransferAccount,
+    String? $__typename,
+  }) =>
+      _res;
+
+  orders_GetTransferAccount(_fn) => _res;
+}
+
+const documentNodeQueryorders_GetTransferAccount = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'orders_GetTransferAccount'),
+    variableDefinitions: [],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'orders_GetTransferAccount'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'bankName'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'accountNo'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'accountName'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+]);
+Query$orders_GetTransferAccount _parserFn$Query$orders_GetTransferAccount(
+        Map<String, dynamic> data) =>
+    Query$orders_GetTransferAccount.fromJson(data);
+typedef OnQueryComplete$Query$orders_GetTransferAccount = FutureOr<void>
+    Function(
+  Map<String, dynamic>?,
+  Query$orders_GetTransferAccount?,
+);
+
+class Options$Query$orders_GetTransferAccount
+    extends graphql.QueryOptions<Query$orders_GetTransferAccount> {
+  Options$Query$orders_GetTransferAccount({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$orders_GetTransferAccount? typedOptimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+    OnQueryComplete$Query$orders_GetTransferAccount? onComplete,
+    graphql.OnQueryError? onError,
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Query$orders_GetTransferAccount(data),
+                  ),
+          onError: onError,
+          document: documentNodeQueryorders_GetTransferAccount,
+          parserFn: _parserFn$Query$orders_GetTransferAccount,
+        );
+
+  final OnQueryComplete$Query$orders_GetTransferAccount? onCompleteWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
+}
+
+class WatchOptions$Query$orders_GetTransferAccount
+    extends graphql.WatchQueryOptions<Query$orders_GetTransferAccount> {
+  WatchOptions$Query$orders_GetTransferAccount({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$orders_GetTransferAccount? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQueryorders_GetTransferAccount,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$orders_GetTransferAccount,
+        );
+}
+
+class FetchMoreOptions$Query$orders_GetTransferAccount
+    extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$orders_GetTransferAccount(
+      {required graphql.UpdateQuery updateQuery})
+      : super(
+          updateQuery: updateQuery,
+          document: documentNodeQueryorders_GetTransferAccount,
+        );
+}
+
+extension ClientExtension$Query$orders_GetTransferAccount
+    on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$orders_GetTransferAccount>>
+      query$orders_GetTransferAccount(
+              [Options$Query$orders_GetTransferAccount? options]) async =>
+          await this
+              .query(options ?? Options$Query$orders_GetTransferAccount());
+  graphql.ObservableQuery<Query$orders_GetTransferAccount>
+      watchQuery$orders_GetTransferAccount(
+              [WatchOptions$Query$orders_GetTransferAccount? options]) =>
+          this.watchQuery(
+              options ?? WatchOptions$Query$orders_GetTransferAccount());
+  void writeQuery$orders_GetTransferAccount({
+    required Query$orders_GetTransferAccount data,
+    bool broadcast = true,
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+            operation: graphql.Operation(
+                document: documentNodeQueryorders_GetTransferAccount)),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$orders_GetTransferAccount? readQuery$orders_GetTransferAccount(
+      {bool optimistic = true}) {
+    final result = this.readQuery(
+      graphql.Request(
+          operation: graphql.Operation(
+              document: documentNodeQueryorders_GetTransferAccount)),
+      optimistic: optimistic,
+    );
+    return result == null
+        ? null
+        : Query$orders_GetTransferAccount.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$orders_GetTransferAccount>
+    useQuery$orders_GetTransferAccount(
+            [Options$Query$orders_GetTransferAccount? options]) =>
+        graphql_flutter
+            .useQuery(options ?? Options$Query$orders_GetTransferAccount());
+graphql.ObservableQuery<Query$orders_GetTransferAccount>
+    useWatchQuery$orders_GetTransferAccount(
+            [WatchOptions$Query$orders_GetTransferAccount? options]) =>
+        graphql_flutter.useWatchQuery(
+            options ?? WatchOptions$Query$orders_GetTransferAccount());
+
+class Query$orders_GetTransferAccount$Widget
+    extends graphql_flutter.Query<Query$orders_GetTransferAccount> {
+  Query$orders_GetTransferAccount$Widget({
+    widgets.Key? key,
+    Options$Query$orders_GetTransferAccount? options,
+    required graphql_flutter.QueryBuilder<Query$orders_GetTransferAccount>
+        builder,
+  }) : super(
+          key: key,
+          options: options ?? Options$Query$orders_GetTransferAccount(),
+          builder: builder,
+        );
+}
+
+class Query$orders_GetTransferAccount$orders_GetTransferAccount {
+  Query$orders_GetTransferAccount$orders_GetTransferAccount({
+    required this.bankName,
+    required this.accountNo,
+    required this.accountName,
+    this.$__typename = 'Order_RecipientAccountDetailsResponse',
+  });
+
+  factory Query$orders_GetTransferAccount$orders_GetTransferAccount.fromJson(
+      Map<String, dynamic> json) {
+    final l$bankName = json['bankName'];
+    final l$accountNo = json['accountNo'];
+    final l$accountName = json['accountName'];
+    final l$$__typename = json['__typename'];
+    return Query$orders_GetTransferAccount$orders_GetTransferAccount(
+      bankName: (l$bankName as String),
+      accountNo: (l$accountNo as String),
+      accountName: (l$accountName as String),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String bankName;
+
+  final String accountNo;
+
+  final String accountName;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$bankName = bankName;
+    _resultData['bankName'] = l$bankName;
+    final l$accountNo = accountNo;
+    _resultData['accountNo'] = l$accountNo;
+    final l$accountName = accountName;
+    _resultData['accountName'] = l$accountName;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$bankName = bankName;
+    final l$accountNo = accountNo;
+    final l$accountName = accountName;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$bankName,
+      l$accountNo,
+      l$accountName,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$orders_GetTransferAccount$orders_GetTransferAccount ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$bankName = bankName;
+    final lOther$bankName = other.bankName;
+    if (l$bankName != lOther$bankName) {
+      return false;
+    }
+    final l$accountNo = accountNo;
+    final lOther$accountNo = other.accountNo;
+    if (l$accountNo != lOther$accountNo) {
+      return false;
+    }
+    final l$accountName = accountName;
+    final lOther$accountName = other.accountName;
+    if (l$accountName != lOther$accountName) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$orders_GetTransferAccount$orders_GetTransferAccount
+    on Query$orders_GetTransferAccount$orders_GetTransferAccount {
+  CopyWith$Query$orders_GetTransferAccount$orders_GetTransferAccount<
+          Query$orders_GetTransferAccount$orders_GetTransferAccount>
+      get copyWith =>
+          CopyWith$Query$orders_GetTransferAccount$orders_GetTransferAccount(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$orders_GetTransferAccount$orders_GetTransferAccount<
+    TRes> {
+  factory CopyWith$Query$orders_GetTransferAccount$orders_GetTransferAccount(
+    Query$orders_GetTransferAccount$orders_GetTransferAccount instance,
+    TRes Function(Query$orders_GetTransferAccount$orders_GetTransferAccount)
+        then,
+  ) = _CopyWithImpl$Query$orders_GetTransferAccount$orders_GetTransferAccount;
+
+  factory CopyWith$Query$orders_GetTransferAccount$orders_GetTransferAccount.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$orders_GetTransferAccount$orders_GetTransferAccount;
+
+  TRes call({
+    String? bankName,
+    String? accountNo,
+    String? accountName,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Query$orders_GetTransferAccount$orders_GetTransferAccount<
+        TRes>
+    implements
+        CopyWith$Query$orders_GetTransferAccount$orders_GetTransferAccount<
+            TRes> {
+  _CopyWithImpl$Query$orders_GetTransferAccount$orders_GetTransferAccount(
+    this._instance,
+    this._then,
+  );
+
+  final Query$orders_GetTransferAccount$orders_GetTransferAccount _instance;
+
+  final TRes Function(Query$orders_GetTransferAccount$orders_GetTransferAccount)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? bankName = _undefined,
+    Object? accountNo = _undefined,
+    Object? accountName = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$orders_GetTransferAccount$orders_GetTransferAccount(
+        bankName: bankName == _undefined || bankName == null
+            ? _instance.bankName
+            : (bankName as String),
+        accountNo: accountNo == _undefined || accountNo == null
+            ? _instance.accountNo
+            : (accountNo as String),
+        accountName: accountName == _undefined || accountName == null
+            ? _instance.accountName
+            : (accountName as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Query$orders_GetTransferAccount$orders_GetTransferAccount<
+        TRes>
+    implements
+        CopyWith$Query$orders_GetTransferAccount$orders_GetTransferAccount<
+            TRes> {
+  _CopyWithStubImpl$Query$orders_GetTransferAccount$orders_GetTransferAccount(
+      this._res);
+
+  TRes _res;
+
+  call({
+    String? bankName,
+    String? accountNo,
+    String? accountName,
+    String? $__typename,
+  }) =>
+      _res;
+}

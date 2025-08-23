@@ -417,6 +417,7 @@ type Mutation {
   ): Onchain_TransferTokenResponse!
   orders_Appeal(input: Order_AppealInput!): Order_Response!
   orders_Cancel(input: Order_CancelInput!): Order_Response!
+  orders_CreateBuy(input: Order_CreteBuyInput!): Order_CreteBuyResponse!
   orders_CreateSell(input: Order_CreteSellInput!): Order_CreteSellResponse!
   orders_MoveCryptoToEscrow(
     input: Order_MoveCryptoToEscrowInput!
@@ -484,6 +485,33 @@ input Order_CancelInput {
   reason: String!
 }
 
+input Order_CreteBuyInput {
+  accountName: String!
+  accountNo: String!
+  amountCrypto: Float!
+  amountFiat: Float!
+  bankName: String!
+  fiatCurrency: Country!
+  tokenAddress: String!
+  tokenChain: String!
+  transaction_pin: String!
+  user_uid: String!
+}
+
+type Order_CreteBuyResponse {
+  accountName: String
+  accountNo: String
+  amountCrypto: Float
+  amountFiat: Float
+  bankName: String
+  fiatCurrency: Country
+  message: String!
+  tokenAddress: String
+  tokenChain: String
+  transaction_pin: String
+  user_uid: String
+}
+
 input Order_CreteSellInput {
   action_merchant: OrderActions
   action_user: OrderActions
@@ -526,6 +554,13 @@ input Order_MoveCryptoToEscrowInput {
   amountCrypto: Int!
   currencyCrypto: String!
   id: ID!
+}
+
+type Order_RecipientAccountDetailsResponse {
+  accountName: String!
+  accountNo: String!
+  bankName: String!
+  instructions: String!
 }
 
 type Order_Response {
@@ -575,6 +610,7 @@ type Query {
   orders_GetAllAsMerchant(input: Order_GetAllInput!): [Order_Response!]!
   orders_GetAllForAdmin(input: Order_GetAllInput!): [Order_Response!]!
   orders_GetOne(input: Order_GetOneInput!): Order_Response!
+  orders_GetTransferAccount: [Order_RecipientAccountDetailsResponse!]!
   static_appInfo: Static_AppInfoResponse!
   static_getChains: [Static_GetChainsResponse!]!
   static_getCountries: [Static_GetCountries!]!

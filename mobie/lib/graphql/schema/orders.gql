@@ -19,6 +19,20 @@ query Orders_GetAll($input: Order_GetAllInput!) {
     amount_fiat
   }
 }
+
+mutation Orders_CreateBuy($input: Order_CreteBuyInput!) {
+  orders_CreateBuy(input: $input) {
+    message
+  }
+}
+
+query orders_GetTransferAccount {
+  orders_GetTransferAccount {
+   bankName
+    accountNo
+    accountName
+  }
+}
 # query Orders_GetOne($input: Order_GetOneInput!) {
 #   orders_GetOne(input: $input) {
 #     id
