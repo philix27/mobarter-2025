@@ -76,7 +76,7 @@ class WalletPage extends StatelessWidget {
               box(
                 context,
                 item: QuickActionsModel(
-                  title: "Orders",
+                  title: "Buy/Sell",
                   icon: Icons.arrow_upward,
                   onPressed: () {
                     pushScreen(

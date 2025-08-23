@@ -9,7 +9,6 @@ class TopUpTabs extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final data = topUpWatch(ref);
     final readData = topUpRead(ref);
 
     Widget textTab(String title, TopUpScreen screen) {

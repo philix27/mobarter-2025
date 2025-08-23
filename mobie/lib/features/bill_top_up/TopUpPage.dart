@@ -74,7 +74,7 @@ class TopUpsPage extends HookConsumerWidget {
                         subtitle: data.phoneNo!,
                       ),
                       simpleRow(
-                        title: "Nettwork Provider",
+                        title: "Network Provider",
                         subtitle: data.networkProvider!,
                       ),
                       simpleRow(
