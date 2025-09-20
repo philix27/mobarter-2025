@@ -1,0 +1,60 @@
+query static_getTokens {
+  static_getTokens {
+    name
+    address
+    decimals
+    isBuyable
+    isPayable
+    symbol
+    logoUrl
+    chainId
+  }
+}
+
+query static_getLinks {
+  static_getLinks {
+    title
+    desc
+    imgLink
+    url
+    category
+    group
+  }
+}
+
+query static_getCountry {
+  static_getCountries {
+    name
+    isoName
+    callingCodes
+    continent
+    currencyCode
+    currencyName
+    currencySymbol
+    flag
+  }
+}
+
+
+query static_getChain {
+  static_getChains {
+    name
+    rpcUrl
+    chainId
+    explorerUrl
+    explorerApiUrl
+    logoUrl
+  }
+}
+
+
+query static_getFundCollectors {
+  static_getFundCollectors {
+    TopUp
+    ElectricityBills
+    FundBetting
+    OffRamping
+    TV_Bills
+    WaterBills
+  }
+}

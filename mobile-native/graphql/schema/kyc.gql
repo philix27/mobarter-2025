@@ -1,0 +1,48 @@
+mutation Kyc_addAddressInfo($input: Kyc_AddAddressInfoInput!) {
+  kyc_addAddressInfo(input:$input) {
+   message
+  }
+}
+
+mutation kyc_addAddressProof($input: Kyc_AddAddressProofInput!) {
+  kyc_addAddressProof(input:$input) {
+     message
+  }
+}
+
+mutation kyc_addBvn($input: Kyc_AddBvnInput!) {
+  kyc_addBvn(input:$input) {
+     message
+  }
+}
+
+
+mutation kyc_addDob($input: Kyc_AddDobInput!) {
+  kyc_addDob(input:$input) {
+     message
+  }
+}
+
+
+
+mutation kyc_addNames($input: Kyc_AddNamesInput!) {
+  kyc_addNames(input:$input) {
+     message
+  }
+}
+
+
+
+mutation kyc_addNin($input: Kyc_AddNinInput!) {
+  kyc_addNin(input:$input) {
+     message
+  }
+}
+
+
+mutation kyc_createTransactionPin($input: Kyc_CreateTransactionPinInput!) {
+  kyc_createTransactionPin(input:$input) {
+     message
+  }
+}
+
