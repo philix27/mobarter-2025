@@ -15,6 +15,15 @@ import 'package:mobarter/graphql/api/Api.dart';
 import 'package:mobarter/routes.dart';
 import 'package:toastification/toastification.dart';
 
+import 'package:para/para.dart';
+
+final para = Para(
+  environment: Environment.beta, // or Environment.production
+  apiKey: 'YOUR_PARA_API_KEY',
+  deepLinkScheme: 'yourapp://callback', // Required for OAuth/WebAuth
+);
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -75,8 +84,24 @@ class InitiateGql extends HookConsumerWidget {
               : ThemeMode.light,
           darkTheme: AppTheme.dark,
           theme: AppTheme.light,
-          home: WelcomePage(),
           routes: routes,
+          // home: WelcomePage(),
+          home: Stack(
+            children: [
+              // Make sure the SDK is ready before using it
+              StreamBuilder<bool?>(
+                stream: DynamicSDK.instance..messageTransport.onEmit,
+                builder: (context, snapshot) {
+                  final sdkReady = snapshot.data ?? false;
+                  return sdkReady
+                      ? const WelcomePage()
+                      : const SizedBox.shrink();
+                },
+              ),
+              // DynamicSDK widget must be available all the time
+              DynamicSDK.instance.dynamicWidget,
+            ],
+          ),
         ),
       ),
     );
