@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "features/bankAccount/api.bank.ts"
+  ],
+  "extends": "expo/tsconfig.base"
+}

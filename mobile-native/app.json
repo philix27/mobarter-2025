@@ -1,0 +1,89 @@
+{
+  "expo": {
+    "name": "Mobarter",
+    "slug": "mobarter-app",
+    "version": "1.0.1",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "com.mobarter.app",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#18222e"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mobarter.app",
+      "associatedDomains": [
+        "webcredentials:mobarter.com",
+        "applinks:mobarter.com"
+      ]
+    },
+    "android": {
+      "versionCode": 2,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#18222e"
+      },
+      "package": "com.mobarter.app",
+      "intentFilters": [
+        {
+          "autoVerify": true,
+          "action": "VIEW",
+          "data": {
+            "scheme": "https",
+            "host": "mobarter.com"
+          },
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "minSdkVersion": 26
+          },
+          "ios": {
+            "extraPods": [
+              {
+                "name": "OpenSSL-Universal",
+                "configurations": [
+                  "Release",
+                  "Debug"
+                ],
+                "modular_headers": true,
+                "version": "3.3.2000"
+              }
+            ]
+          }
+        }
+      ],
+      "expo-font",
+      "expo-web-browser"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "c9235844-1742-45d2-9d66-2aef726c4385"
+      }
+    },
+    "owner": "mobarter"
+  }
+}
