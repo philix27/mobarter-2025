@@ -7,7 +7,7 @@ export type ThemedViewProps = ViewProps & {
 }
 
 export function TView(props: ThemedViewProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
+  const { style, ...otherProps } = props;
   const appColor = useColor()
 
   return <View style={[{ backgroundColor: appColor.background }, style]} {...otherProps} />

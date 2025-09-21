@@ -1,7 +1,6 @@
 import { StyleSheet, LayoutChangeEvent, ViewStyle } from 'react-native'
 import { PlatformPressable } from '@react-navigation/elements'
 import Animated, {
-  interpolate,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
@@ -95,7 +94,7 @@ export function HeaderTabs(props: {
             route.onPress()
           }
 
-          const onLongPress = () => {}
+          const onLongPress = () => { return }
 
           return (
             <TabBarButton

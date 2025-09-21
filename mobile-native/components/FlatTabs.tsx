@@ -1,4 +1,4 @@
-import { StyleSheet, LayoutChangeEvent, ViewStyle } from 'react-native'
+import { StyleSheet,  ViewStyle } from 'react-native'
 import { PlatformPressable } from '@react-navigation/elements'
 import Animated, { useSharedValue, withSpring } from 'react-native-reanimated'
 import { useEffect } from 'react'
