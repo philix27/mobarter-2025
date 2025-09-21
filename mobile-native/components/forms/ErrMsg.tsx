@@ -1,6 +1,6 @@
 import React from 'react'
-import { TText } from '../ui'
-import { useColor } from '@/lib'
+import { TText } from '../'
+import { useColor } from '@/hooks'
 
 export function ErrMsg(props: { msg: string }) {
   return <TText style={{ color: 'red', fontSize: 12, margin: 0, padding: 0 }}>{props.msg}</TText>

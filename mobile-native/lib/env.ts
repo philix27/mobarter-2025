@@ -14,8 +14,8 @@ const _env: Record<typeof dev, IEnv> = {
     BACKEND_GRAPHQL: 'http://192.168..0.123:4545/graphql',
     BACKEND_SELF_ENDPOINT: 'http://192.168..0.123:4545/api/v1/kyc/self',
     BACKEND_MINI_ENDPOINT: 'http://192.168..0.123:4000',
-    THIRDWEB_CLIENT_ID: '109344c426bd8f1b6b104293acb235dc',
-    // THIRDWEB_CLIENT_ID: 'ed609505120d673a05ad0214b2fb86d5',
+    // THIRDWEB_CLIENT_ID: '109344c426bd8f1b6b104293acb235dc',
+    THIRDWEB_CLIENT_ID: 'ed609505120d673a05ad0214b2fb86d5',
   },
   production: {
     BACKEND_ENDPOINT: 'https://server.mobater.com',

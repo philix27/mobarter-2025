@@ -1,4 +1,4 @@
-import { TText, TView } from '@/components/ui'
+import { TText, TView } from '@/components'
 import { useColor } from '@/hooks/useColor'
 import { TouchableOpacity } from 'react-native'
 

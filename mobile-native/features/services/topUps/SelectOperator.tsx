@@ -1,11 +1,12 @@
-import { Row, TView } from '@/components/ui'
+import { Row, TView } from '@/components'
 import { ActivityIndicator, ViewStyle } from 'react-native'
 import { BtmSheet } from '@/components/layout'
 import { ErrMsg, Label } from '@/components/forms'
 import { useTopUps } from './zustand'
-import { AppStores, useColor } from '@/lib'
+import { AppStores,  } from '@/lib'
 import { Api, Country } from '@/graphql'
 import { Ionicons } from '@expo/vector-icons'
+import { useColor } from '@/hooks'
 
 export function SelectOperator(params: {
   style?: ViewStyle

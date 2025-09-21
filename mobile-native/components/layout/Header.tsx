@@ -6,7 +6,8 @@ import {
   NativeStackHeaderLeftProps,
   NativeStackHeaderRightProps,
 } from '@react-navigation/native-stack'
-import { device, useColor } from '@/lib'
+import { device,  } from '@/lib'
+import { useColor } from '@/hooks'
 // import Drawer from 'expo-router/drawer'
 
 type IRoutes = 'Home'

@@ -2,10 +2,11 @@ import { BtmSheet } from '@/components/layout'
 import { ITokenCategory } from '../market/AssetsCrypto'
 import { TView, Row } from '@/components'
 import { Label, ErrMsg } from '@/components/forms'
-import { useColor, AppStores } from '@/lib'
+import { AppStores } from '@/lib'
 import { useBankAccount } from './zustand.bank'
 import { Ionicons } from '@expo/vector-icons'
 import { BankAccounts } from './BankAccounts'
+import { useColor } from '@/hooks'
 
 export function SelectBankAccountCard({
   tokenErr,

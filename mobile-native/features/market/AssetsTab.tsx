@@ -1,5 +1,5 @@
 import { FlatTabs } from '@/components/FlatTabs'
-import { TView } from '@/components/ui'
+import { TView } from '@/components'
 import { Api } from '@/graphql'
 import { AppStores } from '@/lib/zustand'
 import React from 'react'

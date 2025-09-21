@@ -1,6 +1,6 @@
 import { Wrapper, HeaderBar } from '@/components/layout'
 import React from 'react'
-import { Row, TView } from '@/components/ui'
+import { Row, TView } from '@/components'
 import { ActivityIndicator, Linking } from 'react-native'
 import { Api, StaticLinkGroup } from '@/graphql'
 

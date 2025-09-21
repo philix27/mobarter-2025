@@ -3,7 +3,7 @@ import { z } from 'zod'
 import { InputButton, InputText } from '@/components/forms'
 import { useAppForm, AppStores } from '@/lib'
 import { isDev } from '@/lib/constants/env'
-import { toast, TText, TView } from '@/components/ui'
+import { toast, TText, TView } from '@/components'
 
 import { useTopUps } from './zustand'
 import { useResponse } from '@/lib/providers'
@@ -140,7 +140,7 @@ export default function Airtime() {
           handleChange('amount', text)
           clearErr()
         }}
-        // error={errors && errors?.amount && errors!.amount}
+      // error={errors && errors?.amount && errors!.amount}
       />
 
       <TText>{amountToPay}</TText>

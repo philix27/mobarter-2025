@@ -6,7 +6,7 @@ import { useColor } from '@/hooks/useColor'
 
 import { Label } from './Label'
 import ErrMsg from './ErrMsg'
-import { TText, TView } from '../ui'
+import { TText, TView } from '../'
 
 type IProps = {
   label?: string

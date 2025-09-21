@@ -1,5 +1,5 @@
 import { Image, TouchableOpacity } from 'react-native'
-import { TText, TView } from '@/components/ui'
+import { TText, TView } from '@/components'
 import React, { JSX } from 'react'
 import { useColor } from '@/hooks/useColor'
 import { useQuery } from '@tanstack/react-query'

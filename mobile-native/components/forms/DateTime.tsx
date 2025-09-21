@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import RNDateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker'
 import { Label } from './Label'
-import { Row, TView } from '../ui'
+import { Row, TView } from '../'
 import { ViewStyle } from 'react-native'
 import { useColor } from '@/hooks'
 import { Ionicons } from '@expo/vector-icons'

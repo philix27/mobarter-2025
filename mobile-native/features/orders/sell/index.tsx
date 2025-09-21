@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import AppHooks from '@/hooks'
 import { PayableTokenCard } from '@/features/tokens'
 import { SelectBankAccountCard } from '@/features/bankAccount'
-import { TText } from '@/components/ui'
+import { TText } from '@/components'
 import { BtmSheet } from '@/components/layout'
 import { useBankAccount } from '@/features/bankAccount/zustand.bank'
 import { SelectCountryCard } from '@/features/country'
@@ -97,7 +97,7 @@ export default function SellCryptoOrder() {
           onCompleted() {
             toast.success('Order created')
           },
-          onError() {},
+          onError() { },
           refetchQueries: [],
         })
       })

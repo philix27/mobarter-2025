@@ -1,4 +1,4 @@
-import { Row, toast } from '@/components/ui'
+import { Row, toast } from '@/components'
 import { TView } from '@/components/TView'
 import { AntDesign } from '@expo/vector-icons'
 import { router } from 'expo-router'

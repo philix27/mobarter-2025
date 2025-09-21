@@ -3,7 +3,7 @@ import React from 'react'
 import { DrawerContentComponentProps, DrawerContentScrollView } from '@react-navigation/drawer'
 import { router, useNavigation } from 'expo-router'
 import { DrawerActions } from '@react-navigation/native'
-import { TText, TView } from '../ui'
+import { TText, TView } from '../'
 
 export function DrawerContent(props: DrawerContentComponentProps) {
   // const { close } = useDrawer()

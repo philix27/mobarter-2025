@@ -1,6 +1,7 @@
 import React from 'react'
-import { TText } from '../ui'
-import { device, useColor } from '@/lib'
+import { TText } from '../'
+import { device,  } from '@/lib'
+import { useColor } from '@/hooks'
 
 export function Label(props: { label: string }) {
   const theme = useColor()

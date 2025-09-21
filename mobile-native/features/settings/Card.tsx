@@ -1,5 +1,5 @@
 import { Label } from '@/components/forms'
-import { TText, TView } from '@/components/ui'
+import { TText, TView } from '@/components'
 import { useColor } from '@/hooks/useColor'
 import { ReactNode } from 'react'
 

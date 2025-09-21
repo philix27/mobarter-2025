@@ -1,5 +1,4 @@
-import { TView } from '@/components'
-import { TText } from '@/components/ui'
+import { TView , TText} from '@/components'
 import { Link, Stack } from 'expo-router'
 import { StyleSheet } from 'react-native'
 

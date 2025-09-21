@@ -1,6 +1,6 @@
 import { TView, Row } from '@/components'
 import { InputButton } from '@/components/forms'
-import { TText } from '@/components/ui'
+import { TText } from '@/components'
 import { useBankAccount } from './zustand.bank'
 import { router } from 'expo-router'
 import { ActivityIndicator } from 'react-native'

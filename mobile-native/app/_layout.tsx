@@ -6,10 +6,10 @@ import * as SplashScreen from 'expo-splash-screen'
 import React, { useEffect } from 'react'
 import { RootProviders } from '@/lib/providers'
 // import { Drawer } from 'expo-router/drawer'
-import { useColor } from '@/lib'
 // import { DrawerContent } from '@/components/layout'
 import NavigationBar from 'expo-navigation-bar'
 import { Stack } from 'expo-router'
+import { useColor } from '@/hooks'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()

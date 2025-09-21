@@ -1,5 +1,5 @@
 import { Wrapper } from '@/components'
-import { TText } from '@/components/ui'
+import { TText } from '@/components'
 import React from 'react'
 
 export default function FlexibleSavingsPage() {

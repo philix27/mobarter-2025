@@ -1,4 +1,4 @@
-import { TText, TView } from '@/components/ui'
+import { TText, TView } from '@/components'
 import { getUniversalLink, SelfAppBuilder } from '@selfxyz/core'
 import { InputButton } from '@/components/forms'
 import { router } from 'expo-router'

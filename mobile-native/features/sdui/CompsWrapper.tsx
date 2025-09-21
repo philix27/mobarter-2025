@@ -1,5 +1,5 @@
 import { InputButton, InputSelect, InputText } from '@/components/forms'
-import { Row, toast, TText, TView } from '@/components/ui'
+import { Row, toast, TText, TView } from '@/components'
 import React from 'react'
 import { create } from 'zustand'
 import { handleAction } from './handleActions'

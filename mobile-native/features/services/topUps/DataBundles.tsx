@@ -1,7 +1,7 @@
 import { BtmSheet } from '@/components/layout'
 import { InputButton } from '@/components/forms'
 import { AppStores } from '@/lib'
-import { toast, TView } from '@/components/ui'
+import { toast, TView } from '@/components'
 import { useTopUps } from './zustand'
 import { SelectDataPlan } from './SelectDataPlan'
 import { Api, Country } from '@/graphql'

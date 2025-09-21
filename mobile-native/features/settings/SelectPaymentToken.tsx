@@ -1,4 +1,4 @@
-import { Row, TView } from '@/components/ui'
+import { Row, TView } from '@/components'
 import { AppStores } from '@/lib/zustand'
 import { BtmSheet } from '@/components/layout'
 
@@ -41,7 +41,7 @@ export default function SelectPaymentToken() {
       )}
 
       <BtmSheet.Modal ref={countrySheet!}>
-        <ScrollView style={{width: "100%"}}>
+        <ScrollView style={{ width: "100%" }}>
           {data &&
             data.static_getTokens.map((item, i) => {
               return (

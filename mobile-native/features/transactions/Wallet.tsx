@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
-import { Row, TText, TView } from '@/components/ui'
+import { Row, TText, TView } from '@/components'
 import AppHooks from '@/hooks'
 import { env } from '@/lib/env'
 import { ITransactionsResponse } from './types'

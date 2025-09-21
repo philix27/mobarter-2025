@@ -1,5 +1,5 @@
 import { ActivityIndicator, FlatList, ScrollView } from 'react-native'
-import { TView } from '@/components/ui'
+import { TView } from '@/components'
 import React from 'react'
 import { AssetsRow } from './AssetsRow'
 import { AppStores } from '@/lib/zustand'

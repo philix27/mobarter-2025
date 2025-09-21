@@ -3,12 +3,13 @@ import { CryptoTokensList, ITokenCategory } from '../market/AssetsCrypto'
 import ErrMsg from '@/components/forms/ErrMsg'
 import { TView, Row } from '@/components'
 import { Label } from '@/components/forms'
-import { useColor, AppStores } from '@/lib'
+import { AppStores } from '@/lib'
 import { Ionicons } from '@expo/vector-icons'
 import { useQuery } from '@tanstack/react-query'
 
 import { useAddress } from '@/hooks/web3/hooks'
 import { getBalance } from '../market/Balance/getBalance'
+import { useColor } from '@/hooks'
 
 export function SelectTokenCard({ ...props }: { group?: ITokenCategory }) {
   const theme = useColor()

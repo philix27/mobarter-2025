@@ -2,7 +2,7 @@ import React, { forwardRef, ReactNode, useRef } from 'react'
 import RBSheet, { RBSheetRef } from 'react-native-raw-bottom-sheet'
 import { useColor } from '@/hooks/useColor'
 
-import { TText, TView } from '../ui'
+import { TText, TView } from '../'
 import { ViewStyle } from 'react-native'
 import { device } from '@/lib'
 import { ScrollView } from 'react-native'

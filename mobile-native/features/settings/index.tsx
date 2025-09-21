@@ -1,5 +1,5 @@
 import { BtmSheet, Wrapper } from '@/components/layout'
-import { Row } from '@/components/ui'
+import { Row } from '@/components'
 import { useContext } from 'react'
 import {
   FontAwesome5,

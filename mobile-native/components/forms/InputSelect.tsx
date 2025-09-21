@@ -1,4 +1,4 @@
-import { Row, TView } from '@/components/ui'
+import { Row, TView } from '@/components'
 import React, { useState } from 'react'
 import { useColor } from '@/hooks/useColor'
 import { ScrollView, ViewStyle } from 'react-native'
@@ -42,7 +42,7 @@ export function InputSelect(params: {
       </TView>
 
       <BtmSheet.Modal ref={refRBSheet!}>
-        <ScrollView style={{width: '100%', paddingBottom: 20}}>
+        <ScrollView style={{ width: '100%', paddingBottom: 20 }}>
           {params.items.map((item, i) => (
             <Row
               key={i}

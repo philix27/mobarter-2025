@@ -1,5 +1,5 @@
 import { Row, TView } from '@/components'
-import { TText } from '@/components/ui'
+import { TText } from '@/components'
 import React from 'react'
 import { useSavings } from '../zustand'
 import { Ionicons } from '@expo/vector-icons'

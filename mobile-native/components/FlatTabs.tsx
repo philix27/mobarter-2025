@@ -2,8 +2,8 @@ import { StyleSheet,  ViewStyle } from 'react-native'
 import { PlatformPressable } from '@react-navigation/elements'
 import Animated, { useSharedValue, withSpring } from 'react-native-reanimated'
 import { useEffect } from 'react'
-import { TView } from './ui'
-import { useColor } from '@/lib'
+import { TView } from './TView'
+import { useColor } from '@/hooks'
 
 export function FlatTabs(props: {
   tintColor?: string

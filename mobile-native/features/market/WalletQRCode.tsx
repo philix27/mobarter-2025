@@ -1,4 +1,4 @@
-import { TText, TView } from '@/components/ui'
+import { TText, TView } from '@/components'
 import React from 'react'
 import QRCode from 'react-native-qrcode-svg'
 import { InputButton } from '@/components/forms'

@@ -1,8 +1,6 @@
 import { TView, Wrapper } from '@/components'
 import React from 'react'
-import OrdersTransactions from './Orders'
 import WalletTransactions from './Wallet'
-import { useTransactions } from './zustand'
 import { FlatTabs } from '@/components/FlatTabs'
 import { Api } from '@/graphql'
 import { AppStores } from '@/lib'

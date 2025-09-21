@@ -1,4 +1,4 @@
-import { Row } from '@/components/ui'
+import { Row } from '@/components'
 import React from 'react'
 import { Linking } from 'react-native'
 import { TView } from '@/components'

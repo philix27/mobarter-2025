@@ -1,6 +1,6 @@
 // import { useGetUi } from '@/api'
 import React from 'react'
-import { TText } from '@/components/ui'
+import { TText } from '@/components'
 
 export default function OrdersTransactions() {
   // const { data, isLoading } = useGetUi()

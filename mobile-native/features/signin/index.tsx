@@ -1,13 +1,14 @@
 import { Wrapper } from '@/components'
-import { TText, TView } from '@/components/ui'
+import { TText, TView } from '@/components'
 import { router } from 'expo-router'
 import { Image } from 'react-native'
 import { useActiveAccount, useConnect } from 'thirdweb/react'
 import { getUserEmail, inAppWallet } from 'thirdweb/wallets/in-app'
-import { AppStores, client, useColor } from '@/lib'
+import { AppStores, client,  } from '@/lib'
 import { InputButton } from '@/components/forms'
 import { Api } from '@/graphql'
 import { celo } from 'thirdweb/chains'
+import { useColor } from '@/hooks'
 
 export default function SignIn() {
   const account = useActiveAccount()

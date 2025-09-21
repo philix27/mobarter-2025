@@ -7,9 +7,9 @@ import React from 'react'
 import { getUniversalLink, SelfAppBuilder } from '@selfxyz/core'
 import { useAddress } from '@/hooks/web3/hooks'
 import { env } from '@/lib/env'
-import { TText } from '@/components/ui'
+import { TText } from '@/components'
 import { Ionicons, MaterialIcons } from '@expo/vector-icons'
-import { useColor } from '@/lib'
+import { useColor } from '@/hooks'
 
 export default function ProfileTab() {
   const { data, loading } = Api.useUserInfo()

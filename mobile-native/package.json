@@ -78,7 +78,7 @@
     "react-native-otp-entry": "^1.8.4",
     "react-native-passkey": "^3.0.0",
     "react-native-qrcode-svg": "^6.3.15",
-    "react-native-quick-crypto": "^0.7.15",
+    "react-native-quick-crypto": "^0.7.17",
     "react-native-raw-bottom-sheet": "^3.0.0",
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
@@ -118,5 +118,8 @@
     "react-test-renderer": "19.1.0",
     "typescript": "~5.8.3"
   },
-  "private": true
+  "private": true,
+  "browser": {
+    "crypto": false
+  }
 }

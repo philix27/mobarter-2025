@@ -1,4 +1,4 @@
-import { TView } from '@/components/ui'
+import { TView } from '@/components'
 import { useColor } from '@/hooks/useColor'
 import React from 'react'
 import { Text } from 'react-native'

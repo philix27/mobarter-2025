@@ -6,8 +6,8 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated'
 import { useEffect, useState } from 'react'
-import { TView } from './ui'
-import { useColor } from '@/lib'
+import { TView } from './'
+import { useColor } from '@/hooks'
 
 export function HeaderTabs(props: {
   tintColor?: string

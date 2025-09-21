@@ -4,8 +4,8 @@ import { AppStores } from '@/lib/zustand'
 import { BtmSheet } from '@/components/layout'
 import { ActivityIndicator } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import { useColor } from '@/lib'
 import { Api } from '@/graphql'
+import { useColor } from '@/hooks'
 
 export default function SelectCountryCard() {
   const store = AppStores.useCountries()

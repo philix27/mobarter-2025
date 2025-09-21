@@ -3,9 +3,8 @@ import { toast } from '@/components'
 import { transfer } from 'thirdweb/extensions/erc20'
 import { celo } from 'thirdweb/chains'
 import { client } from '@/lib'
-import { sendTransaction, toEther, toWei } from 'thirdweb'
+import { sendTransaction, toWei } from 'thirdweb'
 import { useActiveAccount } from 'thirdweb/react'
-import { ethers, toBigInt } from 'ethers'
 
 interface ITransferERC20 {
   recipient: string

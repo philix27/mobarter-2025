@@ -3,7 +3,7 @@ import { z } from 'zod'
 import { InputSelect, InputButton, InputText } from '@/components/forms'
 import { useAppForm, AppStores } from '@/lib'
 import { isDev } from '@/lib/constants/env'
-import { toast, TView } from '@/components/ui'
+import { toast, TView } from '@/components'
 
 import { PayableTokenCard } from '@/features/tokens'
 import AppHooks from '@/hooks'

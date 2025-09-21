@@ -6,7 +6,7 @@ import Animated, {
   useAnimatedStyle,
   useScrollViewOffset,
 } from 'react-native-reanimated'
-import { TView } from '../ui'
+import { TView } from '../'
 
 const HEADER_HEIGHT = 200
 
