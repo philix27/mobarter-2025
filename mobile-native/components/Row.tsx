@@ -1,5 +1,5 @@
-import IconRound from '@/components/ui/IconRound'
-import { TView } from '@/components/ui/TView'
+import IconRound from '@/components/IconRound'
+import { TView } from '@/components/TView'
 import { useColor } from '@/hooks/useColor'
 import { JSX } from 'react'
 import { TouchableOpacity, Image, ViewStyle } from 'react-native'

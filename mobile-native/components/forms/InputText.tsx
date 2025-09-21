@@ -6,13 +6,13 @@ import {
   ViewStyle,
   TextStyle,
 } from 'react-native'
-import { TView } from '../ui/TView'
+import { TView } from '../TView'
 import { useColor } from '@/hooks/useColor'
 import { JSX, useState } from 'react'
 import { Feather } from '@expo/vector-icons'
 
 import ErrMsg from './ErrMsg'
-import { TText } from '../ui/TText'
+import { TText } from '../TText'
 import { Label } from './Label'
 
 export function InputText(props: {

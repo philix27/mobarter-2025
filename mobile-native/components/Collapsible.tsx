@@ -1,6 +1,6 @@
 import { PropsWithChildren, useState } from 'react'
 import { TouchableOpacity } from 'react-native'
-import { TView } from '@/components/ui/TView'
+import { TView } from '@/components/TView'
 import { IconSymbol } from '@/components/tab/IconSymbol'
 import { useColor } from '@/hooks/useColor'
 import { TText } from './TText'
@@ -8,7 +8,6 @@ import { TText } from './TText'
 export function Collapsible({
   children,
   title,
-  icon,
 }: PropsWithChildren & { title: string; icon?: JSX.Element }) {
   const [isOpen, setIsOpen] = useState(false)
   const theme = useColor()

@@ -1,9 +1,9 @@
 import { servicesList } from './data'
 import { router } from 'expo-router'
-import { TView } from '@/components/ui/TView'
+import { TView } from '@/components/TView'
 import { ReactNode } from 'react'
 import { ViewStyle } from 'react-native'
-import IconRound from '@/components/ui/IconRound'
+import IconRound from '@/components/IconRound'
 import { useColor } from '@/hooks'
 import SavingsScreen from '../savings'
 

@@ -1,10 +1,10 @@
-import { TView } from '@/components/ui/TView'
+import { TView } from '@/components/TView'
 import React from 'react'
 import { OtpInput } from 'react-native-otp-entry'
-import { useColor } from '@/hooks/useColor'
 import { Label } from './Label'
 import ErrMsg from './ErrMsg'
 import { ViewStyle } from 'react-native'
+import { useColor } from '@/hooks/useColor'
 
 type IProps = {
   label?: string

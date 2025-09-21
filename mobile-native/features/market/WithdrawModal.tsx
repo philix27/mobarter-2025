@@ -1,5 +1,5 @@
 import { Row, toast } from '@/components/ui'
-import { TView } from '@/components/ui/TView'
+import { TView } from '@/components/TView'
 import { AntDesign } from '@expo/vector-icons'
 import { router } from 'expo-router'
 import React from 'react'

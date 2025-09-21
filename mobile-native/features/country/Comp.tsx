@@ -1,5 +1,5 @@
-import { TView } from '@/components/ui/TView'
-import { Row } from '@/components/ui/Row'
+import { TView } from '@/components/TView'
+import { Row } from '@/components/Row'
 import { AppStores } from '@/lib/zustand'
 import { BtmSheet } from '@/components/layout'
 import { ActivityIndicator } from 'react-native'

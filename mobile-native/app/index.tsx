@@ -13,6 +13,7 @@ export default function HomeScreen() {
   )
 }
 
+// eslint-disable-next-line react/display-name
 const Container = memo((props: { children: ReactNode; title?: string; desc?: string }) => {
   const theme = useColor()
   return (
