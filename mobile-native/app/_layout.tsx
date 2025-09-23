@@ -1,6 +1,7 @@
 // import 'react-native-get-random-values'
 // import '@ethersproject/shims' //for ethers.js
 // import { ContractFactory, ethers } from 'ethers'
+// ... rest of your imports and layout code
 import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import React, { useEffect } from 'react'

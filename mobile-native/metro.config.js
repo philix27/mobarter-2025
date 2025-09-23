@@ -18,6 +18,11 @@ module.exports = (async () => {
   config.resolver.unstable_enablePackageExports = true
   config.resolver.unstable_conditionNames = ['browser', 'require', 'react-native']
   // const animatedConfig = wrapWithReanimatedMetroConfig(config)
+  config.resolver.extraNodeModules = {
+    crypto: require.resolve('react-native-quick-crypto'),
+    buffer: require.resolve('@craftzdog/react-native-buffer'),
+  }
+
   const animatedConfig = config
 
   const sourceExts = animatedConfig.resolver.sourceExts
